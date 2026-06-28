@@ -1,60 +1,59 @@
-@use "../../global/tokens";
-@use "../../tex";
-
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .choose {
 	position: relative;
-	margin: tex.rem(24) 0;
-	border-radius: tex.rem(10);
-	background: url("@img/choose-bg.webp") 0 0 / cover no-repeat, tokens.$color-accent;
+	margin: rem(24) 0;
+	border-radius: rem(10);
+	background: url("@img/choose-bg.webp") 0 0 / cover no-repeat, $color-accent;
 	color: #fff;
 	overflow: hidden;
 
-	@media (min-width: tex.$md3) {
-		border-radius: tex.rem(20);
+	@media (min-width: $md3) {
+		border-radius: rem(20);
 	}
 
 
 	&__container {
 		position: relative;
 		z-index: 1;
-		padding-top: tex.rem(20);
-		padding-bottom: tex.rem(20);
+		padding-top: rem(20);
+		padding-bottom: rem(20);
 
-		@media (min-width: tex.$md3) {
-			padding-top: tex.rem(40);
-			padding-bottom: tex.rem(40);
+		@media (min-width: $md3) {
+			padding-top: rem(40);
+			padding-bottom: rem(40);
 		}
 	}
 
 	&__head {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(20);
-		margin-bottom: tex.rem(20);
+		gap: rem(20);
+		margin-bottom: rem(20);
 
-		@media (min-width: tex.$md2) {
+		@media (min-width: $md2) {
 			flex-direction: row;
 			justify-content: space-between;
-			gap: tex.rem(20) tex.rem(32);
+			gap: rem(20) rem(32);
 			align-items: center;
-			margin-bottom: tex.rem(28);
+			margin-bottom: rem(28);
 		}
 	}
 
 	&__head-main {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
+		gap: rem(10);
 
-		@media (min-width: tex.$md2) {
-			gap: tex.rem(16);
-			max-width: tex.rem(726);
+		@media (min-width: $md2) {
+			gap: rem(16);
+			max-width: rem(726);
 		}
 	}
 
 	&__lead {
-		@media (min-width:tex.$md2) {
-			max-width: tex.rem(650);
+		@media (min-width:$md2) {
+			max-width: rem(650);
 
 		}
 	}
@@ -64,17 +63,17 @@
 		font-style: italic;
 		line-height: 1.2;
 
-		@include tex.adaptive-font(18, 24);
+		@include adaptive-font(18, 24);
 
-		@media (min-width: tex.$md3) {
-			padding-top: tex.rem(4);
+		@media (min-width: $md3) {
+			padding-top: rem(4);
 		}
 
-		@media (min-width:tex.$md2) {
-			max-width: tex.rem(480);
+		@media (min-width:$md2) {
+			max-width: rem(480);
 		}
 
-		@media (min-width:tex.$md1) {
+		@media (min-width:$md1) {
 			margin-right: 3.5rem;
 
 		}
@@ -83,7 +82,7 @@
 	&__slider {
 		margin-top: 1.5rem;
 
-		@media (min-width:tex.$md3) {
+		@media (min-width:$md3) {
 			margin-top: 2.5rem;
 
 		}
@@ -94,16 +93,16 @@
 		display: flex;
 		flex-direction: row;
 		height: auto;
-		gap: tex.rem(20);
-		min-height: tex.rem(131);
-		padding: tex.rem(16);
-		border: tex.rem(0.5) solid #fff;
-		border-radius: tex.rem(10);
-		background: tokens.$color-surface-tab;
+		gap: rem(20);
+		min-height: rem(131);
+		padding: rem(16);
+		border: rem(0.5) solid #fff;
+		border-radius: rem(10);
+		background: $color-surface-tab;
 
-		@media (min-width: tex.$md3) {
-			min-height: tex.rem(256);
-			padding: tex.rem(20);
+		@media (min-width: $md3) {
+			min-height: rem(256);
+			padding: rem(20);
 		}
 	}
 
@@ -112,45 +111,45 @@
 		flex: 1 1 auto;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: tex.rem(10);
+		gap: rem(10);
 		min-width: 0;
 
 
-		@media (min-width: tex.$md3) {
-			min-height: tex.rem(216);
-			max-width: tex.rem(376);
+		@media (min-width: $md3) {
+			min-height: rem(216);
+			max-width: rem(376);
 		}
 	}
 
 	&__card-title {
 
-		color: tokens.$color-brand;
+		color: $color-brand;
 		font-weight: 500;
 		font-style: italic;
 		line-height: 1.2;
 		letter-spacing: -0.02em;
-		@include tex.adaptive-font(18, 24);
+		@include adaptive-font(18, 24);
 	}
 
 	&__card-desc {
-		color: tokens.$color-text-body;
+		color: $color-text-body;
 		line-height: 1.3;
-		@include tex.adaptive-font(12, 18);
+		@include adaptive-font(12, 18);
 	}
 
 	&__card-media {
 		position: relative;
-		flex: 0 0 tex.rem(113);
-		width: tex.rem(113);
+		flex: 0 0 rem(113);
+		width: rem(113);
 		height: 100%;
 		overflow: hidden;
-		border-radius: tex.rem(10);
+		border-radius: rem(10);
 		background: #fff;
-		height: tex.rem(99);
+		height: rem(99);
 
-		@media (min-width: tex.$md3) {
-			flex: 0 0 tex.rem(214);
-			width: tex.rem(214);
+		@media (min-width: $md3) {
+			flex: 0 0 rem(214);
+			width: rem(214);
 			height: 100%;
 
 		}
@@ -164,11 +163,11 @@
 		object-fit: cover;
 		object-position: left center;
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			position: absolute;
 			top: 0;
-			left: tex.rem(-38);
-			width: tex.rem(290);
+			left: rem(-38);
+			width: rem(290);
 			height: 100%;
 		}
 
@@ -176,9 +175,9 @@
 			width: 100%;
 			object-position: center center;
 
-			@media (min-width: tex.$md3) {
-				left: tex.rem(-38);
-				width: tex.rem(290);
+			@media (min-width: $md3) {
+				left: rem(-38);
+				width: rem(290);
 			}
 		}
 	}
@@ -187,26 +186,26 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: tex.rem(20);
-		margin-top: tex.rem(12);
+		gap: rem(20);
+		margin-top: rem(12);
 
-		@media (min-width: tex.$md4) {
+		@media (min-width: $md4) {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
 
-			margin-top: tex.rem(36);
+			margin-top: rem(36);
 		}
 	}
 
 	&__nav {
 		order: 1;
 		display: flex;
-		gap: tex.rem(10);
+		gap: rem(10);
 
-		@media (min-width: tex.$md4) {
+		@media (min-width: $md4) {
 			order: 2;
-			gap: tex.rem(20);
+			gap: rem(20);
 		}
 	}
 
@@ -214,25 +213,25 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: tex.rem(44);
-		height: tex.rem(44);
-		padding: tex.rem(10);
-		border: tex.rem(0.733) solid #fff;
+		width: rem(44);
+		height: rem(44);
+		padding: rem(10);
+		border: rem(0.733) solid #fff;
 		border-radius: 50%;
 		background: transparent;
 		cursor: pointer;
 		transition: background-color 0.2s ease, opacity 0.2s ease;
 
-		@media (min-width: tex.$md3) {
-			width: tex.rem(60);
-			height: tex.rem(60);
+		@media (min-width: $md3) {
+			width: rem(60);
+			height: rem(60);
 			border-width: 1px;
 		}
 
 		&:disabled,
 		&[aria-disabled="true"],
 		&.swiper-button-disabled {
-			opacity: tokens.$state-disabled-opacity;
+			opacity: $state-disabled-opacity;
 			cursor: default;
 			pointer-events: none;
 		}
@@ -245,12 +244,12 @@
 
 		svg {
 			display: block;
-			width: tex.rem(23.467);
-			height: tex.rem(23.467);
+			width: rem(23.467);
+			height: rem(23.467);
 
-			@media (min-width: tex.$md3) {
-				width: tex.rem(32);
-				height: tex.rem(32);
+			@media (min-width: $md3) {
+				width: rem(32);
+				height: rem(32);
 			}
 		}
 
@@ -267,24 +266,24 @@
 		order: 2;
 		width: 100%;
 
-		min-height: tex.rem(52);
+		min-height: rem(52);
 
-		@media (min-width: tex.$md4) {
-			max-width: tex.rem(332);
+		@media (min-width: $md4) {
+			max-width: rem(332);
 			order: 1;
-			width: tex.rem(426);
+			width: rem(426);
 			max-width: none;
-			min-height: tokens.$btn-height;
+			min-height: $btn-height;
 		}
 	}
 
 	&--related {
-		margin-top: tex.rem(32);
-		margin-bottom: tex.rem(48);
+		margin-top: rem(32);
+		margin-bottom: rem(48);
 
-		@media (min-width: tex.$md3) {
-			margin-top: tex.rem(48);
-			margin-bottom: tex.rem(72);
+		@media (min-width: $md3) {
+			margin-top: rem(48);
+			margin-bottom: rem(72);
 		}
 
 		.choose__tag,
@@ -295,10 +294,10 @@
 		}
 
 		.choose__head {
-			margin-bottom: tex.rem(24);
+			margin-bottom: rem(24);
 
-			@media (min-width: tex.$md3) {
-				margin-bottom: tex.rem(48);
+			@media (min-width: $md3) {
+				margin-bottom: rem(48);
 			}
 		}
 
@@ -309,7 +308,7 @@
 		.choose__footer {
 			justify-content: center;
 
-			@media (min-width: tex.$md4) {
+			@media (min-width: $md4) {
 				justify-content: flex-end;
 			}
 		}

@@ -1,55 +1,55 @@
-@use "../../global/tokens";
-@use "../../tex";
+@use "../../variables" as *;
+@use "../../mixins" as *;
 
 .advantages {
-	padding: tex.rem(20) 0 tex.rem(40);
+	padding: rem(20) 0 rem(40);
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(30) 0 tex.rem(60);
+	@media (min-width: $md3) {
+		padding: rem(30) 0 rem(60);
 	}
 
 	&__grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: tex.rem(10);
+		gap: rem(10);
 
-		@media (min-width: tex.$md5) {
+		@media (min-width: $md5) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			grid-template-columns: repeat(4, 1fr);
-			gap: tex.rem(20);
+			gap: rem(20);
 		}
 	}
 
 	&__card {
-		min-height: tex.rem(177);
-		padding: tex.rem(30) tex.rem(45);
-		border-radius: tex.rem(10);
-		background: tokens.$color-surface-mint;
+		min-height: rem(177);
+		padding: rem(30) rem(45);
+		border-radius: rem(40);
+		background: $color-surface;
 	}
 
 	&__value {
-		margin-bottom: tex.rem(42);
-		font-family: tex.$font-family;
+		margin-bottom: rem(42);
+		font-family: $font-family;
 		font-weight: 500;
-		font-size: tex.rem(36);
+		font-size: rem(36);
 		line-height: 1.1;
-		color: tokens.$color-primary;
+		color: $color-black;
 
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(44);
+		@media (min-width: $md3) {
+			font-size: rem(44);
 		}
 	}
 
 	&__label {
-		font-size: tex.rem(14);
+		font-size: rem(15);
 		line-height: 1.3;
-		color: tokens.$color-text-body;
+		color: $color-text-secondary;
 
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(18);
+		@media (min-width: $md3) {
+			font-size: rem(18);
 		}
 	}
 }

@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "../../variables" as *;
+@use "../../mixins" as *;
 $blog-date-muted: rgba($color-text-body, 0.6);
 
 .blog-hero {

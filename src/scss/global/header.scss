@@ -1,7 +1,5 @@
-@use "../tex";
-@use "tokens";
-
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .header {
 	position: fixed;
 	top: 0;
@@ -9,7 +7,7 @@
 	right: 0;
 	z-index: 50;
 	width: 100%;
-	padding: tex.rem(16) 0 0;
+	padding: rem(16) 0 0;
 	pointer-events: none;
 
 	&__container {
@@ -20,12 +18,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: tex.rem(16);
-		min-height: tex.rem(60);
-		padding: tex.rem(14) tex.rem(20);
-		border-radius: tex.rem(62);
-		background: #fff;
-		color: #000;
+		gap: rem(16);
+		min-height: rem(60);
+		padding: rem(14) rem(20);
+		border-radius: rem(62);
+		background: $color-white;
+		color: $color-black;
 	}
 
 	&__logo {
@@ -36,7 +34,7 @@
 
 	&__logo-img {
 		display: block;
-		width: tex.rem(50);
+		width: rem(50);
 		height: auto;
 		object-fit: contain;
 	}
@@ -47,7 +45,7 @@
 		justify-content: center;
 		min-width: 0;
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			display: flex;
 		}
 	}
@@ -56,7 +54,7 @@
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: tex.rem(36);
+		gap: rem(36);
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -69,9 +67,9 @@
 	&__link {
 		display: inline-flex;
 		align-items: center;
-		gap: tex.rem(7);
-		font-family: tex.$font-inter;
-		font-size: tex.rem(14);
+		gap: rem(7);
+		font-family: $font-inter;
+		font-size: rem(14);
 		font-weight: 400;
 		line-height: 1.2;
 		color: inherit;
@@ -92,7 +90,7 @@
 	&__actions {
 		display: flex;
 		align-items: center;
-		gap: tex.rem(16);
+		gap: rem(16);
 		margin-left: auto;
 		flex-shrink: 0;
 	}
@@ -101,29 +99,29 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		min-height: tex.rem(29);
-		padding: tex.rem(8) tex.rem(18);
+		min-height: rem(29);
+		padding: rem(8) rem(18);
 		border: 0;
-		border-radius: tex.rem(40);
-		background: #f7f7f7;
-		color: #000;
-		font-family: tex.$font-family;
-		font-size: tex.rem(10);
+		border-radius: rem(40);
+		background: $color-surface;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(10);
 		font-weight: 400;
 		line-height: 1.2;
 		white-space: nowrap;
 		cursor: pointer;
 		transition: background-color 0.2s ease;
 
-		@media (min-width: tex.$md3) {
-			min-height: tex.rem(47);
-			padding: tex.rem(15) tex.rem(25);
-			font-size: tex.rem(14);
+		@media (min-width: $md3) {
+			min-height: rem(47);
+			padding: rem(15) rem(25);
+			font-size: rem(14);
 		}
 
 		@media (any-hover: hover) {
 			&:hover {
-				background: #efefef;
+				background: $color-surface-hover;
 			}
 		}
 	}
@@ -132,25 +130,25 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: tex.rem(24);
-		height: tex.rem(24);
+		width: rem(24);
+		height: rem(24);
 		padding: 0;
 		border: 0;
 		background: transparent;
 		color: #000;
 		cursor: pointer;
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			display: none;
 		}
 	}
 
-	@media (min-width: tex.$md3) {
-		padding-top: tex.rem(20);
+	@media (min-width: $md3) {
+		padding-top: rem(20);
 
 		&__bar {
-			min-height: tex.rem(79);
-			padding: tex.rem(14) tex.rem(30);
+			min-height: rem(79);
+			padding: rem(14) rem(30);
 		}
 	}
 }
@@ -192,12 +190,12 @@
 		right: 0;
 		display: flex;
 		flex-direction: column;
-		width: min(100%, tex.rem(215));
+		width: min(100%, rem(215));
 		height: 100%;
 		max-height: 100dvh;
 		overflow: hidden;
 		background: #fff;
-		border-radius: tex.rem(20) 0 0 tex.rem(20);
+		border-radius: rem(20) 0 0 rem(20);
 		transform: translateX(100%);
 		transition: transform 0.35s ease;
 	}
@@ -205,8 +203,8 @@
 	&__top {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(16);
-		padding: tex.rem(16) tex.rem(16) tex.rem(20);
+		gap: rem(16);
+		padding: rem(16) rem(16) rem(20);
 		background: #fff;
 	}
 
@@ -214,14 +212,14 @@
 		display: inline-flex;
 		align-items: center;
 		width: fit-content;
-		padding: tex.rem(10) tex.rem(15);
-		border-radius: tex.rem(20);
+		padding: rem(10) rem(15);
+		border-radius: rem(20);
 		background: #fff;
 		text-decoration: none;
 
 		img {
 			display: block;
-			width: tex.rem(50);
+			width: rem(50);
 			height: auto;
 		}
 	}
@@ -230,16 +228,16 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: tex.rem(12);
+		gap: rem(12);
 		width: fit-content;
-		min-width: tex.rem(131);
-		min-height: tex.rem(38);
-		padding: tex.rem(6) tex.rem(10) tex.rem(6) tex.rem(15);
-		border-radius: tex.rem(52);
-		background: #fd8011;
-		color: #fff;
-		font-family: tex.$font-family;
-		font-size: tex.rem(12);
+		min-width: rem(131);
+		min-height: rem(38);
+		padding: rem(6) rem(10) rem(6) rem(15);
+		border-radius: rem(52);
+		background: $color-accent;
+		color: $color-white;
+		font-family: $font-family;
+		font-size: rem(12);
 		font-weight: 500;
 		line-height: 1.2;
 		text-decoration: none;
@@ -247,7 +245,7 @@
 
 		@media (any-hover: hover) {
 			&:hover {
-				background: #e8720f;
+				background: $color-accent-hover;
 			}
 		}
 	}
@@ -260,15 +258,15 @@
 	&__menu {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(20);
+		gap: rem(20);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
 	&__link {
-		font-family: tex.$font-inter;
-		font-size: tex.rem(14);
+		font-family: $font-inter;
+		font-size: rem(14);
 		font-weight: 400;
 		line-height: 1.2;
 		color: #000;
@@ -286,30 +284,30 @@
 		display: flex;
 		flex: 1 1 auto;
 		flex-direction: column;
-		gap: tex.rem(16);
+		gap: rem(16);
 		margin-top: auto;
-		padding: tex.rem(20) tex.rem(16) tex.rem(24);
-		background: #f7f7f7;
-		border-radius: tex.rem(20) tex.rem(20) 0 0;
+		padding: rem(20) rem(16) rem(24);
+		background: $color-surface;
+		border-radius: rem(20) rem(20) 0 0;
 	}
 
 	&__contacts {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(14);
+		gap: rem(14);
 	}
 
 	&__contact {
 		display: flex;
 		align-items: flex-start;
-		gap: tex.rem(6);
+		gap: rem(6);
 	}
 
 	&__contact-icon {
 		display: inline-flex;
 		flex-shrink: 0;
-		width: tex.rem(35);
-		height: tex.rem(35);
+		width: rem(35);
+		height: rem(35);
 		align-items: center;
 		justify-content: center;
 		color: #000;
@@ -321,8 +319,8 @@
 
 	&__contact-text {
 		margin: 0;
-		font-family: tex.$font-inter;
-		font-size: tex.rem(11);
+		font-family: $font-inter;
+		font-size: rem(11);
 		font-weight: 400;
 		line-height: 1.2;
 		color: rgba(0, 0, 0, 0.7);
@@ -334,7 +332,7 @@
 		text-decoration: none;
 
 		& + & {
-			margin-top: tex.rem(10);
+			margin-top: rem(10);
 		}
 
 		&--muted {
@@ -345,32 +343,32 @@
 	&__socials {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(16);
+		gap: rem(16);
 	}
 
 	&__social {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: tex.rem(10);
+		gap: rem(10);
 		width: fit-content;
-		min-width: tex.rem(131);
-		padding: tex.rem(12) tex.rem(25);
-		border-radius: tex.rem(40);
+		min-width: rem(131);
+		padding: rem(12) rem(25);
+		border-radius: rem(40);
 		color: #fff;
-		font-family: tex.$font-family;
-		font-size: tex.rem(12);
+		font-family: $font-family;
+		font-size: rem(12);
 		font-weight: 500;
 		line-height: 1.2;
 		text-decoration: none;
 		transition: opacity 0.2s ease;
 
 		&--telegram {
-			background: #44ccff;
+			background: $color-telegram;
 		}
 
 		&--whatsapp {
-			background: #60d669;
+			background: $color-whatsapp;
 		}
 
 		@media (any-hover: hover) {

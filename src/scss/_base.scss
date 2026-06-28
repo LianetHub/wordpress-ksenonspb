@@ -1,46 +1,7 @@
-@use "sass:math";
-
 @use "sass:color";
-@use "global/tokens";
+@use "variables" as *;
+@use "mixins" as *;
 
-// Брейкпоинты 
-$md1: 1399.98px;
-$md2: 1199.98px;
-$md3: 991.98px;
-$md4: 767.98px;
-$md5: 575.98px;
-
-// Шрифт по умолчанию
-$font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-$font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-// Миксин адаптивного шрифта
-@mixin adaptive-font($minSize, $maxSize, $minWidth: 360, $maxWidth: 1440) {
-	$slope: math.div($maxSize - $minSize, $maxWidth - $minWidth);
-	$intersect: $minSize - $slope * $minWidth;
-	font-size: clamp(#{$minSize}px,
-		calc(#{$slope * 100}vw + #{$intersect}px),
-		#{$maxSize}px);
-}
-
-@function rem($px) {
-	@return math.div($px, 16)+rem;
-}
-
-@function em($px, $value: 16) {
-	$result: math.div($px, $value);
-	@return #{$result}em;
-}
-
-@function anim($duration) {
-	@return $duration * 1.15 * 1s;
-}
-
-@function anim-delay($duration) {
-	@return $duration * 1.15 * 1s;
-}
-
-// Контейнер
 ._container {
 	margin: 0 auto;
 	padding: 0 1rem;
@@ -51,7 +12,6 @@ $font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 			max-width: rem(1260);
 		}
 	}
-
 
 	@media (min-width: $md5) {
 		box-sizing: content-box;
@@ -75,11 +35,10 @@ $font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 	}
 }
 
-// Базовая типографика (UI Kit — Desktop / Mobile)
 body {
 	font-family: $font-family;
-	color: tokens.$color-text-body;
-	background-color: tokens.$color-bg;
+	color: $color-text-body;
+	background-color: $color-bg;
 	line-height: 1.3;
 	@include adaptive-font(14, 18);
 }
@@ -119,7 +78,7 @@ h3 {
 
 .main {
 	flex: 1 1 auto;
-	background: #fff;
+	background: $color-white;
 
 	&:not(.main--home) {
 		padding-top: rem(76);
@@ -152,15 +111,14 @@ h3 {
 	white-space: nowrap;
 }
 
-
-$scrollbarColor: tokens.$color-primary;
+$scrollbarColor: $color-accent;
 
 ::-webkit-scrollbar {
 	width: rem(8);
 }
 
 ::-webkit-scrollbar-track {
-	background: #fff;
+	background: $color-white;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -181,12 +139,12 @@ $scrollbarColor: tokens.$color-primary;
 	align-items: center;
 	gap: rem(10);
 	margin-top: rem(20);
-	
+
 	&-bullet {
 		width: rem(10);
 		height: rem(10);
 		border-radius: 50%;
-		background: tokens.$color-primary;
+		background: $color-accent;
 	}
 }
 

@@ -1,24 +1,24 @@
-@use "../../global/tokens";
-@use "../../tex";
+@use "../../variables" as *;
+@use "../../mixins" as *;
 
 .cta-bottom {
-	padding: tex.rem(60) 0;
-	background: tokens.$color-surface-mint;
+	padding: rem(60) 0;
+	background: $color-white;
 	text-align: center;
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(100) 0;
+	@media (min-width: $md3) {
+		padding: rem(100) 0;
 	}
 
 	&__title {
-		max-width: tex.rem(768);
-		margin: 0 auto tex.rem(24);
+		max-width: rem(768);
+		margin: 0 auto rem(24);
 	}
 
 	&__text {
-		max-width: tex.rem(640);
-		margin: 0 auto tex.rem(24);
-		color: tokens.$color-text-body;
+		max-width: rem(640);
+		margin: 0 auto rem(24);
+		color: $color-text-muted;
 	}
 
 	&__actions {
@@ -26,18 +26,18 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: tex.rem(16);
+		gap: rem(16);
 
-		@media (min-width: tex.$md5) {
+		@media (min-width: $md5) {
 			flex-direction: row;
 		}
 	}
 
 	&__btn-secondary {
-		min-height: tex.rem(69);
-		padding: tex.rem(20) tex.rem(39);
-		border-radius: tex.rem(10);
-		font-size: tex.rem(18);
+		min-height: rem(69);
+		padding: rem(20) rem(39);
+		border-radius: rem(40);
+		font-size: rem(18);
 		text-transform: none;
 		letter-spacing: normal;
 	}

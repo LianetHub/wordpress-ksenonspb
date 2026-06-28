@@ -1,34 +1,33 @@
 @use "sass:color";
-@use "../../global/tokens";
-@use "../../tex";
-
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .benefits {
-	padding: tex.rem(40) 0;
+	padding: rem(40) 0;
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(68) 0 tex.rem(46);
+	@media (min-width: $md3) {
+		padding: rem(68) 0 rem(46);
 	}
 
 	&__head {
 		display: flex;
 		flex-direction: column-reverse;
 		align-items: flex-start;
-		gap: tex.rem(10);
-		margin-bottom: tex.rem(17);
+		gap: rem(10);
+		margin-bottom: rem(17);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			flex-direction: row;
 			justify-content: space-between;
-			gap: tex.rem(10) tex.rem(24);
-			margin-bottom: tex.rem(40);
+			gap: rem(10) rem(24);
+			margin-bottom: rem(40);
 		}
 	}
 
 	&__tag {
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 
-			margin-top: tex.rem(5);
+			margin-top: rem(5);
 		}
 	}
 
@@ -37,12 +36,12 @@
 	&__body {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(20);
+		gap: rem(20);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			gap: tex.rem(10);
+			gap: rem(10);
 
 		}
 	}
@@ -50,14 +49,14 @@
 	&__grid {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
+		gap: rem(10);
 		min-width: 0;
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			grid-column: span 2;
-			gap: tex.rem(20);
+			gap: rem(20);
 		}
 	}
 
@@ -65,13 +64,13 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: tex.rem(12);
+		gap: rem(12);
 		min-width: 0;
 
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			padding-left: 0.5rem;
-			gap: tex.rem(20);
+			gap: rem(20);
 		}
 	}
 
@@ -79,14 +78,14 @@
 
 	&__text {
 		margin: 0;
-		font-family: tex.$font-family;
-		font-size: tex.rem(14);
+		font-family: $font-family;
+		font-size: rem(14);
 		line-height: 1.3;
-		color: tokens.$color-text-body;
+		color: $color-text-body;
 
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(18);
-			max-width: tex.rem(392);
+		@media (min-width: $md3) {
+			font-size: rem(18);
+			max-width: rem(392);
 		}
 
 		& p {
@@ -97,11 +96,11 @@
 	}
 
 	&__card {
-		min-height: tex.rem(118);
+		min-height: rem(118);
 		display: flex;
 		flex-direction: column;
-		@media (min-width: tex.$md3) {
-			min-height: tex.rem(173);
+		@media (min-width: $md3) {
+			min-height: rem(173);
 		}
 	}
 
@@ -109,22 +108,22 @@
 		flex: 1 1 auto;
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
-		padding: tex.rem(16);
-		border: tex.rem(0.5) solid rgba(#fff, 0.8);
-		border-radius: tex.rem(10);
-		background: rgba(tokens.$color-surface-tab, 0.95);
+		gap: rem(10);
+		padding: rem(16);
+		border: rem(0.5) solid rgba(#fff, 0.8);
+		border-radius: rem(10);
+		background: rgba($color-surface-tab, 0.95);
 		backdrop-filter: blur(10px);
 		transition: background-color 0.3s ease, box-shadow 0.3s ease;
 		height: 100%;
 
-		@media (min-width: tex.$md3) {
-			padding: tex.rem(20);
+		@media (min-width: $md3) {
+			padding: rem(20);
 		}
 
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: color.adjust($color: tokens.$color-surface-tab, $lightness: -10%);
+				background-color: color.adjust($color: $color-surface-tab, $lightness: -10%);
 				box-shadow: rgba(38, 102, 140, 0.12) 0px 0.5rem 1.5rem;
 			}
 		}
@@ -134,7 +133,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: tex.rem(10);
+		gap: rem(10);
 	}
 
 	&__num {
@@ -142,21 +141,21 @@
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-		width: tex.rem(32);
-		height: tex.rem(32);
-		border: 1px solid tokens.$color-primary;
+		width: rem(32);
+		height: rem(32);
+		border: 1px solid $color-primary;
 		border-radius: 50%;
-		background: tokens.$color-primary;
+		background: $color-primary;
 		color: #fff;
 		font-weight: 500;
-		font-size: tex.rem(18);
+		font-size: rem(18);
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 
-		@media (min-width: tex.$md3) {
-			width: tex.rem(36);
-			height: tex.rem(36);
-			font-size: tex.rem(24);
+		@media (min-width: $md3) {
+			width: rem(36);
+			height: rem(36);
+			font-size: rem(24);
 		}
 	}
 
@@ -168,29 +167,29 @@
 		padding: 0;
 		border: 0;
 		background: transparent;
-		color: tokens.$color-primary;
+		color: $color-primary;
 		cursor: pointer;
 		transition: color 0.2s ease, opacity 0.2s ease;
 
 		@media (any-hover: hover) {
 			&:hover {
-				color: tokens.$color-primary-hover;
+				color: $color-primary-hover;
 			}
 		}
 
 		&._active {
-			color: tokens.$color-primary-hover;
+			color: $color-primary-hover;
 		}
 	}
 
 	&__info-icon {
 		display: block;
-		width: tex.rem(32);
-		height: tex.rem(32);
+		width: rem(32);
+		height: rem(32);
 
-		@media (min-width: tex.$md3) {
-			width: tex.rem(36);
-			height: tex.rem(36);
+		@media (min-width: $md3) {
+			width: rem(36);
+			height: rem(36);
 		}
 	}
 
@@ -200,7 +199,7 @@
 		font-style: italic;
 		line-height: 1.2;
 		letter-spacing: -0.02em;
-		color: tokens.$color-primary;
-		@include tex.adaptive-font(18, 24);
+		color: $color-primary;
+		@include adaptive-font(18, 24);
 	}
 }

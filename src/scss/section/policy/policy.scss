@@ -1,8 +1,8 @@
-@use "../../tex";
-
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .policy {
 	position: relative;
-	padding: tex.rem(40) 0 tex.rem(80);
+	padding: rem(40) 0 rem(80);
 	overflow: hidden;
 
 	&::before {
@@ -14,12 +14,12 @@
 		pointer-events: none;
 	}
 
-	@media (max-width: tex.$md4) {
-		padding: tex.rem(16) 0 tex.rem(48);
+	@media (max-width: $md4) {
+		padding: rem(16) 0 rem(48);
 	}
 
-	@media (min-width: tex.$md2) {
-		padding: tex.rem(20) 0 tex.rem(100);
+	@media (min-width: $md2) {
+		padding: rem(20) 0 rem(100);
 	}
 
 
@@ -29,7 +29,7 @@
 	}
 
 	&__inner {
-		max-width: tex.rem(876);
+		max-width: rem(876);
 		margin: 0 auto;
 	}
 }

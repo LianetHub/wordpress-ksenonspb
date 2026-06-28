@@ -1,9 +1,12 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
 @use "shared";
 @use "hero";
 @use "advantages";
 @use "services-teaser";
 @use "portfolio-teaser";
 @use "why-us";
+@use "brands";
 @use "cta-contacts";
 @use "reviews";
 @use "cta-bottom";

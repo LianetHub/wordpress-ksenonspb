@@ -1,3 +1,5 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .category {
 	padding: rem(8) 0 rem(40);
 

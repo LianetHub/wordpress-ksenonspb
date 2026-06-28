@@ -1,5 +1,5 @@
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .brand-page,
 .brand-hero,
 .brand-features,

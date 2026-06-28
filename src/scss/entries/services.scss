@@ -1,4 +1,5 @@
-@use "../tex";
+@use "../variables" as *;
+@use "../mixins" as *;
 @use "../section/home/services-teaser";
 
 .services-archive,

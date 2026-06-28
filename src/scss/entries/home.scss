@@ -1,4 +1,5 @@
-@use "../tex";
+@use "../variables" as *;
+@use "../mixins" as *;
 @use "../components/tag";
 @use "../components/map-shimmer";
 @use "../components/accordion";

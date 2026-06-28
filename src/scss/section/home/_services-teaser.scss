@@ -1,19 +1,19 @@
-@use "../../global/tokens";
-@use "../../tex";
+@use "../../variables" as *;
+@use "../../mixins" as *;
 
 .services-teaser {
-	padding: tex.rem(40) 0;
+	padding: rem(40) 0;
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(60) 0;
+	@media (min-width: $md3) {
+		padding: rem(60) 0;
 	}
 
 	&__grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: tex.rem(20);
+		gap: rem(20);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
@@ -21,74 +21,74 @@
 
 .service-card {
 	position: relative;
-	min-height: tex.rem(443);
-	border-radius: tex.rem(10);
-	background: tokens.$color-surface-mint center / cover no-repeat;
+	display: flex;
+	flex-direction: column;
+	min-height: rem(443);
+	border-radius: rem(40);
+	background: $color-surface;
 	overflow: hidden;
 
-	&::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(237, 251, 255, 0.96) 100%);
-	}
-
 	&__inner {
-		position: relative;
-		z-index: 1;
 		display: flex;
+		flex: 1 1 auto;
 		flex-direction: column;
-		min-height: tex.rem(443);
-		padding: tex.rem(40);
+		min-height: rem(443);
+		padding: rem(40);
 	}
 
 	&__head {
-		padding-bottom: tex.rem(20);
-		border-bottom: 1px solid rgba(tokens.$color-accent, 0.35);
+		padding-bottom: rem(20);
+		border-bottom: 1px solid rgba($color-black, 0.08);
 	}
 
 	&__title {
-		margin: 0 0 tex.rem(10);
-		font-family: tex.$font-family;
+		margin: 0 0 rem(10);
+		font-family: $font-family;
 		font-weight: 500;
-		font-size: tex.rem(24);
+		font-size: rem(30);
 		line-height: 1.2;
-		color: tokens.$color-primary;
+		color: $color-black;
 	}
 
 	&__price {
 		font-weight: 500;
-		font-size: tex.rem(20);
-		color: tokens.$color-text;
+		font-size: rem(24);
+		color: $color-black;
+
+		small {
+			font-size: rem(14);
+			font-weight: 400;
+			color: $color-text-muted;
+		}
 	}
 
 	&__excerpt {
-		margin: tex.rem(20) 0;
-		font-size: tex.rem(14);
+		margin: rem(20) 0;
+		font-size: rem(15);
 		line-height: 1.3;
-		color: tokens.$color-text-body;
+		color: $color-text-muted;
 
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(16);
+		@media (min-width: $md3) {
+			font-size: rem(15);
 		}
 	}
 
 	&__tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: tex.rem(12);
-		margin-bottom: tex.rem(20);
+		gap: rem(12);
+		margin-bottom: rem(20);
 	}
 
 	&__tag {
 		display: inline-flex;
 		align-items: center;
-		min-height: tex.rem(32);
-		padding: 0 tex.rem(20);
-		border-radius: tex.rem(62);
-		background: #fff;
-		font-size: tex.rem(12);
-		color: tokens.$color-text-body;
+		min-height: rem(32);
+		padding: rem(10) rem(20);
+		border-radius: rem(50);
+		background: $color-white;
+		font-size: rem(10);
+		color: $color-text-secondary;
 	}
 
 	&__link {

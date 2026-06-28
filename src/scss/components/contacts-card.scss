@@ -1,13 +1,12 @@
 @use "sass:color";
-@use "../global/tokens";
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .contacts-card {
-	min-height: tex.rem(119);
+	min-height: rem(119);
 
 	&.contacts-card--legal {
 		.contacts-card__body {
-			@media (min-width:tex.$md3) {
+			@media (min-width:$md3) {
 				font-size: 1rem;
 
 			}
@@ -18,23 +17,23 @@
 	&__wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
+		gap: rem(10);
 		height: 100%;
-		padding: tex.rem(10);
-		border-radius: tex.rem(10);
-		background: rgba(tokens.$color-surface-tab, 0.9);
-		color: tokens.$color-text-body;
+		padding: rem(10);
+		border-radius: rem(10);
+		background: rgba($color-surface-tab, 0.9);
+		color: $color-text-body;
 		transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 		
-		@media (min-width: tex.$md3) {
-			gap: tex.rem(20);
-			min-height: tex.rem(192);
-			padding: tex.rem(20);
+		@media (min-width: $md3) {
+			gap: rem(20);
+			min-height: rem(192);
+			padding: rem(20);
 		}
 	
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: color.adjust($color: rgba(tokens.$color-surface-tab, 0.9), $lightness: -10%);
+				background-color: color.adjust($color: rgba($color-surface-tab, 0.9), $lightness: -10%);
 				transform: scale(1.02);
 				box-shadow: rgba(38, 102, 140, 0.12) 0px 0.5rem 1.5rem;
 			}
@@ -46,39 +45,39 @@
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-		width: tex.rem(24);
-		height: tex.rem(24);
-		padding: tex.rem(5);
-		border-radius: tex.rem(4);
-		background: tokens.$color-primary;
+		width: rem(24);
+		height: rem(24);
+		padding: rem(5);
+		border-radius: rem(4);
+		background: $color-primary;
 		color: #fff;
 		box-sizing: border-box;
 
 		.icon {
-			width: tex.rem(12);
-			height: tex.rem(12);
+			width: rem(12);
+			height: rem(12);
 		}
 
-		@media (min-width: tex.$md3) {
-			width: tex.rem(44);
-			height: tex.rem(44);
-			padding: tex.rem(10);
-			border-radius: tex.rem(10);
+		@media (min-width: $md3) {
+			width: rem(44);
+			height: rem(44);
+			padding: rem(10);
+			border-radius: rem(10);
 
 			.icon {
-				width: tex.rem(22);
-				height: tex.rem(22);
+				width: rem(22);
+				height: rem(22);
 			}
 		}
 	}
 
 	&__body {
 		font-weight: 450;
-		font-size: tex.rem(12);
+		font-size: rem(12);
 		line-height: 1.3;
 
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(16);
+		@media (min-width: $md3) {
+			font-size: rem(16);
 		}
 	}
 
@@ -89,17 +88,17 @@
 		transition: opacity 0.2s ease;
 
 		&+& {
-			margin-top: tex.rem(2);
+			margin-top: rem(2);
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				margin-top: 0;
 			}
 		}
 
 		.contacts-card--phone &,
 		.contacts-card--email & {
-			@media (min-width: tex.$md3) {
-				font-size: tex.rem(20);
+			@media (min-width: $md3) {
+				font-size: rem(20);
 			}
 		}
 
@@ -112,8 +111,8 @@
 
 	&--address &__body,
 	&--legal &__body {
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(20);
+		@media (min-width: $md3) {
+			font-size: rem(20);
 		}
 	}
 }

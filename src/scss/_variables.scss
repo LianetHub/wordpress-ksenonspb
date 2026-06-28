@@ -1,0 +1,59 @@
+// Design tokens — Ksenon (Figma: node 234:566)
+
+// Breakpoints
+$md1: 1399.98px;
+$md2: 1199.98px;
+$md3: 991.98px;
+$md4: 767.98px;
+$md5: 575.98px;
+
+// Fonts
+$font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+// Colors
+$color-white: #ffffff;
+$color-black: #000000;
+$color-bg: #ffffff;
+$color-surface: #f7f7f7;
+$color-surface-hover: #efefef;
+$color-accent: #fd8011;
+$color-accent-hover: #e8720f;
+$color-text: #000000;
+$color-text-body: #6f6f6f;
+$color-text-muted: #6f6f6f;
+$color-text-secondary: #261c13;
+$color-telegram: #44ccff;
+$color-whatsapp: #60d669;
+$color-white-muted: rgba(255, 255, 255, 0.05);
+
+// Aliases (legacy names → Figma tokens)
+$color-primary: $color-accent;
+$color-primary-hover: $color-accent-hover;
+$color-brand: $color-accent;
+$color-brand-2: $color-accent-hover;
+$color-surface-mint: $color-surface;
+$color-surface-tab: $color-white;
+$color-surface-uikit: $color-surface;
+
+// Radii
+$radius-section: 62px;
+$radius-card: 40px;
+$radius-btn: 52px;
+$radius-btn-secondary: 40px;
+$radius-tab: 100px;
+$radius-checkbox: 6px;
+
+// Buttons
+$btn-height: 60px;
+$btn-gap: 10px;
+$btn-font-size: 20px;
+$btn-font-size-mobile: 16px;
+$btn-letter-spacing: -0.02em;
+
+// States
+$state-disabled-opacity: 0.3;
+$state-tab-disabled-opacity: 0.5;
+
+// Navigation
+$nav-link-hover-motion: 0.68s cubic-bezier(0.18, 0.88, 0.24, 1);

@@ -1,11 +1,10 @@
-@use "../../global/tokens";
-@use "../../tex";
-
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .catalog-teaser {
-	padding: tex.rem(16) 0 tex.rem(30);
+	padding: rem(16) 0 rem(30);
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(42) 0 tex.rem(64);
+	@media (min-width: $md3) {
+		padding: rem(42) 0 rem(64);
 	}
 
 	&__container {
@@ -20,7 +19,7 @@
 			pointer-events: none;
 			background: url("@img/decor-bg.svg") center 86% / 90% auto no-repeat;
 
-			@media (min-width: tex.$md4) {
+			@media (min-width: $md4) {
 				background: url("@img/decor-bg.svg") 67% 10% / auto no-repeat;
 			}
 		}
@@ -29,24 +28,24 @@
 	&__head {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
+		gap: rem(10);
 
 
-		@media (min-width:tex.$md3) {
+		@media (min-width:$md3) {
 			flex-direction: row;
 			justify-content: space-between;
 		}
 	}
 
 	&__title {
-		max-width: tex.rem(700);
+		max-width: rem(700);
 	}
 
 	&__tag {
 		align-self: flex-start;
 		order: -1;
 
-		@media (min-width:tex.$md3) {
+		@media (min-width:$md3) {
 			margin-top: 0.875rem;
 			order: 0
 		}
@@ -57,14 +56,14 @@
 		margin-top: 0.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
-		row-gap: tex.rem(62);
+		gap: rem(10);
+		row-gap: rem(62);
 
-		@media (min-width: tex.$md2) {
+		@media (min-width: $md2) {
 			margin-top: 1rem;
 			flex-direction: row;
-			column-gap: tex.rem(32);
-			row-gap: tex.rem(20);
+			column-gap: rem(32);
+			row-gap: rem(20);
 			align-items: flex-end;
 		}
 	}
@@ -77,8 +76,8 @@
 
 	&__text {
 
-		@media (min-width: tex.$md3) {
-			max-width: tex.rem(584);
+		@media (min-width: $md3) {
+			max-width: rem(584);
 		}
 	}
 
@@ -86,32 +85,32 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		gap: tex.rem(10);
+		gap: rem(10);
 		margin-top: 1.125rem;
 
-		@media (min-width: tex.$md2) {
+		@media (min-width: $md2) {
 			flex-direction: column;
 			margin-top: 2rem;
-			gap: tex.rem(20);
-			max-width: tex.rem(426);
+			gap: rem(20);
+			max-width: rem(426);
 		}
 	}
 
 	&__btn {
 		width: 100%;
-		min-height: tex.rem(52);
+		min-height: rem(52);
 
-		@media (min-width: tex.$md3) {
-			min-height: tokens.$btn-height;
+		@media (min-width: $md3) {
+			min-height: $btn-height;
 		}
 
 		.btn__icon {
-			width: tex.rem(28);
-			height: tex.rem(28);
+			width: rem(28);
+			height: rem(28);
 		}
 
 		&.btn--secondary .btn__icon {
-			@media (max-width: tex.$md3) {
+			@media (max-width: $md3) {
 				display: none;
 			}
 		}
@@ -124,51 +123,51 @@
 		z-index: 1;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: tex.rem(10);
+		gap: rem(10);
 
 
-		@media (min-width: tex.$md2) {
+		@media (min-width: $md2) {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			justify-content: flex-end;
-			gap: tex.rem(21);
+			gap: rem(21);
 		}
 	}
 
 	&__gallery-item {
-		flex: 0 0 tex.rem(104);
+		flex: 0 0 rem(104);
 		list-style: none;
 
-		@media (min-width: tex.$md2) {
-			flex: 0 0 tex.rem(203);
-			width: tex.rem(203);
-			height: tex.rem(203);
+		@media (min-width: $md2) {
+			flex: 0 0 rem(203);
+			width: rem(203);
+			height: rem(203);
 		}
 	}
 
 	&__card {
 		width: 100%;
 		height: 100%;
-		min-height: tex.rem(104);
+		min-height: rem(104);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-decoration: none;
 		color: inherit;
 
-		border: tex.rem(0.5) solid tokens.$color-accent;
-		border-radius: tex.rem(10);
-		padding: tex.rem(10);
-		background: tokens.$color-surface-mint;
+		border: rem(0.5) solid $color-accent;
+		border-radius: rem(10);
+		padding: rem(10);
+		background: $color-surface-mint;
 		overflow: hidden;
 
 		& img {
 			height: auto
 		}
 
-		@media (min-width: tex.$md2) {
-			min-height: tex.rem(203);
+		@media (min-width: $md2) {
+			min-height: rem(203);
 			border-width: 1px;
 		}
 	}

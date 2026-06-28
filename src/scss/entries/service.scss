@@ -1,5 +1,5 @@
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .service-page,
 .service-hero,
 .service-included,

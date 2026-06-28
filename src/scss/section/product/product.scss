@@ -1,3 +1,5 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
 // ——— Hero ———
 .product-hero {
 	padding: rem(16) 0 rem(24);
@@ -207,7 +209,7 @@
 			flex-shrink: 0;
 			width: em(0.75, 1.125);
 			height: em(0.75, 1.125);
-			background: #55ACBF;
+			background: $color-accent;
 			border-radius: 50%;
 		}
 
@@ -484,7 +486,7 @@
 					width: rem(12);
 					height: rem(12);
 					border-radius: 50%;
-					background: #55ACBF;
+					background: $color-accent;
 				}
 			}
 		}
@@ -545,7 +547,7 @@
 			width: rem(12);
 			height: rem(12);
 			border-radius: 50%;
-			background: #55ACBF;
+			background: $color-accent;
 		}
 	}
 }

@@ -1,35 +1,35 @@
-@use "../../global/tokens";
-@use "../../tex";
+@use "../../variables" as *;
+@use "../../mixins" as *;
 
 .reviews {
-	padding: tex.rem(40) 0;
+	padding: rem(40) 0;
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(60) 0;
+	@media (min-width: $md3) {
+		padding: rem(60) 0;
 	}
 
 	&__tabs {
 		display: flex;
 		flex-wrap: wrap;
-		gap: tex.rem(20);
-		margin-bottom: tex.rem(24);
+		gap: rem(20);
+		margin-bottom: rem(24);
 	}
 
 	&__tab {
-		min-height: tex.rem(45);
-		padding: tex.rem(12) tex.rem(64);
+		min-height: rem(45);
+		padding: rem(12) rem(64);
 		border: 0;
-		border-radius: tex.rem(62);
-		background: tokens.$color-surface-mint;
-		color: tokens.$color-text;
+		border-radius: rem(62);
+		background: $color-surface;
+		color: $color-black;
 		font-weight: 500;
-		font-size: tex.rem(14);
+		font-size: rem(14);
 		cursor: pointer;
 		transition: background-color 0.25s ease;
 
 		&._active {
-			background: #fff;
-			box-shadow: inset 0 0 0 1px tokens.$color-accent;
+			background: $color-white;
+			box-shadow: inset 0 0 0 1px rgba($color-black, 0.08);
 		}
 	}
 
@@ -44,92 +44,92 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: tex.rem(20);
+		gap: rem(20);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
 	&__card {
-		padding: tex.rem(40);
-		border-radius: tex.rem(10);
-		background: tokens.$color-surface-mint;
+		padding: rem(40);
+		border-radius: rem(40);
+		background: $color-surface;
 	}
 
 	&__card-head {
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
-		gap: tex.rem(16);
-		margin-bottom: tex.rem(20);
+		gap: rem(16);
+		margin-bottom: rem(20);
 	}
 
 	&__author {
 		display: flex;
 		align-items: center;
-		gap: tex.rem(16);
+		gap: rem(16);
 		min-width: 0;
 	}
 
 	&__photo {
 		flex-shrink: 0;
-		width: tex.rem(37);
-		height: tex.rem(37);
+		width: rem(37);
+		height: rem(37);
 		border-radius: 50%;
 		overflow: hidden;
 	}
 
 	&__name {
 		font-weight: 500;
-		font-size: tex.rem(14);
-		color: tokens.$color-text;
+		font-size: rem(14);
+		color: $color-black;
 	}
 
 	&__date {
-		font-size: tex.rem(12);
-		color: tokens.$color-text-body;
+		font-size: rem(12);
+		color: $color-text-muted;
 	}
 
 	&__verified {
 		flex-shrink: 0;
-		padding: tex.rem(10) tex.rem(30);
-		border-radius: tex.rem(62);
-		background: #fff;
-		font-size: tex.rem(12);
-		color: tokens.$color-text-body;
+		padding: rem(10) rem(30);
+		border-radius: rem(62);
+		background: $color-white;
+		font-size: rem(12);
+		color: $color-text-muted;
 	}
 
 	&__text {
-		margin: 0 0 tex.rem(20);
-		font-size: tex.rem(14);
+		margin: 0 0 rem(20);
+		font-size: rem(14);
 		line-height: 1.3;
-		color: tokens.$color-text-body;
+		color: $color-text-muted;
 	}
 
 	&__story {
-		padding: tex.rem(20);
-		border-radius: tex.rem(10);
-		background: #fff;
+		padding: rem(20);
+		border-radius: rem(10);
+		background: $color-white;
 	}
 
 	&__story-label {
-		margin-bottom: tex.rem(10);
-		font-size: tex.rem(12);
-		color: tokens.$color-text-body;
+		margin-bottom: rem(10);
+		font-size: rem(12);
+		color: $color-text-muted;
 	}
 
 	&__story-title {
 		display: block;
-		margin-bottom: tex.rem(10);
+		margin-bottom: rem(10);
 		font-weight: 500;
-		font-size: tex.rem(14);
-		color: tokens.$color-primary;
+		font-size: rem(14);
+		color: $color-black;
 		text-decoration: none;
 	}
 
 	&__car {
-		font-size: tex.rem(12);
-		color: tokens.$color-text-body;
+		font-size: rem(12);
+		color: $color-text-muted;
 	}
 }

@@ -1,133 +1,141 @@
-@use "../../global/tokens";
-@use "../../tex";
+@use "../../variables" as *;
+@use "../../mixins" as *;
 
 .cta-contacts {
-	padding: tex.rem(40) 0;
+	padding: rem(40) 0;
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(60) 0;
+	@media (min-width: $md3) {
+		padding: rem(60) 0;
 	}
 
 	&__box {
-		border-radius: tex.rem(20);
-		background: tokens.$color-accent;
-		color: #fff;
+		border-radius: rem(62);
+		background: $color-surface;
+		color: $color-black;
+		overflow: hidden;
 
 		&::before {
-			opacity: 0.15;
+			display: none;
 		}
 	}
 
 	&__layout {
 		display: grid;
-		gap: tex.rem(20);
+		gap: rem(20);
 
-		@media (min-width: tex.$md3) {
-			grid-template-columns: tex.rem(610) 1fr;
-			gap: tex.rem(20);
+		@media (min-width: $md3) {
+			grid-template-columns: rem(610) 1fr;
+			gap: rem(20);
 		}
 	}
 
 	&__form-col {
-		padding: tex.rem(24) 0;
+		padding: rem(24) rem(20);
 
-		@media (min-width: tex.$md3) {
-			padding: tex.rem(40) 0;
+		@media (min-width: $md3) {
+			padding: rem(40);
 		}
 	}
 
 	&__title {
-		margin: 0 0 tex.rem(16);
-		color: #fff;
+		margin: 0 0 rem(16);
+		color: $color-black;
 	}
 
 	&__lead {
-		margin: 0 0 tex.rem(24);
-		max-width: tex.rem(530);
-		font-size: tex.rem(14);
+		margin: 0 0 rem(24);
+		max-width: rem(530);
+		font-size: rem(14);
 		line-height: 1.3;
-		color: rgba(255, 255, 255, 0.9);
+		color: $color-text-muted;
 
-		@media (min-width: tex.$md3) {
-			font-size: tex.rem(18);
+		@media (min-width: $md3) {
+			font-size: rem(18);
 		}
 	}
 
 	&__aside {
 		display: grid;
-		gap: tex.rem(20);
+		gap: rem(20);
+		padding: 0 rem(20) rem(24);
+
+		@media (min-width: $md3) {
+			padding: rem(40) rem(40) rem(40) 0;
+		}
 	}
 
 	&__messengers,
 	&__info {
-		padding: tex.rem(40);
-		border-radius: tex.rem(10);
-		background: rgba(255, 255, 255, 0.12);
+		padding: rem(40);
+		border-radius: rem(40);
+		background: $color-white;
 	}
 
 	&__messengers-label {
-		margin: 0 0 tex.rem(20);
-		font-size: tex.rem(14);
+		margin: 0 0 rem(20);
+		font-size: rem(14);
+		color: $color-text-muted;
 	}
 
 	&__messengers-title {
-		margin: 0 0 tex.rem(20);
-		font-family: tex.$font-family;
+		margin: 0 0 rem(20);
+		font-family: $font-family;
 		font-weight: 500;
-		font-size: tex.rem(24);
+		font-size: rem(24);
 		line-height: 1.2;
+		color: $color-black;
 	}
 
 	&__messengers-text {
-		margin: 0 0 tex.rem(20);
-		font-size: tex.rem(14);
+		margin: 0 0 rem(20);
+		font-size: rem(14);
 		line-height: 1.3;
-		color: rgba(255, 255, 255, 0.9);
+		color: $color-text-muted;
 	}
 
 	&__info-item {
 		&:not(:last-child) {
-			margin-bottom: tex.rem(20);
-			padding-bottom: tex.rem(20);
-			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+			margin-bottom: rem(20);
+			padding-bottom: rem(20);
+			border-bottom: 1px solid rgba($color-black, 0.08);
 		}
 	}
 
 	&__info-label {
 		display: block;
-		margin-bottom: tex.rem(6);
-		font-size: tex.rem(12);
+		margin-bottom: rem(6);
+		font-size: rem(12);
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
-		opacity: 0.8;
+		color: $color-text-muted;
 	}
 
 	&__info-value,
 	&__phone,
 	&__email {
 		display: block;
-		color: #fff;
+		color: $color-black;
 		text-decoration: none;
-		font-size: tex.rem(14);
+		font-size: rem(14);
 		line-height: 1.3;
 	}
 
 	&__info-link {
 		display: inline-block;
-		margin-top: tex.rem(8);
-		color: #fff;
-		font-size: tex.rem(12);
+		margin-top: rem(8);
+		color: $color-black;
+		font-size: rem(12);
 		text-decoration: none;
 		opacity: 0.85;
 	}
 
 	&__map {
-		min-height: tex.rem(188);
-		border-radius: tex.rem(10);
+		min-height: rem(188);
+		border-radius: rem(40);
 		overflow: hidden;
 
 		[data-map] {
-			min-height: tex.rem(188);
+			min-height: rem(188);
 		}
 	}
 }

@@ -1,19 +1,18 @@
-@use "../global/tokens";
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .tooltip-float {
 	position: fixed;
 	z-index: 200;
-	max-width: min(tex.rem(315), calc(100vw - #{tex.rem(32)}));
-	padding: tex.rem(12) tex.rem(16);
-	border: 0.5px solid rgba(tokens.$color-primary, 0.2);
-	border-radius: tex.rem(8);
+	max-width: min(rem(315), calc(100vw - #{rem(32)}));
+	padding: rem(12) rem(16);
+	border: 0.5px solid rgba($color-primary, 0.2);
+	border-radius: rem(8);
 	background: #fff;
-	box-shadow: 0 tex.rem(4) tex.rem(24) rgba(tokens.$color-primary, 0.12);
-	font-family: tex.$font-family;
-	font-size: tex.rem(14);
+	box-shadow: 0 rem(4) rem(24) rgba($color-primary, 0.12);
+	font-family: $font-family;
+	font-size: rem(14);
 	line-height: 1.35;
-	color: tokens.$color-text-body;
+	color: $color-text-body;
 	pointer-events: none;
 	opacity: 0;
 	visibility: hidden;
@@ -24,36 +23,37 @@
 		visibility: visible;
 	}
 
-	@media (min-width: tex.$md5) {
-		font-size: tex.rem(16);
-		padding: tex.rem(14) tex.rem(18);
+	@media (min-width: $md5) {
+		font-size: rem(16);
+		padding: rem(14) rem(18);
 	}
 
+	&--surface,
 	&--mint {
-		max-width: min(tex.rem(315), calc(100vw - #{tex.rem(28)}));
-		padding: tex.rem(16);
-		border: tex.rem(0.5) solid tokens.$color-accent;
-		border-radius: tex.rem(10);
-		background: tokens.$color-surface-mint;
+		max-width: min(rem(315), calc(100vw - #{rem(28)}));
+		padding: rem(16);
+		border: rem(0.5) solid rgba($color-black, 0.08);
+		border-radius: rem(10);
+		background: $color-surface;
 		box-shadow: none;
 		line-height: 1.3;
 
-		@media (min-width: tex.$md3) {
-			padding: tex.rem(20);
-			font-size: tex.rem(18);
+		@media (min-width: $md3) {
+			padding: rem(20);
+			font-size: rem(18);
 		}
 	}
 
 	&--mobile-left {
-		width: tex.rem(214);
-		max-width: tex.rem(214);
+		width: rem(214);
+		max-width: rem(214);
 	}
 }
 
 .tooltip-trigger {
 	&:focus-visible {
-		outline: 2px solid tokens.$color-accent;
+		outline: 2px solid $color-accent;
 		outline-offset: 2px;
-		border-radius: tex.rem(4);
+		border-radius: rem(4);
 	}
 }

@@ -1,23 +1,22 @@
-@use "../global/tokens";
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 @mixin tag-base {
-	border-radius: tokens.$radius-tab;
-	font-family: tex.$font-family;
-	font-size: tex.rem(14);
+	border-radius: $radius-tab;
+	font-family: $font-family;
+	font-size: rem(14);
 	font-weight: 500;
 	line-height: 1.2;
 	text-transform: uppercase;
 }
 
 @mixin tag-accent-default {
-	background: tokens.$color-accent;
+	background: $color-accent;
 	color: #fff;
-	padding: tex.rem(6) tex.rem(12);
+	padding: rem(6) rem(12);
 
-	@media (min-width: tex.$md5) {
-		padding: tex.rem(8) tex.rem(17);
-		font-size: tex.rem(20);
+	@media (min-width: $md5) {
+		padding: rem(8) rem(17);
+		font-size: rem(20);
 	}
 }
 
@@ -33,15 +32,15 @@
 		justify-content: center;
 		@include tag-base;
 		background: #fff;
-		color: tokens.$color-primary;
-		padding: tex.rem(6) tex.rem(10);
+		color: $color-primary;
+		padding: rem(6) rem(10);
 		letter-spacing: -0.02em;
 		white-space: nowrap;
 
-		@media (min-width: tex.$md3) {
-			height: tex.rem(40);
-			padding: tex.rem(10) tex.rem(16);
-			font-size: tex.rem(20);
+		@media (min-width: $md3) {
+			height: rem(40);
+			padding: rem(10) rem(16);
+			font-size: rem(20);
 		}
 	}
 }

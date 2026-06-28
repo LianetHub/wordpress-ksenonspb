@@ -1,5 +1,5 @@
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .case-page,
 .case-hero,
 .case-done,

@@ -1,0 +1,26 @@
+@use "sass:math";
+
+@mixin adaptive-font($minSize, $maxSize, $minWidth: 360, $maxWidth: 1440) {
+	$slope: math.div($maxSize - $minSize, $maxWidth - $minWidth);
+	$intersect: $minSize - $slope * $minWidth;
+	font-size: clamp(#{$minSize}px,
+		calc(#{$slope * 100}vw + #{$intersect}px),
+		#{$maxSize}px);
+}
+
+@function rem($px) {
+	@return math.div($px, 16) + rem;
+}
+
+@function em($px, $value: 16) {
+	$result: math.div($px, $value);
+	@return #{$result}em;
+}
+
+@function anim($duration) {
+	@return $duration * 1.15 * 1s;
+}
+
+@function anim-delay($duration) {
+	@return $duration * 1.15 * 1s;
+}

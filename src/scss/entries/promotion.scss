@@ -1,5 +1,5 @@
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .promotion-page,
 .promotions-archive,
 .promotion-card {

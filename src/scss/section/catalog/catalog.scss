@@ -1,3 +1,5 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .catalog {
 	padding: 1.875rem 0 2rem;
 
@@ -134,7 +136,7 @@
 	// .catalog__product
 	&__product {
 		border-radius: rem(6);
-		border: rem(1) solid #55ACBF;
+		border: rem(1) solid $color-accent;
 		background: #EDFBFF;
 		display: flex;
 		justify-content: center;

@@ -1,23 +1,22 @@
-@use "../tex";
-@use "tokens";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 // Контентная типографика — политика, статьи, текстовые страницы
 
 .typography-block {
-	color: tokens.$color-text-body;
+	color: $color-text-body;
 	line-height: 1.3;
-	@include tex.adaptive-font(14, 18);
+	@include adaptive-font(14, 18);
 
 	h1,
 	h2 {
-		font-family: tex.$font-inter;
+		font-family: $font-inter;
 		font-weight: 500;
 		line-height: 1.2;
 
-		color: tokens.$color-brand;
+		color: $color-brand;
 
-		@media (max-width:tex.$md5) {
-			letter-spacing: tex.em(-0.45, 24);
+		@media (max-width:$md5) {
+			letter-spacing: em(-0.45, 24);
 		}
 	}
 
@@ -26,21 +25,21 @@
 	h5,
 	h6 {
 		font-weight: 500;
-		color: tokens.$color-brand;
+		color: $color-brand;
 	}
 
 	h1 {
-		margin: 0 0 tex.rem(20);
-		@include tex.adaptive-font(26, 56);
+		margin: 0 0 rem(20);
+		@include adaptive-font(26, 56);
 
-		@media (min-width: tex.$md3) {
-			margin-bottom: tex.rem(40);
+		@media (min-width: $md3) {
+			margin-bottom: rem(40);
 		}
 	}
 
 	h2 {
-		margin: tex.rem(20) 0 0;
-		@include tex.adaptive-font(24, 48);
+		margin: rem(20) 0 0;
+		@include adaptive-font(24, 48);
 
 		&:first-child {
 			margin-top: 0;
@@ -48,12 +47,12 @@
 	}
 
 	h3 {
-		font-family: tex.$font-inter;
+		font-family: $font-inter;
 		font-style: italic;
 		line-height: 1.2;
 		letter-spacing: -0.02em;
-		margin: tex.rem(20) 0 0;
-		@include tex.adaptive-font(18, 24);
+		margin: rem(20) 0 0;
+		@include adaptive-font(18, 24);
 
 		&:first-child {
 			margin-top: 0;
@@ -61,9 +60,9 @@
 	}
 
 	h4 {
-		font-size: tex.rem(18);
+		font-size: rem(18);
 		line-height: 1.45;
-		margin: tex.rem(20) 0 tex.rem(10);
+		margin: rem(20) 0 rem(10);
 
 		&:first-child {
 			margin-top: 0;
@@ -81,11 +80,11 @@
 	ul,
 	ol {
 		list-style: none;
-		margin: tex.rem(20) 0 0;
+		margin: rem(20) 0 0;
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(10);
+		gap: rem(10);
 
 		&:first-child {
 			margin-top: 0;
@@ -94,37 +93,37 @@
 
 	h2+p,
 	h3+p {
-		margin-top: tex.rem(20);
+		margin-top: rem(20);
 	}
 
 	h2+ul,
 	h2+ol,
 	h3+ul,
 	h3+ol {
-		margin-top: tex.rem(20);
+		margin-top: rem(20);
 	}
 
 	p+p {
-		margin-top: tex.rem(10);
+		margin-top: rem(10);
 	}
 
 	ul+p,
 	ol+p {
-		margin-top: tex.rem(20);
+		margin-top: rem(20);
 	}
 
 	ul {
 		&>li {
 			position: relative;
-			padding-left: tex.rem(33);
+			padding-left: rem(33);
 
 			&::before {
 				content: "";
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: tex.rem(23);
-				height: tex.rem(23);
+				width: rem(23);
+				height: rem(23);
 				background: url("@img/list-marker-plus.svg") no-repeat center / contain;
 			}
 
@@ -138,27 +137,27 @@
 		&>li {
 			display: flex;
 			align-items: center;
-			gap: tex.rem(10);
+			gap: rem(10);
 			counter-increment: typography-counter;
 
 			&::before {
 				content: counter(typography-counter);
 				flex-shrink: 0;
-				min-width: tex.rem(22);
-				min-height: tex.rem(22);
-				padding: 0 tex.rem(2);
+				min-width: rem(22);
+				min-height: rem(22);
+				padding: 0 rem(2);
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background: tokens.$color-accent;
+				background: $color-accent;
 				color: #fff;
-				font-family: tex.$font-inter;
+				font-family: $font-inter;
 				font-weight: 500;
 				font-style: italic;
-				font-size: tex.rem(18);
+				font-size: rem(18);
 				line-height: 1.2;
 				letter-spacing: -0.02em;
-				border-radius: tex.rem(4);
+				border-radius: rem(4);
 				text-align: center;
 				align-self: flex-start;
 			}
@@ -167,7 +166,7 @@
 
 	dfn {
 		font-weight: 600;
-		color: tokens.$color-accent;
+		color: $color-accent;
 	}
 
 	a {
@@ -185,31 +184,31 @@
 
 	cite,
 	blockquote {
-		margin: tex.rem(24) 0 tex.rem(32);
-		padding: tex.rem(18);
-		padding-left: tex.rem(42);
-		border-radius: tex.rem(8);
+		margin: rem(24) 0 rem(32);
+		padding: rem(18);
+		padding-left: rem(42);
+		border-radius: rem(8);
 		background: #f5f5f5;
 		color: #181d27;
 		font-weight: 600;
 		line-height: 1.56;
 		display: block;
-		font-size: tex.rem(18);
+		font-size: rem(18);
 		position: relative;
 
 		&::before {
 			content: "";
 			position: absolute;
-			top: tex.rem(18);
-			left: tex.rem(18);
-			bottom: tex.rem(18);
-			width: tex.rem(4);
-			background: tokens.$color-accent;
+			top: rem(18);
+			left: rem(18);
+			bottom: rem(18);
+			width: rem(4);
+			background: $color-accent;
 		}
 	}
 
 	figure {
-		margin: tex.rem(32) 0 tex.rem(20);
+		margin: rem(32) 0 rem(20);
 
 		&:first-child {
 			margin-top: 0;
@@ -220,10 +219,10 @@
 		}
 
 		figcaption {
-			margin-top: tex.rem(16);
+			margin-top: rem(16);
 			margin-bottom: 0;
 			color: #414651;
-			font-size: tex.rem(14);
+			font-size: rem(14);
 			line-height: 1.43;
 		}
 
@@ -235,8 +234,8 @@
 	}
 
 	.wp-block-columns {
-		margin: tex.rem(48) 0 tex.rem(32);
-		gap: tex.rem(12) !important;
+		margin: rem(48) 0 rem(32);
+		gap: rem(12) !important;
 
 		.wp-block-column {
 			display: flex;
@@ -269,8 +268,8 @@
 
 	.gallery {
 		display: grid;
-		gap: tex.rem(10);
-		margin: tex.rem(20) 0 0;
+		gap: rem(10);
+		margin: rem(20) 0 0;
 		padding: 0;
 
 		&.gallery-columns-2 {
@@ -284,14 +283,14 @@
 		&.gallery-columns-4 {
 			grid-template-columns: repeat(2, 1fr);
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				grid-template-columns: repeat(4, 1fr);
 			}
 		}
 
 		.gallery-item {
 			margin: 0;
-			border-radius: tex.rem(8);
+			border-radius: rem(8);
 			overflow: hidden;
 			background: #fff;
 		}
@@ -299,9 +298,9 @@
 		&.gallery-columns-2 .gallery-item {
 			aspect-ratio: 1;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				aspect-ratio: auto;
-				min-height: tex.rem(433);
+				min-height: rem(433);
 			}
 		}
 

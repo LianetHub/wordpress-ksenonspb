@@ -1,6 +1,5 @@
-@use "../../global/tokens";
-@use "../../tex";
-
+@use "../../variables" as *;
+@use "../../mixins" as *;
 .home-arrow {
 	display: inline-flex;
 	align-items: center;
@@ -9,25 +8,25 @@
 
 	svg {
 		display: block;
-		width: tex.rem(58);
-		height: tex.rem(58);
+		width: rem(58);
+		height: rem(58);
 	}
 }
 
 .section-head {
-	margin-bottom: tex.rem(28);
+	margin-bottom: rem(28);
 
 	&--row {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: tex.rem(16);
+		gap: rem(16);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
-			gap: tex.rem(32);
+			gap: rem(32);
 		}
 	}
 
@@ -38,11 +37,11 @@
 	&__more {
 		display: inline-flex;
 		align-items: center;
-		gap: tex.rem(16);
-		padding: tex.rem(10) tex.rem(10) tex.rem(10) tex.rem(40);
-		border-radius: tex.rem(62);
-		background: tokens.$color-surface-mint;
-		color: tokens.$color-text;
+		gap: rem(16);
+		padding: rem(10) rem(10) rem(10) rem(40);
+		border-radius: rem(62);
+		background: $color-surface-mint;
+		color: $color-text;
 		text-decoration: none;
 		transition: background-color 0.25s ease;
 
@@ -55,7 +54,7 @@
 
 	&__more-text {
 		font-weight: 500;
-		font-size: tex.rem(18);
+		font-size: rem(18);
 		line-height: 1.3;
 	}
 }
@@ -63,31 +62,31 @@
 .messenger-links {
 	display: flex;
 	flex-wrap: wrap;
-	gap: tex.rem(20);
+	gap: rem(20);
 
 	&__item {
 		display: inline-flex;
 		align-items: center;
-		gap: tex.rem(10);
-		min-height: tex.rem(50);
-		padding: 0 tex.rem(35);
-		border-radius: tex.rem(62);
+		gap: rem(10);
+		min-height: rem(50);
+		padding: 0 rem(35);
+		border-radius: rem(62);
 		background: #fff;
-		color: tokens.$color-text;
+		color: $color-text;
 		text-decoration: none;
 		font-weight: 500;
-		font-size: tex.rem(14);
+		font-size: rem(14);
 		transition: box-shadow 0.25s ease;
 
 		svg {
 			flex-shrink: 0;
-			width: tex.rem(20);
-			height: tex.rem(20);
+			width: rem(20);
+			height: rem(20);
 		}
 
 		@media (any-hover: hover) {
 			&:hover {
-				box-shadow: 0 tex.rem(8) tex.rem(24) rgba(tokens.$color-brand, 0.12);
+				box-shadow: 0 rem(8) rem(24) rgba($color-brand, 0.12);
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
 $article-date-muted: rgba($color-text-body, 0.6);
 
 

@@ -1,34 +1,34 @@
-@use "../tex";
-
+@use "../variables" as *;
+@use "../mixins" as *;
 .footer {
-	padding: tex.rem(30) 0 tex.rem(24);
+	padding: rem(30) 0 rem(24);
 	color: #fff;
-	font-family: tex.$font-inter;
+	font-family: $font-inter;
 	background: #000;
 
-	@media (min-width: tex.$md3) {
-		padding: tex.rem(93) 0 tex.rem(50);
+	@media (min-width: $md3) {
+		padding: rem(93) 0 rem(50);
 		background: #1e1e1e;
 	}
 
 	&__container {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(40);
+		gap: rem(40);
 
-		@media (min-width: tex.$md3) {
-			gap: tex.rem(56);
+		@media (min-width: $md3) {
+			gap: rem(56);
 		}
 	}
 
 	&__top {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: tex.rem(40) tex.rem(16);
+		gap: rem(40) rem(16);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr) minmax(0, 0.75fr) minmax(0, 0.9fr);
-			gap: tex.rem(40);
+			gap: rem(40);
 			align-items: start;
 		}
 	}
@@ -37,12 +37,12 @@
 		grid-column: 1 / -1;
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(16);
+		gap: rem(16);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			grid-column: 1;
-			gap: tex.rem(24);
-			max-width: tex.rem(320);
+			gap: rem(24);
+			max-width: rem(320);
 		}
 	}
 
@@ -50,15 +50,15 @@
 		display: grid;
 		grid-template-columns: 1fr auto;
 		grid-template-rows: auto auto;
-		column-gap: tex.rem(16);
-		row-gap: tex.rem(10);
+		column-gap: rem(16);
+		row-gap: rem(10);
 		align-items: start;
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
-			gap: tex.rem(16);
+			gap: rem(16);
 		}
 	}
 
@@ -71,14 +71,14 @@
 
 		& img {
 			display: block;
-			width: tex.rem(33);
-			height: tex.rem(39);
+			width: rem(33);
+			height: rem(39);
 			object-fit: contain;
 			object-position: left center;
 
-			@media (min-width: tex.$md3) {
-				width: tex.rem(33);
-				height: tex.rem(39);
+			@media (min-width: $md3) {
+				width: rem(33);
+				height: rem(39);
 			}
 		}
 	}
@@ -86,15 +86,15 @@
 	&__tagline {
 		grid-row: 1;
 		grid-column: 1;
-		margin: 0 0 0 tex.rem(49);
-		max-width: tex.rem(183);
+		margin: 0 0 0 rem(49);
+		max-width: rem(183);
 		color: #bebebe;
 		font-weight: 400;
 		line-height: 1.2;
-		letter-spacing: tex.em(-0.48, 16);
-		@include tex.adaptive-font(14, 16);
+		letter-spacing: em(-0.48, 16);
+		@include adaptive-font(14, 16);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			margin: 0;
 			max-width: none;
 			color: #fff;
@@ -103,14 +103,14 @@
 
 	&__description {
 		margin: 0;
-		max-width: tex.rem(280);
+		max-width: rem(280);
 		color: #bebebe;
 		font-weight: 400;
 		line-height: 1.35;
-		letter-spacing: tex.em(-0.42, 14);
-		@include tex.adaptive-font(14, 16);
+		letter-spacing: em(-0.42, 14);
+		@include adaptive-font(14, 16);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			max-width: none;
 			color: #c2c2c2;
 		}
@@ -122,7 +122,7 @@
 			grid-column: 2;
 			align-self: start;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				display: none;
 			}
 		}
@@ -130,7 +130,7 @@
 		&--desktop {
 			display: none;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				display: block;
 			}
 		}
@@ -138,15 +138,15 @@
 
 	&__socials {
 		display: grid;
-		grid-template-columns: repeat(2, tex.rem(29));
-		gap: tex.rem(17) tex.rem(20);
+		grid-template-columns: repeat(2, rem(29));
+		gap: rem(17) rem(20);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			grid-template-columns: repeat(4, auto);
-			gap: tex.rem(20);
+			gap: rem(20);
 			align-items: center;
 		}
 	}
@@ -168,8 +168,8 @@
 		}
 
 		&--youtube svg {
-			width: tex.rem(34);
-			height: tex.rem(24);
+			width: rem(34);
+			height: rem(24);
 		}
 
 		@media (any-hover: hover) {
@@ -187,16 +187,16 @@
 	&__nav {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(16);
+		gap: rem(16);
 
-		@media (min-width: tex.$md3) {
-			gap: tex.rem(24);
+		@media (min-width: $md3) {
+			gap: rem(24);
 		}
 
 		&--services {
 			grid-column: 1;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				grid-column: 2;
 			}
 		}
@@ -204,7 +204,7 @@
 		&--info {
 			grid-column: 2;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				grid-column: 3;
 			}
 		}
@@ -215,24 +215,24 @@
 		color: #fff;
 		font-weight: 500;
 		line-height: 1.2;
-		letter-spacing: tex.em(-0.42, 14);
-		@include tex.adaptive-font(14, 16);
+		letter-spacing: em(-0.42, 14);
+		@include adaptive-font(14, 16);
 
-		@media (min-width: tex.$md3) {
-			letter-spacing: tex.em(-0.48, 16);
+		@media (min-width: $md3) {
+			letter-spacing: em(-0.48, 16);
 		}
 	}
 
 	&__menu {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(8);
+		gap: rem(8);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
-		@media (min-width: tex.$md3) {
-			gap: tex.rem(20);
+		@media (min-width: $md3) {
+			gap: rem(20);
 		}
 	}
 
@@ -241,12 +241,12 @@
 		text-decoration: none;
 		font-weight: 500;
 		line-height: 1.25;
-		letter-spacing: tex.em(-0.42, 14);
+		letter-spacing: em(-0.42, 14);
 		transition: color 0.2s ease, opacity 0.2s ease;
-		@include tex.adaptive-font(14, 16);
+		@include adaptive-font(14, 16);
 
-		@media (min-width: tex.$md3) {
-			letter-spacing: tex.em(-0.48, 16);
+		@media (min-width: $md3) {
+			letter-spacing: em(-0.48, 16);
 		}
 
 		@media (any-hover: hover) {
@@ -259,12 +259,12 @@
 	&__contacts {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(12);
+		gap: rem(12);
 
 		&--mobile {
 			grid-column: 1 / -1;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				display: none;
 			}
 		}
@@ -272,11 +272,11 @@
 		&--desktop {
 			display: none;
 
-			@media (min-width: tex.$md3) {
+			@media (min-width: $md3) {
 				display: flex;
 				grid-column: 4;
-				gap: tex.rem(18);
-				max-width: tex.rem(200);
+				gap: rem(18);
+				max-width: rem(200);
 			}
 		}
 	}
@@ -286,14 +286,14 @@
 		color: #fff;
 		font-weight: 500;
 		line-height: 1.2;
-		letter-spacing: tex.em(-0.48, 16);
-		@include tex.adaptive-font(14, 16);
+		letter-spacing: em(-0.48, 16);
+		@include adaptive-font(14, 16);
 	}
 
 	&__contact-group {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(8);
+		gap: rem(8);
 	}
 
 	&__contact-label {
@@ -301,8 +301,8 @@
 		color: #fff;
 		font-weight: 500;
 		line-height: 1.2;
-		letter-spacing: tex.em(-0.48, 16);
-		@include tex.adaptive-font(14, 16);
+		letter-spacing: em(-0.48, 16);
+		@include adaptive-font(14, 16);
 	}
 
 	&__contact {
@@ -311,11 +311,11 @@
 		text-decoration: none;
 		font-weight: 500;
 		line-height: 1.35;
-		letter-spacing: tex.em(-0.42, 14);
-		@include tex.adaptive-font(14, 16);
+		letter-spacing: em(-0.42, 14);
+		@include adaptive-font(14, 16);
 
-		@media (min-width: tex.$md3) {
-			letter-spacing: tex.em(-0.48, 16);
+		@media (min-width: $md3) {
+			letter-spacing: em(-0.48, 16);
 		}
 
 		&--phone {
@@ -332,20 +332,20 @@
 	&__bottom {
 		display: flex;
 		flex-direction: column;
-		gap: tex.rem(16);
+		gap: rem(16);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			flex-direction: row;
 			align-items: flex-end;
 			justify-content: space-between;
-			gap: tex.rem(24);
+			gap: rem(24);
 		}
 	}
 
 	&__bottom-main {
 		display: flex;
 		flex-wrap: wrap;
-		gap: tex.rem(8) tex.rem(24);
+		gap: rem(8) rem(24);
 		align-items: baseline;
 	}
 
@@ -357,11 +357,11 @@
 		color: #afafaf;
 		font-weight: 500;
 		line-height: 1.3;
-		letter-spacing: tex.em(-0.36, 12);
-		@include tex.adaptive-font(12, 16);
+		letter-spacing: em(-0.36, 12);
+		@include adaptive-font(12, 16);
 
-		@media (min-width: tex.$md3) {
-			letter-spacing: tex.em(-0.48, 16);
+		@media (min-width: $md3) {
+			letter-spacing: em(-0.48, 16);
 			white-space: nowrap;
 		}
 	}
@@ -380,11 +380,11 @@
 	&__bottom-links {
 		display: flex;
 		flex-wrap: wrap;
-		gap: tex.rem(16) tex.rem(52);
+		gap: rem(16) rem(52);
 
-		@media (min-width: tex.$md3) {
+		@media (min-width: $md3) {
 			flex-shrink: 0;
-			gap: tex.rem(40);
+			gap: rem(40);
 		}
 	}
 }
