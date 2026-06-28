@@ -279,12 +279,6 @@
 		overflow: hidden;
 		aspect-ratio: 161 / 150;
 
-		@for $i from 1 through 6 {
-			&:nth-child(#{$i})._anim-items {
-				transition-delay: #{$i * 0.115}s;
-			}
-		}
-
 		@media (min-width: $md3) {
 			aspect-ratio: 315 / 293;
 		}
@@ -324,7 +318,7 @@
 			mix-blend-mode: screen;
 			z-index: -1;
 			width: 100%;
-			@include motion-animation(-50%);
+			transform: translateX(-50%);
 
 			@media (min-width:$md3) {
 				width: rem(830);

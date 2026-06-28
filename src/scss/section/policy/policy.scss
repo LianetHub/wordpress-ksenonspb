@@ -1,4 +1,3 @@
-@use "../../components/motion-animation";
 @use "../../tex";
 
 .policy {
@@ -13,7 +12,6 @@
 		z-index: 0;
 		background: url("@img/policy-decor.svg") 0 0 / 100% auto repeat-y;
 		pointer-events: none;
-		@include motion-animation.motion-animation;
 	}
 
 	@media (max-width: tex.$md4) {

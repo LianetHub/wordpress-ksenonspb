@@ -1,6 +1,5 @@
 "use strict";
 
-import { initAnimation, refreshScrollAnimations } from "./animation.js";
 import { initBlogFeed } from "./blog-feed.js";
 import { initYandexMaps } from "./map.js";
 import { initTooltips } from "./tooltip.js";
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	initProductTableMore();
 	initAccordion();
 	initTooltips();
-	initAnimation();
 	initHome();
 	initDevicesPage();
 	initRelatedEquipmentSwiper();
@@ -170,12 +168,6 @@ function initProductTabs() {
 				const isActive = panel.dataset.productPanel === target;
 				panel.classList.toggle("_active", isActive);
 				panel.hidden = !isActive;
-
-				if (isActive) {
-					requestAnimationFrame(() => {
-						refreshScrollAnimations(panel);
-					});
-				}
 			});
 		});
 	});

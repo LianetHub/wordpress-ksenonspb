@@ -1,4 +1,3 @@
-@use "../../components/motion-animation";
 @use "../../global/tokens";
 @use "../../tex";
 
@@ -12,7 +11,19 @@
 	&__container {
 		position: relative;
 		z-index: 1;
-		@include motion-animation.decor-bg-svg-layer;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			background: url("@img/decor-bg.svg") center 86% / 90% auto no-repeat;
+
+			@media (min-width: tex.$md4) {
+				background: url("@img/decor-bg.svg") 67% 10% / auto no-repeat;
+			}
+		}
 	}
 
 	&__head {
@@ -128,12 +139,6 @@
 	&__gallery-item {
 		flex: 0 0 tex.rem(104);
 		list-style: none;
-
-		@for $i from 1 through 3 {
-			&:nth-child(#{$i})._anim-items {
-				transition-delay: #{$i * 0.115}s;
-			}
-		}
 
 		@media (min-width: tex.$md2) {
 			flex: 0 0 tex.rem(203);

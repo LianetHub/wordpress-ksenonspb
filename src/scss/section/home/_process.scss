@@ -64,26 +64,6 @@
 				transform: none !important;
 			}
 		}
-
-		&.a-stagger > .process__slide {
-			opacity: 0;
-			transform: translateY(tex.rem(28)) scale(0.94);
-			filter: blur(tex.rem(4));
-			transition:
-				opacity tex.anim(0.55) ease,
-				transform tex.anim(0.65) cubic-bezier(0.22, 1, 0.36, 1),
-				filter tex.anim(0.55) ease;
-			will-change: opacity, transform, filter;
-		}
-
-		@for $i from 1 through 8 {
-			&._active > .process__slide:nth-child(#{$i}) {
-				opacity: 1;
-				transform: translateY(0) scale(1);
-				filter: blur(0);
-				transition-delay: tex.anim-delay($i * 0.12);
-			}
-		}
 	}
 
 	&__slide {

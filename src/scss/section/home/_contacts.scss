@@ -1,5 +1,4 @@
 @use "../../components/map-shimmer";
-@use "../../components/motion-animation";
 @use "../../global/tokens";
 @use "../../tex";
 
@@ -25,7 +24,6 @@
 			z-index: 0;
 			background: url("@img/contacts-decor.svg") center 0 / cover no-repeat;
 			pointer-events: none;
-			@include motion-animation.motion-animation;
 		}
 
 		@media (min-width: tex.$md3) {

@@ -97,14 +97,6 @@
 		position: relative;
 		z-index: 1;
 
-		>._anim-items {
-			@for $i from 1 through 8 {
-				&:nth-child(#{$i}) {
-					transition-delay: #{$i * 0.115}s;
-				}
-			}
-		}
-
 		@media (min-width:$md3) {
 			margin-top: 4.12rem;
 			margin-left: -13rem;
@@ -122,7 +114,6 @@
 		background: url("@img/catalog-decor.svg") center bottom / contain no-repeat;
 		z-index: -1;
 		pointer-events: none;
-		@include motion-animation;
 
 		@media (min-width:$md3) {
 			top: -6rem;

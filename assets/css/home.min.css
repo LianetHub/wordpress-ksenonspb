@@ -201,14 +201,6 @@ h3 {
     background-position: 200% 0;
   }
 }
-[data-motion] {
-  --mx: 0px;
-  --my: 0px;
-  --mrotate: 0deg;
-  --scroll-x: 0px;
-  --scroll-y: 0px;
-}
-
 .accordion__item {
   border: 1px solid #55acbf;
   border-radius: 0.625rem;
@@ -820,9 +812,6 @@ h3 {
   line-height: 1.1;
   color: #fff;
 }
-.hero__title._anim-items {
-  transition-delay: 0s;
-}
 .hero__actions {
   display: flex;
   flex-direction: column;
@@ -831,9 +820,6 @@ h3 {
   width: 100%;
   margin-bottom: auto;
   max-width: 100%;
-}
-.hero__actions._anim-items {
-  transition-delay: 0.138s;
 }
 @media (min-width: 575.98px) {
   .hero__actions {
@@ -867,9 +853,6 @@ h3 {
   font-size: 0.875rem;
   line-height: 1.3;
 }
-.hero__note p._anim-items {
-  transition-delay: 0.276s;
-}
 @media (min-width: 1199.98px) {
   .hero__note {
     align-items: center;
@@ -887,9 +870,6 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.hero__flag._anim-items {
-  transition-delay: 0.368s;
 }
 @media (min-width: 1199.98px) {
   .hero__flag {
@@ -919,18 +899,6 @@ h3 {
     gap: 1.125rem;
     grid-template-columns: 1fr;
   }
-}
-.hero__card:nth-child(1)._anim-items {
-  transition-delay: 0.207s;
-}
-.hero__card:nth-child(2)._anim-items {
-  transition-delay: 0.322s;
-}
-.hero__card:nth-child(3)._anim-items {
-  transition-delay: 0.437s;
-}
-.hero__card:nth-child(4)._anim-items {
-  transition-delay: 0.552s;
 }
 .hero__card-inner {
   position: relative;
@@ -1354,14 +1322,6 @@ h3 {
   z-index: -1;
   pointer-events: none;
   background: url("../img/decor-bg.svg") center 86%/90% auto no-repeat;
-  will-change: transform;
-  transform: translate3d(calc(var(--mx) + var(--scroll-x)), calc(var(--my) + var(--scroll-y)), 0) rotate(var(--mrotate));
-}
-@media (prefers-reduced-motion: reduce) {
-  .catalog-teaser__container::before {
-    will-change: auto;
-    transform: none;
-  }
 }
 @media (min-width: 767.98px) {
   .catalog-teaser__container::before {
@@ -1468,15 +1428,6 @@ h3 {
 .catalog-teaser__gallery-item {
   flex: 0 0 6.5rem;
   list-style: none;
-}
-.catalog-teaser__gallery-item:nth-child(1)._anim-items {
-  transition-delay: 0.115s;
-}
-.catalog-teaser__gallery-item:nth-child(2)._anim-items {
-  transition-delay: 0.23s;
-}
-.catalog-teaser__gallery-item:nth-child(3)._anim-items {
-  transition-delay: 0.345s;
 }
 @media (min-width: 1199.98px) {
   .catalog-teaser__gallery-item {
@@ -2266,14 +2217,6 @@ h3 {
   z-index: -1;
   background: url("../img/analyzers/equipment-decor.svg") 68% 0%/auto no-repeat;
   pointer-events: none;
-  will-change: transform;
-  transform: translate3d(calc(var(--mx) + var(--scroll-x)), calc(var(--my) + var(--scroll-y)), 0) rotate(var(--mrotate));
-}
-@media (prefers-reduced-motion: reduce) {
-  .equipment__container::before {
-    will-change: auto;
-    transform: none;
-  }
 }
 .equipment__head {
   display: flex;
@@ -2592,61 +2535,6 @@ h3 {
     transform: none !important;
   }
 }
-.process__grid.a-stagger > .process__slide {
-  opacity: 0;
-  transform: translateY(1.75rem) scale(0.94);
-  filter: blur(0.25rem);
-  transition: opacity 0.6325s ease, transform 0.7475s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6325s ease;
-  will-change: opacity, transform, filter;
-}
-.process__grid._active > .process__slide:nth-child(1) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.138s;
-}
-.process__grid._active > .process__slide:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.276s;
-}
-.process__grid._active > .process__slide:nth-child(3) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.414s;
-}
-.process__grid._active > .process__slide:nth-child(4) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.552s;
-}
-.process__grid._active > .process__slide:nth-child(5) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.69s;
-}
-.process__grid._active > .process__slide:nth-child(6) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.828s;
-}
-.process__grid._active > .process__slide:nth-child(7) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 0.966s;
-}
-.process__grid._active > .process__slide:nth-child(8) {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  transition-delay: 1.104s;
-}
 .process__slide.swiper-slide {
   width: 16.0625rem;
   height: auto;
@@ -2959,9 +2847,6 @@ h3 {
     margin-top: 2rem;
   }
 }
-.partners__slider .swiper-wrapper.a-stagger > .partners__slide {
-  transition: opacity 0.575s ease, transform 0.575s ease;
-}
 @media (max-width: 767.98px) {
   .partners__slide {
     width: 12.25rem;
@@ -3251,14 +3136,6 @@ h3 {
   z-index: 0;
   background: url("../img/request-decor-mobile.webp") 0 0/cover no-repeat;
   pointer-events: none;
-  will-change: transform;
-  transform: translate3d(calc(var(--mx) + var(--scroll-x)), calc(var(--my) + var(--scroll-y)), 0) rotate(var(--mrotate));
-}
-@media (prefers-reduced-motion: reduce) {
-  .request__box::before {
-    will-change: auto;
-    transform: none;
-  }
 }
 @media (min-width: 767.98px) {
   .request__box::before {
@@ -3405,65 +3282,6 @@ h3 {
   .request__form {
     margin-top: 0;
   }
-}
-.request__form.a-form-rise .wpcf7-form > *,
-.request__form.a-form-rise > .form__row,
-.request__form.a-form-rise > .form__field,
-.request__form.a-form-rise > .checkbox,
-.request__form.a-form-rise > .form__submit,
-.request__form.a-form-rise > label.form__field,
-.request__form.a-form-rise > button.form__submit {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.5175s ease, transform 0.6325s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(1),
-.request__form.a-form-rise._active > *:nth-child(1) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.322s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(2),
-.request__form.a-form-rise._active > *:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.414s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(3),
-.request__form.a-form-rise._active > *:nth-child(3) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.506s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(4),
-.request__form.a-form-rise._active > *:nth-child(4) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.598s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(5),
-.request__form.a-form-rise._active > *:nth-child(5) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.69s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(6),
-.request__form.a-form-rise._active > *:nth-child(6) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.782s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(7),
-.request__form.a-form-rise._active > *:nth-child(7) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.874s;
-}
-.request__form.a-form-rise._active .wpcf7-form > *:nth-child(8),
-.request__form.a-form-rise._active > *:nth-child(8) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.966s;
 }
 
 .about {
@@ -3953,14 +3771,6 @@ h3 {
   z-index: 0;
   background: url("../img/contacts-decor.svg") center 0/cover no-repeat;
   pointer-events: none;
-  will-change: transform;
-  transform: translate3d(calc(var(--mx) + var(--scroll-x)), calc(var(--my) + var(--scroll-y)), 0) rotate(var(--mrotate));
-}
-@media (prefers-reduced-motion: reduce) {
-  .contacts__box::before {
-    will-change: auto;
-    transform: none;
-  }
 }
 @media (min-width: 991.98px) {
   .contacts__box {
@@ -4112,14 +3922,6 @@ h3 {
   z-index: -1;
   pointer-events: none;
   background: url("../img/decor-bg.svg") center 86%/90% auto no-repeat;
-  will-change: transform;
-  transform: translate3d(calc(var(--mx) + var(--scroll-x)), calc(var(--my) + var(--scroll-y)), 0) rotate(var(--mrotate));
-}
-@media (prefers-reduced-motion: reduce) {
-  .news__container::before {
-    will-change: auto;
-    transform: none;
-  }
 }
 @media (min-width: 767.98px) {
   .news__container::before {

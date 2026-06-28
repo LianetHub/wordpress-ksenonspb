@@ -1,5 +1,4 @@
 @use "sass:color";
-@use "../../components/motion-animation";
 @use "../../global/tokens";
 @use "../../tex";
 
@@ -21,7 +20,6 @@
 			z-index: -1;
 			background: url("@img/analyzers/equipment-decor.svg") 68% 0% / auto no-repeat;
 			pointer-events: none;
-			@include motion-animation.motion-animation;
 		}
 	}
 

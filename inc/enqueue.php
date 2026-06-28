@@ -105,7 +105,7 @@ add_action( 'wp_head', 'ksenon_preload_fonts', 1 );
 
 function ksenon_preload_fonts() {
 	$fonts = array(
-		'Manrope-VariableFont_wght.woff2',
+		'Montserrat-VariableFont_wght.woff2',
 		'Inter-VariableFont_opsz,wght.woff2',
 	);
 	$base  = KSENON_ASSETS_URI . '/fonts/';

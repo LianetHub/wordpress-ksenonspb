@@ -81,43 +81,6 @@ $article-date-muted: rgba($color-text-body, 0.6);
 			grid-area: content;
 		}
 
-		&.typography-block:not([data-article-anim-prepared]) > * {
-			opacity: 0;
-		}
-
-		@media (scripting: none) {
-			&.typography-block > * {
-				opacity: 1;
-			}
-		}
-
-		&.typography-block > ._anim-items,
-		&.typography-block img._anim-items {
-			transition-delay: 0s;
-
-			&.a-fade {
-				opacity: 0;
-				transition: opacity anim(0.35) ease;
-
-				&._active {
-					opacity: 1;
-				}
-			}
-
-			&.a-fade-up {
-				opacity: 0;
-				transform: translateY(1.25rem);
-				transition:
-					opacity anim(0.35) ease,
-					transform anim(0.4) cubic-bezier(0.22, 1, 0.36, 1);
-
-				&._active {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-		}
-
 		&.typography-block {
 			@media (min-width: $md3) {
 				&::after {

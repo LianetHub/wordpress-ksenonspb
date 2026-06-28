@@ -2,7 +2,9 @@ import { env } from '../config/env.js';
 
 export const server = ( done ) => {
 	const proxyTarget = env.WP_PROXY_URL;
-	const proxyHost = new URL( proxyTarget ).host;
+	const proxyUrl = new URL( proxyTarget );
+	const proxyHost = proxyUrl.host;
+	const proxyHostPattern = proxyHost.replace( /\./g, '\\.' );
 
 	app.plugins.browsersync.init(
 		{
@@ -14,6 +16,12 @@ export const server = ( done ) => {
 					},
 				],
 			},
+			rewriteRules: [
+				{
+					match: new RegExp( `https?://${ proxyHostPattern }`, 'g' ),
+					fn: () => 'http://localhost:3000',
+				},
+			],
 			port: 3000,
 			open: 'local',
 			notify: true,

@@ -22,7 +22,7 @@ $subtitle = ksenon_get_option( '404_subtitle', __( 'Воспользуйтесь
 			<img src="<?php echo esc_url( ksenon_assets_uri( 'img/404.png' ) ); ?>" alt="" title="" width="703" height="383" fetchpriority="high">
 		</div>
 		<div class="not-found__actions <?php echo ksenon_anim_class( 'fade-up', '_anim-no-hide' ); ?>">
-			<a class="btn btn--primary not-found__btn a-hover-lift" href="<?php echo esc_url( home_url( '/' ) ); ?>"> Вернуться на главную <svg class="btn__icon" width="28" height="28" aria-hidden="true">
+			<a class="btn btn--primary not-found__btn" href="<?php echo esc_url( home_url( '/' ) ); ?>"> Вернуться на главную <svg class="btn__icon" width="28" height="28" aria-hidden="true">
 					<use href="<?php echo esc_url( ksenon_assets_uri( 'img/icons.svg' ) ); ?>#icon-arrow-up-right"></use>
 				</svg>
 			</a>

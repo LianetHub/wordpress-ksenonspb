@@ -11,7 +11,7 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 	?>
-	<section class="policy" data-motion="policy">
+	<section class="policy">
 		<div class="policy__container _container">
 			<div class="policy__inner typography-block <?php echo ksenon_anim_class( 'fade-up' ); ?>">
 				<h1> <?php the_title(); ?></h1>

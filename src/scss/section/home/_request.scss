@@ -1,4 +1,3 @@
-@use "../../components/motion-animation";
 @use "../../global/tokens";
 @use "../../tex";
 
@@ -27,7 +26,6 @@
 			z-index: 0;
 			background: url("@img/request-decor-mobile.webp") 0 0 / cover no-repeat;
 			pointer-events: none;
-			@include motion-animation.motion-animation;
 
 			@media (min-width: tex.$md4) {
 				background: url("@img/request-decor.webp") 0 0 / cover no-repeat;
@@ -182,33 +180,6 @@
 
 		@media (min-width:tex.$md3) {
 			margin-top: 0;
-		}
-
-		&.a-form-rise {
-			.wpcf7-form > *,
-			> .form__row,
-			> .form__field,
-			> .checkbox,
-			> .form__submit,
-			> label.form__field,
-			> button.form__submit {
-				opacity: 0;
-				transform: translateY(18px);
-				transition:
-					opacity tex.anim(0.45) ease,
-					transform tex.anim(0.55) cubic-bezier(0.22, 1, 0.36, 1);
-			}
-
-			&._active {
-				@for $i from 1 through 8 {
-					.wpcf7-form > *:nth-child(#{$i}),
-					> *:nth-child(#{$i}) {
-						opacity: 1;
-						transform: translateY(0);
-						transition-delay: tex.anim-delay($i * 0.08 + 0.2);
-					}
-				}
-			}
 		}
 	}
 }

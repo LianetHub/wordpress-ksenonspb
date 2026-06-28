@@ -150,14 +150,6 @@ h3 {
   display: none !important;
 }
 
-[data-motion] {
-  --mx: 0px;
-  --my: 0px;
-  --mrotate: 0deg;
-  --scroll-x: 0px;
-  --scroll-y: 0px;
-}
-
 .policy {
   position: relative;
   padding: 2.5rem 0 5rem;
@@ -170,14 +162,6 @@ h3 {
   z-index: 0;
   background: url("../img/policy-decor.svg") 0 0/100% auto repeat-y;
   pointer-events: none;
-  will-change: transform;
-  transform: translate3d(calc(var(--mx) + var(--scroll-x)), calc(var(--my) + var(--scroll-y)), 0) rotate(var(--mrotate));
-}
-@media (prefers-reduced-motion: reduce) {
-  .policy::before {
-    will-change: auto;
-    transform: none;
-  }
 }
 @media (max-width: 767.98px) {
   .policy {

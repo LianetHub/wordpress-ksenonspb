@@ -7,7 +7,7 @@
 
 if ( ! function_exists( 'ksenon_anim_class' ) ) {
 	function ksenon_anim_class( string $type = 'fade-up', string $extra = '' ): string {
-		return trim( '_anim-items a-' . $type . ( $extra ? ' ' . $extra : '' ) );
+		return '';
 	}
 }
 
@@ -526,7 +526,7 @@ if ( ! function_exists( 'ksenon_get_map_html' ) ) {
 
 		return sprintf(
 			'<div class="%1$s" id="%2$s" data-map data-coords="%3$s" data-zoom="%4$d" data-icon="%5$s" role="region" aria-label="%6$s" aria-busy="true"></div>',
-			esc_attr( trim( $class . ' _anim-items a-fade-up' ) ),
+			esc_attr( $class ),
 			esc_attr( $id ),
 			esc_attr( $map['coords'] ),
 			(int) $map['zoom'],
@@ -709,5 +709,19 @@ if ( ! function_exists( 'ksenon_render_section' ) ) {
 if ( ! function_exists( 'ksenon_render_faq' ) ) {
 	function ksenon_render_faq( $args = array() ) {
 		get_template_part( 'template-parts/section/faq', null, $args );
+	}
+}
+
+if ( ! function_exists( 'ksenon_get_partners' ) ) {
+	function ksenon_get_partners() {
+		return array();
+	}
+}
+
+if ( ! function_exists( 'ksenon_get_partner_link' ) ) {
+	function ksenon_get_partner_link( $post_id ) {
+		unset( $post_id );
+
+		return '';
 	}
 }
