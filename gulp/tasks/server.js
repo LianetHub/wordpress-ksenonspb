@@ -1,4 +1,12 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { env } from '../config/env.js';
+
+const projectRoot = path.resolve(
+	path.dirname( fileURLToPath( import.meta.url ) ),
+	'../..'
+);
 
 export const server = ( done ) => {
 	const proxyTarget = env.WP_PROXY_URL;
@@ -16,6 +24,13 @@ export const server = ( done ) => {
 					},
 				],
 			},
+			// Локальные assets поверх прокси — без ожидания FTP и полного reload.
+			serveStatic: [
+				{
+					route: env.THEME_ASSETS_ROUTE,
+					dir: path.join( projectRoot, 'assets' ),
+				},
+			],
 			rewriteRules: [
 				{
 					match: new RegExp( `https?://${ proxyHostPattern }`, 'g' ),
@@ -27,6 +42,8 @@ export const server = ( done ) => {
 			notify: true,
 			ghostMode: false,
 			reloadOnRestart: true,
+			reloadDelay: 150,
+			reloadDebounce: 400,
 		},
 		done
 	);

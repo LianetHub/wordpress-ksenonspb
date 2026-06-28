@@ -16,10 +16,14 @@
 @use "components/contacts-card";
 @use "components/heading";
 @use "components/map-shimmer";
+@use "components/news-card";
+@use "components/faq";
 
 @use "global/header";
 @use "global/footer";
 
 @use "section/home/home";
+@use "section/home/services-teaser";
+@use "section/home/portfolio-teaser";
 @use "section/not-found/not-found";
 @use "section/policy/policy";

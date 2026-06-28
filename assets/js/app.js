@@ -226,7 +226,9 @@ function initAccordion() {
 function initHome() {
 	initAudiencePills();
 	initHomePanels();
+	initWhyUsPanels();
 	initHomeSwipers();
+	initReviewsTabs();
 }
 
 function initAudiencePills() {
@@ -277,8 +279,107 @@ function initHomePanels() {
 	});
 }
 
+function initWhyUsPanels() {
+	document.querySelectorAll(".why-us__panels").forEach((wrap) => {
+		const items = wrap.querySelectorAll(".why-us__card");
+		const detail = wrap.querySelector(".why-us__detail");
+		if (!items.length || !detail) return;
+
+		const detailStep = detail.querySelector(".why-us__detail-step");
+		const detailTitle = detail.querySelector(".why-us__detail-title");
+		const detailText = detail.querySelector(".why-us__detail-text");
+
+		const updateDetail = (item) => {
+			const step = item.querySelector(".why-us__card-step");
+			const title = item.querySelector(".why-us__card-title");
+			const text = item.querySelector(".why-us__card-text");
+
+			if (detailStep) {
+				detailStep.textContent = step?.textContent?.trim() || "";
+				detailStep.hidden = !detailStep.textContent;
+			}
+			if (detailTitle) {
+				detailTitle.textContent = title?.textContent?.trim() || "";
+				detailTitle.hidden = !detailTitle.textContent;
+			}
+			if (detailText) {
+				detailText.innerHTML = text?.innerHTML?.trim() || "";
+				detailText.hidden = !detailText.textContent?.trim();
+			}
+		};
+
+		items.forEach((item) => {
+			const head = item.querySelector(".why-us__card-heading");
+			if (!head) return;
+
+			head.addEventListener("click", () => {
+				items.forEach((other) => other.classList.remove("_active"));
+				item.classList.add("_active");
+				head.setAttribute("aria-expanded", "true");
+				updateDetail(item);
+			});
+		});
+	});
+}
+
+function initReviewsTabs() {
+	document.querySelectorAll("[data-reviews]").forEach((root) => {
+		const tabs = root.querySelectorAll("[data-reviews-tab]");
+		const panels = root.querySelectorAll("[data-reviews-panel]");
+		if (!tabs.length || !panels.length) return;
+
+		tabs.forEach((tab) => {
+			tab.addEventListener("click", () => {
+				const target = tab.getAttribute("data-reviews-tab");
+				if (!target) return;
+
+				tabs.forEach((item) => {
+					const isActive = item === tab;
+					item.classList.toggle("_active", isActive);
+					item.setAttribute("aria-selected", isActive ? "true" : "false");
+				});
+
+				panels.forEach((panel) => {
+					panel.classList.toggle("_active", panel.getAttribute("data-reviews-panel") === target);
+				});
+			});
+		});
+	});
+}
+
 function initHomeSwipers() {
 	if (typeof Swiper === "undefined") return;
+
+	const heroPromoEl = document.querySelector(".hero__promo-slider");
+	if (heroPromoEl) {
+		new Swiper(heroPromoEl, {
+			slidesPerView: 1,
+			loop: heroPromoEl.querySelectorAll(".swiper-slide").length > 1,
+			navigation: {
+				nextEl: ".hero__promo-next",
+				prevEl: ".hero__promo-prev",
+			},
+		});
+	}
+
+	const portfolioEl = document.querySelector(".portfolio-teaser__slider");
+	if (portfolioEl) {
+		new Swiper(portfolioEl, {
+			slidesPerView: 1,
+			spaceBetween: 20,
+			breakpoints: {
+				991.98: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+					enabled: portfolioEl.querySelectorAll(".swiper-slide").length > 2,
+				},
+			},
+			navigation: {
+				nextEl: ".portfolio-teaser__next",
+				prevEl: ".portfolio-teaser__prev",
+			},
+		});
+	}
 
 	const chooseEl = document.querySelector(".choose__slider");
 	if (chooseEl) {

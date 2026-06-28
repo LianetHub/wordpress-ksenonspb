@@ -28,44 +28,55 @@ import { zip } from './gulp/tasks/zip.js';
 import { json } from './gulp/tasks/json.js';
 import {
 	ftpDeployAll,
-	ftpDeployChanged,
+	ftpDeployAssets,
 	withFtpDeploy,
 } from './gulp/tasks/ftp.js';
 
+// DEV: единый CSS-бандл вместо code-splitting (scssEntries).
+// Раскомментировать scssEntries в watcher и assetsTasks при возврате к сплиттингу.
+const devScssTask = scss;
+// const devScssTask = gulp.parallel( scss, scssEntries );
+
+const devCssDeployGlobs = [
+	`${ path.build.css }style.css`,
+	`${ path.build.css }style.min.css`,
+];
+
+const noReload = { reload: false };
+
 function watcher() {
-	gulp.watch(
-		path.watch.files,
-		withFtpDeploy( copy, `${ path.build.files }**/*` )
-	);
+	// PHP, inc, template-parts — через .vscode/sftp.json
 	gulp.watch(
 		path.watch.scss,
-		withFtpDeploy( gulp.parallel( scss, scssEntries ), `${ path.build.css }**/*` )
+		withFtpDeploy( devScssTask, devCssDeployGlobs, noReload )
 	);
 	gulp.watch(
 		path.watch.normalize,
-		withFtpDeploy( normalize, `${ path.build.normalize }**/*` )
+		withFtpDeploy(
+			normalize,
+			[
+				`${ path.build.normalize }reset.css`,
+				`${ path.build.normalize }reset.min.css`,
+			],
+			noReload
+		)
 	);
 	gulp.watch(
 		path.watch.js,
-		withFtpDeploy( js, `${ path.build.js }**/*` )
+		withFtpDeploy( js, `${ path.build.js }**/*`, noReload )
 	);
 	gulp.watch(
 		path.watch.json,
-		withFtpDeploy( json, `${ path.build.json }**/*` )
+		withFtpDeploy( json, `${ path.build.json }**/*`, noReload )
 	);
 	gulp.watch(
 		path.watch.images,
-		withFtpDeploy( images, `${ path.build.images }**/*` )
+		withFtpDeploy( images, `${ path.build.images }**/*`, { reload: true } )
 	);
 	gulp.watch(
 		path.watch.fonts,
-		withFtpDeploy( fonts, `${ path.build.fonts }**/*` )
+		withFtpDeploy( fonts, `${ path.build.fonts }**/*`, { reload: true } )
 	);
-	gulp.watch( path.watch.php ).on( 'change', ( filePath ) => {
-		return ftpDeployChanged( filePath ).then( () => {
-			app.plugins.browsersync.reload();
-		} );
-	} );
 }
 
 const fonts = gulp.series(
@@ -75,7 +86,22 @@ const fonts = gulp.series(
 	fontsStyle
 );
 
-const assetsTasks = gulp.parallel(
+// DEV: без scssEntries — один style.min.css на все страницы.
+const devAssetsTasks = gulp.parallel(
+	copy,
+	normalize,
+	scss,
+	// scssEntries,
+	copyCssLibs,
+	favicon,
+	js,
+	copyJsLibs,
+	jsChunks,
+	json,
+	images
+);
+
+const buildAssetsTasks = gulp.parallel(
 	copy,
 	normalize,
 	scss,
@@ -89,15 +115,17 @@ const assetsTasks = gulp.parallel(
 	images
 );
 
+const assetsTasks = app.isDev ? devAssetsTasks : buildAssetsTasks;
+
 const mainTasks = gulp.series( fonts, assetsTasks );
 
-const dev       = gulp.series(
+const dev = gulp.series(
 	reset,
 	mainTasks,
-	ftpDeployAll,
+	ftpDeployAssets,
 	gulp.parallel( watcher, server )
 );
-const build     = gulp.series( reset, mainTasks );
+const build = gulp.series( reset, mainTasks );
 const deployZIP = gulp.series( reset, mainTasks, zip );
 
 export { dev };

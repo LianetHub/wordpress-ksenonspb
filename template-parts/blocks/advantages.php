@@ -23,31 +23,23 @@ $items = array_filter(
 	}
 );
 
-if ( ! $items && ! $args['title'] ) {
+if ( ! $items ) {
 	return;
 }
 ?>
 <section class="advantages">
 	<div class="advantages__container _container">
-		<?php if ( $args['tag'] ) : ?>
-			<span class="advantages__tag tag <?php echo ksenon_anim_class( 'bounce-up' ); ?>"><?php echo esc_html( $args['tag'] ); ?></span>
-		<?php endif; ?>
-		<?php if ( $args['title'] ) : ?>
-			<h2 class="advantages__title title-md <?php echo ksenon_anim_class( 'fade-up' ); ?>"><?php echo esc_html( $args['title'] ); ?></h2>
-		<?php endif; ?>
-		<?php if ( $items ) : ?>
-			<div class="advantages__grid">
-				<?php foreach ( $items as $item ) : ?>
-					<div class="advantages__item <?php echo ksenon_anim_class( 'fade-up' ); ?>">
-						<?php if ( ! empty( $item['title'] ) ) : ?>
-							<h3 class="advantages__item-title"><?php echo esc_html( $item['title'] ); ?></h3>
-						<?php endif; ?>
-						<?php if ( ! empty( $item['text'] ) ) : ?>
-							<p class="advantages__item-text"><?php echo nl2br( esc_html( $item['text'] ) ); ?></p>
-						<?php endif; ?>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
+		<div class="advantages__grid">
+			<?php foreach ( $items as $item ) : ?>
+				<div class="advantages__card <?php echo ksenon_anim_class( 'fade-up' ); ?>">
+					<?php if ( ! empty( $item['title'] ) ) : ?>
+						<div class="advantages__value"><?php echo esc_html( $item['title'] ); ?></div>
+					<?php endif; ?>
+					<?php if ( ! empty( $item['text'] ) ) : ?>
+						<div class="advantages__label"><?php echo esc_html( $item['text'] ); ?></div>
+					<?php endif; ?>
+				</div>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </section>

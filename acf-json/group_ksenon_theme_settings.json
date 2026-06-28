@@ -325,6 +325,56 @@
                     "max": 5,
                     "default_value": 5,
                     "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_source",
+                    "label": "Источник",
+                    "name": "source",
+                    "type": "select",
+                    "choices": {
+                        "yandex": "Яндекс",
+                        "drive2": "Drive2"
+                    },
+                    "default_value": "yandex",
+                    "return_format": "value",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_date",
+                    "label": "Дата",
+                    "name": "date_label",
+                    "type": "text",
+                    "placeholder": "5 месяцев назад",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_car",
+                    "label": "Авто",
+                    "name": "car_model",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_story_title",
+                    "label": "Заголовок истории",
+                    "name": "story_title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_story_url",
+                    "label": "Ссылка на историю",
+                    "name": "story_url",
+                    "type": "url",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_verified",
+                    "label": "Проверено Drive2",
+                    "name": "verified",
+                    "type": "true_false",
+                    "ui": 1,
+                    "parent_repeater": "field_ksenon_ts_reviews"
                 }
             ]
         },

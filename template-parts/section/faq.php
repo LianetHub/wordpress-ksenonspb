@@ -7,6 +7,7 @@
  * @var array $args {
  *     @type string $tag   Section tag.
  *     @type string $title Section title.
+ *     @type string $intro Sidebar intro.
  *     @type array  $items FAQ items with question, answer, is_open keys.
  * }
  */
@@ -16,12 +17,14 @@ $args = wp_parse_args(
 	array(
 		'tag'   => '',
 		'title' => '',
+		'intro' => '',
 		'items' => array(),
 	)
 );
 
 $tag   = (string) $args['tag'];
 $title = (string) $args['title'];
+$intro = (string) $args['intro'];
 $items = (array) $args['items'];
 
 $faq_items = array();
@@ -47,15 +50,12 @@ if ( ! $faq_items ) {
 	return;
 }
 
-$faq_col1 = array();
-$faq_col2 = array();
+if ( ! $intro ) {
+	$intro = __( 'Собрали ответы на то, что чаще всего спрашивают перед заказом. Не нашли свой вопрос — напишите нам.', 'ksenonspb' );
+}
 
-foreach ( $faq_items as $index => $item ) {
-	if ( ( $index + 1 ) % 2 === 0 ) {
-		$faq_col2[] = $item;
-	} else {
-		$faq_col1[] = $item;
-	}
+if ( ! $title ) {
+	$title = __( 'Частые вопросы', 'ksenonspb' );
 }
 
 $icons = ksenon_assets_uri( 'img/icons.svg' );
@@ -72,7 +72,7 @@ $render_faq_item = static function ( $item ) use ( $icons ) {
 		</button>
 		<div class="accordion__body">
 			<div class="accordion__inner">
-				<p class="accordion__answer"><?php echo nl2br( esc_html( $item['answer'] ?? '' ) ); ?></p>
+				<div class="accordion__answer"><?php echo wp_kses_post( wpautop( $item['answer'] ?? '' ) ); ?></div>
 			</div>
 		</div>
 	</div>
@@ -81,33 +81,31 @@ $render_faq_item = static function ( $item ) use ( $icons ) {
 ?>
 <section class="faq">
 	<div class="faq__container _container">
-		<div class="faq__head">
-			<?php if ( $tag ) : ?>
-				<span class="faq__tag tag <?php echo ksenon_anim_class( 'bounce-up' ); ?>"><?php echo esc_html( $tag ); ?></span>
-			<?php endif; ?>
-			<?php if ( $title ) : ?>
-				<h2 class="faq__title title-md <?php echo ksenon_anim_class( 'fade-up' ); ?>"><?php echo nl2br( esc_html( $title ) ); ?></h2>
-			<?php endif; ?>
-		</div>
-		<div class="faq__columns accordion" data-accordion="">
-			<?php if ( $faq_col1 ) : ?>
-				<div class="faq__col <?php echo ksenon_anim_class( 'stagger' ); ?>">
-					<?php
-					foreach ( $faq_col1 as $item ) {
-						$render_faq_item( $item );
-					}
-					?>
+		<div class="faq__layout">
+			<aside class="faq__sidebar">
+				<?php if ( $tag ) : ?>
+					<span class="faq__tag tag <?php echo ksenon_anim_class( 'bounce-up' ); ?>"><?php echo esc_html( $tag ); ?></span>
+				<?php endif; ?>
+				<?php if ( $title ) : ?>
+					<h2 class="faq__title title-md <?php echo ksenon_anim_class( 'fade-up' ); ?>"><?php echo nl2br( esc_html( $title ) ); ?></h2>
+				<?php endif; ?>
+				<?php if ( $intro ) : ?>
+					<p class="faq__intro"><?php echo nl2br( esc_html( $intro ) ); ?></p>
+				<?php endif; ?>
+				<div class="faq__help">
+					<p class="faq__help-title"><?php esc_html_e( 'Остались вопросы?', 'ksenonspb' ); ?></p>
+					<p class="faq__help-text"><?php esc_html_e( 'Ответим в мессенджере в течение 15 минут в рабочее время.', 'ksenonspb' ); ?></p>
+					<?php ksenon_render_messenger_links( 'faq__messengers' ); ?>
 				</div>
-			<?php endif; ?>
-			<?php if ( $faq_col2 ) : ?>
-				<div class="faq__col <?php echo ksenon_anim_class( 'stagger' ); ?>">
-					<?php
-					foreach ( $faq_col2 as $item ) {
-						$render_faq_item( $item );
-					}
-					?>
-				</div>
-			<?php endif; ?>
+			</aside>
+
+			<div class="faq__content accordion" data-accordion="">
+				<?php
+				foreach ( $faq_items as $item ) {
+					$render_faq_item( $item );
+				}
+				?>
+			</div>
 		</div>
 	</div>
 </section>

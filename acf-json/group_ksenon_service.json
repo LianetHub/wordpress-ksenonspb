@@ -11,6 +11,37 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_ksenon_service_price_from",
+            "label": "Цена от",
+            "name": "price_from",
+            "type": "text",
+            "placeholder": "от 5 000 ₽"
+        },
+        {
+            "key": "field_ksenon_service_card_excerpt",
+            "label": "Описание на карточке",
+            "name": "card_excerpt",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_ksenon_service_card_tags",
+            "label": "Теги карточки",
+            "name": "card_tags",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить тег",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_card_tag_label",
+                    "label": "Тег",
+                    "name": "label",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_card_tags"
+                }
+            ]
+        },
+        {
             "key": "field_ksenon_service_hero_title",
             "label": "Hero — заголовок",
             "name": "hero_title",
@@ -123,5 +154,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1751040000
 }

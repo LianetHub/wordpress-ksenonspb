@@ -1,0 +1,133 @@
+@use "../../global/tokens";
+@use "../../tex";
+
+.cta-contacts {
+	padding: tex.rem(40) 0;
+
+	@media (min-width: tex.$md3) {
+		padding: tex.rem(60) 0;
+	}
+
+	&__box {
+		border-radius: tex.rem(20);
+		background: tokens.$color-accent;
+		color: #fff;
+
+		&::before {
+			opacity: 0.15;
+		}
+	}
+
+	&__layout {
+		display: grid;
+		gap: tex.rem(20);
+
+		@media (min-width: tex.$md3) {
+			grid-template-columns: tex.rem(610) 1fr;
+			gap: tex.rem(20);
+		}
+	}
+
+	&__form-col {
+		padding: tex.rem(24) 0;
+
+		@media (min-width: tex.$md3) {
+			padding: tex.rem(40) 0;
+		}
+	}
+
+	&__title {
+		margin: 0 0 tex.rem(16);
+		color: #fff;
+	}
+
+	&__lead {
+		margin: 0 0 tex.rem(24);
+		max-width: tex.rem(530);
+		font-size: tex.rem(14);
+		line-height: 1.3;
+		color: rgba(255, 255, 255, 0.9);
+
+		@media (min-width: tex.$md3) {
+			font-size: tex.rem(18);
+		}
+	}
+
+	&__aside {
+		display: grid;
+		gap: tex.rem(20);
+	}
+
+	&__messengers,
+	&__info {
+		padding: tex.rem(40);
+		border-radius: tex.rem(10);
+		background: rgba(255, 255, 255, 0.12);
+	}
+
+	&__messengers-label {
+		margin: 0 0 tex.rem(20);
+		font-size: tex.rem(14);
+	}
+
+	&__messengers-title {
+		margin: 0 0 tex.rem(20);
+		font-family: tex.$font-family;
+		font-weight: 500;
+		font-size: tex.rem(24);
+		line-height: 1.2;
+	}
+
+	&__messengers-text {
+		margin: 0 0 tex.rem(20);
+		font-size: tex.rem(14);
+		line-height: 1.3;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	&__info-item {
+		&:not(:last-child) {
+			margin-bottom: tex.rem(20);
+			padding-bottom: tex.rem(20);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		}
+	}
+
+	&__info-label {
+		display: block;
+		margin-bottom: tex.rem(6);
+		font-size: tex.rem(12);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		opacity: 0.8;
+	}
+
+	&__info-value,
+	&__phone,
+	&__email {
+		display: block;
+		color: #fff;
+		text-decoration: none;
+		font-size: tex.rem(14);
+		line-height: 1.3;
+	}
+
+	&__info-link {
+		display: inline-block;
+		margin-top: tex.rem(8);
+		color: #fff;
+		font-size: tex.rem(12);
+		text-decoration: none;
+		opacity: 0.85;
+	}
+
+	&__map {
+		min-height: tex.rem(188);
+		border-radius: tex.rem(10);
+		overflow: hidden;
+
+		[data-map] {
+			min-height: tex.rem(188);
+		}
+	}
+}

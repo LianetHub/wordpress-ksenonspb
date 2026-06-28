@@ -6,8 +6,8 @@
  */
 
 $featured = ksenon_home_get( 'featured_services', array() );
-$limit    = (int) ksenon_home_get( 'limit', 6 );
-$args     = array( 'posts_per_page' => $limit > 0 ? $limit : -1 );
+$limit    = (int) ksenon_home_get( 'limit', 3 );
+$args     = array( 'posts_per_page' => $limit > 0 ? $limit : 3 );
 
 if ( is_array( $featured ) && $featured ) {
 	$ids = array();
@@ -28,13 +28,28 @@ $query = ksenon_query_services( $args );
 if ( ! $query->have_posts() ) {
 	return;
 }
+
+$services_count = ksenon_count_cpt( 'service' );
 ?>
 <section class="services-teaser">
 	<div class="services-teaser__container _container">
-		<?php if ( ksenon_home_get( 'tag' ) ) : ?>
-			<span class="services-teaser__tag tag"><?php echo esc_html( (string) ksenon_home_get( 'tag' ) ); ?></span>
-		<?php endif; ?>
-		<h2 class="services-teaser__title title-md"><?php echo esc_html( (string) ksenon_home_get( 'title', __( 'Наши услуги', 'ksenonspb' ) ) ); ?></h2>
+		<div class="section-head section-head--row services-teaser__head">
+			<h2 class="section-head__title title-md services-teaser__title">
+				<?php echo esc_html( (string) ksenon_home_get( 'title', __( 'Наши услуги', 'ksenonspb' ) ) ); ?>
+			</h2>
+			<a class="section-head__more services-teaser__more" href="<?php echo esc_url( ksenon_services_archive_url() ); ?>">
+				<span class="section-head__more-text">
+					<?php
+					printf(
+						/* translators: %d: services count */
+						esc_html__( 'Все %d услуги', 'ksenonspb' ),
+						$services_count
+					);
+					?>
+				</span>
+				<?php ksenon_render_home_arrow(); ?>
+			</a>
+		</div>
 		<div class="services-teaser__grid">
 			<?php
 			while ( $query->have_posts() ) :
@@ -44,6 +59,5 @@ if ( ! $query->have_posts() ) {
 			wp_reset_postdata();
 			?>
 		</div>
-		<a class="btn services-teaser__more" href="<?php echo esc_url( ksenon_services_archive_url() ); ?>"><?php esc_html_e( 'Все услуги', 'ksenonspb' ); ?></a>
 	</div>
 </section>

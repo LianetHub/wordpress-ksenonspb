@@ -1,14 +1,17 @@
 @use "../../global/tokens";
 @use "../../tex";
 
-$home-muted: #5c6f7a;
-$home-card: #e8f4f8;
-$home-teal: tokens.$color-accent;
-
 .home-arrow {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	flex-shrink: 0;
+
+	svg {
+		display: block;
+		width: tex.rem(58);
+		height: tex.rem(58);
+	}
 }
 
 .section-head {
@@ -17,37 +20,76 @@ $home-teal: tokens.$color-accent;
 	&--row {
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		gap: tex.rem(16);
 
 		@media (min-width: tex.$md3) {
 			flex-direction: row;
-			align-items: flex-start;
+			align-items: center;
 			justify-content: space-between;
 			gap: tex.rem(32);
 		}
 	}
 
-	&__main {
-		max-width: tex.rem(720);
+	&__title {
+		margin: 0;
 	}
 
-	&__text {
-		margin: tex.rem(10) 0 0;
-	}
+	&__more {
+		display: inline-flex;
+		align-items: center;
+		gap: tex.rem(16);
+		padding: tex.rem(10) tex.rem(10) tex.rem(10) tex.rem(40);
+		border-radius: tex.rem(62);
+		background: tokens.$color-surface-mint;
+		color: tokens.$color-text;
+		text-decoration: none;
+		transition: background-color 0.25s ease;
 
-	&__aside {
-		max-width: tex.rem(420);
-
-		@media (min-width: tex.$md3) {
-			padding-top: tex.rem(8);
+		@media (any-hover: hover) {
+			&:hover {
+				background: #fff;
+			}
 		}
 	}
 
-	&__note {
+	&__more-text {
+		font-weight: 500;
+		font-size: tex.rem(18);
+		line-height: 1.3;
+	}
+}
 
-		color: tokens.$color-brand-2;
-		font-style: italic;
-		line-height: 1.55;
+.messenger-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: tex.rem(20);
+
+	&__item {
+		display: inline-flex;
+		align-items: center;
+		gap: tex.rem(10);
+		min-height: tex.rem(50);
+		padding: 0 tex.rem(35);
+		border-radius: tex.rem(62);
+		background: #fff;
+		color: tokens.$color-text;
+		text-decoration: none;
+		font-weight: 500;
+		font-size: tex.rem(14);
+		transition: box-shadow 0.25s ease;
+
+		svg {
+			flex-shrink: 0;
+			width: tex.rem(20);
+			height: tex.rem(20);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				box-shadow: 0 tex.rem(8) tex.rem(24) rgba(tokens.$color-brand, 0.12);
+			}
+		}
 	}
 }
 

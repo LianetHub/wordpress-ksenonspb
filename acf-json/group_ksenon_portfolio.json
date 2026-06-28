@@ -17,6 +17,34 @@
             "return_format": "array"
         },
         {
+            "key": "field_ksenon_portfolio_before_image",
+            "label": "Карточка — до",
+            "name": "before_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_portfolio_after_image",
+            "label": "Карточка — после",
+            "name": "after_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_portfolio_card_quote",
+            "label": "Цитата на карточке",
+            "name": "card_quote",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_ksenon_portfolio_price",
+            "label": "Стоимость",
+            "name": "price",
+            "type": "text",
+            "placeholder": "42 000 ₽"
+        },
+        {
             "key": "field_ksenon_portfolio_description",
             "label": "Описание кейса",
             "name": "case_description",
@@ -121,5 +149,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1751040000
 }

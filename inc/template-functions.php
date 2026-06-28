@@ -1017,3 +1017,91 @@ if ( ! function_exists( 'ksenon_get_partner_link' ) ) {
 		return '';
 	}
 }
+
+if ( ! function_exists( 'ksenon_count_cpt' ) ) {
+	function ksenon_count_cpt( $post_type ) {
+		$counts = wp_count_posts( $post_type );
+
+		return isset( $counts->publish ) ? (int) $counts->publish : 0;
+	}
+}
+
+if ( ! function_exists( 'ksenon_render_home_arrow' ) ) {
+	function ksenon_render_home_arrow() {
+		?>
+		<span class="home-arrow" aria-hidden="true">
+			<svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<circle cx="29" cy="29" r="29" fill="#FD8011"/>
+				<path d="M24 22L34 29L24 36" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</span>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'ksenon_render_btn_arrow' ) ) {
+	function ksenon_render_btn_arrow( $link, $class = 'btn btn--arrow', $fallback_title = '' ) {
+		if ( ! is_array( $link ) || empty( $link['url'] ) ) {
+			return;
+		}
+
+		$target = ksenon_acf_link_target( $link );
+		?>
+		<a
+			class="<?php echo esc_attr( $class ); ?>"
+			href="<?php echo esc_url( ksenon_acf_link_url( $link ) ); ?>"
+			<?php echo $target ? ' target="' . esc_attr( $target ) . '"' : ''; ?>
+		>
+			<span class="btn__text"><?php echo esc_html( ksenon_acf_link_title( $link, $fallback_title ) ); ?></span>
+			<span class="btn__arrow" aria-hidden="true">
+				<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="20" cy="20" r="20" fill="#FD8011"/>
+					<path d="M16 15L24 20L16 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</span>
+		</a>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'ksenon_get_messenger_links' ) ) {
+	function ksenon_get_messenger_links() {
+		$links = ksenon_get_social_links();
+		if ( ! $links ) {
+			return array();
+		}
+
+		return array_values(
+			array_filter(
+				$links,
+				static function ( $link ) {
+					return in_array( $link['network'], array( 'telegram', 'whatsapp' ), true );
+				}
+			)
+		);
+	}
+}
+
+if ( ! function_exists( 'ksenon_render_messenger_links' ) ) {
+	function ksenon_render_messenger_links( $class = 'messenger-links' ) {
+		$links = ksenon_get_messenger_links();
+		if ( ! $links ) {
+			return;
+		}
+		?>
+		<div class="<?php echo esc_attr( $class ); ?>">
+			<?php foreach ( $links as $link ) : ?>
+				<a
+					class="messenger-links__item messenger-links__item--<?php echo esc_attr( $link['network'] ); ?>"
+					href="<?php echo esc_url( $link['url'] ); ?>"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<?php echo ksenon_get_footer_social_icon( $link['network'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><?php echo esc_html( ksenon_get_footer_social_label( $link['network'] ) ); ?></span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+}

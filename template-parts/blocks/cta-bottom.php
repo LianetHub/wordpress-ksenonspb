@@ -4,16 +4,40 @@
  *
  * @package ksenonspb
  *
- * @var array $args { @type string $title, @type string $text }
+ * @var array $args {
+ *     @type string $title
+ *     @type string $text
+ *     @type array  $btn_primary
+ *     @type array  $btn_secondary
+ * }
  */
 
 $args = wp_parse_args(
 	isset( $args ) && is_array( $args ) ? $args : array(),
 	array(
-		'title' => __( 'Опишите проблему — оценим быстро и по делу', 'ksenonspb' ),
-		'text'  => '',
+		'title'         => __( 'Опишите проблему — оценим быстро и по делу', 'ksenonspb' ),
+		'text'          => '',
+		'btn_primary'   => null,
+		'btn_secondary' => null,
 	)
 );
+
+$btn_primary   = $args['btn_primary'];
+$btn_secondary = $args['btn_secondary'];
+
+if ( ! is_array( $btn_primary ) || empty( $btn_primary['url'] ) ) {
+	$btn_primary = array(
+		'url'   => '#contacts',
+		'title' => __( 'Оценить ремонт', 'ksenonspb' ),
+	);
+}
+
+if ( ! is_array( $btn_secondary ) || empty( $btn_secondary['url'] ) ) {
+	$btn_secondary = array(
+		'url'   => '#contacts',
+		'title' => __( 'Связаться с нами', 'ksenonspb' ),
+	);
+}
 ?>
 <section class="cta-bottom">
 	<div class="cta-bottom__container _container">
@@ -21,8 +45,18 @@ $args = wp_parse_args(
 		<?php if ( $args['text'] ) : ?>
 			<p class="cta-bottom__text"><?php echo nl2br( esc_html( $args['text'] ) ); ?></p>
 		<?php endif; ?>
-		<div class="cta-bottom__form">
-			<?php ksenon_cf7_form( 'cf7_zakaz', __( 'Опишите проблему', 'ksenonspb' ) ); ?>
+		<div class="cta-bottom__actions">
+			<a class="section-head__more cta-bottom__btn" href="<?php echo esc_url( ksenon_acf_link_url( $btn_primary ) ); ?>">
+				<span class="section-head__more-text"><?php echo esc_html( ksenon_acf_link_title( $btn_primary ) ); ?></span>
+				<?php ksenon_render_home_arrow(); ?>
+			</a>
+			<a
+				class="btn btn--secondary cta-bottom__btn-secondary"
+				href="<?php echo esc_url( ksenon_acf_link_url( $btn_secondary ) ); ?>"
+				<?php echo ksenon_acf_link_target( $btn_secondary ) ? ' target="' . esc_attr( ksenon_acf_link_target( $btn_secondary ) ) . '"' : ''; ?>
+			>
+				<?php echo esc_html( ksenon_acf_link_title( $btn_secondary ) ); ?>
+			</a>
 		</div>
 	</div>
 </section>

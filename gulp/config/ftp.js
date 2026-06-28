@@ -1,8 +1,11 @@
 import ftp from 'vinyl-ftp';
 import { env } from './env.js';
 
+export const assetsDeployGlobs = [ 'assets/**/*.*' ];
+
+// Полный деплой (build / deploy:ftp). PHP и шаблоны — через .vscode/sftp.json в dev.
 export const deployGlobs = [
-	'assets/**/*.*',
+	...assetsDeployGlobs,
 	'inc/**/*.*',
 	'template-parts/**/*.*',
 	'*.php',

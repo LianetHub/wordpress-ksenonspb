@@ -12,21 +12,58 @@ if ( ! $post instanceof WP_Post ) {
 	return;
 }
 
-$image = ksenon_get_post_field( 'hero_image', $post->ID );
-if ( ! $image && has_post_thumbnail( $post ) ) {
-	$image = get_post_thumbnail_id( $post );
+$before = ksenon_get_post_field( 'before_image', $post->ID );
+$after  = ksenon_get_post_field( 'after_image', $post->ID );
+$quote  = (string) ksenon_get_post_field( 'card_quote', $post->ID );
+$price  = (string) ksenon_get_post_field( 'price', $post->ID );
+$title  = (string) ksenon_get_post_field( 'hero_title', $post->ID );
+
+if ( ! $title ) {
+	$title = get_the_title( $post );
+}
+
+if ( ! $quote && has_excerpt( $post ) ) {
+	$quote = get_the_excerpt( $post );
+}
+
+if ( ! $before ) {
+	$before = ksenon_get_post_field( 'hero_image', $post->ID );
+}
+if ( ! $after && has_post_thumbnail( $post ) ) {
+	$after = get_post_thumbnail_id( $post );
 }
 ?>
 <article class="portfolio-card">
-	<a class="portfolio-card__link" href="<?php echo esc_url( get_permalink( $post ) ); ?>">
-		<?php if ( $image ) : ?>
-			<div class="portfolio-card__media">
-				<?php echo ksenon_acf_image( $image, 'medium_large', array( 'class' => 'portfolio-card__img' ) ); ?>
+	<div class="portfolio-card__media">
+		<?php if ( $before ) : ?>
+			<div class="portfolio-card__image portfolio-card__image--before">
+				<?php echo ksenon_acf_image( $before, 'medium_large', array( 'class' => 'portfolio-card__img cover-image' ) ); ?>
 			</div>
 		<?php endif; ?>
-		<h3 class="portfolio-card__title"><?php echo esc_html( get_the_title( $post ) ); ?></h3>
-		<?php if ( has_excerpt( $post ) ) : ?>
-			<p class="portfolio-card__excerpt"><?php echo esc_html( get_the_excerpt( $post ) ); ?></p>
+		<?php if ( $after ) : ?>
+			<div class="portfolio-card__image portfolio-card__image--after">
+				<?php echo ksenon_acf_image( $after, 'medium_large', array( 'class' => 'portfolio-card__img cover-image' ) ); ?>
+			</div>
 		<?php endif; ?>
-	</a>
+	</div>
+	<div class="portfolio-card__body">
+		<h3 class="portfolio-card__title"><?php echo esc_html( $title ); ?></h3>
+		<?php if ( $quote ) : ?>
+			<p class="portfolio-card__quote"><?php echo esc_html( $quote ); ?></p>
+		<?php endif; ?>
+		<div class="portfolio-card__footer">
+			<?php if ( $price ) : ?>
+				<div class="portfolio-card__price"><?php echo esc_html( $price ); ?></div>
+			<?php endif; ?>
+			<a class="portfolio-card__link btn btn--arrow btn--arrow-card" href="<?php echo esc_url( get_permalink( $post ) ); ?>">
+				<span class="btn__text"><?php esc_html_e( 'Подробнее', 'ksenonspb' ); ?></span>
+				<span class="btn__arrow" aria-hidden="true">
+					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="20" cy="20" r="20" fill="#FD8011"/>
+						<path d="M16 15L24 20L16 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</span>
+			</a>
+		</div>
+	</div>
 </article>

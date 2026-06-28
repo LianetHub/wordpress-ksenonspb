@@ -40,14 +40,22 @@ function pick( key, fallback = '' ) {
 
 const fileEnv = loadEnvFile();
 
+function getThemeAssetsRoute( remotePath ) {
+	const match = remotePath.match( /\/wp-content\/themes\/[^/]+/ );
+	return match ? `${ match[0] }/assets` : '/assets';
+}
+
+const ftpRemotePath = pick(
+	'FTP_REMOTE_PATH',
+	'/public_html/wp-content/themes/ksenonspby-theme'
+);
+
 export const env = {
 	WP_PROXY_URL: pick( 'WP_PROXY_URL', 'http://wordpress-ksenonspb.local' ),
 	FTP_HOST: pick( 'FTP_HOST' ),
 	FTP_USER: pick( 'FTP_USER' ),
 	FTP_PASSWORD: pick( 'FTP_PASSWORD' ),
 	FTP_PORT: Number( pick( 'FTP_PORT', '21' ) ),
-	FTP_REMOTE_PATH: pick(
-		'FTP_REMOTE_PATH',
-		'/public_html/wp-content/themes/ksenonspby-theme'
-	),
+	FTP_REMOTE_PATH: ftpRemotePath,
+	THEME_ASSETS_ROUTE: getThemeAssetsRoute( ftpRemotePath ),
 };

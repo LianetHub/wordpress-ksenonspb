@@ -1,10 +1,9 @@
 @use "../tex";
-@use "../components/tag";
-@use "../components/form";
+@use "../section/home/services-teaser";
 
 .services-archive,
 .services-teaser,
 .service-page,
 .service-card {
-	// Page-specific styles — fill during redesign
+	// Service card styles are defined in home partial.
 }

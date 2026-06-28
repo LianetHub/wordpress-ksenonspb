@@ -1,0 +1,138 @@
+@use "../../global/tokens";
+@use "../../tex";
+
+.why-us {
+	padding: tex.rem(40) 0;
+
+	@media (min-width: tex.$md3) {
+		padding: tex.rem(60) 0;
+	}
+
+	&__title {
+		margin: 0 0 tex.rem(24);
+
+		@media (min-width: tex.$md3) {
+			margin-bottom: tex.rem(40);
+		}
+	}
+
+	&__cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: tex.rem(10);
+
+		@media (min-width: tex.$md3) {
+			grid-template-columns: repeat(3, 1fr);
+			align-items: end;
+			gap: tex.rem(20);
+		}
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		border-radius: tex.rem(10);
+		background: tokens.$color-surface-mint;
+		overflow: hidden;
+		transition: background-color 0.25s ease;
+
+		&._active {
+			background: tokens.$color-surface-tab;
+		}
+
+		&:nth-child(2) {
+			@media (min-width: tex.$md3) {
+				margin-bottom: tex.rem(108);
+			}
+		}
+
+		&:nth-child(3) {
+			@media (min-width: tex.$md3) {
+				margin-bottom: tex.rem(208);
+			}
+		}
+	}
+
+	&__card-media {
+		aspect-ratio: 400 / 268;
+		overflow: hidden;
+	}
+
+	&__card-img {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__card-heading {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: tex.rem(10);
+		width: 100%;
+		padding: tex.rem(20);
+		border: 0;
+		background: transparent;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	&__card-step {
+		font-size: tex.rem(14);
+		color: tokens.$color-text-body;
+	}
+
+	&__card-title {
+		margin: 0;
+		font-family: tex.$font-family;
+		font-weight: 500;
+		font-size: tex.rem(20);
+		line-height: 1.2;
+		color: tokens.$color-primary;
+	}
+
+	&__card-body {
+		display: none;
+		padding: 0 tex.rem(20) tex.rem(20);
+	}
+
+	&__card-text {
+		margin: 0;
+		font-size: tex.rem(14);
+		line-height: 1.3;
+		color: tokens.$color-text-body;
+	}
+
+	&__detail {
+		margin-top: tex.rem(20);
+		padding: tex.rem(40);
+		border-radius: tex.rem(10);
+		background: tokens.$color-surface-tab;
+
+		@media (min-width: tex.$md3) {
+			margin-top: tex.rem(40);
+		}
+	}
+
+	&__detail-step {
+		margin-bottom: tex.rem(10);
+		font-size: tex.rem(14);
+		color: tokens.$color-text-body;
+	}
+
+	&__detail-title {
+		margin: 0 0 tex.rem(16);
+		font-family: tex.$font-family;
+		font-weight: 500;
+		font-size: tex.rem(24);
+		line-height: 1.2;
+		color: tokens.$color-primary;
+	}
+
+	&__detail-text {
+		margin: 0;
+		max-width: tex.rem(720);
+		font-size: tex.rem(16);
+		line-height: 1.4;
+		color: tokens.$color-text-body;
+	}
+}

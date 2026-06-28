@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import {
+	assetsDeployGlobs,
 	createFtpConnection,
 	deployGlobs,
 	ftpEnv,
@@ -118,20 +119,36 @@ export function ftpDeployAll() {
 	} );
 }
 
+export function ftpDeployAssets() {
+	if ( ! isFtpConfigured() ) {
+		log( 'Credentials not configured, skipping assets deploy' );
+		return Promise.resolve();
+	}
+
+	log( `Assets deploy to ${ ftpEnv.FTP_REMOTE_PATH }` );
+
+	return deployToFtp( assetsDeployGlobs ).then( () => {
+		log( 'Assets deploy complete' );
+	} );
+}
+
 export function ftpDeployChanged( filePath ) {
 	return queueFtpDeploy( [ filePath ] );
 }
 
-export function ftpDeployGlobs( globs ) {
+export function ftpDeployGlobs( globs, { reload = false } = {} ) {
 	if ( ! app.isDev || ! isFtpConfigured() ) {
 		return ( done ) => done();
 	}
 
-	return () => deployToFtp( globs ).then( () => {
-		reloadBrowserIfActive();
-	} );
+	return () =>
+		deployToFtp( globs ).then( () => {
+			if ( reload ) {
+				reloadBrowserIfActive();
+			}
+		} );
 }
 
-export function withFtpDeploy( task, globs ) {
-	return gulp.series( task, ftpDeployGlobs( globs ) );
+export function withFtpDeploy( task, globs, options = {} ) {
+	return gulp.series( task, ftpDeployGlobs( globs, options ) );
 }
