@@ -25,6 +25,8 @@ export function createFtpConnection() {
 		password: env.FTP_PASSWORD,
 		port: env.FTP_PORT,
 		parallel: 3,
+		maxConnections: 3,
+		idleTimeout: 60_000,
 		log: ( ...args ) => console.log( '[FTP]', ...args ),
 	} );
 }

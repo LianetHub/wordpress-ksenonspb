@@ -20,6 +20,7 @@ import { images, favicon } from './gulp/tasks/images.js';
 import {
 	otf2ttf,
 	ttfToWoff,
+	ttfToWoff2,
 	copyWoff,
 	fontsStyle,
 } from './gulp/tasks/fonts.js';
@@ -67,7 +68,12 @@ function watcher() {
 	} );
 }
 
-const fonts = gulp.series( otf2ttf, ttfToWoff, copyWoff, fontsStyle );
+const fonts = gulp.series(
+	otf2ttf,
+	gulp.parallel( ttfToWoff, ttfToWoff2 ),
+	copyWoff,
+	fontsStyle
+);
 
 const assetsTasks = gulp.parallel(
 	copy,

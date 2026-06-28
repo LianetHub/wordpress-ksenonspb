@@ -15,6 +15,38 @@ function log( message ) {
 	console.log( `[FTP] ${ message }` );
 }
 
+const FTP_DEST_OPTIONS = { parallel: 1 };
+
+function streamToPromise( stream ) {
+	return new Promise( ( resolve, reject ) => {
+		stream.once( 'error', reject );
+		stream.once( 'finish', resolve );
+	} );
+}
+
+function deployToFtp( globs, label ) {
+	const conn = createFtpConnection();
+	if ( ! conn ) {
+		return Promise.resolve();
+	}
+
+	if ( label ) {
+		log( label );
+	}
+
+	const stream = gulp
+		.src( globs, { base: '.', allowEmpty: true } )
+		.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH, FTP_DEST_OPTIONS ) );
+
+	return streamToPromise( stream );
+}
+
+function reloadBrowserIfActive() {
+	if ( app.plugins.browsersync.active ) {
+		app.plugins.browsersync.reload();
+	}
+}
+
 function uploadPaths( paths ) {
 	const conn = createFtpConnection();
 	if ( ! conn ) {
@@ -29,14 +61,12 @@ function uploadPaths( paths ) {
 
 	log( `Uploading ${ uniquePaths.length } file(s)...` );
 
-	return new Promise( ( resolve, reject ) => {
-		const stream = gulp
-			.src( uniquePaths, { base: '.', buffer: false, allowEmpty: true } )
-			.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH ) );
+	const stream = gulp
+		.src( uniquePaths, { base: '.', allowEmpty: true } )
+		.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH, FTP_DEST_OPTIONS ) );
 
-		stream.on( 'end', resolve );
-		stream.on( 'error', reject );
-		stream.on( 'finish', resolve );
+	return streamToPromise( stream ).then( () => {
+		reloadBrowserIfActive();
 	} );
 }
 
@@ -81,12 +111,11 @@ export function ftpDeployAll() {
 		return Promise.resolve();
 	}
 
-	const conn = createFtpConnection();
 	log( `Full deploy to ${ ftpEnv.FTP_REMOTE_PATH }` );
 
-	return gulp
-		.src( deployGlobs, { base: '.', buffer: false, allowEmpty: true } )
-		.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH ) );
+	return deployToFtp( deployGlobs ).then( () => {
+		log( 'Full deploy complete' );
+	} );
 }
 
 export function ftpDeployChanged( filePath ) {
@@ -98,12 +127,9 @@ export function ftpDeployGlobs( globs ) {
 		return ( done ) => done();
 	}
 
-	return () => {
-		const conn = createFtpConnection();
-		return gulp
-			.src( globs, { base: '.', buffer: false, allowEmpty: true } )
-			.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH ) );
-	};
+	return () => deployToFtp( globs ).then( () => {
+		reloadBrowserIfActive();
+	} );
 }
 
 export function withFtpDeploy( task, globs ) {

@@ -210,7 +210,6 @@
 	}
 
 	&__doc {
-		font-family: "Manrope", tex.$font-family;
 		font-weight: 400;
 		line-height: 1.3;
 		color: tokens.$color-surface-uikit;
@@ -251,7 +250,7 @@
 	}
 
 	&__copy {
-		font-family: "Manrope", tex.$font-family;
+	
 		font-weight: 500;
 		line-height: 1.3;
 		color: #f7f7f7;
@@ -293,7 +292,6 @@
 	}
 
 	&__dev-text {
-		font-family: "Manrope", tex.$font-family;
 		font-weight: 500;
 		line-height: 1.3;
 		color: #f7f7f7;

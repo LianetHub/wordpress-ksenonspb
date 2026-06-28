@@ -43,7 +43,7 @@ export const path = {
 		js: `${srcFolder}/js/**/*.js`,
 		images: `${srcFolder}/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}`,
 		json: `${srcFolder}/json/*.*`,
-		fonts: `${srcFolder}/fonts/*.{ttf,otf,woff,woff2}`,
+		fonts: `${srcFolder}/fonts/*`,
 		php: `**/*.php`,
 	},
 	clean: buildFolder,
