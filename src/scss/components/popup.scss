@@ -1,28 +1,31 @@
-$popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%);
+@use "../global/tokens";
+@use "../tex";
+
+$popup-gradient: linear-gradient(61deg, tokens.$color-primary 0%, tokens.$color-accent 99.68%);
 
 
 .f-button.is-close-button {
-	--f-close-button-width: #{rem(42)};
-	--f-close-button-height: #{rem(42)};
-	--f-close-button-svg-stroke-width: #{rem(1.5)};
-	--f-close-button-svg-width: #{rem(32)};
-	--f-close-button-svg-height: #{rem(32)};
+	--f-close-button-width: #{tex.rem(42)};
+	--f-close-button-height: #{tex.rem(42)};
+	--f-close-button-svg-stroke-width: #{tex.rem(1.5)};
+	--f-close-button-svg-width: #{tex.rem(32)};
+	--f-close-button-svg-height: #{tex.rem(32)};
 	--f-close-button-color: #{rgba(#fff, 1)};
 	--f-close-button-hover-color: #000;
-	top: #{rem(8)};
-	right: #{rem(8)};
+	top: #{tex.rem(8)};
+	right: #{tex.rem(8)};
 
-	@media (min-width: $md4) {
-		top: #{rem(14)};
-		right: #{rem(14)};
+	@media (min-width: tex.$md4) {
+		top: #{tex.rem(14)};
+		right: #{tex.rem(14)};
 	}
 }
 
 
 .popup-modal {
 	width: 100%;
-	max-width: rem(873);
-	border-radius: rem(10);
+	max-width: tex.rem(873);
+	border-radius: tex.rem(10);
 	background: $popup-gradient;
 	color: #fff;
 
@@ -34,14 +37,14 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 	&__close {
 		position: absolute;
-		top: rem(16);
-		right: rem(16);
+		top: tex.rem(16);
+		right: tex.rem(16);
 		z-index: 3;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: rem(32);
-		height: rem(32);
+		width: tex.rem(32);
+		height: tex.rem(32);
 		padding: 0;
 		border: 0;
 		background: transparent;
@@ -62,7 +65,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		z-index: 1;
 
 		&--center {
-			max-width: rem(426);
+			max-width: tex.rem(426);
 			margin: 0 auto;
 			text-align: center;
 		}
@@ -73,35 +76,35 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		z-index: 1;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: rem(24);
+		gap: tex.rem(24);
 		align-items: center;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			grid-template-columns: 1.1fr 0.9fr;
-			gap: rem(32);
+			gap: tex.rem(32);
 		}
 
 		&--reverse {
-			@media (min-width: $md3) {
+			@media (min-width: tex.$md3) {
 				grid-template-columns: 0.9fr 1.1fr;
 			}
 		}
 	}
 
 	&__title {
-		margin: 0 0 rem(10);
+		margin: 0 0 tex.rem(10);
 		color: #fff;
 	}
 
 	&__lead {
-		margin: 0 0 rem(20);
+		margin: 0 0 tex.rem(20);
 		line-height: 1.3;
-		@include adaptive-font(14, 18);
+		@include tex.adaptive-font(14, 18);
 		max-width: 29.125rem;
 		margin-inline: auto;
 
 		.popup-modal__content--center & {
-			max-width: rem(466);
+			max-width: tex.rem(466);
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -110,7 +113,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 	&__fields {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
+		gap: tex.rem(10);
 	}
 
 	&__field {
@@ -119,18 +122,18 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 	&__input {
 		width: 100%;
-		min-height: rem(52);
-		padding: rem(10) rem(20);
-		border: rem(0.5) solid #fff;
-		border-radius: rem(10);
+		min-height: tex.rem(52);
+		padding: tex.rem(10) tex.rem(20);
+		border: tex.rem(0.5) solid #fff;
+		border-radius: tex.rem(10);
 		background: transparent;
 		color: #fff;
-		font-family: $font-family;
+		font-family: tex.$font-family;
 		font-weight: 400;
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 		transition: border-color 0.25s ease;
-		@include adaptive-font(16, 18);
+		@include tex.adaptive-font(16, 18);
 
 		&::placeholder {
 			color: rgba(255, 255, 255, 0.85);
@@ -138,7 +141,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 		&:focus {
 			outline: none;
-			border-width: rem(1);
+			border-width: tex.rem(1);
 		}
 	}
 
@@ -148,7 +151,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		.checkbox__text a {
 			color: inherit;
 			text-decoration: underline;
-			text-underline-offset: rem(2);
+			text-underline-offset: tex.rem(2);
 			@media (any-hover: hover) {
 				&:hover {
 					text-decoration: none;
@@ -162,23 +165,23 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		min-height: rem(60);
-		margin-top: rem(10);
-		padding: rem(10) rem(20);
+		min-height: tex.rem(60);
+		margin-top: tex.rem(10);
+		padding: tex.rem(10) tex.rem(20);
 		border: 0;
-		border-radius: rem(10);
-		background: $color-surface-mint;
-		color: $color-primary;
-		font-family: $font-family;
+		border-radius: tex.rem(10);
+		background: tokens.$color-surface-mint;
+		color: tokens.$color-primary;
+		font-family: tex.$font-family;
 		font-weight: 500;
 		line-height: 1.2;
-		letter-spacing: $btn-letter-spacing;
+		letter-spacing: tokens.$btn-letter-spacing;
 		text-transform: uppercase;
 		cursor: pointer;
 		transition:
 			background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
 			transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-		@include adaptive-font(16, 20);
+		@include tex.adaptive-font(16, 20);
 
 		@media (any-hover: hover) {
 			&:hover {
@@ -195,10 +198,10 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 	&__form {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
+		gap: tex.rem(10);
 
 		.form__control {
-			min-height: rem(52);
+			min-height: tex.rem(52);
 			padding-block: 0.875rem;
 		}
 	}
@@ -209,13 +212,13 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 		height: 100%;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			display: block;
 		}
 	}
 
 	&__photo {
-		border-radius: rem(10);
+		border-radius: tex.rem(10);
 		overflow: hidden;
 
 		img {
@@ -224,17 +227,17 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 			object-fit: cover;
 		}
 
-		@media (max-width:$md3) {
+		@media (max-width:tex.$md3) {
 			&:first-child {
-				margin-top: rem(60);
+				margin-top: tex.rem(60);
 			}
 		}
 
-		@media (min-width:$md2) {
+		@media (min-width:tex.$md2) {
 			position: absolute;
-			width: rem(182);
-			height: rem(169);
-			background: $color-accent;
+			width: tex.rem(182);
+			height: tex.rem(169);
+			background: tokens.$color-accent;
 
 
 			&:first-child {
@@ -243,7 +246,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 			}
 
 			&:last-child {
-				right: rem(182);
+				right: tex.rem(182);
 				bottom: 0;
 			}
 
@@ -256,21 +259,21 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 	&__media {
 		display: flex;
 		justify-content: center;
-		margin-bottom: rem(16);
+		margin-bottom: tex.rem(16);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			margin-bottom: 0;
 			align-items: center;
 		}
 
 		img {
-			max-width: rem(280);
+			max-width: tex.rem(280);
 			width: 100%;
 			height: auto;
-			filter: drop-shadow(rem(2) rem(2) rem(8) $color-primary);
+			filter: drop-shadow(tex.rem(2) tex.rem(2) tex.rem(8) tokens.$color-primary);
 
-			@media (min-width: $md3) {
-				max-width: rem(327);
+			@media (min-width: tex.$md3) {
+				max-width: tex.rem(327);
 			}
 		}
 	}
@@ -280,46 +283,46 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
-		gap: rem(10);
+		gap: tex.rem(10);
 		width: 100%;
 	}
 
 	&__partner {
-		flex: 0 1 calc((100% - rem(10)) / 2);
+		flex: 0 1 calc((100% - tex.rem(10)) / 2);
 		min-width: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: rem(10);
-		min-height: rem(115);
-		padding: rem(12) rem(10);
-		border: rem(0.5) solid #fff;
-		border-radius: rem(10);
-		background: $color-surface-tab;
+		gap: tex.rem(10);
+		min-height: tex.rem(115);
+		padding: tex.rem(12) tex.rem(10);
+		border: tex.rem(0.5) solid #fff;
+		border-radius: tex.rem(10);
+		background: tokens.$color-surface-tab;
 		backdrop-filter: blur(10px);
 		text-decoration: none;
 		transition: box-shadow 0.25s ease;
 
-		@media (min-width: $md4) {
-			flex-basis: calc((100% - rem(20)) / 3);
+		@media (min-width: tex.$md4) {
+			flex-basis: calc((100% - tex.rem(20)) / 3);
 		}
 
-		@media (min-width: $md3) {
-			flex-basis: calc((100% - rem(40)) / 5);
+		@media (min-width: tex.$md3) {
+			flex-basis: calc((100% - tex.rem(40)) / 5);
 		}
 
 		@media (any-hover: hover) {
 			&:hover {
-				box-shadow: 0 rem(8) rem(24) rgba($color-primary, 0.15);
+				box-shadow: 0 tex.rem(8) tex.rem(24) rgba(tokens.$color-primary, 0.15);
 			}
 		}
 	}
 
 	&__partner-logo {
 		display: block;
-		max-width: rem(120);
-		max-height: rem(53);
+		max-width: tex.rem(120);
+		max-height: tex.rem(53);
 		width: auto;
 		height: auto;
 		object-fit: contain;
@@ -330,29 +333,29 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 	
 		display: inline-flex;
 		align-items: center;
-		gap: rem(10);
-		color: $color-primary;
+		gap: tex.rem(10);
+		color: tokens.$color-primary;
 		font-weight: 500;
-		font-size: rem(14);
+		font-size: tex.rem(14);
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 		text-transform: uppercase;
 	}
 
 	&__partner-icon {
-		width: rem(24);
-		height: rem(24);
+		width: tex.rem(24);
+		height: tex.rem(24);
 	}
 
 	&--consult {
 		background: url("@img/modal-consult-decor-mobile.webp") 0 0 / cover no-repeat, $popup-gradient;
 		text-align: center;
 
-		@media (max-width:$md4) {
-			padding-bottom: rem(145);
+		@media (max-width:tex.$md4) {
+			padding-bottom: tex.rem(145);
 		}
 
-		@media (min-width:$md4) {
+		@media (min-width:tex.$md4) {
 			background: url("@img/modal-consult-decor.webp") 0 0 / cover no-repeat, $popup-gradient;
 		}
 	}
@@ -363,20 +366,20 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		background: url("@img/modal-order-bg.svg") 0 0 / cover no-repeat, $popup-gradient;
 
 
-		@media (max-width: ($md3)) {
+		@media (max-width: (tex.$md3)) {
 			background: url("@img/modal-order-bg-mobile.svg") 0 0 / cover no-repeat, $popup-gradient;
 
 			.popup-modal__visual {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				gap: rem(10);
+				gap: tex.rem(10);
 				position: static;
 				min-height: 0;
 
 				.popup-modal__photo {
 					position: static;
 					width: 100%;
-					height: rem(140);
+					height: tex.rem(140);
 				}
 			}
 		}
@@ -388,7 +391,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 
 		.popup-modal__media {
-			@media (max-width:$md4) {
+			@media (max-width:tex.$md4) {
 				order: 1;
 			}
 		}
@@ -398,23 +401,23 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 	// Партнёры
 	&--partners {
-		max-width: rem(873);
+		max-width: tex.rem(873);
 
 		text-align: center;
 
 		.popup-modal__lead {
-			max-width: rem(500);
+			max-width: tex.rem(500);
 			margin-inline: auto;
 		}
 	}
 
 	// Статус: успех / ошибка
 	&--status {
-		max-width: rem(650);
+		max-width: tex.rem(650);
 		width: 100%;
 
 		.popup-modal__inner {
-			min-height: rem(124);
+			min-height: tex.rem(124);
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -430,13 +433,13 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: rem(10);
+		gap: tex.rem(10);
 		text-align: center;
 	}
 
 	&__status-icon {
-		width: rem(28);
-		height: rem(28);
+		width: tex.rem(28);
+		height: tex.rem(28);
 		color: #fff;
 
 		&--error {
@@ -449,7 +452,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		font-weight: 500;
 		line-height: 1.2;
 		letter-spacing: -0.04em;
-		@include adaptive-font(22, 28);
+		@include tex.adaptive-font(22, 28);
 	}
 }
 
@@ -467,7 +470,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 	}
 
 	.fancybox__slide {
-		padding: rem(16);
+		padding: tex.rem(16);
 	}
 
 	.f-button.is-close-btn {
@@ -486,7 +489,7 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 	--f-carousel-slide-bg: transparent;
 	--f-button-color: #fff;
 	--f-button-bg: rgba(255, 255, 255, 0.12);
-	--f-button-border-radius: #{rem(10)};
+	--f-button-border-radius: #{tex.rem(10)};
 	--f-button-svg-stroke-width: 2;
 
 	.fancybox__backdrop {
@@ -500,11 +503,11 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		justify-content: center;
 		width: 100%;
 		height: 100%;
-		padding: rem(12);
+		padding: tex.rem(12);
 		box-sizing: border-box;
 
-		@media (min-width: $md4) {
-			padding: rem(24);
+		@media (min-width: tex.$md4) {
+			padding: tex.rem(24);
 		}
 
 		&::before,
@@ -513,11 +516,11 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		}
 
 		&.has-html {
-			padding: rem(12);
+			padding: tex.rem(12);
 			overflow: visible;
 
-			@media (min-width: $md4) {
-				padding: rem(24);
+			@media (min-width: tex.$md4) {
+				padding: tex.rem(24);
 			}
 		}
 	}
@@ -526,17 +529,17 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 		position: relative;
 		display: flex;
 		flex: 0 0 auto;
-		width: min(96vw, rem(960));
-		max-width: rem(960);
+		width: min(96vw, tex.rem(960));
+		max-width: tex.rem(960);
 		height: auto;
 		aspect-ratio: 16 / 9;
 		margin: auto;
 		padding: 0;
 		background: #0a1012;
 		border: 1px solid rgba(255, 255, 255, 0.12);
-		border-radius: rem(10);
+		border-radius: tex.rem(10);
 		overflow: hidden;
-		box-shadow: 0 rem(20) rem(50) rgba(0, 0, 0, 0.45);
+		box-shadow: 0 tex.rem(20) tex.rem(50) rgba(0, 0, 0, 0.45);
 
 		&.has-html,
 		&.has-iframe {
@@ -577,15 +580,15 @@ $popup-gradient: linear-gradient(61deg, $color-primary 0%, $color-accent 99.68%)
 
 	.f-spinner {
 		--f-spinner-color-1: rgba(255, 255, 255, 0.15);
-		--f-spinner-color-2: #{$color-accent};
+		--f-spinner-color-2: #{tokens.$color-accent};
 	}
 
 	.f-button.is-close-btn {
 		display: flex;
-		top: rem(12);
-		right: rem(12);
-		width: rem(44);
-		height: rem(44);
+		top: tex.rem(12);
+		right: tex.rem(12);
+		width: tex.rem(44);
+		height: tex.rem(44);
 		border: 1px solid rgba(255, 255, 255, 0.25);
 		backdrop-filter: blur(8px);
 		transition:

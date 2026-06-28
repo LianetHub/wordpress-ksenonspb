@@ -1,6 +1,9 @@
+@use "../../global/tokens";
+@use "../../tex";
+
 $home-muted: #5c6f7a;
 $home-card: #e8f4f8;
-$home-teal: $color-accent;
+$home-teal: tokens.$color-accent;
 
 .home-arrow {
 	display: inline-flex;
@@ -9,40 +12,40 @@ $home-teal: $color-accent;
 }
 
 .section-head {
-	margin-bottom: rem(28);
+	margin-bottom: tex.rem(28);
 
 	&--row {
 		display: flex;
 		flex-direction: column;
-		gap: rem(16);
+		gap: tex.rem(16);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			flex-direction: row;
 			align-items: flex-start;
 			justify-content: space-between;
-			gap: rem(32);
+			gap: tex.rem(32);
 		}
 	}
 
 	&__main {
-		max-width: rem(720);
+		max-width: tex.rem(720);
 	}
 
 	&__text {
-		margin: rem(10) 0 0;
+		margin: tex.rem(10) 0 0;
 	}
 
 	&__aside {
-		max-width: rem(420);
+		max-width: tex.rem(420);
 
-		@media (min-width: $md3) {
-			padding-top: rem(8);
+		@media (min-width: tex.$md3) {
+			padding-top: tex.rem(8);
 		}
 	}
 
 	&__note {
 
-		color: $color-brand-2;
+		color: tokens.$color-brand-2;
 		font-style: italic;
 		line-height: 1.55;
 	}

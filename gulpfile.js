@@ -25,16 +25,46 @@ import {
 } from './gulp/tasks/fonts.js';
 import { zip } from './gulp/tasks/zip.js';
 import { json } from './gulp/tasks/json.js';
+import {
+	ftpDeployAll,
+	ftpDeployChanged,
+	withFtpDeploy,
+} from './gulp/tasks/ftp.js';
 
 function watcher() {
-	gulp.watch( path.watch.files, copy );
-	gulp.watch( path.watch.scss, gulp.parallel( scss, scssEntries ) );
-	gulp.watch( path.watch.normalize, normalize );
-	gulp.watch( path.watch.js, js );
-	gulp.watch( path.watch.json, json );
-	gulp.watch( path.watch.images, images );
-	gulp.watch( path.watch.fonts, fonts );
-	gulp.watch( path.watch.php ).on( 'change', app.plugins.browsersync.reload );
+	gulp.watch(
+		path.watch.files,
+		withFtpDeploy( copy, `${ path.build.files }**/*` )
+	);
+	gulp.watch(
+		path.watch.scss,
+		withFtpDeploy( gulp.parallel( scss, scssEntries ), `${ path.build.css }**/*` )
+	);
+	gulp.watch(
+		path.watch.normalize,
+		withFtpDeploy( normalize, `${ path.build.normalize }**/*` )
+	);
+	gulp.watch(
+		path.watch.js,
+		withFtpDeploy( js, `${ path.build.js }**/*` )
+	);
+	gulp.watch(
+		path.watch.json,
+		withFtpDeploy( json, `${ path.build.json }**/*` )
+	);
+	gulp.watch(
+		path.watch.images,
+		withFtpDeploy( images, `${ path.build.images }**/*` )
+	);
+	gulp.watch(
+		path.watch.fonts,
+		withFtpDeploy( fonts, `${ path.build.fonts }**/*` )
+	);
+	gulp.watch( path.watch.php ).on( 'change', ( filePath ) => {
+		return ftpDeployChanged( filePath ).then( () => {
+			app.plugins.browsersync.reload();
+		} );
+	} );
 }
 
 const fonts = gulp.series( otf2ttf, ttfToWoff, copyWoff, fontsStyle );
@@ -55,12 +85,21 @@ const assetsTasks = gulp.parallel(
 
 const mainTasks = gulp.series( fonts, assetsTasks );
 
-const dev       = gulp.series( reset, mainTasks, gulp.parallel( watcher, server ) );
+const dev       = gulp.series(
+	reset,
+	mainTasks,
+	ftpDeployAll,
+	gulp.parallel( watcher, server )
+);
 const build     = gulp.series( reset, mainTasks );
 const deployZIP = gulp.series( reset, mainTasks, zip );
 
 export { dev };
 export { build };
 export { deployZIP };
+export { ftpDeployAll };
 
 gulp.task( 'default', dev );
+gulp.task( 'build', build );
+gulp.task( 'deployZIP', deployZIP );
+gulp.task( 'ftpDeployAll', ftpDeployAll );

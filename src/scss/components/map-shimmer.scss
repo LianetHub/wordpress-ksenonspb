@@ -1,3 +1,5 @@
+@use "../global/tokens";
+
 @keyframes map-shimmer {
 	0% {
 		background-position: -200% 0;
@@ -11,7 +13,7 @@
 @mixin map-container-loading {
 	position: relative;
 	overflow: hidden;
-	background: $color-surface-mint;
+	background: tokens.$color-surface-mint;
 
 	&::before {
 		content: "";
@@ -22,9 +24,9 @@
 		pointer-events: none;
 		background: linear-gradient(
 			90deg,
-			rgba($color-accent, 0.06) 25%,
-			rgba($color-accent, 0.16) 50%,
-			rgba($color-accent, 0.06) 75%
+			rgba(tokens.$color-accent, 0.06) 25%,
+			rgba(tokens.$color-accent, 0.16) 50%,
+			rgba(tokens.$color-accent, 0.06) 75%
 		);
 		background-size: 200% 100%;
 		animation: map-shimmer 1.6s infinite linear;

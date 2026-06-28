@@ -154,7 +154,7 @@ export const scssEntries = () => {
 };
 
 export const copyCssLibs = () => {
-    return app.gulp.src(app.path.src.cssLibs)
-        .pipe(app.gulp.dest(app.path.build.cssLibs))
-}
+	return app.gulp.src( app.path.src.cssLibs, { allowEmpty: true } )
+		.pipe( app.gulp.dest( app.path.build.cssLibs ) );
+};
 

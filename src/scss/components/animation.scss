@@ -1,3 +1,5 @@
+@use "../tex";
+
 [data-counter] {
 	font-variant-numeric: tabular-nums;
 	display: inline-block;
@@ -7,7 +9,7 @@
 ._anim-items {
 	opacity: 0;
 	transform: translateY(3rem);
-	transition: opacity anim(0.5) ease, transform anim(0.5) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.5) ease;
 }
 
 ._anim-items._active {
@@ -87,7 +89,7 @@
 .a-fade {
 	opacity: 0;
 	transform: none;
-	transition: opacity anim(0.6) ease;
+	transition: opacity tex.anim(0.6) ease;
 
 	&._active {
 		opacity: 1;
@@ -97,7 +99,7 @@
 .a-fade-up {
 	opacity: 0;
 	transform: translateY(3rem);
-	transition: transform anim(0.6) cubic-bezier(0.22, 1, 0.36, 1), opacity anim(0.5) ease;
+	transition: transform tex.anim(0.6) cubic-bezier(0.22, 1, 0.36, 1), opacity tex.anim(0.5) ease;
 
 	&._active {
 		opacity: 1;
@@ -108,7 +110,7 @@
 .a-fade-down {
 	opacity: 0;
 	transform: translateY(-3rem);
-	transition: opacity anim(0.5) ease, transform anim(0.6) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.6) ease;
 
 	&._active {
 		opacity: 1;
@@ -119,7 +121,7 @@
 .a-fade-left {
 	opacity: 0;
 	transform: translateX(-3rem);
-	transition: opacity anim(0.5) ease, transform anim(0.5) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.5) ease;
 
 	&._active {
 		opacity: 1;
@@ -130,7 +132,7 @@
 .a-fade-right {
 	opacity: 0;
 	transform: translateX(3rem);
-	transition: opacity anim(0.5) ease, transform anim(0.5) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.5) ease;
 
 	&._active {
 		opacity: 1;
@@ -141,7 +143,7 @@
 .a-scale-up {
 	opacity: 0;
 	transform: scale(0.9);
-	transition: opacity anim(0.5) ease, transform anim(0.6) cubic-bezier(0.22, 1, 0.36, 1);
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.6) cubic-bezier(0.22, 1, 0.36, 1);
 
 	&._active {
 		opacity: 1;
@@ -153,7 +155,7 @@
 	opacity: 0;
 	transform: translateY(3rem);
 	filter: blur(5px);
-	transition: opacity anim(0.5) ease, transform anim(0.6) cubic-bezier(0.22, 1, 0.36, 1), filter anim(0.6) cubic-bezier(0.22, 1, 0.36, 1);
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.6) cubic-bezier(0.22, 1, 0.36, 1), filter tex.anim(0.6) cubic-bezier(0.22, 1, 0.36, 1);
 
 	&._active {
 		opacity: 1;
@@ -165,7 +167,7 @@
 .a-reveal {
 	opacity: 0;
 	clip-path: inset(0 0 100% 0);
-	transition: clip-path anim(1.2) cubic-bezier(0.25, 1, 0.5, 1), opacity anim(0.4) ease;
+	transition: clip-path tex.anim(1.2) cubic-bezier(0.25, 1, 0.5, 1), opacity tex.anim(0.4) ease;
 
 	&._active {
 		opacity: 1;
@@ -177,7 +179,7 @@
 	opacity: 0;
 	transform: scale(0.8);
 	filter: blur(8px);
-	transition: opacity anim(0.5) ease, transform anim(0.5) ease, filter anim(0.5) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.5) ease, filter tex.anim(0.5) ease;
 
 	&._active {
 		opacity: 1;
@@ -189,7 +191,7 @@
 .a-slide-left {
 	opacity: 0;
 	transform: translateX(-100%);
-	transition: transform anim(0.9) cubic-bezier(0.25, 1, 0.5, 1), opacity anim(0.5) ease;
+	transition: transform tex.anim(0.9) cubic-bezier(0.25, 1, 0.5, 1), opacity tex.anim(0.5) ease;
 
 	&._active {
 		opacity: 1;
@@ -200,7 +202,7 @@
 .a-slide-right {
 	opacity: 0;
 	transform: translateX(100%);
-	transition: transform anim(0.9) cubic-bezier(0.25, 1, 0.5, 1), opacity anim(0.5) ease;
+	transition: transform tex.anim(0.9) cubic-bezier(0.25, 1, 0.5, 1), opacity tex.anim(0.5) ease;
 
 	&._active {
 		opacity: 1;
@@ -221,14 +223,14 @@
 .a-flip-inner {
 	transform: rotateY(90deg);
 	opacity: 0;
-	transition: transform anim(1.2) cubic-bezier(0.25, 1, 0.5, 1), opacity anim(0.6) ease;
+	transition: transform tex.anim(1.2) cubic-bezier(0.25, 1, 0.5, 1), opacity tex.anim(0.6) ease;
 	transform-style: preserve-3d;
 }
 
 .a-stagger > * {
 	opacity: 0;
 	transform: translateY(2rem);
-	transition: opacity anim(0.5) ease, transform anim(0.5) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.5) ease;
 	will-change: opacity, transform;
 }
 
@@ -236,21 +238,21 @@
 	.a-stagger._active > *:nth-child(#{$i}) {
 		opacity: 1;
 		transform: translateY(0);
-		transition-delay: anim-delay($i * 0.1);
+		transition-delay: tex.anim-delay($i * 0.1);
 	}
 }
 
 .a-stagger-x > * {
 	opacity: 0;
 	transform: translateX(-2rem);
-	transition: opacity anim(0.5) ease, transform anim(0.5) ease;
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.5) ease;
 }
 
 @for $i from 1 through 20 {
 	.a-stagger-x._active > *:nth-child(#{$i}) {
 		opacity: 1;
 		transform: translateX(0);
-		transition-delay: anim-delay($i * 0.1);
+		transition-delay: tex.anim-delay($i * 0.1);
 	}
 }
 
@@ -264,7 +266,7 @@
 		inset: 0;
 		background: currentColor;
 		transform: translateX(0);
-		transition: transform anim(1) cubic-bezier(0.22, 1, 0.36, 1);
+		transition: transform tex.anim(1) cubic-bezier(0.22, 1, 0.36, 1);
 		z-index: 1;
 	}
 
@@ -276,7 +278,7 @@
 .a-rotate-in {
 	opacity: 0;
 	transform: rotate(-15deg) scale(0.9);
-	transition: opacity anim(0.5) ease, transform anim(0.6) cubic-bezier(0.22, 1, 0.36, 1);
+	transition: opacity tex.anim(0.5) ease, transform tex.anim(0.6) cubic-bezier(0.22, 1, 0.36, 1);
 
 	&._active {
 		opacity: 1;
@@ -287,7 +289,7 @@
 .a-reveal-circle {
 	opacity: 0;
 	clip-path: circle(0% at 50% 50%);
-	transition: clip-path anim(1) cubic-bezier(0.22, 1, 0.36, 1), opacity anim(0.4) ease;
+	transition: clip-path tex.anim(1) cubic-bezier(0.22, 1, 0.36, 1), opacity tex.anim(0.4) ease;
 
 	&._active {
 		opacity: 1;
@@ -298,7 +300,7 @@
 .a-bounce-up {
 	opacity: 0;
 	transform: translateY(40px);
-	transition: transform anim(0.7) cubic-bezier(0.34, 1.56, 0.64, 1), opacity anim(0.4) ease;
+	transition: transform tex.anim(0.7) cubic-bezier(0.34, 1.56, 0.64, 1), opacity tex.anim(0.4) ease;
 
 	&._active {
 		opacity: 1;
@@ -312,9 +314,9 @@
 	filter: blur(8px);
 	transform-origin: center bottom;
 	transition:
-		opacity anim(0.5) ease,
-		transform anim(0.75) cubic-bezier(0.22, 1, 0.36, 1),
-		filter anim(0.65) cubic-bezier(0.22, 1, 0.36, 1);
+		opacity tex.anim(0.5) ease,
+		transform tex.anim(0.75) cubic-bezier(0.22, 1, 0.36, 1),
+		filter tex.anim(0.65) cubic-bezier(0.22, 1, 0.36, 1);
 
 	&._active {
 		opacity: 1;
@@ -327,13 +329,13 @@
 	&.a-bounce-up,
 	&.a-scale-up {
 		opacity: 0;
-		transform: translateY(rem(14)) scale(0.82) rotate(-2deg);
-		filter: blur(rem(4));
+		transform: translateY(tex.rem(14)) scale(0.82) rotate(-2deg);
+		filter: blur(tex.rem(4));
 		transform-origin: left center;
 		transition:
-			opacity anim(0.45) ease,
-			transform anim(0.65) cubic-bezier(0.34, 1.45, 0.64, 1),
-			filter anim(0.5) ease;
+			opacity tex.anim(0.45) ease,
+			transform tex.anim(0.65) cubic-bezier(0.34, 1.45, 0.64, 1),
+			filter tex.anim(0.5) ease;
 
 		&._active {
 			opacity: 1;

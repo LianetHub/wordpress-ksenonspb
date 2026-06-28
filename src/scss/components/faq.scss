@@ -1,48 +1,51 @@
-.faq {
-	padding: rem(40) 0;
+@use "../global/tokens";
+@use "../tex";
 
-	@media (min-width: $md3) {
-		padding: rem(36) 0;
+.faq {
+	padding: tex.rem(40) 0;
+
+	@media (min-width: tex.$md3) {
+		padding: tex.rem(36) 0;
 
 		&:last-child {
-			padding-bottom: rem(120);
+			padding-bottom: tex.rem(120);
 		}
 	}
 
 	&__head {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
-		margin-bottom: rem(17);
+		gap: tex.rem(10);
+		margin-bottom: tex.rem(17);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			flex-direction: row;
 			align-items: flex-start;
 			justify-content: space-between;
-			gap: rem(24);
-			margin-bottom: rem(40);
+			gap: tex.rem(24);
+			margin-bottom: tex.rem(40);
 		}
 	}
 
 	&__tag {
 		align-self: flex-start;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			order: 2;
 			flex-shrink: 0;
-			margin-top: rem(10);
+			margin-top: tex.rem(10);
 		}
 	}
 
 	&__title {
-		color: $color-primary;
+		color: tokens.$color-primary;
 	}
 
 	&__columns {
 		display: grid;
-		gap: rem(20);
+		gap: tex.rem(20);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 
 			grid-template-columns: 1fr 1fr;
 
@@ -52,7 +55,7 @@
 	&__col {
 		display: flex;
 		flex-direction: column;
-		gap: rem(20);
+		gap: tex.rem(20);
 		min-width: 0;
 	}
 }

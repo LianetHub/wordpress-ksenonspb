@@ -1,24 +1,27 @@
+@use "../global/tokens";
+@use "../tex";
+
 // Универсальная форма (статика + Contact Form 7)
 
 @mixin form-control-on-brand {
 	display: block;
 	width: 100%;
-	min-height: rem(52);
-	padding: rem(16) rem(14);
-	border: rem(0.5) solid #fff;
-	border-radius: rem(10);
+	min-height: tex.rem(52);
+	padding: tex.rem(16) tex.rem(14);
+	border: tex.rem(0.5) solid #fff;
+	border-radius: tex.rem(10);
 	background: transparent;
 	color: #fff;
-	font-family: $font-family;
+	font-family: tex.$font-family;
 	font-weight: 400;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 	transition: border-color 0.25s ease, opacity 0.2s ease;
 
-	@media (min-width:$md4) {
-		padding: rem(20);
-		font-size: rem(18);
-		min-height: rem(62);
+	@media (min-width:tex.$md4) {
+		padding: tex.rem(20);
+		font-size: tex.rem(18);
+		min-height: tex.rem(62);
 
 	}
 
@@ -29,7 +32,7 @@
 	&:focus {
 		outline: none;
 		border-color: #fff;
-		border-width: rem(1);
+		border-width: tex.rem(1);
 	}
 
 	&:disabled,
@@ -44,27 +47,27 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	min-height: rem(52);
-	padding: rem(16) rem(16);
+	min-height: tex.rem(52);
+	padding: tex.rem(16) tex.rem(16);
 	border: 0;
-	border-radius: rem(10);
-	background: $color-surface-mint;
-	color: $color-primary;
-	font-family: $font-family;
+	border-radius: tex.rem(10);
+	background: tokens.$color-surface-mint;
+	color: tokens.$color-primary;
+	font-family: tex.$font-family;
 	font-weight: 500;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: background-color 0.2s ease, transform 0.2s ease;
-	font-size: rem(17);
+	font-size: tex.rem(17);
 
 	margin-top: 0.5rem;
 
-	@media (min-width:$md4) {
+	@media (min-width:tex.$md4) {
 		margin-top: 0;
-		min-height: rem(60);
-		font-size: rem(20);
+		min-height: tex.rem(60);
+		font-size: tex.rem(20);
 	}
 
 	@media (any-hover: hover) {
@@ -81,14 +84,14 @@
 .form {
 	display: flex;
 	flex-direction: column;
-	gap: rem(10);
+	gap: tex.rem(10);
 
 	&__row {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: rem(10);
+		gap: tex.rem(10);
 
-		@media (min-width: $md4) {
+		@media (min-width: tex.$md4) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
@@ -102,11 +105,11 @@
 		@include form-control-on-brand;
 
 		&:is(textarea) {
-			min-height: rem(110);
+			min-height: tex.rem(110);
 			resize: none;
 
-			@media (min-width:$md4) {
-				min-height: rem(137);
+			@media (min-width:tex.$md4) {
+				min-height: tex.rem(137);
 
 			}
 		}
@@ -126,7 +129,7 @@
 .form-field-wrap {
 	display: flex;
 	flex-direction: column;
-	gap: rem(8);
+	gap: tex.rem(8);
 }
 
 .form-field__label {
@@ -161,7 +164,7 @@ $cf7-error-border: #ff0000;
 	margin-top: 0.25em;
 	text-align: left;
 	color: $cf7-error-text;
-	font-size: rem(12);
+	font-size: tex.rem(12);
 	line-height: 1.3;
 }
 
@@ -234,7 +237,7 @@ $cf7-error-border: #ff0000;
 		.wpcf7-submit {
 			@include cf7-submit-inner-reset;
 			min-height: inherit;
-			padding: rem(16);
+			padding: tex.rem(16);
 			color: inherit;
 			font: inherit;
 			font-weight: 500;
@@ -271,16 +274,16 @@ $cf7-error-border: #ff0000;
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			width: rem(20);
-			height: rem(20);
-			border: rem(3) solid currentColor;
+			width: tex.rem(20);
+			height: tex.rem(20);
+			border: tex.rem(3) solid currentColor;
 			border-bottom-color: transparent;
 			border-radius: 50%;
 			transform: translate(-50%, -50%);
 			transform-origin: center;
 			animation: cf7-spinner-rotation 1s linear infinite;
 			z-index: 3;
-			color: $color-primary;
+			color: tokens.$color-primary;
 		}
 	}
 }

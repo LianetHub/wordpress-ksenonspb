@@ -1,3 +1,5 @@
+@use "../tex";
+
 [data-motion] {
 	--mx: 0px;
 	--my: 0px;
@@ -36,7 +38,7 @@
 		background: url("@img/decor-bg.svg") center 86% / 90% auto no-repeat;
 		@include motion-animation;
 
-		@media (min-width: $md4) {
+		@media (min-width: tex.$md4) {
 			background: url("@img/decor-bg.svg") 67% 10% / auto no-repeat;
 		}
 	}

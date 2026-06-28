@@ -1,6 +1,9 @@
+@use "../../components/motion-animation";
+@use "../../tex";
+
 .policy {
 	position: relative;
-	padding: rem(40) 0 rem(80);
+	padding: tex.rem(40) 0 tex.rem(80);
 	overflow: hidden;
 
 	&::before {
@@ -10,15 +13,15 @@
 		z-index: 0;
 		background: url("@img/policy-decor.svg") 0 0 / 100% auto repeat-y;
 		pointer-events: none;
-		@include motion-animation;
+		@include motion-animation.motion-animation;
 	}
 
-	@media (max-width: $md4) {
-		padding: rem(16) 0 rem(48);
+	@media (max-width: tex.$md4) {
+		padding: tex.rem(16) 0 tex.rem(48);
 	}
 
-	@media (min-width: $md2) {
-		padding: rem(20) 0 rem(100);
+	@media (min-width: tex.$md2) {
+		padding: tex.rem(20) 0 tex.rem(100);
 	}
 
 
@@ -28,7 +31,7 @@
 	}
 
 	&__inner {
-		max-width: rem(876);
+		max-width: tex.rem(876);
 		margin: 0 auto;
 	}
 }

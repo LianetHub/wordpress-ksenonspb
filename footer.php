@@ -65,10 +65,7 @@ $link_cookies = ksenon_get_option('ssylka_cookies');
 			<?php if ($copyright) : ?>
 				<p class="footer__copy"><?php echo esc_html($copyright); ?></p>
 			<?php endif; ?>
-			<a href="https://ds-art.ru/" target="_blank" rel="noopener noreferrer" aria-label="Сайт разработан компанией DS-ART" class="footer__dev">
-				<img class="footer__dev-logo" src="<?php echo esc_url(ksenon_assets_uri('img/ds-art-logo.svg')); ?>" alt="" width="26" height="22" loading="lazy" aria-hidden="true">
-				<span class="footer__dev-text"><?php esc_html_e('Сайт разработан компанией DS-ART', 'ksenonspb'); ?></span>
-			</a>
+		
 		</div>
 	</div>
 </footer>

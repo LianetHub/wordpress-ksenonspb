@@ -1,6 +1,8 @@
 import * as nodePath from 'path';
 
-const rootFolder = nodePath.basename(nodePath.resolve());
+import { env } from './env.js';
+
+const rootFolder = nodePath.basename( nodePath.resolve() );
 const buildFolder = './assets';
 const srcFolder = './src';
 
@@ -48,5 +50,5 @@ export const path = {
 	buildFolder,
 	srcFolder,
 	rootFolder,
-	ftp: '',
+	ftp: env.FTP_REMOTE_PATH,
 };

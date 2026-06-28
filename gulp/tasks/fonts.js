@@ -3,8 +3,8 @@ import fonter from "gulp-fonter";
 import ttf2woff2 from "gulp-ttf2woff2";
 
 export const otf2ttf = () => {
-    return app.gulp
-        .src(`${app.path.srcFolder}/fonts/*.otf`, {})
+	return app.gulp
+		.src( `${ app.path.srcFolder }/fonts/*.otf`, { allowEmpty: true } )
         .pipe(
             app.plugins.plumber(
                 app.plugins.notify.onError({
@@ -22,8 +22,8 @@ export const otf2ttf = () => {
 };
 
 export const ttfToWoff = () => {
-    return app.gulp
-        .src(`${app.path.srcFolder}/fonts/*.ttf`, {})
+	return app.gulp
+		.src( `${ app.path.srcFolder }/fonts/*.ttf`, { allowEmpty: true } )
         .pipe(
             app.plugins.plumber(
                 app.plugins.notify.onError({

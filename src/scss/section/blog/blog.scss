@@ -1,3 +1,4 @@
+@use "sass:color";
 $blog-date-muted: rgba($color-text-body, 0.6);
 
 .blog-hero {
@@ -298,7 +299,7 @@ $blog-date-muted: rgba($color-text-body, 0.6);
 
 		@media (any-hover: hover) {
 			&:not(._active):hover {
-				background: darken($color-surface-tab, 3%);
+				background: color.adjust($color-surface-tab, $lightness: -3%);
 			}
 		}
 	}

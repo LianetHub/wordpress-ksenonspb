@@ -1,23 +1,26 @@
-.footer {
-	padding-top: rem(16);
-	padding-bottom: rem(24);
-	color: #fff;
-	background: linear-gradient(106.85deg, $color-primary 0%, $color-accent 100%);
+@use "../tex";
+@use "tokens";
 
-	@media (min-width: $md3) {
-		padding-top: rem(20);
-		padding-bottom: rem(30);
-		background: linear-gradient(157.64deg, $color-primary 0%, $color-accent 100%);
+.footer {
+	padding-top: tex.rem(16);
+	padding-bottom: tex.rem(24);
+	color: #fff;
+	background: linear-gradient(106.85deg, tokens.$color-primary 0%, tokens.$color-accent 100%);
+
+	@media (min-width: tex.$md3) {
+		padding-top: tex.rem(20);
+		padding-bottom: tex.rem(30);
+		background: linear-gradient(157.64deg, tokens.$color-primary 0%, tokens.$color-accent 100%);
 	}
 
 	&__container {
 
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			display: grid;
 			grid-template-columns: 1fr 1px 1fr;
-			column-gap: rem(40);
-			row-gap: rem(56);
+			column-gap: tex.rem(40);
+			row-gap: tex.rem(56);
 			align-items: start;
 
 		}
@@ -27,15 +30,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: rem(16);
+		gap: tex.rem(16);
 		width: 100%;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			align-items: flex-end;
-			padding-right: rem(6);
+			padding-right: tex.rem(6);
 			grid-column: 1;
 			grid-row: 1;
-			max-width: rem(620);
+			max-width: tex.rem(620);
 		}
 	}
 
@@ -46,14 +49,14 @@
 
 		& img {
 			display: block;
-			width: rem(129);
-			height: rem(36);
+			width: tex.rem(129);
+			height: tex.rem(36);
 			object-fit: contain;
 			object-position: left bottom;
 
-			@media (min-width: $md3) {
-				width: rem(141);
-				height: rem(39);
+			@media (min-width: tex.$md3) {
+				width: tex.rem(141);
+				height: tex.rem(39);
 			}
 		}
 	}
@@ -63,9 +66,9 @@
 		color: #fff;
 		text-transform: uppercase;
 		white-space: nowrap;
-		font-family: $font-inter;
-		letter-spacing: em(-0.34, 24);
-		@include adaptive-font(18, 24);
+		font-family: tex.$font-inter;
+		letter-spacing: tex.em(-0.34, 24);
+		@include tex.adaptive-font(18, 24);
 		position: relative;
 		&::after {
 			content: "";
@@ -79,7 +82,7 @@
 			background: linear-gradient(90deg, transparent 0%, #fff 33%, #fff 66%, transparent 100%);
 			transform: scaleX(0.35);
 			transform-origin: center;
-			transition: opacity $nav-link-hover-motion, transform $nav-link-hover-motion;
+			transition: opacity tokens.$nav-link-hover-motion, transform tokens.$nav-link-hover-motion;
 			pointer-events: none;
 		}
 
@@ -96,13 +99,13 @@
 
 	&__nav {
 		width: 100%;
-		margin-top: rem(40);
+		margin-top: tex.rem(40);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			grid-column: 3;
 			grid-row: 1;
-			margin-top: rem(10);
-			max-width: rem(619);
+			margin-top: tex.rem(10);
+			max-width: tex.rem(619);
 			justify-self: end;
 			width: 100%;
 		}
@@ -112,9 +115,9 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: rem(12);
+		gap: tex.rem(12);
 		width: 100%;
-		font-family: $font-inter;
+		font-family: tex.$font-inter;
 	}
 
 	&__link {
@@ -126,7 +129,7 @@
 		letter-spacing: -0.04em;
 		white-space: nowrap;
 		position: relative;
-		@include adaptive-font(14, 16);
+		@include tex.adaptive-font(14, 16);
 
 		&::after {
 			content: "";
@@ -140,7 +143,7 @@
 			background: linear-gradient(90deg, transparent 0%, #fff 33%, #fff 66%, transparent 100%);
 			transform: scaleX(0.35);
 			transform-origin: center;
-			transition: opacity $nav-link-hover-motion, transform $nav-link-hover-motion;
+			transition: opacity tokens.$nav-link-hover-motion, transform tokens.$nav-link-hover-motion;
 			pointer-events: none;
 		}
 
@@ -161,25 +164,25 @@
 	&__divider {
 		background: rgba(255, 255, 255, 0.4);
 
-		@media (max-width:$md5) {
+		@media (max-width:tex.$md5) {
 			display: none;
 		}
 
-		@media (max-width: $md3) {
+		@media (max-width: tex.$md3) {
 			width: 100%;
 			height: 1px;
-			margin: rem(40) 0;
+			margin: tex.rem(40) 0;
 
 
 		}
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			grid-column: 2;
 			grid-row: span 2;
 			width: 1px;
 			align-self: stretch;
-			margin-top: rem(-20);
-			margin-bottom: rem(-30);
+			margin-top: tex.rem(-20);
+			margin-bottom: tex.rem(-30);
 		}
 	}
 
@@ -187,34 +190,34 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: rem(10);
+		gap: tex.rem(10);
 		width: 100%;
 		margin-top: 2.25rem;
 
-		@media (min-width:$md5) {
+		@media (min-width:tex.$md5) {
 			margin-top: 0;
 		}
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			grid-column: 1;
 			grid-row: 2;
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
-			gap: rem(18);
-			max-width: rem(620);
+			gap: tex.rem(18);
+			max-width: tex.rem(620);
 		}
 	}
 
 	&__doc {
-		font-family: "Manrope", $font-family;
+		font-family: "Manrope", tex.$font-family;
 		font-weight: 400;
 		line-height: 1.3;
-		color: $color-surface-uikit;
+		color: tokens.$color-surface-uikit;
 		text-decoration: underline;
 		text-underline-offset: 2px;
 		white-space: nowrap;
-		@include adaptive-font(14, 16);
+		@include tex.adaptive-font(14, 16);
 
 		transition: opacity 0.2s ease;
 
@@ -230,33 +233,33 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: rem(10);
+		gap: tex.rem(10);
 		width: 100%;
-		margin-top: rem(40);
+		margin-top: tex.rem(40);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			grid-column: 3;
 			grid-row: 2;
 			flex-direction: row;
 			align-items: flex-end;
 			justify-content: space-between;
-			gap: rem(40);
+			gap: tex.rem(40);
 			margin-top: 0;
-			max-width: rem(620);
+			max-width: tex.rem(620);
 			justify-self: end;
 		}
 	}
 
 	&__copy {
-		font-family: "Manrope", $font-family;
+		font-family: "Manrope", tex.$font-family;
 		font-weight: 500;
 		line-height: 1.3;
 		color: #f7f7f7;
 		text-align: center;
 		white-space: nowrap;
-		@include adaptive-font(12, 14);
+		@include tex.adaptive-font(12, 14);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			text-align: left;
 		}
 	}
@@ -265,7 +268,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: rem(10);
+		gap: tex.rem(10);
 		transition: transform .4s cubic-bezier(.25,.46,.45,.94);
 		@media (any-hover: hover) {
 			&:hover {
@@ -281,8 +284,8 @@
 	&__dev-logo {
 		display: block;
 		flex-shrink: 0;
-		width: rem(26);
-		height: rem(22);
+		width: tex.rem(26);
+		height: tex.rem(22);
 		object-fit: contain;
 		object-position: center bottom;
 		filter: grayscale(100%);
@@ -290,11 +293,11 @@
 	}
 
 	&__dev-text {
-		font-family: "Manrope", $font-family;
+		font-family: "Manrope", tex.$font-family;
 		font-weight: 500;
 		line-height: 1.3;
 		color: #f7f7f7;
 		white-space: nowrap;
-		@include adaptive-font(12, 14);
+		@include tex.adaptive-font(12, 14);
 	}
 }

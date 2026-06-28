@@ -1,10 +1,14 @@
+@use "sass:color";
+@use "../../global/tokens";
+@use "../../tex";
+
 @use "sass:math";
 
 .audience {
-	padding: rem(60) 0 rem(20);
+	padding: tex.rem(60) 0 tex.rem(20);
 
-	@media (min-width:$md3) {
-		padding: rem(100) 0 rem(56);
+	@media (min-width:tex.$md3) {
+		padding: tex.rem(100) 0 tex.rem(56);
 
 	}
 
@@ -12,57 +16,57 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: rem(10);
-		margin-bottom: rem(20);
+		gap: tex.rem(10);
+		margin-bottom: tex.rem(20);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			flex-direction: row;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			column-gap: rem(32);
-			row-gap: rem(16);
-			margin-bottom: rem(32);
+			column-gap: tex.rem(32);
+			row-gap: tex.rem(16);
+			margin-bottom: tex.rem(32);
 		}
 
-		@media (min-width:$md2) {
+		@media (min-width:tex.$md2) {
 			flex-wrap: nowrap;
 		}
 	}
 
 	&__intro {
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 
-			max-width: rem(675);
+			max-width: tex.rem(675);
 		}
 	}
 
 	&__tag {
 		order: -1;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			order: 0;
 			flex-shrink: 0;
 		}
 	}
 
 	&__photo {
-		border-radius: rem(10);
+		border-radius: tex.rem(10);
 		overflow: hidden;
 		margin-top: 0.5rem;
 
-		@media (max-width:$md3) {
+		@media (max-width:tex.$md3) {
 			aspect-ratio: math.div(332, 158);
 		}
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			margin-top: 0;
 			width: 100%;
 			order: 1;
 		}
 
-		@media (min-width:$md2) {
-			max-width: rem(427);
-			height: rem(212);
+		@media (min-width:tex.$md2) {
+			max-width: tex.rem(427);
+			height: tex.rem(212);
 			order: 0;
 		}
 
@@ -71,17 +75,17 @@
 
 	&__scene {
 		position: relative;
-		min-height: rem(540);
+		min-height: tex.rem(540);
 
-		@media (min-width: $md3) {
-			min-height: rem(477);
-			margin-top: rem(8);
+		@media (min-width: tex.$md3) {
+			min-height: tex.rem(477);
+			margin-top: tex.rem(8);
 		}
 	}
 
 	&__molecules {
 		display: block;
-		width: min(100%, rem(500));
+		width: min(100%, tex.rem(500));
 		height: auto;
 		margin: 0 auto;
 		object-fit: contain;
@@ -89,7 +93,7 @@
 		pointer-events: none;
 		position: absolute;
 		left: 50%;
-		top: rem(110);
+		top: tex.rem(110);
 		z-index: 0;
 		opacity: 0;
 		will-change: transform, opacity;
@@ -100,12 +104,12 @@
 			opacity: 1;
 		}
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			position: absolute;
 			left: 25.3%;
 			top: 0;
-			width: min(56%, rem(529));
-			max-width: rem(529);
+			width: min(56%, tex.rem(529));
+			max-width: tex.rem(529);
 			transform: translate3d(calc(var(--mx, 0px) + var(--scroll-x, 0px)), calc(var(--my, 0px) + var(--scroll-y, 0px)), 0) rotate(var(--mrotate, 0deg));
 		}
 
@@ -114,7 +118,7 @@
 			will-change: auto;
 			transform: translateX(-50%);
 
-			@media (min-width: $md3) {
+			@media (min-width: tex.$md3) {
 				transform: none;
 			}
 		}
@@ -123,75 +127,75 @@
 	&__cards {
 		position: relative;
 		z-index: 1;
-		min-height: rem(500);
+		min-height: tex.rem(500);
 
-		@media (min-width: $md3) {
-			min-height: rem(477);
+		@media (min-width: tex.$md3) {
+			min-height: tex.rem(477);
 		}
 	}
 
 	&__card-wrap {
 		position: absolute;
-		width: rem(246);
-		max-width: calc(100% - rem(32));
+		width: tex.rem(246);
+		max-width: calc(100% - tex.rem(32));
 		z-index: 1;
 
-		@media (min-width: $md3) {
-			max-width: rem(331);
+		@media (min-width: tex.$md3) {
+			max-width: tex.rem(331);
 			width: 100%;
 		}
 
 		&:nth-child(1) {
 			left: 0;
-			top: rem(0);
+			top: tex.rem(0);
 
-			@media (min-width:$md3) {
+			@media (min-width:tex.$md3) {
 				left: 0;
-				top: rem(38);
+				top: tex.rem(38);
 			}
 		}
 
 		&:nth-child(2) {
 			left: 0;
-			top: rem(321);
+			top: tex.rem(321);
 
-			@media (min-width:$md3) {
+			@media (min-width:tex.$md3) {
 				left: 45.7%;
-				top: rem(30);
+				top: tex.rem(30);
 				right: auto;
-				max-width: rem(400);
+				max-width: tex.rem(400);
 			}
 		}
 
 		&:nth-child(3) {
 			right: 0;
-			top: rem(391);
+			top: tex.rem(391);
 
-			@media (min-width:$md3) {
+			@media (min-width:tex.$md3) {
 				left: auto;
 				top: 13.1875rem;
-				max-width: rem(392);
+				max-width: tex.rem(392);
 			}
 		}
 
 		&:nth-child(4) {
 			right: 0;
-			top: rem(62);
+			top: tex.rem(62);
 
-			@media (min-width:$md3) {
+			@media (min-width:tex.$md3) {
 				left: 8.34%;
 				right: auto;
-				top: rem(280);
+				top: tex.rem(280);
 			}
 		}
 
 		&:nth-child(5) {
 			left: 0;
-			top: rem(461);
+			top: tex.rem(461);
 
-			@media (min-width:$md3) {
+			@media (min-width:tex.$md3) {
 				left: 43.4%;
-				top: rem(328);
+				top: tex.rem(328);
 				right: auto;
 			}
 		}
@@ -202,14 +206,14 @@
 		flex-wrap: nowrap;
 		align-items: center;
 		justify-content: space-between;
-		gap: rem(4);
-		row-gap: rem(12);
+		gap: tex.rem(4);
+		row-gap: tex.rem(12);
 		width: 100%;
-		padding: rem(8) rem(16);
-		border: 0.5px solid $color-primary;
-		border-radius: $radius-tab;
-		background: $color-surface-tab;
-		color: $color-primary;
+		padding: tex.rem(8) tex.rem(16);
+		border: 0.5px solid tokens.$color-primary;
+		border-radius: tokens.$radius-tab;
+		background: tokens.$color-surface-tab;
+		color: tokens.$color-primary;
 		text-align: left;
 		cursor: pointer;
 		transition:
@@ -219,20 +223,20 @@
 
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: darken($color: $color-surface-tab, $amount: 10);
+				background-color: color.adjust($color: tokens.$color-surface-tab, $lightness: -10%);
 				box-shadow: rgba(38, 102, 140, 0.12) 0px 0.5rem 1.5rem;
 			}
 		}
 
-		@media (min-width: $md3) {
-			gap: rem(20);
-			padding: rem(12) rem(20);
+		@media (min-width: tex.$md3) {
+			gap: tex.rem(20);
+			padding: tex.rem(12) tex.rem(20);
 		}
 
 		&._active {
 			flex-wrap: wrap;
 			align-items: flex-start;
-			border-radius: rem(10);
+			border-radius: tex.rem(10);
 
 			.audience__card-text {
 				display: block;
@@ -249,20 +253,20 @@
 		min-width: 0;
 		font-style: italic;
 		font-weight: 500;
-		font-size: rem(18);
+		font-size: tex.rem(18);
 		line-height: 1.2;
 		align-self: center;
 
-		@media (min-width: $md2) {
-			font-size: rem(24);
+		@media (min-width: tex.$md2) {
+			font-size: tex.rem(24);
 		}
 	}
 
 	&__toggle {
 		flex-shrink: 0;
 		position: relative;
-		width: rem(36);
-		height: rem(36);
+		width: tex.rem(36);
+		height: tex.rem(36);
 		border-radius: 50%;
 
 
@@ -273,19 +277,19 @@
 			left: 50%;
 			top: 50%;
 			transform: translate(-50%, -50%);
-			background: $color-primary;
-			border-radius: rem(2);
+			background: tokens.$color-primary;
+			border-radius: tex.rem(2);
 			transition: opacity 0.2s ease;
 		}
 
 		&::before {
-			width: rem(16);
-			height: rem(3);
+			width: tex.rem(16);
+			height: tex.rem(3);
 		}
 
 		&::after {
-			width: rem(3);
-			height: rem(16);
+			width: tex.rem(3);
+			height: tex.rem(16);
 			opacity: 1;
 		}
 	}
@@ -297,13 +301,13 @@
 	&__card-text {
 		display: none;
 		width: 100%;
-		font-size: rem(14);
+		font-size: tex.rem(14);
 		line-height: 1.3;
-		color: $color-primary;
+		color: tokens.$color-primary;
 
 
-		@media (min-width: $md2) {
-			font-size: rem(18);
+		@media (min-width: tex.$md2) {
+			font-size: tex.rem(18);
 		}
 	}
 }

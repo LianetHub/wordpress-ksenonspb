@@ -1,15 +1,20 @@
-.contacts {
-	padding: rem(40) 0;
+@use "../../components/map-shimmer";
+@use "../../components/motion-animation";
+@use "../../global/tokens";
+@use "../../tex";
 
-	@media (min-width: $md3) {
-		padding: rem(48) 0;
+.contacts {
+	padding: tex.rem(40) 0;
+
+	@media (min-width: tex.$md3) {
+		padding: tex.rem(48) 0;
 	}
 
 	&__box {
 		position: relative;
-		padding: rem(14);
-		border-radius: rem(10);
-		background: $color-accent;
+		padding: tex.rem(14);
+		border-radius: tex.rem(10);
+		background: tokens.$color-accent;
 		color: #fff;
 		overflow: hidden;
 
@@ -20,17 +25,17 @@
 			z-index: 0;
 			background: url("@img/contacts-decor.svg") center 0 / cover no-repeat;
 			pointer-events: none;
-			@include motion-animation;
+			@include motion-animation.motion-animation;
 		}
 
-		@media (min-width: $md3) {
-			padding: rem(40);
-			border-radius: rem(20);
+		@media (min-width: tex.$md3) {
+			padding: tex.rem(40);
+			border-radius: tex.rem(20);
 		}
 	}
 
 	&__container {
-		@media (max-width:$md5) {
+		@media (max-width:tex.$md5) {
 			padding: 0;
 		}
 	}
@@ -44,23 +49,23 @@
 	&__hero {
 		display: flex;
 		flex-direction: column;
-		gap: rem(20);
-		margin-bottom: rem(20);
+		gap: tex.rem(20);
+		margin-bottom: tex.rem(20);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			display: grid;
-			grid-template-columns: rem(610) rem(387);
+			grid-template-columns: tex.rem(610) tex.rem(387);
 			justify-content: space-between;
 			align-items: start;
-			column-gap: rem(20);
-			margin-bottom: rem(33);
+			column-gap: tex.rem(20);
+			margin-bottom: tex.rem(33);
 		}
 	}
 
 	&__lead {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
+		gap: tex.rem(10);
 		min-width: 0;
 	}
 
@@ -68,44 +73,44 @@
 
 	&__text {
 
-		max-width: rem(610);
-		font-size: rem(14);
+		max-width: tex.rem(610);
+		font-size: tex.rem(14);
 		line-height: 1.3;
 
-		@media (min-width: $md3) {
-			font-size: rem(18);
+		@media (min-width: tex.$md3) {
+			font-size: tex.rem(18);
 		}
 	}
 
 	&__figure {
 
-		border-radius: rem(10);
-		background: $color-surface-mint;
+		border-radius: tex.rem(10);
+		background: tokens.$color-surface-mint;
 		overflow: hidden;
 	}
 
 	&__photo {
 		display: block;
 		width: 100%;
-		height: rem(217);
+		height: tex.rem(217);
 		object-fit: cover;
 		object-position: center top;
 		transform: scale(1.06);
 		transform-origin: center center;
 
-		@media (min-width: $md3) {
-			height: rem(261);
+		@media (min-width: tex.$md3) {
+			height: tex.rem(261);
 		}
 	}
 
 	&__main {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: rem(10);
+		gap: tex.rem(10);
 
-		@media (min-width: $md3) {
-			grid-template-columns: minmax(0, rem(650)) 1fr;
-			column-gap: rem(20);
+		@media (min-width: tex.$md3) {
+			grid-template-columns: minmax(0, tex.rem(650)) 1fr;
+			column-gap: tex.rem(20);
 			align-items: start;
 		}
 	}
@@ -113,22 +118,22 @@
 	&__cards {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: rem(10);
+		gap: tex.rem(10);
 
-		@media (min-width: $md3) {
-			gap: rem(20);
+		@media (min-width: tex.$md3) {
+			gap: tex.rem(20);
 		}
 
 
 	}
 
 	&__map {
-		@include map-container-loading;
-		border-radius: rem(10);
-		height: rem(220);
+		@include map-shimmer.map-container-loading;
+		border-radius: tex.rem(10);
+		height: tex.rem(220);
 
-		@media (min-width: $md3) {
-			height: rem(404);
+		@media (min-width: tex.$md3) {
+			height: tex.rem(404);
 		}
 
 		iframe {

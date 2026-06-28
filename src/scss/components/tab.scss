@@ -1,18 +1,21 @@
+@use "../global/tokens";
+@use "../tex";
+
 // Таб 1 — pill-переключатель (аккордеон / фильтр)
 
 .tab {
 	display: inline-flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: rem(10);
+	gap: tex.rem(10);
 	width: 100%;
-	max-width: rem(315);
-	padding: rem(12) rem(20);
-	border: 0.5px solid $color-primary;
-	border-radius: $radius-tab;
-	background: $color-surface-tab;
-	color: $color-primary;
-	font-family: $font-family;
+	max-width: tex.rem(315);
+	padding: tex.rem(12) tex.rem(20);
+	border: 0.5px solid tokens.$color-primary;
+	border-radius: tokens.$radius-tab;
+	background: tokens.$color-surface-tab;
+	color: tokens.$color-primary;
+	font-family: tex.$font-family;
 	font-weight: 500;
 	font-style: italic;
 	line-height: 1.2;
@@ -25,12 +28,12 @@
 		border-width 0.25s ease,
 		color 0.25s ease,
 		opacity 0.2s ease;
-	@include adaptive-font(18, 24);
+	@include tex.adaptive-font(18, 24);
 
 	&__icon {
 		flex-shrink: 0;
-		width: rem(36);
-		height: rem(36);
+		width: tex.rem(36);
+		height: tex.rem(36);
 	}
 
 	@media (any-hover: hover) {
@@ -41,15 +44,15 @@
 
 	&--active,
 	&[aria-selected="true"] {
-		background: $color-accent;
-		border-color: $color-accent;
+		background: tokens.$color-accent;
+		border-color: tokens.$color-accent;
 		color: #fff;
 	}
 
 	&:disabled,
 	&[aria-disabled="true"],
 	&--disabled {
-		opacity: $state-tab-disabled-opacity;
+		opacity: tokens.$state-tab-disabled-opacity;
 		pointer-events: none;
 		cursor: not-allowed;
 	}

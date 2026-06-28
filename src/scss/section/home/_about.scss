@@ -1,19 +1,23 @@
-.about {
-	padding: rem(20) 0;
+@use "../../components/tag";
+@use "../../global/tokens";
+@use "../../tex";
 
-	@media (min-width: $md3) {
-		padding: rem(48) 0;
+.about {
+	padding: tex.rem(20) 0;
+
+	@media (min-width: tex.$md3) {
+		padding: tex.rem(48) 0;
 	}
 
 	&__layout {
 		display: flex;
 		flex-direction: column;
-		gap: rem(20);
+		gap: tex.rem(20);
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
-			column-gap: rem(26);
+			column-gap: tex.rem(26);
 			align-items: stretch;
 		}
 	}
@@ -21,10 +25,10 @@
 	&__main {
 		display: flex;
 		flex-direction: column;
-		gap: rem(20);
+		gap: tex.rem(20);
 		min-width: 0;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			gap: 0;
 		}
 	}
@@ -32,10 +36,10 @@
 	&__head {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
+		gap: tex.rem(10);
 
-		@media (min-width: $md3) {
-			gap: rem(26);
+		@media (min-width: tex.$md3) {
+			gap: tex.rem(26);
 
 
 		}
@@ -46,24 +50,24 @@
 		align-items: center;
 		justify-content: center;
 		align-self: flex-start;
-		@include tag-base;
-		background: $color-accent;
+		@include tag.tag-base;
+		background: tokens.$color-accent;
 		color: #fff;
-		padding: rem(6) rem(10);
+		padding: tex.rem(6) tex.rem(10);
 		letter-spacing: -0.02em;
 		white-space: nowrap;
 
-		@media (min-width: $md3) {
-			height: rem(40);
-			padding: rem(10) rem(16);
-			font-size: rem(20);
+		@media (min-width: tex.$md3) {
+			height: tex.rem(40);
+			padding: tex.rem(10) tex.rem(16);
+			font-size: tex.rem(20);
 			letter-spacing: -0.02em;
 		}
 	}
 
 	&__logo-wrap {
 		display: block;
-		width: rem(171);
+		width: tex.rem(171);
 		max-width: 100%;
 		line-height: 0;
 
@@ -72,37 +76,37 @@
 			height: auto;
 		}
 
-		@media (min-width: $md3) {
-			width: rem(254);
+		@media (min-width: tex.$md3) {
+			width: tex.rem(254);
 		}
 	}
 
 	&__logo {}
 
 	&__photos {	
-		margin-top: rem(20);
+		margin-top: tex.rem(20);
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: rem(10);
+		gap: tex.rem(10);
 
-		@media (min-width: $md2) {
+		@media (min-width: tex.$md2) {
 			display: flex;
 			justify-content: flex-start;
-			gap: rem(20);
-			margin-top: rem(39);
+			gap: tex.rem(20);
+			margin-top: tex.rem(39);
 		}
 	}
 
 	&__photo {
 
-		border-radius: rem(10);
+		border-radius: tex.rem(10);
 		background: #fff;
 		overflow: hidden;
 
-		@media (min-width: $md2) {
-			flex: 0 0 rem(214);
-			width: rem(214);
-			height: rem(189);
+		@media (min-width: tex.$md2) {
+			flex: 0 0 tex.rem(214);
+			width: tex.rem(214);
+			height: tex.rem(189);
 		}
 
 
@@ -112,26 +116,26 @@
 	&__concept {
 		display: flex;
 		flex-direction: column;
-		gap: rem(12);
+		gap: tex.rem(12);
 
 
-		@media (min-width: $md3) {
-			max-width: rem(648);
-			margin-top: rem(40);
+		@media (min-width: tex.$md3) {
+			max-width: tex.rem(648);
+			margin-top: tex.rem(40);
 		}
 	}
 
 	&__concept-title {
 
-		color: $color-primary;
+		color: tokens.$color-primary;
 		font-weight: 500;
 		font-style: italic;
-		font-size: rem(18);
+		font-size: tex.rem(18);
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 
-		@media (min-width: $md3) {
-			font-size: rem(24);
+		@media (min-width: tex.$md3) {
+			font-size: tex.rem(24);
 			letter-spacing: -0.02em;
 		}
 	}
@@ -139,14 +143,14 @@
 	&__concept-lead,
 	&__concept-footer {
 
-		color: $color-text-body;
-		font-family: "Manrope", $font-family;
-		font-size: rem(14);
+		color: tokens.$color-text-body;
+		font-family: "Manrope", tex.$font-family;
+		font-size: tex.rem(14);
 		font-weight: 400;
 		line-height: 1.3;
 
-		@media (min-width: $md3) {
-			font-size: rem(16);
+		@media (min-width: tex.$md3) {
+			font-size: tex.rem(16);
 		}
 	}
 
@@ -154,34 +158,34 @@
 
 		display: flex;
 		flex-direction: column;
-		gap: rem(12);
+		gap: tex.rem(12);
 
-		@media (min-width: $md3) {
-			gap: rem(12);
+		@media (min-width: tex.$md3) {
+			gap: tex.rem(12);
 		}
 
 		li {
 			display: flex;
 			align-items: center;
-			gap: rem(10);
-			color: $color-text-body;
-			font-family: "Manrope", $font-family;
-			font-size: rem(14);
+			gap: tex.rem(10);
+			color: tokens.$color-text-body;
+			font-family: "Manrope", tex.$font-family;
+			font-size: tex.rem(14);
 			font-weight: 500;
 			line-height: 1.3;
 
-			@media (min-width: $md3) {
-				font-size: rem(16);
+			@media (min-width: tex.$md3) {
+				font-size: tex.rem(16);
 			}
 
 			&::before {
 				content: "";
-				flex: 0 0 rem(12);
-				width: rem(12);
-				height: rem(12);
-				margin: rem(4.5) 0;
+				flex: 0 0 tex.rem(12);
+				width: tex.rem(12);
+				height: tex.rem(12);
+				margin: tex.rem(4.5) 0;
 				border-radius: 50%;
-				background: $color-accent;
+				background: tokens.$color-accent;
 			}
 		}
 	}
@@ -189,13 +193,13 @@
 	&__aside {
 		display: flex;
 		flex-direction: column;
-		gap: rem(20);
+		gap: tex.rem(20);
 		min-width: 0;
 
-		@media (min-width: $md3) {
+		@media (min-width: tex.$md3) {
 			justify-content: space-between;
 			gap: 0;
-			max-width: rem(648);
+			max-width: tex.rem(648);
 			justify-self: end;
 			width: 100%;
 		}
@@ -203,15 +207,15 @@
 
 	&__lead {
 
-		color: $color-primary;
+		color: tokens.$color-primary;
 		font-weight: 500;
 		font-style: italic;
-		font-size: rem(18);
+		font-size: tex.rem(18);
 		line-height: 1.23;
 
 
-		@media (min-width: $md3) {
-			font-size: rem(24);
+		@media (min-width: tex.$md3) {
+			font-size: tex.rem(24);
 			margin-top: 3.5rem;
 			letter-spacing: -0.02em;
 		}
@@ -220,17 +224,17 @@
 	&__body {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
-		color: $color-text-body;
-		font-family: "Manrope", $font-family;
-		font-size: rem(14);
+		gap: tex.rem(10);
+		color: tokens.$color-text-body;
+		font-family: "Manrope", tex.$font-family;
+		font-size: tex.rem(14);
 		font-weight: 400;
 		line-height: 1.3;
 
-		@media (min-width: $md3) {
-			gap: rem(17);
-			font-size: rem(18);
-			max-width: rem(631);
+		@media (min-width: tex.$md3) {
+			gap: tex.rem(17);
+			font-size: tex.rem(18);
+			max-width: tex.rem(631);
 		}
 
 		p {}
