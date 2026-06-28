@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<ruleset name="Alergobot Theme">
+	<description>WordPress Coding Standards for the alergobot theme.</description>
+
+	<arg name="extensions" value="php"/>
+
+	<file>.</file>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>gulpfile.js</exclude-pattern>
+	<exclude-pattern>vitest.config.js</exclude-pattern>
+	<exclude-pattern>tools/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/src/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>*/acf-json/*</exclude-pattern>
+	<exclude-pattern>*/.vscode/*</exclude-pattern>
+	<exclude-pattern>wp-config.php</exclude-pattern>
+	<exclude-pattern>*/assets/*</exclude-pattern>
+	<exclude-pattern>*/css/*</exclude-pattern>
+	<exclude-pattern>*/js/*</exclude-pattern>
+	<exclude-pattern>*/gulp/*</exclude-pattern>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle"/>
+		<exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen"/>
+		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+		<exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited"/>
+		<exclude name="Generic.CodeAnalysis.AssignmentInCondition.Found"/>
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure"/>
+		<exclude name="Universal.Operators.DisallowShortTernary.Found"/>
+		<exclude name="WordPress.DB.SlowDBQuery"/>
+		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found"/>
+		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed"/>
+		<exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound"/>
+		<exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames.classFound"/>
+		<exclude name="WordPress.PHP.DevelopmentFunctions.error_log_error_log"/>
+	</rule>
+
+	<rule ref="WordPress.Security.EscapeOutput">
+		<properties>
+			<property name="customEscapingFunctions" type="array">
+				<element value="alergobot_esc_link"/>
+				<element value="alergobot_acf_image"/>
+				<element value="alergobot_acf_image_url"/>
+				<element value="alergobot_acf_link_url"/>
+				<element value="alergobot_acf_link_title"/>
+				<element value="alergobot_acf_link_target"/>
+				<element value="alergobot_anim_class"/>
+				<element value="alergobot_anim_wrap_open"/>
+				<element value="alergobot_anim_wrap_close"/>
+				<element value="alergobot_render_blog_pagination"/>
+				<element value="alergobot_render_catalog_gallery_product"/>
+				<element value="alergobot_get_map_html"/>
+				<element value="alergobot_render_favicons"/>
+				<element value="alergobot_render_main_menu"/>
+				<element value="alergobot_cf7_form"/>
+				<element value="alergobot_render_post_gallery"/>
+				<element value="alergobot_cf7_format_agree_value"/>
+				<element value="wp_kses_post"/>
+				<element value="wp_kses"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.Security.ValidatedSanitizedInput">
+		<properties>
+			<property name="customSanitizingFunctions" type="array">
+				<element value="absint"/>
+				<element value="sanitize_key"/>
+				<element value="sanitize_text_field"/>
+				<element value="wp_unslash"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

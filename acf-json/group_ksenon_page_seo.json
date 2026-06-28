@@ -1,0 +1,29 @@
+{
+    "key": "group_ksenon_page_seo",
+    "title": "SEO — страница",
+    "fields": [
+        {
+            "key": "field_ksenon_page_keywords",
+            "label": "Keywords",
+            "name": "keywords",
+            "type": "text",
+            "instructions": "Ключевые слова для meta name=\"keywords\". Через запятую.",
+            "default_value": "",
+            "placeholder": "ремонт фар, тюнинг оптики, ксенон, СПб"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 100,
+    "position": "side",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

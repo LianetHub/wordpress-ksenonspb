@@ -1,0 +1,90 @@
+{
+    "key": "group_ksenon_promotion",
+    "title": "Акция",
+    "fields": [
+        {
+            "key": "field_ksenon_promo_hero_title",
+            "label": "Hero — заголовок",
+            "name": "hero_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_promo_hero_image",
+            "label": "Hero — изображение",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_promo_before_after",
+            "label": "До и после",
+            "name": "before_after",
+            "type": "gallery",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_promo_package_items",
+            "label": "Что входит в пакет",
+            "name": "package_items",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_promo_package_text",
+                    "label": "Пункт",
+                    "name": "text",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_promo_package_items"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_promo_benefits",
+            "label": "Преимущества акции",
+            "name": "benefits_cards",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_promo_benefit_title",
+                    "label": "Заголовок",
+                    "name": "title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_promo_benefits"
+                },
+                {
+                    "key": "field_ksenon_promo_benefit_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 2,
+                    "parent_repeater": "field_ksenon_promo_benefits"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_promo_valid_until",
+            "label": "Действует до",
+            "name": "valid_until",
+            "type": "date_picker",
+            "display_format": "d.m.Y",
+            "return_format": "d.m.Y"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "promotion"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

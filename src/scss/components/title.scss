@@ -1,0 +1,66 @@
+// Утилиты заголовков (UI Kit — Desktop / Mobile)
+
+.title {
+	font-family: $font-inter;
+	font-weight: 450;
+	line-height: 1.2;
+	color: $color-primary;
+}
+
+.title-lg {
+	@include adaptive-font(26, 56);
+
+	letter-spacing: em(-0.452, 56);
+
+	@media (max-width: $md5) {
+		letter-spacing: em(-0.6, 26);
+	}
+}
+
+.title-md {
+	@include adaptive-font(24, 48);
+
+	@media (max-width:$md5) {
+		letter-spacing: -0.04em;
+
+	}
+}
+
+.title-md-xl {
+	@include adaptive-font(28, 48);
+	letter-spacing: -0.04em;
+}
+
+.title-sm {
+	font-style: italic;
+	letter-spacing: -0.02em;
+	@include adaptive-font(18, 24);
+}
+
+.title-md-sm {
+	font-style: italic;
+	letter-spacing: -0.02em;
+	@include adaptive-font(20, 24);
+}
+
+.title-popup {
+	@include adaptive-font(24, 32);
+	letter-spacing: -0.04em;
+}
+
+// Плотный трекинг на десктопе (panels)
+.title-md--panels {
+	letter-spacing: em(-0.26, 48);
+
+	@media (max-width: $md5) {
+		letter-spacing: em(-0.96, 24);
+	}
+}
+
+.title--light {
+	color: #fff;
+}
+
+.title--brand {
+	color: $color-brand;
+}

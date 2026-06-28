@@ -1,0 +1,243 @@
+.catalog {
+	padding: 1.875rem 0 2rem;
+
+	@media (min-width:$md3) {
+		padding: 1.875rem 0 4rem;
+
+	}
+
+	// .catalog__container
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: rem(20);
+
+		@media (min-width:$md3) {
+			flex-direction: row;
+			gap: 0;
+		}
+	}
+
+	// .catalog__main
+	&__main {
+		border-radius: 0.625rem;
+		background: #DEF3F9;
+		width: 100%;
+
+		padding: 1rem 1rem 7.5rem;
+
+		@media (min-width:$md4) {
+			padding: 2.5rem 2.5rem 7.5rem;
+
+		}
+
+		@media (min-width:$md3) {
+			flex: 1 1 auto;
+			width: auto;
+			padding: 2.5rem 15.5rem 2.5rem 2.5rem;
+
+		}
+
+	}
+
+	// .catalog__info
+	&__info {
+		max-width: 26.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+	}
+
+	// .catalog__title
+	&__title {}
+
+	// .catalog__text
+	&__text {
+		max-width: 26.5rem;
+	}
+
+	// .catalog__btn
+	&__btn {
+		@media (min-width:$md3) {
+			margin-top: rem(10);
+			max-width: 26.5rem;
+			width: 100%;
+
+		}
+	}
+
+	// .catalog__side
+	&__side {
+		display: contents;
+
+		@media (min-width:$md3) {
+			flex-shrink: 0;
+			display: flex;
+			align-items: flex-end;
+			flex-direction: column;
+
+		}
+	}
+
+	// .catalog__tag
+	&__tag {
+		position: relative;
+		z-index: 2;
+		order: -1;
+	}
+
+	// .catalog__gallery
+	&__gallery {
+		margin-top: -7.5rem;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.875rem;
+		padding: 0 1rem;
+		position: relative;
+		z-index: 1;
+
+		>._anim-items {
+			@for $i from 1 through 8 {
+				&:nth-child(#{$i}) {
+					transition-delay: #{$i * 0.115}s;
+				}
+			}
+		}
+
+		@media (min-width:$md3) {
+			margin-top: 4.12rem;
+			margin-left: -13rem;
+			padding: 0;
+			gap: 1.25rem;
+		}
+	}
+
+	&__gallery-decor {
+		position: absolute;
+		bottom: -25%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url("@img/catalog-decor.svg") center bottom / contain no-repeat;
+		z-index: -1;
+		pointer-events: none;
+		@include motion-animation;
+
+		@media (min-width:$md3) {
+			top: -6rem;
+			bottom: auto;
+			background: url("@img/catalog-decor.svg") center / contain no-repeat;
+		}
+	}
+
+	&__product-wrapper {
+		display: flex;
+		flex-direction: column;
+
+		.catalog__product {
+			flex: 1 1 auto;
+		}
+	}
+
+	// .catalog__product
+	&__product {
+		border-radius: rem(6);
+		border: rem(1) solid #55ACBF;
+		background: #EDFBFF;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.875rem 0.25rem;
+		color: inherit;
+		text-decoration: none;
+		overflow: hidden;
+		transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+		@media (min-width:$md3) {
+			border-radius: 0.625rem;
+			padding: 1.5rem 0.5rem;
+			width: 16rem;
+		}
+
+		@media (min-width:$md2) {
+			width: 19.6875rem;
+		}
+	}
+
+	&__product-media {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		position: relative;
+	}
+
+	&__product-img {
+		width: 100%;
+		height: auto;
+		transition: opacity 0.25s ease, transform 0.25s ease;
+
+		&--hover {
+			position: absolute;
+			inset: 0;
+			margin: auto;
+			opacity: 0;
+		}
+	}
+
+	@media (any-hover: hover) {
+		&__product:hover {
+			box-shadow: 0 rem(8) rem(24) rgba($color-brand, 0.12);
+		}
+
+		&__product:not(&__product--has-hover):hover &__product-img {
+			transform: scale(1.04);
+		}
+
+		&__product--has-hover:hover &__product-img--default {
+			opacity: 0;
+		}
+
+		&__product--has-hover:hover &__product-img--hover {
+			opacity: 1;
+			transform: scale(1.04);
+		}
+	}
+
+	&--reverse {
+		@media (min-width: $md3) {
+			.catalog__container {
+				flex-direction: row-reverse;
+			}
+
+			.catalog__main {
+				padding: 2.5rem 2.5rem 2.5rem 15.5rem;
+			}
+
+			.catalog__info {
+				margin-left: auto;
+				max-width: 33.5rem;
+			}
+
+			.catalog__side {
+				align-items: flex-start;
+			}
+
+			.catalog__gallery {
+				margin-left: 0;
+				margin-right: -13rem;
+			}
+
+			.catalog__gallery-decor {
+				left: auto;
+				right: 0;
+				transform: scaleX(-1) translate3d(calc(var(--mx, 0px) + var(--scroll-x, 0px)), calc(var(--my, 0px) + var(--scroll-y, 0px)), 0) rotate(var(--mrotate, 0deg));
+
+				@media (prefers-reduced-motion: reduce) {
+					transform: scaleX(-1);
+				}
+			}
+		}
+	}
+}

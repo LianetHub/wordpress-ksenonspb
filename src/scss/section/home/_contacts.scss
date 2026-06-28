@@ -1,0 +1,142 @@
+.contacts {
+	padding: rem(40) 0;
+
+	@media (min-width: $md3) {
+		padding: rem(48) 0;
+	}
+
+	&__box {
+		position: relative;
+		padding: rem(14);
+		border-radius: rem(10);
+		background: $color-accent;
+		color: #fff;
+		overflow: hidden;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: -12%;
+			z-index: 0;
+			background: url("@img/contacts-decor.svg") center 0 / cover no-repeat;
+			pointer-events: none;
+			@include motion-animation;
+		}
+
+		@media (min-width: $md3) {
+			padding: rem(40);
+			border-radius: rem(20);
+		}
+	}
+
+	&__container {
+		@media (max-width:$md5) {
+			padding: 0;
+		}
+	}
+
+	&__hero,
+	&__main {
+		position: relative;
+		z-index: 1;
+	}
+
+	&__hero {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+		margin-bottom: rem(20);
+
+		@media (min-width: $md3) {
+			display: grid;
+			grid-template-columns: rem(610) rem(387);
+			justify-content: space-between;
+			align-items: start;
+			column-gap: rem(20);
+			margin-bottom: rem(33);
+		}
+	}
+
+	&__lead {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+		min-width: 0;
+	}
+
+	&__title {}
+
+	&__text {
+
+		max-width: rem(610);
+		font-size: rem(14);
+		line-height: 1.3;
+
+		@media (min-width: $md3) {
+			font-size: rem(18);
+		}
+	}
+
+	&__figure {
+
+		border-radius: rem(10);
+		background: $color-surface-mint;
+		overflow: hidden;
+	}
+
+	&__photo {
+		display: block;
+		width: 100%;
+		height: rem(217);
+		object-fit: cover;
+		object-position: center top;
+		transform: scale(1.06);
+		transform-origin: center center;
+
+		@media (min-width: $md3) {
+			height: rem(261);
+		}
+	}
+
+	&__main {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: rem(10);
+
+		@media (min-width: $md3) {
+			grid-template-columns: minmax(0, rem(650)) 1fr;
+			column-gap: rem(20);
+			align-items: start;
+		}
+	}
+
+	&__cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: rem(10);
+
+		@media (min-width: $md3) {
+			gap: rem(20);
+		}
+
+
+	}
+
+	&__map {
+		@include map-container-loading;
+		border-radius: rem(10);
+		height: rem(220);
+
+		@media (min-width: $md3) {
+			height: rem(404);
+		}
+
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

@@ -1,0 +1,103 @@
+.news {
+	padding: rem(40) 0;
+	position: relative;
+
+	@media (min-width: $md3) {
+		padding: rem(48) 0 rem(72);
+	}
+
+	&__container {
+		position: relative;
+		z-index: 1;
+		@include decor-bg-svg-layer;
+	}
+
+	&__head {
+		margin-bottom: rem(20);
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column-reverse;
+		gap: rem(10);
+
+		@media (min-width: $md3) {
+			justify-content: space-between;
+			flex-direction: row;
+			gap: rem(10) rem(32);
+			margin-bottom: rem(40);
+		}
+	}
+
+	&__intro {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+
+
+	}
+
+	&__tag {
+
+		display: inline-flex;
+		align-self: flex-start;
+
+		@media (min-width: $md3) {
+			margin-top: 1rem;
+		}
+	}
+
+	&__title {
+		@media (min-width: $md3) {
+			grid-area: title;
+			max-width: rem(965);
+		}
+	}
+
+	&__text {
+
+		@media (min-width: $md3) {
+			grid-area: text;
+			max-width: rem(965);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: rem(10);
+
+		@media (min-width: $md2) {
+
+			gap: rem(20);
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: center;
+		margin-top: rem(20);
+
+		@media (min-width: $md3) {
+			margin-top: rem(40);
+		}
+	}
+
+	&__btn {
+		width: 100%;
+		min-height: rem(52);
+		font-size: rem(16);
+		letter-spacing: -0.02em;
+		@media (min-width:$md5) {
+			max-width: rem(332);
+		}
+		@media (min-width: $md3) {
+			width: auto;
+			min-width: rem(426);
+			max-width: none;
+			min-height: rem(60);
+			font-size: rem(20);
+			padding-left: rem(32);
+			padding-right: rem(32);
+		}
+	}
+}

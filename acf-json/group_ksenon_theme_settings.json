@@ -1,0 +1,331 @@
+{
+    "key": "group_ksenon_theme_settings",
+    "title": "Настройки сайта",
+    "fields": [
+        {
+            "key": "field_ksenon_ts_logo",
+            "label": "Логотип",
+            "name": "logotip",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_phones",
+            "label": "Телефоны",
+            "name": "telefony",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить телефон",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_ts_phone_number",
+                    "label": "Номер",
+                    "name": "nomer",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_ts_phones"
+                },
+                {
+                    "key": "field_ksenon_ts_phone_header",
+                    "label": "В шапке",
+                    "name": "v_shapke",
+                    "type": "true_false",
+                    "ui": 1,
+                    "default_value": 1,
+                    "parent_repeater": "field_ksenon_ts_phones"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_ts_menu",
+            "label": "Главное меню",
+            "name": "glavnoe_menyu",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить пункт",
+            "default_value": [
+                {"nazvanie": "Услуги", "ssylka": "/uslugi/", "est_podmenyu": 0},
+                {"nazvanie": "Портфолио", "ssylka": "/portfolio/", "est_podmenyu": 0},
+                {"nazvanie": "Марки", "ssylka": "/marki/", "est_podmenyu": 0},
+                {"nazvanie": "О компании", "ssylka": "/o-kompanii/", "est_podmenyu": 0},
+                {"nazvanie": "Стоимость", "ssylka": "/stoimost/", "est_podmenyu": 0},
+                {"nazvanie": "Акции", "ssylka": "/akcii/", "est_podmenyu": 0}
+            ],
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_ts_menu_title",
+                    "label": "Название",
+                    "name": "nazvanie",
+                    "type": "text",
+                    "required": 1,
+                    "parent_repeater": "field_ksenon_ts_menu"
+                },
+                {
+                    "key": "field_ksenon_ts_menu_link",
+                    "label": "Ссылка",
+                    "name": "ssylka",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_ts_menu"
+                },
+                {
+                    "key": "field_ksenon_ts_menu_sub",
+                    "label": "Есть подменю",
+                    "name": "est_podmenyu",
+                    "type": "true_false",
+                    "ui": 1,
+                    "parent_repeater": "field_ksenon_ts_menu"
+                },
+                {
+                    "key": "field_ksenon_ts_menu_submenu",
+                    "label": "Подменю",
+                    "name": "podmenyu",
+                    "type": "repeater",
+                    "layout": "table",
+                    "conditional_logic": [[{"field": "field_ksenon_ts_menu_sub", "operator": "==", "value": "1"}]],
+                    "sub_fields": [
+                        {
+                            "key": "field_ksenon_ts_submenu_title",
+                            "label": "Название",
+                            "name": "nazvanie",
+                            "type": "text",
+                            "parent_repeater": "field_ksenon_ts_menu_submenu"
+                        },
+                        {
+                            "key": "field_ksenon_ts_submenu_link",
+                            "label": "Ссылка",
+                            "name": "ssylka",
+                            "type": "text",
+                            "parent_repeater": "field_ksenon_ts_menu_submenu"
+                        }
+                    ],
+                    "parent_repeater": "field_ksenon_ts_menu"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_ts_email",
+            "label": "E-mail",
+            "name": "email",
+            "type": "email",
+            "default_value": "info@ksenonspb.ru"
+        },
+        {
+            "key": "field_ksenon_ts_address",
+            "label": "Адрес",
+            "name": "address",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Санкт-Петербург, ул. Шателена, 9"
+        },
+        {
+            "key": "field_ksenon_ts_hours",
+            "label": "Часы работы",
+            "name": "hours",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "ПН-ПТ: 11-20\nСБ-ВС: по записи"
+        },
+        {
+            "key": "field_ksenon_ts_map_show",
+            "label": "Показывать карту",
+            "name": "karta_pokazyvat",
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 1
+        },
+        {
+            "key": "field_ksenon_ts_map_coords",
+            "label": "Координаты карты",
+            "name": "karta_koordinaty",
+            "type": "text",
+            "default_value": "59.985,30.315"
+        },
+        {
+            "key": "field_ksenon_ts_map_zoom",
+            "label": "Zoom карты",
+            "name": "karta_zoom",
+            "type": "number",
+            "default_value": 16
+        },
+        {
+            "key": "field_ksenon_ts_map_label",
+            "label": "Подпись карты",
+            "name": "karta_podpis",
+            "type": "text",
+            "default_value": "КБ АВТО на карте"
+        },
+        {
+            "key": "field_ksenon_ts_map_key",
+            "label": "API-ключ Яндекс.Карт",
+            "name": "karta_api_klyuch",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_ts_map_icon",
+            "label": "Иконка метки",
+            "name": "karta_ikonka",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_ts_copyright",
+            "label": "Копирайт",
+            "name": "kopirajt",
+            "type": "text",
+            "default_value": "© 2001-2026 ksenonspb.ru — Автостудия КБ АВТО"
+        },
+        {
+            "key": "field_ksenon_ts_policy",
+            "label": "Ссылка на политику",
+            "name": "ssylka_na_politiku",
+            "type": "page_link"
+        },
+        {
+            "key": "field_ksenon_ts_opd",
+            "label": "Ссылка «Согласие ОПД»",
+            "name": "ssylka_opd",
+            "type": "page_link"
+        },
+        {
+            "key": "field_ksenon_ts_cookies",
+            "label": "Ссылка «Cookies»",
+            "name": "ssylka_cookies",
+            "type": "page_link"
+        },
+        {
+            "key": "field_ksenon_ts_reviews",
+            "label": "Отзывы клиентов",
+            "name": "reviews",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить отзыв",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_ts_review_name",
+                    "label": "Имя",
+                    "name": "name",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_text",
+                    "label": "Текст отзыва",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 4,
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_photo",
+                    "label": "Фото",
+                    "name": "photo",
+                    "type": "image",
+                    "return_format": "array",
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                },
+                {
+                    "key": "field_ksenon_ts_review_rating",
+                    "label": "Рейтинг",
+                    "name": "rating",
+                    "type": "number",
+                    "min": 1,
+                    "max": 5,
+                    "default_value": 5,
+                    "parent_repeater": "field_ksenon_ts_reviews"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_ts_cf7_consult",
+            "label": "CF7: консультация",
+            "name": "cf7_konsultaciya",
+            "type": "text",
+            "placeholder": "[contact-form-7 id=\"1\" title=\"Консультация\"]"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_order",
+            "label": "CF7: заявка",
+            "name": "cf7_zakaz",
+            "type": "text",
+            "placeholder": "[contact-form-7 id=\"2\" title=\"Заявка\"]"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_presentation",
+            "label": "CF7: презентация",
+            "name": "cf7_prezentaciya",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_ts_popup_consult_title",
+            "label": "Попап консультации — заголовок",
+            "name": "popup_consult_title",
+            "type": "text",
+            "default_value": "Свяжитесь с нами"
+        },
+        {
+            "key": "field_ksenon_ts_popup_consult_lead",
+            "label": "Попап консультации — подзаголовок",
+            "name": "popup_consult_lead",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_ts_popup_order_title",
+            "label": "Попап заявки — заголовок",
+            "name": "popup_order_title",
+            "type": "text",
+            "default_value": "Оставить заявку"
+        },
+        {
+            "key": "field_ksenon_ts_popup_order_lead",
+            "label": "Попап заявки — подзаголовок",
+            "name": "popup_order_lead",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_ts_popup_success",
+            "label": "Успешная отправка",
+            "name": "popup_success_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Спасибо! Ваша заявка отправлена"
+        },
+        {
+            "key": "field_ksenon_ts_popup_error",
+            "label": "Ошибка отправки",
+            "name": "popup_error_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Не удалось отправить. Попробуйте снова"
+        },
+        {
+            "key": "field_ksenon_ts_404_title",
+            "label": "404 — заголовок",
+            "name": "404_title",
+            "type": "text",
+            "default_value": "Такой страницы не существует"
+        },
+        {
+            "key": "field_ksenon_ts_404_subtitle",
+            "label": "404 — подзаголовок",
+            "name": "404_subtitle",
+            "type": "text",
+            "default_value": "Воспользуйтесь меню для навигации"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

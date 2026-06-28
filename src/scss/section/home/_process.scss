@@ -1,0 +1,341 @@
+.process {
+	padding: rem(28) 0;
+
+	@media (min-width: $md3) {
+		padding: rem(40) 0;
+	}
+
+	&__head {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+		margin-bottom: rem(20);
+
+		@media (min-width: $md3) {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			grid-template-rows: auto;
+			align-items: start;
+			column-gap: rem(32);
+			row-gap: rem(16);
+			margin-bottom: rem(28);
+		}
+	}
+
+	&__tag {
+		align-self: flex-start;
+		padding: rem(6) rem(10);
+		font-size: rem(14);
+		letter-spacing: -0.02em;
+
+		@media (min-width: $md3) {
+			grid-column: 2;
+			grid-row: 1;
+			justify-self: end;
+			min-height: rem(40);
+			padding: rem(10) rem(16);
+			font-size: rem(20);
+		}
+	}
+
+	&__intro {
+		@media (min-width: $md3) {
+			grid-column: 1;
+			grid-row: 1;
+			max-width: rem(985);
+		}
+	}
+
+	&__slider {
+		overflow: visible;
+
+		@media (min-width: $md3) {}
+	}
+
+	&__grid {
+		&.swiper-wrapper {
+			@media (min-width: $md3) {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: rem(20);
+				transform: none !important;
+			}
+		}
+
+		&.a-stagger > .process__slide {
+			opacity: 0;
+			transform: translateY(rem(28)) scale(0.94);
+			filter: blur(rem(4));
+			transition:
+				opacity anim(0.55) ease,
+				transform anim(0.65) cubic-bezier(0.22, 1, 0.36, 1),
+				filter anim(0.55) ease;
+			will-change: opacity, transform, filter;
+		}
+
+		@for $i from 1 through 8 {
+			&._active > .process__slide:nth-child(#{$i}) {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+				filter: blur(0);
+				transition-delay: anim-delay($i * 0.12);
+			}
+		}
+	}
+
+	&__slide {
+		&.swiper-slide {
+			width: rem(257);
+			height: auto;
+
+			@media (min-width: $md3) {
+				width: auto !important;
+				margin: 0 !important;
+			}
+		}
+	}
+
+	&__card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+		height: 100%;
+		padding: rem(16);
+		border: 1px solid $color-accent;
+		border-radius: rem(10);
+		background: $color-surface-mint;
+		overflow: hidden;
+		transition:
+			transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 0.35s ease,
+			border-color 0.25s ease,
+			background-color 0.25s ease;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(
+				105deg,
+				transparent 42%,
+				rgba(255, 255, 255, 0.45) 50%,
+				transparent 58%
+			);
+			transform: translateX(-120%);
+			transition: transform 0.65s ease;
+			pointer-events: none;
+		}
+
+		@media (min-width: $md3) {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: rem(20);
+			padding: rem(20);
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: rem(10);
+		min-width: 0;
+
+		@media (min-width: $md1) {
+			flex: 0 0 rem(315);
+			gap: rem(20);
+		}
+	}
+
+	&__step {
+		position: relative;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		align-self: flex-start;
+		min-height: rem(33);
+		padding: rem(8) rem(20);
+		border-radius: rem(10);
+		background: $color-surface-tab;
+		color: $color-brand;
+		font-family: $font-family;
+		font-size: rem(18);
+		font-weight: 400;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		white-space: nowrap;
+		transition:
+			transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+			background-color 0.25s ease,
+			color 0.25s ease,
+			box-shadow 0.25s ease;
+
+		@media (min-width: $md3) {
+			min-height: 0;
+			font-size: rem(32);
+		}
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+	}
+
+	&__card-title {
+		position: relative;
+		z-index: 1;
+		color: $color-brand;
+		font-weight: 500;
+		font-style: italic;
+		font-size: rem(18);
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		transition: color 0.25s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+		@media (min-width: $md3) {
+			font-size: rem(24);
+		}
+
+		&--split {
+			display: flex;
+			flex-direction: column;
+
+			@media (min-width: $md3) {
+				display: block;
+			}
+
+			span {
+				display: block;
+
+				@media (min-width: $md3) {
+					display: inline;
+				}
+
+				&:not(:last-child)::after {
+					content: " ";
+
+					@media (min-width: $md3) {
+						content: none;
+					}
+				}
+			}
+		}
+	}
+
+	&__card-desc {
+		position: relative;
+		z-index: 1;
+		margin-top: auto;
+		color: $color-text-body;
+		font-size: rem(14);
+		line-height: 1.3;
+		transition: color 0.25s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+		@media (min-width: $md3) {
+			font-size: rem(18);
+		}
+	}
+
+	&__media {
+		position: relative;
+		z-index: 1;
+		flex-shrink: 0;
+		width: 100%;
+		height: rem(176);
+		border-radius: rem(10);
+		overflow: hidden;
+		transition: box-shadow 0.35s ease;
+
+		.cover-image {
+			transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+		}
+
+		@media (min-width: $md3) {
+			width: rem(200);
+			height: 100%;
+		}
+
+		@media (min-width:$md1) {
+			width: rem(275);
+
+		}
+
+	}
+
+	@media (any-hover: hover) {
+		&__card:hover {
+			transform: translateY(rem(-6));
+			border-color: $color-accent;
+			background-color: #fff;
+			box-shadow: 0 rem(14) rem(36) rgba($color-brand, 0.16);
+
+			&::after {
+				transform: translateX(120%);
+			}
+		}
+
+		&__card:hover &__step {
+			transform: scale(1.04) translateY(rem(-2));
+			background: $color-accent;
+			color: #fff;
+			box-shadow: 0 rem(6) rem(16) rgba($color-brand, 0.2);
+		}
+
+		&__card:hover &__card-title {
+			color: $color-accent;
+			transform: translateX(rem(4));
+		}
+
+		&__card:hover &__card-desc {
+			transform: translateX(rem(4));
+		}
+
+		&__card:hover &__media {
+			box-shadow: 0 rem(8) rem(20) rgba($color-brand, 0.12);
+
+			.cover-image {
+				transform: scale(1.06);
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		&__card {
+			transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+
+			&::after {
+				display: none;
+			}
+		}
+
+		&__step,
+		&__card-title,
+		&__card-desc,
+		&__media .cover-image {
+			transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		@media (any-hover: hover) {
+			&__card:hover {
+				transform: none;
+			}
+
+			&__card:hover &__step {
+				transform: none;
+			}
+
+			&__card:hover &__card-title,
+			&__card:hover &__card-desc {
+				transform: none;
+			}
+
+			&__card:hover &__media .cover-image {
+				transform: none;
+			}
+		}
+	}
+
+}

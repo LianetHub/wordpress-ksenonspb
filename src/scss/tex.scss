@@ -1,0 +1,194 @@
+@use "sass:math";
+
+@import "global/tokens";
+
+// Брейкпоинты 
+$md1: 1399.98px;
+$md2: 1199.98px;
+$md3: 991.98px;
+$md4: 767.98px;
+$md5: 575.98px;
+
+// Шрифт по умолчанию
+$font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+// Миксин адаптивного шрифта
+@mixin adaptive-font($minSize, $maxSize, $minWidth: 360, $maxWidth: 1440) {
+	$slope: math.div($maxSize - $minSize, $maxWidth - $minWidth);
+	$intersect: $minSize - $slope * $minWidth;
+	font-size: clamp(#{$minSize}px,
+		calc(#{$slope * 100}vw + #{$intersect}px),
+		#{$maxSize}px);
+}
+
+@function rem($px) {
+	@return math.div($px, 16)+rem;
+}
+
+@function em($px, $value: 16) {
+	$result: math.div($px, $value);
+	@return #{$result}em;
+}
+
+@function anim($duration) {
+	@return $duration * 1.15 * 1s;
+}
+
+@function anim-delay($duration) {
+	@return $duration * 1.15 * 1s;
+}
+
+// Контейнер
+._container {
+	margin: 0 auto;
+	padding: 0 1rem;
+	max-width: 100%;
+
+	&._container--small {
+		@media (min-width: $md1) {
+			max-width: rem(1260);
+		}
+	}
+
+
+	@media (min-width: $md5) {
+		box-sizing: content-box;
+		max-width: rem(540);
+	}
+
+	@media (min-width: $md4) {
+		max-width: rem(624);
+	}
+
+	@media (min-width: $md3) {
+		max-width: rem(960);
+	}
+
+	@media (min-width: $md2) {
+		max-width: rem(1140);
+	}
+
+	@media (min-width: $md1) {
+		max-width: rem(1320);
+	}
+}
+
+// Базовая типографика (UI Kit — Desktop / Mobile)
+body {
+	font-family: $font-family;
+	color: $color-text-body;
+	background-color: $color-bg;
+	line-height: 1.3;
+	@include adaptive-font(14, 18);
+}
+
+.lock {
+	overflow: hidden;
+}
+
+h1 {
+	font-family: $font-inter;
+	font-weight: 450;
+	line-height: 1.2;
+	@include adaptive-font(26, 56);
+}
+
+h2 {
+	font-family: $font-inter;
+	font-weight: 450;
+	line-height: 1.2;
+	@include adaptive-font(24, 48);
+}
+
+h3 {
+	font-family: $font-inter;
+	font-weight: 450;
+	font-style: italic;
+	line-height: 1.2;
+	@include adaptive-font(18, 24);
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow-x: clip;
+}
+
+.main {
+	flex: 1 1 auto;
+	background: $color-surface-mint;
+
+	&:not(.main--home) {
+		padding-top: rem(56);
+
+		@media (min-width: $md3) {
+			padding-top: rem(80);
+		}
+	}
+}
+
+.admin-bar .main:not(.main--home) {
+	padding-top: calc(#{rem(56)} + 46px);
+
+	@media screen and (min-width: 783px) {
+		padding-top: calc(#{rem(56)} + 32px);
+	}
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(80)} + 32px);
+	}
+}
+
+.cover-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.text-nowrap {
+	white-space: nowrap;
+}
+
+
+$scrollbarColor: $color-primary;
+
+::-webkit-scrollbar {
+	width: rem(8);
+}
+
+::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $scrollbarColor;
+	border-radius: rem(8);
+
+	@media (any-hover: hover) {
+		&:hover {
+			background: darken($color: $scrollbarColor, $amount: 10);
+		}
+	}
+}
+
+.swiper-pagination {
+	position: static;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: rem(10);
+	margin-top: rem(20);
+	
+	&-bullet {
+		width: rem(10);
+		height: rem(10);
+		border-radius: 50%;
+		background: $color-primary;
+	}
+}
+
+.screen-reader-text {
+	display: none !important;
+}

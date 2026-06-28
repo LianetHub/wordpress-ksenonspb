@@ -1,0 +1,210 @@
+.request {
+	padding: rem(40) 0;
+
+	@media (min-width: $md3) {
+		padding: rem(48) 0;
+	}
+
+	&__box {
+		position: relative;
+		width: 100%;
+		color: #fff;
+		overflow: hidden;
+
+		border-radius: rem(10);
+		padding-top: rem(24);
+		padding-bottom: rem(24);
+		background: $color-accent;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			background: url("@img/request-decor-mobile.webp") 0 0 / cover no-repeat;
+			pointer-events: none;
+			@include motion-animation;
+
+			@media (min-width: $md4) {
+				background: url("@img/request-decor.webp") 0 0 / cover no-repeat;
+			}
+		}
+
+		@media (min-width: $md3) {
+			border-radius: rem(20);
+			padding-top: rem(40);
+			padding-bottom: rem(40);
+		}
+	}
+
+	&__container {
+		position: relative;
+		z-index: 1;
+	}
+
+	&--plain {
+		.request__box {
+			background: $color-accent;
+
+			&::before {
+				content: none;
+			}
+		}
+
+		.request__note {
+			display: flex;
+			align-items: flex-start;
+			gap: rem(20);
+			margin-top: rem(24);
+			max-width: rem(520);
+			font-style: normal;
+			font-weight: 400;
+			font-size: inherit;
+			line-height: inherit;
+			letter-spacing: normal;
+
+			@media (min-width: $md3) {
+				margin-top: rem(48);
+			}
+		}
+
+		.request__note-icon {
+			flex-shrink: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: rem(54);
+			height: rem(54);
+			border-radius: rem(6);
+			background: $color-primary;
+			color: #fff;
+
+			@media (min-width: $md3) {
+				width: rem(92);
+				height: rem(92);
+				border-radius: rem(10);
+			}
+		}
+
+		.request__note-icon-svg {
+			width: rem(35);
+			height: rem(35);
+
+			@media (min-width: $md3) {
+				width: rem(50);
+				height: rem(50);
+			}
+		}
+
+		.request__note-text {
+			margin: 0;
+			font-weight: 500;
+			font-style: italic;
+			line-height: 1.2;
+			letter-spacing: -0.02em;
+			@include adaptive-font(18, 24);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: rem(8);
+
+		@media (min-width: $md3) {
+			grid-template-columns: repeat(2, 1fr);
+			column-gap: rem(21);
+			align-items: stretch;
+			min-height: rem(530);
+		}
+	}
+
+	&__info {
+		display: contents;
+
+		@media (min-width: $md3) {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: rem(40);
+			min-height: 100%;
+		}
+	}
+
+	&__title {
+		max-width: rem(651);
+		order: -1;
+	}
+
+	&__note {
+		max-width: rem(568);
+		font-style: italic;
+		font-weight: 500;
+		font-size: rem(18);
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+
+		@media (min-width: $md3) {
+			font-size: rem(24);
+		}
+	}
+
+	&__form-col {
+
+		display: contents;
+
+		@media (min-width: $md3) {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: rem(20);
+
+		}
+	}
+
+	&__lead {
+
+		order: -1;
+		font-size: rem(14);
+		line-height: 1.3;
+
+		@media (min-width: $md3) {
+			font-size: rem(18);
+		}
+	}
+
+	&__form {
+		margin-top: 1.25rem;
+
+		@media (min-width:$md3) {
+			margin-top: 0;
+		}
+
+		&.a-form-rise {
+			.wpcf7-form > *,
+			> .form__row,
+			> .form__field,
+			> .checkbox,
+			> .form__submit,
+			> label.form__field,
+			> button.form__submit {
+				opacity: 0;
+				transform: translateY(18px);
+				transition:
+					opacity anim(0.45) ease,
+					transform anim(0.55) cubic-bezier(0.22, 1, 0.36, 1);
+			}
+
+			&._active {
+				@for $i from 1 through 8 {
+					.wpcf7-form > *:nth-child(#{$i}),
+					> *:nth-child(#{$i}) {
+						opacity: 1;
+						transform: translateY(0);
+						transition-delay: anim-delay($i * 0.08 + 0.2);
+					}
+				}
+			}
+		}
+	}
+}

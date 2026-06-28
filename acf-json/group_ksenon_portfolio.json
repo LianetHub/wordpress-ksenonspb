@@ -1,0 +1,125 @@
+{
+    "key": "group_ksenon_portfolio",
+    "title": "Кейс портфолио",
+    "fields": [
+        {
+            "key": "field_ksenon_portfolio_hero_title",
+            "label": "Hero — заголовок",
+            "name": "hero_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_portfolio_hero_image",
+            "label": "Hero — изображение",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_portfolio_description",
+            "label": "Описание кейса",
+            "name": "case_description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1
+        },
+        {
+            "key": "field_ksenon_portfolio_what_we_did",
+            "label": "Что мы сделали",
+            "name": "what_we_did",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить пункт",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_portfolio_what_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_portfolio_what_we_did"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_portfolio_work_process",
+            "label": "Процесс работы",
+            "name": "work_process",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить шаг",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_portfolio_step_title",
+                    "label": "Заголовок",
+                    "name": "title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_portfolio_work_process"
+                },
+                {
+                    "key": "field_ksenon_portfolio_step_text",
+                    "label": "Описание",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 3,
+                    "parent_repeater": "field_ksenon_portfolio_work_process"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_portfolio_components",
+            "label": "Использованные комплектующие",
+            "name": "components",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить комплектующее",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_portfolio_component_name",
+                    "label": "Название",
+                    "name": "name",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_portfolio_components"
+                },
+                {
+                    "key": "field_ksenon_portfolio_component_desc",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_portfolio_components"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_portfolio_related_services",
+            "label": "Связанные услуги",
+            "name": "related_services",
+            "type": "relationship",
+            "post_type": ["service"],
+            "return_format": "object"
+        },
+        {
+            "key": "field_ksenon_portfolio_related_brands",
+            "label": "Связанные марки",
+            "name": "related_brands",
+            "type": "relationship",
+            "post_type": ["brand"],
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "portfolio"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

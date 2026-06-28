@@ -1,0 +1,133 @@
+{
+    "key": "group_ksenon_page_pricing",
+    "title": "Стоимость услуг — страница",
+    "fields": [
+        {
+            "key": "field_ksenon_pricing_hero_title",
+            "label": "Hero — заголовок",
+            "name": "hero_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_pricing_hero_text",
+            "label": "Hero — текст",
+            "name": "hero_text",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_ksenon_pricing_hero_image",
+            "label": "Hero — изображение",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_pricing_table",
+            "label": "Таблица цен",
+            "name": "price_table",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_pricing_service_name",
+                    "label": "Услуга",
+                    "name": "service_name",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_table"
+                },
+                {
+                    "key": "field_ksenon_pricing_price_from",
+                    "label": "Цена от",
+                    "name": "price_from",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_table"
+                },
+                {
+                    "key": "field_ksenon_pricing_note",
+                    "label": "Примечание",
+                    "name": "note",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_table"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_pricing_why_title",
+            "label": "Почему цены разные — заголовок",
+            "name": "why_prices_title",
+            "type": "text",
+            "default_value": "Почему цены разные?"
+        },
+        {
+            "key": "field_ksenon_pricing_why_cards",
+            "label": "Почему цены разные — карточки",
+            "name": "why_prices_cards",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_pricing_why_card_title",
+                    "label": "Заголовок",
+                    "name": "title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_why_cards"
+                },
+                {
+                    "key": "field_ksenon_pricing_why_card_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 2,
+                    "parent_repeater": "field_ksenon_pricing_why_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_pricing_installment_title",
+            "label": "Рассрочка — заголовок",
+            "name": "installment_title",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_pricing_installment_text",
+            "label": "Рассрочка — текст",
+            "name": "installment_text",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_ksenon_pricing_gift_title",
+            "label": "Подарочный сертификат — заголовок",
+            "name": "gift_title",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_pricing_gift_text",
+            "label": "Подарочный сертификат — текст",
+            "name": "gift_text",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-stoimost.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

@@ -1,0 +1,147 @@
+{
+    "key": "group_ksenon_front_page",
+    "title": "Главная страница",
+    "fields": [
+        {
+            "key": "field_ksenon_page_content",
+            "label": "Контент страницы",
+            "name": "page_content",
+            "type": "flexible_content",
+            "button_label": "Добавить секцию",
+            "layouts": {
+                "layout_ksenon_hero": {
+                    "key": "layout_ksenon_hero",
+                    "name": "hero",
+                    "label": "Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_hero_title", "label": "Заголовок", "name": "title", "type": "textarea", "rows": 3},
+                        {"key": "field_ksenon_hero_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 3},
+                        {"key": "field_ksenon_hero_image", "label": "Изображение", "name": "image", "type": "image", "return_format": "array"},
+                        {"key": "field_ksenon_hero_btn", "label": "Кнопка", "name": "btn", "type": "link", "return_format": "array"}
+                    ]
+                },
+                "layout_ksenon_advantages": {
+                    "key": "layout_ksenon_advantages",
+                    "name": "advantages",
+                    "label": "Преимущества",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_adv_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_adv_title", "label": "Заголовок", "name": "title", "type": "text"},
+                        {"key": "field_ksenon_adv_items", "label": "Карточки", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
+                            {"key": "field_ksenon_adv_item_title", "label": "Заголовок", "name": "title", "type": "text", "parent_repeater": "field_ksenon_adv_items"},
+                            {"key": "field_ksenon_adv_item_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 2, "parent_repeater": "field_ksenon_adv_items"}
+                        ]}
+                    ]
+                },
+                "layout_ksenon_services_teaser": {
+                    "key": "layout_ksenon_services_teaser",
+                    "name": "services_teaser",
+                    "label": "Наши услуги",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_st_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_st_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Наши услуги"},
+                        {"key": "field_ksenon_st_services", "label": "Избранные услуги", "name": "featured_services", "type": "relationship", "post_type": ["service"], "return_format": "object", "instructions": "Оставьте пустым — выведутся все услуги"},
+                        {"key": "field_ksenon_st_limit", "label": "Лимит", "name": "limit", "type": "number", "default_value": 6}
+                    ]
+                },
+                "layout_ksenon_portfolio_teaser": {
+                    "key": "layout_ksenon_portfolio_teaser",
+                    "name": "portfolio_teaser",
+                    "label": "Наши работы",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_pt_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_pt_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Наши работы"},
+                        {"key": "field_ksenon_pt_limit", "label": "Количество", "name": "limit", "type": "number", "default_value": 8}
+                    ]
+                },
+                "layout_ksenon_brands": {
+                    "key": "layout_ksenon_brands",
+                    "name": "brands",
+                    "label": "Марки",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_br_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_br_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Марки автомобилей"},
+                        {"key": "field_ksenon_br_featured", "label": "Избранные марки", "name": "featured_brands", "type": "relationship", "post_type": ["brand"], "return_format": "object"}
+                    ]
+                },
+                "layout_ksenon_why_us": {
+                    "key": "layout_ksenon_why_us",
+                    "name": "why_us",
+                    "label": "Почему мы?",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_wu_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_wu_title", "label": "Заголовок", "name": "title", "type": "text"},
+                        {"key": "field_ksenon_wu_items", "label": "Пункты", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
+                            {"key": "field_ksenon_wu_item_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 2, "parent_repeater": "field_ksenon_wu_items"}
+                        ]}
+                    ]
+                },
+                "layout_ksenon_cta_contacts": {
+                    "key": "layout_ksenon_cta_contacts",
+                    "name": "cta_contacts",
+                    "label": "CTA + контакты",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_cc_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_cc_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Запишитесь на бесплатный осмотр"}
+                    ]
+                },
+                "layout_ksenon_reviews": {
+                    "key": "layout_ksenon_reviews",
+                    "name": "reviews",
+                    "label": "Отзывы",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_rev_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_rev_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Отзывы клиентов"}
+                    ]
+                },
+                "layout_ksenon_faq": {
+                    "key": "layout_ksenon_faq",
+                    "name": "faq",
+                    "label": "FAQ",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_faq_tag", "label": "Тег", "name": "tag", "type": "text"},
+                        {"key": "field_ksenon_faq_title", "label": "Заголовок", "name": "title", "type": "text"},
+                        {"key": "field_ksenon_faq_items", "label": "Вопросы", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
+                            {"key": "field_ksenon_faq_q", "label": "Вопрос", "name": "question", "type": "text", "parent_repeater": "field_ksenon_faq_items"},
+                            {"key": "field_ksenon_faq_a", "label": "Ответ", "name": "answer", "type": "textarea", "rows": 3, "parent_repeater": "field_ksenon_faq_items"},
+                            {"key": "field_ksenon_faq_open", "label": "Открыт", "name": "is_open", "type": "true_false", "ui": 1, "parent_repeater": "field_ksenon_faq_items"}
+                        ]}
+                    ]
+                },
+                "layout_ksenon_cta_bottom": {
+                    "key": "layout_ksenon_cta_bottom",
+                    "name": "cta_bottom",
+                    "label": "Опишите проблему",
+                    "display": "block",
+                    "sub_fields": [
+                        {"key": "field_ksenon_cb_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Опишите проблему — оценим быстро и по делу"},
+                        {"key": "field_ksenon_cb_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 2}
+                    ]
+                }
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

@@ -1,0 +1,27 @@
+@import "tex";
+@import "fonts";
+
+@import "components/typography";
+@import "components/title";
+@import "components/text-lead";
+@import "components/tag";
+@import "global/typography-block";
+@import "components/btn";
+@import "components/tab";
+@import "components/form";
+@import "components/checkbox";
+@import "components/popup";
+@import "components/accordion";
+@import "components/tooltip";
+@import "components/contacts-card";
+@import "components/heading";
+@import "components/map-shimmer";
+@import "components/animation";
+@import "components/motion-animation";
+
+@import "global/header";
+@import "global/footer";
+
+@import "section/home/home";
+@import "section/not-found/not-found";
+@import "section/policy/policy";

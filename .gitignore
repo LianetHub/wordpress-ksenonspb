@@ -1,0 +1,19 @@
+/node_modules
+/.vscode
+.env
+
+# Локальные тесты (не деплоить)
+/tests/
+/vitest.config.js
+/phpunit.xml
+/composer.json
+/composer.lock
+/vendor/
+
+.cursorrules
+/.cursor
+
+wp-config.php
+debug.log
+
+.cursor

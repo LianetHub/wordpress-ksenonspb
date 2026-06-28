@@ -1,0 +1,127 @@
+{
+    "key": "group_ksenon_service",
+    "title": "Услуга",
+    "fields": [
+        {
+            "key": "field_ksenon_service_card_image",
+            "label": "Изображение карточки",
+            "name": "card_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_service_hero_title",
+            "label": "Hero — заголовок",
+            "name": "hero_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_service_hero_text",
+            "label": "Hero — текст",
+            "name": "hero_text",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_ksenon_service_hero_image",
+            "label": "Hero — изображение",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_service_included_title",
+            "label": "Что входит — заголовок",
+            "name": "included_title",
+            "type": "text",
+            "default_value": "Что входит в услугу"
+        },
+        {
+            "key": "field_ksenon_service_included_items",
+            "label": "Что входит — пункты",
+            "name": "included_items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить пункт",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_included_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_included_items"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_service_related_brands",
+            "label": "Связанные марки",
+            "name": "related_brands",
+            "type": "relationship",
+            "post_type": ["brand"],
+            "return_format": "object",
+            "filters": ["search"]
+        },
+        {
+            "key": "field_ksenon_service_faq",
+            "label": "FAQ",
+            "name": "faq",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить вопрос",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_faq_q",
+                    "label": "Вопрос",
+                    "name": "question",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_faq"
+                },
+                {
+                    "key": "field_ksenon_service_faq_a",
+                    "label": "Ответ",
+                    "name": "answer",
+                    "type": "textarea",
+                    "rows": 3,
+                    "parent_repeater": "field_ksenon_service_faq"
+                },
+                {
+                    "key": "field_ksenon_service_faq_open",
+                    "label": "Открыт по умолчанию",
+                    "name": "is_open",
+                    "type": "true_false",
+                    "ui": 1,
+                    "parent_repeater": "field_ksenon_service_faq"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_service_faq_tag",
+            "label": "FAQ — тег",
+            "name": "faq_tag",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_service_faq_title",
+            "label": "FAQ — заголовок",
+            "name": "faq_title",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "service"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

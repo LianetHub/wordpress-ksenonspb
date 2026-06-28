@@ -1,0 +1,44 @@
+@mixin tag-base {
+	border-radius: $radius-tab;
+	font-family: $font-family;
+	font-size: rem(14);
+	font-weight: 500;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+@mixin tag-accent-default {
+	background: $color-accent;
+	color: #fff;
+	padding: rem(6) rem(12);
+
+	@media (min-width: $md5) {
+		padding: rem(8) rem(17);
+		font-size: rem(20);
+	}
+}
+
+.tag {
+	display: inline-block;
+	@include tag-base;
+	@include tag-accent-default;
+
+	&--white {
+		display: inline-flex;
+		align-self: flex-start;
+		align-items: center;
+		justify-content: center;
+		@include tag-base;
+		background: #fff;
+		color: $color-primary;
+		padding: rem(6) rem(10);
+		letter-spacing: -0.02em;
+		white-space: nowrap;
+
+		@media (min-width: $md3) {
+			height: rem(40);
+			padding: rem(10) rem(16);
+			font-size: rem(20);
+		}
+	}
+}

@@ -1,0 +1,97 @@
+{
+    "key": "group_ksenon_page_about",
+    "title": "О компании — страница",
+    "fields": [
+        {
+            "key": "field_ksenon_about_cards",
+            "label": "Карточки о компании",
+            "name": "company_cards",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить карточку",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_about_card_title",
+                    "label": "Заголовок",
+                    "name": "title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_about_cards"
+                },
+                {
+                    "key": "field_ksenon_about_card_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 4,
+                    "parent_repeater": "field_ksenon_about_cards"
+                },
+                {
+                    "key": "field_ksenon_about_card_image",
+                    "label": "Изображение",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "parent_repeater": "field_ksenon_about_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_about_advantages",
+            "label": "Преимущества",
+            "name": "advantages",
+            "type": "repeater",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_about_adv_title",
+                    "label": "Заголовок",
+                    "name": "title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_about_advantages"
+                },
+                {
+                    "key": "field_ksenon_about_adv_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 2,
+                    "parent_repeater": "field_ksenon_about_advantages"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_about_video_url",
+            "label": "Видео (URL)",
+            "name": "video_url",
+            "type": "url"
+        },
+        {
+            "key": "field_ksenon_about_video_poster",
+            "label": "Постер видео",
+            "name": "video_poster",
+            "type": "image",
+            "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_about_certificates",
+            "label": "Сертификаты",
+            "name": "certificates",
+            "type": "gallery",
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-o-kompanii.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1750953600
+}

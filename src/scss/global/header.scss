@@ -1,0 +1,383 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 50;
+	width: 100%;
+	background: $color-primary;
+	backdrop-filter: blur(rem(10));
+	-wekbit-backdrop-filter: blur(rem(10));
+	border-radius: 0 0 rem(10) rem(10);
+
+	&__container {}
+
+	&__bar {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: rem(16);
+		min-height: rem(56);
+		padding: rem(8) 0;
+		background: transparent;
+		color: #fff;
+
+		@media (min-width: $md3) {
+			flex-wrap: nowrap;
+			min-height: $btn-height;
+			padding: rem(10) 0;
+		}
+	}
+
+	&__logo {
+		display: inline-flex;
+		flex-shrink: 0;
+
+		@media (max-width:$md3) {
+			min-height: rem(36);
+		}
+	}
+
+	&__logo-img {
+		display: block;
+		width: rem(111);
+		height: auto;
+
+		@media (max-width:$md3) {
+			object-fit: contain;
+			object-position: left bottom;
+		}
+	}
+
+	&__nav {
+		@media (max-width: $md3) {
+			display: none;
+			width: 100%;
+		}
+
+		@media (min-width: $md1) {
+			margin-left: rem(83);
+		}
+	}
+
+	&__menu {
+
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: rem(32);
+		row-gap: rem(10);
+
+		@media (min-width:$md1) {
+			gap: rem(40);
+
+		}
+	}
+
+	&__link {
+		font-weight: 450;
+		text-transform: uppercase;
+		line-height: 1.2;
+
+		@include adaptive-font(16, 18);
+
+
+
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: -2px;
+			left: 0;
+			height: 2px;
+			border-radius: 999px;
+			opacity: 0;
+			background: linear-gradient(90deg, transparent 0%, $color-accent 33%, $color-accent 66%, transparent 100%);
+			transform: scaleX(0.35);
+			transform-origin: center;
+			transition: opacity $nav-link-hover-motion, transform $nav-link-hover-motion;
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translate3d(0, -1px, 0);
+
+				&::after {
+					opacity: 1;
+					transform: scaleX(1);
+				}
+			}
+		}
+
+		&._active {
+			&::after {
+				opacity: 1;
+				transform: scaleX(1);
+			}
+		}
+	}
+
+	&__toggle {
+		margin-left: auto;
+
+		@media (min-width: $md3) {
+			display: none;
+		}
+	}
+
+	&__phones {
+		display: inline-flex;
+		align-items: center;
+		gap: rem(20);
+		white-space: nowrap;
+		flex-shrink: 0;
+
+		@media (max-width: $md3) {
+			display: none;
+			width: 100%;
+		}
+
+		@media (min-width: $md3) {
+			margin-left: auto;
+		}
+	}
+
+	&__phone {
+		color: #fff;
+		text-decoration: none;
+		font-weight: 500;
+		line-height: 1.2;
+		text-transform: uppercase;
+		@include adaptive-font(16, 18);
+		position: relative;
+		transition: all 0.3s ease;
+
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: -2px;
+			left: 0;
+			height: 2px;
+			border-radius: 999px;
+			opacity: 0;
+			background: linear-gradient(90deg, $color-primary 0%, $color-accent 33%, $color-accent 66%, $color-primary 100%);
+			transform: scaleX(0.35);
+			transform-origin: center;
+			transition: opacity $nav-link-hover-motion, transform $nav-link-hover-motion;
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translate3d(0, -1px, 0);
+
+				&::after {
+					opacity: 1;
+					transform: scaleX(1);
+				}
+			}
+		}
+
+	}
+
+	&__sep {
+		width: 1px;
+		height: rem(21);
+		background: rgba(255, 255, 255, 0.45);
+		flex-shrink: 0;
+	}
+
+
+	&.open-menu {
+		@media (max-width: $md3) {
+			background: $color-primary;
+			backdrop-filter: blur(10px);
+			overflow-y: auto;
+			max-height: 100svh;
+
+			.header__container {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+				min-height: 100dvh;
+			}
+
+			.header__bar {
+				flex: 1 1 auto;
+				flex-direction: column;
+				align-items: stretch;
+				justify-content: flex-start;
+				flex-wrap: nowrap;
+				position: relative;
+				padding-bottom: rem(60);
+
+			}
+
+			.header__logo {
+				align-self: flex-start;
+				order: 1;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: rem(44);
+			}
+
+
+
+			.header__toggle {
+				position: absolute;
+				top: rem(16);
+				right: rem(0);
+				margin-left: 0;
+			}
+
+
+			.header__nav {
+				display: flex;
+				flex: 1 1 auto;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				margin-left: 0;
+				order: 2;
+			}
+
+			.header__toggle {
+				order: 1;
+			}
+
+			.header__menu {
+				flex-direction: column;
+				align-items: center;
+				gap: rem(40);
+				padding-bottom: rem(60);
+			}
+
+			.header__link {
+				font-size: rem(24);
+			}
+
+			.header__phones {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: rem(20);
+
+				order: 3;
+			}
+
+			.header__phone {
+				font-size: rem(24);
+			}
+
+			.header__sep {
+				width: rem(53);
+				height: 1px;
+			}
+		}
+	}
+}
+
+// WordPress admin bar (logged-in users)
+.admin-bar .header {
+	top: 32px;
+
+	@media screen and (max-width: 782px) {
+		top: 46px;
+
+		&.open-menu {
+			max-height: calc(100svh - 46px);
+		}
+	}
+}
+
+.icon-menu {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-end;
+	gap: rem(7);
+	min-width: rem(36);
+	height: rem(36);
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #fff;
+	cursor: pointer;
+	z-index: 11;
+	transition: all 0.3s ease;
+
+	@media (min-width: $md3) {
+		display: none;
+	}
+
+	& span {
+		display: block;
+		width: 100%;
+		padding: 0;
+		align-self: stretch;
+		transition:
+			transform 0.4s ease 0.4s,
+			opacity 0.4s ease 0.4s;
+		will-change: transform;
+
+		&::before {
+			content: "";
+			display: block;
+			height: rem(3);
+			border-radius: rem(10);
+			background: currentColor;
+			transition: transform 0.3s ease 0s;
+			will-change: transform;
+		}
+
+		&:nth-child(2) {
+			width: rem(24);
+			align-self: flex-end;
+		}
+	}
+
+	.header.open-menu & {
+		background: transparent;
+
+		& span {
+			width: rem(36);
+			align-self: stretch;
+			transition:
+				transform 0.3s ease 0s,
+				opacity 0.3s ease 0s;
+
+			&::before {
+				transition:
+					transform 0.45s ease 0.35s,
+					width 0.3s ease 0s;
+			}
+
+			&:first-child {
+				transform: translateY(rem(10));
+
+				&::before {
+					transform: rotate(-135deg);
+				}
+			}
+
+			&:nth-child(2) {
+				opacity: 0;
+			}
+
+			&:nth-child(3) {
+				transform: translateY(rem(-10));
+
+				&::before {
+					transform: rotate(-225deg);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,300 @@
+.footer {
+	padding-top: rem(16);
+	padding-bottom: rem(24);
+	color: #fff;
+	background: linear-gradient(106.85deg, $color-primary 0%, $color-accent 100%);
+
+	@media (min-width: $md3) {
+		padding-top: rem(20);
+		padding-bottom: rem(30);
+		background: linear-gradient(157.64deg, $color-primary 0%, $color-accent 100%);
+	}
+
+	&__container {
+
+
+		@media (min-width: $md3) {
+			display: grid;
+			grid-template-columns: 1fr 1px 1fr;
+			column-gap: rem(40);
+			row-gap: rem(56);
+			align-items: start;
+
+		}
+	}
+
+	&__brand-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(16);
+		width: 100%;
+
+		@media (min-width: $md3) {
+			align-items: flex-end;
+			padding-right: rem(6);
+			grid-column: 1;
+			grid-row: 1;
+			max-width: rem(620);
+		}
+	}
+
+	&__logo {
+		display: inline-flex;
+		flex-shrink: 0;
+		text-decoration: none;
+
+		& img {
+			display: block;
+			width: rem(129);
+			height: rem(36);
+			object-fit: contain;
+			object-position: left bottom;
+
+			@media (min-width: $md3) {
+				width: rem(141);
+				height: rem(39);
+			}
+		}
+	}
+
+	&__phone {
+		flex-shrink: 0;
+		color: #fff;
+		text-transform: uppercase;
+		white-space: nowrap;
+		font-family: $font-inter;
+		letter-spacing: em(-0.34, 24);
+		@include adaptive-font(18, 24);
+		position: relative;
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: -2px;
+			left: 0;
+			height: 2px;
+			border-radius: 999px;
+			opacity: 0;
+			background: linear-gradient(90deg, transparent 0%, #fff 33%, #fff 66%, transparent 100%);
+			transform: scaleX(0.35);
+			transform-origin: center;
+			transition: opacity $nav-link-hover-motion, transform $nav-link-hover-motion;
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+
+				&::after {
+					opacity: 1;
+					transform: scaleX(1);
+				}
+			}
+		}
+	}
+
+	&__nav {
+		width: 100%;
+		margin-top: rem(40);
+
+		@media (min-width: $md3) {
+			grid-column: 3;
+			grid-row: 1;
+			margin-top: rem(10);
+			max-width: rem(619);
+			justify-self: end;
+			width: 100%;
+		}
+	}
+
+	&__menu {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(12);
+		width: 100%;
+		font-family: $font-inter;
+	}
+
+	&__link {
+		color: #fff;
+		text-decoration: none;
+		font-weight: 400;
+		line-height: 1.2;
+		text-transform: uppercase;
+		letter-spacing: -0.04em;
+		white-space: nowrap;
+		position: relative;
+		@include adaptive-font(14, 16);
+
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: -2px;
+			left: 0;
+			height: 2px;
+			border-radius: 999px;
+			opacity: 0;
+			background: linear-gradient(90deg, transparent 0%, #fff 33%, #fff 66%, transparent 100%);
+			transform: scaleX(0.35);
+			transform-origin: center;
+			transition: opacity $nav-link-hover-motion, transform $nav-link-hover-motion;
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translate3d(0, -1px, 0);
+
+				&::after {
+					opacity: 1;
+					transform: scaleX(1);
+				}
+			}
+		}
+
+		
+	}
+
+	&__divider {
+		background: rgba(255, 255, 255, 0.4);
+
+		@media (max-width:$md5) {
+			display: none;
+		}
+
+		@media (max-width: $md3) {
+			width: 100%;
+			height: 1px;
+			margin: rem(40) 0;
+
+
+		}
+
+		@media (min-width: $md3) {
+			grid-column: 2;
+			grid-row: span 2;
+			width: 1px;
+			align-self: stretch;
+			margin-top: rem(-20);
+			margin-bottom: rem(-30);
+		}
+	}
+
+	&__docs {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: rem(10);
+		width: 100%;
+		margin-top: 2.25rem;
+
+		@media (min-width:$md5) {
+			margin-top: 0;
+		}
+
+		@media (min-width: $md3) {
+			grid-column: 1;
+			grid-row: 2;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: rem(18);
+			max-width: rem(620);
+		}
+	}
+
+	&__doc {
+		font-family: "Manrope", $font-family;
+		font-weight: 400;
+		line-height: 1.3;
+		color: $color-surface-uikit;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		white-space: nowrap;
+		@include adaptive-font(14, 16);
+
+		transition: opacity 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.85;
+				text-decoration: none;
+			}
+		}
+	}
+
+	&__meta {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: rem(10);
+		width: 100%;
+		margin-top: rem(40);
+
+		@media (min-width: $md3) {
+			grid-column: 3;
+			grid-row: 2;
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: rem(40);
+			margin-top: 0;
+			max-width: rem(620);
+			justify-self: end;
+		}
+	}
+
+	&__copy {
+		font-family: "Manrope", $font-family;
+		font-weight: 500;
+		line-height: 1.3;
+		color: #f7f7f7;
+		text-align: center;
+		white-space: nowrap;
+		@include adaptive-font(12, 14);
+
+		@media (min-width: $md3) {
+			text-align: left;
+		}
+	}
+
+	&__dev {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: rem(10);
+		transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translateY(-2px);
+
+				.footer__dev-logo {
+					filter: grayscale(0%);
+				}
+			}
+		}
+	}
+
+	&__dev-logo {
+		display: block;
+		flex-shrink: 0;
+		width: rem(26);
+		height: rem(22);
+		object-fit: contain;
+		object-position: center bottom;
+		filter: grayscale(100%);
+		transition: all .4s ease;
+	}
+
+	&__dev-text {
+		font-family: "Manrope", $font-family;
+		font-weight: 500;
+		line-height: 1.3;
+		color: #f7f7f7;
+		white-space: nowrap;
+		@include adaptive-font(12, 14);
+	}
+}

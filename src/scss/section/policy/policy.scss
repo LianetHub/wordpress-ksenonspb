@@ -1,0 +1,34 @@
+.policy {
+	position: relative;
+	padding: rem(40) 0 rem(80);
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: url("@img/policy-decor.svg") 0 0 / 100% auto repeat-y;
+		pointer-events: none;
+		@include motion-animation;
+	}
+
+	@media (max-width: $md4) {
+		padding: rem(16) 0 rem(48);
+	}
+
+	@media (min-width: $md2) {
+		padding: rem(20) 0 rem(100);
+	}
+
+
+	&__container {
+		position: relative;
+		z-index: 1;
+	}
+
+	&__inner {
+		max-width: rem(876);
+		margin: 0 auto;
+	}
+}

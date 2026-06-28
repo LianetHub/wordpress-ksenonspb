@@ -1,0 +1,254 @@
+.pick {
+	padding: rem(24) 0;
+
+	@media (min-width:$md4) {
+		padding: rem(42) 0;
+
+	}
+
+	&__header {
+		display: grid;
+		gap: 0.75rem;
+
+		@media (min-width:$md2) {
+			gap: 1rem;
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__side {
+		@media (max-width:$md2) {
+			display: contents;
+		}
+	}
+
+
+	&__text {
+		margin: rem(10) 0 0;
+		font-family: "Manrope", $font-family;
+
+		@media (min-width: $md3) {
+			max-width: rem(600);
+		}
+	}
+
+	// .pick__tags
+	&__tags {
+		order: -1;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-top: 0.5rem;
+		gap: rem(10);
+
+		@media (min-width:$md4) {
+			gap: rem(20);
+
+		}
+	}
+
+	// .pick__tag
+	&__tag {}
+
+	&__benefits {
+		margin-top: 0.25rem;
+
+		@media (min-width: $md2) {
+			margin-top: 4.125rem;
+
+		}
+
+	}
+
+	&__subtitle {
+
+		color: $color-primary;
+		font-weight: 500;
+		font-style: italic;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		@include adaptive-font(18, 24);
+	}
+
+	&__list {
+		margin: rem(10) 0 0;
+
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+
+		@media (min-width: $md3) {
+			margin-top: rem(20);
+			gap: rem(20);
+		}
+
+		li {
+			position: relative;
+			padding-left: rem(31);
+			color: $color-text-body;
+			font-family: "Manrope", $font-family;
+			font-weight: 500;
+			line-height: 1.3;
+			@include adaptive-font(14, 16);
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: rem(4.5);
+				top: rem(4.5);
+				width: rem(12);
+				height: rem(12);
+				border-radius: 50%;
+				background: $color-accent;
+			}
+		}
+	}
+
+	&__videos {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: rem(10);
+		margin-top: rem(10);
+
+		@media (min-width: $md3) {
+			grid-template-columns: 1fr 1fr;
+			gap: rem(20);
+			margin-top: rem(43);
+		}
+	}
+
+	&__video {
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	&__video-media {
+		position: relative;
+		display: block;
+		width: 100%;
+		border-radius: rem(10);
+		overflow: hidden;
+		aspect-ratio: 332 / 195;
+		background: $color-accent;
+		cursor: pointer;
+		text-align: inherit;
+		font: inherit;
+		color: inherit;
+		-webkit-tap-highlight-color: transparent;
+
+		@media (min-width: $md3) {
+			aspect-ratio: 650 / 382;
+		}
+
+		&:focus-visible {
+			outline: rem(2) solid $color-accent;
+			outline-offset: rem(3);
+		}
+
+		>img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.35s ease, opacity 0.25s ease;
+		}
+
+		@media (any-hover: hover) {
+
+			&:hover,
+			&:focus-visible {
+				>img {
+					transform: scale(1.03);
+					opacity: 0.92;
+				}
+
+				.pick__play {
+					transform: translate(-50%, -50%) scale(1.08);
+					background: rgba(255, 255, 255, 0.22);
+					border-color: rgba(255, 255, 255, 0.95);
+					box-shadow: 0 rem(8) rem(24) rgba($color-primary, 0.2);
+				}
+			}
+		}
+
+		&:active .pick__play {
+			transform: translate(-50%, -50%) scale(1.02);
+		}
+	}
+
+	&__play {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(48);
+		height: rem(48);
+		padding: rem(10);
+		border: rem(0.5) solid #fff;
+		border-radius: rem(10);
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(5px);
+		-wekbit-backdrop-filter: blur(5px);
+		pointer-events: none;
+		transition:
+			transform 0.25s ease,
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+
+		@media (min-width: $md3) {
+			width: rem(101);
+			height: rem(101);
+			padding: rem(20) rem(20) rem(20) rem(24);
+			backdrop-filter: blur(10px);
+		}
+
+		img,
+		svg {
+			display: block;
+			width: rem(17);
+			height: rem(28);
+			object-fit: contain;
+
+			@media (min-width: $md3) {
+				width: rem(38);
+				height: rem(61);
+			}
+		}
+	}
+
+	&__caption {
+		padding: rem(5.5) rem(5.5) rem(5.5) rem(5.5);
+		border: rem(0.5) solid $color-accent;
+		border-radius: rem(6);
+		background: $color-surface-mint;
+		color: $color-primary;
+		font-size: rem(10);
+		line-height: 1.3;
+		letter-spacing: -0.02em;
+		font-family: $font-inter;
+
+		@media (min-width: $md3) {
+			min-height: rem(66);
+
+			padding: rem(9);
+			border-width: 1px;
+			border-radius: rem(10);
+			font-size: rem(18);
+			line-height: 1.3;
+			letter-spacing: em(-0.36, 18);
+		}
+
+		p {
+
+
+			&+p {
+				margin-top: 0;
+			}
+		}
+	}
+}

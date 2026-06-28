@@ -1,0 +1,168 @@
+.catalog-teaser {
+	padding: rem(16) 0 rem(30);
+
+	@media (min-width: $md3) {
+		padding: rem(42) 0 rem(64);
+	}
+
+	&__container {
+		position: relative;
+		z-index: 1;
+		@include decor-bg-svg-layer;
+	}
+
+	&__head {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+
+
+		@media (min-width:$md3) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	&__title {
+		max-width: rem(700);
+	}
+
+	&__tag {
+		align-self: flex-start;
+		order: -1;
+
+		@media (min-width:$md3) {
+			margin-top: 0.875rem;
+			order: 0
+		}
+
+	}
+
+	&__body {
+		margin-top: 0.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+		row-gap: rem(62);
+
+		@media (min-width: $md2) {
+			margin-top: 1rem;
+			flex-direction: row;
+			column-gap: rem(32);
+			row-gap: rem(20);
+			align-items: flex-end;
+		}
+	}
+
+
+
+	&__main {
+		flex: 1 1 auto;
+	}
+
+	&__text {
+
+		@media (min-width: $md3) {
+			max-width: rem(584);
+		}
+	}
+
+	&__actions {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: rem(10);
+		margin-top: 1.125rem;
+
+		@media (min-width: $md2) {
+			flex-direction: column;
+			margin-top: 2rem;
+			gap: rem(20);
+			max-width: rem(426);
+		}
+	}
+
+	&__btn {
+		width: 100%;
+		min-height: rem(52);
+
+		@media (min-width: $md3) {
+			min-height: $btn-height;
+		}
+
+		.btn__icon {
+			width: rem(28);
+			height: rem(28);
+		}
+
+		&.btn--secondary .btn__icon {
+			@media (max-width: $md3) {
+				display: none;
+			}
+		}
+	}
+
+
+
+	&__gallery {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: rem(10);
+
+
+		@media (min-width: $md2) {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			justify-content: flex-end;
+			gap: rem(21);
+		}
+	}
+
+	&__gallery-item {
+		flex: 0 0 rem(104);
+		list-style: none;
+
+		@for $i from 1 through 3 {
+			&:nth-child(#{$i})._anim-items {
+				transition-delay: #{$i * 0.115}s;
+			}
+		}
+
+		@media (min-width: $md2) {
+			flex: 0 0 rem(203);
+			width: rem(203);
+			height: rem(203);
+		}
+	}
+
+	&__card {
+		width: 100%;
+		height: 100%;
+		min-height: rem(104);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		color: inherit;
+
+		border: rem(0.5) solid $color-accent;
+		border-radius: rem(10);
+		padding: rem(10);
+		background: $color-surface-mint;
+		overflow: hidden;
+
+		& img {
+			height: auto
+		}
+
+		@media (min-width: $md2) {
+			min-height: rem(203);
+			border-width: 1px;
+		}
+	}
+
+
+}
