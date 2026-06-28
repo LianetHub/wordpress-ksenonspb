@@ -21,28 +21,32 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initBurger() {
-	const header = document.querySelector(".header");
+	const drawer = document.querySelector(".header-drawer");
 	const toggle = document.querySelector(".header__toggle");
+	const backdrop = document.querySelector(".header-drawer__backdrop");
 
-	if (!header || !toggle) return;
+	if (!drawer || !toggle) return;
 
 	const setMenuOpen = (isOpen) => {
-		header.classList.toggle("open-menu", isOpen);
+		drawer.classList.toggle("is-open", isOpen);
 		document.body.classList.toggle("lock", isOpen);
 		toggle.setAttribute("aria-expanded", String(isOpen));
 		toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+		drawer.setAttribute("aria-hidden", String(!isOpen));
 	};
 
 	toggle.addEventListener("click", () => {
-		setMenuOpen(!header.classList.contains("open-menu"));
+		setMenuOpen(!drawer.classList.contains("is-open"));
 	});
 
-	header.querySelectorAll(".header__link").forEach((link) => {
+	backdrop?.addEventListener("click", () => setMenuOpen(false));
+
+	drawer.querySelectorAll(".header-drawer__link, .header-drawer__primary, .header-drawer__logo").forEach((link) => {
 		link.addEventListener("click", () => setMenuOpen(false));
 	});
 
 	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape" && header.classList.contains("open-menu")) {
+		if (e.key === "Escape" && drawer.classList.contains("is-open")) {
 			setMenuOpen(false);
 		}
 	});

@@ -78,28 +78,28 @@ h3 {
 
 .main {
   flex: 1 1 auto;
-  background: #edfbff;
+  background: #fff;
 }
 .main:not(.main--home) {
-  padding-top: 3.5rem;
+  padding-top: 4.75rem;
 }
 @media (min-width: 991.98px) {
   .main:not(.main--home) {
-    padding-top: 5rem;
+    padding-top: 6.1875rem;
   }
 }
 
 .admin-bar .main:not(.main--home) {
-  padding-top: calc(3.5rem + 46px);
+  padding-top: calc(4.75rem + 46px);
 }
 @media screen and (min-width: 783px) {
   .admin-bar .main:not(.main--home) {
-    padding-top: calc(3.5rem + 32px);
+    padding-top: calc(4.75rem + 32px);
   }
 }
 @media (min-width: 991.98px) {
   .admin-bar .main:not(.main--home) {
-    padding-top: calc(5rem + 32px);
+    padding-top: calc(6.1875rem + 32px);
   }
 }
 

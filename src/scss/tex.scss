@@ -119,26 +119,26 @@ h3 {
 
 .main {
 	flex: 1 1 auto;
-	background: tokens.$color-surface-mint;
+	background: #fff;
 
 	&:not(.main--home) {
-		padding-top: rem(56);
+		padding-top: rem(76);
 
 		@media (min-width: $md3) {
-			padding-top: rem(80);
+			padding-top: rem(99);
 		}
 	}
 }
 
 .admin-bar .main:not(.main--home) {
-	padding-top: calc(#{rem(56)} + 46px);
+	padding-top: calc(#{rem(76)} + 46px);
 
 	@media screen and (min-width: 783px) {
-		padding-top: calc(#{rem(56)} + 32px);
+		padding-top: calc(#{rem(76)} + 32px);
 	}
 
 	@media (min-width: $md3) {
-		padding-top: calc(#{rem(80)} + 32px);
+		padding-top: calc(#{rem(99)} + 32px);
 	}
 }
 

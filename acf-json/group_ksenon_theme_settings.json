@@ -11,6 +11,22 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_ksenon_ts_header_accordion",
+            "label": "Шапка",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_header_cta",
+            "label": "Текст кнопки CTA",
+            "name": "header_cta_text",
+            "type": "text",
+            "default_value": "Связаться с нами"
+        },
+        {
             "key": "field_ksenon_ts_phones",
             "label": "Телефоны",
             "name": "telefony",
@@ -115,7 +131,7 @@
             "name": "address",
             "type": "textarea",
             "rows": 2,
-            "default_value": "Санкт-Петербург, ул. Шателена, 9"
+            "default_value": "ул. Шателена, 9, Санкт-Петербург"
         },
         {
             "key": "field_ksenon_ts_hours",
@@ -123,7 +139,7 @@
             "name": "hours",
             "type": "textarea",
             "rows": 2,
-            "default_value": "ПН-ПТ: 11-20\nСБ-ВС: по записи"
+            "default_value": "Без выходных\n9:00 - 21:00"
         },
         {
             "key": "field_ksenon_ts_map_show",
@@ -172,7 +188,84 @@
             "label": "Копирайт",
             "name": "kopirajt",
             "type": "text",
-            "default_value": "© 2001-2026 ksenonspb.ru — Автостудия КБ АВТО"
+            "default_value": "© 2001–2026 КБ АВТО"
+        },
+        {
+            "key": "field_ksenon_ts_footer_accordion",
+            "label": "Подвал",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_footer_tagline",
+            "label": "Слоган под логотипом",
+            "name": "footer_tagline",
+            "type": "text",
+            "default_value": "Лаборатория автосвета с 2001"
+        },
+        {
+            "key": "field_ksenon_ts_footer_description",
+            "label": "Описание в подвале",
+            "name": "footer_description",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Ремонтируем фары, которые другие меняют целиком. Гарантия до 2 лет письменно"
+        },
+        {
+            "key": "field_ksenon_ts_inn",
+            "label": "ИНН",
+            "name": "inn",
+            "type": "text",
+            "placeholder": "XXX"
+        },
+        {
+            "key": "field_ksenon_ts_ogrn",
+            "label": "ОГРН",
+            "name": "ogrn",
+            "type": "text",
+            "placeholder": "XXX"
+        },
+        {
+            "key": "field_ksenon_ts_site_domain",
+            "label": "Домен сайта",
+            "name": "site_domain",
+            "type": "text",
+            "default_value": "ksenonspb.ru"
+        },
+        {
+            "key": "field_ksenon_ts_social_links",
+            "label": "Соцсети",
+            "name": "social_links",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить соцсеть",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_ts_social_network",
+                    "label": "Сеть",
+                    "name": "network",
+                    "type": "select",
+                    "choices": {
+                        "telegram": "Telegram",
+                        "whatsapp": "WhatsApp",
+                        "vk": "VK",
+                        "youtube": "YouTube"
+                    },
+                    "default_value": "telegram",
+                    "return_format": "value",
+                    "parent_repeater": "field_ksenon_ts_social_links"
+                },
+                {
+                    "key": "field_ksenon_ts_social_url",
+                    "label": "Ссылка",
+                    "name": "url",
+                    "type": "url",
+                    "parent_repeater": "field_ksenon_ts_social_links"
+                }
+            ]
         },
         {
             "key": "field_ksenon_ts_policy",
@@ -327,5 +420,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1751030401
 }
