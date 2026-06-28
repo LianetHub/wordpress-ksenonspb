@@ -71,7 +71,7 @@
                     "display": "block",
                     "sub_fields": [
                         {"key": "field_ksenon_br_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_br_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Марки автомобилей"},
+                        {"key": "field_ksenon_br_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Работаем со всеми марками"},
                         {"key": "field_ksenon_br_featured", "label": "Избранные марки", "name": "featured_brands", "type": "relationship", "post_type": ["brand"], "return_format": "object"}
                     ]
                 },
@@ -82,7 +82,7 @@
                     "display": "block",
                     "sub_fields": [
                         {"key": "field_ksenon_wu_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_wu_title", "label": "Заголовок", "name": "title", "type": "text"},
+                        {"key": "field_ksenon_wu_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Почему мы?"},
                         {"key": "field_ksenon_wu_items", "label": "Пункты", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
                             {"key": "field_ksenon_wu_item_title", "label": "Заголовок", "name": "title", "type": "text", "parent_repeater": "field_ksenon_wu_items"},
                             {"key": "field_ksenon_wu_item_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 3, "parent_repeater": "field_ksenon_wu_items"},
@@ -117,9 +117,9 @@
                     "label": "FAQ",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_faq_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_faq_title", "label": "Заголовок", "name": "title", "type": "text"},
-                        {"key": "field_ksenon_faq_intro", "label": "Вводный текст", "name": "intro", "type": "textarea", "rows": 3},
+                        {"key": "field_ksenon_faq_tag", "label": "Тег", "name": "tag", "type": "text", "default_value": "FAQ"},
+                        {"key": "field_ksenon_faq_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Частые вопросы"},
+                        {"key": "field_ksenon_faq_intro", "label": "Вводный текст", "name": "intro", "type": "textarea", "rows": 3, "default_value": "Собрали ответы на то, что чаще всего спрашивают перед заказом. Не нашли свой вопрос — напишите нам."},
                         {"key": "field_ksenon_faq_items", "label": "Вопросы", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
                             {"key": "field_ksenon_faq_q", "label": "Вопрос", "name": "question", "type": "text", "parent_repeater": "field_ksenon_faq_items"},
                             {"key": "field_ksenon_faq_a", "label": "Ответ", "name": "answer", "type": "textarea", "rows": 3, "parent_repeater": "field_ksenon_faq_items"},
@@ -135,8 +135,8 @@
                     "sub_fields": [
                         {"key": "field_ksenon_cb_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Опишите проблему — оценим быстро и по делу"},
                         {"key": "field_ksenon_cb_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 2},
-                        {"key": "field_ksenon_cb_btn_primary", "label": "Кнопка основная", "name": "btn_primary", "type": "link", "return_format": "array"},
-                        {"key": "field_ksenon_cb_btn_secondary", "label": "Кнопка вторичная", "name": "btn_secondary", "type": "link", "return_format": "array"}
+                        {"key": "field_ksenon_cb_btn_primary", "label": "Кнопка основная", "name": "btn_primary", "type": "link", "return_format": "array", "default_value": {"title": "Оценить ремонт", "url": "#contacts", "target": ""}},
+                        {"key": "field_ksenon_cb_btn_secondary", "label": "Кнопка вторичная", "name": "btn_secondary", "type": "link", "return_format": "array", "default_value": {"title": "Связаться с нами", "url": "#contacts", "target": ""}}
                     ]
                 }
             }
@@ -155,5 +155,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751040000
+    "modified": 1751097600
 }

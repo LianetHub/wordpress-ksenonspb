@@ -26,6 +26,39 @@ add_filter(
 	}
 );
 
+/**
+ * Подставляет default_value из acf-json для простых полей, если в БД пусто.
+ *
+ * Не применяется к repeater, flexible_content, group и clone — у них default_value
+ * в JSON хранится по именам подполей, а ACF при load_value ожидает ключи полей.
+ */
+add_filter(
+	'acf/load_value',
+	function ( $value, $post_id, $field ) {
+		if ( ! is_array( $field ) || ! array_key_exists( 'default_value', $field ) ) {
+			return $value;
+		}
+
+		$skip_types = array( 'flexible_content', 'repeater', 'group', 'clone' );
+		if ( ! empty( $field['type'] ) && in_array( $field['type'], $skip_types, true ) ) {
+			return $value;
+		}
+
+		$default = $field['default_value'];
+		if ( null === $default || '' === $default || array() === $default ) {
+			return $value;
+		}
+
+		if ( null === $value || false === $value || '' === $value || ( is_array( $value ) && array() === $value ) ) {
+			return $default;
+		}
+
+		return $value;
+	},
+	10,
+	3
+);
+
 add_action(
 	'acf/init',
 	function () {
@@ -103,19 +136,19 @@ add_action(
 		?>
 	<style>
 		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>>a {
-			background-color: #26668c !important;
+			background-color: #FD8011 !important;
 			color: #fff !important;
 		}
 
 		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>>a:hover,
 		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>>a:focus {
-			background-color: #1e5270 !important;
+			background-color: #AF5B10 !important;
 			color: #fff !important;
 		}
 
 		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>.wp-has-current-submenu>a,
 		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>.current>a {
-			background-color: #26668c !important;
+			background-color: #FD8011 !important;
 			color: #fff !important;
 		}
 	</style>

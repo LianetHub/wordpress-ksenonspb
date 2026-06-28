@@ -311,10 +311,16 @@ if ( ! function_exists( 'ksenon_get_reviews' ) ) {
 				continue;
 			}
 			$reviews[] = array(
-				'name'   => $name,
-				'text'   => $text,
-				'photo'  => $row['photo'] ?? null,
-				'rating' => (int) ( $row['rating'] ?? 5 ),
+				'name'        => $name,
+				'text'        => $text,
+				'photo'       => $row['photo'] ?? null,
+				'rating'      => (int) ( $row['rating'] ?? 5 ),
+				'source'      => (string) ( $row['source'] ?? 'yandex' ),
+				'date_label'  => (string) ( $row['date_label'] ?? '' ),
+				'car_model'   => (string) ( $row['car_model'] ?? '' ),
+				'story_title' => (string) ( $row['story_title'] ?? '' ),
+				'story_url'   => (string) ( $row['story_url'] ?? '' ),
+				'verified'    => ! empty( $row['verified'] ),
 			);
 		}
 

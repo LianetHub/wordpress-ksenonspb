@@ -33,6 +33,12 @@
             "type": "repeater",
             "layout": "table",
             "button_label": "Добавить телефон",
+            "default_value": [
+                {
+                    "nomer": "+7 (812) 983-83-84",
+                    "v_shapke": 1
+                }
+            ],
             "sub_fields": [
                 {
                     "key": "field_ksenon_ts_phone_number",
@@ -139,7 +145,7 @@
             "name": "hours",
             "type": "textarea",
             "rows": 2,
-            "default_value": "Без выходных\n9:00 - 21:00"
+            "default_value": "Пн–Сб 10:00–20:00\nВоскресенье — выходной"
         },
         {
             "key": "field_ksenon_ts_map_show",
@@ -242,6 +248,16 @@
             "type": "repeater",
             "layout": "table",
             "button_label": "Добавить соцсеть",
+            "default_value": [
+                {
+                    "network": "telegram",
+                    "url": "https://t.me/ksenonspb"
+                },
+                {
+                    "network": "whatsapp",
+                    "url": "https://wa.me/78129838384"
+                }
+            ],
             "sub_fields": [
                 {
                     "key": "field_ksenon_ts_social_network",
@@ -292,6 +308,48 @@
             "type": "repeater",
             "layout": "block",
             "button_label": "Добавить отзыв",
+            "default_value": [
+                {
+                    "name": "Mktone",
+                    "text": "Быстро, качественно, с гарантией. Делал ретрофит головной оптики — линзы поставили AOZOOM, заводской пучок на встречку никого не слепит. Всем доволен, рекомендую ребят.",
+                    "rating": 5,
+                    "source": "drive2",
+                    "date_label": "8 месяцев назад",
+                    "verified": 1,
+                    "story_title": "Вернуть былой свет можно. Ретрофит головной оптики",
+                    "car_model": "Volvo S60 · 2-е поколение, 2011"
+                },
+                {
+                    "name": "ERMAKOFF",
+                    "text": "По ремонту оптики равных нет. Кто не рискует — тот не пьёт шампанского. Привозил после ДТП, восстановили корпус, поставили новые модули. Свет стал ровнее, чем с завода.",
+                    "rating": 5,
+                    "source": "drive2",
+                    "date_label": "2 недели назад",
+                    "verified": 1,
+                    "story_title": "Кто не рискует… Полный ретрофит после ДТП",
+                    "car_model": "Audi A6 Allroad quattro · C7, 2013"
+                },
+                {
+                    "name": "MaksPolo",
+                    "text": "Сделали всё качественно, но не быстро — ждал чуть дольше, чем рассчитывал. По работе — в целом 5 баллов. Преобразили глазки до неузнаваемости. Обращайтесь, советую.",
+                    "rating": 5,
+                    "source": "drive2",
+                    "date_label": "3 недели назад",
+                    "verified": 1,
+                    "story_title": "Преображение глазок",
+                    "car_model": "Audi A4 · B8, 2011"
+                },
+                {
+                    "name": "Bitterleaf",
+                    "text": "Тяга сотрудников к идеальному результату и стремление отремонтировать всё, что хотя бы теоретически поддаётся ремонту, — воистину поражает.",
+                    "rating": 5,
+                    "source": "drive2",
+                    "date_label": "5 месяцев назад",
+                    "verified": 1,
+                    "story_title": "Лёд мне в фары!",
+                    "car_model": "Subaru Outback · BP, 2012"
+                }
+            ],
             "sub_fields": [
                 {
                     "key": "field_ksenon_ts_review_name",
@@ -470,5 +528,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751030401
+    "modified": 1751097601
 }
