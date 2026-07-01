@@ -1096,7 +1096,7 @@ if (! function_exists('ksenon_kses_inline')) {
 			(string) $content,
 			array(
 				'span'   => array(
-					'class' => array('color-grey'),
+					'class' => array('color-grey', 'title--brand'),
 				),
 				'br'     => array(),
 				'strong' => array(),
@@ -1168,24 +1168,65 @@ if (! function_exists('ksenon_get_messenger_links')) {
 	}
 }
 
-if (! function_exists('ksenon_render_messenger_links')) {
-	function ksenon_render_messenger_links($class = 'messenger-links')
+if (! function_exists('ksenon_faq_title_html')) {
+	function ksenon_faq_title_html($title)
 	{
-		$links = ksenon_get_messenger_links();
-		if (! $links) {
+		$title = trim((string) $title);
+		if ('' === $title) {
+			return '';
+		}
+
+		if (false !== strpos($title, '<')) {
+			return nl2br(ksenon_kses_inline($title)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+
+		$parts = preg_split('/\s+/u', $title);
+		if (count($parts) < 2) {
+			return esc_html($title);
+		}
+
+		$brand = array_pop($parts);
+
+		return esc_html(implode(' ', $parts)) . ' <span class="title--brand">' . esc_html($brand) . '</span>';
+	}
+}
+
+if (! function_exists('ksenon_render_messenger_links')) {
+	function ksenon_render_messenger_links($class = 'messenger-links', $always_show = false)
+	{
+		$networks        = array('telegram', 'whatsapp');
+		$links_by_network = array();
+
+		foreach (ksenon_get_messenger_links() as $link) {
+			$links_by_network[$link['network']] = $link;
+		}
+
+		if (! $always_show && ! $links_by_network) {
 			return;
 		}
 	?>
 		<div class="<?php echo esc_attr($class); ?>">
-			<?php foreach ($links as $link) : ?>
+			<?php foreach ($networks as $network) : ?>
+				<?php
+				$link    = $links_by_network[$network] ?? null;
+				$url     = is_array($link) && ! empty($link['url']) ? $link['url'] : '';
+				$has_url = '' !== $url;
+				$icon_id = 'icon-' . $network;
+				$icon_w  = 'telegram' === $network ? 16 : 20;
+				$icon_h  = 'telegram' === $network ? 14 : 20;
+				?>
 				<a
-					class="messenger-links__item messenger-links__item--<?php echo esc_attr($link['network']); ?>"
-					href="<?php echo esc_url($link['url']); ?>"
+					class="messenger-links__item messenger-links__item--<?php echo esc_attr($network); ?><?php echo $has_url ? '' : ' is-disabled'; ?>"
+					href="<?php echo esc_url($has_url ? $url : '#'); ?>"
+					<?php if ($has_url) : ?>
 					target="_blank"
-					rel="noopener noreferrer">
-					<?php echo ksenon_get_footer_social_icon($link['network']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-					?>
-					<span><?php echo esc_html(ksenon_get_footer_social_label($link['network'])); ?></span>
+					rel="noopener noreferrer"
+					<?php else : ?>
+					aria-disabled="true"
+					tabindex="-1"
+					<?php endif; ?>>
+					<?php ksenon_icon($icon_id, $icon_w, $icon_h, 'messenger-links__icon'); ?>
+					<span><?php echo esc_html(ksenon_get_footer_social_label($network)); ?></span>
 				</a>
 			<?php endforeach; ?>
 		</div>

@@ -209,8 +209,6 @@
 			height: rem(10);
 		}
 
-
-
 		@media (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
 				box-shadow: 0 rem(8) rem(24) rgba($color-black, 0.08);
@@ -241,6 +239,38 @@
 				box-shadow: 0 rem(3) rem(2) rgba(253, 128, 17, 0.2);
 			}
 		}
+
+		&.btn--large {
+			gap: rem(36);
+			width: 100%;
+			min-height: rem(70);
+			height: rem(70);
+			padding: 0 rem(15) 0 rem(40);
+			border-radius: rem(40);
+			font-size: rem(24);
+
+			.btn__text {
+				font-size: rem(24);
+				line-height: 1;
+			}
+
+			.btn__arrow {
+				width: rem(58);
+				height: rem(58);
+			}
+		}
+	}
+
+	&--large {
+		min-height: rem(70);
+		height: rem(70);
+		padding: rem(20) rem(25);
+		border-radius: rem(40);
+		font-size: rem(24);
+		line-height: 1;
+		font-weight: 500;
+		letter-spacing: normal;
+		text-transform: none;
 	}
 
 	&--arrow-sm {

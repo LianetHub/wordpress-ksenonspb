@@ -94,8 +94,8 @@ body {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -103,8 +103,8 @@ body {
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -709,6 +709,38 @@ body {
   background: #e8720f;
   -webkit-box-shadow: 0 0.1875rem 0.125rem rgba(253, 128, 17, 0.2);
           box-shadow: 0 0.1875rem 0.125rem rgba(253, 128, 17, 0.2);
+}
+
+.btn--arrow.btn--large {
+  gap: 2.25rem;
+  width: 100%;
+  min-height: 4.375rem;
+  height: 4.375rem;
+  padding: 0 0.9375rem 0 2.5rem;
+  border-radius: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.btn--arrow.btn--large .btn__text {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.btn--arrow.btn--large .btn__arrow {
+  width: 3.625rem;
+  height: 3.625rem;
+}
+
+.btn--large {
+  min-height: 4.375rem;
+  height: 4.375rem;
+  padding: 1.25rem 1.5625rem;
+  border-radius: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .btn--arrow-sm {

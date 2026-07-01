@@ -42,17 +42,14 @@ if (! is_array($btn_secondary) || empty($btn_secondary['url'])) {
 ?>
 <section class="cta-bottom">
 	<div class="cta-bottom__container container">
-		<h2 class="cta-bottom__title title-md"><?php echo esc_html($args['title']); ?></h2>
+		<h2 class="cta-bottom__title title-md title--light"><?php echo esc_html($args['title']); ?></h2>
 		<?php if ($args['text']) : ?>
 			<p class="cta-bottom__text"><?php echo nl2br(esc_html($args['text'])); ?></p>
 		<?php endif; ?>
 		<div class="cta-bottom__actions">
-			<a class="section-head__more cta-bottom__btn" href="<?php echo esc_url(ksenon_acf_link_url($btn_primary)); ?>">
-				<span class="section-head__more-text"><?php echo esc_html(ksenon_acf_link_title($btn_primary)); ?></span>
-				<?php ksenon_render_home_arrow(); ?>
-			</a>
+			<?php ksenon_render_btn_arrow($btn_primary, 'btn btn--arrow btn--large cta-bottom__btn', __('Оценить ремонт', 'ksenonspb')); ?>
 			<a
-				class="btn btn--secondary cta-bottom__btn-secondary"
+				class="btn btn--white-outline btn--large cta-bottom__btn-secondary"
 				href="<?php echo esc_url(ksenon_acf_link_url($btn_secondary)); ?>"
 				<?php echo ksenon_acf_link_target($btn_secondary) ? ' target="' . esc_attr(ksenon_acf_link_target($btn_secondary)) . '"' : ''; ?>>
 				<?php echo esc_html(ksenon_acf_link_title($btn_secondary)); ?>
