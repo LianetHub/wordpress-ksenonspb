@@ -15,16 +15,60 @@
                     "label": "Hero",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_hero_title", "label": "Заголовок", "name": "title", "type": "textarea", "rows": 3},
-                        {"key": "field_ksenon_hero_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 3},
-                        {"key": "field_ksenon_hero_image", "label": "Изображение", "name": "image", "type": "image", "return_format": "array"},
-                        {"key": "field_ksenon_hero_btn", "label": "Кнопка основная", "name": "btn", "type": "link", "return_format": "array"},
-                        {"key": "field_ksenon_hero_btn_secondary", "label": "Кнопка вторичная", "name": "btn_secondary", "type": "link", "return_format": "array"},
-                        {"key": "field_ksenon_hero_slides", "label": "Промо-слайды", "name": "slides", "type": "repeater", "layout": "block", "button_label": "Добавить слайд", "sub_fields": [
-                            {"key": "field_ksenon_hero_slide_title", "label": "Заголовок", "name": "title", "type": "textarea", "rows": 3, "parent_repeater": "field_ksenon_hero_slides"},
-                            {"key": "field_ksenon_hero_slide_btn", "label": "Кнопка", "name": "btn", "type": "link", "return_format": "array", "parent_repeater": "field_ksenon_hero_slides"},
-                            {"key": "field_ksenon_hero_slide_image", "label": "Фон", "name": "image", "type": "image", "return_format": "array", "parent_repeater": "field_ksenon_hero_slides"}
-                        ]}
+                        {
+                            "key": "field_ksenon_hero_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "textarea",
+                            "rows": 3
+                        },
+                        {
+                            "key": "field_ksenon_hero_text",
+                            "label": "Текст",
+                            "name": "text",
+                            "type": "textarea",
+                            "rows": 3
+                        },
+                        {
+                            "key": "field_ksenon_hero_btn",
+                            "label": "Кнопка основная",
+                            "name": "btn",
+                            "type": "link",
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_ksenon_hero_btn_secondary",
+                            "label": "Кнопка вторичная",
+                            "name": "btn_secondary",
+                            "type": "link",
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_ksenon_hero_slides",
+                            "label": "Промо-слайды",
+                            "name": "slides",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Добавить слайд",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_hero_slide_title",
+                                    "label": "Заголовок",
+                                    "name": "title",
+                                    "type": "textarea",
+                                    "rows": 3,
+                                    "parent_repeater": "field_ksenon_hero_slides"
+                                },
+                                {
+                                    "key": "field_ksenon_hero_slide_btn",
+                                    "label": "Кнопка",
+                                    "name": "btn",
+                                    "type": "link",
+                                    "return_format": "array",
+                                    "parent_repeater": "field_ksenon_hero_slides"
+                                }
+                            ]
+                        }
                     ]
                 },
                 "layout_ksenon_advantages": {
@@ -33,12 +77,30 @@
                     "label": "Преимущества",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_adv_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_adv_title", "label": "Заголовок", "name": "title", "type": "text"},
-                        {"key": "field_ksenon_adv_items", "label": "Карточки", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
-                            {"key": "field_ksenon_adv_item_title", "label": "Заголовок", "name": "title", "type": "text", "parent_repeater": "field_ksenon_adv_items"},
-                            {"key": "field_ksenon_adv_item_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 2, "parent_repeater": "field_ksenon_adv_items"}
-                        ]}
+                        {
+                            "key": "field_ksenon_adv_items",
+                            "label": "Карточки",
+                            "name": "items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_adv_item_title",
+                                    "label": "Заголовок",
+                                    "name": "title",
+                                    "type": "text",
+                                    "parent_repeater": "field_ksenon_adv_items"
+                                },
+                                {
+                                    "key": "field_ksenon_adv_item_text",
+                                    "label": "Текст",
+                                    "name": "text",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "parent_repeater": "field_ksenon_adv_items"
+                                }
+                            ]
+                        }
                     ]
                 },
                 "layout_ksenon_services_teaser": {
@@ -47,10 +109,31 @@
                     "label": "Наши услуги",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_st_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_st_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Наши услуги"},
-                        {"key": "field_ksenon_st_services", "label": "Избранные услуги", "name": "featured_services", "type": "relationship", "post_type": ["service"], "return_format": "object", "instructions": "Оставьте пустым — выведутся все услуги"},
-                        {"key": "field_ksenon_st_limit", "label": "Лимит", "name": "limit", "type": "number", "default_value": 3}
+                        {
+                            "key": "field_ksenon_st_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Наши услуги"
+                        },
+                        {
+                            "key": "field_ksenon_st_services",
+                            "label": "Избранные услуги",
+                            "name": "featured_services",
+                            "type": "relationship",
+                            "post_type": [
+                                "service"
+                            ],
+                            "return_format": "object",
+                            "instructions": "Оставьте пустым — выведутся все услуги"
+                        },
+                        {
+                            "key": "field_ksenon_st_limit",
+                            "label": "Лимит",
+                            "name": "limit",
+                            "type": "number",
+                            "default_value": 3
+                        }
                     ]
                 },
                 "layout_ksenon_portfolio_teaser": {
@@ -59,9 +142,20 @@
                     "label": "Наши работы",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_pt_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_pt_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Наши работы"},
-                        {"key": "field_ksenon_pt_limit", "label": "Количество", "name": "limit", "type": "number", "default_value": 4}
+                        {
+                            "key": "field_ksenon_pt_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Наши работы"
+                        },
+                        {
+                            "key": "field_ksenon_pt_limit",
+                            "label": "Количество",
+                            "name": "limit",
+                            "type": "number",
+                            "default_value": 4
+                        }
                     ]
                 },
                 "layout_ksenon_brands": {
@@ -70,9 +164,23 @@
                     "label": "Марки",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_br_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_br_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Работаем со всеми марками"},
-                        {"key": "field_ksenon_br_featured", "label": "Избранные марки", "name": "featured_brands", "type": "relationship", "post_type": ["brand"], "return_format": "object"}
+                        {
+                            "key": "field_ksenon_br_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Работаем со всеми марками"
+                        },
+                        {
+                            "key": "field_ksenon_br_featured",
+                            "label": "Избранные марки",
+                            "name": "featured_brands",
+                            "type": "relationship",
+                            "post_type": [
+                                "brand"
+                            ],
+                            "return_format": "object"
+                        }
                     ]
                 },
                 "layout_ksenon_why_us": {
@@ -81,14 +189,53 @@
                     "label": "Почему мы?",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_wu_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_wu_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Почему мы?"},
-                        {"key": "field_ksenon_wu_items", "label": "Пункты", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
-                            {"key": "field_ksenon_wu_item_title", "label": "Заголовок", "name": "title", "type": "text", "parent_repeater": "field_ksenon_wu_items"},
-                            {"key": "field_ksenon_wu_item_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 3, "parent_repeater": "field_ksenon_wu_items"},
-                            {"key": "field_ksenon_wu_item_image", "label": "Изображение", "name": "image", "type": "image", "return_format": "array", "parent_repeater": "field_ksenon_wu_items"},
-                            {"key": "field_ksenon_wu_item_step", "label": "Шаг", "name": "step", "type": "text", "placeholder": "01 / 04", "parent_repeater": "field_ksenon_wu_items"}
-                        ]}
+                        {
+                            "key": "field_ksenon_wu_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Почему мы?"
+                        },
+                        {
+                            "key": "field_ksenon_wu_items",
+                            "label": "Пункты",
+                            "name": "items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_wu_item_title",
+                                    "label": "Заголовок",
+                                    "name": "title",
+                                    "type": "text",
+                                    "parent_repeater": "field_ksenon_wu_items"
+                                },
+                                {
+                                    "key": "field_ksenon_wu_item_text",
+                                    "label": "Текст",
+                                    "name": "text",
+                                    "type": "textarea",
+                                    "rows": 3,
+                                    "parent_repeater": "field_ksenon_wu_items"
+                                },
+                                {
+                                    "key": "field_ksenon_wu_item_image",
+                                    "label": "Изображение",
+                                    "name": "image",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "parent_repeater": "field_ksenon_wu_items"
+                                },
+                                {
+                                    "key": "field_ksenon_wu_item_step",
+                                    "label": "Шаг",
+                                    "name": "step",
+                                    "type": "text",
+                                    "placeholder": "01 / 04",
+                                    "parent_repeater": "field_ksenon_wu_items"
+                                }
+                            ]
+                        }
                     ]
                 },
                 "layout_ksenon_cta_contacts": {
@@ -97,8 +244,13 @@
                     "label": "CTA + контакты",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_cc_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_cc_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Оценим ваш случай за 1 рабочий день"}
+                        {
+                            "key": "field_ksenon_cc_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Оценим ваш случай за 1 рабочий день"
+                        }
                     ]
                 },
                 "layout_ksenon_reviews": {
@@ -107,8 +259,13 @@
                     "label": "Отзывы",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_rev_tag", "label": "Тег", "name": "tag", "type": "text"},
-                        {"key": "field_ksenon_rev_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Отзывы клиентов"}
+                        {
+                            "key": "field_ksenon_rev_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Отзывы клиентов"
+                        }
                     ]
                 },
                 "layout_ksenon_faq": {
@@ -117,14 +274,53 @@
                     "label": "FAQ",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_faq_tag", "label": "Тег", "name": "tag", "type": "text", "default_value": "FAQ"},
-                        {"key": "field_ksenon_faq_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Частые вопросы"},
-                        {"key": "field_ksenon_faq_intro", "label": "Вводный текст", "name": "intro", "type": "textarea", "rows": 3, "default_value": "Собрали ответы на то, что чаще всего спрашивают перед заказом. Не нашли свой вопрос — напишите нам."},
-                        {"key": "field_ksenon_faq_items", "label": "Вопросы", "name": "items", "type": "repeater", "layout": "block", "sub_fields": [
-                            {"key": "field_ksenon_faq_q", "label": "Вопрос", "name": "question", "type": "text", "parent_repeater": "field_ksenon_faq_items"},
-                            {"key": "field_ksenon_faq_a", "label": "Ответ", "name": "answer", "type": "textarea", "rows": 3, "parent_repeater": "field_ksenon_faq_items"},
-                            {"key": "field_ksenon_faq_open", "label": "Открыт", "name": "is_open", "type": "true_false", "ui": 1, "parent_repeater": "field_ksenon_faq_items"}
-                        ]}
+                        {
+                            "key": "field_ksenon_faq_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Частые вопросы"
+                        },
+                        {
+                            "key": "field_ksenon_faq_intro",
+                            "label": "Вводный текст",
+                            "name": "intro",
+                            "type": "textarea",
+                            "rows": 3,
+                            "default_value": "Собрали ответы на то, что чаще всего спрашивают перед заказом. Не нашли свой вопрос — напишите нам."
+                        },
+                        {
+                            "key": "field_ksenon_faq_items",
+                            "label": "Вопросы",
+                            "name": "items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_faq_q",
+                                    "label": "Вопрос",
+                                    "name": "question",
+                                    "type": "text",
+                                    "parent_repeater": "field_ksenon_faq_items"
+                                },
+                                {
+                                    "key": "field_ksenon_faq_a",
+                                    "label": "Ответ",
+                                    "name": "answer",
+                                    "type": "textarea",
+                                    "rows": 3,
+                                    "parent_repeater": "field_ksenon_faq_items"
+                                },
+                                {
+                                    "key": "field_ksenon_faq_open",
+                                    "label": "Открыт",
+                                    "name": "is_open",
+                                    "type": "true_false",
+                                    "ui": 1,
+                                    "parent_repeater": "field_ksenon_faq_items"
+                                }
+                            ]
+                        }
                     ]
                 },
                 "layout_ksenon_cta_bottom": {
@@ -133,10 +329,44 @@
                     "label": "Опишите проблему",
                     "display": "block",
                     "sub_fields": [
-                        {"key": "field_ksenon_cb_title", "label": "Заголовок", "name": "title", "type": "text", "default_value": "Опишите проблему — оценим быстро и по делу"},
-                        {"key": "field_ksenon_cb_text", "label": "Текст", "name": "text", "type": "textarea", "rows": 2},
-                        {"key": "field_ksenon_cb_btn_primary", "label": "Кнопка основная", "name": "btn_primary", "type": "link", "return_format": "array", "default_value": {"title": "Оценить ремонт", "url": "#contacts", "target": ""}},
-                        {"key": "field_ksenon_cb_btn_secondary", "label": "Кнопка вторичная", "name": "btn_secondary", "type": "link", "return_format": "array", "default_value": {"title": "Связаться с нами", "url": "#contacts", "target": ""}}
+                        {
+                            "key": "field_ksenon_cb_title",
+                            "label": "Заголовок",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Опишите проблему — оценим быстро и по делу"
+                        },
+                        {
+                            "key": "field_ksenon_cb_text",
+                            "label": "Текст",
+                            "name": "text",
+                            "type": "textarea",
+                            "rows": 2
+                        },
+                        {
+                            "key": "field_ksenon_cb_btn_primary",
+                            "label": "Кнопка основная",
+                            "name": "btn_primary",
+                            "type": "link",
+                            "return_format": "array",
+                            "default_value": {
+                                "title": "Оценить ремонт",
+                                "url": "#contacts",
+                                "target": ""
+                            }
+                        },
+                        {
+                            "key": "field_ksenon_cb_btn_secondary",
+                            "label": "Кнопка вторичная",
+                            "name": "btn_secondary",
+                            "type": "link",
+                            "return_format": "array",
+                            "default_value": {
+                                "title": "Связаться с нами",
+                                "url": "#contacts",
+                                "target": ""
+                            }
+                        }
                     ]
                 }
             }
@@ -155,5 +385,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751097600
+    "modified": 1783036800
 }

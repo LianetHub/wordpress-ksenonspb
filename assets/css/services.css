@@ -73,31 +73,6 @@
   color: #6f6f6f;
 }
 
-.service-card__tags {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.service-card__tag {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  min-height: 2rem;
-  padding: 0.625rem 1.25rem;
-  border-radius: 3.125rem;
-  background: #ffffff;
-  font-size: 0.625rem;
-  color: #261c13;
-}
-
 .service-card__link {
   margin-top: auto;
 }

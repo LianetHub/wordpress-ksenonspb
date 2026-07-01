@@ -5,14 +5,12 @@
  *
  * @package ksenonspb
  *
- * @var array $args { @type string $tag, @type string $title, @type array $items }
+ * @var array $args { @type array $items }
  */
 
 $args = wp_parse_args(
 	isset($args) && is_array($args) ? $args : array(),
 	array(
-		'tag'   => '',
-		'title' => '',
 		'items' => array(),
 	)
 );

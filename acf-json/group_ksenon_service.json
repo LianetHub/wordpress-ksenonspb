@@ -25,23 +25,6 @@
             "rows": 3
         },
         {
-            "key": "field_ksenon_service_card_tags",
-            "label": "Теги карточки",
-            "name": "card_tags",
-            "type": "repeater",
-            "layout": "table",
-            "button_label": "Добавить тег",
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_service_card_tag_label",
-                    "label": "Тег",
-                    "name": "label",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_service_card_tags"
-                }
-            ]
-        },
-        {
             "key": "field_ksenon_service_hero_title",
             "label": "Hero — заголовок",
             "name": "hero_title",
@@ -91,9 +74,13 @@
             "label": "Связанные марки",
             "name": "related_brands",
             "type": "relationship",
-            "post_type": ["brand"],
+            "post_type": [
+                "brand"
+            ],
             "return_format": "object",
-            "filters": ["search"]
+            "filters": [
+                "search"
+            ]
         },
         {
             "key": "field_ksenon_service_faq",
@@ -129,12 +116,6 @@
             ]
         },
         {
-            "key": "field_ksenon_service_faq_tag",
-            "label": "FAQ — тег",
-            "name": "faq_tag",
-            "type": "text"
-        },
-        {
             "key": "field_ksenon_service_faq_title",
             "label": "FAQ — заголовок",
             "name": "faq_title",
@@ -154,5 +135,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751040000
+    "modified": 1783036800
 }

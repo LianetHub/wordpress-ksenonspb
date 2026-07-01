@@ -5,13 +5,12 @@
  *
  * @package ksenonspb
  *
- * @var array $args { @type string $tag, @type string $title }
+ * @var array $args { @type string $title }
  */
 
 $args = wp_parse_args(
 	isset($args) && is_array($args) ? $args : array(),
 	array(
-		'tag'   => '',
 		'title' => __('Отзывы клиентов', 'ksenonspb'),
 	)
 );

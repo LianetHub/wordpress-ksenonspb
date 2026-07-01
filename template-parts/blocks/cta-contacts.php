@@ -5,13 +5,12 @@
  *
  * @package ksenonspb
  *
- * @var array $args { @type string $tag, @type string $title }
+ * @var array $args { @type string $title }
  */
 
 $args = wp_parse_args(
 	isset($args) && is_array($args) ? $args : array(),
 	array(
-		'tag'   => '',
 		'title' => __('Оценим ваш случай за 1 рабочий день', 'ksenonspb'),
 	)
 );
@@ -27,9 +26,6 @@ $map    = ksenon_get_map_settings();
 		<div class="cta-contacts__container request__container container">
 			<div class="cta-contacts__layout">
 				<div class="cta-contacts__form-col">
-					<?php if ($args['tag']) : ?>
-						<span class="cta-contacts__tag tag"><?php echo esc_html($args['tag']); ?></span>
-					<?php endif; ?>
 					<?php if ($args['title']) : ?>
 						<h2 class="cta-contacts__title title-md"><?php echo esc_html($args['title']); ?></h2>
 					<?php endif; ?>

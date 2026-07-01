@@ -31,7 +31,10 @@ function initBurger() {
 		drawer.classList.toggle("is-open", isOpen);
 		document.body.classList.toggle("lock", isOpen);
 		toggle.setAttribute("aria-expanded", String(isOpen));
-		toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+		toggle.setAttribute(
+			"aria-label",
+			isOpen ? "Закрыть меню" : "Открыть меню",
+		);
 		drawer.setAttribute("aria-hidden", String(!isOpen));
 	};
 
@@ -41,9 +44,13 @@ function initBurger() {
 
 	backdrop?.addEventListener("click", () => setMenuOpen(false));
 
-	drawer.querySelectorAll(".header-drawer__link, .header-drawer__primary, .header-drawer__logo").forEach((link) => {
-		link.addEventListener("click", () => setMenuOpen(false));
-	});
+	drawer
+		.querySelectorAll(
+			".header-drawer__link, .header-drawer__primary, .header-drawer__logo",
+		)
+		.forEach((link) => {
+			link.addEventListener("click", () => setMenuOpen(false));
+		});
 
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape" && drawer.classList.contains("is-open")) {
@@ -79,7 +86,6 @@ function initFancybox() {
 			},
 		},
 	});
-
 }
 
 function initPartnersAutoPopup() {
@@ -89,12 +95,16 @@ function initPartnersAutoPopup() {
 
 	const getCookie = (name) => {
 		const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-		const match = document.cookie.match(new RegExp(`(?:^|; )${escaped}=([^;]*)`));
+		const match = document.cookie.match(
+			new RegExp(`(?:^|; )${escaped}=([^;]*)`),
+		);
 		return match ? decodeURIComponent(match[1]) : null;
 	};
 
 	const setCookie = (name, value) => {
-		const expires = new Date(Date.now() + COOKIE_DAYS * 864e5).toUTCString();
+		const expires = new Date(
+			Date.now() + COOKIE_DAYS * 864e5,
+		).toUTCString();
 		document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
 	};
 
@@ -106,7 +116,9 @@ function initPartnersAutoPopup() {
 	if (!popup || !popup.querySelector(".popup-modal__partners")) return;
 
 	document.addEventListener("click", (e) => {
-		const trigger = e.target.closest('[data-fancybox][data-src="#popup-partners"]');
+		const trigger = e.target.closest(
+			'[data-fancybox][data-src="#popup-partners"]',
+		);
 		if (trigger) markPopupSeen();
 	});
 
@@ -118,16 +130,13 @@ function initPartnersAutoPopup() {
 		if (Fancybox.getInstance()) return;
 
 		markPopupSeen();
-		Fancybox.show(
-			[{ src: "#popup-partners", type: "inline" }],
-			{
-				mainClass: "fancybox-popup",
-				dragToClose: false,
-				placeFocusBack: true,
-				autoFocus: true,
-				trapFocus: true,
-			}
-		);
+		Fancybox.show([{ src: "#popup-partners", type: "inline" }], {
+			mainClass: "fancybox-popup",
+			dragToClose: false,
+			placeFocusBack: true,
+			autoFocus: true,
+			trapFocus: true,
+		});
 	}, DELAY_MS);
 }
 
@@ -192,7 +201,10 @@ function initProductTableMore() {
 
 	btn.addEventListener("click", () => {
 		const expanded = wrap.classList.toggle("product-table-wrap--expanded");
-		wrap.querySelector(".product-table")?.classList.toggle("product-table--expanded", expanded);
+		wrap.querySelector(".product-table")?.classList.toggle(
+			"product-table--expanded",
+			expanded,
+		);
 		btn.setAttribute("aria-expanded", String(expanded));
 	});
 }
@@ -211,7 +223,9 @@ function initAccordion() {
 
 				items.forEach((other) => {
 					other.classList.remove("_active");
-					other.querySelector(".accordion__header")?.setAttribute("aria-expanded", "false");
+					other
+						.querySelector(".accordion__header")
+						?.setAttribute("aria-expanded", "false");
 				});
 
 				if (!isOpen) {
@@ -267,7 +281,9 @@ function initHomePanels() {
 
 				items.forEach((other) => {
 					other.classList.remove("_active");
-					other.querySelector(".panels__heading")?.setAttribute("aria-expanded", "false");
+					other
+						.querySelector(".panels__heading")
+						?.setAttribute("aria-expanded", "false");
 				});
 
 				if (!isOpen) {
@@ -336,11 +352,17 @@ function initReviewsTabs() {
 				tabs.forEach((item) => {
 					const isActive = item === tab;
 					item.classList.toggle("_active", isActive);
-					item.setAttribute("aria-selected", isActive ? "true" : "false");
+					item.setAttribute(
+						"aria-selected",
+						isActive ? "true" : "false",
+					);
 				});
 
 				panels.forEach((panel) => {
-					panel.classList.toggle("_active", panel.getAttribute("data-reviews-panel") === target);
+					panel.classList.toggle(
+						"_active",
+						panel.getAttribute("data-reviews-panel") === target,
+					);
 				});
 			});
 		});
@@ -354,7 +376,18 @@ function initHomeSwipers() {
 	if (heroPromoEl) {
 		new Swiper(heroPromoEl, {
 			slidesPerView: 1,
+			speed: 1000,
 			loop: heroPromoEl.querySelectorAll(".swiper-slide").length > 1,
+			watchOverflow: true,
+			effect: "fade",
+			fadeEffect: {
+				crossFade: true,
+			},
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+				stopOnLastSlide: false,
+			},
 			navigation: {
 				nextEl: ".hero__promo-next",
 				prevEl: ".hero__promo-prev",
@@ -371,7 +404,9 @@ function initHomeSwipers() {
 				991.98: {
 					slidesPerView: 2,
 					spaceBetween: 20,
-					enabled: portfolioEl.querySelectorAll(".swiper-slide").length > 2,
+					enabled:
+						portfolioEl.querySelectorAll(".swiper-slide").length >
+						2,
 				},
 			},
 			navigation: {
@@ -600,7 +635,9 @@ function initDevicesBenefitsSwiper() {
 function initRelatedEquipmentSwiper() {
 	if (typeof Swiper === "undefined") return;
 
-	const slider = document.querySelector(".equipment--related .equipment__slider");
+	const slider = document.querySelector(
+		".equipment--related .equipment__slider",
+	);
 	if (!slider) return;
 
 	new Swiper(slider, {

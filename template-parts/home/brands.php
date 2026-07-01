@@ -31,9 +31,6 @@ if (! $query->have_posts()) {
 ?>
 <section class="brands-section">
 	<div class="brands-section__container container">
-		<?php if (ksenon_home_get('tag')) : ?>
-			<span class="brands-section__tag tag"><?php echo esc_html((string) ksenon_home_get('tag')); ?></span>
-		<?php endif; ?>
 		<h2 class="brands-section__title title-md"><?php echo esc_html((string) ksenon_home_get('title', __('Марки автомобилей', 'ksenonspb'))); ?></h2>
 		<div class="brands-section__grid">
 			<?php

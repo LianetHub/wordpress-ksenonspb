@@ -30,9 +30,6 @@ foreach ($items as $index => $item) {
 ?>
 <section class="why-us">
 	<div class="why-us__container container">
-		<?php if (ksenon_home_get('tag')) : ?>
-			<span class="why-us__tag tag"><?php echo esc_html((string) ksenon_home_get('tag')); ?></span>
-		<?php endif; ?>
 		<h2 class="why-us__title title-md"><?php echo esc_html((string) ksenon_home_get('title', __('Почему мы?', 'ksenonspb'))); ?></h2>
 
 		<?php if ($items) : ?>

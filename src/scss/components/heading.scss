@@ -293,54 +293,6 @@
 		}
 	}
 
-	&__tags {
-		order: 1;
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: rem(10);
-
-		@media (min-width:$md4) {
-			margin-top: 1rem;
-		}
-
-		@media (min-width: $md3) {
-			display: flex;
-			flex-wrap: wrap;
-			margin-top: rem(54);
-			gap: rem(20);
-		}
-	}
-
-	&__tag {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: rem(6) rem(2);
-		border: rem(0.5) solid $color-accent;
-		border-radius: $radius-tab;
-		background: $color-surface-mint;
-		color: $color-primary;
-		font-weight: 500;
-		font-size: rem(8);
-		line-height: 1.2;
-		letter-spacing: -0.02em;
-		text-transform: uppercase;
-		width: 100%;
-		transition: border-color 0.2s ease, background-color 0.2s ease;
-
-		@media (min-width: $md4) {
-			padding: rem(6) rem(19);
-			font-size: rem(16);
-		}
-
-		@media (any-hover: hover) {
-			&:hover {
-				border-color: $color-accent-hover;
-				background: $color-surface-tab;
-			}
-		}
-	}
-
 	&__products {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

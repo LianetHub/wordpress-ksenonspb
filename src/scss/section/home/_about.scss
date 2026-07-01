@@ -1,6 +1,5 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
-@use "../../components/tag";
 .about {
 	padding: rem(20) 0;
 
@@ -41,26 +40,6 @@
 			gap: rem(26);
 
 
-		}
-	}
-
-	&__tag {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		align-self: flex-start;
-		@include tag.tag-base;
-		background: $color-accent;
-		color: #fff;
-		padding: rem(6) rem(10);
-		letter-spacing: -0.02em;
-		white-space: nowrap;
-
-		@media (min-width: $md3) {
-			height: rem(40);
-			padding: rem(10) rem(16);
-			font-size: rem(20);
-			letter-spacing: -0.02em;
 		}
 	}
 

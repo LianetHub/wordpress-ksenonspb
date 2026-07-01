@@ -6,7 +6,6 @@
  * @package ksenonspb
  *
  * @var array $args {
- *     @type string $tag   Section tag.
  *     @type string $title Section title.
  *     @type string $intro Sidebar intro.
  *     @type array  $items FAQ items with question, answer, is_open keys.
@@ -16,14 +15,12 @@
 $args = wp_parse_args(
 	isset($args) && is_array($args) ? $args : array(),
 	array(
-		'tag'   => '',
 		'title' => '',
 		'intro' => '',
 		'items' => array(),
 	)
 );
 
-$tag   = (string) $args['tag'];
 $title = (string) $args['title'];
 $intro = (string) $args['intro'];
 $items = (array) $args['items'];
@@ -84,9 +81,6 @@ $render_faq_item = static function ($item) use ($icons) {
 	<div class="faq__container container">
 		<div class="faq__layout">
 			<aside class="faq__sidebar">
-				<?php if ($tag) : ?>
-					<span class="faq__tag tag <?php echo ksenon_anim_class('bounce-up'); ?>"><?php echo esc_html($tag); ?></span>
-				<?php endif; ?>
 				<?php if ($title) : ?>
 					<h2 class="faq__title title-md <?php echo ksenon_anim_class('fade-up'); ?>"><?php echo nl2br(esc_html($title)); ?></h2>
 				<?php endif; ?>

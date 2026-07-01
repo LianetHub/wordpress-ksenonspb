@@ -105,7 +105,6 @@ while (have_posts()) :
 		<?php
 		ksenon_render_faq(
 			array(
-				'tag'   => (string) ksenon_get_post_field('faq_tag', $post_id),
 				'title' => (string) (ksenon_get_post_field('faq_title', $post_id) ?: __('FAQ', 'ksenonspb')),
 				'items' => ksenon_normalize_faq_items((array) ksenon_get_post_field('faq', $post_id)),
 			)
