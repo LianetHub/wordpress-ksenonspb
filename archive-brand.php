@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Brand archive
  *
@@ -8,14 +9,14 @@
 get_header();
 ?>
 <section class="brands-archive">
-	<div class="brands-archive__container _container">
+	<div class="brands-archive__container container">
 		<h1 class="brands-archive__title title-lg"><?php post_type_archive_title(); ?></h1>
 		<div class="brands-archive__grid">
 			<?php
-			if ( have_posts() ) :
-				while ( have_posts() ) :
+			if (have_posts()) :
+				while (have_posts()) :
 					the_post();
-					get_template_part( 'template-parts/blocks/brand-card', null, array( 'post' => get_post() ) );
+					get_template_part('template-parts/blocks/brand-card', null, array('post' => get_post()));
 				endwhile;
 			endif;
 			?>

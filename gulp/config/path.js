@@ -31,8 +31,7 @@ export const path = {
 		js: `${srcFolder}/js/app.js`,
 		jsLibs: `${srcFolder}/js/libs/**/*.*`,
 		jsChunks: `${srcFolder}/js/chunks/**/*.*`,
-		images: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp}`,
-		svg: `${srcFolder}/img/**/*.svg`,
+		images: `${srcFolder}/img/**/*.{jpg,jpeg,png,gif,webp,svg,ico}`,
 		json: `${srcFolder}/json/*.*`,
 	},
 	watch: {

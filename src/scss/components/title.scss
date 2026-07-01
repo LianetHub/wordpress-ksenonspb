@@ -10,13 +10,7 @@
 }
 
 .title-lg {
-	@include adaptive-font(26, 56);
-
-	letter-spacing: em(-0.452, 56);
-
-	@media (max-width: $md5) {
-		letter-spacing: em(-0.6, 26);
-	}
+	@include adaptive-font(36, 48);
 }
 
 .title-md {

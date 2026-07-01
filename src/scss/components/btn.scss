@@ -166,7 +166,13 @@
 		@media (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
 				background: $color-accent-hover;
+				box-shadow: 0 rem(8) rem(4) rgba(253, 128, 17, 0.28);
 			}
+		}
+
+		&:active:not(:disabled):not([aria-disabled="true"]) {
+			background: $color-accent-hover;
+			box-shadow: 0 rem(3) rem(2) rgba(253, 128, 17, 0.2);
 		}
 	}
 
@@ -197,10 +203,52 @@
 		font-weight: 500;
 		text-decoration: none;
 
-		.btn__arrow svg {
+		.btn__arrow {
+			display: inline-flex;
+			flex-shrink: 0;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.btn__arrow-icon {
 			display: block;
 			width: rem(40);
 			height: rem(40);
+		}
+
+		@media (any-hover: hover) {
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				box-shadow: 0 rem(8) rem(24) rgba($color-black, 0.08);
+			}
+		}
+
+		&:active:not(:disabled):not([aria-disabled="true"]) {
+			box-shadow: none;
+		}
+
+		&.btn--accent {
+			min-height: rem(47);
+			padding: rem(6) rem(10) rem(6) rem(15);
+			background: $color-accent;
+			color: $color-white;
+			box-shadow: 0 rem(6) rem(3) rgba(253, 128, 17, 0.2);
+
+			.btn__arrow-icon {
+				width: rem(34);
+				height: rem(35);
+			}
+
+			@media (any-hover: hover) {
+				&:hover:not(:disabled):not([aria-disabled="true"]) {
+					background: $color-accent-hover;
+					box-shadow: 0 rem(8) rem(4) rgba(253, 128, 17, 0.28);
+				}
+			}
+
+			&:active:not(:disabled):not([aria-disabled="true"]) {
+				background: $color-accent-hover;
+				box-shadow: 0 rem(3) rem(2) rgba(253, 128, 17, 0.2);
+			}
 		}
 	}
 

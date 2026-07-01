@@ -1,115 +1,96 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
+
 .hero {
-	padding: rem(20) 0 rem(40);
+	padding: rem(20) rem(15) rem(40);
 
 	@media (min-width: $md3) {
-		padding: rem(30) 0 rem(60);
+		padding: rem(30) rem(30) rem(60);
+	}
+
+	&__wrapper {
+		max-width: rem(1380);
+		margin: 0 auto;
+		padding: rem(24) rem(15) rem(32);
+		border-radius: rem(40);
+		background: $color-surface;
+		overflow: hidden;
+
+		@media (min-width: $md3) {
+			padding: rem(60) rem(30) rem(50);
+		}
+
+		@media (min-width: $md2) {
+			padding: rem(116) rem(30) rem(60);
+		}
 	}
 
 	&__promo {
 		margin-bottom: rem(24);
+		border-radius: 2.5rem;
+		max-width: 64.375rem;
+		margin: 0 auto;
+		padding: 1.94rem 3.75rem;
+		display: flex;
+		background: url("@img/hero-headlight.webp") right center / 43% auto no-repeat, #000;
 
 		@media (min-width: $md3) {
-			margin-bottom: rem(40);
+			margin-bottom: rem(43);
 		}
 	}
 
+
+
 	&__promo-slider {
-		position: relative;
-		border-radius: rem(40);
+		width: 100%;
 		overflow: hidden;
+		min-width: 0;
 	}
 
 	&__promo-slide {
-		min-height: rem(220);
-		background: $color-surface center / cover no-repeat;
-		display: flex;
-		align-items: flex-end;
-
-		@media (min-width: $md3) {
-			min-height: rem(320);
-		}
-	}
-
-	&__promo-container {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: rem(16);
-		padding-top: rem(24);
-		padding-bottom: rem(24);
+		gap: rem(42);
+		height: auto;
 	}
 
 	&__promo-title {
-		max-width: rem(320);
+		max-width: rem(360);
+		font-family: $font-family;
 		font-weight: 500;
 		font-size: rem(18);
-		line-height: 1.3;
-		color: $color-text;
+		line-height: 1.25;
+		color: $color-white;
 
 		@media (min-width: $md3) {
 			font-size: rem(24);
 		}
 	}
 
-	&__promo-nav {
-		position: absolute;
-		right: rem(20);
-		bottom: rem(20);
-		display: flex;
-		gap: rem(8);
-		z-index: 2;
+	&__promo-btn {
+		min-width: rem(148);
 	}
 
-	&__promo-prev,
-	&__promo-next {
-		width: rem(28);
-		height: rem(24);
-		border: 0;
-		background: transparent;
-		cursor: pointer;
-		opacity: 0.7;
 
-		&::before {
-			content: "";
-			display: block;
-			width: 100%;
-			height: 100%;
-			background: $color-accent;
-			clip-path: polygon(100% 0, 0 50%, 100% 100%);
-		}
-	}
-
-	&__promo-prev::before {
-		transform: scaleX(-1);
-	}
 
 	&__main {
-		text-align: center;
-	}
-
-	&__container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: rem(20);
+		max-width: rem(850);
+		margin: 0 auto;
+		text-align: center;
 	}
 
 	&__title {
-		max-width: rem(850);
+		width: 100%;
 		margin: 0;
 		font-family: $font-family;
 		font-weight: 500;
 		line-height: 1.1;
 		color: $color-black;
-
-		span,
-		strong {
-			display: block;
-			opacity: 0.55;
-			font-weight: 500;
-		}
 	}
 
 	&__text {
@@ -134,12 +115,16 @@
 		}
 	}
 
+	&__btn {
+		min-width: rem(189);
+	}
+
 	&__btn-secondary {
 		min-height: rem(47);
 		padding: rem(15) rem(20);
-		border-radius: rem(62);
-		font-size: rem(14);
-		text-transform: none;
-		letter-spacing: normal;
 	}
+}
+
+.color-grey {
+	opacity: 0.55;
 }

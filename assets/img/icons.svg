@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-btn-arrow" viewBox="0 0 40 40" fill="none">
+    <circle cx="20" cy="20" r="20" fill="#FD8011" />
+    <path d="M16 15L24 20L16 25" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+      stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-btn-arrow-light" viewBox="0 0 34 35" fill="none">
+    <circle cx="17" cy="17.5" r="17" fill="#fff" />
+    <path d="M13.5 12.5L20.5 17.5L13.5 22.5" stroke="#FD8011" stroke-width="1.5"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 23 23" fill="none">
+    <path d="M14.5 4.5L6.5 11.5L14.5 18.5" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 23 23" fill="none">
+    <path d="M8.5 4.5L16.5 11.5L8.5 18.5" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-arrow-up-right" viewBox="0 0 24 24" fill="none">
+    <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-panels-chevron" viewBox="0 0 32 32" fill="none">
+    <path d="M8 12L16 20L24 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" />
+    <path d="M8.5 14.2L12.3 18L19.5 10.8" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </symbol>
+  <symbol id="icon-close-circle" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2" />
+    <path d="M10 10L18 18M18 10L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </symbol>
+</svg>
