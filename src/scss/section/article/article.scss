@@ -2,8 +2,6 @@
 @use "../../mixins" as *;
 $article-date-muted: rgba($color-text-body, 0.6);
 
-
-
 .article {
 	position: relative;
 	padding: rem(16) 0 rem(32);
@@ -11,8 +9,6 @@ $article-date-muted: rgba($color-text-body, 0.6);
 	@media (min-width: $md3) {
 		padding: rem(40) 0 rem(48);
 	}
-
-
 
 	&__container {
 		position: relative;
@@ -171,7 +167,6 @@ $article-date-muted: rgba($color-text-body, 0.6);
 			>figure img,
 			>.wp-block-image img,
 			p.article__image-paragraph img {
-				margin: 0;
 			}
 
 			p.article__image-paragraph {
@@ -194,7 +189,6 @@ $article-date-muted: rgba($color-text-body, 0.6);
 			}
 
 			.gallery img {
-				margin: 0;
 				height: 100%;
 				border-radius: 0;
 			}
@@ -229,7 +223,6 @@ $article-date-muted: rgba($color-text-body, 0.6);
 
 		figure,
 		.gallery-item {
-			margin: 0;
 			border-radius: rem(8);
 			overflow: hidden;
 			background: #fff;
@@ -254,12 +247,10 @@ $article-date-muted: rgba($color-text-body, 0.6);
 		.gallery-icon a {
 			display: block;
 			height: 100%;
-			text-decoration: none;
 		}
 
 		figure img,
 		.gallery-item img {
-			margin: 0;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;

@@ -1117,6 +1117,17 @@ if (! function_exists('ksenon_render_home_arrow')) {
 	}
 }
 
+if (! function_exists('ksenon_btn_arrow_icon')) {
+	function ksenon_btn_arrow_icon($variant = 'default')
+	{
+	?>
+		<span class="btn__arrow btn__arrow--<?php echo esc_attr($variant); ?>" aria-hidden="true">
+			<?php ksenon_icon('icon-arrow-right', 15, 10, 'btn__arrow-icon'); ?>
+		</span>
+	<?php
+	}
+}
+
 if (! function_exists('ksenon_render_btn_arrow')) {
 	function ksenon_render_btn_arrow($link, $class = 'btn btn--arrow', $fallback_title = '')
 	{
@@ -1125,19 +1136,14 @@ if (! function_exists('ksenon_render_btn_arrow')) {
 		}
 
 		$target  = ksenon_acf_link_target($link);
-		$is_accent = false !== strpos((string) $class, 'btn--accent');
-		$icon_id = $is_accent ? 'icon-btn-arrow-light' : 'icon-btn-arrow';
-		$icon_w  = $is_accent ? 34 : 40;
-		$icon_h  = $is_accent ? 35 : 40;
+		$variant = false !== strpos((string) $class, 'btn--accent') ? 'accent' : 'default';
 	?>
 		<a
 			class="<?php echo esc_attr($class); ?>"
 			href="<?php echo esc_url(ksenon_acf_link_url($link)); ?>"
 			<?php echo $target ? ' target="' . esc_attr($target) . '"' : ''; ?>>
 			<span class="btn__text"><?php echo esc_html(ksenon_acf_link_title($link, $fallback_title)); ?></span>
-			<span class="btn__arrow" aria-hidden="true">
-				<?php ksenon_icon($icon_id, $icon_w, $icon_h, 'btn__arrow-icon'); ?>
-			</span>
+			<?php ksenon_btn_arrow_icon($variant); ?>
 		</a>
 	<?php
 	}

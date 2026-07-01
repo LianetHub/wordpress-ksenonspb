@@ -35,7 +35,7 @@
 		background: url("@img/hero-headlight.webp") right center / 43% auto no-repeat, #000;
 
 		@media (min-width: $md3) {
-			margin-bottom: rem(43);
+			margin-bottom: rem(52);
 		}
 	}
 
@@ -86,19 +86,16 @@
 
 	&__title {
 		width: 100%;
-		margin: 0;
-		font-family: $font-family;
 		font-weight: 500;
-		line-height: 1.1;
 		color: $color-black;
+		line-height: 100%;
 	}
 
 	&__text {
 		max-width: rem(722);
-		margin: 0;
 		color: $color-text-muted;
 		font-size: rem(16);
-		line-height: 1.4;
+		line-height: 1.35;
 	}
 
 	&__actions {

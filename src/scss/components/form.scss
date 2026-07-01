@@ -21,7 +21,6 @@
 	}
 
 	&:focus {
-		outline: none;
 		box-shadow: inset 0 0 0 1px rgba($color-black, 0.08);
 	}
 
@@ -59,7 +58,6 @@
 	}
 
 	&:focus {
-		outline: none;
 		border-color: #fff;
 		border-width: rem(1);
 	}
@@ -150,7 +148,6 @@
 	}
 
 }
-
 
 .form-field {
 	@include form-control-on-brand;
@@ -262,7 +259,6 @@ $cf7-error-border: #ff0000;
 	.wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
 		@include form-submit-on-brand;
 		position: relative;
-		padding: 0;
 
 		.wpcf7-submit {
 			@include cf7-submit-inner-reset;

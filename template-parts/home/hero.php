@@ -43,7 +43,7 @@ if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'
 								<?php endif; ?>
 								<?php if (is_array($slide_btn) && ! empty($slide_btn['url'])) : ?>
 									<a
-										class="btn btn--accent hero__promo-btn"
+										class="hero__promo-btn btn btn--accent"
 										href="<?php echo esc_url(ksenon_acf_link_url($slide_btn)); ?>"
 										<?php echo ksenon_acf_link_target($slide_btn) ? ' target="' . esc_attr(ksenon_acf_link_target($slide_btn)) . '"' : ''; ?>>
 										<?php echo esc_html(ksenon_acf_link_title($slide_btn, __('Подробнее', 'ksenonspb'))); ?>
@@ -69,8 +69,7 @@ if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'
 					<?php ksenon_render_btn_arrow($btn, 'btn btn--arrow btn--accent hero__btn', __('Оценить ремонт', 'ksenonspb')); ?>
 				<?php endif; ?>
 				<?php if (is_array($btn_secondary) && ! empty($btn_secondary['url'])) : ?>
-					<a
-						class="btn btn--white hero__btn-secondary"
+					<a class="hero__btn-secondary btn btn--white "
 						href="<?php echo esc_url(ksenon_acf_link_url($btn_secondary)); ?>"
 						<?php echo ksenon_acf_link_target($btn_secondary) ? ' target="' . esc_attr(ksenon_acf_link_target($btn_secondary)) . '"' : ''; ?>>
 						<?php echo esc_html(ksenon_acf_link_title($btn_secondary)); ?>

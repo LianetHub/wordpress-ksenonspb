@@ -30,7 +30,6 @@
 		flex-direction: column;
 		gap: rem(10);
 
-
 		@media (min-width:$md3) {
 			flex-direction: row;
 			justify-content: space-between;
@@ -67,8 +66,6 @@
 			align-items: flex-end;
 		}
 	}
-
-
 
 	&__main {
 		flex: 1 1 auto;
@@ -116,15 +113,12 @@
 		}
 	}
 
-
-
 	&__gallery {
 		position: relative;
 		z-index: 1;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: rem(10);
-
 
 		@media (min-width: $md2) {
 			display: flex;
@@ -137,7 +131,6 @@
 
 	&__gallery-item {
 		flex: 0 0 rem(104);
-		list-style: none;
 
 		@media (min-width: $md2) {
 			flex: 0 0 rem(203);
@@ -153,7 +146,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		text-decoration: none;
 		color: inherit;
 
 		border: rem(0.5) solid $color-accent;
@@ -171,6 +163,5 @@
 			border-width: 1px;
 		}
 	}
-
 
 }

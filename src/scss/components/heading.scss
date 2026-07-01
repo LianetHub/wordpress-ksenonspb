@@ -61,7 +61,6 @@
 
 		}
 
-
 		.heading__aside {
 			@media (min-width: $md3) {
 				padding-top: 0;
@@ -94,7 +93,6 @@
 		.heading__main {
 			display: flex;
 			flex-direction: column;
-
 
 		}
 
@@ -134,7 +132,6 @@
 
 	// .heading__point
 	&__point {
-
 
 		position: absolute;
 
@@ -216,7 +213,6 @@
 		}
 	}
 
-
 	&__cta {
 		width: 100%;
 		margin-top: 1.25rem;
@@ -290,7 +286,6 @@
 		}
 	}
 
-
 	&__logo-wrap {
 		@media (min-width:$md2) {
 			margin-top: 5.75rem;
@@ -330,7 +325,6 @@
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 		text-transform: uppercase;
-		text-decoration: none;
 		width: 100%;
 		transition: border-color 0.2s ease, background-color 0.2s ease;
 
@@ -351,7 +345,6 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: rem(10);
-
 
 		@media (min-width: $md2) {
 			grid-template-columns: repeat(2, rem(140));
@@ -428,7 +421,5 @@
 
 		}
 	}
-
-
 
 }

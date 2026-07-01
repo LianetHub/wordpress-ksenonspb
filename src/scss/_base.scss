@@ -47,27 +47,6 @@ body {
 	overflow: hidden;
 }
 
-h1 {
-	font-family: $font-inter;
-	font-weight: 450;
-	line-height: 1.2;
-	@include adaptive-font(26, 56);
-}
-
-h2 {
-	font-family: $font-inter;
-	font-weight: 450;
-	line-height: 1.2;
-	@include adaptive-font(24, 48);
-}
-
-h3 {
-	font-family: $font-inter;
-	font-weight: 450;
-	font-style: italic;
-	line-height: 1.2;
-	@include adaptive-font(18, 24);
-}
 
 .wrapper {
 	display: flex;

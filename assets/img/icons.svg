@@ -9,6 +9,11 @@
     <path d="M13.5 12.5L20.5 17.5L13.5 22.5" stroke="#FD8011" stroke-width="1.5"
       stroke-linecap="round" stroke-linejoin="round" />
   </symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 15 10" fill="none">
+    <path
+      d="M14.4394 5.01611C14.6821 4.77341 14.6821 4.37991 14.4394 4.13721L10.4844 0.182203C10.2417 -0.0604959 9.84824 -0.0604959 9.60554 0.182203C9.36284 0.424902 9.36284 0.818396 9.60554 1.06109L13.1211 4.57666L9.60554 8.09223C9.36284 8.33492 9.36284 8.72842 9.60554 8.97112C9.84824 9.21382 10.2417 9.21382 10.4844 8.97112L14.4394 5.01611ZM0 4.57666L0 5.19813L14 5.19813V4.57666V3.95519L0 3.95519L0 4.57666Z"
+      fill="currentColor" />
+  </symbol>
   <symbol id="icon-chevron-left" viewBox="0 0 23 23" fill="none">
     <path d="M14.5 4.5L6.5 11.5L14.5 18.5" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round" />

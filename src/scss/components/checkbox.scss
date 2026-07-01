@@ -44,7 +44,6 @@ $checkbox-check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 		position: static;
 		width: auto;
 		height: auto;
-		padding: 0;
 		margin: 0;
 		overflow: visible;
 		clip: auto;
@@ -64,7 +63,6 @@ $checkbox-check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 		position: absolute;
 		width: 1px;
 		height: 1px;
-		padding: 0;
 		margin: -1px;
 		overflow: hidden;
 		clip: rect(0, 0, 0, 0);
@@ -132,7 +130,6 @@ $checkbox-check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 	&:not(:has(.wpcf7-form-control-wrap)) .checkbox__text::before {
 		display: none;
 	}
-
 
 	&__input:checked+.checkbox__box::before,
 	&__input:checked+.checkbox__text::before,

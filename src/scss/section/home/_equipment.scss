@@ -100,7 +100,6 @@
 		border-radius: rem(10);
 		background: $color-surface-tab;
 		color: inherit;
-		text-decoration: none;
 		transition: box-shadow 0.25s ease, background-color 0.25s ease;
 
 		@media (min-width: $md3) {

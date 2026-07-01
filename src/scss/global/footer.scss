@@ -67,7 +67,6 @@
 		flex-shrink: 0;
 		grid-row: 1;
 		grid-column: 1;
-		text-decoration: none;
 
 		& img {
 			display: block;
@@ -95,14 +94,12 @@
 		@include adaptive-font(14, 16);
 
 		@media (min-width: $md3) {
-			margin: 0;
 			max-width: none;
 			color: #fff;
 		}
 	}
 
 	&__description {
-		margin: 0;
 		max-width: rem(280);
 		color: #bebebe;
 		font-weight: 400;
@@ -140,9 +137,6 @@
 		display: grid;
 		grid-template-columns: repeat(2, rem(29));
 		gap: rem(17) rem(20);
-		margin: 0;
-		padding: 0;
-		list-style: none;
 
 		@media (min-width: $md3) {
 			grid-template-columns: repeat(4, auto);
@@ -211,7 +205,6 @@
 	}
 
 	&__nav-title {
-		margin: 0;
 		color: #fff;
 		font-weight: 500;
 		line-height: 1.2;
@@ -227,9 +220,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: rem(8);
-		margin: 0;
-		padding: 0;
-		list-style: none;
 
 		@media (min-width: $md3) {
 			gap: rem(20);
@@ -238,7 +228,6 @@
 
 	&__menu-link {
 		color: #c2c2c2;
-		text-decoration: none;
 		font-weight: 500;
 		line-height: 1.25;
 		letter-spacing: em(-0.42, 14);
@@ -282,7 +271,6 @@
 	}
 
 	&__contacts-title {
-		margin: 0;
 		color: #fff;
 		font-weight: 500;
 		line-height: 1.2;
@@ -297,7 +285,6 @@
 	}
 
 	&__contact-label {
-		margin: 0;
 		color: #fff;
 		font-weight: 500;
 		line-height: 1.2;
@@ -306,9 +293,7 @@
 	}
 
 	&__contact {
-		margin: 0;
 		color: #c2c2c2;
-		text-decoration: none;
 		font-weight: 500;
 		line-height: 1.35;
 		letter-spacing: em(-0.42, 14);
@@ -353,7 +338,6 @@
 	&__requisites,
 	&__domain,
 	&__legal {
-		margin: 0;
 		color: #afafaf;
 		font-weight: 500;
 		line-height: 1.3;
@@ -367,7 +351,6 @@
 	}
 
 	&__legal {
-		text-decoration: none;
 		transition: color 0.2s ease, opacity 0.2s ease;
 
 		@media (any-hover: hover) {

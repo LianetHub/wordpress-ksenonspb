@@ -1,6 +1,5 @@
 @use "../variables" as *;
 @use "../mixins" as *;
-// BTN UI Kit
 
 .btn {
 	position: relative;
@@ -10,26 +9,22 @@
 	justify-content: center;
 	user-select: none;
 	gap: $btn-gap;
-	min-height: em(60, 20);
-
+	min-height: em(47, 14);
 	padding: rem(9) rem(20);
 	border: 1px solid transparent;
-	border-radius: rem(10);
-	font-family: $font-inter;
+	border-radius: 3.25rem;
 	font-weight: 500;
 	line-height: 1.2;
-	letter-spacing: $btn-letter-spacing;
-	text-transform: uppercase;
-	text-decoration: none;
 	white-space: nowrap;
 	cursor: pointer;
 	transition:
 		background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
 		border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
 		color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
 		transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
 		opacity 0.3s ease;
-	@include adaptive-font(16, 20);
+	font-size: 0.875rem;
 
 	&:disabled,
 	&[aria-disabled="true"],
@@ -38,7 +33,6 @@
 		pointer-events: none;
 		cursor: not-allowed;
 	}
-
 
 	&:active:not(:disabled):not([aria-disabled="true"]):not(.btn--disabled) {
 		transform: scale(0.98);
@@ -54,7 +48,6 @@
 			height: 100%;
 		}
 	}
-
 
 	&--primary {
 		min-height: rem(47);
@@ -120,9 +113,8 @@
 		border-radius: rem(62);
 		text-transform: none;
 
-		@media (min-width: 1200px) and (any-hover: hover) {
+		@media (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
-				transform: translateY(rem(-2));
 				box-shadow: 0 rem(10) rem(25) rgb(0 0 0 / 0.1);
 				background-color: $color-surface;
 			}
@@ -152,16 +144,14 @@
 	}
 
 	&--accent {
-		min-height: rem(47);
-		padding: rem(6) rem(10) rem(6) rem(15);
-		border-radius: rem(52);
 		background: $color-accent;
 		color: $color-white;
-		border: none;
-		text-transform: none;
-		letter-spacing: normal;
-		font-size: rem(14);
 		box-shadow: 0 rem(6) rem(3) rgba(253, 128, 17, 0.2);
+
+		.btn__arrow {
+			background: $color-white;
+			color: $color-accent;
+		}
 
 		@media (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -191,7 +181,6 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: rem(10);
 		min-height: rem(52);
 		padding: rem(6) rem(6) rem(6) rem(35);
 		border-radius: rem(52);
@@ -201,20 +190,26 @@
 		letter-spacing: normal;
 		font-size: rem(14);
 		font-weight: 500;
-		text-decoration: none;
+		line-height: normal;
+		box-shadow: 0 rem(6) rem(3) rgba(240, 240, 240, 0.13);
 
 		.btn__arrow {
 			display: inline-flex;
 			flex-shrink: 0;
 			align-items: center;
 			justify-content: center;
+			width: rem(34);
+			height: rem(35);
+			border-radius: 50%;
 		}
 
 		.btn__arrow-icon {
 			display: block;
-			width: rem(40);
-			height: rem(40);
+			width: rem(15);
+			height: rem(10);
 		}
+
+
 
 		@media (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -223,20 +218,16 @@
 		}
 
 		&:active:not(:disabled):not([aria-disabled="true"]) {
-			box-shadow: none;
+			box-shadow: 0 rem(6) rem(3) rgba(240, 240, 240, 0.13);
 		}
 
 		&.btn--accent {
+			gap: rem(10);
 			min-height: rem(47);
 			padding: rem(6) rem(10) rem(6) rem(15);
 			background: $color-accent;
 			color: $color-white;
 			box-shadow: 0 rem(6) rem(3) rgba(253, 128, 17, 0.2);
-
-			.btn__arrow-icon {
-				width: rem(34);
-				height: rem(35);
-			}
 
 			@media (any-hover: hover) {
 				&:hover:not(:disabled):not([aria-disabled="true"]) {

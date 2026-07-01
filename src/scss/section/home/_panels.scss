@@ -80,7 +80,6 @@
 			}
 
 			.panels__heading {
-				padding: 0;
 			}
 		}
 	}
@@ -96,7 +95,6 @@
 		background: transparent;
 		cursor: pointer;
 	}
-
 
 	&__name {
 		color: $color-brand;
@@ -114,7 +112,6 @@
 		height: rem(28);
 		color: $color-brand;
 		transition: transform 0.25s ease;
-
 
 		@media (min-width: $md3) {
 			width: rem(32);

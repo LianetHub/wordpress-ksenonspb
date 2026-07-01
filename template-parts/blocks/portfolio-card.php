@@ -57,12 +57,7 @@ if ( ! $after && has_post_thumbnail( $post ) ) {
 			<?php endif; ?>
 			<a class="portfolio-card__link btn btn--arrow btn--arrow-card" href="<?php echo esc_url( get_permalink( $post ) ); ?>">
 				<span class="btn__text"><?php esc_html_e( 'Подробнее', 'ksenonspb' ); ?></span>
-				<span class="btn__arrow" aria-hidden="true">
-					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="20" cy="20" r="20" fill="#FD8011"/>
-						<path d="M16 15L24 20L16 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</span>
+				<?php ksenon_btn_arrow_icon(); ?>
 			</a>
 		</div>
 	</div>
