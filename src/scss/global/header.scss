@@ -15,12 +15,10 @@
 		padding-top: rem(46);
 	}
 
-	&__container {
-		pointer-events: auto;
-
-	}
+	&__container {}
 
 	&__bar {
+		pointer-events: auto;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

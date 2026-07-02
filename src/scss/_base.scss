@@ -7,9 +7,9 @@
 	padding: 0 1rem;
 	max-width: 100%;
 
-	&.container--small {
+	&.container--large {
 		@media (min-width: $md1) {
-			max-width: rem(1260);
+			max-width: rem(1300);
 		}
 	}
 
@@ -31,7 +31,7 @@
 	}
 
 	@media (min-width: $md1) {
-		max-width: rem(1320);
+		max-width: rem(1240);
 	}
 }
 

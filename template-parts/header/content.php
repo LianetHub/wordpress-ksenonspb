@@ -13,7 +13,7 @@ $address  = ksenon_get_option('address');
 $phones   = ksenon_get_phones();
 ?>
 <header class="header">
-	<div class="header__container container">
+	<div class="header__container container container--large">
 		<div class="header__bar">
 			<?php if ($logo) : ?>
 				<a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
