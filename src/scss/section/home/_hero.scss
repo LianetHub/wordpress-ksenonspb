@@ -60,44 +60,47 @@
 
 	&__promo-prev,
 	&__promo-next {
-		position: static !important;
-		inset: auto;
-		margin: 0;
-		width: rem(23);
-		height: rem(23);
-		display: inline-flex;
-		flex-shrink: 0;
-		align-items: center;
-		justify-content: center;
-		padding: 0;
-		border: 0;
-		border-radius: 50%;
-		background: $color-surface;
-		color: $color-black;
-		cursor: pointer;
-		transition: background-color 0.2s ease, opacity 0.2s ease;
 
-		.swiper-navigation-icon {
-			display: none;
-		}
+		&.swiper-button-prev,
+		&.swiper-button-next {
+			position: static;
+			transform: none;
+			margin: 0;
+			padding: rem(5);
+			width: rem(23);
+			height: rem(23);
+			display: inline-flex;
+			flex-shrink: 0;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: $color-surface;
+			color: $color-black;
+			cursor: pointer;
+			transition: background-color 0.2s ease, opacity 0.2s ease;
 
-		&.swiper-button-disabled {
-			opacity: $state-disabled-opacity;
-			cursor: default;
-			pointer-events: none;
-		}
+			.swiper-navigation-icon {
+				display: none;
+			}
 
-		@media (any-hover: hover) {
-			&:not(.swiper-button-disabled):hover {
-				background: $color-surface-hover;
+			&.swiper-button-disabled {
+				opacity: $state-disabled-opacity;
+				cursor: default;
+				pointer-events: none;
+			}
+
+			@media (any-hover: hover) {
+				&:not(.swiper-button-disabled):hover {
+					background: $color-surface-hover;
+				}
 			}
 		}
 	}
 
 	&__promo-control-icon {
 		display: block;
-		width: 100%;
-		height: 100%;
+		width: rem(7);
+		height: rem(11);
 	}
 
 	&__promo-slide {

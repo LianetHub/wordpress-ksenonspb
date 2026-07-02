@@ -52,14 +52,20 @@ if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'
 							</div>
 						<?php endforeach; ?>
 					</div>
-					<div class="hero__promo-controls">
-						<button type="button" class="hero__promo-prev swiper-button-prev" aria-label="<?php esc_attr_e('Предыдущий слайд', 'ksenonspb'); ?>">
-							<?php ksenon_icon('icon-chevron-left', 23, 23, 'hero__promo-control-icon'); ?>
-						</button>
-						<button type="button" class="hero__promo-next swiper-button-next" aria-label="<?php esc_attr_e('Следующий слайд', 'ksenonspb'); ?>">
-							<?php ksenon_icon('icon-chevron-right', 23, 23, 'hero__promo-control-icon'); ?>
-						</button>
-					</div>
+				</div>
+				<div class="hero__promo-controls">
+					<button
+						type="button"
+						class="hero__promo-prev"
+						aria-label="<?php esc_attr_e('Предыдущий слайд', 'ksenonspb'); ?>">
+						<?php ksenon_icon('icon-chevron-left', 7, 11, 'hero__promo-control-icon'); ?>
+					</button>
+					<button
+						type="button"
+						class="hero__promo-next"
+						aria-label="<?php esc_attr_e('Следующий слайд', 'ksenonspb'); ?>">
+						<?php ksenon_icon('icon-chevron-right', 7, 11, 'hero__promo-control-icon'); ?>
+					</button>
 				</div>
 			</div>
 		<?php endif; ?>

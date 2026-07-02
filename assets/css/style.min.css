@@ -2946,7 +2946,6 @@ body {
 }
 .header__container {
   pointer-events: auto;
-  max-width: 81.25rem;
 }
 .header__bar {
   display: flex;
@@ -3785,41 +3784,40 @@ body {
   align-items: center;
   gap: 0.3125rem;
 }
-.hero__promo-prev, .hero__promo-next {
-  position: static !important;
-  inset: auto;
+.hero__promo-prev.swiper-button-prev, .hero__promo-prev.swiper-button-next, .hero__promo-next.swiper-button-prev, .hero__promo-next.swiper-button-next {
+  position: static;
+  transform: none;
   margin: 0;
+  padding: 0.3125rem;
   width: 1.4375rem;
   height: 1.4375rem;
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  border: 0;
   border-radius: 50%;
   background: #f7f7f7;
   color: #000000;
   cursor: pointer;
   transition: background-color 0.2s ease, opacity 0.2s ease;
 }
-.hero__promo-prev .swiper-navigation-icon, .hero__promo-next .swiper-navigation-icon {
+.hero__promo-prev.swiper-button-prev .swiper-navigation-icon, .hero__promo-prev.swiper-button-next .swiper-navigation-icon, .hero__promo-next.swiper-button-prev .swiper-navigation-icon, .hero__promo-next.swiper-button-next .swiper-navigation-icon {
   display: none;
 }
-.hero__promo-prev.swiper-button-disabled, .hero__promo-next.swiper-button-disabled {
+.hero__promo-prev.swiper-button-prev.swiper-button-disabled, .hero__promo-prev.swiper-button-next.swiper-button-disabled, .hero__promo-next.swiper-button-prev.swiper-button-disabled, .hero__promo-next.swiper-button-next.swiper-button-disabled {
   opacity: 0.3;
   cursor: default;
   pointer-events: none;
 }
 @media (any-hover: hover) {
-  .hero__promo-prev:not(.swiper-button-disabled):hover, .hero__promo-next:not(.swiper-button-disabled):hover {
+  .hero__promo-prev.swiper-button-prev:not(.swiper-button-disabled):hover, .hero__promo-prev.swiper-button-next:not(.swiper-button-disabled):hover, .hero__promo-next.swiper-button-prev:not(.swiper-button-disabled):hover, .hero__promo-next.swiper-button-next:not(.swiper-button-disabled):hover {
     background: #efefef;
   }
 }
 .hero__promo-control-icon {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 0.4375rem;
+  height: 0.6875rem;
 }
 .hero__promo-slide {
   display: flex;

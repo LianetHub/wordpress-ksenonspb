@@ -374,6 +374,10 @@ function initHomeSwipers() {
 
 	const heroPromoEl = document.querySelector(".hero__promo-slider");
 	if (heroPromoEl) {
+		const heroPromo = heroPromoEl.closest(".hero__promo");
+		const heroPromoPrev = heroPromo?.querySelector(".hero__promo-prev");
+		const heroPromoNext = heroPromo?.querySelector(".hero__promo-next");
+
 		new Swiper(heroPromoEl, {
 			slidesPerView: 1,
 			speed: 1000,
@@ -389,8 +393,8 @@ function initHomeSwipers() {
 				stopOnLastSlide: false,
 			},
 			navigation: {
-				nextEl: ".hero__promo-next",
-				prevEl: ".hero__promo-prev",
+				nextEl: heroPromoNext,
+				prevEl: heroPromoPrev,
 			},
 		});
 	}

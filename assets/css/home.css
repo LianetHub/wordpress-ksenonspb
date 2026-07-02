@@ -1109,11 +1109,8 @@
 
 .hero__promo-controls {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  top: 0;
+  right: 0;
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1124,11 +1121,15 @@
   gap: 0.3125rem;
 }
 
-.hero__promo-prev,
-.hero__promo-next {
-  position: static !important;
-  inset: auto;
+.hero__promo-prev.swiper-button-prev,
+.hero__promo-prev.swiper-button-next,
+.hero__promo-next.swiper-button-prev,
+.hero__promo-next.swiper-button-next {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
   margin: 0;
+  padding: 0.3125rem;
   width: 1.4375rem;
   height: 1.4375rem;
   display: -webkit-inline-box;
@@ -1142,8 +1143,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0;
-  border: 0;
   border-radius: 50%;
   background: #f7f7f7;
   color: #000000;
@@ -1152,13 +1151,17 @@
   transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
-.hero__promo-prev .swiper-navigation-icon,
-.hero__promo-next .swiper-navigation-icon {
+.hero__promo-prev.swiper-button-prev .swiper-navigation-icon,
+.hero__promo-prev.swiper-button-next .swiper-navigation-icon,
+.hero__promo-next.swiper-button-prev .swiper-navigation-icon,
+.hero__promo-next.swiper-button-next .swiper-navigation-icon {
   display: none;
 }
 
-.hero__promo-prev.swiper-button-disabled,
-.hero__promo-next.swiper-button-disabled {
+.hero__promo-prev.swiper-button-prev.swiper-button-disabled,
+.hero__promo-prev.swiper-button-next.swiper-button-disabled,
+.hero__promo-next.swiper-button-prev.swiper-button-disabled,
+.hero__promo-next.swiper-button-next.swiper-button-disabled {
   opacity: 0.3;
   cursor: default;
   pointer-events: none;
@@ -1166,8 +1169,8 @@
 
 .hero__promo-control-icon {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 0.4375rem;
+  height: 0.6875rem;
 }
 
 .hero__promo-slide {
@@ -2428,8 +2431,10 @@
             box-shadow: 0 0.5rem 1.5rem rgba(253, 128, 17, 0.12);
   }
 
-  .hero__promo-prev:not(.swiper-button-disabled):hover,
-  .hero__promo-next:not(.swiper-button-disabled):hover {
+  .hero__promo-prev.swiper-button-prev:not(.swiper-button-disabled):hover,
+  .hero__promo-prev.swiper-button-next:not(.swiper-button-disabled):hover,
+  .hero__promo-next.swiper-button-prev:not(.swiper-button-disabled):hover,
+  .hero__promo-next.swiper-button-next:not(.swiper-button-disabled):hover {
     background: #efefef;
   }
 
