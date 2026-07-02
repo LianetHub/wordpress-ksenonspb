@@ -1109,8 +1109,11 @@
 
 .hero__promo-controls {
   position: absolute;
-  top: 0;
-  right: 0;
+  bottom: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1125,6 +1128,7 @@
 .hero__promo-prev.swiper-button-next,
 .hero__promo-next.swiper-button-prev,
 .hero__promo-next.swiper-button-next {
+  position: static;
   -webkit-transform: none;
       -ms-transform: none;
           transform: none;
@@ -1274,9 +1278,17 @@
 
 .advantages__card {
   min-height: 11.0625rem;
-  padding: 1.875rem 2.8125rem;
+  padding: 2.25rem 2.8125rem;
   border-radius: 2.5rem;
   background: #f7f7f7;
+  color: #000;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.advantages__card._selected {
+  background: #FD8011;
+  color: #fff;
 }
 
 .advantages__value {
@@ -1285,13 +1297,11 @@
   font-weight: 500;
   font-size: 2.25rem;
   line-height: 1.1;
-  color: #000000;
 }
 
 .advantages__label {
   font-size: 0.9375rem;
   line-height: 1.3;
-  color: #261c13;
 }
 
 .services-teaser {
@@ -2247,21 +2257,13 @@
   }
 
   .advantages {
-    padding: 1.875rem 0 3.75rem;
+    padding: 3.75rem 0 3.75rem;
   }
 
   .advantages__grid {
     -ms-grid-columns: (1fr)[4];
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
-  }
-
-  .advantages__value {
-    font-size: 2.75rem;
-  }
-
-  .advantages__label {
-    font-size: 1.125rem;
   }
 
   .services-teaser {
@@ -2382,7 +2384,7 @@
 
 @media (min-width: 1199.98px) {
   .hero__wrapper {
-    padding: 7.25rem 1.875rem 3.75rem;
+    padding: 7.25rem 1.875rem 7.25rem;
   }
 }
 
@@ -2436,6 +2438,11 @@
   .hero__promo-next.swiper-button-prev:not(.swiper-button-disabled):hover,
   .hero__promo-next.swiper-button-next:not(.swiper-button-disabled):hover {
     background: #efefef;
+  }
+
+  .advantages__card:hover {
+    background: #FD8011;
+    color: #fff;
   }
 
   .brands-section .brand-card__link:hover {

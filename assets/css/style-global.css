@@ -3242,12 +3242,12 @@ body {
 }
 
 @media (min-width: 1399.98px) {
-  .container.container--small {
-    max-width: 78.75rem;
+  .container.container--large {
+    max-width: 81.25rem;
   }
 
   .container {
-    max-width: 82.5rem;
+    max-width: 77.5rem;
   }
 }
 

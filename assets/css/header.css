@@ -9,11 +9,8 @@
   pointer-events: none;
 }
 
-.header__container {
-  pointer-events: auto;
-}
-
 .header__bar {
+  pointer-events: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -56,6 +56,14 @@
                     "type": "textarea",
                     "rows": 2,
                     "parent_repeater": "field_ksenon_about_advantages"
+                },
+                {
+                    "key": "field_ksenon_about_adv_selected",
+                    "label": "Выделенное",
+                    "name": "selected",
+                    "type": "true_false",
+                    "ui": 1,
+                    "parent_repeater": "field_ksenon_about_advantages"
                 }
             ]
         },

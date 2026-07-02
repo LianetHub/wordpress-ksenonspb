@@ -98,6 +98,14 @@
                                     "type": "textarea",
                                     "rows": 2,
                                     "parent_repeater": "field_ksenon_adv_items"
+                                },
+                                {
+                                    "key": "field_ksenon_adv_item_selected",
+                                    "label": "Выделенное",
+                                    "name": "selected",
+                                    "type": "true_false",
+                                    "ui": 1,
+                                    "parent_repeater": "field_ksenon_adv_items"
                                 }
                             ]
                         }
