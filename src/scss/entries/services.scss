@@ -2,6 +2,28 @@
 @use "../mixins" as *;
 @use "../section/home/services-teaser";
 
+.services-archive {
+	padding: rem(24) 0 rem(48);
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(72);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(24);
+
+		@media (min-width: $md3) {
+			gap: rem(36);
+		}
+	}
+
+	&__filters {
+		margin: 0;
+	}
+}
+
 .services-archive,
 .services-teaser,
 .service-page,

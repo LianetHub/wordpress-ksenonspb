@@ -61,30 +61,11 @@
 	&__btn {
 		width: 100%;
 		max-width: rem(352);
-		background: $color-white;
-		color: $color-accent;
-		box-shadow: 0 rem(6) rem(3) rgba($color-accent, 0.2);
 
 		@media (min-width: $md5) {
 			flex: 0 0 rem(352);
 			width: rem(352);
 			max-width: none;
-		}
-
-		@media (any-hover: hover) {
-			&:hover:not(:disabled):not([aria-disabled="true"]) {
-				background: $color-white;
-				box-shadow: 0 rem(8) rem(4) rgba($color-accent, 0.28);
-			}
-		}
-
-		.btn__text {
-			color: $color-accent;
-		}
-
-		.btn__arrow {
-			background: $color-accent;
-			color: $color-white;
 		}
 	}
 

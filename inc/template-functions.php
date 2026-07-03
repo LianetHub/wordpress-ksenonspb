@@ -481,11 +481,51 @@ if (! function_exists('ksenon_get_related_portfolio')) {
 	}
 }
 
+if (! function_exists('ksenon_get_service_categories')) {
+	/**
+	 * Returns service category terms in predefined order.
+	 *
+	 * @return WP_Term[]
+	 */
+	function ksenon_get_service_categories()
+	{
+		$terms = array();
+
+		foreach (array_keys(ksenon_get_service_category_definitions()) as $slug) {
+			$term = get_term_by('slug', $slug, 'service_category');
+			if ($term instanceof WP_Term) {
+				$terms[] = $term;
+			}
+		}
+
+		return $terms;
+	}
+}
+
+if (! function_exists('ksenon_get_current_service_category_slug')) {
+	function ksenon_get_current_service_category_slug()
+	{
+		$slug = isset($_GET['kategoria']) ? sanitize_title(wp_unslash($_GET['kategoria'])) : '';
+
+		if (! $slug || ! array_key_exists($slug, ksenon_get_service_category_definitions())) {
+			return '';
+		}
+
+		return $slug;
+	}
+}
+
 if (! function_exists('ksenon_services_archive_url')) {
-	function ksenon_services_archive_url()
+	function ksenon_services_archive_url($category_slug = '')
 	{
 		$url = get_post_type_archive_link('service');
-		return $url ?: home_url('/uslugi/');
+		$url = $url ?: home_url('/uslugi/');
+
+		if ($category_slug) {
+			$url = add_query_arg('kategoria', sanitize_title($category_slug), $url);
+		}
+
+		return $url;
 	}
 }
 

@@ -5,12 +5,22 @@
  *
  * @package ksenonspb
  *
- * @var array $args { @type WP_Post $post }
+ * @var array $args {
+ *     @type WP_Post $post  Service post.
+ *     @type string  $class Optional extra CSS classes for the card root.
+ * }
  */
 
 $post = $args['post'] ?? null;
 if (! $post instanceof WP_Post) {
 	return;
+}
+
+$permalink = get_permalink($post);
+$card_class = 'service-card';
+
+if (! empty($args['class'])) {
+	$card_class .= ' ' . $args['class'];
 }
 
 $image     = ksenon_get_post_field('card_image', $post->ID);
@@ -70,11 +80,13 @@ if ($image) {
 	}
 }
 ?>
-<article class="service-card" <?php echo $bg_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-								?>>
+<li class="<?php echo esc_attr($card_class); ?>" <?php echo $bg_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+													?>>
 	<div class="service-card__inner">
 		<div class="service-card__head">
-			<h3 class="service-card__title"><?php echo esc_html(get_the_title($post)); ?></h3>
+			<a class="service-card__title" href="<?php echo esc_url($permalink); ?>">
+				<?php echo esc_html(get_the_title($post)); ?>
+			</a>
 			<?php if ($price) : ?>
 				<div class="service-card__price"><?php echo $price; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 													?></div>
@@ -90,9 +102,9 @@ if ($image) {
 				<?php endforeach; ?>
 			</ul>
 		<?php endif; ?>
-		<a class="service-card__link btn btn--arrow btn--arrow-card" href="<?php echo esc_url(get_permalink($post)); ?>">
+		<a class="service-card__link btn btn--arrow btn--arrow-inverse btn--arrow-card" href="<?php echo esc_url($permalink); ?>">
 			<span class="btn__text"><?php esc_html_e('Перейти', 'ksenonspb'); ?></span>
 			<?php ksenon_btn_arrow_icon(); ?>
 		</a>
 	</div>
-</article>
+</li>
