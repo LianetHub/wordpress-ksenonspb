@@ -2895,11 +2895,10 @@ body {
   width: 100%;
   padding: 2.875rem 0 0;
   pointer-events: none;
+  transition: padding-top 0.3s ease;
 }
-@media (min-width: 991.98px) {
-  .header {
-    padding-top: 2.875rem;
-  }
+.header.is-scrolled {
+  padding-top: 0.5rem;
 }
 .header__bar {
   pointer-events: auto;
@@ -2912,6 +2911,10 @@ body {
   border-radius: 3.875rem;
   background: #ffffff;
   color: #000000;
+  transition: box-shadow 0.3s ease;
+}
+.header.is-scrolled .header__bar {
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
 }
 @media (min-width: 991.98px) {
   .header__bar {

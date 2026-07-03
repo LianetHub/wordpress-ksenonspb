@@ -27,7 +27,7 @@ $subtitle = ksenon_get_option('404_subtitle', __('Воспользуйтесь �
 					<use href="<?php echo esc_url(ksenon_assets_uri('img/icons.svg')); ?>#icon-arrow-up-right"></use>
 				</svg>
 			</a>
-			<a class="btn btn--secondary not-found__btn" href="<?php echo esc_url(ksenon_catalog_url()); ?>"> Смотреть каталог <svg class="btn__icon" width="28" height="28" aria-hidden="true">
+			<a class="btn btn--secondary not-found__btn" href="<?php echo esc_url(ksenon_services_archive_url()); ?>"> Смотреть каталог <svg class="btn__icon" width="28" height="28" aria-hidden="true">
 					<use href="<?php echo esc_url(ksenon_assets_uri('img/icons.svg')); ?>#icon-arrow-up-right"></use>
 				</svg>
 			</a>

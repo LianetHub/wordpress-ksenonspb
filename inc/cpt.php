@@ -400,6 +400,46 @@ if (! function_exists('ksenon_get_service_category_top_parent_slug')) {
 	}
 }
 
+if (! function_exists('ksenon_find_service_category_by_url_path')) {
+	/**
+	 * Resolve hierarchical service_category term from URL path segments.
+	 *
+	 * @param string[] $segments
+	 * @return WP_Term|null
+	 */
+	function ksenon_find_service_category_by_url_path(array $segments)
+	{
+		$segments = array_values(array_filter(array_map('strval', $segments)));
+		if (empty($segments)) {
+			return null;
+		}
+
+		$parent_id = 0;
+		$term      = null;
+
+		foreach ($segments as $slug) {
+			$matches = get_terms(
+				array(
+					'taxonomy'   => 'service_category',
+					'slug'       => sanitize_title($slug),
+					'parent'     => $parent_id,
+					'hide_empty' => false,
+					'number'     => 1,
+				)
+			);
+
+			if (is_wp_error($matches) || empty($matches) || ! $matches[0] instanceof WP_Term) {
+				return null;
+			}
+
+			$term      = $matches[0];
+			$parent_id = (int) $term->term_id;
+		}
+
+		return $term;
+	}
+}
+
 if (! function_exists('ksenon_find_service_by_url_path')) {
 	/**
 	 * Resolve service post ID from public URL path segments.
@@ -479,25 +519,42 @@ if (! function_exists('ksenon_find_service_by_url_path')) {
 add_filter(
 	'request',
 	function ($query_vars) {
-		if (is_admin() || ! empty($query_vars['p']) || ! empty($query_vars['name'])) {
+		if (is_admin() || ! empty($query_vars['p'])) {
 			return $query_vars;
 		}
 
 		global $wp;
-		$request = isset($wp->request) ? trim((string) $wp->request, '/') : '';
+		$request  = isset($wp->request) ? trim((string) $wp->request, '/') : '';
+		$segments = '' === $request ? array() : explode('/', $request);
+
 		if ('' === $request) {
 			return $query_vars;
 		}
 
-		$post_id = ksenon_find_service_by_url_path(explode('/', $request));
-		if ($post_id <= 0) {
-			return $query_vars;
+		$segment_count = count($segments);
+
+		if ($segment_count >= 2 && $segment_count <= 3) {
+			$post_id = ksenon_find_service_by_url_path($segments);
+			if ($post_id > 0) {
+				return array(
+					'p'         => $post_id,
+					'post_type' => 'service',
+				);
+			}
 		}
 
-		return array(
-			'p'         => $post_id,
-			'post_type' => 'service',
-		);
+		if ($segment_count >= 1 && $segment_count <= 2) {
+			$category_term = ksenon_find_service_category_by_url_path($segments);
+			if ($category_term instanceof WP_Term) {
+				return array(
+					'taxonomy'         => 'service_category',
+					'service_category' => $category_term->slug,
+					'term'             => $category_term->slug,
+				);
+			}
+		}
+
+		return $query_vars;
 	},
 	1
 );

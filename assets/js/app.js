@@ -5,6 +5,7 @@ import { initYandexMaps } from "./map.js";
 import { initTooltips } from "./tooltip.js";
 document.addEventListener("DOMContentLoaded", () => {
 	initBurger();
+	initHeaderScroll();
 	initFancybox();
 	initPartnersAutoPopup();
 	initBlogTabs();
@@ -57,6 +58,20 @@ function initBurger() {
 			setMenuOpen(false);
 		}
 	});
+}
+
+function initHeaderScroll() {
+	const header = document.querySelector(".header");
+	if (!header) return;
+
+	const SCROLL_THRESHOLD = 46;
+
+	const update = () => {
+		header.classList.toggle("is-scrolled", window.scrollY > SCROLL_THRESHOLD);
+	};
+
+	update();
+	window.addEventListener("scroll", update, { passive: true });
 }
 
 function initFancybox() {

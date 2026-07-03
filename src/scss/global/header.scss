@@ -10,9 +10,10 @@
 	width: 100%;
 	padding: rem(46) 0 0;
 	pointer-events: none;
+	transition: padding-top 0.3s ease;
 
-	@media (min-width: $md3) {
-		padding-top: rem(46);
+	&.is-scrolled {
+		padding-top: rem(8);
 	}
 
 	&__container {}
@@ -28,6 +29,11 @@
 		border-radius: rem(62);
 		background: $color-white;
 		color: $color-black;
+		transition: box-shadow 0.3s ease;
+
+		.header.is-scrolled & {
+			box-shadow: 0 rem(4) rem(16) rgba($color-black, 0.08);
+		}
 
 		@media (min-width:$md3) {
 			min-height: rem(79);
