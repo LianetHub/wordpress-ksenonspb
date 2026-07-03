@@ -1,0 +1,126 @@
+@use "sass:color";
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.services-archive {
+	padding: rem(24) 0 rem(48);
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(72);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(24);
+
+		@media (min-width: $md3) {
+			gap: rem(36);
+		}
+	}
+
+	&__filters {
+		margin: 0;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: rem(20);
+
+		@media (min-width: $md4) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: $md2) {
+			grid-template-columns: repeat(3, 1fr);
+			gap: rem(24);
+		}
+	}
+}
+
+.services-pagination {
+	display: flex;
+	justify-content: center;
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		gap: rem(20);
+		padding: rem(14) rem(30);
+		border-radius: rem(62);
+		background: $color-white;
+	}
+
+	&__pages {
+		display: flex;
+		align-items: center;
+		gap: rem(20);
+	}
+
+	&__page {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: rem(46);
+		height: rem(47);
+		padding: rem(15) rem(20);
+		border-radius: rem(40);
+		background: $color-surface;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(14);
+		font-weight: 500;
+		line-height: normal;
+		white-space: nowrap;
+		transition: background-color 0.2s ease;
+
+		&._active {
+			background: #fdad65;
+			color: $color-white;
+			pointer-events: none;
+		}
+
+		&--dots {
+			min-width: rem(46);
+			padding: rem(15) rem(18);
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover:not(._active) {
+				background: color.adjust($color: $color-surface, $lightness: -5%);
+			}
+		}
+	}
+
+	&__arrow {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: rem(46);
+		height: rem(47);
+		border-radius: 50%;
+		background: $color-surface;
+		color: $color-black;
+		transition: background-color 0.2s ease;
+
+		&--disabled {
+			opacity: 0.4;
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover:not(.services-pagination__arrow--disabled) {
+				background: color.adjust($color: $color-surface, $lightness: -5%);
+			}
+		}
+	}
+
+	&__icon {
+		display: block;
+		width: rem(8);
+		height: rem(18);
+	}
+}

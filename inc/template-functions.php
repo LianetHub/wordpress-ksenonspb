@@ -529,6 +529,163 @@ if (! function_exists('ksenon_services_archive_url')) {
 	}
 }
 
+if (! function_exists('ksenon_services_pagination_url')) {
+	function ksenon_services_pagination_url($page, $category_slug = '')
+	{
+		$page = max(1, (int) $page);
+		$url  = ksenon_services_archive_url($category_slug);
+
+		if ($page <= 1) {
+			return $url;
+		}
+
+		if (get_option('permalink_structure')) {
+			return user_trailingslashit(trailingslashit($url) . 'page/' . $page);
+		}
+
+		return add_query_arg('paged', $page, $url);
+	}
+}
+
+if (! function_exists('ksenon_get_pagination_items')) {
+	function ksenon_get_pagination_items($current, $total)
+	{
+		$current = max(1, (int) $current);
+		$total   = max(1, (int) $total);
+
+		if ($total <= 6) {
+			$items = array();
+			for ($i = 1; $i <= $total; $i++) {
+				$items[] = array(
+					'type' => 'page',
+					'num'  => $i,
+				);
+			}
+
+			return $items;
+		}
+
+		if ($current <= 4) {
+			$items = array();
+			for ($i = 1; $i <= 4; $i++) {
+				$items[] = array(
+					'type' => 'page',
+					'num'  => $i,
+				);
+			}
+			$items[] = array('type' => 'dots');
+			$items[] = array(
+				'type' => 'page',
+				'num'  => $total,
+			);
+
+			return $items;
+		}
+
+		if ($current >= $total - 3) {
+			$items   = array(
+				array(
+					'type' => 'page',
+					'num'  => 1,
+				),
+				array('type' => 'dots'),
+			);
+			for ($i = $total - 3; $i <= $total; $i++) {
+				$items[] = array(
+					'type' => 'page',
+					'num'  => $i,
+				);
+			}
+
+			return $items;
+		}
+
+		return array(
+			array(
+				'type' => 'page',
+				'num'  => 1,
+			),
+			array('type' => 'dots'),
+			array(
+				'type' => 'page',
+				'num'  => $current - 1,
+			),
+			array(
+				'type' => 'page',
+				'num'  => $current,
+			),
+			array(
+				'type' => 'page',
+				'num'  => $current + 1,
+			),
+			array('type' => 'dots'),
+			array(
+				'type' => 'page',
+				'num'  => $total,
+			),
+		);
+	}
+}
+
+if (! function_exists('ksenon_render_pagination')) {
+	function ksenon_render_pagination(WP_Query $query, $category_slug = '')
+	{
+		$total = (int) $query->max_num_pages;
+		if ($total <= 1) {
+			return;
+		}
+
+		$current = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
+		$items   = ksenon_get_pagination_items($current, $total);
+		$prev_url = $current > 1 ? ksenon_services_pagination_url($current - 1, $category_slug) : '';
+		$next_url = $current < $total ? ksenon_services_pagination_url($current + 1, $category_slug) : '';
+	?>
+		<nav class="services-pagination" aria-label="<?php esc_attr_e('Навигация по страницам', 'ksenonspb'); ?>">
+			<div class="services-pagination__inner">
+				<?php if ($prev_url) : ?>
+					<a class="services-pagination__arrow services-pagination__arrow--prev" href="<?php echo esc_url($prev_url); ?>" aria-label="<?php esc_attr_e('Предыдущая страница', 'ksenonspb'); ?>">
+						<?php ksenon_icon('icon-chevron-left', 8, 18, 'services-pagination__icon'); ?>
+					</a>
+				<?php else : ?>
+					<span class="services-pagination__arrow services-pagination__arrow--prev services-pagination__arrow--disabled" aria-hidden="true">
+						<?php ksenon_icon('icon-chevron-left', 8, 18, 'services-pagination__icon'); ?>
+					</span>
+				<?php endif; ?>
+
+				<div class="services-pagination__pages">
+					<?php foreach ($items as $item) : ?>
+						<?php if ('dots' === $item['type']) : ?>
+							<span class="services-pagination__page services-pagination__page--dots" aria-hidden="true">&hellip;</span>
+						<?php else : ?>
+							<?php
+							$page_num   = (int) $item['num'];
+							$is_current = $page_num === $current;
+							$page_url   = ksenon_services_pagination_url($page_num, $category_slug);
+							?>
+							<?php if ($is_current) : ?>
+								<span class="services-pagination__page _active" aria-current="page"><?php echo esc_html((string) $page_num); ?></span>
+							<?php else : ?>
+								<a class="services-pagination__page" href="<?php echo esc_url($page_url); ?>"><?php echo esc_html((string) $page_num); ?></a>
+							<?php endif; ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</div>
+
+				<?php if ($next_url) : ?>
+					<a class="services-pagination__arrow services-pagination__arrow--next" href="<?php echo esc_url($next_url); ?>" aria-label="<?php esc_attr_e('Следующая страница', 'ksenonspb'); ?>">
+						<?php ksenon_icon('icon-chevron-right', 8, 18, 'services-pagination__icon'); ?>
+					</a>
+				<?php else : ?>
+					<span class="services-pagination__arrow services-pagination__arrow--next services-pagination__arrow--disabled" aria-hidden="true">
+						<?php ksenon_icon('icon-chevron-right', 8, 18, 'services-pagination__icon'); ?>
+					</span>
+				<?php endif; ?>
+			</div>
+		</nav>
+	<?php
+	}
+}
+
 if (! function_exists('ksenon_portfolio_archive_url')) {
 	function ksenon_portfolio_archive_url()
 	{

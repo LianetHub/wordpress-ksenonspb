@@ -102,7 +102,7 @@ if ($image) {
 				<?php endforeach; ?>
 			</ul>
 		<?php endif; ?>
-		<a class="service-card__link btn btn--arrow btn--arrow-inverse btn--arrow-card" href="<?php echo esc_url($permalink); ?>">
+		<a class="service-card__link btn btn--arrow btn--arrow-card" href="<?php echo esc_url($permalink); ?>">
 			<span class="btn__text"><?php esc_html_e('Перейти', 'ksenonspb'); ?></span>
 			<?php ksenon_btn_arrow_icon(); ?>
 		</a>

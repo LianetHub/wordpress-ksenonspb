@@ -399,7 +399,9 @@ function initHomeSwipers() {
 		});
 	}
 
-	const servicesTeaserEl = document.querySelector(".services-teaser__slider");
+	const servicesTeaserEl = document.querySelector(
+		".services-teaser__slider .swiper",
+	);
 	if (servicesTeaserEl) {
 		new Swiper(servicesTeaserEl, {
 			slidesPerView: 1.15,

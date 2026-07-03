@@ -51,31 +51,31 @@ $more_link      = array(
 			</h2>
 			<?php ksenon_render_btn_arrow($more_link, 'btn btn--accent btn--arrow services-teaser__more', $more_label); ?>
 		</div>
-		<div class="services-teaser__slider swiper">
-			<ul class="services-teaser__grid swiper-wrapper">
-				<?php
-				while ($query->have_posts()) :
-					$query->the_post();
-				?>
+		<div class="services-teaser__slider">
+			<div class="swiper">
+				<ul class="services-teaser__grid swiper-wrapper">
 					<?php
-					get_template_part(
-						'template-parts/blocks/service-card',
-						null,
-						array(
-							'post'  => get_post(),
-							'class' => 'services-teaser__slide swiper-slide',
-						)
-					);
+					while ($query->have_posts()) :
+						$query->the_post();
 					?>
-				<?php
-				endwhile;
-				wp_reset_postdata();
-				?>
-			</ul>
-			<div class="services-teaser__nav">
-				<button class="services-teaser__prev" type="button" aria-label="<?php esc_attr_e('Предыдущие услуги', 'ksenonspb'); ?>"></button>
-				<button class="services-teaser__next" type="button" aria-label="<?php esc_attr_e('Следующие услуги', 'ksenonspb'); ?>"></button>
+						<?php
+						get_template_part(
+							'template-parts/blocks/service-card',
+							null,
+							array(
+								'post'  => get_post(),
+								'class' => 'service-card--grey services-teaser__slide swiper-slide',
+							)
+						);
+						?>
+					<?php
+					endwhile;
+					wp_reset_postdata();
+					?>
+				</ul>
 			</div>
+			<button class="services-teaser__prev swiper-button-prev" type="button" aria-label="<?php esc_attr_e('Предыдущие услуги', 'ksenonspb'); ?>"></button>
+			<button class="services-teaser__next swiper-button-next" type="button" aria-label="<?php esc_attr_e('Следующие услуги', 'ksenonspb'); ?>"></button>
 		</div>
 	</div>
 </section>

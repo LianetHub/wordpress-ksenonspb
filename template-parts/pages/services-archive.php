@@ -6,9 +6,14 @@
  * @package ksenonspb
  */
 
-$categories   = ksenon_get_service_categories();
-$active_slug  = ksenon_get_current_service_category_slug();
-$query_args   = array();
+$categories  = ksenon_get_service_categories();
+$active_slug = ksenon_get_current_service_category_slug();
+$paged       = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
+$query_args  = array(
+	'posts_per_page' => 9,
+	'paged'          => $paged,
+	'no_found_rows'  => false,
+);
 
 if ($active_slug) {
 	$query_args['tax_query'] = array(
@@ -48,17 +53,18 @@ $query = ksenon_query_services($query_args);
 			</nav>
 		<?php endif; ?>
 
-		<ul class="services-archive__grid">
-			<?php
-			if ($query->have_posts()) :
+		<?php if ($query->have_posts()) : ?>
+			<ul class="services-archive__grid">
+				<?php
 				while ($query->have_posts()) :
 					$query->the_post();
 					get_template_part('template-parts/blocks/service-card', null, array('post' => get_post()));
 				endwhile;
 				wp_reset_postdata();
-			endif;
-			?>
-		</ul>
+				?>
+			</ul>
+			<?php ksenon_render_pagination($query, $active_slug); ?>
+		<?php endif; ?>
 	</div>
 </section>
 <?php get_template_part('template-parts/blocks/cta-form', null, array('variant' => 'service_not_found')); ?>

@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../variables" as *;
 @use "../../mixins" as *;
 
@@ -24,49 +25,28 @@
 		height: auto;
 	}
 
-	&__nav {
-		display: none;
-
-		@media (min-width: $md3) {
-			display: block;
-		}
-	}
 
 	&__prev,
 	&__next {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		width: rem(56);
-		height: rem(58);
-		border: 0;
+		--swiper-navigation-size: 3.47825rem;
+		background: #F7F7F7;
+		color: #000;
 		border-radius: 50%;
-		background: $color-accent;
-		cursor: pointer;
-		z-index: 2;
+		padding: 1rem;
+		--swiper-navigation-sides-offset: -76px;
+		transition: background-color 0.3s ease;
 
-		&::before {
-			content: "";
-			display: block;
-			width: rem(18);
-			height: rem(18);
-			margin: 0 auto;
-			background: $color-white;
-			clip-path: polygon(100% 0, 0 50%, 100% 100%);
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: color.adjust($color: #F7F7F7, $lightness: -10%);
+			}
 		}
+
 	}
 
-	&__prev {
-		left: rem(-28);
+	&__prev {}
 
-		&::before {
-			transform: scaleX(-1);
-		}
-	}
-
-	&__next {
-		right: rem(-28);
-	}
+	&__next {}
 }
 
 .service-card {
@@ -75,7 +55,7 @@
 	flex-direction: column;
 	min-height: rem(443);
 	border-radius: rem(40);
-	background: $color-surface;
+	background: $color-white;
 	overflow: hidden;
 
 	&__inner {
@@ -88,7 +68,7 @@
 
 	&__head {
 		padding-bottom: rem(20);
-		border-bottom: 1px solid rgba($color-black, 0.08);
+		background: linear-gradient(90deg, rgba(111, 111, 111, 0.26) 0%, rgba(111, 111, 111, 0.26) 50%, transparent 50%, transparent 100%) 0 bottom / rem(12) rem(1) repeat-x;
 	}
 
 	&__title {
@@ -144,7 +124,7 @@
 		justify-content: center;
 		padding: rem(10) rem(20);
 		border-radius: rem(50);
-		background: $color-white;
+		background: $color-surface;
 		color: $color-text-secondary;
 		font-size: rem(10);
 		font-weight: 400;
@@ -153,6 +133,56 @@
 	}
 
 	&__link {
-		margin-top: auto;
+		&.btn--arrow {
+			min-height: rem(52);
+			padding: rem(15) rem(6) rem(15) rem(35);
+			border-radius: rem(52);
+			background: $color-surface;
+			color: $color-black;
+			box-shadow: 0 rem(6) rem(3) rgba(240, 240, 240, 0.13);
+
+			.btn__text {
+				color: $color-black;
+				font-size: rem(14);
+				font-weight: 500;
+				line-height: normal;
+			}
+
+			.btn__arrow {
+				width: rem(40);
+				height: rem(40);
+				background: $color-accent;
+				color: $color-white;
+			}
+
+			@media (any-hover: hover) {
+				&:hover:not(:disabled):not([aria-disabled="true"]) {
+					background: $color-surface;
+					box-shadow: 0 rem(8) rem(24) rgba($color-black, 0.08);
+				}
+			}
+
+			&:active:not(:disabled):not([aria-disabled="true"]) {
+				box-shadow: 0 rem(6) rem(3) rgba(240, 240, 240, 0.13);
+			}
+		}
+	}
+
+	&--grey {
+		background: $color-surface;
+
+		.service-card__label {
+			background: $color-white;
+		}
+
+		.service-card__link.btn--arrow {
+			background: $color-white;
+
+			@media (any-hover: hover) {
+				&:hover:not(:disabled):not([aria-disabled="true"]) {
+					background: $color-white;
+				}
+			}
+		}
 	}
 }
