@@ -78,6 +78,28 @@ if (! function_exists('ksenon_services_count_label')) {
 	}
 }
 
+if (! function_exists('ksenon_brands_count_label')) {
+	function ksenon_brands_count_label($count)
+	{
+		$count = (int) $count;
+		if ($count <= 0) {
+			return __('Все марки', 'ksenonspb');
+		}
+
+		return sprintf(
+			/* translators: 1: count, 2: марка/марки/марок */
+			__('%1$d+ %2$s', 'ksenonspb'),
+			$count,
+			ksenon_plural_ru(
+				$count,
+				__('марка', 'ksenonspb'),
+				__('марки', 'ksenonspb'),
+				__('марок', 'ksenonspb')
+			)
+		);
+	}
+}
+
 if (! function_exists('ksenon_format_price_from')) {
 	function ksenon_format_price_from($value)
 	{

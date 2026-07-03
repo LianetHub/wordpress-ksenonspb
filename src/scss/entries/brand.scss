@@ -1,11 +1,8 @@
 @use "../variables" as *;
 @use "../mixins" as *;
-.brand-page,
-.brand-hero,
-.brand-features,
-.brand-services,
-.brand-models,
-.brands-archive,
-.brand-card {
-	// Brand pages — fill during redesign
+@use "../section/home/shared";
+@use "../section/home/brands";
+
+.color-accent {
+	color: $color-accent;
 }

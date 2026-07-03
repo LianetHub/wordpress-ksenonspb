@@ -230,10 +230,16 @@ add_action(
 				'rewrite'             => array(
 					'slug'       => 'marki',
 					'with_front' => false,
+					'pages'      => false,
 				),
 				'show_in_rest'        => true,
 			)
 		);
+
+		remove_post_type_support('brand', 'comments');
+		remove_post_type_support('brand', 'trackbacks');
+
+		add_rewrite_rule('marki/([^/]+)/?$', 'index.php?brand=$matches[1]', 'top');
 
 		register_post_type(
 			'promotion',
@@ -622,7 +628,7 @@ add_action(
 add_action(
 	'init',
 	function () {
-		$version = '20260703-ksenon-cpt-v8';
+		$version = '20260703-ksenon-cpt-v9';
 
 		if (get_option('ksenon_rewrite_version') === $version) {
 			return;

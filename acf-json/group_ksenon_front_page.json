@@ -160,7 +160,8 @@
                             "label": "Заголовок",
                             "name": "title",
                             "type": "text",
-                            "default_value": "Работаем со всеми марками"
+                            "default_value": "Работаем <span class=\"color-accent\">со всеми</span> марками",
+                            "instructions": "Для акцента на части фразы используйте HTML: <span class=\"color-accent\">текст</span>"
                         },
                         {
                             "key": "field_ksenon_br_featured",
@@ -170,7 +171,9 @@
                             "post_type": [
                                 "brand"
                             ],
-                            "return_format": "object"
+                            "return_format": "object",
+                            "max": 9,
+                            "instructions": "До 9 марок для сетки на главной. Если не выбрано — выводятся самые популярные (по связям с работами и услугами)."
                         }
                     ]
                 },

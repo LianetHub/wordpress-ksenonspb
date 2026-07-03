@@ -3,17 +3,17 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import XLSX from 'xlsx';
 
-import { BASE_URL, DATA_DIR, fetchWithRetry, readJson, writeJson } from './utils.mjs';
+import { resolveOfficialLogoUrl } from './brand-official-logos.mjs';
+import { DATA_DIR, fetchWithRetry, readJson, writeJson } from './utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const OLD_PAGES_JSON = path.join(DATA_DIR, 'old-pages.json');
-const LOGOS_CACHE_JSON = path.join(DATA_DIR, 'brand-logos.json');
+const SITE_LOGOS_JSON = path.join(DATA_DIR, 'brand-logos-site.json');
+const DEFAULT_SITE_URL = 'http://ksenonspby.temp.swtest.ru';
 const OUTPUT_XLSX = path.join(DATA_DIR, 'brands-import.xlsx');
 const OUTPUT_JSON = path.join(DATA_DIR, 'brands-import.json');
 const OUTPUT_CSV = path.join(DATA_DIR, 'brands-import.csv');
-
-const CATALOG_URL = `${BASE_URL}/%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3-%D0%BF%D0%BE-%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0%D0%BC/`;
 
 const BRAND = 'КБ АВТО';
 const CITY = 'СПб';
@@ -32,26 +32,8 @@ const TITLE_BY_SLUG = {
 	'rolls-royce': 'Rolls-Royce',
 	'land-rover': 'Land Rover',
 	vw: 'Volkswagen',
-};
-
-/**
- * Имя файла логотипа на старом сайте ≠ slug категории.
- * Ключ — old slug из /category/portfolio/{slug}/
- */
-const LOGO_FILE_ALIASES = {
-	mercedes: 'mb',
-	huyndai: 'hyundai',
-	scoda: 'skoda',
-	maserati: 'maseratti',
-	'rolls-royce': 'rolls-r',
-	'land-rover': 'landrover',
-	bmw: 'bmw-100x100',
-	cadillac: 'cadillac-100x100',
-	dodge: 'dodge-100x100',
-	kia: 'kia-100x100',
-	mazda: 'mazda-100x100',
-	nissan: 'nissan-100x100',
-	opel: 'opel-100x100',
+	drl: 'ДХО',
+	hpl: 'HPL',
 };
 
 const BRAND_HEADERS = ['title', 'slug', 'image'];
@@ -66,9 +48,6 @@ const SEO_HEADERS = [
 ];
 
 const HEADERS = [...BRAND_HEADERS, ...SEO_HEADERS];
-
-const UPLOADS_LOGO_RE =
-	/https:\/\/ksenonspb\.ru\/wp-content\/uploads\/(?:\d{4}\/\d{2}\/)?([a-z0-9._-]+)\.(jpe?g|png|webp)/i;
 
 function escapeCsvCell(value) {
 	const text = String(value ?? '');
@@ -103,24 +82,81 @@ function mapSlug(oldSlug) {
 	return SLUG_MAP[oldSlug] ?? oldSlug;
 }
 
-function normalizeImageUrl(url) {
-	if (!url) {
-		return '';
-	}
+function brandSlugFromHref(href) {
 	try {
-		const parsed = new URL(url);
-		if (parsed.hostname !== 'ksenonspb.ru') {
-			return '';
-		}
-		return parsed.href;
+		const pathname = new URL(href).pathname.replace(/^\/+|\/+$/g, '');
+		const parts = pathname.split('/');
+		return parts[parts.length - 1] || '';
 	} catch {
 		return '';
 	}
 }
 
-function logoBasenameFromUrl(url) {
-	const match = String(url).match(UPLOADS_LOGO_RE);
-	return match ? match[1].toLowerCase() : '';
+/** Убирает суффикс WordPress -300x162, оставляет полный файл из uploads */
+function normalizeUploadUrl(url) {
+	const text = String(url ?? '').trim();
+	if (!text) {
+		return '';
+	}
+
+	return text.replace(/-\d+x\d+(\.(png|jpe?g|webp))$/i, '$1');
+}
+
+async function fetchSiteLogos(siteUrl) {
+	const archiveUrl = `${siteUrl.replace(/\/+$/, '')}/marki/`;
+	const response = await fetchWithRetry(archiveUrl);
+	const html = await response.text();
+	const logosBySlug = new Map();
+
+	const cardRe =
+		/<a[^>]+class="brand-card__link"[^>]+href="([^"]+)"[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"[^>]*class="brand-card__logo"/gi;
+	let match;
+
+	while ((match = cardRe.exec(html)) !== null) {
+		const slug = brandSlugFromHref(match[1]);
+		const imageUrl = normalizeUploadUrl(match[2]);
+
+		if (slug && imageUrl) {
+			logosBySlug.set(slug, imageUrl);
+		}
+	}
+
+	return Object.fromEntries(logosBySlug);
+}
+
+async function loadSiteLogoMap({ shouldFetch, siteUrl }) {
+	if (shouldFetch) {
+		const logos = await fetchSiteLogos(siteUrl);
+		await writeJson(SITE_LOGOS_JSON, {
+			fetched_at: new Date().toISOString(),
+			source: `${siteUrl.replace(/\/+$/, '')}/marki/`,
+			logos,
+		});
+		return logos;
+	}
+
+	const cached = await readJson(SITE_LOGOS_JSON);
+	if (cached?.logos && Object.keys(cached.logos).length) {
+		return cached.logos;
+	}
+
+	return null;
+}
+
+function attachImages(brands, siteLogos) {
+	const warnings = [];
+
+	for (const brand of brands) {
+		const siteImage = siteLogos?.[brand.slug];
+		brand.image = siteImage || resolveOfficialLogoUrl(brand.slug);
+		brand.image_source = siteImage ? 'site' : 'official';
+
+		if (!brand.image) {
+			warnings.push(brand.slug);
+		}
+	}
+
+	return warnings;
 }
 
 function buildMetaKeywords(focusKeyword) {
@@ -227,6 +263,7 @@ function readBrandsFromOldPages(oldPages) {
 				title: TITLE_BY_SLUG[slug] ?? parsedTitle,
 				old_url: entry.url,
 				image: '',
+				image_source: '',
 				focus_keyword: '',
 				seo_title: '',
 				meta_description: '',
@@ -236,144 +273,6 @@ function readBrandsFromOldPages(oldPages) {
 			};
 		})
 		.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
-}
-
-function extractSlugHintFromHref(href) {
-	const decoded = decodeURIComponent(String(href));
-
-	const remontMatch = decoded.match(/ремонт-фар-([a-z0-9-]+)/i);
-	if (remontMatch) {
-		return remontMatch[1].toLowerCase();
-	}
-
-	const portfolioMatch = decoded.match(/\/category\/portfolio\/([^/?#]+)/i);
-	if (portfolioMatch) {
-		return portfolioMatch[1].toLowerCase();
-	}
-
-	return '';
-}
-
-async function fetchCatalogLogos() {
-	const response = await fetchWithRetry(CATALOG_URL);
-	const html = await response.text();
-	const logosByOldSlug = new Map();
-
-	const pairRe = /<a[^>]+href="([^"]+)"[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"[^>]*>/gi;
-	let match;
-
-	while ((match = pairRe.exec(html)) !== null) {
-		const href = match[1];
-		const imageUrl = normalizeImageUrl(match[2]);
-
-		if (!imageUrl || !imageUrl.includes('/wp-content/uploads/')) {
-			continue;
-		}
-
-		const hint = extractSlugHintFromHref(href);
-		if (hint) {
-			logosByOldSlug.set(hint, imageUrl);
-		}
-
-		const basename = logoBasenameFromUrl(imageUrl);
-		if (basename) {
-			logosByOldSlug.set(basename, imageUrl);
-		}
-	}
-
-	return Object.fromEntries(logosByOldSlug);
-}
-
-async function loadLogoMap(shouldFetch) {
-	if (!shouldFetch) {
-		const cached = await readJson(LOGOS_CACHE_JSON);
-		if (cached?.logos && Object.keys(cached.logos).length) {
-			return cached.logos;
-		}
-	}
-
-	const logos = await fetchCatalogLogos();
-	await writeJson(LOGOS_CACHE_JSON, {
-		fetched_at: new Date().toISOString(),
-		source: CATALOG_URL,
-		logos,
-	});
-
-	return logos;
-}
-
-function resolveLogoFromMap(oldSlug, logoMap) {
-	const candidates = new Set([oldSlug]);
-
-	if (LOGO_FILE_ALIASES[oldSlug]) {
-		candidates.add(LOGO_FILE_ALIASES[oldSlug]);
-	}
-
-	for (const candidate of candidates) {
-		if (logoMap[candidate]) {
-			return normalizeImageUrl(logoMap[candidate]);
-		}
-	}
-
-	for (const [key, url] of Object.entries(logoMap)) {
-		const basename = logoBasenameFromUrl(url);
-		for (const candidate of candidates) {
-			if (
-				key === candidate ||
-				basename === candidate ||
-				basename === candidate.replace(/-100x100$/, '')
-			) {
-				return normalizeImageUrl(url);
-			}
-		}
-	}
-
-	return '';
-}
-
-async function fetchCategoryFallbackImage(oldSlug) {
-	const url = `${BASE_URL}/category/portfolio/${oldSlug}/`;
-
-	try {
-		const response = await fetchWithRetry(url);
-		const html = await response.text();
-		const matches = [
-			...html.matchAll(
-				/https:\/\/ksenonspb\.ru\/wp-content\/uploads\/[^"'\s>]+\.(?:jpe?g|png|webp)/gi,
-			),
-		];
-
-		for (const item of matches) {
-			const imageUrl = normalizeImageUrl(item[0]);
-			if (imageUrl && !imageUrl.includes('logooo')) {
-				return imageUrl;
-			}
-		}
-	} catch (error) {
-		console.warn(`Failed to fetch fallback image for ${oldSlug}: ${error.message}`);
-	}
-
-	return '';
-}
-
-async function attachImages(brands, logoMap) {
-	const warnings = [];
-
-	for (const brand of brands) {
-		let image = resolveLogoFromMap(brand.old_slug, logoMap);
-
-		if (!image) {
-			image = await fetchCategoryFallbackImage(brand.old_slug);
-		}
-
-		brand.image = image;
-
-		if (!image) {
-			warnings.push(brand.old_slug);
-		}
-	}
-
-	return warnings;
 }
 
 function validateBrands(brands) {
@@ -395,8 +294,8 @@ function validateBrands(brands) {
 		}
 		slugs.add(brand.slug);
 
-		if (brand.image && !brand.image.startsWith('https://ksenonspb.ru/wp-content/uploads/')) {
-			throw new Error(`Invalid image URL for "${brand.slug}": ${brand.image}`);
+		if (!brand.image || !/^https?:\/\//.test(brand.image)) {
+			throw new Error(`Missing image URL for "${brand.slug}"`);
 		}
 	}
 }
@@ -413,6 +312,10 @@ async function writeOutputs(brands) {
 		source: path.basename(OUTPUT_XLSX),
 		note:
 			'title → post_title, slug → post_name (URL /marki/{slug}/), image → Featured Image и/или ACF logo, SEO-колонки → Rank Math / Yoast. Уникальный идентификатор — slug.',
+		logo_sources: {
+			site: 'Логотипы с /marki/ staging/production (wp-content/uploads)',
+			official_fallback: 'Wikimedia Commons / carlogos.org — если нет в кэше сайта',
+		},
 		columns: HEADERS,
 		brands,
 	};
@@ -425,7 +328,8 @@ async function writeOutputs(brands) {
 }
 
 async function main() {
-	const shouldFetchLogos = process.argv.includes('--fetch-logos');
+	const shouldFetchSite = process.argv.includes('--from-site');
+	const siteUrl = process.env.BRANDS_SITE_URL || DEFAULT_SITE_URL;
 
 	const oldPages = await readJson(OLD_PAGES_JSON);
 	if (!oldPages?.pages?.length) {
@@ -433,26 +337,28 @@ async function main() {
 	}
 
 	const brands = readBrandsFromOldPages(oldPages);
-	const logoMap = await loadLogoMap(shouldFetchLogos);
-	const missingImageWarnings = await attachImages(brands, logoMap);
+	const siteLogos = await loadSiteLogoMap({ shouldFetch: shouldFetchSite, siteUrl });
+	const missingImageWarnings = attachImages(brands, siteLogos);
 	const enriched = brands.map((brand) => enrichBrand(brand));
 
 	validateBrands(enriched);
 	await writeOutputs(enriched);
 
+	const fromSite = enriched.filter((brand) => brand.image_source === 'site').length;
+
 	console.log(`Source: ${OLD_PAGES_JSON}`);
-	console.log(`Logos: ${shouldFetchLogos ? 'fetched from catalog' : LOGOS_CACHE_JSON}`);
+	console.log(
+		`Logos: ${shouldFetchSite ? `fetched from ${siteUrl}/marki/` : SITE_LOGOS_JSON}`,
+	);
 	console.log(`Generated ${OUTPUT_XLSX} (sheet: brands)`);
 	console.log(`Generated ${OUTPUT_JSON}`);
 	console.log(`Generated ${OUTPUT_CSV}`);
 	console.log(`Brands: ${enriched.length}`);
+	console.log(`Images from site: ${fromSite}/${enriched.length}`);
 
 	if (missingImageWarnings.length) {
 		console.warn(`Missing images for: ${missingImageWarnings.join(', ')}`);
 	}
-
-	const withImages = enriched.filter((brand) => brand.image).length;
-	console.log(`Images resolved: ${withImages}/${enriched.length}`);
 }
 
 const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

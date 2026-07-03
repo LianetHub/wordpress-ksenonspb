@@ -517,6 +517,67 @@ if (! function_exists('ksenon_query_brands')) {
 	}
 }
 
+if (! function_exists('ksenon_get_popular_brand_ids')) {
+	/**
+	 * Brand IDs sorted by references in portfolio and services.
+	 *
+	 * @param int $limit Max items.
+	 * @return int[]
+	 */
+	function ksenon_get_popular_brand_ids($limit = 9)
+	{
+		$limit = max(1, (int) $limit);
+
+		$brand_ids = get_posts(
+			array(
+				'post_type'              => 'brand',
+				'post_status'            => 'publish',
+				'posts_per_page'         => -1,
+				'fields'                 => 'ids',
+				'orderby'                => 'title',
+				'order'                  => 'ASC',
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+			)
+		);
+
+		if (! $brand_ids) {
+			return array();
+		}
+
+		$scores = array_fill_keys(array_map('intval', $brand_ids), 0);
+
+		$referencing_posts = get_posts(
+			array(
+				'post_type'              => array('portfolio', 'service'),
+				'post_status'            => 'publish',
+				'posts_per_page'         => -1,
+				'fields'                 => 'ids',
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => true,
+				'update_post_term_cache' => false,
+			)
+		);
+
+		foreach ($referencing_posts as $post_id) {
+			foreach (ksenon_get_related_ids('related_brands', (int) $post_id) as $brand_id) {
+				if (isset($scores[$brand_id])) {
+					++$scores[$brand_id];
+				}
+			}
+		}
+
+		if (max($scores) <= 0) {
+			return array_slice(array_map('intval', $brand_ids), 0, $limit);
+		}
+
+		arsort($scores, SORT_NUMERIC);
+
+		return array_slice(array_map('intval', array_keys($scores)), 0, $limit);
+	}
+}
+
 if (! function_exists('ksenon_query_promotions')) {
 	function ksenon_query_promotions($args = array())
 	{

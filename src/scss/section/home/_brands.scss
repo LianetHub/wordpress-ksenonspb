@@ -8,38 +8,41 @@
 		padding: rem(60) 0;
 	}
 
-	&__title {
-		margin: 0 0 rem(24);
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(50);
+	}
+
+	&__head.section-head {
+		margin-bottom: 0;
+	}
+
+	&--archive {
+		padding-top: rem(60);
 
 		@media (min-width: $md3) {
-			margin-bottom: rem(40);
+			padding-top: rem(80);
 		}
 	}
 
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: rem(20);
 
 		@media (min-width: $md5) {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 		}
 
 		@media (min-width: $md3) {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-
-	&__more {
-		margin-top: rem(24);
-
-		@media (min-width: $md3) {
-			margin-top: rem(40);
+			grid-template-columns: repeat(4, minmax(0, 1fr));
 		}
 	}
 }
 
 .brands-section .brand-card {
+	height: rem(300);
 	min-height: rem(300);
 	border-radius: rem(40);
 	background: $color-surface;
@@ -49,10 +52,11 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		gap: rem(20);
+		justify-content: flex-start;
+		gap: rem(29);
+		height: 100%;
 		min-height: rem(300);
-		padding: rem(40) rem(20);
+		padding: rem(40) rem(20) rem(38);
 		color: $color-black;
 		transition: background-color 0.2s ease;
 
@@ -65,31 +69,30 @@
 
 	&__media {
 		display: flex;
+		flex: 1 1 auto;
 		align-items: center;
 		justify-content: center;
-		flex: 1 1 auto;
 		width: 100%;
-		max-height: rem(170);
+		max-height: rem(169);
 	}
 
 	&__logo {
 		display: block;
 		max-width: rem(170);
-		max-height: rem(170);
+		max-height: rem(169);
 		width: auto;
 		height: auto;
 		object-fit: contain;
 	}
 
 	&__title {
+		flex-shrink: 0;
+		margin: 0;
 		font-family: $font-family;
 		font-weight: 500;
-		font-size: rem(18);
-		line-height: 1.2;
+		font-size: rem(20);
+		line-height: normal;
 		text-align: center;
-
-		@media (min-width: $md3) {
-			font-size: rem(24);
-		}
+		text-transform: uppercase;
 	}
 }
