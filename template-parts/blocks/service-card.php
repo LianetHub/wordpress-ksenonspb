@@ -41,7 +41,18 @@ if (function_exists('ksenon_format_price_from')) {
 	}
 }
 
-$excerpt = (string) ksenon_get_post_field('card_excerpt', $post->ID);
+$excerpt     = (string) ksenon_get_post_field('card_excerpt', $post->ID);
+$labels_raw  = ksenon_get_post_field('card_labels', $post->ID);
+$labels      = array();
+
+if (is_array($labels_raw)) {
+	foreach ($labels_raw as $row) {
+		$label_text = trim((string) ($row['text'] ?? ''));
+		if ('' !== $label_text) {
+			$labels[] = $label_text;
+		}
+	}
+}
 
 if (! $image && has_post_thumbnail($post)) {
 	$image = get_post_thumbnail_id($post);
@@ -71,6 +82,13 @@ if ($image) {
 		</div>
 		<?php if ($excerpt) : ?>
 			<p class="service-card__excerpt"><?php echo esc_html($excerpt); ?></p>
+		<?php endif; ?>
+		<?php if ($labels) : ?>
+			<ul class="service-card__labels">
+				<?php foreach ($labels as $label) : ?>
+					<li class="service-card__label"><?php echo esc_html($label); ?></li>
+				<?php endforeach; ?>
+			</ul>
 		<?php endif; ?>
 		<a class="service-card__link btn btn--arrow btn--arrow-card" href="<?php echo esc_url(get_permalink($post)); ?>">
 			<span class="btn__text"><?php esc_html_e('Перейти', 'ksenonspb'); ?></span>

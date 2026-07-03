@@ -27,6 +27,25 @@
             "rows": 3
         },
         {
+            "key": "field_ksenon_service_card_labels",
+            "label": "Преимущества на карточке",
+            "name": "card_labels",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить лейбл",
+            "max": 4,
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_card_label_text",
+                    "label": "Текст",
+                    "name": "text",
+                    "type": "text",
+                    "maxlength": 30,
+                    "parent_repeater": "field_ksenon_service_card_labels"
+                }
+            ]
+        },
+        {
             "key": "field_ksenon_service_hero_title",
             "label": "Hero — заголовок",
             "name": "hero_title",

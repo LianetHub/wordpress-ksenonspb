@@ -1,0 +1,366 @@
+{
+  "generated_at": "2026-07-03T07:42:36.736Z",
+  "theme": "ksenonspb 2.0.0",
+  "total_templates": 28,
+  "pages": [
+    {
+      "id": "home",
+      "title": "Главная",
+      "url": "/",
+      "content_type": "page",
+      "template": "front-page.php",
+      "acf_group": "group_ksenon_front_page.json",
+      "source_urls": [
+        "https://ksenonspb.ru/"
+      ],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "services_archive",
+      "title": "Наши услуги",
+      "url": "/uslugi/",
+      "content_type": "service_archive",
+      "template": "archive-service.php",
+      "source_urls": [
+        "https://ksenonspb.ru/ремонт-фар/",
+        "https://ksenonspb.ru/другие-услуги/",
+        "https://ksenonspb.ru/автоохрана/",
+        "https://ksenonspb.ru/автоэлектрика/",
+        "https://ksenonspb.ru/мультимедиа/"
+      ],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_retrofit-bi-led",
+      "title": "Ретрофит Bi-LED",
+      "url": "/uslugi/retrofit-bi-led/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_remont-optiki-posle-dtp",
+      "title": "Ремонт оптики после ДТП",
+      "url": "/uslugi/remont-optiki-posle-dtp/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_polirovka-stekol-far",
+      "title": "Полировка стекол фар",
+      "url": "/uslugi/polirovka-stekol-far/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_tyuning-angel-skie-glazki",
+      "title": "Тюнинг — ангельские глазки",
+      "url": "/uslugi/tyuning-angel-skie-glazki/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_remont-led-draiverov",
+      "title": "Ремонт LED-драйверов",
+      "url": "/uslugi/remont-led-draiverov/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_zamena-ksenovyh-lamp",
+      "title": "Замена ксеновых ламп",
+      "url": "/uslugi/zamena-ksenovyh-lamp/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_vosstanovlenie-afs",
+      "title": "Восстановление AFS",
+      "url": "/uslugi/vosstanovlenie-afs/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "service_regulirovka-cveta",
+      "title": "Регулировка цвета",
+      "url": "/uslugi/regulirovka-cveta/",
+      "content_type": "service",
+      "template": "single-service.php",
+      "acf_group": "group_ksenon_service.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "portfolio_archive",
+      "title": "Наши работы",
+      "url": "/portfolio/",
+      "content_type": "portfolio_archive",
+      "template": "archive-portfolio.php",
+      "source_urls": [
+        "https://ksenonspb.ru/blog/",
+        "https://ksenonspb.ru/каталог-работ-по-машинам/"
+      ],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "portfolio_single",
+      "title_pattern": "Кейс: {post_title}",
+      "url_pattern": "/portfolio/{slug}/",
+      "content_type": "portfolio",
+      "template": "single-portfolio.php",
+      "acf_group": "group_ksenon_portfolio.json",
+      "source_filter": {
+        "old_type": "post",
+        "is_demo": false
+      },
+      "count_estimate": 425,
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "brands_archive",
+      "title": "Марки автомобилей",
+      "url": "/marki/",
+      "content_type": "brand_archive",
+      "template": "archive-brand.php",
+      "source_urls": [
+        "https://ksenonspb.ru/каталог-по-машинам/"
+      ],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "brand_single",
+      "title_pattern": "Марка: {brand_name}",
+      "url_pattern": "/marki/{slug}/",
+      "content_type": "brand",
+      "template": "single-brand.php",
+      "acf_group": "group_ksenon_brand.json",
+      "source_filter": {
+        "old_type": "category",
+        "path_contains": "/category/portfolio/"
+      },
+      "count_estimate": 43,
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "promotions_archive",
+      "title": "Акции",
+      "url": "/akcii/",
+      "content_type": "promotion_archive",
+      "template": "archive-promotion.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented",
+      "note": "Новый контент, источников на старом сайте нет"
+    },
+    {
+      "id": "promotion_single",
+      "title_pattern": "Акция: {title}",
+      "url_pattern": "/akcii/{slug}/",
+      "content_type": "promotion",
+      "template": "single-promotion.php",
+      "acf_group": "group_ksenon_promotion.json",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "page_o-kompanii",
+      "title": "О компании",
+      "url": "/o-kompanii/",
+      "content_type": "page",
+      "template": "page-o-kompanii.php",
+      "source_urls": [
+        "https://ksenonspb.ru/about-us/"
+      ],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "page_komanda",
+      "title": "Команда",
+      "url": "/komanda/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [
+        "https://ksenonspb.ru/our-team/"
+      ],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_garantiya",
+      "title": "Гарантия",
+      "url": "/garantiya/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_sertifikaty",
+      "title": "Сертификаты",
+      "url": "/sertifikaty/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_stoimost",
+      "title": "Стоимость услуг",
+      "url": "/stoimost/",
+      "content_type": "page",
+      "template": "page-stoimost.php",
+      "source_urls": [
+        "https://ksenonspb.ru/services/pricing/"
+      ],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "page_rassrochka",
+      "title": "Рассрочка",
+      "url": "/rassrochka/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_podarochnye-sertifikaty",
+      "title": "Подарочные сертификаты",
+      "url": "/podarochnye-sertifikaty/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_priem-far-pochtoj",
+      "title": "Приём фар почтой",
+      "url": "/priem-far-pochtoj/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_otzyvy",
+      "title": "Отзывы",
+      "url": "/otzyvy/",
+      "content_type": "page",
+      "template": "page.php",
+      "source_urls": [
+        "https://ksenonspb.ru/about-us/reviews/"
+      ],
+      "migrate": true,
+      "status": "fallback"
+    },
+    {
+      "id": "page_privacy-policy",
+      "title": "Политика конфиденциальности",
+      "url": "/privacy-policy/",
+      "content_type": "page",
+      "template": "page-policy.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "search",
+      "title": "Поиск",
+      "url": "/?s=",
+      "content_type": "search",
+      "template": "search.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "not_found",
+      "title": "404",
+      "url": "/404",
+      "content_type": "error",
+      "template": "404.php",
+      "source_urls": [],
+      "migrate": true,
+      "status": "implemented"
+    },
+    {
+      "id": "old_tags",
+      "title_pattern": "Тег: {slug}",
+      "url_pattern": "/tag/{slug}/",
+      "content_type": "tag",
+      "source_filter": {
+        "old_type": "tag"
+      },
+      "count_estimate": 179,
+      "migrate": false,
+      "status": "not_migrated",
+      "note": "Теги не переносятся; возможен 301 на /portfolio/ или noindex"
+    },
+    {
+      "id": "old_products",
+      "title_pattern": "Товар: {slug}",
+      "url_pattern": "/product/{slug}/",
+      "content_type": "product",
+      "source_filter": {
+        "old_type": "product"
+      },
+      "count_estimate": 72,
+      "migrate": false,
+      "status": "not_migrated",
+      "note": "WooCommerce вне scope новой темы"
+    },
+    {
+      "id": "demo_pages",
+      "title": "Демо-страницы старой темы",
+      "source_filter": {
+        "is_demo": true
+      },
+      "count_estimate": 25,
+      "migrate": false,
+      "status": "ignored",
+      "note": "homepage-*, shop, cart и прочий мусор темы"
+    }
+  ]
+}

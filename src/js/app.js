@@ -399,6 +399,28 @@ function initHomeSwipers() {
 		});
 	}
 
+	const servicesTeaserEl = document.querySelector(".services-teaser__slider");
+	if (servicesTeaserEl) {
+		new Swiper(servicesTeaserEl, {
+			slidesPerView: 1.15,
+			spaceBetween: 10,
+			breakpoints: {
+				575.98: {
+					slidesPerView: 2,
+					spaceBetween: 10,
+				},
+				991.98: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+			},
+			navigation: {
+				nextEl: ".services-teaser__next",
+				prevEl: ".services-teaser__prev",
+			},
+		});
+	}
+
 	const portfolioEl = document.querySelector(".portfolio-teaser__slider");
 	if (portfolioEl) {
 		new Swiper(portfolioEl, {

@@ -33,6 +33,51 @@ if (! function_exists('ksenon_title_accent_html')) {
 	}
 }
 
+if (! function_exists('ksenon_plural_ru')) {
+	/**
+	 * Russian plural form by count.
+	 *
+	 * @param int    $count Number.
+	 * @param string $one   1, 21, 31…
+	 * @param string $few   2–4, 22–24…
+	 * @param string $many  0, 5–20, 25–30…
+	 */
+	function ksenon_plural_ru($count, $one, $few, $many)
+	{
+		$count = abs((int) $count) % 100;
+		$mod10 = $count % 10;
+
+		if ($count >= 11 && $count <= 19) {
+			return $many;
+		}
+		if (1 === $mod10) {
+			return $one;
+		}
+		if ($mod10 >= 2 && $mod10 <= 4) {
+			return $few;
+		}
+
+		return $many;
+	}
+}
+
+if (! function_exists('ksenon_services_count_label')) {
+	function ksenon_services_count_label($count)
+	{
+		return sprintf(
+			/* translators: 1: count, 2: услуга/услуги/услуг */
+			__('Все %1$d %2$s', 'ksenonspb'),
+			(int) $count,
+			ksenon_plural_ru(
+				$count,
+				__('услуга', 'ksenonspb'),
+				__('услуги', 'ksenonspb'),
+				__('услуг', 'ksenonspb')
+			)
+		);
+	}
+}
+
 if (! function_exists('ksenon_format_price_from')) {
 	function ksenon_format_price_from($value)
 	{

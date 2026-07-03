@@ -1,5 +1,6 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
+
 .home-arrow {
 	display: inline-flex;
 	align-items: center;
@@ -31,6 +32,7 @@
 	}
 
 	&__title {
+		color: #000;
 	}
 
 	&__more {

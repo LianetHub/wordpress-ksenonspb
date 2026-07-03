@@ -7,8 +7,8 @@
  */
 
 $featured = ksenon_home_get('featured_services', array());
-$limit    = (int) ksenon_home_get('limit', 3);
-$args     = array('posts_per_page' => $limit > 0 ? $limit : 3);
+$limit    = (int) ksenon_home_get('limit', 9);
+$args     = array('posts_per_page' => $limit > 0 ? $limit : 9);
 
 if (is_array($featured) && $featured) {
 	$ids = array();
@@ -35,13 +35,10 @@ $title          = (string) ksenon_home_get('title', __('Наши услуги', 
 $title_html     = function_exists('ksenon_title_accent_html')
 	? ksenon_title_accent_html($title)
 	: esc_html($title);
+$more_label     = ksenon_services_count_label($services_count);
 $more_link      = array(
 	'url'    => ksenon_services_archive_url(),
-	'title'  => sprintf(
-		/* translators: %d: services count */
-		__('Все %d услуги', 'ksenonspb'),
-		$services_count
-	),
+	'title'  => $more_label,
 	'target' => '',
 );
 ?>
@@ -52,16 +49,26 @@ $more_link      = array(
 				<?php echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 				?>
 			</h2>
-			<?php ksenon_render_btn_arrow($more_link, 'btn btn--arrow services-teaser__more', sprintf(__('Все %d услуги', 'ksenonspb'), $services_count)); ?>
+			<?php ksenon_render_btn_arrow($more_link, 'btn btn--accent btn--arrow services-teaser__more', $more_label); ?>
 		</div>
-		<div class="services-teaser__grid">
-			<?php
-			while ($query->have_posts()) :
-				$query->the_post();
-				get_template_part('template-parts/blocks/service-card', null, array('post' => get_post()));
-			endwhile;
-			wp_reset_postdata();
-			?>
+		<div class="services-teaser__slider swiper">
+			<div class="services-teaser__grid swiper-wrapper">
+				<?php
+				while ($query->have_posts()) :
+					$query->the_post();
+				?>
+					<div class="services-teaser__slide swiper-slide">
+						<?php get_template_part('template-parts/blocks/service-card', null, array('post' => get_post())); ?>
+					</div>
+				<?php
+				endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
+			<div class="services-teaser__nav">
+				<button class="services-teaser__prev" type="button" aria-label="<?php esc_attr_e('Предыдущие услуги', 'ksenonspb'); ?>"></button>
+				<button class="services-teaser__next" type="button" aria-label="<?php esc_attr_e('Следующие услуги', 'ksenonspb'); ?>"></button>
+			</div>
 		</div>
 	</div>
 </section>

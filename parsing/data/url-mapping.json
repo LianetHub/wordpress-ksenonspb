@@ -1,0 +1,3674 @@
+{
+  "generated_at": "2026-07-03T07:42:36.737Z",
+  "total": 524,
+  "mappings": [
+    {
+      "old_url": "https://ksenonspb.ru/blog/",
+      "new_url": "https://ksenonspb.ru/portfolio/",
+      "old_path": "/blog/",
+      "new_path": "/portfolio/",
+      "note": "Блог → портфолио"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/каталог-работ-по-машинам/",
+      "new_url": "https://ksenonspb.ru/portfolio/",
+      "old_path": "/каталог-работ-по-машинам/",
+      "new_path": "/portfolio/",
+      "note": "Каталог работ"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/каталог-работ-по-машинам/наши-работы/",
+      "new_url": "https://ksenonspb.ru/portfolio/",
+      "old_path": "/каталог-работ-по-машинам/наши-работы/",
+      "new_path": "/portfolio/",
+      "note": "Наши работы"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/каталог-по-машинам/",
+      "new_url": "https://ksenonspb.ru/marki/",
+      "old_path": "/каталог-по-машинам/",
+      "new_path": "/marki/",
+      "note": "Каталог по маркам"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/uslugi/",
+      "old_path": "/ремонт-фар/",
+      "new_path": "/uslugi/",
+      "note": "Главная услуга"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/другие-услуги/",
+      "new_url": "https://ksenonspb.ru/uslugi/",
+      "old_path": "/другие-услуги/",
+      "new_path": "/uslugi/",
+      "note": "Другие услуги"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/контакты/",
+      "new_url": "https://ksenonspb.ru/#contacts",
+      "old_path": "/контакты/",
+      "new_path": "/#contacts/",
+      "note": "Контакты → якорь на главной"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/contact-us/",
+      "new_url": "https://ksenonspb.ru/#contacts",
+      "old_path": "/contact-us/",
+      "new_path": "/#contacts/",
+      "note": "Contact us"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/about-us/",
+      "new_url": "https://ksenonspb.ru/o-kompanii/",
+      "old_path": "/about-us/",
+      "new_path": "/o-kompanii/",
+      "note": "О компании"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/about-us/reviews/",
+      "new_url": "https://ksenonspb.ru/otzyvy/",
+      "old_path": "/about-us/reviews/",
+      "new_path": "/otzyvy/",
+      "note": "Отзывы"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/our-team/",
+      "new_url": "https://ksenonspb.ru/komanda/",
+      "old_path": "/our-team/",
+      "new_path": "/komanda/",
+      "note": "Команда"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/services/pricing/",
+      "new_url": "https://ksenonspb.ru/stoimost/",
+      "old_path": "/services/pricing/",
+      "new_path": "/stoimost/",
+      "note": "Цены"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/",
+      "new_url": "https://ksenonspb.ru/marki/portfolio/",
+      "old_path": "/category/portfolio/",
+      "new_path": "/marki/portfolio/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/acura/",
+      "new_url": "https://ksenonspb.ru/marki/acura/",
+      "old_path": "/category/portfolio/acura/",
+      "new_path": "/marki/acura/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/audi/",
+      "new_url": "https://ksenonspb.ru/marki/audi/",
+      "old_path": "/category/portfolio/audi/",
+      "new_path": "/marki/audi/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/bentley/",
+      "new_url": "https://ksenonspb.ru/marki/bentley/",
+      "old_path": "/category/portfolio/bentley/",
+      "new_path": "/marki/bentley/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/bmw/",
+      "new_url": "https://ksenonspb.ru/marki/bmw/",
+      "old_path": "/category/portfolio/bmw/",
+      "new_path": "/marki/bmw/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/cadillac/",
+      "new_url": "https://ksenonspb.ru/marki/cadillac/",
+      "old_path": "/category/portfolio/cadillac/",
+      "new_path": "/marki/cadillac/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/chevrolet/",
+      "new_url": "https://ksenonspb.ru/marki/chevrolet/",
+      "old_path": "/category/portfolio/chevrolet/",
+      "new_path": "/marki/chevrolet/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/chrysler/",
+      "new_url": "https://ksenonspb.ru/marki/chrysler/",
+      "old_path": "/category/portfolio/chrysler/",
+      "new_path": "/marki/chrysler/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/dodge/",
+      "new_url": "https://ksenonspb.ru/marki/dodge/",
+      "old_path": "/category/portfolio/dodge/",
+      "new_path": "/marki/dodge/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/drl/",
+      "new_url": "https://ksenonspb.ru/marki/drl/",
+      "old_path": "/category/portfolio/drl/",
+      "new_path": "/marki/drl/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/ferrari/",
+      "new_url": "https://ksenonspb.ru/marki/ferrari/",
+      "old_path": "/category/portfolio/ferrari/",
+      "new_path": "/marki/ferrari/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/ford/",
+      "new_url": "https://ksenonspb.ru/marki/ford/",
+      "old_path": "/category/portfolio/ford/",
+      "new_path": "/marki/ford/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/honda/",
+      "new_url": "https://ksenonspb.ru/marki/honda/",
+      "old_path": "/category/portfolio/honda/",
+      "new_path": "/marki/honda/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/hpl/",
+      "new_url": "https://ksenonspb.ru/marki/hpl/",
+      "old_path": "/category/portfolio/hpl/",
+      "new_path": "/marki/hpl/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/hummer/",
+      "new_url": "https://ksenonspb.ru/marki/hummer/",
+      "old_path": "/category/portfolio/hummer/",
+      "new_path": "/marki/hummer/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/huyndai/",
+      "new_url": "https://ksenonspb.ru/marki/huyndai/",
+      "old_path": "/category/portfolio/huyndai/",
+      "new_path": "/marki/huyndai/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/infiniti/",
+      "new_url": "https://ksenonspb.ru/marki/infiniti/",
+      "old_path": "/category/portfolio/infiniti/",
+      "new_path": "/marki/infiniti/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/jaguar/",
+      "new_url": "https://ksenonspb.ru/marki/jaguar/",
+      "old_path": "/category/portfolio/jaguar/",
+      "new_path": "/marki/jaguar/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/jeep/",
+      "new_url": "https://ksenonspb.ru/marki/jeep/",
+      "old_path": "/category/portfolio/jeep/",
+      "new_path": "/marki/jeep/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/kia/",
+      "new_url": "https://ksenonspb.ru/marki/kia/",
+      "old_path": "/category/portfolio/kia/",
+      "new_path": "/marki/kia/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/ktm/",
+      "new_url": "https://ksenonspb.ru/marki/ktm/",
+      "old_path": "/category/portfolio/ktm/",
+      "new_path": "/marki/ktm/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/land-rover/",
+      "new_url": "https://ksenonspb.ru/marki/land-rover/",
+      "old_path": "/category/portfolio/land-rover/",
+      "new_path": "/marki/land-rover/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/lexus/",
+      "new_url": "https://ksenonspb.ru/marki/lexus/",
+      "old_path": "/category/portfolio/lexus/",
+      "new_path": "/marki/lexus/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/maserati/",
+      "new_url": "https://ksenonspb.ru/marki/maserati/",
+      "old_path": "/category/portfolio/maserati/",
+      "new_path": "/marki/maserati/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/maybach/",
+      "new_url": "https://ksenonspb.ru/marki/maybach/",
+      "old_path": "/category/portfolio/maybach/",
+      "new_path": "/marki/maybach/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/mazda/",
+      "new_url": "https://ksenonspb.ru/marki/mazda/",
+      "old_path": "/category/portfolio/mazda/",
+      "new_path": "/marki/mazda/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/mercedes/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes/",
+      "old_path": "/category/portfolio/mercedes/",
+      "new_path": "/marki/mercedes/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/mini/",
+      "new_url": "https://ksenonspb.ru/marki/mini/",
+      "old_path": "/category/portfolio/mini/",
+      "new_path": "/marki/mini/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/mitsubishi/",
+      "new_url": "https://ksenonspb.ru/marki/mitsubishi/",
+      "old_path": "/category/portfolio/mitsubishi/",
+      "new_path": "/marki/mitsubishi/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/nissan/",
+      "new_url": "https://ksenonspb.ru/marki/nissan/",
+      "old_path": "/category/portfolio/nissan/",
+      "new_path": "/marki/nissan/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/opel/",
+      "new_url": "https://ksenonspb.ru/marki/opel/",
+      "old_path": "/category/portfolio/opel/",
+      "new_path": "/marki/opel/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/peugeot/",
+      "new_url": "https://ksenonspb.ru/marki/peugeot/",
+      "old_path": "/category/portfolio/peugeot/",
+      "new_path": "/marki/peugeot/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/porsche/",
+      "new_url": "https://ksenonspb.ru/marki/porsche/",
+      "old_path": "/category/portfolio/porsche/",
+      "new_path": "/marki/porsche/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/renault/",
+      "new_url": "https://ksenonspb.ru/marki/renault/",
+      "old_path": "/category/portfolio/renault/",
+      "new_path": "/marki/renault/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/rolls-royce/",
+      "new_url": "https://ksenonspb.ru/marki/rolls-royce/",
+      "old_path": "/category/portfolio/rolls-royce/",
+      "new_path": "/marki/rolls-royce/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/saab/",
+      "new_url": "https://ksenonspb.ru/marki/saab/",
+      "old_path": "/category/portfolio/saab/",
+      "new_path": "/marki/saab/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/scoda/",
+      "new_url": "https://ksenonspb.ru/marki/scoda/",
+      "old_path": "/category/portfolio/scoda/",
+      "new_path": "/marki/scoda/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/ssangyong/",
+      "new_url": "https://ksenonspb.ru/marki/ssangyong/",
+      "old_path": "/category/portfolio/ssangyong/",
+      "new_path": "/marki/ssangyong/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/subaru/",
+      "new_url": "https://ksenonspb.ru/marki/subaru/",
+      "old_path": "/category/portfolio/subaru/",
+      "new_path": "/marki/subaru/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/suzuki/",
+      "new_url": "https://ksenonspb.ru/marki/suzuki/",
+      "old_path": "/category/portfolio/suzuki/",
+      "new_path": "/marki/suzuki/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/toyota/",
+      "new_url": "https://ksenonspb.ru/marki/toyota/",
+      "old_path": "/category/portfolio/toyota/",
+      "new_path": "/marki/toyota/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/volvo/",
+      "new_url": "https://ksenonspb.ru/marki/volvo/",
+      "old_path": "/category/portfolio/volvo/",
+      "new_path": "/marki/volvo/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/category/portfolio/vw/",
+      "new_url": "https://ksenonspb.ru/marki/vw/",
+      "old_path": "/category/portfolio/vw/",
+      "new_path": "/marki/vw/",
+      "note": "Марка из категории portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/бронирование-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/бронирование-фар/",
+      "old_path": "/бронирование-фар/",
+      "new_path": "/portfolio/бронирование-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/восстановление-отражателей/",
+      "new_url": "https://ksenonspb.ru/portfolio/восстановление-отражателей/",
+      "old_path": "/восстановление-отражателей/",
+      "new_path": "/portfolio/восстановление-отражателей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/замена-стекла-фары-audi-a5/",
+      "new_url": "https://ksenonspb.ru/portfolio/замена-стекла-фары-audi-a5/",
+      "old_path": "/замена-стекла-фары-audi-a5/",
+      "new_path": "/portfolio/замена-стекла-фары-audi-a5/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/замена-стекол-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/замена-стекол-фар/",
+      "old_path": "/замена-стекол-фар/",
+      "new_path": "/portfolio/замена-стекол-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/инсталляция-штатных-головных-устрой/",
+      "new_url": "https://ksenonspb.ru/portfolio/инсталляция-штатных-головных-устрой/",
+      "old_path": "/инсталляция-штатных-головных-устрой/",
+      "new_path": "/portfolio/инсталляция-штатных-головных-устрой/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/комлпексный-ремонт-автоэлектрики/",
+      "new_url": "https://ksenonspb.ru/portfolio/комлпексный-ремонт-автоэлектрики/",
+      "old_path": "/комлпексный-ремонт-автоэлектрики/",
+      "new_path": "/portfolio/комлпексный-ремонт-автоэлектрики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/мотоцикл-ktm-990-smt-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/мотоцикл-ktm-990-smt-тюнинг-оптики/",
+      "old_path": "/мотоцикл-ktm-990-smt-тюнинг-оптики/",
+      "new_path": "/portfolio/мотоцикл-ktm-990-smt-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/отзывы/",
+      "new_url": "https://ksenonspb.ru/portfolio/отзывы/",
+      "old_path": "/отзывы/",
+      "new_path": "/portfolio/отзывы/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/отражатели-для-линз-alpha-ожидание-и-фак/",
+      "new_url": "https://ksenonspb.ru/portfolio/отражатели-для-линз-alpha-ожидание-и-фак/",
+      "old_path": "/отражатели-для-линз-alpha-ожидание-и-фак/",
+      "new_path": "/portfolio/отражатели-для-линз-alpha-ожидание-и-фак/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/поддельные-блоки-розжига-toyota-и-lexus/",
+      "new_url": "https://ksenonspb.ru/portfolio/поддельные-блоки-розжига-toyota-и-lexus/",
+      "old_path": "/поддельные-блоки-розжига-toyota-и-lexus/",
+      "new_path": "/portfolio/поддельные-блоки-розжига-toyota-и-lexus/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/покраска-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/покраска-фар/",
+      "old_path": "/покраска-фар/",
+      "new_path": "/portfolio/покраска-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/полировка-стекол-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/полировка-стекол-фар/",
+      "old_path": "/полировка-стекол-фар/",
+      "new_path": "/portfolio/полировка-стекол-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/появились-стекла-на-mercedes-benz-gl-164-кузов/",
+      "new_url": "https://ksenonspb.ru/portfolio/появились-стекла-на-mercedes-benz-gl-164-кузов/",
+      "old_path": "/появились-стекла-на-mercedes-benz-gl-164-кузов/",
+      "new_path": "/portfolio/появились-стекла-на-mercedes-benz-gl-164-кузов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/появились-стёкла-и-корпуса-на-фары-инф/",
+      "new_url": "https://ksenonspb.ru/portfolio/появились-стёкла-и-корпуса-на-фары-инф/",
+      "old_path": "/появились-стёкла-и-корпуса-на-фары-инф/",
+      "new_path": "/portfolio/появились-стёкла-и-корпуса-на-фары-инф/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/регулировка-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/регулировка-фар/",
+      "old_path": "/регулировка-фар/",
+      "new_path": "/portfolio/регулировка-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-задних-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/ремонт-задних-фонарей/",
+      "old_path": "/ремонт-задних-фонарей/",
+      "new_path": "/portfolio/ремонт-задних-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-запотевающих-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/ремонт-запотевающих-фар/",
+      "old_path": "/ремонт-запотевающих-фар/",
+      "new_path": "/portfolio/ремонт-запотевающих-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-светодиодной-фары-audi/",
+      "new_url": "https://ksenonspb.ru/portfolio/ремонт-светодиодной-фары-audi/",
+      "old_path": "/ремонт-светодиодной-фары-audi/",
+      "new_path": "/portfolio/ремонт-светодиодной-фары-audi/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-светодиодных-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/ремонт-светодиодных-фонарей/",
+      "old_path": "/ремонт-светодиодных-фонарей/",
+      "new_path": "/portfolio/ремонт-светодиодных-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-усилителей/",
+      "new_url": "https://ksenonspb.ru/portfolio/ремонт-усилителей/",
+      "old_path": "/ремонт-усилителей/",
+      "new_path": "/portfolio/ремонт-усилителей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-электронных-блоков-управлени/",
+      "new_url": "https://ksenonspb.ru/portfolio/ремонт-электронных-блоков-управлени/",
+      "old_path": "/ремонт-электронных-блоков-управлени/",
+      "new_path": "/portfolio/ремонт-электронных-блоков-управлени/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/стекла-фар-для-вольво/",
+      "new_url": "https://ksenonspb.ru/portfolio/стекла-фар-для-вольво/",
+      "old_path": "/стекла-фар-для-вольво/",
+      "new_path": "/portfolio/стекла-фар-для-вольво/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-автомагнитол/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-автомагнитол/",
+      "old_path": "/установка-автомагнитол/",
+      "new_path": "/portfolio/установка-автомагнитол/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-биксеноновых-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-биксеноновых-линз/",
+      "old_path": "/установка-биксеноновых-линз/",
+      "new_path": "/portfolio/установка-биксеноновых-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-видеоинтерфейсов/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-видеоинтерфейсов/",
+      "old_path": "/установка-видеоинтерфейсов/",
+      "new_path": "/portfolio/установка-видеоинтерфейсов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-видеорегистраторов/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-видеорегистраторов/",
+      "old_path": "/установка-видеорегистраторов/",
+      "new_path": "/portfolio/установка-видеорегистраторов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-замков-капота-и-кпп-блокира/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-замков-капота-и-кпп-блокира/",
+      "old_path": "/установка-замков-капота-и-кпп-блокира/",
+      "new_path": "/portfolio/установка-замков-капота-и-кпп-блокира/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-иммобилайзеров/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-иммобилайзеров/",
+      "old_path": "/установка-иммобилайзеров/",
+      "new_path": "/portfolio/установка-иммобилайзеров/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-камер-заднего-вида/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-камер-заднего-вида/",
+      "old_path": "/установка-камер-заднего-вида/",
+      "new_path": "/portfolio/установка-камер-заднего-вида/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-линз-bi-led-optima-professional/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-линз-bi-led-optima-professional/",
+      "old_path": "/установка-линз-bi-led-optima-professional/",
+      "new_path": "/portfolio/установка-линз-bi-led-optima-professional/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-парктроников/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-парктроников/",
+      "old_path": "/установка-парктроников/",
+      "new_path": "/portfolio/установка-парктроников/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-противотуманок/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-противотуманок/",
+      "old_path": "/установка-противотуманок/",
+      "new_path": "/portfolio/установка-противотуманок/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-противоугонных-комплексов/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-противоугонных-комплексов/",
+      "old_path": "/установка-противоугонных-комплексов/",
+      "new_path": "/portfolio/установка-противоугонных-комплексов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-светодиодных-линз-на-mitsubishi-pajero-sport-ii/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-светодиодных-линз-на-mitsubishi-pajero-sport-ii/",
+      "old_path": "/установка-светодиодных-линз-на-mitsubishi-pajero-sport-ii/",
+      "new_path": "/portfolio/установка-светодиодных-линз-на-mitsubishi-pajero-sport-ii/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-светодиодных-линз-bmw-e87/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-светодиодных-линз-bmw-e87/",
+      "old_path": "/установка-светодиодных-линз-bmw-e87/",
+      "new_path": "/portfolio/установка-светодиодных-линз-bmw-e87/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-светодиодных-линз-hyundai-elantra/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-светодиодных-линз-hyundai-elantra/",
+      "old_path": "/установка-светодиодных-линз-hyundai-elantra/",
+      "new_path": "/portfolio/установка-светодиодных-линз-hyundai-elantra/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-светодиодных-линз/",
+      "old_path": "/установка-светодиодных-линз/",
+      "new_path": "/portfolio/установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-секреток/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-секреток/",
+      "old_path": "/установка-секреток/",
+      "new_path": "/portfolio/установка-секреток/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-сисем-громкой-связи/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-сисем-громкой-связи/",
+      "old_path": "/установка-сисем-громкой-связи/",
+      "new_path": "/portfolio/установка-сисем-громкой-связи/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-gsmgps-модулей/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-gsmgps-модулей/",
+      "old_path": "/установка-gsmgps-модулей/",
+      "new_path": "/portfolio/установка-gsmgps-модулей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/установка-hpl-crossfire-max/",
+      "new_url": "https://ksenonspb.ru/portfolio/установка-hpl-crossfire-max/",
+      "old_path": "/установка-hpl-crossfire-max/",
+      "new_path": "/portfolio/установка-hpl-crossfire-max/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/чистка-фар-изнутри/",
+      "new_url": "https://ksenonspb.ru/portfolio/чистка-фар-изнутри/",
+      "old_path": "/чистка-фар-изнутри/",
+      "new_path": "/portfolio/чистка-фар-изнутри/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/шумоизоляция-салонадверейкапотаар/",
+      "new_url": "https://ksenonspb.ru/portfolio/шумоизоляция-салонадверейкапотаар/",
+      "old_path": "/шумоизоляция-салонадверейкапотаар/",
+      "new_path": "/portfolio/шумоизоляция-салонадверейкапотаар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/4729-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/4729-2/",
+      "old_path": "/4729-2/",
+      "new_path": "/portfolio/4729-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/acura-mdx-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/acura-mdx-тюнинг-оптики/",
+      "old_path": "/acura-mdx-тюнинг-оптики/",
+      "new_path": "/portfolio/acura-mdx-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/acura-mdx/",
+      "new_url": "https://ksenonspb.ru/portfolio/acura-mdx/",
+      "old_path": "/acura-mdx/",
+      "new_path": "/portfolio/acura-mdx/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/acura-rdx-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/acura-rdx-тюнинг-оптики/",
+      "old_path": "/acura-rdx-тюнинг-оптики/",
+      "new_path": "/portfolio/acura-rdx-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/acura-rdx/",
+      "new_url": "https://ksenonspb.ru/portfolio/acura-rdx/",
+      "old_path": "/acura-rdx/",
+      "new_path": "/portfolio/acura-rdx/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/acura-rl/",
+      "new_url": "https://ksenonspb.ru/portfolio/acura-rl/",
+      "old_path": "/acura-rl/",
+      "new_path": "/portfolio/acura-rl/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/alfa-romeo-159-полный-детейлинг-фар-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/alfa-romeo-159-полный-детейлинг-фар-hpl-crossfire/",
+      "old_path": "/alfa-romeo-159-полный-детейлинг-фар-hpl-crossfire/",
+      "new_path": "/portfolio/alfa-romeo-159-полный-детейлинг-фар-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a6-c7-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a6-c7-ремонт-фар/",
+      "old_path": "/audi-a6-c7-ремонт-фар/",
+      "new_path": "/portfolio/audi-a6-c7-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона-2/",
+      "old_path": "/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона-2/",
+      "new_path": "/portfolio/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона/",
+      "old_path": "/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона/",
+      "new_path": "/portfolio/audi-a6-c7-bi-led-luma-i5-new-взамен-штатного-ксенона/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a7-2014-2018-замена-стекла-антихром-на-матричн/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a7-2014-2018-замена-стекла-антихром-на-матричн/",
+      "old_path": "/audi-a7-2014-2018-замена-стекла-антихром-на-матричн/",
+      "new_path": "/portfolio/audi-a7-2014-2018-замена-стекла-антихром-на-матричн/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a8-ремонт-матричных-фар-с-заменой-стё-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a8-ремонт-матричных-фар-с-заменой-стё-2/",
+      "old_path": "/audi-a8-ремонт-матричных-фар-с-заменой-стё-2/",
+      "new_path": "/portfolio/audi-a8-ремонт-матричных-фар-с-заменой-стё-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a8-ремонт-матричных-фар-с-заменой-стё/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a8-ремонт-матричных-фар-с-заменой-стё/",
+      "old_path": "/audi-a8-ремонт-матричных-фар-с-заменой-стё/",
+      "new_path": "/portfolio/audi-a8-ремонт-матричных-фар-с-заменой-стё/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a8-2014-ремонт-заднего-led-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a8-2014-ремонт-заднего-led-фонаря/",
+      "old_path": "/audi-a8-2014-ремонт-заднего-led-фонаря/",
+      "new_path": "/portfolio/audi-a8-2014-ремонт-заднего-led-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-a8-iii-d4-проблема-плохого-света-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-a8-iii-d4-проблема-плохого-света-фар/",
+      "old_path": "/audi-a8-iii-d4-проблема-плохого-света-фар/",
+      "new_path": "/portfolio/audi-a8-iii-d4-проблема-плохого-света-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q3-ремонт-заднего-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q3-ремонт-заднего-фонаря/",
+      "old_path": "/audi-q3-ремонт-заднего-фонаря/",
+      "new_path": "/portfolio/audi-q3-ремонт-заднего-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q3-ремонт-фар-с-заменой-стёкол-и-покрас/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q3-ремонт-фар-с-заменой-стёкол-и-покрас/",
+      "old_path": "/audi-q3-ремонт-фар-с-заменой-стёкол-и-покрас/",
+      "new_path": "/portfolio/audi-q3-ремонт-фар-с-заменой-стёкол-и-покрас/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q5-замена-штатного-ксенона-и-установка/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q5-замена-штатного-ксенона-и-установка/",
+      "old_path": "/audi-q5-замена-штатного-ксенона-и-установка/",
+      "new_path": "/portfolio/audi-q5-замена-штатного-ксенона-и-установка/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q5-и-q7-aozoom-lazer-им-в-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q5-и-q7-aozoom-lazer-им-в-фары/",
+      "old_path": "/audi-q5-и-q7-aozoom-lazer-им-в-фары/",
+      "new_path": "/portfolio/audi-q5-и-q7-aozoom-lazer-им-в-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q7-или-как-не-надо-делать-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q7-или-как-не-надо-делать-фары/",
+      "old_path": "/audi-q7-или-как-не-надо-делать-фары/",
+      "new_path": "/portfolio/audi-q7-или-как-не-надо-делать-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q7-проблема-дхо-и-поворотников-страш/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q7-проблема-дхо-и-поворотников-страш/",
+      "old_path": "/audi-q7-проблема-дхо-и-поворотников-страш/",
+      "new_path": "/portfolio/audi-q7-проблема-дхо-и-поворотников-страш/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q7-ремонт-led-поворотника/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q7-ремонт-led-поворотника/",
+      "old_path": "/audi-q7-ремонт-led-поворотника/",
+      "new_path": "/portfolio/audi-q7-ремонт-led-поворотника/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q7-установка-bi-led-koito-гравировка-фар-антив/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q7-установка-bi-led-koito-гравировка-фар-антив/",
+      "old_path": "/audi-q7-установка-bi-led-koito-гравировка-фар-антив/",
+      "new_path": "/portfolio/audi-q7-установка-bi-led-koito-гравировка-фар-антив/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-q7-afs-адаптив-bi-led-optima/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-q7-afs-адаптив-bi-led-optima/",
+      "old_path": "/audi-q7-afs-адаптив-bi-led-optima/",
+      "new_path": "/portfolio/audi-q7-afs-адаптив-bi-led-optima/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-rs4-ремонт-электроники-матричной-led-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-rs4-ремонт-электроники-матричной-led-фар/",
+      "old_path": "/audi-rs4-ремонт-электроники-матричной-led-фар/",
+      "new_path": "/portfolio/audi-rs4-ремонт-электроники-матричной-led-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/audi-tt-ремонт-светодиодных-led-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/audi-tt-ремонт-светодиодных-led-фар/",
+      "old_path": "/audi-tt-ремонт-светодиодных-led-фар/",
+      "new_path": "/portfolio/audi-tt-ремонт-светодиодных-led-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bentley-continental-gt-ремонт-задних-led-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/bentley-continental-gt-ремонт-задних-led-фонарей/",
+      "old_path": "/bentley-continental-gt-ремонт-задних-led-фонарей/",
+      "new_path": "/portfolio/bentley-continental-gt-ремонт-задних-led-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bentley-continental-gt-ремонт-фар-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/bentley-continental-gt-ремонт-фар-2/",
+      "old_path": "/bentley-continental-gt-ремонт-фар-2/",
+      "new_path": "/portfolio/bentley-continental-gt-ремонт-фар-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bentley-continental-gt-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/bentley-continental-gt-ремонт-фар/",
+      "old_path": "/bentley-continental-gt-ремонт-фар/",
+      "new_path": "/portfolio/bentley-continental-gt-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bentley-continental-gt-i-восстановление-подубитых-фар-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/bentley-continental-gt-i-восстановление-подубитых-фар-2/",
+      "old_path": "/bentley-continental-gt-i-восстановление-подубитых-фар-2/",
+      "new_path": "/portfolio/bentley-continental-gt-i-восстановление-подубитых-фар-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bentley-continental-gt-i-восстановление-подубитых-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/bentley-continental-gt-i-восстановление-подубитых-фар/",
+      "old_path": "/bentley-continental-gt-i-восстановление-подубитых-фар/",
+      "new_path": "/portfolio/bentley-continental-gt-i-восстановление-подубитых-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-е60/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-е60/",
+      "old_path": "/bmw-е60/",
+      "new_path": "/portfolio/bmw-е60/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-3-e90-ремонт-фар-замена-стекол/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-3-e90-ремонт-фар-замена-стекол/",
+      "old_path": "/bmw-3-e90-ремонт-фар-замена-стекол/",
+      "new_path": "/portfolio/bmw-3-e90-ремонт-фар-замена-стекол/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-5-серия-g30-g31-ремонт-фары-с-заменой-стекл/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-5-серия-g30-g31-ремонт-фары-с-заменой-стекл/",
+      "old_path": "/bmw-5-серия-g30-g31-ремонт-фары-с-заменой-стекл/",
+      "new_path": "/portfolio/bmw-5-серия-g30-g31-ремонт-фары-с-заменой-стекл/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-5-f10-f11-f18-ремонт-фар-замена-стекол/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-5-f10-f11-f18-ремонт-фар-замена-стекол/",
+      "old_path": "/bmw-5-f10-f11-f18-ремонт-фар-замена-стекол/",
+      "new_path": "/portfolio/bmw-5-f10-f11-f18-ремонт-фар-замена-стекол/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-6-e63-рестайлинг-замена-стёкол-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-6-e63-рестайлинг-замена-стёкол-фар/",
+      "old_path": "/bmw-6-e63-рестайлинг-замена-стёкол-фар/",
+      "new_path": "/portfolio/bmw-6-e63-рестайлинг-замена-стёкол-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-6-f06-ремонт-светодиодной-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-6-f06-ремонт-светодиодной-фары/",
+      "old_path": "/bmw-6-f06-ремонт-светодиодной-фары/",
+      "new_path": "/portfolio/bmw-6-f06-ремонт-светодиодной-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-6-f06-f12-f13-ремонт-заднего-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-6-f06-f12-f13-ремонт-заднего-фонаря/",
+      "old_path": "/bmw-6-f06-f12-f13-ремонт-заднего-фонаря/",
+      "new_path": "/portfolio/bmw-6-f06-f12-f13-ремонт-заднего-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-7-f01-ремонт-фар-замена-стекол/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-7-f01-ремонт-фар-замена-стекол/",
+      "old_path": "/bmw-7-f01-ремонт-фар-замена-стекол/",
+      "new_path": "/portfolio/bmw-7-f01-ремонт-фар-замена-стекол/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-7-g10-g11-пожелтели-кольца-дхо-или-почему-ре/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-7-g10-g11-пожелтели-кольца-дхо-или-почему-ре/",
+      "old_path": "/bmw-7-g10-g11-пожелтели-кольца-дхо-или-почему-ре/",
+      "new_path": "/portfolio/bmw-7-g10-g11-пожелтели-кольца-дхо-или-почему-ре/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-e39-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-e39-установка-светодиодных-линз/",
+      "old_path": "/bmw-e39-установка-светодиодных-линз/",
+      "new_path": "/portfolio/bmw-e39-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-e46/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-e46/",
+      "old_path": "/bmw-e46/",
+      "new_path": "/portfolio/bmw-e46/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-e60-ремонт-задних-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-e60-ремонт-задних-фонарей/",
+      "old_path": "/bmw-e60-ремонт-задних-фонарей/",
+      "new_path": "/portfolio/bmw-e60-ремонт-задних-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-e70-несколько-вариантов-улучшения-свет/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-e70-несколько-вариантов-улучшения-свет/",
+      "old_path": "/bmw-e70-несколько-вариантов-улучшения-свет/",
+      "new_path": "/portfolio/bmw-e70-несколько-вариантов-улучшения-свет/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-e70-x5m-x6-e71-проблемы-с-адаптивом/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-e70-x5m-x6-e71-проблемы-с-адаптивом/",
+      "old_path": "/bmw-e70-x5m-x6-e71-проблемы-с-адаптивом/",
+      "new_path": "/portfolio/bmw-e70-x5m-x6-e71-проблемы-с-адаптивом/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-f01-ремонт-светодиодной-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-f01-ремонт-светодиодной-фары/",
+      "old_path": "/bmw-f01-ремонт-светодиодной-фары/",
+      "new_path": "/portfolio/bmw-f01-ремонт-светодиодной-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-f01-цвет-реснички/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-f01-цвет-реснички/",
+      "old_path": "/bmw-f01-цвет-реснички/",
+      "new_path": "/portfolio/bmw-f01-цвет-реснички/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-f07-спасаем-led-фару-или-неправильный-гер/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-f07-спасаем-led-фару-или-неправильный-гер/",
+      "old_path": "/bmw-f07-спасаем-led-фару-или-неправильный-гер/",
+      "new_path": "/portfolio/bmw-f07-спасаем-led-фару-или-неправильный-гер/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-f20-ремонт-заднего-led-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-f20-ремонт-заднего-led-фонаря/",
+      "old_path": "/bmw-f20-ремонт-заднего-led-фонаря/",
+      "new_path": "/portfolio/bmw-f20-ремонт-заднего-led-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-f20-ремонт-фары-после-запотевания-разби/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-f20-ремонт-фары-после-запотевания-разби/",
+      "old_path": "/bmw-f20-ремонт-фары-после-запотевания-разби/",
+      "new_path": "/portfolio/bmw-f20-ремонт-фары-после-запотевания-разби/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-f30-ремонт-фар-замена-стекол/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-f30-ремонт-фар-замена-стекол/",
+      "old_path": "/bmw-f30-ремонт-фар-замена-стекол/",
+      "new_path": "/portfolio/bmw-f30-ремонт-фар-замена-стекол/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-g11-фары-lazerlight-ремонт-блока/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-g11-фары-lazerlight-ремонт-блока/",
+      "old_path": "/bmw-g11-фары-lazerlight-ремонт-блока/",
+      "new_path": "/portfolio/bmw-g11-фары-lazerlight-ремонт-блока/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-gt-f07-замена-стекла-фары-на-новое/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-gt-f07-замена-стекла-фары-на-новое/",
+      "old_path": "/bmw-gt-f07-замена-стекла-фары-на-новое/",
+      "new_path": "/portfolio/bmw-gt-f07-замена-стекла-фары-на-новое/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-gt-f07-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-gt-f07-ремонт-фар/",
+      "old_path": "/bmw-gt-f07-ремонт-фар/",
+      "new_path": "/portfolio/bmw-gt-f07-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x1-e84-замена-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x1-e84-замена-линз/",
+      "old_path": "/bmw-x1-e84-замена-линз/",
+      "new_path": "/portfolio/bmw-x1-e84-замена-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x1-e84-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x1-e84-установка-светодиодных-линз/",
+      "old_path": "/bmw-x1-e84-установка-светодиодных-линз/",
+      "new_path": "/portfolio/bmw-x1-e84-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x1/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x1/",
+      "old_path": "/bmw-x1/",
+      "new_path": "/portfolio/bmw-x1/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent-2/",
+      "old_path": "/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent-2/",
+      "new_path": "/portfolio/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent/",
+      "old_path": "/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent/",
+      "new_path": "/portfolio/bmw-x3-e83-замена-би-ксенона-на-bi-led-optima-premium-intelligent/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x3-f25-пожелтели-кольца-bi-led-ilens-mx/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x3-f25-пожелтели-кольца-bi-led-ilens-mx/",
+      "old_path": "/bmw-x3-f25-пожелтели-кольца-bi-led-ilens-mx/",
+      "new_path": "/portfolio/bmw-x3-f25-пожелтели-кольца-bi-led-ilens-mx/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x3-f25-проблема-с-плохим-светом-ремонтир/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x3-f25-проблема-с-плохим-светом-ремонтир/",
+      "old_path": "/bmw-x3-f25-проблема-с-плохим-светом-ремонтир/",
+      "new_path": "/portfolio/bmw-x3-f25-проблема-с-плохим-светом-ремонтир/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x4-ремонт-корпуса-фары-с-разбором-по-ш/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x4-ремонт-корпуса-фары-с-разбором-по-ш/",
+      "old_path": "/bmw-x4-ремонт-корпуса-фары-с-разбором-по-ш/",
+      "new_path": "/portfolio/bmw-x4-ремонт-корпуса-фары-с-разбором-по-ш/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x4-x3-f26-f25-рестайлинг-проблема-led-колец-ксено/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x4-x3-f26-f25-рестайлинг-проблема-led-колец-ксено/",
+      "old_path": "/bmw-x4-x3-f26-f25-рестайлинг-проблема-led-колец-ксено/",
+      "new_path": "/portfolio/bmw-x4-x3-f26-f25-рестайлинг-проблема-led-колец-ксено/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e53-появились-стёкла-на-рестайлинг/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e53-появились-стёкла-на-рестайлинг/",
+      "old_path": "/bmw-x5-e53-появились-стёкла-на-рестайлинг/",
+      "new_path": "/portfolio/bmw-x5-e53-появились-стёкла-на-рестайлинг/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e53-рестайлинг-замена-колец-на-led-drl-от-tau-tech/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e53-рестайлинг-замена-колец-на-led-drl-от-tau-tech/",
+      "old_path": "/bmw-x5-e53-рестайлинг-замена-колец-на-led-drl-от-tau-tech/",
+      "new_path": "/portfolio/bmw-x5-e53-рестайлинг-замена-колец-на-led-drl-от-tau-tech/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e53-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e53-установка-светодиодных-линз/",
+      "old_path": "/bmw-x5-e53-установка-светодиодных-линз/",
+      "new_path": "/portfolio/bmw-x5-e53-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e53-установка-светодиодов/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e53-установка-светодиодов/",
+      "old_path": "/bmw-x5-e53-установка-светодиодов/",
+      "new_path": "/portfolio/bmw-x5-e53-установка-светодиодов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e70-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e70-ремонт-фар/",
+      "old_path": "/bmw-x5-e70-ремонт-фар/",
+      "new_path": "/portfolio/bmw-x5-e70-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e70-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e70-установка-светодиодных-линз/",
+      "old_path": "/bmw-x5-e70-установка-светодиодных-линз/",
+      "new_path": "/portfolio/bmw-x5-e70-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-e70/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-e70/",
+      "old_path": "/bmw-x5-e70/",
+      "new_path": "/portfolio/bmw-x5-e70/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-f15-ремонт-фары-с-заменой-стекла/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-f15-ремонт-фары-с-заменой-стекла/",
+      "old_path": "/bmw-x5-f15-ремонт-фары-с-заменой-стекла/",
+      "new_path": "/portfolio/bmw-x5-f15-ремонт-фары-с-заменой-стекла/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x5-x6-g05-06-ремонт-фарылимонные-дхо/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x5-x6-g05-06-ремонт-фарылимонные-дхо/",
+      "old_path": "/bmw-x5-x6-g05-06-ремонт-фарылимонные-дхо/",
+      "new_path": "/portfolio/bmw-x5-x6-g05-06-ремонт-фарылимонные-дхо/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x6-e71-замена-стёкол-на-led-фарах/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x6-e71-замена-стёкол-на-led-фарах/",
+      "old_path": "/bmw-x6-e71-замена-стёкол-на-led-фарах/",
+      "new_path": "/portfolio/bmw-x6-e71-замена-стёкол-на-led-фарах/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x6-e71-замена-стёкол-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x6-e71-замена-стёкол-фар/",
+      "old_path": "/bmw-x6-e71-замена-стёкол-фар/",
+      "new_path": "/portfolio/bmw-x6-e71-замена-стёкол-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x6-e71-ремонт-светодиодной-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x6-e71-ремонт-светодиодной-фары/",
+      "old_path": "/bmw-x6-e71-ремонт-светодиодной-фары/",
+      "new_path": "/portfolio/bmw-x6-e71-ремонт-светодиодной-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x6-e71-bi-led-afs-drl-в-стиле-f-серии/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x6-e71-bi-led-afs-drl-в-стиле-f-серии/",
+      "old_path": "/bmw-x6-e71-bi-led-afs-drl-в-стиле-f-серии/",
+      "new_path": "/portfolio/bmw-x6-e71-bi-led-afs-drl-в-стиле-f-серии/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/bmw-x7-lazer-ремонт-выгоревшей-ресницы/",
+      "new_url": "https://ksenonspb.ru/portfolio/bmw-x7-lazer-ремонт-выгоревшей-ресницы/",
+      "old_path": "/bmw-x7-lazer-ремонт-выгоревшей-ресницы/",
+      "new_path": "/portfolio/bmw-x7-lazer-ремонт-выгоревшей-ресницы/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-cts-ii-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-cts-ii-ремонт-фар/",
+      "old_path": "/cadillac-cts-ii-ремонт-фар/",
+      "new_path": "/portfolio/cadillac-cts-ii-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-escalade-2020-2023-задние-фонари-во-весь-рост/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-escalade-2020-2023-задние-фонари-во-весь-рост/",
+      "old_path": "/cadillac-escalade-2020-2023-задние-фонари-во-весь-рост/",
+      "new_path": "/portfolio/cadillac-escalade-2020-2023-задние-фонари-во-весь-рост/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-escalade-iii-bi-led-i-lens-new-и-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-escalade-iii-bi-led-i-lens-new-и-hpl-crossfire/",
+      "old_path": "/cadillac-escalade-iii-bi-led-i-lens-new-и-hpl-crossfire/",
+      "new_path": "/portfolio/cadillac-escalade-iii-bi-led-i-lens-new-и-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-escalade-iv-окраска-led-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-escalade-iv-окраска-led-фар/",
+      "old_path": "/cadillac-escalade-iv-окраска-led-фар/",
+      "new_path": "/portfolio/cadillac-escalade-iv-окраска-led-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-srx-ремонт-задних-светодиодных-фонаре/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-srx-ремонт-задних-светодиодных-фонаре/",
+      "old_path": "/cadillac-srx-ремонт-задних-светодиодных-фонаре/",
+      "new_path": "/portfolio/cadillac-srx-ремонт-задних-светодиодных-фонаре/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-srx-2012-2016-ремонт-от-запотевания-и-замена-ли/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-srx-2012-2016-ремонт-от-запотевания-и-замена-ли/",
+      "old_path": "/cadillac-srx-2012-2016-ремонт-от-запотевания-и-замена-ли/",
+      "new_path": "/portfolio/cadillac-srx-2012-2016-ремонт-от-запотевания-и-замена-ли/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/cadillac-xt5-меняем-штатные-led-линзы-hella/",
+      "new_url": "https://ksenonspb.ru/portfolio/cadillac-xt5-меняем-штатные-led-линзы-hella/",
+      "old_path": "/cadillac-xt5-меняем-штатные-led-линзы-hella/",
+      "new_path": "/portfolio/cadillac-xt5-меняем-штатные-led-линзы-hella/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-corvette-c6-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-corvette-c6-ремонт-фар/",
+      "old_path": "/chevrolet-corvette-c6-ремонт-фар/",
+      "new_path": "/portfolio/chevrolet-corvette-c6-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-tahoe-2007-2014-установка-светодиодов/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-tahoe-2007-2014-установка-светодиодов/",
+      "old_path": "/chevrolet-tahoe-2007-2014-установка-светодиодов/",
+      "new_path": "/portfolio/chevrolet-tahoe-2007-2014-установка-светодиодов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-tahoe-2014-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-tahoe-2014-установка-светодиодных-линз/",
+      "old_path": "/chevrolet-tahoe-2014-установка-светодиодных-линз/",
+      "new_path": "/portfolio/chevrolet-tahoe-2014-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-tahoe-2017-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-tahoe-2017-установка-светодиодных-линз/",
+      "old_path": "/chevrolet-tahoe-2017-установка-светодиодных-линз/",
+      "new_path": "/portfolio/chevrolet-tahoe-2017-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-tahoe-900-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-tahoe-900-установка-светодиодных-линз/",
+      "old_path": "/chevrolet-tahoe-900-установка-светодиодных-линз/",
+      "new_path": "/portfolio/chevrolet-tahoe-900-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-tahoe-iii-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-tahoe-iii-установка-светодиодных-линз/",
+      "old_path": "/chevrolet-tahoe-iii-установка-светодиодных-линз/",
+      "new_path": "/portfolio/chevrolet-tahoe-iii-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-tahoe/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-tahoe/",
+      "old_path": "/chevrolet-tahoe/",
+      "new_path": "/portfolio/chevrolet-tahoe/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-trailblazer-i-bi-led-hella-3r-led-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-trailblazer-i-bi-led-hella-3r-led-2/",
+      "old_path": "/chevrolet-trailblazer-i-bi-led-hella-3r-led-2/",
+      "new_path": "/portfolio/chevrolet-trailblazer-i-bi-led-hella-3r-led-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chevrolet-trailblazer-i-bi-led-hella-3r-led/",
+      "new_url": "https://ksenonspb.ru/portfolio/chevrolet-trailblazer-i-bi-led-hella-3r-led/",
+      "old_path": "/chevrolet-trailblazer-i-bi-led-hella-3r-led/",
+      "new_path": "/portfolio/chevrolet-trailblazer-i-bi-led-hella-3r-led/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/chrysler-crossfire-optima-professional-series-3-0/",
+      "new_url": "https://ksenonspb.ru/portfolio/chrysler-crossfire-optima-professional-series-3-0/",
+      "old_path": "/chrysler-crossfire-optima-professional-series-3-0/",
+      "new_path": "/portfolio/chrysler-crossfire-optima-professional-series-3-0/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/citroen-c-crosser-ремонт-фар-с-заменой-линз-на-hella-3r-premium/",
+      "new_url": "https://ksenonspb.ru/portfolio/citroen-c-crosser-ремонт-фар-с-заменой-линз-на-hella-3r-premium/",
+      "old_path": "/citroen-c-crosser-ремонт-фар-с-заменой-линз-на-hella-3r-premium/",
+      "new_path": "/portfolio/citroen-c-crosser-ремонт-фар-с-заменой-линз-на-hella-3r-premium/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/citroen-c5-ii-ремонт-фар-с-заменой-стёкол-и-линз-п/",
+      "new_url": "https://ksenonspb.ru/portfolio/citroen-c5-ii-ремонт-фар-с-заменой-стёкол-и-линз-п/",
+      "old_path": "/citroen-c5-ii-ремонт-фар-с-заменой-стёкол-и-линз-п/",
+      "new_path": "/portfolio/citroen-c5-ii-ремонт-фар-с-заменой-стёкол-и-линз-п/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/dodge-neon/",
+      "new_url": "https://ksenonspb.ru/portfolio/dodge-neon/",
+      "old_path": "/dodge-neon/",
+      "new_path": "/portfolio/dodge-neon/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/dodge-ram-установка-bi-led-птф-morimoto-ремонт-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/dodge-ram-установка-bi-led-птф-morimoto-ремонт-фонаря/",
+      "old_path": "/dodge-ram-установка-bi-led-птф-morimoto-ремонт-фонаря/",
+      "new_path": "/portfolio/dodge-ram-установка-bi-led-птф-morimoto-ремонт-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/dodge-ram-1500-2013-год/",
+      "new_url": "https://ksenonspb.ru/portfolio/dodge-ram-1500-2013-год/",
+      "old_path": "/dodge-ram-1500-2013-год/",
+      "new_path": "/portfolio/dodge-ram-1500-2013-год/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/dodge-ram-2013-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/dodge-ram-2013-тюнинг-оптики/",
+      "old_path": "/dodge-ram-2013-тюнинг-оптики/",
+      "new_path": "/portfolio/dodge-ram-2013-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/dodge-ram3500/",
+      "new_url": "https://ksenonspb.ru/portfolio/dodge-ram3500/",
+      "old_path": "/dodge-ram3500/",
+      "new_path": "/portfolio/dodge-ram3500/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ferrari-360-покраска-фар-изнутри/",
+      "new_url": "https://ksenonspb.ru/portfolio/ferrari-360-покраска-фар-изнутри/",
+      "old_path": "/ferrari-360-покраска-фар-изнутри/",
+      "new_path": "/portfolio/ferrari-360-покраска-фар-изнутри/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ferrari-f430-ремонт-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/ferrari-f430-ремонт-фары/",
+      "old_path": "/ferrari-f430-ремонт-фары/",
+      "new_path": "/portfolio/ferrari-f430-ремонт-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-edge-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-edge-установка-светодиодных-линз/",
+      "old_path": "/ford-edge-установка-светодиодных-линз/",
+      "new_path": "/portfolio/ford-edge-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-edge/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-edge/",
+      "old_path": "/ford-edge/",
+      "new_path": "/portfolio/ford-edge/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer-5-доработка-плафона-багажника/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer-5-доработка-плафона-багажника/",
+      "old_path": "/ford-explorer-5-доработка-плафона-багажника/",
+      "new_path": "/portfolio/ford-explorer-5-доработка-плафона-багажника/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer-5-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer-5-2/",
+      "old_path": "/ford-explorer-5-2/",
+      "new_path": "/portfolio/ford-explorer-5-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer-5-3/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer-5-3/",
+      "old_path": "/ford-explorer-5-3/",
+      "new_path": "/portfolio/ford-explorer-5-3/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer-5-4/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer-5-4/",
+      "old_path": "/ford-explorer-5-4/",
+      "new_path": "/portfolio/ford-explorer-5-4/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer-5/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer-5/",
+      "old_path": "/ford-explorer-5/",
+      "new_path": "/portfolio/ford-explorer-5/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer-v-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer-v-тюнинг-оптики/",
+      "old_path": "/ford-explorer-v-тюнинг-оптики/",
+      "new_path": "/portfolio/ford-explorer-v-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-explorer/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-explorer/",
+      "old_path": "/ford-explorer/",
+      "new_path": "/portfolio/ford-explorer/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-f150-raptor/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-f150-raptor/",
+      "old_path": "/ford-f150-raptor/",
+      "new_path": "/portfolio/ford-f150-raptor/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-focus-3-проблема-адаптивных-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-focus-3-проблема-адаптивных-фар/",
+      "old_path": "/ford-focus-3-проблема-адаптивных-фар/",
+      "new_path": "/portfolio/ford-focus-3-проблема-адаптивных-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-focus-3-bi-led-hella-3r-led-взамен-штатного-ксенона/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-focus-3-bi-led-hella-3r-led-взамен-штатного-ксенона/",
+      "old_path": "/ford-focus-3-bi-led-hella-3r-led-взамен-штатного-ксенона/",
+      "new_path": "/portfolio/ford-focus-3-bi-led-hella-3r-led-взамен-штатного-ксенона/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-fusion/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-fusion/",
+      "old_path": "/ford-fusion/",
+      "new_path": "/portfolio/ford-fusion/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-kuga-ii-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-kuga-ii-установка-светодиодных-линз/",
+      "old_path": "/ford-kuga-ii-установка-светодиодных-линз/",
+      "new_path": "/portfolio/ford-kuga-ii-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-mondeo-4-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-mondeo-4-установка-светодиодных-линз/",
+      "old_path": "/ford-mondeo-4-установка-светодиодных-линз/",
+      "new_path": "/portfolio/ford-mondeo-4-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ford-ranger-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/ford-ranger-установка-светодиодных-линз/",
+      "old_path": "/ford-ranger-установка-светодиодных-линз/",
+      "new_path": "/portfolio/ford-ranger-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-accord-2005-2008-установка-штатного-ксенона-hpl-crossfire-mini/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-accord-2005-2008-установка-штатного-ксенона-hpl-crossfire-mini/",
+      "old_path": "/honda-accord-2005-2008-установка-штатного-ксенона-hpl-crossfire-mini/",
+      "new_path": "/portfolio/honda-accord-2005-2008-установка-штатного-ксенона-hpl-crossfire-mini/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-accord-viii-улучшаем-свет-установка-hella-3r-led/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-accord-viii-улучшаем-свет-установка-hella-3r-led/",
+      "old_path": "/honda-accord-viii-улучшаем-свет-установка-hella-3r-led/",
+      "new_path": "/portfolio/honda-accord-viii-улучшаем-свет-установка-hella-3r-led/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-accord/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-accord/",
+      "old_path": "/honda-accord/",
+      "new_path": "/portfolio/honda-accord/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-civic-5d/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-civic-5d/",
+      "old_path": "/honda-civic-5d/",
+      "new_path": "/portfolio/honda-civic-5d/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-cr-v-iii-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-cr-v-iii-установка-светодиодных-линз/",
+      "old_path": "/honda-cr-v-iii-установка-светодиодных-линз/",
+      "new_path": "/portfolio/honda-cr-v-iii-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-cr-v-iii-установка-bi-led-aozoom-a4-новые-стекла/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-cr-v-iii-установка-bi-led-aozoom-a4-новые-стекла/",
+      "old_path": "/honda-cr-v-iii-установка-bi-led-aozoom-a4-новые-стекла/",
+      "new_path": "/portfolio/honda-cr-v-iii-установка-bi-led-aozoom-a4-новые-стекла/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-jazz-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-jazz-установка-светодиодных-линз/",
+      "old_path": "/honda-jazz-установка-светодиодных-линз/",
+      "new_path": "/portfolio/honda-jazz-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-jazz/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-jazz/",
+      "old_path": "/honda-jazz/",
+      "new_path": "/portfolio/honda-jazz/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/honda-n-wgn-переделка-праворуких-фар-на-европе/",
+      "new_url": "https://ksenonspb.ru/portfolio/honda-n-wgn-переделка-праворуких-фар-на-европе/",
+      "old_path": "/honda-n-wgn-переделка-праворуких-фар-на-европе/",
+      "new_path": "/portfolio/honda-n-wgn-переделка-праворуких-фар-на-европе/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hummer-h2/",
+      "new_url": "https://ksenonspb.ru/portfolio/hummer-h2/",
+      "old_path": "/hummer-h2/",
+      "new_path": "/portfolio/hummer-h2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/huyndai-getz/",
+      "new_url": "https://ksenonspb.ru/portfolio/huyndai-getz/",
+      "old_path": "/huyndai-getz/",
+      "new_path": "/portfolio/huyndai-getz/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/huyndai-santa-fe/",
+      "new_url": "https://ksenonspb.ru/portfolio/huyndai-santa-fe/",
+      "old_path": "/huyndai-santa-fe/",
+      "new_path": "/portfolio/huyndai-santa-fe/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-elantra-v-ремонт-заднего-тюнингового-фона/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-elantra-v-ремонт-заднего-тюнингового-фона/",
+      "old_path": "/hyundai-elantra-v-ремонт-заднего-тюнингового-фона/",
+      "new_path": "/portfolio/hyundai-elantra-v-ремонт-заднего-тюнингового-фона/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-grand-starex-2018-bi-led-aozoom-a4-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-grand-starex-2018-bi-led-aozoom-a4-hpl-crossfire/",
+      "old_path": "/hyundai-grand-starex-2018-bi-led-aozoom-a4-hpl-crossfire/",
+      "new_path": "/portfolio/hyundai-grand-starex-2018-bi-led-aozoom-a4-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-grand-starex-urban-три-варианта-работ-по-передним-ф/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-grand-starex-urban-три-варианта-работ-по-передним-ф/",
+      "old_path": "/hyundai-grand-starex-urban-три-варианта-работ-по-передним-ф/",
+      "new_path": "/portfolio/hyundai-grand-starex-urban-три-варианта-работ-по-передним-ф/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-grandeur-v-ремонт-led-колец-и-ресниц/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-grandeur-v-ремонт-led-колец-и-ресниц/",
+      "old_path": "/hyundai-grandeur-v-ремонт-led-колец-и-ресниц/",
+      "new_path": "/portfolio/hyundai-grandeur-v-ремонт-led-колец-и-ресниц/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-i40-ремонт-штатных-дхо/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-i40-ремонт-штатных-дхо/",
+      "old_path": "/hyundai-i40-ремонт-штатных-дхо/",
+      "new_path": "/portfolio/hyundai-i40-ремонт-штатных-дхо/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-ix-35-установка-ходовых-огней/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-ix-35-установка-ходовых-огней/",
+      "old_path": "/hyundai-ix-35-установка-ходовых-огней/",
+      "new_path": "/portfolio/hyundai-ix-35-установка-ходовых-огней/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-santa-fe-ремонт-штатных-птф-с-дхо-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-santa-fe-ремонт-штатных-птф-с-дхо-2/",
+      "old_path": "/hyundai-santa-fe-ремонт-штатных-птф-с-дхо-2/",
+      "new_path": "/portfolio/hyundai-santa-fe-ремонт-штатных-птф-с-дхо-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-santa-fe-ремонт-штатных-птф-с-дхо/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-santa-fe-ремонт-штатных-птф-с-дхо/",
+      "old_path": "/hyundai-santa-fe-ремонт-штатных-птф-с-дхо/",
+      "new_path": "/portfolio/hyundai-santa-fe-ремонт-штатных-птф-с-дхо/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-solaris/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-solaris/",
+      "old_path": "/hyundai-solaris/",
+      "new_path": "/portfolio/hyundai-solaris/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/hyundai-tucson-i-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/hyundai-tucson-i-установка-светодиодных-линз/",
+      "old_path": "/hyundai-tucson-i-установка-светодиодных-линз/",
+      "new_path": "/portfolio/hyundai-tucson-i-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-ex-2007-2014-замена-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-ex-2007-2014-замена-линз/",
+      "old_path": "/infiniti-ex-2007-2014-замена-линз/",
+      "new_path": "/portfolio/infiniti-ex-2007-2014-замена-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-ex-2007-2014-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-ex-2007-2014-ремонт-фар/",
+      "old_path": "/infiniti-ex-2007-2014-ремонт-фар/",
+      "new_path": "/portfolio/infiniti-ex-2007-2014-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-ex-afs-исправляем-колхоз/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-ex-afs-исправляем-колхоз/",
+      "old_path": "/infiniti-ex-afs-исправляем-колхоз/",
+      "new_path": "/portfolio/infiniti-ex-afs-исправляем-колхоз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-fx-35-и-infiniti-fx-45-ремонт-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-fx-35-и-infiniti-fx-45-ремонт-фонарей/",
+      "old_path": "/infiniti-fx-35-и-infiniti-fx-45-ремонт-фонарей/",
+      "new_path": "/portfolio/infiniti-fx-35-и-infiniti-fx-45-ремонт-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-fx-s51-ремонт-фары-с-заменой-стекла/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-fx-s51-ремонт-фары-с-заменой-стекла/",
+      "old_path": "/infiniti-fx-s51-ремонт-фары-с-заменой-стекла/",
+      "new_path": "/portfolio/infiniti-fx-s51-ремонт-фары-с-заменой-стекла/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-fx45-кастом-американских-задних-фонаре/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-fx45-кастом-американских-задних-фонаре/",
+      "old_path": "/infiniti-fx45-кастом-американских-задних-фонаре/",
+      "new_path": "/portfolio/infiniti-fx45-кастом-американских-задних-фонаре/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-m37-ремонт-ксеноновых-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-m37-ремонт-ксеноновых-фар/",
+      "old_path": "/infiniti-m37-ремонт-ксеноновых-фар/",
+      "new_path": "/portfolio/infiniti-m37-ремонт-ксеноновых-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-qx56-ii-восстановление-стекла-фары-без-р/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-qx56-ii-восстановление-стекла-фары-без-р/",
+      "old_path": "/infiniti-qx56-ii-восстановление-стекла-фары-без-р/",
+      "new_path": "/portfolio/infiniti-qx56-ii-восстановление-стекла-фары-без-р/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-qx60-передняя-оптика-full-led-hpl-backfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-qx60-передняя-оптика-full-led-hpl-backfire/",
+      "old_path": "/infiniti-qx60-передняя-оптика-full-led-hpl-backfire/",
+      "new_path": "/portfolio/infiniti-qx60-передняя-оптика-full-led-hpl-backfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-qx70-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-qx70-тюнинг-оптики/",
+      "old_path": "/infiniti-qx70-тюнинг-оптики/",
+      "new_path": "/portfolio/infiniti-qx70-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-qx70-bi-led-hella-3r-led-afs-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-qx70-bi-led-hella-3r-led-afs-hpl-crossfire/",
+      "old_path": "/infiniti-qx70-bi-led-hella-3r-led-afs-hpl-crossfire/",
+      "new_path": "/portfolio/infiniti-qx70-bi-led-hella-3r-led-afs-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/infiniti-qx70-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/infiniti-qx70-hpl-crossfire/",
+      "old_path": "/infiniti-qx70-hpl-crossfire/",
+      "new_path": "/portfolio/infiniti-qx70-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-f-type-ремонт-фар-европейские-жёлтые-за/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-f-type-ремонт-фар-европейские-жёлтые-за/",
+      "old_path": "/jaguar-f-type-ремонт-фар-европейские-жёлтые-за/",
+      "new_path": "/portfolio/jaguar-f-type-ремонт-фар-европейские-жёлтые-за/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-s-type-2006-замена-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-s-type-2006-замена-линз/",
+      "old_path": "/jaguar-s-type-2006-замена-линз/",
+      "new_path": "/portfolio/jaguar-s-type-2006-замена-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-xf-2007-2011-замена-линз-hella-3r/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-xf-2007-2011-замена-линз-hella-3r/",
+      "old_path": "/jaguar-xf-2007-2011-замена-линз-hella-3r/",
+      "new_path": "/portfolio/jaguar-xf-2007-2011-замена-линз-hella-3r/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-xf-2011-2015-ремонт-фар-с-заменой-стёкол-ремон/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-xf-2011-2015-ремонт-фар-с-заменой-стёкол-ремон/",
+      "old_path": "/jaguar-xf-2011-2015-ремонт-фар-с-заменой-стёкол-ремон/",
+      "new_path": "/portfolio/jaguar-xf-2011-2015-ремонт-фар-с-заменой-стёкол-ремон/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-xf-2011-2015-ремонт-led-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-xf-2011-2015-ремонт-led-фонарей/",
+      "old_path": "/jaguar-xf-2011-2015-ремонт-led-фонарей/",
+      "new_path": "/portfolio/jaguar-xf-2011-2015-ремонт-led-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-xf-i-восстанавливаем-убитые-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-xf-i-восстанавливаем-убитые-фары/",
+      "old_path": "/jaguar-xf-i-восстанавливаем-убитые-фары/",
+      "new_path": "/portfolio/jaguar-xf-i-восстанавливаем-убитые-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-xj-iii-x350-x358-замена-линз-valeo-на-hella-3r-premium-hella-5s/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-xj-iii-x350-x358-замена-линз-valeo-на-hella-3r-premium-hella-5s/",
+      "old_path": "/jaguar-xj-iii-x350-x358-замена-линз-valeo-на-hella-3r-premium-hella-5s/",
+      "new_path": "/portfolio/jaguar-xj-iii-x350-x358-замена-линз-valeo-на-hella-3r-premium-hella-5s/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jaguar-xk-ремонт-адаптивной-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/jaguar-xk-ремонт-адаптивной-фары/",
+      "old_path": "/jaguar-xk-ремонт-адаптивной-фары/",
+      "new_path": "/portfolio/jaguar-xk-ремонт-адаптивной-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jeep-grand-cherokee-чистка-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/jeep-grand-cherokee-чистка-фар/",
+      "old_path": "/jeep-grand-cherokee-чистка-фар/",
+      "new_path": "/portfolio/jeep-grand-cherokee-чистка-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jeep-grand-cherokee-iv-wk2-ремонт-фары-с-заменой-стекла/",
+      "new_url": "https://ksenonspb.ru/portfolio/jeep-grand-cherokee-iv-wk2-ремонт-фары-с-заменой-стекла/",
+      "old_path": "/jeep-grand-cherokee-iv-wk2-ремонт-фары-с-заменой-стекла/",
+      "new_path": "/portfolio/jeep-grand-cherokee-iv-wk2-ремонт-фары-с-заменой-стекла/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jeep-grand-cherokee-iv-wk2-рестайлинг-новые-фары-из-убиты/",
+      "new_url": "https://ksenonspb.ru/portfolio/jeep-grand-cherokee-iv-wk2-рестайлинг-новые-фары-из-убиты/",
+      "old_path": "/jeep-grand-cherokee-iv-wk2-рестайлинг-новые-фары-из-убиты/",
+      "new_path": "/portfolio/jeep-grand-cherokee-iv-wk2-рестайлинг-новые-фары-из-убиты/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/jeep-grand-cherokee-iv-wk2-black-white-два-похожих-автомобиля/",
+      "new_url": "https://ksenonspb.ru/portfolio/jeep-grand-cherokee-iv-wk2-black-white-два-похожих-автомобиля/",
+      "old_path": "/jeep-grand-cherokee-iv-wk2-black-white-два-похожих-автомобиля/",
+      "new_path": "/portfolio/jeep-grand-cherokee-iv-wk2-black-white-два-похожих-автомобиля/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией-2/",
+      "old_path": "/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией-2/",
+      "new_path": "/portfolio/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией/",
+      "old_path": "/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией/",
+      "new_path": "/portfolio/kia-ceed-ii-проблема-дхо-ремонт-с-гарантией/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-ceed-iii-bi-led-aozoom-a4-вместо-штатного-галогена/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-ceed-iii-bi-led-aozoom-a4-вместо-штатного-галогена/",
+      "old_path": "/kia-ceed-iii-bi-led-aozoom-a4-вместо-штатного-галогена/",
+      "new_path": "/portfolio/kia-ceed-iii-bi-led-aozoom-a4-вместо-штатного-галогена/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-ceed-proceed-ii-ремонт-заднего-светодиодного-фон/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-ceed-proceed-ii-ремонт-заднего-светодиодного-фон/",
+      "old_path": "/kia-ceed-proceed-ii-ремонт-заднего-светодиодного-фон/",
+      "new_path": "/portfolio/kia-ceed-proceed-ii-ремонт-заднего-светодиодного-фон/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-k5-ремонт-фар-с-заменой-стёкла-и-или-ко/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-k5-ремонт-фар-с-заменой-стёкла-и-или-ко/",
+      "old_path": "/kia-k5-ремонт-фар-с-заменой-стёкла-и-или-ко/",
+      "new_path": "/portfolio/kia-k5-ремонт-фар-с-заменой-стёкла-и-или-ко/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-mohave-bi-led-i-lens-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-mohave-bi-led-i-lens-hpl-crossfire/",
+      "old_path": "/kia-mohave-bi-led-i-lens-hpl-crossfire/",
+      "new_path": "/portfolio/kia-mohave-bi-led-i-lens-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-optima-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-optima-установка-светодиодных-линз/",
+      "old_path": "/kia-optima-установка-светодиодных-линз/",
+      "new_path": "/portfolio/kia-optima-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-optima-2017-ремонт-светодиодной-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-optima-2017-ремонт-светодиодной-фары/",
+      "old_path": "/kia-optima-2017-ремонт-светодиодной-фары/",
+      "new_path": "/portfolio/kia-optima-2017-ремонт-светодиодной-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-optima-4-ремонт-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-optima-4-ремонт-фонаря/",
+      "old_path": "/kia-optima-4-ремонт-фонаря/",
+      "new_path": "/portfolio/kia-optima-4-ремонт-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-rio-iv-x-line-bi-led-clearlight-3-0-pro/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-rio-iv-x-line-bi-led-clearlight-3-0-pro/",
+      "old_path": "/kia-rio-iv-x-line-bi-led-clearlight-3-0-pro/",
+      "new_path": "/portfolio/kia-rio-iv-x-line-bi-led-clearlight-3-0-pro/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-seed-2017-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-seed-2017-установка-светодиодных-линз/",
+      "old_path": "/kia-seed-2017-установка-светодиодных-линз/",
+      "new_path": "/portfolio/kia-seed-2017-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-sorento-2020-ремонт-корпуса-фары-по-правильном/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-sorento-2020-ремонт-корпуса-фары-по-правильном/",
+      "old_path": "/kia-sorento-2020-ремонт-корпуса-фары-по-правильном/",
+      "new_path": "/portfolio/kia-sorento-2020-ремонт-корпуса-фары-по-правильном/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-sorento-iii-prime-рестайлинг-ремонт-потеющих-led-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-sorento-iii-prime-рестайлинг-ремонт-потеющих-led-фар/",
+      "old_path": "/kia-sorento-iii-prime-рестайлинг-ремонт-потеющих-led-фар/",
+      "new_path": "/portfolio/kia-sorento-iii-prime-рестайлинг-ремонт-потеющих-led-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/kia-sorento/",
+      "new_url": "https://ksenonspb.ru/portfolio/kia-sorento/",
+      "old_path": "/kia-sorento/",
+      "new_path": "/portfolio/kia-sorento/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ktm-1290-внедрение-led-фары-от-harley-davidson/",
+      "new_url": "https://ksenonspb.ru/portfolio/ktm-1290-внедрение-led-фары-от-harley-davidson/",
+      "old_path": "/ktm-1290-внедрение-led-фары-от-harley-davidson/",
+      "new_path": "/portfolio/ktm-1290-внедрение-led-фары-от-harley-davidson/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ktm-990-smt-bi-led-drl-от-volkswagen/",
+      "new_url": "https://ksenonspb.ru/portfolio/ktm-990-smt-bi-led-drl-от-volkswagen/",
+      "old_path": "/ktm-990-smt-bi-led-drl-от-volkswagen/",
+      "new_path": "/portfolio/ktm-990-smt-bi-led-drl-от-volkswagen/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-discovery-iii-установка-bi-led-clearlight-3-0-pro/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-discovery-iii-установка-bi-led-clearlight-3-0-pro/",
+      "old_path": "/land-rover-discovery-iii-установка-bi-led-clearlight-3-0-pro/",
+      "new_path": "/portfolio/land-rover-discovery-iii-установка-bi-led-clearlight-3-0-pro/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-discovery-iv-рестайлинг-bi-led-hella-3-led/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-discovery-iv-рестайлинг-bi-led-hella-3-led/",
+      "old_path": "/land-rover-discovery-iv-рестайлинг-bi-led-hella-3-led/",
+      "new_path": "/portfolio/land-rover-discovery-iv-рестайлинг-bi-led-hella-3-led/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-discovery-iv-светодиодные-линзы/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-discovery-iv-светодиодные-линзы/",
+      "old_path": "/land-rover-discovery-iv-светодиодные-линзы/",
+      "new_path": "/portfolio/land-rover-discovery-iv-светодиодные-линзы/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-range-rover-evoque-15-18-ремонт-дхо-ближний/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-range-rover-evoque-15-18-ремонт-дхо-ближний/",
+      "old_path": "/land-rover-range-rover-evoque-15-18-ремонт-дхо-ближний/",
+      "new_path": "/portfolio/land-rover-range-rover-evoque-15-18-ремонт-дхо-ближний/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан-2/",
+      "old_path": "/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан-2/",
+      "new_path": "/portfolio/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан/",
+      "old_path": "/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан/",
+      "new_path": "/portfolio/land-rover-range-rover-iii-рестайлинг-ремонт-приборной-пан/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-range-rover-iii-рестайлинг-2-bi-led-линзы-в-адаптивны/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-range-rover-iii-рестайлинг-2-bi-led-линзы-в-адаптивны/",
+      "old_path": "/land-rover-range-rover-iii-рестайлинг-2-bi-led-линзы-в-адаптивны/",
+      "new_path": "/portfolio/land-rover-range-rover-iii-рестайлинг-2-bi-led-линзы-в-адаптивны/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-range-rover-sport-2010-ремонт-фонарей-glohh-и-бегущий-пов/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-range-rover-sport-2010-ремонт-фонарей-glohh-и-бегущий-пов/",
+      "old_path": "/land-rover-range-rover-sport-2010-ремонт-фонарей-glohh-и-бегущий-пов/",
+      "new_path": "/portfolio/land-rover-range-rover-sport-2010-ремонт-фонарей-glohh-и-бегущий-пов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/land-rover-range-rover-sport-ii-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/land-rover-range-rover-sport-ii-ремонт-фар/",
+      "old_path": "/land-rover-range-rover-sport-ii-ремонт-фар/",
+      "new_path": "/portfolio/land-rover-range-rover-sport-ii-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/led-птф-toyota-original/",
+      "new_url": "https://ksenonspb.ru/portfolio/led-птф-toyota-original/",
+      "old_path": "/led-птф-toyota-original/",
+      "new_path": "/portfolio/led-птф-toyota-original/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-gs-300-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-gs-300-установка-светодиодных-линз/",
+      "old_path": "/lexus-gs-300-установка-светодиодных-линз/",
+      "new_path": "/portfolio/lexus-gs-300-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-gx-2002-2009-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-gx-2002-2009-установка-светодиодных-линз/",
+      "old_path": "/lexus-gx-2002-2009-установка-светодиодных-линз/",
+      "new_path": "/portfolio/lexus-gx-2002-2009-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен-2/",
+      "old_path": "/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен-2/",
+      "new_path": "/portfolio/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен/",
+      "old_path": "/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен/",
+      "new_path": "/portfolio/lexus-is-iii-250-ставим-bi-led-optima-intelligent-взамен-штатного-ксен/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota-2/",
+      "old_path": "/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota-2/",
+      "new_path": "/portfolio/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota/",
+      "old_path": "/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota/",
+      "new_path": "/portfolio/lexus-lx-570-bi-led-optima-intelligent-hpl-crossfire-и-led-птф-toyota/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/lexus-lx570/",
+      "new_url": "https://ksenonspb.ru/portfolio/lexus-lx570/",
+      "old_path": "/lexus-lx570/",
+      "new_path": "/portfolio/lexus-lx570/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/maserati-quattroporte-v-обновление-фар-покраска-масок-чё/",
+      "new_url": "https://ksenonspb.ru/portfolio/maserati-quattroporte-v-обновление-фар-покраска-масок-чё/",
+      "old_path": "/maserati-quattroporte-v-обновление-фар-покраска-масок-чё/",
+      "new_path": "/portfolio/maserati-quattroporte-v-обновление-фар-покраска-масок-чё/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/maybach-2015-год-чистка-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/maybach-2015-год-чистка-фар/",
+      "old_path": "/maybach-2015-год-чистка-фар/",
+      "new_path": "/portfolio/maybach-2015-год-чистка-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/maybach-62-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/maybach-62-ремонт-фар/",
+      "old_path": "/maybach-62-ремонт-фар/",
+      "new_path": "/portfolio/maybach-62-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led-2/",
+      "old_path": "/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led-2/",
+      "new_path": "/portfolio/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led/",
+      "old_path": "/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led/",
+      "new_path": "/portfolio/mazda-3-bm-bi-led-вместо-галогена-philips-h11mr-led/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок-2/",
+      "old_path": "/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок-2/",
+      "new_path": "/portfolio/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок/",
+      "old_path": "/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок/",
+      "new_path": "/portfolio/mazda-5-bi-led-optima-intelligent-hpl-crossfire-покраска-масок/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-6-gj-спасаем-фары-bi-led-x-bright/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-6-gj-спасаем-фары-bi-led-x-bright/",
+      "old_path": "/mazda-6-gj-спасаем-фары-bi-led-x-bright/",
+      "new_path": "/portfolio/mazda-6-gj-спасаем-фары-bi-led-x-bright/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-cx5-проблемы-дхо-и-их-решения/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-cx5-проблемы-дхо-и-их-решения/",
+      "old_path": "/mazda-cx5-проблемы-дхо-и-их-решения/",
+      "new_path": "/portfolio/mazda-cx5-проблемы-дхо-и-их-решения/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-cx7-полировка-задних-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-cx7-полировка-задних-фонарей/",
+      "old_path": "/mazda-cx7-полировка-задних-фонарей/",
+      "new_path": "/portfolio/mazda-cx7-полировка-задних-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-cx7/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-cx7/",
+      "old_path": "/mazda-cx7/",
+      "new_path": "/portfolio/mazda-cx7/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mazda-cx9-bi-led-aozoom-a3/",
+      "new_url": "https://ksenonspb.ru/portfolio/mazda-cx9-bi-led-aozoom-a3/",
+      "old_path": "/mazda-cx9-bi-led-aozoom-a3/",
+      "new_path": "/portfolio/mazda-cx9-bi-led-aozoom-a3/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/merсedes-ml/",
+      "new_url": "https://ksenonspb.ru/portfolio/merсedes-ml/",
+      "old_path": "/merсedes-ml/",
+      "new_path": "/portfolio/merсedes-ml/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-c-klasse-w204-ремонт-ксенона/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-c-klasse-w204-ремонт-ксенона/",
+      "old_path": "/mercedes-benz-c-klasse-w204-ремонт-ксенона/",
+      "new_path": "/portfolio/mercedes-benz-c-klasse-w204-ремонт-ксенона/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-c-w204-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-c-w204-ремонт-фар/",
+      "old_path": "/mercedes-benz-c-w204-ремонт-фар/",
+      "new_path": "/portfolio/mercedes-benz-c-w204-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-e-klasse-w213-ремонт-фары-и-замена-стекла/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-e-klasse-w213-ремонт-фары-и-замена-стекла/",
+      "old_path": "/mercedes-benz-e-klasse-w213-ремонт-фары-и-замена-стекла/",
+      "new_path": "/portfolio/mercedes-benz-e-klasse-w213-ремонт-фары-и-замена-стекла/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-g-klasse-покраска-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-g-klasse-покраска-фар/",
+      "old_path": "/mercedes-benz-g-klasse-покраска-фар/",
+      "new_path": "/portfolio/mercedes-benz-g-klasse-покраска-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-g-w463-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-g-w463-установка-светодиодных-линз/",
+      "old_path": "/mercedes-benz-g-w463-установка-светодиодных-линз/",
+      "new_path": "/portfolio/mercedes-benz-g-w463-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gl-и-m-класс-установка-bi-led-вместо-интелле/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-gl-и-m-класс-установка-bi-led-вместо-интелле/",
+      "old_path": "/mercedes-benz-gl-и-m-класс-установка-bi-led-вместо-интелле/",
+      "new_path": "/portfolio/mercedes-benz-gl-и-m-класс-установка-bi-led-вместо-интелле/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко-2/",
+      "old_path": "/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко-2/",
+      "new_path": "/portfolio/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко/",
+      "old_path": "/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко/",
+      "new_path": "/portfolio/mercedes-benz-gl-класс-ii-x166-ремонт-фар-с-заменой-стёко/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла-2/",
+      "old_path": "/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла-2/",
+      "new_path": "/portfolio/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла/",
+      "old_path": "/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла/",
+      "new_path": "/portfolio/mercedes-benz-glc-i-x253-ремонт-фары-с-заменой-стекла/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire-2/",
+      "old_path": "/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire-2/",
+      "new_path": "/portfolio/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire/",
+      "old_path": "/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire/",
+      "new_path": "/portfolio/mercedes-benz-glk-i-x204-больные-места-фар-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-glk-klasse-рестайлинг-спасаем-убитые-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-glk-klasse-рестайлинг-спасаем-убитые-фары/",
+      "old_path": "/mercedes-benz-glk-klasse-рестайлинг-спасаем-убитые-фары/",
+      "new_path": "/portfolio/mercedes-benz-glk-klasse-рестайлинг-спасаем-убитые-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gls-x167-ремонт-жёлтых-ресничек-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-gls-x167-ремонт-жёлтых-ресничек-фар/",
+      "old_path": "/mercedes-benz-gls-x167-ремонт-жёлтых-ресничек-фар/",
+      "new_path": "/portfolio/mercedes-benz-gls-x167-ремонт-жёлтых-ресничек-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона-2/",
+      "old_path": "/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона-2/",
+      "new_path": "/portfolio/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона/",
+      "old_path": "/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона/",
+      "new_path": "/portfolio/mercedes-benz-m-klasse-iii-w166-ремонт-задних-внутренних-led-фона/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-s-класс-w222-рестайлинг-ремонт-фары-с-за/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-s-класс-w222-рестайлинг-ремонт-фары-с-за/",
+      "old_path": "/mercedes-benz-s-класс-w222-рестайлинг-ремонт-фары-с-за/",
+      "new_path": "/portfolio/mercedes-benz-s-класс-w222-рестайлинг-ремонт-фары-с-за/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-slr-mclaren-переборка-фар-покраска-масок/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-slr-mclaren-переборка-фар-покраска-масок/",
+      "old_path": "/mercedes-benz-slr-mclaren-переборка-фар-покраска-масок/",
+      "new_path": "/portfolio/mercedes-benz-slr-mclaren-переборка-фар-покраска-масок/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-sprinter-bi-led-koito-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-sprinter-bi-led-koito-hpl-crossfire/",
+      "old_path": "/mercedes-benz-sprinter-bi-led-koito-hpl-crossfire/",
+      "new_path": "/portfolio/mercedes-benz-sprinter-bi-led-koito-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-sprinter-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-sprinter-hpl-crossfire/",
+      "old_path": "/mercedes-benz-sprinter-hpl-crossfire/",
+      "new_path": "/portfolio/mercedes-benz-sprinter-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-vito-iii-w447-bi-led-i-lens-pjx/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-vito-iii-w447-bi-led-i-lens-pjx/",
+      "old_path": "/mercedes-benz-vito-iii-w447-bi-led-i-lens-pjx/",
+      "new_path": "/portfolio/mercedes-benz-vito-iii-w447-bi-led-i-lens-pjx/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w166-ещё-раз-о-задних-фонарях-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w166-ещё-раз-о-задних-фонарях-2/",
+      "old_path": "/mercedes-benz-w166-ещё-раз-о-задних-фонарях-2/",
+      "new_path": "/portfolio/mercedes-benz-w166-ещё-раз-о-задних-фонарях-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w166-ещё-раз-о-задних-фонарях/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w166-ещё-раз-о-задних-фонарях/",
+      "old_path": "/mercedes-benz-w166-ещё-раз-о-задних-фонарях/",
+      "new_path": "/portfolio/mercedes-benz-w166-ещё-раз-о-задних-фонарях/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w166-ремонт-заднего-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w166-ремонт-заднего-фонаря/",
+      "old_path": "/mercedes-benz-w166-ремонт-заднего-фонаря/",
+      "new_path": "/portfolio/mercedes-benz-w166-ремонт-заднего-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w212-ремонт-задних-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w212-ремонт-задних-фонарей/",
+      "old_path": "/mercedes-benz-w212-ремонт-задних-фонарей/",
+      "new_path": "/portfolio/mercedes-benz-w212-ремонт-задних-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w212-c207-динамические-бегущие-задние-п/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w212-c207-динамические-бегущие-задние-п/",
+      "old_path": "/mercedes-benz-w212-c207-динамические-бегущие-задние-п/",
+      "new_path": "/portfolio/mercedes-benz-w212-c207-динамические-бегущие-задние-п/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w212-w222-опасность-силикагеля-от-дилера/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w212-w222-опасность-силикагеля-от-дилера/",
+      "old_path": "/mercedes-benz-w212-w222-опасность-силикагеля-от-дилера/",
+      "new_path": "/portfolio/mercedes-benz-w212-w222-опасность-силикагеля-от-дилера/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-w222-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-benz-w222-ремонт-фар/",
+      "old_path": "/mercedes-benz-w222-ремонт-фар/",
+      "new_path": "/portfolio/mercedes-benz-w222-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-c203/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-c203/",
+      "old_path": "/mercedes-c203/",
+      "new_path": "/portfolio/mercedes-c203/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-e-ремонт-led-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-e-ремонт-led-фар/",
+      "old_path": "/mercedes-e-ремонт-led-фар/",
+      "new_path": "/portfolio/mercedes-e-ремонт-led-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-gl-2011/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-gl-2011/",
+      "old_path": "/mercedes-gl-2011/",
+      "new_path": "/portfolio/mercedes-gl-2011/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-m-w164-установка-линз-hella-3r/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-m-w164-установка-линз-hella-3r/",
+      "old_path": "/mercedes-m-w164-установка-линз-hella-3r/",
+      "new_path": "/portfolio/mercedes-m-w164-установка-линз-hella-3r/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-s-w221-замена-стекла-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-s-w221-замена-стекла-фары/",
+      "old_path": "/mercedes-s-w221-замена-стекла-фары/",
+      "new_path": "/portfolio/mercedes-s-w221-замена-стекла-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-s-w221-2005-2009-замена-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/mercedes-s-w221-2005-2009-замена-линз/",
+      "old_path": "/mercedes-s-w221-2005-2009-замена-линз/",
+      "new_path": "/portfolio/mercedes-s-w221-2005-2009-замена-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mini-cooper-countryman/",
+      "new_url": "https://ksenonspb.ru/portfolio/mini-cooper-countryman/",
+      "old_path": "/mini-cooper-countryman/",
+      "new_path": "/portfolio/mini-cooper-countryman/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitshubishi-asx/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitshubishi-asx/",
+      "old_path": "/mitshubishi-asx/",
+      "new_path": "/portfolio/mitshubishi-asx/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-asx-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-asx-установка-светодиодных-линз/",
+      "old_path": "/mitsubishi-asx-установка-светодиодных-линз/",
+      "new_path": "/portfolio/mitsubishi-asx-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-carisma/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-carisma/",
+      "old_path": "/mitsubishi-carisma/",
+      "new_path": "/portfolio/mitsubishi-carisma/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-l200-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-l200-2/",
+      "old_path": "/mitsubishi-l200-2/",
+      "new_path": "/portfolio/mitsubishi-l200-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-l200/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-l200/",
+      "old_path": "/mitsubishi-l200/",
+      "new_path": "/portfolio/mitsubishi-l200/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-lancer-evolution-ix-bi-led-optima-professional/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-lancer-evolution-ix-bi-led-optima-professional/",
+      "old_path": "/mitsubishi-lancer-evolution-ix-bi-led-optima-professional/",
+      "new_path": "/portfolio/mitsubishi-lancer-evolution-ix-bi-led-optima-professional/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-outlander-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-outlander-установка-светодиодных-линз/",
+      "old_path": "/mitsubishi-outlander-установка-светодиодных-линз/",
+      "new_path": "/portfolio/mitsubishi-outlander-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-outlander-2013/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-outlander-2013/",
+      "old_path": "/mitsubishi-outlander-2013/",
+      "new_path": "/portfolio/mitsubishi-outlander-2013/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-outlander-hpl-backfire-rw/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-outlander-hpl-backfire-rw/",
+      "old_path": "/mitsubishi-outlander-hpl-backfire-rw/",
+      "new_path": "/portfolio/mitsubishi-outlander-hpl-backfire-rw/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-outlander-iii-рестайлинг-2-bi-led-koito/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-outlander-iii-рестайлинг-2-bi-led-koito/",
+      "old_path": "/mitsubishi-outlander-iii-рестайлинг-2-bi-led-koito/",
+      "new_path": "/portfolio/mitsubishi-outlander-iii-рестайлинг-2-bi-led-koito/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-outlander/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-outlander/",
+      "old_path": "/mitsubishi-outlander/",
+      "new_path": "/portfolio/mitsubishi-outlander/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-pajero-4-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-pajero-4-установка-светодиодных-линз/",
+      "old_path": "/mitsubishi-pajero-4-установка-светодиодных-линз/",
+      "new_path": "/portfolio/mitsubishi-pajero-4-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-pajero-sport-iii-замена-штатного-bi-led-на-aozoom-7pro-solar-pro-в-секцию/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-pajero-sport-iii-замена-штатного-bi-led-на-aozoom-7pro-solar-pro-в-секцию/",
+      "old_path": "/mitsubishi-pajero-sport-iii-замена-штатного-bi-led-на-aozoom-7pro-solar-pro-в-секцию/",
+      "new_path": "/portfolio/mitsubishi-pajero-sport-iii-замена-штатного-bi-led-на-aozoom-7pro-solar-pro-в-секцию/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-pajero-sport-iii-подгорел-дхо-и-ремонт-led-линзы/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-pajero-sport-iii-подгорел-дхо-и-ремонт-led-линзы/",
+      "old_path": "/mitsubishi-pajero-sport-iii-подгорел-дхо-и-ремонт-led-линзы/",
+      "new_path": "/portfolio/mitsubishi-pajero-sport-iii-подгорел-дхо-и-ремонт-led-линзы/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mitsubishi-pajero/",
+      "new_url": "https://ksenonspb.ru/portfolio/mitsubishi-pajero/",
+      "old_path": "/mitsubishi-pajero/",
+      "new_path": "/portfolio/mitsubishi-pajero/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку-2/",
+      "old_path": "/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку-2/",
+      "new_path": "/portfolio/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку/",
+      "old_path": "/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку/",
+      "new_path": "/portfolio/nissan-gt-r-2014-ремонт-светодиодной-фары-после-ку/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-juke-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-juke-тюнинг-оптики/",
+      "old_path": "/nissan-juke-тюнинг-оптики/",
+      "new_path": "/portfolio/nissan-juke-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-juke/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-juke/",
+      "old_path": "/nissan-juke/",
+      "new_path": "/portfolio/nissan-juke/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-leaf-ze0-aze0-переделываем-праворукие-led-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-leaf-ze0-aze0-переделываем-праворукие-led-фары/",
+      "old_path": "/nissan-leaf-ze0-aze0-переделываем-праворукие-led-фары/",
+      "new_path": "/portfolio/nissan-leaf-ze0-aze0-переделываем-праворукие-led-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-maxima/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-maxima/",
+      "old_path": "/nissan-maxima/",
+      "new_path": "/portfolio/nissan-maxima/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-murano-2014/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-murano-2014/",
+      "old_path": "/nissan-murano-2014/",
+      "new_path": "/portfolio/nissan-murano-2014/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-murano-z50-исправляем-свет-hella-3r-premium/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-murano-z50-исправляем-свет-hella-3r-premium/",
+      "old_path": "/nissan-murano-z50-исправляем-свет-hella-3r-premium/",
+      "new_path": "/portfolio/nissan-murano-z50-исправляем-свет-hella-3r-premium/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз-2/",
+      "old_path": "/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз-2/",
+      "new_path": "/portfolio/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз/",
+      "old_path": "/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз/",
+      "new_path": "/portfolio/nissan-murano-z51-ещё-один-из-вариантов-bi-led-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-pathfinder-iii-замена-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-pathfinder-iii-замена-линз/",
+      "old_path": "/nissan-pathfinder-iii-замена-линз/",
+      "new_path": "/portfolio/nissan-pathfinder-iii-замена-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-quest/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-quest/",
+      "old_path": "/nissan-quest/",
+      "new_path": "/portfolio/nissan-quest/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-skyline/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-skyline/",
+      "old_path": "/nissan-skyline/",
+      "new_path": "/portfolio/nissan-skyline/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/nissan-x-trail-t31-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/nissan-x-trail-t31-установка-светодиодных-линз/",
+      "old_path": "/nissan-x-trail-t31-установка-светодиодных-линз/",
+      "new_path": "/portfolio/nissan-x-trail-t31-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf-2/",
+      "old_path": "/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf-2/",
+      "new_path": "/portfolio/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf/",
+      "new_url": "https://ksenonspb.ru/portfolio/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf/",
+      "old_path": "/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf/",
+      "new_path": "/portfolio/opel-antara-замена-штатного-ксенона-на-hella-3r-5-rf/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/opel-insignia-проблемы-фар-и-как-их-не-надо-делат/",
+      "new_url": "https://ksenonspb.ru/portfolio/opel-insignia-проблемы-фар-и-как-их-не-надо-делат/",
+      "old_path": "/opel-insignia-проблемы-фар-и-как-их-не-надо-делат/",
+      "new_path": "/portfolio/opel-insignia-проблемы-фар-и-как-их-не-надо-делат/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/opel-mokka-неисправность-afl/",
+      "new_url": "https://ksenonspb.ru/portfolio/opel-mokka-неисправность-afl/",
+      "old_path": "/opel-mokka-неисправность-afl/",
+      "new_path": "/portfolio/opel-mokka-неисправность-afl/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/opel-vivaro-a/",
+      "new_url": "https://ksenonspb.ru/portfolio/opel-vivaro-a/",
+      "old_path": "/opel-vivaro-a/",
+      "new_path": "/portfolio/opel-vivaro-a/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/peugeot-4007/",
+      "new_url": "https://ksenonspb.ru/portfolio/peugeot-4007/",
+      "old_path": "/peugeot-4007/",
+      "new_path": "/portfolio/peugeot-4007/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/peugeot-traveller-aozoom-lazer-в-фары-bixenon/",
+      "new_url": "https://ksenonspb.ru/portfolio/peugeot-traveller-aozoom-lazer-в-фары-bixenon/",
+      "old_path": "/peugeot-traveller-aozoom-lazer-в-фары-bixenon/",
+      "new_path": "/portfolio/peugeot-traveller-aozoom-lazer-в-фары-bixenon/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/porsche-boxster/",
+      "new_url": "https://ksenonspb.ru/portfolio/porsche-boxster/",
+      "old_path": "/porsche-boxster/",
+      "new_path": "/portfolio/porsche-boxster/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/porsche-cayenne-958-ремонт-заднего-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/porsche-cayenne-958-ремонт-заднего-фонаря/",
+      "old_path": "/porsche-cayenne-958-ремонт-заднего-фонаря/",
+      "new_path": "/portfolio/porsche-cayenne-958-ремонт-заднего-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/porsche-cayenne/",
+      "new_url": "https://ksenonspb.ru/portfolio/porsche-cayenne/",
+      "old_path": "/porsche-cayenne/",
+      "new_path": "/portfolio/porsche-cayenne/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/range-rover-vogue-autobiography-светодиодные-линзы/",
+      "new_url": "https://ksenonspb.ru/portfolio/range-rover-vogue-autobiography-светодиодные-линзы/",
+      "old_path": "/range-rover-vogue-autobiography-светодиодные-линзы/",
+      "new_path": "/portfolio/range-rover-vogue-autobiography-светодиодные-линзы/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-duster-i-рестайлинг-bi-led-линзы/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-duster-i-рестайлинг-bi-led-линзы/",
+      "old_path": "/renault-duster-i-рестайлинг-bi-led-линзы/",
+      "new_path": "/portfolio/renault-duster-i-рестайлинг-bi-led-линзы/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-laguna-iii-bi-led-optima-professional-вместо-галогена/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-laguna-iii-bi-led-optima-professional-вместо-галогена/",
+      "old_path": "/renault-laguna-iii-bi-led-optima-professional-вместо-галогена/",
+      "new_path": "/portfolio/renault-laguna-iii-bi-led-optima-professional-вместо-галогена/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-latitude-простая-профилактика-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-latitude-простая-профилактика-фар/",
+      "old_path": "/renault-latitude-простая-профилактика-фар/",
+      "new_path": "/portfolio/renault-latitude-простая-профилактика-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-logan-2011-тюнинг-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-logan-2011-тюнинг-фар/",
+      "old_path": "/renault-logan-2011-тюнинг-фар/",
+      "new_path": "/portfolio/renault-logan-2011-тюнинг-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-logan-ii/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-logan-ii/",
+      "old_path": "/renault-logan-ii/",
+      "new_path": "/portfolio/renault-logan-ii/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-scenic-iii-i-lens-pjx-intelligent-series-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-scenic-iii-i-lens-pjx-intelligent-series-2/",
+      "old_path": "/renault-scenic-iii-i-lens-pjx-intelligent-series-2/",
+      "new_path": "/portfolio/renault-scenic-iii-i-lens-pjx-intelligent-series-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/renault-scenic-iii-i-lens-pjx-intelligent-series/",
+      "new_url": "https://ksenonspb.ru/portfolio/renault-scenic-iii-i-lens-pjx-intelligent-series/",
+      "old_path": "/renault-scenic-iii-i-lens-pjx-intelligent-series/",
+      "new_path": "/portfolio/renault-scenic-iii-i-lens-pjx-intelligent-series/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/rolls-royce-phantom-2014-ремонт-левой-led-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/rolls-royce-phantom-2014-ремонт-левой-led-фары/",
+      "old_path": "/rolls-royce-phantom-2014-ремонт-левой-led-фары/",
+      "new_path": "/portfolio/rolls-royce-phantom-2014-ремонт-левой-led-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/rolls-royce-phantom-vii-просто-маленький-маркерный-ого/",
+      "new_url": "https://ksenonspb.ru/portfolio/rolls-royce-phantom-vii-просто-маленький-маркерный-ого/",
+      "old_path": "/rolls-royce-phantom-vii-просто-маленький-маркерный-ого/",
+      "new_path": "/portfolio/rolls-royce-phantom-vii-просто-маленький-маркерный-ого/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/saab-9-5-шлифовка-фар-от-которых-отказались/",
+      "new_url": "https://ksenonspb.ru/portfolio/saab-9-5-шлифовка-фар-от-которых-отказались/",
+      "old_path": "/saab-9-5-шлифовка-фар-от-которых-отказались/",
+      "new_path": "/portfolio/saab-9-5-шлифовка-фар-от-которых-отказались/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/scania-irizar-i6-ремонт-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/scania-irizar-i6-ремонт-фары/",
+      "old_path": "/scania-irizar-i6-ремонт-фары/",
+      "new_path": "/portfolio/scania-irizar-i6-ремонт-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/scoda-fabia/",
+      "new_url": "https://ksenonspb.ru/portfolio/scoda-fabia/",
+      "old_path": "/scoda-fabia/",
+      "new_path": "/portfolio/scoda-fabia/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/skoda-kodiaq-ремонт-светодиодной-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/skoda-kodiaq-ремонт-светодиодной-фары/",
+      "old_path": "/skoda-kodiaq-ремонт-светодиодной-фары/",
+      "new_path": "/portfolio/skoda-kodiaq-ремонт-светодиодной-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/skoda-octavia-a7-замена-би-ксенон-afl-на-bi-led-aozoom-a6-orion/",
+      "new_url": "https://ksenonspb.ru/portfolio/skoda-octavia-a7-замена-би-ксенон-afl-на-bi-led-aozoom-a6-orion/",
+      "old_path": "/skoda-octavia-a7-замена-би-ксенон-afl-на-bi-led-aozoom-a6-orion/",
+      "new_path": "/portfolio/skoda-octavia-a7-замена-би-ксенон-afl-на-bi-led-aozoom-a6-orion/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ssangyong-rexton-ремонт-заднего-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/ssangyong-rexton-ремонт-заднего-фонаря/",
+      "old_path": "/ssangyong-rexton-ремонт-заднего-фонаря/",
+      "new_path": "/portfolio/ssangyong-rexton-ремонт-заднего-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-forester-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-forester-2/",
+      "old_path": "/subaru-forester-2/",
+      "new_path": "/portfolio/subaru-forester-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-forester-2005-установка-би-ксенона/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-forester-2005-установка-би-ксенона/",
+      "old_path": "/subaru-forester-2005-установка-би-ксенона/",
+      "new_path": "/portfolio/subaru-forester-2005-установка-би-ксенона/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-forester/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-forester/",
+      "old_path": "/subaru-forester/",
+      "new_path": "/portfolio/subaru-forester/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-impreza-wrx-ii-bi-xenon-hella3r-premium/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-impreza-wrx-ii-bi-xenon-hella3r-premium/",
+      "old_path": "/subaru-impreza-wrx-ii-bi-xenon-hella3r-premium/",
+      "new_path": "/portfolio/subaru-impreza-wrx-ii-bi-xenon-hella3r-premium/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-legacy-5-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-legacy-5-установка-светодиодных-линз/",
+      "old_path": "/subaru-legacy-5-установка-светодиодных-линз/",
+      "new_path": "/portfolio/subaru-legacy-5-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-legacy-subaru-outback-установка-светодиодов/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-legacy-subaru-outback-установка-светодиодов/",
+      "old_path": "/subaru-legacy-subaru-outback-установка-светодиодов/",
+      "new_path": "/portfolio/subaru-legacy-subaru-outback-установка-светодиодов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-legacy-v-улучшаем-штатный-ксенон-и-спасаем/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-legacy-v-улучшаем-штатный-ксенон-и-спасаем/",
+      "old_path": "/subaru-legacy-v-улучшаем-штатный-ксенон-и-спасаем/",
+      "new_path": "/portfolio/subaru-legacy-v-улучшаем-штатный-ксенон-и-спасаем/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-legacy/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-legacy/",
+      "old_path": "/subaru-legacy/",
+      "new_path": "/portfolio/subaru-legacy/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-outback-iii-рестайлинг-чистка-фар-и-замена-л/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-outback-iii-рестайлинг-чистка-фар-и-замена-л/",
+      "old_path": "/subaru-outback-iii-рестайлинг-чистка-фар-и-замена-л/",
+      "new_path": "/portfolio/subaru-outback-iii-рестайлинг-чистка-фар-и-замена-л/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-outback-iii-2006-2009-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-outback-iii-2006-2009-ремонт-фар/",
+      "old_path": "/subaru-outback-iii-2006-2009-ремонт-фар/",
+      "new_path": "/portfolio/subaru-outback-iii-2006-2009-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-tribeca/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-tribeca/",
+      "old_path": "/subaru-tribeca/",
+      "new_path": "/portfolio/subaru-tribeca/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-xv-замена-стекла-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-xv-замена-стекла-фары/",
+      "old_path": "/subaru-xv-замена-стекла-фары/",
+      "new_path": "/portfolio/subaru-xv-замена-стекла-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт-2/",
+      "old_path": "/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт-2/",
+      "new_path": "/portfolio/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт/",
+      "new_url": "https://ksenonspb.ru/portfolio/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт/",
+      "old_path": "/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт/",
+      "new_path": "/portfolio/subaru-xv-i-проблема-с-налётом-изнутри-фар-шт/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/suzuki-grand-vitara-iii-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/suzuki-grand-vitara-iii-установка-светодиодных-линз/",
+      "old_path": "/suzuki-grand-vitara-iii-установка-светодиодных-линз/",
+      "new_path": "/portfolio/suzuki-grand-vitara-iii-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/suzuki-intruder-m1800r-bi-led-hella-3r-исправляем-рукожопство/",
+      "new_url": "https://ksenonspb.ru/portfolio/suzuki-intruder-m1800r-bi-led-hella-3r-исправляем-рукожопство/",
+      "old_path": "/suzuki-intruder-m1800r-bi-led-hella-3r-исправляем-рукожопство/",
+      "new_path": "/portfolio/suzuki-intruder-m1800r-bi-led-hella-3r-исправляем-рукожопство/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/suzuki-intruder-m1800r-bi-led-hella-3r/",
+      "new_url": "https://ksenonspb.ru/portfolio/suzuki-intruder-m1800r-bi-led-hella-3r/",
+      "old_path": "/suzuki-intruder-m1800r-bi-led-hella-3r/",
+      "new_path": "/portfolio/suzuki-intruder-m1800r-bi-led-hella-3r/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/suzuki-jimny-4-кастомные-дхо-и-поворот/",
+      "new_url": "https://ksenonspb.ru/portfolio/suzuki-jimny-4-кастомные-дхо-и-поворот/",
+      "old_path": "/suzuki-jimny-4-кастомные-дхо-и-поворот/",
+      "new_path": "/portfolio/suzuki-jimny-4-кастомные-дхо-и-поворот/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/suzuki-sx4-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/suzuki-sx4-установка-светодиодных-линз/",
+      "old_path": "/suzuki-sx4-установка-светодиодных-линз/",
+      "new_path": "/portfolio/suzuki-sx4-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/tesla-model-s-задний-фонарь-и-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/tesla-model-s-задний-фонарь-и-фары/",
+      "old_path": "/tesla-model-s-задний-фонарь-и-фары/",
+      "new_path": "/portfolio/tesla-model-s-задний-фонарь-и-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-и-lexus-про-ксенон/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-и-lexus-про-ксенон/",
+      "old_path": "/toyota-и-lexus-про-ксенон/",
+      "new_path": "/portfolio/toyota-и-lexus-про-ксенон/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-allion/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-allion/",
+      "old_path": "/toyota-allion/",
+      "new_path": "/portfolio/toyota-allion/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-alphard-ремонт-тюнинговых-задних-фонаре/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-alphard-ремонт-тюнинговых-задних-фонаре/",
+      "old_path": "/toyota-alphard-ремонт-тюнинговых-задних-фонаре/",
+      "new_path": "/portfolio/toyota-alphard-ремонт-тюнинговых-задних-фонаре/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-alphard-4wd-спасаем-репутацию-санкт-петербур/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-alphard-4wd-спасаем-репутацию-санкт-петербур/",
+      "old_path": "/toyota-alphard-4wd-спасаем-репутацию-санкт-петербур/",
+      "new_path": "/portfolio/toyota-alphard-4wd-спасаем-репутацию-санкт-петербур/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-avensis-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-avensis-установка-светодиодных-линз/",
+      "old_path": "/toyota-avensis-установка-светодиодных-линз/",
+      "new_path": "/portfolio/toyota-avensis-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-avensis-2003-2008/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-avensis-2003-2008/",
+      "old_path": "/toyota-avensis-2003-2008/",
+      "new_path": "/portfolio/toyota-avensis-2003-2008/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-avensis-ii-замена-отражателей/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-avensis-ii-замена-отражателей/",
+      "old_path": "/toyota-avensis-ii-замена-отражателей/",
+      "new_path": "/portfolio/toyota-avensis-ii-замена-отражателей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-avensis-t25-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-avensis-t25-установка-светодиодных-линз/",
+      "old_path": "/toyota-avensis-t25-установка-светодиодных-линз/",
+      "new_path": "/portfolio/toyota-avensis-t25-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-avensis-t27-hpl-drl-вместо-штатных-дхо/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-avensis-t27-hpl-drl-вместо-штатных-дхо/",
+      "old_path": "/toyota-avensis-t27-hpl-drl-вместо-штатных-дхо/",
+      "new_path": "/portfolio/toyota-avensis-t27-hpl-drl-вместо-штатных-дхо/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-camry-2006/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-camry-2006/",
+      "old_path": "/toyota-camry-2006/",
+      "new_path": "/portfolio/toyota-camry-2006/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-camry-2013/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-camry-2013/",
+      "old_path": "/toyota-camry-2013/",
+      "new_path": "/portfolio/toyota-camry-2013/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-camry-xv50-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-camry-xv50-тюнинг-оптики/",
+      "old_path": "/toyota-camry-xv50-тюнинг-оптики/",
+      "new_path": "/portfolio/toyota-camry-xv50-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-corolla-x-e140-e150-bi-led-hella-3r-led-и-штатные-птф/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-corolla-x-e140-e150-bi-led-hella-3r-led-и-штатные-птф/",
+      "old_path": "/toyota-corolla-x-e140-e150-bi-led-hella-3r-led-и-штатные-птф/",
+      "new_path": "/portfolio/toyota-corolla-x-e140-e150-bi-led-hella-3r-led-и-штатные-птф/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-land-cruiser-200-тюнинг-оптики-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-land-cruiser-200-тюнинг-оптики-2/",
+      "old_path": "/toyota-land-cruiser-200-тюнинг-оптики-2/",
+      "new_path": "/portfolio/toyota-land-cruiser-200-тюнинг-оптики-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-land-cruiser-200-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-land-cruiser-200-тюнинг-оптики/",
+      "old_path": "/toyota-land-cruiser-200-тюнинг-оптики/",
+      "new_path": "/portfolio/toyota-land-cruiser-200-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-land-cruiser-prado-120-установка-светодиодных-линз/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-land-cruiser-prado-120-установка-светодиодных-линз/",
+      "old_path": "/toyota-land-cruiser-prado-120-установка-светодиодных-линз/",
+      "new_path": "/portfolio/toyota-land-cruiser-prado-120-установка-светодиодных-линз/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-land-cruiser-prado-150-bi-led-hella-3r-led-взамен-ксенона-hpl-crossfire/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-land-cruiser-prado-150-bi-led-hella-3r-led-взамен-ксенона-hpl-crossfire/",
+      "old_path": "/toyota-land-cruiser-prado-150-bi-led-hella-3r-led-взамен-ксенона-hpl-crossfire/",
+      "new_path": "/portfolio/toyota-land-cruiser-prado-150-bi-led-hella-3r-led-взамен-ксенона-hpl-crossfire/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-landcruiser-prado-120/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-landcruiser-prado-120/",
+      "old_path": "/toyota-landcruiser-prado-120/",
+      "new_path": "/portfolio/toyota-landcruiser-prado-120/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-prado-120-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-prado-120-2/",
+      "old_path": "/toyota-prado-120-2/",
+      "new_path": "/portfolio/toyota-prado-120-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-prado-120/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-prado-120/",
+      "old_path": "/toyota-prado-120/",
+      "new_path": "/portfolio/toyota-prado-120/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-rav-4-установка-светодиодов/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-rav-4-установка-светодиодов/",
+      "old_path": "/toyota-rav-4-установка-светодиодов/",
+      "new_path": "/portfolio/toyota-rav-4-установка-светодиодов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-sequoia-установка-квадро-светодиодов/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-sequoia-установка-квадро-светодиодов/",
+      "old_path": "/toyota-sequoia-установка-квадро-светодиодов/",
+      "new_path": "/portfolio/toyota-sequoia-установка-квадро-светодиодов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-sequoia-установка-светодиодов/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-sequoia-установка-светодиодов/",
+      "old_path": "/toyota-sequoia-установка-светодиодов/",
+      "new_path": "/portfolio/toyota-sequoia-установка-светодиодов/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-tundra-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-tundra-2/",
+      "old_path": "/toyota-tundra-2/",
+      "new_path": "/portfolio/toyota-tundra-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-tundra-ii-рестайлинг-установка-светодиодо/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-tundra-ii-рестайлинг-установка-светодиодо/",
+      "old_path": "/toyota-tundra-ii-рестайлинг-установка-светодиодо/",
+      "new_path": "/portfolio/toyota-tundra-ii-рестайлинг-установка-светодиодо/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-tundra/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-tundra/",
+      "old_path": "/toyota-tundra/",
+      "new_path": "/portfolio/toyota-tundra/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/toyota-venza-bi-led-aoozom-a10-solar-u/",
+      "new_url": "https://ksenonspb.ru/portfolio/toyota-venza-bi-led-aoozom-a10-solar-u/",
+      "old_path": "/toyota-venza-bi-led-aoozom-a10-solar-u/",
+      "new_path": "/portfolio/toyota-venza-bi-led-aoozom-a10-solar-u/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/v70-замена-стёкол-фар-на-новые-и-bi-led-взамен-г/",
+      "new_url": "https://ksenonspb.ru/portfolio/v70-замена-стёкол-фар-на-новые-и-bi-led-взамен-г/",
+      "old_path": "/v70-замена-стёкол-фар-на-новые-и-bi-led-взамен-г/",
+      "new_path": "/portfolio/v70-замена-стёкол-фар-на-новые-и-bi-led-взамен-г/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-amarok-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-amarok-тюнинг-оптики/",
+      "old_path": "/volkswagen-amarok-тюнинг-оптики/",
+      "new_path": "/portfolio/volkswagen-amarok-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-amarok-2015/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-amarok-2015/",
+      "old_path": "/volkswagen-amarok-2015/",
+      "new_path": "/portfolio/volkswagen-amarok-2015/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-amarok-dark-label-и-amarok-canyon-доделываем-би-ксеноновые-фа/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-amarok-dark-label-и-amarok-canyon-доделываем-би-ксеноновые-фа/",
+      "old_path": "/volkswagen-amarok-dark-label-и-amarok-canyon-доделываем-би-ксеноновые-фа/",
+      "new_path": "/portfolio/volkswagen-amarok-dark-label-и-amarok-canyon-доделываем-би-ксеноновые-фа/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-amarok/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-amarok/",
+      "old_path": "/volkswagen-amarok/",
+      "new_path": "/portfolio/volkswagen-amarok/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-passat-cc-2008-2011/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-passat-cc-2008-2011/",
+      "old_path": "/volkswagen-passat-cc-2008-2011/",
+      "new_path": "/portfolio/volkswagen-passat-cc-2008-2011/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-phaeton-ремонт-светодиодного-фонаря/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-phaeton-ремонт-светодиодного-фонаря/",
+      "old_path": "/volkswagen-phaeton-ремонт-светодиодного-фонаря/",
+      "new_path": "/portfolio/volkswagen-phaeton-ремонт-светодиодного-фонаря/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-polo-2013/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-polo-2013/",
+      "old_path": "/volkswagen-polo-2013/",
+      "new_path": "/portfolio/volkswagen-polo-2013/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-polo/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-polo/",
+      "old_path": "/volkswagen-polo/",
+      "new_path": "/portfolio/volkswagen-polo/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-sharan/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-sharan/",
+      "old_path": "/volkswagen-sharan/",
+      "new_path": "/portfolio/volkswagen-sharan/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-tiguan-2007-2011-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-tiguan-2007-2011-ремонт-фар/",
+      "old_path": "/volkswagen-tiguan-2007-2011-ремонт-фар/",
+      "new_path": "/portfolio/volkswagen-tiguan-2007-2011-ремонт-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-tiguan-i-рестайлинг-ксенон-замена-стекл/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-tiguan-i-рестайлинг-ксенон-замена-стекл/",
+      "old_path": "/volkswagen-tiguan-i-рестайлинг-ксенон-замена-стекл/",
+      "new_path": "/portfolio/volkswagen-tiguan-i-рестайлинг-ксенон-замена-стекл/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-touareg-i-рестайлинг-реставрация-фар/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-touareg-i-рестайлинг-реставрация-фар/",
+      "old_path": "/volkswagen-touareg-i-рестайлинг-реставрация-фар/",
+      "new_path": "/portfolio/volkswagen-touareg-i-рестайлинг-реставрация-фар/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-touareg-i-bi-led-линзы-вместо-галогена/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-touareg-i-bi-led-линзы-вместо-галогена/",
+      "old_path": "/volkswagen-touareg-i-bi-led-линзы-вместо-галогена/",
+      "new_path": "/portfolio/volkswagen-touareg-i-bi-led-линзы-вместо-галогена/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае-2/",
+      "old_path": "/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае-2/",
+      "new_path": "/portfolio/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае/",
+      "old_path": "/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае/",
+      "new_path": "/portfolio/volkswagen-touareg-ii-замена-стекла-фары-как-это-делае/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-touareg-ii-рестайлинг-ремонт-фары-детейли/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-touareg-ii-рестайлинг-ремонт-фары-детейли/",
+      "old_path": "/volkswagen-touareg-ii-рестайлинг-ремонт-фары-детейли/",
+      "new_path": "/portfolio/volkswagen-touareg-ii-рестайлинг-ремонт-фары-детейли/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-transporter-t4-westfalia/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-transporter-t4-westfalia/",
+      "old_path": "/volkswagen-transporter-t4-westfalia/",
+      "new_path": "/portfolio/volkswagen-transporter-t4-westfalia/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км-2/",
+      "old_path": "/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км-2/",
+      "new_path": "/portfolio/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км/",
+      "new_url": "https://ksenonspb.ru/portfolio/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км/",
+      "old_path": "/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км/",
+      "new_path": "/portfolio/volkswagen-transporter-t5-реставрация-ксеноновых-фар-300000-км/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-s60-жёлтые-поворотники-вместо-красных/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-s60-жёлтые-поворотники-вместо-красных/",
+      "old_path": "/volvo-s60-жёлтые-поворотники-вместо-красных/",
+      "new_path": "/portfolio/volvo-s60-жёлтые-поворотники-вместо-красных/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-s60-замена-стекла-фарыотражатель/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-s60-замена-стекла-фарыотражатель/",
+      "old_path": "/volvo-s60-замена-стекла-фарыотражатель/",
+      "new_path": "/portfolio/volvo-s60-замена-стекла-фарыотражатель/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-s80-xc70-чистка-изнутри-и-замена-отражате/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-s80-xc70-чистка-изнутри-и-замена-отражате/",
+      "old_path": "/volvo-s80-xc70-чистка-изнутри-и-замена-отражате/",
+      "new_path": "/portfolio/volvo-s80-xc70-чистка-изнутри-и-замена-отражате/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-v40-2012-2016-замена-линз-на-адаптиве/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-v40-2012-2016-замена-линз-на-адаптиве/",
+      "old_path": "/volvo-v40-2012-2016-замена-линз-на-адаптиве/",
+      "new_path": "/portfolio/volvo-v40-2012-2016-замена-линз-на-адаптиве/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-v90-ii-проблема-задних-потеющих-фонарей/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-v90-ii-проблема-задних-потеющих-фонарей/",
+      "old_path": "/volvo-v90-ii-проблема-задних-потеющих-фонарей/",
+      "new_path": "/portfolio/volvo-v90-ii-проблема-задних-потеющих-фонарей/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc-90-замена-линз-на-hella-3r/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc-90-замена-линз-на-hella-3r/",
+      "old_path": "/volvo-xc-90-замена-линз-на-hella-3r/",
+      "new_path": "/portfolio/volvo-xc-90-замена-линз-на-hella-3r/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc60-замена-линз-на-адаптивном-механизм-2/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc60-замена-линз-на-адаптивном-механизм-2/",
+      "old_path": "/volvo-xc60-замена-линз-на-адаптивном-механизм-2/",
+      "new_path": "/portfolio/volvo-xc60-замена-линз-на-адаптивном-механизм-2/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc60-замена-линз-на-адаптивном-механизм/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc60-замена-линз-на-адаптивном-механизм/",
+      "old_path": "/volvo-xc60-замена-линз-на-адаптивном-механизм/",
+      "new_path": "/portfolio/volvo-xc60-замена-линз-на-адаптивном-механизм/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc70-2007-замена-пластиковых-стёкол-на-стек/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc70-2007-замена-пластиковых-стёкол-на-стек/",
+      "old_path": "/volvo-xc70-2007-замена-пластиковых-стёкол-на-стек/",
+      "new_path": "/portfolio/volvo-xc70-2007-замена-пластиковых-стёкол-на-стек/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc70-s80-дхо-в-штатные-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc70-s80-дхо-в-штатные-фары/",
+      "old_path": "/volvo-xc70-s80-дхо-в-штатные-фары/",
+      "new_path": "/portfolio/volvo-xc70-s80-дхо-в-штатные-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc90-замена-стёкол-фар-bi-led-osram-cbi/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc90-замена-стёкол-фар-bi-led-osram-cbi/",
+      "old_path": "/volvo-xc90-замена-стёкол-фар-bi-led-osram-cbi/",
+      "new_path": "/portfolio/volvo-xc90-замена-стёкол-фар-bi-led-osram-cbi/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc90-тюнинг-оптики/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc90-тюнинг-оптики/",
+      "old_path": "/volvo-xc90-тюнинг-оптики/",
+      "new_path": "/portfolio/volvo-xc90-тюнинг-оптики/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc90-2015-ремонт-светодиодной-led-фары/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc90-2015-ремонт-светодиодной-led-фары/",
+      "old_path": "/volvo-xc90-2015-ремонт-светодиодной-led-фары/",
+      "new_path": "/portfolio/volvo-xc90-2015-ремонт-светодиодной-led-фары/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/volvo-xc90/",
+      "new_url": "https://ksenonspb.ru/portfolio/volvo-xc90/",
+      "old_path": "/volvo-xc90/",
+      "new_path": "/portfolio/volvo-xc90/",
+      "note": "Кейс блога → portfolio"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-acura/",
+      "new_url": "https://ksenonspb.ru/marki/acura/",
+      "old_path": "/ремонт-фар-acura/",
+      "new_path": "/marki/acura/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-audi/",
+      "new_url": "https://ksenonspb.ru/marki/audi/",
+      "old_path": "/ремонт-фар-audi/",
+      "new_path": "/marki/audi/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-bentley/",
+      "new_url": "https://ksenonspb.ru/marki/bentley/",
+      "old_path": "/ремонт-фар-bentley/",
+      "new_path": "/marki/bentley/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-bmw/",
+      "new_url": "https://ksenonspb.ru/marki/bmw/",
+      "old_path": "/ремонт-фар-bmw/",
+      "new_path": "/marki/bmw/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-cadillac/",
+      "new_url": "https://ksenonspb.ru/marki/cadillac/",
+      "old_path": "/ремонт-фар-cadillac/",
+      "new_path": "/marki/cadillac/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-chevrolet/",
+      "new_url": "https://ksenonspb.ru/marki/chevrolet/",
+      "old_path": "/ремонт-фар-chevrolet/",
+      "new_path": "/marki/chevrolet/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-dodge/",
+      "new_url": "https://ksenonspb.ru/marki/dodge/",
+      "old_path": "/ремонт-фар-dodge/",
+      "new_path": "/marki/dodge/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-ferrari/",
+      "new_url": "https://ksenonspb.ru/marki/ferrari/",
+      "old_path": "/ремонт-фар-ferrari/",
+      "new_path": "/marki/ferrari/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-ford/",
+      "new_url": "https://ksenonspb.ru/marki/ford/",
+      "old_path": "/ремонт-фар-ford/",
+      "new_path": "/marki/ford/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-honda/",
+      "new_url": "https://ksenonspb.ru/marki/honda/",
+      "old_path": "/ремонт-фар-honda/",
+      "new_path": "/marki/honda/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-hummer/",
+      "new_url": "https://ksenonspb.ru/marki/hummer/",
+      "old_path": "/ремонт-фар-hummer/",
+      "new_path": "/marki/hummer/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-huyndai/",
+      "new_url": "https://ksenonspb.ru/marki/huyndai/",
+      "old_path": "/ремонт-фар-huyndai/",
+      "new_path": "/marki/huyndai/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-infiniti/",
+      "new_url": "https://ksenonspb.ru/marki/infiniti/",
+      "old_path": "/ремонт-фар-infiniti/",
+      "new_path": "/marki/infiniti/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-jaguar/",
+      "new_url": "https://ksenonspb.ru/marki/jaguar/",
+      "old_path": "/ремонт-фар-jaguar/",
+      "new_path": "/marki/jaguar/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-jeep/",
+      "new_url": "https://ksenonspb.ru/marki/jeep/",
+      "old_path": "/ремонт-фар-jeep/",
+      "new_path": "/marki/jeep/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-kia/",
+      "new_url": "https://ksenonspb.ru/marki/kia/",
+      "old_path": "/ремонт-фар-kia/",
+      "new_path": "/marki/kia/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-land-rover/",
+      "new_url": "https://ksenonspb.ru/marki/land-rover/",
+      "old_path": "/ремонт-фар-land-rover/",
+      "new_path": "/marki/land-rover/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-lexus/",
+      "new_url": "https://ksenonspb.ru/marki/lexus/",
+      "old_path": "/ремонт-фар-lexus/",
+      "new_path": "/marki/lexus/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-maybach/",
+      "new_url": "https://ksenonspb.ru/marki/maybach/",
+      "old_path": "/ремонт-фар-maybach/",
+      "new_path": "/marki/maybach/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-mazda/",
+      "new_url": "https://ksenonspb.ru/marki/mazda/",
+      "old_path": "/ремонт-фар-mazda/",
+      "new_path": "/marki/mazda/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-mercedes/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes/",
+      "old_path": "/ремонт-фар-mercedes/",
+      "new_path": "/marki/mercedes/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-mitsubishi/",
+      "new_url": "https://ksenonspb.ru/marki/mitsubishi/",
+      "old_path": "/ремонт-фар-mitsubishi/",
+      "new_path": "/marki/mitsubishi/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-nissan/",
+      "new_url": "https://ksenonspb.ru/marki/nissan/",
+      "old_path": "/ремонт-фар-nissan/",
+      "new_path": "/marki/nissan/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-opel/",
+      "new_url": "https://ksenonspb.ru/marki/opel/",
+      "old_path": "/ремонт-фар-opel/",
+      "new_path": "/marki/opel/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-peugeot/",
+      "new_url": "https://ksenonspb.ru/marki/peugeot/",
+      "old_path": "/ремонт-фар-peugeot/",
+      "new_path": "/marki/peugeot/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-porsche/",
+      "new_url": "https://ksenonspb.ru/marki/porsche/",
+      "old_path": "/ремонт-фар-porsche/",
+      "new_path": "/marki/porsche/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-renault/",
+      "new_url": "https://ksenonspb.ru/marki/renault/",
+      "old_path": "/ремонт-фар-renault/",
+      "new_path": "/marki/renault/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-scoda/",
+      "new_url": "https://ksenonspb.ru/marki/scoda/",
+      "old_path": "/ремонт-фар-scoda/",
+      "new_path": "/marki/scoda/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-subaru/",
+      "new_url": "https://ksenonspb.ru/marki/subaru/",
+      "old_path": "/ремонт-фар-subaru/",
+      "new_path": "/marki/subaru/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-suzuki/",
+      "new_url": "https://ksenonspb.ru/marki/suzuki/",
+      "old_path": "/ремонт-фар-suzuki/",
+      "new_path": "/marki/suzuki/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-toyota/",
+      "new_url": "https://ksenonspb.ru/marki/toyota/",
+      "old_path": "/ремонт-фар-toyota/",
+      "new_path": "/marki/toyota/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-volvo/",
+      "new_url": "https://ksenonspb.ru/marki/volvo/",
+      "old_path": "/ремонт-фар-volvo/",
+      "new_path": "/marki/volvo/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар-vw/",
+      "new_url": "https://ksenonspb.ru/marki/vw/",
+      "old_path": "/ремонт-фар-vw/",
+      "new_path": "/marki/vw/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/ремонт-фар/",
+      "old_path": "/ремонт-фар/",
+      "new_path": "/marki/ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-c-klasse-w205-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-c-klasse-w205-ремонт-фар/",
+      "old_path": "/mercedes-benz-c-klasse-w205-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-c-klasse-w205-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-clk-klasse-w209-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-clk-klasse-w209-ремонт-фар/",
+      "old_path": "/mercedes-benz-clk-klasse-w209-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-clk-klasse-w209-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-e-klasse-w212-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-e-klasse-w212-ремонт-фар/",
+      "old_path": "/mercedes-benz-e-klasse-w212-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-e-klasse-w212-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-e-klasse-w212-рестайлинг-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-e-klasse-w212-рестайлинг-ремонт-фар/",
+      "old_path": "/mercedes-benz-e-klasse-w212-рестайлинг-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-e-klasse-w212-рестайлинг-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gl-klasse-ii-x166-ремонт-фар-2/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-gl-klasse-ii-x166-ремонт-фар-2/",
+      "old_path": "/mercedes-benz-gl-klasse-ii-x166-ремонт-фар-2/",
+      "new_path": "/marki/mercedes-benz-gl-klasse-ii-x166-ремонт-фар-2/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gl-klasse-ii-x166-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-gl-klasse-ii-x166-ремонт-фар/",
+      "old_path": "/mercedes-benz-gl-klasse-ii-x166-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-gl-klasse-ii-x166-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-gl-klasse-x164-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-gl-klasse-x164-ремонт-фар/",
+      "old_path": "/mercedes-benz-gl-klasse-x164-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-gl-klasse-x164-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/mercedes-benz-s-klasse-w221-рестайлинг-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/mercedes-benz-s-klasse-w221-рестайлинг-ремонт-фар/",
+      "old_path": "/mercedes-benz-s-klasse-w221-рестайлинг-ремонт-фар/",
+      "new_path": "/marki/mercedes-benz-s-klasse-w221-рестайлинг-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/porsche-panamera-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/porsche-panamera-ремонт-фар/",
+      "old_path": "/porsche-panamera-ремонт-фар/",
+      "new_path": "/marki/porsche-panamera-ремонт-фар/",
+      "note": "Legacy brand service page"
+    },
+    {
+      "old_url": "https://ksenonspb.ru/range-rover-vogue-ремонт-фар/",
+      "new_url": "https://ksenonspb.ru/marki/range-rover-vogue-ремонт-фар/",
+      "old_path": "/range-rover-vogue-ремонт-фар/",
+      "new_path": "/marki/range-rover-vogue-ремонт-фар/",
+      "note": "Legacy brand service page"
+    }
+  ]
+}

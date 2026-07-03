@@ -173,6 +173,7 @@ export function localDirForEntry(entry) {
 }
 
 export function isDemoPage(pathname) {
+	if (pathname === '/' || pathname === '') return false;
 	const slug = slugFromPath(pathname);
 	if (DEMO_SLUGS.has(slug)) return true;
 	if (/^homepage-\d+/i.test(slug)) return true;
