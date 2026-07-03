@@ -325,7 +325,7 @@ body {
   left: 0;
   width: 1.4375rem;
   height: 1.4375rem;
-  background: url("../img/list-marker-plus.svg") no-repeat center/contain;
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/list-marker-plus.svg") no-repeat center/contain;
 }
 .typography-block ol {
   counter-reset: typography-counter;
@@ -1292,7 +1292,7 @@ body {
   color: #fff;
 }
 .popup-modal#popup-success {
-  background: url("../img/succes-modal-bg.svg") center 0/auto 100% no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/succes-modal-bg.svg") center 0/auto 100% no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
 }
 .popup-modal__close {
   position: absolute;
@@ -1561,7 +1561,7 @@ body {
   height: 1.5rem;
 }
 .popup-modal--consult {
-  background: url("../img/modal-consult-decor-mobile.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-consult-decor-mobile.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
   text-align: center;
 }
 @media (max-width: 767.98px) {
@@ -1571,16 +1571,16 @@ body {
 }
 @media (min-width: 767.98px) {
   .popup-modal--consult {
-    background: url("../img/modal-consult-decor.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+    background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-consult-decor.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
   }
 }
 .popup-modal--order {
   text-align: left;
-  background: url("../img/modal-order-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-order-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
 }
 @media (max-width: 991.98px) {
   .popup-modal--order {
-    background: url("../img/modal-order-bg-mobile.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+    background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-order-bg-mobile.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
   }
   .popup-modal--order .popup-modal__visual {
     display: grid;
@@ -1596,7 +1596,7 @@ body {
   }
 }
 .popup-modal--presentation {
-  background: url("../img/modal-presentation-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-presentation-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
 }
 @media (max-width: 767.98px) {
   .popup-modal--presentation .popup-modal__media {
@@ -3723,7 +3723,7 @@ body {
   margin: 0 auto;
   padding: 1.94rem 3.75rem;
   display: flex;
-  background: url("../img/hero-headlight.webp") right center/43% auto no-repeat, #000;
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/hero-headlight.webp") right center/43% auto no-repeat, #000;
 }
 @media (min-width: 991.98px) {
   .hero__promo {
@@ -4901,7 +4901,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("../img/policy-decor.svg") 0 0/100% auto repeat-y;
+  background: url("/wp-content/themes/ksenonspby-theme/assets/img/policy-decor.svg") 0 0/100% auto repeat-y;
   pointer-events: none;
 }
 @media (max-width: 767.98px) {

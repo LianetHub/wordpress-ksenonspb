@@ -12,6 +12,13 @@ let pendingPaths = new Set();
 let debounceTimer = null;
 let deployQueue = Promise.resolve();
 
+// Gulp 5 читает файлы как UTF-8 — без encoding: false webp/png/woff ломаются при FTP-загрузке.
+const FTP_SRC_OPTIONS = {
+	base: '.',
+	allowEmpty: true,
+	encoding: false,
+};
+
 function log( message ) {
 	console.log( `[FTP] ${ message }` );
 }
@@ -36,7 +43,7 @@ function deployToFtp( globs, label ) {
 	}
 
 	const stream = gulp
-		.src( globs, { base: '.', allowEmpty: true } )
+		.src( globs, FTP_SRC_OPTIONS )
 		.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH, FTP_DEST_OPTIONS ) );
 
 	return streamToPromise( stream );
@@ -63,7 +70,7 @@ function uploadPaths( paths ) {
 	log( `Uploading ${ uniquePaths.length } file(s)...` );
 
 	const stream = gulp
-		.src( uniquePaths, { base: '.', allowEmpty: true } )
+		.src( uniquePaths, FTP_SRC_OPTIONS )
 		.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH, FTP_DEST_OPTIONS ) );
 
 	return streamToPromise( stream ).then( () => {

@@ -16,7 +16,8 @@
     "parse:lists": "node parsing/scripts/03-build-lists.mjs",
     "parse:all": "npm run parse:sitemap && npm run parse:scrape && npm run parse:lists",
     "import:services": "node parsing/scripts/generate-services-import.mjs",
-    "import:categories": "node parsing/scripts/generate-categories-import.mjs"
+    "import:categories": "node parsing/scripts/generate-categories-import.mjs",
+    "import:brands": "node parsing/scripts/generate-brands-import.mjs"
   },
   "author": "Liana",
   "license": "ISC",
