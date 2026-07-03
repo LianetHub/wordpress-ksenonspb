@@ -122,25 +122,8 @@
                             "label": "Заголовок",
                             "name": "title",
                             "type": "text",
-                            "default_value": "Наши услуги"
-                        },
-                        {
-                            "key": "field_ksenon_st_services",
-                            "label": "Избранные услуги",
-                            "name": "featured_services",
-                            "type": "relationship",
-                            "post_type": [
-                                "service"
-                            ],
-                            "return_format": "object",
-                            "instructions": "Оставьте пустым — выведутся все услуги"
-                        },
-                        {
-                            "key": "field_ksenon_st_limit",
-                            "label": "Лимит",
-                            "name": "limit",
-                            "type": "number",
-                            "default_value": 3
+                            "default_value": "Наши услуги",
+                            "instructions": "Категории услуг выводятся автоматически в слайдере"
                         }
                     ]
                 },

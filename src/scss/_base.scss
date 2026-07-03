@@ -37,7 +37,7 @@
 
 body {
 	font-family: $font-family;
-	color: $color-text-body;
+	color: $color-text;
 	background-color: $color-bg;
 	line-height: 1.3;
 	@include adaptive-font(14, 18);

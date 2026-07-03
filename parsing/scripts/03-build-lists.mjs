@@ -17,31 +17,29 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SERVICES_IMPORT_PATH = path.join(DATA_DIR, 'services-import.json');
 
 function buildServiceUrl(service) {
-	const segments = [];
-	if (service.parent_category_slug) {
-		segments.push(service.parent_category_slug);
-	}
-	if (service.category_slug) {
-		segments.push(service.category_slug);
+	if (service.reference_url) {
+		return service.reference_url;
 	}
 	if (service.slug) {
-		segments.push(service.slug);
+		return `/${service.slug}/`;
 	}
-	return `/${segments.join('/')}/`;
+	return '/';
 }
 
 function buildServicePages(importData) {
-	return (importData.services ?? []).map((service) => ({
-		id: `service_${service.slug}`,
-		title: service.title,
-		url: buildServiceUrl(service),
-		content_type: 'service',
-		template: 'single-service.php',
-		acf_group: 'group_ksenon_service.json',
-		slug: service.slug,
-		category_slug: service.category_slug,
-		parent_category_slug: service.parent_category_slug ?? '',
-	}));
+	return (importData.services ?? []).map((service) => {
+		const slug = service.slug ?? '';
+
+		return {
+			id: `service_${slug}`,
+			title: service.title,
+			url: buildServiceUrl(service),
+			content_type: 'service',
+			template: 'single-service.php',
+			acf_group: 'group_ksenon_service.json',
+			slug,
+		};
+	});
 }
 
 const INFO_PAGES = [

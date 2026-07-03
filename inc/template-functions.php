@@ -328,6 +328,63 @@ if (! function_exists('ksenon_get_post_field')) {
 	}
 }
 
+if (! function_exists('ksenon_get_term_field')) {
+	/**
+	 * @param string $key     ACF field name.
+	 * @param int    $term_id Term ID.
+	 */
+	function ksenon_get_term_field($key, $term_id = 0)
+	{
+		static $cache = array();
+
+		$term_id = (int) $term_id;
+		if (! $term_id || ! function_exists('get_field')) {
+			return false;
+		}
+
+		$context = 'service_category_' . $term_id;
+
+		if (! isset($cache[$context])) {
+			$cache[$context] = function_exists('get_fields') ? (get_fields($context) ?: array()) : array();
+		}
+
+		if (array_key_exists($key, $cache[$context])) {
+			return $cache[$context][$key];
+		}
+
+		$value                    = get_field($key, $context);
+		$cache[$context][$key] = $value;
+
+		return $value;
+	}
+}
+
+if (! function_exists('ksenon_normalize_card_labels')) {
+	/**
+	 * @param mixed $labels_raw ACF repeater rows with `text` subfield.
+	 * @return string[]
+	 */
+	function ksenon_normalize_card_labels($labels_raw)
+	{
+		if (! is_array($labels_raw)) {
+			return array();
+		}
+
+		$labels = array();
+		foreach ($labels_raw as $row) {
+			if (! is_array($row)) {
+				continue;
+			}
+			$label_text = trim((string) ($row['text'] ?? ''));
+			if ('' !== $label_text) {
+				$labels[] = $label_text;
+			}
+		}
+
+		return $labels;
+	}
+}
+
 if (! function_exists('ksenon_normalize_faq_items')) {
 	function ksenon_normalize_faq_items($items)
 	{
@@ -548,9 +605,25 @@ if (! function_exists('ksenon_get_service_categories')) {
 			return array();
 		}
 
-		return array_values(
+		$terms = array_values(
 			array_filter($terms, static fn($term) => $term instanceof WP_Term)
 		);
+
+		$order = array('tyuning-far', 'remont-far', 'regulirovka-diagnostika', 'ptf', 'dop-uslugi');
+
+		usort(
+			$terms,
+			static function ($left, $right) use ($order) {
+				$left_pos  = array_search($left->slug, $order, true);
+				$right_pos = array_search($right->slug, $order, true);
+				$left_pos  = false === $left_pos ? PHP_INT_MAX : $left_pos;
+				$right_pos = false === $right_pos ? PHP_INT_MAX : $right_pos;
+
+				return $left_pos <=> $right_pos;
+			}
+		);
+
+		return $terms;
 	}
 }
 
@@ -579,9 +652,107 @@ if (! function_exists('ksenon_get_service_subcategories')) {
 			return array();
 		}
 
-		return array_values(
+		$terms = array_values(
 			array_filter($terms, static fn($term) => $term instanceof WP_Term)
 		);
+
+		$order = array('optika-i-korpus', 'elektrika', 'mehanika');
+
+		usort(
+			$terms,
+			static function ($left, $right) use ($order) {
+				$left_pos  = array_search($left->slug, $order, true);
+				$right_pos = array_search($right->slug, $order, true);
+				$left_pos  = false === $left_pos ? PHP_INT_MAX : $left_pos;
+				$right_pos = false === $right_pos ? PHP_INT_MAX : $right_pos;
+
+				return $left_pos <=> $right_pos;
+			}
+		);
+
+		return $terms;
+	}
+}
+
+if (! function_exists('ksenon_get_all_service_categories_flat')) {
+	/**
+	 * All service_category terms in site display order (top-level + nested children).
+	 *
+	 * @return WP_Term[]
+	 */
+	function ksenon_get_all_service_categories_flat()
+	{
+		$result = array();
+
+		foreach (ksenon_get_service_categories() as $term) {
+			$result[] = $term;
+
+			$subcategories = ksenon_get_service_subcategories($term->slug);
+			if ($subcategories) {
+				foreach ($subcategories as $subcategory) {
+					$result[] = $subcategory;
+				}
+			}
+		}
+
+		return $result;
+	}
+}
+
+if (! function_exists('ksenon_get_service_category_min_price')) {
+	/**
+	 * Minimum price_from among services assigned directly to the category term.
+	 *
+	 * @param int $term_id service_category term ID.
+	 */
+	function ksenon_get_service_category_min_price($term_id)
+	{
+		$term_id = (int) $term_id;
+		if ($term_id <= 0) {
+			return 0;
+		}
+
+		$query = new WP_Query(
+			array(
+				'post_type'              => 'service',
+				'post_status'            => 'publish',
+				'posts_per_page'         => 1,
+				'fields'                 => 'ids',
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+				'orderby'                => 'meta_value_num',
+				'order'                  => 'ASC',
+				'meta_key'               => 'price_from',
+				'meta_query'             => array(
+					array(
+						'key'     => 'price_from',
+						'value'   => 0,
+						'compare' => '>',
+						'type'    => 'NUMERIC',
+					),
+				),
+				'tax_query'              => array(
+					array(
+						'taxonomy'         => 'service_category',
+						'field'            => 'term_id',
+						'terms'            => $term_id,
+						'include_children' => false,
+					),
+				),
+			)
+		);
+
+		if (! $query->have_posts()) {
+			return 0;
+		}
+
+		$post_id = (int) $query->posts[0];
+		wp_reset_postdata();
+
+		$price = ksenon_get_post_field('price_from', $post_id);
+
+		return is_numeric($price) ? (int) $price : 0;
 	}
 }
 

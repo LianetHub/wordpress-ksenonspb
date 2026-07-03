@@ -4,44 +4,43 @@
 
 .title {
 	font-family: $font-inter;
-	font-weight: 450;
+	font-weight: 500;
 	line-height: 1.2;
 	color: $color-primary;
 }
 
 .title-lg {
+	font-weight: 500;
 	@include adaptive-font(36, 48);
 }
 
 .title-md {
+	font-weight: 500;
 	@include adaptive-font(24, 48);
 
-	@media (max-width:$md5) {
-		letter-spacing: -0.04em;
-
-	}
 }
 
 .title-md-xl {
+	font-weight: 500;
 	@include adaptive-font(28, 48);
-	letter-spacing: -0.04em;
+
 }
 
 .title-sm {
-	font-style: italic;
-	letter-spacing: -0.02em;
+	font-weight: 500;
+
 	@include adaptive-font(18, 24);
 }
 
 .title-md-sm {
-	font-style: italic;
-	letter-spacing: -0.02em;
+	font-weight: 500;
 	@include adaptive-font(20, 24);
 }
 
 .title-popup {
+	font-weight: 500;
 	@include adaptive-font(24, 32);
-	letter-spacing: -0.04em;
+
 }
 
 // Плотный трекинг на десктопе (panels)

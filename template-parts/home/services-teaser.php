@@ -1,32 +1,16 @@
 <?php
 
 /**
- * Home: Services teaser
+ * Home: Services teaser (service categories)
  *
  * @package ksenonspb
  */
 
-$featured = ksenon_home_get('featured_services', array());
-$limit    = (int) ksenon_home_get('limit', 9);
-$args     = array('posts_per_page' => $limit > 0 ? $limit : 9);
+$categories = function_exists('ksenon_get_all_service_categories_flat')
+	? ksenon_get_all_service_categories_flat()
+	: array();
 
-if (is_array($featured) && $featured) {
-	$ids = array();
-	foreach ($featured as $item) {
-		if ($item instanceof WP_Post) {
-			$ids[] = (int) $item->ID;
-		} elseif (is_numeric($item)) {
-			$ids[] = (int) $item;
-		}
-	}
-	if ($ids) {
-		$args['post__in'] = $ids;
-		$args['orderby']  = 'post__in';
-	}
-}
-
-$query = ksenon_query_services($args);
-if (! $query->have_posts()) {
+if (! $categories) {
 	return;
 }
 
@@ -54,28 +38,26 @@ $more_link      = array(
 		<div class="services-teaser__slider">
 			<div class="swiper">
 				<ul class="services-teaser__grid swiper-wrapper">
-					<?php
-					while ($query->have_posts()) :
-						$query->the_post();
-					?>
+					<?php foreach ($categories as $term) : ?>
 						<?php
+						if (! $term instanceof WP_Term) {
+							continue;
+						}
+
 						get_template_part(
 							'template-parts/blocks/service-card',
 							null,
 							array(
-								'post'  => get_post(),
+								'term'  => $term,
 								'class' => 'service-card--grey services-teaser__slide swiper-slide',
 							)
 						);
 						?>
-					<?php
-					endwhile;
-					wp_reset_postdata();
-					?>
+					<?php endforeach; ?>
 				</ul>
 			</div>
-			<button class="services-teaser__prev swiper-button-prev" type="button" aria-label="<?php esc_attr_e('Предыдущие услуги', 'ksenonspb'); ?>"></button>
-			<button class="services-teaser__next swiper-button-next" type="button" aria-label="<?php esc_attr_e('Следующие услуги', 'ksenonspb'); ?>"></button>
+			<button class="services-teaser__prev swiper-button-prev" type="button" aria-label="<?php esc_attr_e('Предыдущие категории', 'ksenonspb'); ?>"></button>
+			<button class="services-teaser__next swiper-button-next" type="button" aria-label="<?php esc_attr_e('Следующие категории', 'ksenonspb'); ?>"></button>
 		</div>
 	</div>
 </section>

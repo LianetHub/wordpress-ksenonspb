@@ -358,6 +358,30 @@ if (! function_exists('ksenon_get_service_category_path')) {
 	}
 }
 
+if (! function_exists('ksenon_get_service_url_slug')) {
+	/**
+	 * Public URL segment for a service (meta service_slug from import, fallback post_name).
+	 */
+	function ksenon_get_service_url_slug($post_id)
+	{
+		$post_id = (int) $post_id;
+		if ($post_id <= 0) {
+			return '';
+		}
+
+		$service_slug = get_post_meta($post_id, 'service_slug', true);
+		if (is_string($service_slug) && '' !== trim($service_slug)) {
+			return sanitize_title($service_slug);
+		}
+
+		$post = get_post($post_id);
+
+		return ($post instanceof WP_Post && $post->post_name)
+			? sanitize_title($post->post_name)
+			: '';
+	}
+}
+
 if (! function_exists('ksenon_get_service_category_top_parent_slug')) {
 	/**
 	 * Root category slug for a hierarchical service_category term.
@@ -376,6 +400,108 @@ if (! function_exists('ksenon_get_service_category_top_parent_slug')) {
 	}
 }
 
+if (! function_exists('ksenon_find_service_by_url_path')) {
+	/**
+	 * Resolve service post ID from public URL path segments.
+	 *
+	 * @param string[] $segments
+	 */
+	function ksenon_find_service_by_url_path(array $segments)
+	{
+		$segments = array_values(array_filter(array_map('strval', $segments)));
+		$count    = count($segments);
+
+		if ($count < 2 || $count > 3) {
+			return 0;
+		}
+
+		$url_slug = $segments[$count - 1];
+		if ('' === $url_slug) {
+			return 0;
+		}
+
+		if (2 === $count) {
+			$maybe_term = get_term_by('slug', $url_slug, 'service_category');
+			if ($maybe_term instanceof WP_Term && ! is_wp_error($maybe_term)) {
+				return 0;
+			}
+		}
+
+		$category_path = implode('/', array_slice($segments, 0, -1));
+		$candidates = get_posts(
+			array(
+				'post_type'              => 'service',
+				'post_status'            => 'publish',
+				'posts_per_page'         => -1,
+				'fields'                 => 'ids',
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => true,
+				'update_post_term_cache' => true,
+				'meta_query'             => array(
+					array(
+						'key'   => 'service_slug',
+						'value' => $url_slug,
+					),
+				),
+			)
+		);
+
+		if (empty($candidates)) {
+			$candidates = get_posts(
+				array(
+					'post_type'              => 'service',
+					'post_status'            => 'publish',
+					'posts_per_page'         => -1,
+					'fields'                 => 'ids',
+					'name'                   => $url_slug,
+					'no_found_rows'          => true,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache' => true,
+				)
+			);
+		}
+
+		foreach ($candidates as $post_id) {
+			$term = ksenon_get_deepest_service_category_term((int) $post_id);
+			if (! $term) {
+				continue;
+			}
+
+			if (ksenon_get_service_category_path($term) === $category_path) {
+				return (int) $post_id;
+			}
+		}
+
+		return 0;
+	}
+}
+
+add_filter(
+	'request',
+	function ($query_vars) {
+		if (is_admin() || ! empty($query_vars['p']) || ! empty($query_vars['name'])) {
+			return $query_vars;
+		}
+
+		global $wp;
+		$request = isset($wp->request) ? trim((string) $wp->request, '/') : '';
+		if ('' === $request) {
+			return $query_vars;
+		}
+
+		$post_id = ksenon_find_service_by_url_path(explode('/', $request));
+		if ($post_id <= 0) {
+			return $query_vars;
+		}
+
+		return array(
+			'p'         => $post_id,
+			'post_type' => 'service',
+		);
+	},
+	1
+);
+
 add_filter(
 	'post_type_link',
 	function ($permalink, $post) {
@@ -389,11 +515,12 @@ add_filter(
 		}
 
 		$path = ksenon_get_service_category_path($term);
-		if (! $path || ! $post->post_name) {
+		$url_slug = ksenon_get_service_url_slug((int) $post->ID);
+		if (! $path || ! $url_slug) {
 			return $permalink;
 		}
 
-		return home_url(user_trailingslashit($path . '/' . $post->post_name));
+		return home_url(user_trailingslashit($path . '/' . $url_slug));
 	},
 	10,
 	2
@@ -438,7 +565,7 @@ add_action(
 add_action(
 	'init',
 	function () {
-		$version = '20260703-ksenon-cpt-v5';
+		$version = '20260703-ksenon-cpt-v8';
 
 		if (get_option('ksenon_rewrite_version') === $version) {
 			return;
