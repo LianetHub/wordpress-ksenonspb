@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ACF configuration
  *
@@ -7,8 +8,8 @@
  * @package ksenonspb
  */
 
-define( 'KSENON_ACF_SETTINGS_SLUG', 'theme-settings' );
-define( 'KSENON_ACF_JSON_DIR', KSENON_DIR . '/acf-json' );
+define('KSENON_ACF_SETTINGS_SLUG', 'theme-settings');
+define('KSENON_ACF_JSON_DIR', KSENON_DIR . '/acf-json');
 
 add_filter(
 	'acf/settings/save_json',
@@ -19,7 +20,7 @@ add_filter(
 
 add_filter(
 	'acf/settings/load_json',
-	function ( $paths ) {
+	function ($paths) {
 		$paths[] = KSENON_ACF_JSON_DIR;
 
 		return $paths;
@@ -34,22 +35,22 @@ add_filter(
  */
 add_filter(
 	'acf/load_value',
-	function ( $value, $post_id, $field ) {
-		if ( ! is_array( $field ) || ! array_key_exists( 'default_value', $field ) ) {
+	function ($value, $post_id, $field) {
+		if (! is_array($field) || ! array_key_exists('default_value', $field)) {
 			return $value;
 		}
 
-		$skip_types = array( 'flexible_content', 'repeater', 'group', 'clone' );
-		if ( ! empty( $field['type'] ) && in_array( $field['type'], $skip_types, true ) ) {
+		$skip_types = array('flexible_content', 'repeater', 'group', 'clone');
+		if (! empty($field['type']) && in_array($field['type'], $skip_types, true)) {
 			return $value;
 		}
 
 		$default = $field['default_value'];
-		if ( null === $default || '' === $default || array() === $default ) {
+		if (null === $default || '' === $default || array() === $default) {
 			return $value;
 		}
 
-		if ( null === $value || false === $value || '' === $value || ( is_array( $value ) && array() === $value ) ) {
+		if (null === $value || false === $value || '' === $value || (is_array($value) && array() === $value)) {
 			return $default;
 		}
 
@@ -62,7 +63,7 @@ add_filter(
 add_action(
 	'acf/init',
 	function () {
-		if ( ! function_exists( 'acf_add_options_page' ) ) {
+		if (! function_exists('acf_add_options_page')) {
 			return;
 		}
 
@@ -82,7 +83,7 @@ add_action(
 add_action(
 	'wp_head',
 	function () {
-		if ( function_exists( 'ksenon_render_favicons' ) ) {
+		if (function_exists('ksenon_render_favicons')) {
 			ksenon_render_favicons();
 		}
 	},
@@ -92,15 +93,15 @@ add_action(
 add_action(
 	'acf/input/admin_head',
 	function () {
-		if ( ! function_exists( 'get_current_screen' ) ) {
+		if (! function_exists('get_current_screen')) {
 			return;
 		}
 
 		$screen = get_current_screen();
-		if ( ! $screen || strpos( $screen->id, KSENON_ACF_SETTINGS_SLUG ) === false ) {
+		if (! $screen || strpos($screen->id, KSENON_ACF_SETTINGS_SLUG) === false) {
 			return;
 		}
-		?>
+?>
 	<style type="text/css">
 		h2.hndle.ui-sortable-handle {
 			background: #1a5f4a;
@@ -126,32 +127,32 @@ add_action(
 			border: 1px solid #1a5f4a !important;
 		}
 	</style>
-		<?php
+<?php
 	}
 );
 
 add_action(
 	'admin_head',
 	function () {
-		?>
+?>
 	<style>
-		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>>a {
+		#toplevel_page_<?php echo esc_attr(KSENON_ACF_SETTINGS_SLUG); ?>>a {
 			background-color: #FD8011 !important;
 			color: #fff !important;
 		}
 
-		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>>a:hover,
-		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>>a:focus {
+		#toplevel_page_<?php echo esc_attr(KSENON_ACF_SETTINGS_SLUG); ?>>a:hover,
+		#toplevel_page_<?php echo esc_attr(KSENON_ACF_SETTINGS_SLUG); ?>>a:focus {
 			background-color: #AF5B10 !important;
 			color: #fff !important;
 		}
 
-		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>.wp-has-current-submenu>a,
-		#toplevel_page_<?php echo esc_attr( KSENON_ACF_SETTINGS_SLUG ); ?>.current>a {
+		#toplevel_page_<?php echo esc_attr(KSENON_ACF_SETTINGS_SLUG); ?>.wp-has-current-submenu>a,
+		#toplevel_page_<?php echo esc_attr(KSENON_ACF_SETTINGS_SLUG); ?>.current>a {
 			background-color: #FD8011 !important;
 			color: #fff !important;
 		}
 	</style>
-		<?php
+<?php
 	}
 );

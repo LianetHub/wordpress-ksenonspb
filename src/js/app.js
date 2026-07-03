@@ -406,6 +406,7 @@ function initHomeSwipers() {
 		new Swiper(servicesTeaserEl, {
 			slidesPerView: 1.15,
 			spaceBetween: 10,
+			loop: true,
 			breakpoints: {
 				575.98: {
 					slidesPerView: 2,
