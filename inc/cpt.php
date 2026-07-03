@@ -6,6 +6,16 @@
  * @package ksenonspb
  */
 
+if (! function_exists('ksenon_get_cpt_post_types')) {
+	/**
+	 * @return string[]
+	 */
+	function ksenon_get_cpt_post_types()
+	{
+		return array('service', 'portfolio', 'brand', 'promotion');
+	}
+}
+
 add_action(
 	'init',
 	function () {
@@ -67,9 +77,6 @@ add_action(
 				'show_in_rest'        => true,
 			)
 		);
-
-		remove_post_type_support('service', 'comments');
-		remove_post_type_support('service', 'trackbacks');
 
 		register_taxonomy(
 			'service_category',
@@ -236,9 +243,6 @@ add_action(
 			)
 		);
 
-		remove_post_type_support('brand', 'comments');
-		remove_post_type_support('brand', 'trackbacks');
-
 		add_rewrite_rule('marki/([^/]+)/?$', 'index.php?brand=$matches[1]', 'top');
 
 		register_post_type(
@@ -299,7 +303,40 @@ add_action(
 				'show_in_rest'        => true,
 			)
 		);
+
+		foreach (ksenon_get_cpt_post_types() as $cpt_slug) {
+			remove_post_type_support($cpt_slug, 'comments');
+			remove_post_type_support($cpt_slug, 'trackbacks');
+		}
 	}
+);
+
+add_filter(
+	'comments_open',
+	function ($open, $post_id) {
+		$post = get_post($post_id);
+		if ($post instanceof WP_Post && in_array($post->post_type, ksenon_get_cpt_post_types(), true)) {
+			return false;
+		}
+
+		return $open;
+	},
+	10,
+	2
+);
+
+add_filter(
+	'pings_open',
+	function ($open, $post_id) {
+		$post = get_post($post_id);
+		if ($post instanceof WP_Post && in_array($post->post_type, ksenon_get_cpt_post_types(), true)) {
+			return false;
+		}
+
+		return $open;
+	},
+	10,
+	2
 );
 
 if (! function_exists('ksenon_get_deepest_service_category_term')) {
@@ -623,19 +660,4 @@ add_action(
 			)
 		);
 	}
-);
-
-add_action(
-	'init',
-	function () {
-		$version = '20260703-ksenon-cpt-v9';
-
-		if (get_option('ksenon_rewrite_version') === $version) {
-			return;
-		}
-
-		flush_rewrite_rules(false);
-		update_option('ksenon_rewrite_version', $version);
-	},
-	99
 );
