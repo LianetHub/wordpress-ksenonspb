@@ -24,11 +24,12 @@ if (function_exists('ksenon_format_price_from')) {
 	if ('' !== $digits) {
 		$amount = (int) $digits;
 		if ($amount > 0) {
+			$nbsp = "\xc2\xa0";
 			$price = wp_kses(
 				sprintf(
-					'<small>%1$s</small> <span>%2$s</span> %3$s',
+					'<small>%1$s</small> <span>%2$s</span> <small>%3$s</small>',
 					esc_html__('от', 'ksenonspb'),
-					esc_html(number_format($amount, 0, '', ' ')),
+					esc_html(number_format($amount, 0, '', $nbsp)),
 					'₽'
 				),
 				array(

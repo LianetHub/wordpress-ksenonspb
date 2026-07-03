@@ -10,7 +10,11 @@
     "zip": "gulp deployZIP --build",
     "deploy:ftp": "gulp ftpDeployAll",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "parse:sitemap": "node parsing/scripts/01-fetch-sitemap.mjs",
+    "parse:scrape": "node parsing/scripts/02-scrape-pages.mjs",
+    "parse:lists": "node parsing/scripts/03-build-lists.mjs",
+    "parse:all": "npm run parse:sitemap && npm run parse:scrape && npm run parse:lists"
   },
   "author": "Liana",
   "license": "ISC",

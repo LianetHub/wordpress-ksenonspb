@@ -32,6 +32,9 @@ if (! $query->have_posts()) {
 
 $services_count = ksenon_count_cpt('service');
 $title          = (string) ksenon_home_get('title', __('Наши услуги', 'ksenonspb'));
+$title_html     = function_exists('ksenon_title_accent_html')
+	? ksenon_title_accent_html($title)
+	: esc_html($title);
 $more_link      = array(
 	'url'    => ksenon_services_archive_url(),
 	'title'  => sprintf(
@@ -46,7 +49,8 @@ $more_link      = array(
 	<div class="services-teaser__container container">
 		<div class="section-head section-head--row services-teaser__head">
 			<h2 class="section-head__title title-md services-teaser__title">
-				<?php echo ksenon_title_accent_html($title); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+				?>
 			</h2>
 			<?php ksenon_render_btn_arrow($more_link, 'btn btn--arrow services-teaser__more', sprintf(__('Все %d услуги', 'ksenonspb'), $services_count)); ?>
 		</div>

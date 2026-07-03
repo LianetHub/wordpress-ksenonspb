@@ -15,6 +15,8 @@
             "label": "Цена от",
             "name": "price_from",
             "type": "number",
+            "min": 0,
+            "step": 1,
             "placeholder": "5000"
         },
         {
