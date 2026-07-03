@@ -1096,7 +1096,7 @@ if (! function_exists('ksenon_kses_inline')) {
 			(string) $content,
 			array(
 				'span'   => array(
-					'class' => array('color-grey', 'title--brand'),
+					'class' => array('color-grey', 'color-accent', 'title--brand'),
 				),
 				'br'     => array(),
 				'strong' => array(),
@@ -1163,6 +1163,57 @@ if (! function_exists('ksenon_get_messenger_links')) {
 				static function ($link) {
 					return in_array($link['network'], array('telegram', 'whatsapp'), true);
 				}
+			)
+		);
+	}
+}
+
+if (! function_exists('ksenon_title_accent_html')) {
+	function ksenon_title_accent_html($title, $accent_class = 'color-accent')
+	{
+		$title = trim((string) $title);
+		if ('' === $title) {
+			return '';
+		}
+
+		if (false !== strpos($title, '<')) {
+			return nl2br(ksenon_kses_inline($title)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+
+		$parts = preg_split('/\s+/u', $title);
+		if (count($parts) < 2) {
+			return esc_html($title);
+		}
+
+		$accent = array_pop($parts);
+
+		return esc_html(implode(' ', $parts)) . ' <span class="' . esc_attr($accent_class) . '">' . esc_html($accent) . '</span>';
+	}
+}
+
+if (! function_exists('ksenon_format_price_from')) {
+	function ksenon_format_price_from($value)
+	{
+		$digits = preg_replace('/\D/u', '', (string) $value);
+		if ('' === $digits) {
+			return '';
+		}
+
+		$amount = (int) $digits;
+		if ($amount <= 0) {
+			return '';
+		}
+
+		return wp_kses(
+			sprintf(
+				'<small>%1$s</small> <span>%2$s</span> %3$s',
+				esc_html__('от', 'ksenonspb'),
+				esc_html(number_format($amount, 0, '', ' ')),
+				'₽'
+			),
+			array(
+				'small' => array(),
+				'span'  => array(),
 			)
 		);
 	}

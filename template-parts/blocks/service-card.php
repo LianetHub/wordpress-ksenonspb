@@ -13,8 +13,33 @@ if (! $post instanceof WP_Post) {
 	return;
 }
 
-$image   = ksenon_get_post_field('card_image', $post->ID);
-$price   = (string) ksenon_get_post_field('price_from', $post->ID);
+$image     = ksenon_get_post_field('card_image', $post->ID);
+$price_raw = ksenon_get_post_field('price_from', $post->ID);
+$price     = '';
+
+if (function_exists('ksenon_format_price_from')) {
+	$price = ksenon_format_price_from($price_raw);
+} elseif ($price_raw) {
+	$digits = preg_replace('/\D/u', '', (string) $price_raw);
+	if ('' !== $digits) {
+		$amount = (int) $digits;
+		if ($amount > 0) {
+			$price = wp_kses(
+				sprintf(
+					'<small>%1$s</small> <span>%2$s</span> %3$s',
+					esc_html__('от', 'ksenonspb'),
+					esc_html(number_format($amount, 0, '', ' ')),
+					'₽'
+				),
+				array(
+					'small' => array(),
+					'span'  => array(),
+				)
+			);
+		}
+	}
+}
+
 $excerpt = (string) ksenon_get_post_field('card_excerpt', $post->ID);
 
 if (! $image && has_post_thumbnail($post)) {
@@ -39,7 +64,8 @@ if ($image) {
 		<div class="service-card__head">
 			<h3 class="service-card__title"><?php echo esc_html(get_the_title($post)); ?></h3>
 			<?php if ($price) : ?>
-				<div class="service-card__price"><?php echo esc_html($price); ?></div>
+				<div class="service-card__price"><?php echo $price; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+													?></div>
 			<?php endif; ?>
 		</div>
 		<?php if ($excerpt) : ?>

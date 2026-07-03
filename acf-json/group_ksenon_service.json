@@ -14,8 +14,8 @@
             "key": "field_ksenon_service_price_from",
             "label": "Цена от",
             "name": "price_from",
-            "type": "text",
-            "placeholder": "от 5 000 ₽"
+            "type": "number",
+            "placeholder": "5000"
         },
         {
             "key": "field_ksenon_service_card_excerpt",

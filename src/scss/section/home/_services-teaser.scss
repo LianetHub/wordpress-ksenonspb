@@ -1,6 +1,10 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
 
+.color-accent {
+	color: $color-accent;
+}
+
 .services-teaser {
 	padding: rem(40) 0;
 

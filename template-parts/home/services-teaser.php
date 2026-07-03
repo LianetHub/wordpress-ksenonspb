@@ -31,25 +31,24 @@ if (! $query->have_posts()) {
 }
 
 $services_count = ksenon_count_cpt('service');
+$title          = (string) ksenon_home_get('title', __('Наши услуги', 'ksenonspb'));
+$more_link      = array(
+	'url'    => ksenon_services_archive_url(),
+	'title'  => sprintf(
+		/* translators: %d: services count */
+		__('Все %d услуги', 'ksenonspb'),
+		$services_count
+	),
+	'target' => '',
+);
 ?>
 <section class="services-teaser">
 	<div class="services-teaser__container container">
 		<div class="section-head section-head--row services-teaser__head">
 			<h2 class="section-head__title title-md services-teaser__title">
-				<?php echo esc_html((string) ksenon_home_get('title', __('Наши услуги', 'ksenonspb'))); ?>
+				<?php echo ksenon_title_accent_html($title); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</h2>
-			<a class="section-head__more services-teaser__more" href="<?php echo esc_url(ksenon_services_archive_url()); ?>">
-				<span class="section-head__more-text">
-					<?php
-					printf(
-						/* translators: %d: services count */
-						esc_html__('Все %d услуги', 'ksenonspb'),
-						$services_count
-					);
-					?>
-				</span>
-				<?php ksenon_render_home_arrow(); ?>
-			</a>
+			<?php ksenon_render_btn_arrow($more_link, 'btn btn--arrow services-teaser__more', sprintf(__('Все %d услуги', 'ksenonspb'), $services_count)); ?>
 		</div>
 		<div class="services-teaser__grid">
 			<?php
