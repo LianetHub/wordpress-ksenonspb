@@ -6,30 +6,41 @@
  * @package ksenonspb
  */
 
-$categories  = ksenon_get_service_categories();
-$active_slug = ksenon_get_current_service_category_slug();
-$paged       = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
-$query_args  = array(
+$archive_term = isset($args['term']) && $args['term'] instanceof WP_Term ? $args['term'] : null;
+
+$categories       = ksenon_get_service_categories();
+$active_slug      = $archive_term ? $archive_term->slug : ksenon_get_current_service_category_slug();
+$active_top_slug  = $archive_term ? ksenon_get_active_top_level_service_category_slug() : $active_slug;
+$subcategories    = $active_top_slug ? ksenon_get_service_subcategories($active_top_slug) : array();
+$paged            = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
+$query_args       = array(
 	'posts_per_page' => 9,
 	'paged'          => $paged,
 	'no_found_rows'  => false,
 );
 
-if ($active_slug) {
+if ($archive_term) {
+	$include_children = (bool) get_term_children((int) $archive_term->term_id, 'service_category');
 	$query_args['tax_query'] = array(
 		array(
-			'taxonomy' => 'service_category',
-			'field'    => 'slug',
-			'terms'    => $active_slug,
+			'taxonomy'         => 'service_category',
+			'field'            => 'term_id',
+			'terms'            => array((int) $archive_term->term_id),
+			'include_children' => $include_children,
 		),
 	);
 }
 
 $query = ksenon_query_services($query_args);
+
+$page_title = __('Наши услуги', 'ksenonspb');
+if ($archive_term instanceof WP_Term) {
+	$page_title = $archive_term->name;
+}
 ?>
 <section class="services-archive">
 	<div class="services-archive__container container">
-		<h1 class="services-archive__title title-lg"><?php echo esc_html(get_the_title() ?: __('Наши услуги', 'ksenonspb')); ?></h1>
+		<h1 class="services-archive__title title-lg"><?php echo esc_html($page_title); ?></h1>
 
 		<?php if ($categories) : ?>
 			<nav class="services-archive__filters blog-tabs" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
@@ -41,13 +52,33 @@ $query = ksenon_query_services($query_args);
 				</a>
 				<?php foreach ($categories as $category) : ?>
 					<?php
-					$is_active = $active_slug === $category->slug;
+					$is_active = $active_top_slug === $category->slug;
 					?>
 					<a
 						class="blog-tabs__btn<?php echo $is_active ? ' _active' : ''; ?>"
 						href="<?php echo esc_url(ksenon_services_archive_url($category->slug)); ?>"
 						<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
 						<?php echo esc_html($category->name); ?>
+					</a>
+				<?php endforeach; ?>
+			</nav>
+		<?php endif; ?>
+
+		<?php if ($subcategories) : ?>
+			<nav class="services-archive__subfilters blog-tabs" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
+				<a
+					class="blog-tabs__btn<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
+					href="<?php echo esc_url(ksenon_services_archive_url($active_top_slug)); ?>"
+					<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
+					<?php esc_html_e('Все', 'ksenonspb'); ?>
+				</a>
+				<?php foreach ($subcategories as $subcategory) : ?>
+					<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
+					<a
+						class="blog-tabs__btn<?php echo $is_sub_active ? ' _active' : ''; ?>"
+						href="<?php echo esc_url(ksenon_services_archive_url($subcategory->slug)); ?>"
+						<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
+						<?php echo esc_html($subcategory->name); ?>
 					</a>
 				<?php endforeach; ?>
 			</nav>

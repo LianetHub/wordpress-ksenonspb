@@ -7,6 +7,7 @@ import { DATA_DIR } from './utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SOURCE_JSON = path.join(DATA_DIR, 'services-import.json');
+const OUTPUT_JSON = SOURCE_JSON;
 const OUTPUT_XLSX = path.join(DATA_DIR, 'services-import.xlsx');
 const OUTPUT_CSV = path.join(DATA_DIR, 'services-import.csv');
 
@@ -14,7 +15,16 @@ const BRAND = 'КБ АВТО';
 const CITY = 'СПб';
 const CITY_LONG = 'Санкт-Петербург';
 
-const BASE_HEADERS = ['title', 'price', 'desc', 'benefits', 'category'];
+const BASE_HEADERS = [
+	'title',
+	'slug',
+	'category_slug',
+	'parent_category_slug',
+	'price',
+	'desc',
+	'benefits',
+	'category',
+];
 
 const SEO_HEADERS = [
 	'Focus Keyword',
@@ -26,15 +36,6 @@ const SEO_HEADERS = [
 ];
 
 const HEADERS = [...BASE_HEADERS, ...SEO_HEADERS];
-
-const ALLOWED_CATEGORIES = [
-	'Ремонт',
-	'Тюнинг',
-	'Сложная электроника',
-	'Сопутствующие услуги',
-	'Покупка фар',
-	'Другое',
-];
 
 function escapeCsvCell(value) {
 	const text = String(value ?? '');
@@ -120,11 +121,29 @@ function buildSeoFields(item) {
 	};
 }
 
+function enrichService(service) {
+	const seo = buildSeoFields(service);
+
+	return {
+		...service,
+		focus_keyword: readSeoOverride(service, 'focus_keyword', 'Focus Keyword') || seo['Focus Keyword'],
+		seo_title: readSeoOverride(service, 'seo_title', 'SEO Title') || seo['SEO Title'],
+		meta_description:
+			readSeoOverride(service, 'meta_description', 'Meta Description') || seo['Meta Description'],
+		meta_keywords: readSeoOverride(service, 'meta_keywords', 'Meta Keywords') || seo['Meta Keywords'],
+		facebook_title: readSeoOverride(service, 'facebook_title', 'Facebook Title') || seo['Facebook Title'],
+		twitter_title: readSeoOverride(service, 'twitter_title', 'Twitter Title') || seo['Twitter Title'],
+	};
+}
+
 function serviceToRow(item) {
 	const seo = buildSeoFields(item);
 
 	return [
 		item.title ?? '',
+		item.slug ?? '',
+		item.category_slug ?? '',
+		item.parent_category_slug ?? '',
 		item.price ?? '',
 		item.desc ?? '',
 		item.benefits ?? '',
@@ -138,26 +157,48 @@ function serviceToRow(item) {
 	];
 }
 
+function buildServiceUrl(service) {
+	const segments = [];
+	if (service.parent_category_slug) {
+		segments.push(service.parent_category_slug);
+	}
+	if (service.category_slug) {
+		segments.push(service.category_slug);
+	}
+	if (service.slug) {
+		segments.push(service.slug);
+	}
+	return `/${segments.join('/')}/`;
+}
+
 async function main() {
-	const raw = await readFile(SOURCE_JSON, 'utf8');
-	const data = JSON.parse(raw);
-	const services = data.services ?? [];
+	const sourceRaw = await readFile(SOURCE_JSON, 'utf8');
+	const source = JSON.parse(sourceRaw);
+	const services = (source.services ?? []).map((service) => enrichService(service));
 
-	if (services.length !== 42) {
-		throw new Error(`Expected 42 services, got ${services.length}`);
+	if (!services.length) {
+		throw new Error('No services found in services-import.json');
 	}
 
-	const categoryStats = Object.fromEntries(ALLOWED_CATEGORIES.map((name) => [name, 0]));
-
+	const slugs = new Set();
 	for (const service of services) {
-		const category = String(service.category ?? '').trim();
-		if (!ALLOWED_CATEGORIES.includes(category)) {
-			throw new Error(
-				`Invalid category "${category}" for service "${service.title}". Allowed: ${ALLOWED_CATEGORIES.join(', ')}`,
-			);
+		const slug = String(service.slug ?? '');
+		if (!slug) {
+			throw new Error(`Missing slug for service "${service.title}"`);
 		}
-		categoryStats[category] += 1;
+		if (slugs.has(slug)) {
+			throw new Error(`Duplicate slug "${slug}" for service "${service.title}"`);
+		}
+		slugs.add(slug);
 	}
+
+	const importJson = {
+		generated_for: 'WP All Import — CPT service',
+		columns: HEADERS,
+		services,
+	};
+
+	await writeFile(OUTPUT_JSON, `${JSON.stringify(importJson, null, 2)}\n`, 'utf8');
 
 	const rows = [HEADERS, ...services.map(serviceToRow)];
 
@@ -170,11 +211,16 @@ async function main() {
 	const csvContent = `\uFEFF${csvLines.join('\r\n')}`;
 	await writeFile(OUTPUT_CSV, csvContent, 'utf8');
 
+	console.log(`Source: ${SOURCE_JSON}`);
+	console.log(`Generated ${OUTPUT_JSON}`);
 	console.log(`Generated ${OUTPUT_XLSX}`);
 	console.log(`Generated ${OUTPUT_CSV}`);
 	console.log(`Columns: ${HEADERS.join(', ')}`);
 	console.log(`Rows: ${services.length} services + 1 header`);
-	console.log('Categories:', categoryStats);
+	console.log('Sample URLs:');
+	for (const service of services.slice(0, 3)) {
+		console.log(`  ${buildServiceUrl(service)}`);
+	}
 }
 
 main().catch((error) => {

@@ -177,6 +177,45 @@ if (! function_exists('ksenon_get_current_request_path')) {
 	}
 }
 
+if (! function_exists('ksenon_service_matches_menu_root')) {
+	function ksenon_service_matches_menu_root($root_slug)
+	{
+		$root_slug = sanitize_title((string) $root_slug);
+		if (! $root_slug) {
+			return false;
+		}
+
+		if (is_tax('service_category')) {
+			$term = get_queried_object();
+			if (! $term instanceof WP_Term) {
+				return false;
+			}
+
+			if ($term->slug === $root_slug) {
+				return true;
+			}
+
+			return ksenon_get_service_category_top_parent_slug($term) === $root_slug;
+		}
+
+		if (is_singular('service')) {
+			$post = get_queried_object();
+			if (! $post instanceof WP_Post) {
+				return false;
+			}
+
+			$term = ksenon_get_deepest_service_category_term((int) $post->ID);
+			if (! $term) {
+				return false;
+			}
+
+			return ksenon_get_service_category_top_parent_slug($term) === $root_slug;
+		}
+
+		return false;
+	}
+}
+
 if (! function_exists('ksenon_menu_section_is_active')) {
 	function ksenon_menu_section_is_active($menu_path)
 	{
@@ -187,7 +226,13 @@ if (! function_exists('ksenon_menu_section_is_active')) {
 			case '':
 				return is_front_page();
 			case 'uslugi':
-				return is_post_type_archive('service') || is_singular('service');
+				return is_post_type_archive('service') || is_page_template('page-uslugi.php');
+			case 'tyuning-far':
+			case 'remont-far':
+			case 'regulirovka-diagnostika':
+			case 'ptf':
+			case 'dop-uslugi':
+				return ksenon_service_matches_menu_root($root);
 			case 'portfolio':
 				return is_post_type_archive('portfolio') || is_singular('portfolio');
 			case 'marki':
@@ -483,49 +528,121 @@ if (! function_exists('ksenon_get_related_portfolio')) {
 
 if (! function_exists('ksenon_get_service_categories')) {
 	/**
-	 * Returns service category terms in predefined order.
+	 * Top-level service_category terms from WordPress.
 	 *
 	 * @return WP_Term[]
 	 */
 	function ksenon_get_service_categories()
 	{
-		$terms = array();
+		$terms = get_terms(
+			array(
+				'taxonomy'   => 'service_category',
+				'parent'     => 0,
+				'hide_empty' => false,
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+			)
+		);
 
-		foreach (array_keys(ksenon_get_service_category_definitions()) as $slug) {
-			$term = get_term_by('slug', $slug, 'service_category');
-			if ($term instanceof WP_Term) {
-				$terms[] = $term;
-			}
+		if (is_wp_error($terms) || ! is_array($terms)) {
+			return array();
 		}
 
-		return $terms;
+		return array_values(
+			array_filter($terms, static fn($term) => $term instanceof WP_Term)
+		);
+	}
+}
+
+if (! function_exists('ksenon_get_service_subcategories')) {
+	/**
+	 * @return WP_Term[]
+	 */
+	function ksenon_get_service_subcategories($parent_slug)
+	{
+		$parent = get_term_by('slug', sanitize_title((string) $parent_slug), 'service_category');
+		if (! $parent instanceof WP_Term) {
+			return array();
+		}
+
+		$terms = get_terms(
+			array(
+				'taxonomy'   => 'service_category',
+				'parent'     => (int) $parent->term_id,
+				'hide_empty' => false,
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+			)
+		);
+
+		if (is_wp_error($terms) || ! is_array($terms)) {
+			return array();
+		}
+
+		return array_values(
+			array_filter($terms, static fn($term) => $term instanceof WP_Term)
+		);
+	}
+}
+
+if (! function_exists('ksenon_service_category_url')) {
+	function ksenon_service_category_url($category_slug)
+	{
+		$category_slug = sanitize_title((string) $category_slug);
+		if (! $category_slug) {
+			return '';
+		}
+
+		$term = get_term_by('slug', $category_slug, 'service_category');
+		if (! $term instanceof WP_Term) {
+			return '';
+		}
+
+		$link = get_term_link($term);
+
+		return is_wp_error($link) ? '' : $link;
 	}
 }
 
 if (! function_exists('ksenon_get_current_service_category_slug')) {
 	function ksenon_get_current_service_category_slug()
 	{
-		$slug = isset($_GET['kategoria']) ? sanitize_title(wp_unslash($_GET['kategoria'])) : '';
-
-		if (! $slug || ! array_key_exists($slug, ksenon_get_service_category_definitions())) {
+		if (! is_tax('service_category')) {
 			return '';
 		}
 
-		return $slug;
+		$term = get_queried_object();
+
+		return $term instanceof WP_Term ? $term->slug : '';
+	}
+}
+
+if (! function_exists('ksenon_get_active_top_level_service_category_slug')) {
+	function ksenon_get_active_top_level_service_category_slug()
+	{
+		if (! is_tax('service_category')) {
+			return '';
+		}
+
+		$term = get_queried_object();
+		if (! $term instanceof WP_Term) {
+			return '';
+		}
+
+		return ksenon_get_service_category_top_parent_slug($term);
 	}
 }
 
 if (! function_exists('ksenon_services_archive_url')) {
 	function ksenon_services_archive_url($category_slug = '')
 	{
-		$url = get_post_type_archive_link('service');
-		$url = $url ?: home_url('/uslugi/');
-
 		if ($category_slug) {
-			$url = add_query_arg('kategoria', sanitize_title($category_slug), $url);
+			return ksenon_service_category_url($category_slug);
 		}
 
-		return $url;
+		$url = get_post_type_archive_link('service');
+
+		return $url ?: home_url('/uslugi/');
 	}
 }
 
@@ -639,7 +756,7 @@ if (! function_exists('ksenon_render_pagination')) {
 		$items   = ksenon_get_pagination_items($current, $total);
 		$prev_url = $current > 1 ? ksenon_services_pagination_url($current - 1, $category_slug) : '';
 		$next_url = $current < $total ? ksenon_services_pagination_url($current + 1, $category_slug) : '';
-	?>
+?>
 		<nav class="services-pagination" aria-label="<?php esc_attr_e('Навигация по страницам', 'ksenonspb'); ?>">
 			<div class="services-pagination__inner">
 				<?php if ($prev_url) : ?>
@@ -787,7 +904,7 @@ if (! function_exists('ksenon_get_main_class')) {
 		if (is_singular('service')) {
 			return 'main--service';
 		}
-		if (is_post_type_archive('service') || is_page_template('page-uslugi.php')) {
+		if (is_post_type_archive('service') || is_page_template('page-uslugi.php') || is_tax('service_category')) {
 			return 'main--services';
 		}
 		if (is_singular('portfolio')) {
@@ -1015,7 +1132,7 @@ if (! function_exists('ksenon_render_footer_socials')) {
 		if (! $links) {
 			return;
 		}
-?>
+	?>
 		<ul class="footer__socials">
 			<?php foreach ($links as $link) : ?>
 				<li class="footer__socials-item">
@@ -1148,43 +1265,34 @@ if (! function_exists('ksenon_get_header_social_icon')) {
 if (! function_exists('ksenon_get_footer_static_menus')) {
 	function ksenon_get_footer_static_menus()
 	{
+		$service_items = array();
+		$featured = array(
+			'ustanovka-biled',
+			'remont-posle-povrezhdeniy',
+			'polirovka-shlifovka',
+			'angelskie-dyavolskie-glazki',
+			'remont-drayverov',
+			'ustanovka-ksenona',
+			'remont-afs',
+			'regulirovka-sveta',
+		);
+
+		foreach ($featured as $slug) {
+			$post = get_page_by_path($slug, OBJECT, 'service');
+			if (! $post instanceof WP_Post) {
+				continue;
+			}
+
+			$service_items[] = array(
+				'label' => get_the_title($post),
+				'url'   => get_permalink($post),
+			);
+		}
+
 		return array(
 			'services' => array(
 				'title' => __('Услуги', 'ksenonspb'),
-				'items' => array(
-					array(
-						'label' => __('Ретрофит Bi-LED', 'ksenonspb'),
-						'url'   => home_url('/uslugi/retrofit-bi-led/'),
-					),
-					array(
-						'label' => __('Ремонт оптики после ДТП', 'ksenonspb'),
-						'url'   => home_url('/uslugi/remont-optiki-posle-dtp/'),
-					),
-					array(
-						'label' => __('Полировка стекол фар', 'ksenonspb'),
-						'url'   => home_url('/uslugi/polirovka-stekol-far/'),
-					),
-					array(
-						'label' => __('Тюнинг — ангельские глазки', 'ksenonspb'),
-						'url'   => home_url('/uslugi/tyuning-angel-skie-glazki/'),
-					),
-					array(
-						'label' => __('Ремонт LED-драйверов', 'ksenonspb'),
-						'url'   => home_url('/uslugi/remont-led-draiverov/'),
-					),
-					array(
-						'label' => __('Замена ксеновых ламп', 'ksenonspb'),
-						'url'   => home_url('/uslugi/zamena-ksenovyh-lamp/'),
-					),
-					array(
-						'label' => __('Восстановление AFS', 'ksenonspb'),
-						'url'   => home_url('/uslugi/vosstanovlenie-afs/'),
-					),
-					array(
-						'label' => __('Регулировка цвета', 'ksenonspb'),
-						'url'   => home_url('/uslugi/regulirovka-cveta/'),
-					),
-				),
+				'items' => $service_items,
 			),
 			'info'     => array(
 				'title' => __('Информация', 'ksenonspb'),

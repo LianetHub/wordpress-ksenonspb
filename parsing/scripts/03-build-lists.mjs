@@ -1,5 +1,6 @@
 import { access } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
 	BASE_URL,
 	DATA_DIR,
@@ -12,16 +13,36 @@ import {
 	writeJson,
 } from './utils.mjs';
 
-const SERVICE_SLUGS = [
-	{ slug: 'retrofit-bi-led', title: 'Ретрофит Bi-LED', old_paths: [] },
-	{ slug: 'remont-optiki-posle-dtp', title: 'Ремонт оптики после ДТП', old_paths: [] },
-	{ slug: 'polirovka-stekol-far', title: 'Полировка стекол фар', old_paths: [] },
-	{ slug: 'tyuning-angel-skie-glazki', title: 'Тюнинг — ангельские глазки', old_paths: [] },
-	{ slug: 'remont-led-draiverov', title: 'Ремонт LED-драйверов', old_paths: [] },
-	{ slug: 'zamena-ksenovyh-lamp', title: 'Замена ксеновых ламп', old_paths: [] },
-	{ slug: 'vosstanovlenie-afs', title: 'Восстановление AFS', old_paths: [] },
-	{ slug: 'regulirovka-cveta', title: 'Регулировка цвета', old_paths: [] },
-];
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SERVICES_IMPORT_PATH = path.join(DATA_DIR, 'services-import.json');
+
+function buildServiceUrl(service) {
+	const segments = [];
+	if (service.parent_category_slug) {
+		segments.push(service.parent_category_slug);
+	}
+	if (service.category_slug) {
+		segments.push(service.category_slug);
+	}
+	if (service.slug) {
+		segments.push(service.slug);
+	}
+	return `/${segments.join('/')}/`;
+}
+
+function buildServicePages(importData) {
+	return (importData.services ?? []).map((service) => ({
+		id: `service_${service.slug}`,
+		title: service.title,
+		url: buildServiceUrl(service),
+		content_type: 'service',
+		template: 'single-service.php',
+		acf_group: 'group_ksenon_service.json',
+		slug: service.slug,
+		category_slug: service.category_slug,
+		parent_category_slug: service.parent_category_slug ?? '',
+	}));
+}
 
 const INFO_PAGES = [
 	{ slug: 'o-kompanii', title: 'О компании', template: 'page-o-kompanii.php', old_paths: ['/about-us/'] },
@@ -162,12 +183,13 @@ async function buildOldPages(entries, progress) {
 	};
 }
 
-function buildNewPages(entries) {
+function buildNewPages(entries, importData) {
 	const posts = entries.filter((e) => e.type === 'post' && !e.is_demo);
 	const brands = entries.filter((e) => e.type === 'category' && e.path.includes('/category/portfolio/'));
 	const tags = entries.filter((e) => e.type === 'tag');
 	const products = entries.filter((e) => e.type === 'product');
 	const demoPages = entries.filter((e) => e.is_demo);
+	const servicePages = buildServicePages(importData);
 
 	const pages = [
 		{
@@ -197,17 +219,7 @@ function buildNewPages(entries) {
 			migrate: true,
 			status: 'implemented',
 		},
-		...SERVICE_SLUGS.map((s) => ({
-			id: `service_${s.slug}`,
-			title: s.title,
-			url: `/uslugi/${s.slug}/`,
-			content_type: 'service',
-			template: 'single-service.php',
-			acf_group: 'group_ksenon_service.json',
-			source_urls: s.old_paths.map((p) => `${BASE_URL}${p}`),
-			migrate: true,
-			status: 'implemented',
-		})),
+		...servicePages,
 		{
 			id: 'portfolio_archive',
 			title: 'Наши работы',
@@ -356,13 +368,14 @@ async function main() {
 	}
 
 	const progress = await readJson(path.join(LOGS_DIR, 'scrape-progress.json'), { completed: {} });
+	const importData = await readJson(SERVICES_IMPORT_PATH);
 
 	console.log('Building old-pages.json...');
 	const oldPages = await buildOldPages(raw.entries, progress);
 	await writeJson(path.join(DATA_DIR, 'old-pages.json'), oldPages);
 
 	console.log('Building new-pages.json...');
-	const newPages = buildNewPages(raw.entries);
+	const newPages = buildNewPages(raw.entries, importData);
 	await writeJson(path.join(DATA_DIR, 'new-pages.json'), newPages);
 
 	console.log('Building url-mapping.json...');

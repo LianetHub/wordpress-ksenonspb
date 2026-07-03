@@ -61,7 +61,7 @@ add_action(
 				'supports'            => array('title', 'editor', 'thumbnail', 'excerpt'),
 				'has_archive'         => 'uslugi',
 				'rewrite'             => array(
-					'slug'       => 'uslugi',
+					'slug'       => '%service_category%',
 					'with_front' => false,
 				),
 				'show_in_rest'        => true,
@@ -101,19 +101,21 @@ add_action(
 					'item_link'                  => 'Ссылка на категорию',
 					'item_link_description'      => 'Ссылка на отдельную категорию',
 				),
-				'public'            => true,
-				'publicly_queryable' => false,
-				'show_ui'           => true,
-				'show_admin_column' => true,
-				'show_in_nav_menus' => false,
-				'show_in_rest'      => true,
-				'hierarchical'      => true,
-				'rewrite'           => false,
-				'query_var'         => false,
+				'public'             => true,
+				'publicly_queryable' => true,
+				'show_ui'            => true,
+				'show_admin_column'  => true,
+				'show_in_nav_menus'  => true,
+				'show_in_rest'       => true,
+				'hierarchical'       => true,
+				'rewrite'            => array(
+					'slug'         => '.',
+					'with_front'   => false,
+					'hierarchical' => true,
+				),
+				'query_var'          => 'service_category',
 			)
 		);
-
-		ksenon_seed_service_categories();
 
 		register_post_type(
 			'portfolio',
@@ -294,87 +296,149 @@ add_action(
 	}
 );
 
-if (! function_exists('ksenon_get_service_category_definitions')) {
+if (! function_exists('ksenon_get_deepest_service_category_term')) {
 	/**
-	 * Fixed service categories (slug => name).
-	 *
-	 * @return array<string, string>
+	 * @param int $post_id
+	 * @return WP_Term|null
 	 */
-	function ksenon_get_service_category_definitions()
+	function ksenon_get_deepest_service_category_term($post_id)
 	{
-		return array(
-			'remont'                  => 'Ремонт',
-			'tyuning'                 => 'Тюнинг',
-			'slozhnaya-elektronika'   => 'Сложная электроника',
-			'soputstvuyushchie-uslugi' => 'Сопутствующие услуги',
-			'pokupka-far'             => 'Покупка фар',
-			'drugoe'                  => 'Другое',
-		);
-	}
-}
+		$terms = get_the_terms((int) $post_id, 'service_category');
+		if (! $terms || is_wp_error($terms)) {
+			return null;
+		}
 
-if (! function_exists('ksenon_seed_service_categories')) {
-	function ksenon_seed_service_categories()
-	{
-		foreach (ksenon_get_service_category_definitions() as $slug => $name) {
-			if (term_exists($slug, 'service_category')) {
+		$deepest   = null;
+		$max_depth = -1;
+
+		foreach ($terms as $term) {
+			if (! $term instanceof WP_Term) {
 				continue;
 			}
 
-			wp_insert_term(
-				$name,
-				'service_category',
-				array(
-					'slug' => $slug,
-				)
-			);
+			$depth  = 0;
+			$parent = (int) $term->parent;
+			while ($parent) {
+				$depth++;
+				$parent_term = get_term($parent, 'service_category');
+				$parent      = ($parent_term instanceof WP_Term && ! is_wp_error($parent_term))
+					? (int) $parent_term->parent
+					: 0;
+			}
+
+			if ($depth > $max_depth) {
+				$max_depth = $depth;
+				$deepest   = $term;
+			}
 		}
+
+		return $deepest;
+	}
+}
+
+if (! function_exists('ksenon_get_service_category_path')) {
+	/**
+	 * @return string Category path without leading/trailing slashes.
+	 */
+	function ksenon_get_service_category_path(WP_Term $term)
+	{
+		$segments  = array();
+		$ancestors = array_reverse(get_ancestors((int) $term->term_id, 'service_category', 'taxonomy'));
+
+		foreach ($ancestors as $ancestor_id) {
+			$ancestor = get_term((int) $ancestor_id, 'service_category');
+			if ($ancestor instanceof WP_Term && ! is_wp_error($ancestor)) {
+				$segments[] = $ancestor->slug;
+			}
+		}
+
+		$segments[] = $term->slug;
+
+		return implode('/', $segments);
+	}
+}
+
+if (! function_exists('ksenon_get_service_category_top_parent_slug')) {
+	/**
+	 * Root category slug for a hierarchical service_category term.
+	 */
+	function ksenon_get_service_category_top_parent_slug(WP_Term $term)
+	{
+		while ($term->parent) {
+			$parent = get_term((int) $term->parent, 'service_category');
+			if (! $parent instanceof WP_Term || is_wp_error($parent)) {
+				break;
+			}
+			$term = $parent;
+		}
+
+		return $term->slug;
 	}
 }
 
 add_filter(
-	'pre_insert_term',
-	function ($term, $taxonomy, $args = array()) {
-		if ('service_category' !== $taxonomy) {
-			return $term;
+	'post_type_link',
+	function ($permalink, $post) {
+		if (! $post instanceof WP_Post || 'service' !== $post->post_type) {
+			return $permalink;
 		}
 
-		$slug = '';
-		if (! empty($args['slug'])) {
-			$slug = sanitize_title((string) $args['slug']);
-		} elseif (is_string($term)) {
-			$slug = sanitize_title($term);
+		$term = ksenon_get_deepest_service_category_term((int) $post->ID);
+		if (! $term) {
+			return $permalink;
 		}
 
-		$allowed_slugs = array_keys(ksenon_get_service_category_definitions());
-		if ($slug && in_array($slug, $allowed_slugs, true) && ! term_exists($slug, 'service_category')) {
-			return $term;
+		$path = ksenon_get_service_category_path($term);
+		if (! $path || ! $post->post_name) {
+			return $permalink;
 		}
 
-		return new WP_Error(
-			'ksenon_service_category_locked',
-			__('Категории услуг фиксированы. Новые категории добавляются только через код темы.', 'ksenonspb')
-		);
+		return home_url(user_trailingslashit($path . '/' . $post->post_name));
 	},
 	10,
-	3
+	2
 );
 
 add_action(
-	'admin_head-edit-tags.php',
-	function () {
-		if ('service_category' !== get_current_screen()?->taxonomy) {
+	'pre_get_posts',
+	function ($query) {
+		if (is_admin() || ! $query->is_main_query() || ! $query->is_tax('service_category')) {
 			return;
 		}
 
-		echo '<style>.taxonomy-service_category .page-title-action { display: none; }</style>';
+		$term = get_queried_object();
+		if (! $term instanceof WP_Term) {
+			return;
+		}
+
+		$children = get_terms(
+			array(
+				'taxonomy'   => 'service_category',
+				'parent'     => (int) $term->term_id,
+				'hide_empty' => false,
+				'fields'     => 'ids',
+			)
+		);
+
+		$query->set('post_type', 'service');
+		$query->set(
+			'tax_query',
+			array(
+				array(
+					'taxonomy'         => 'service_category',
+					'field'            => 'term_id',
+					'terms'            => array((int) $term->term_id),
+					'include_children' => ! is_wp_error($children) && ! empty($children),
+				),
+			)
+		);
 	}
 );
 
 add_action(
 	'init',
 	function () {
-		$version = '20260703-ksenon-cpt-v2';
+		$version = '20260703-ksenon-cpt-v5';
 
 		if (get_option('ksenon_rewrite_version') === $version) {
 			return;

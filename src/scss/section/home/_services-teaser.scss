@@ -135,28 +135,10 @@
 	&__link {
 		width: 100%;
 		margin-top: auto;
-		background: $color-surface;
-		color: $color-black;
-		box-shadow: 0 rem(6) rem(3) rgba(240, 240, 240, 0.13);
-
-		.btn__text {
-			color: $color-black;
-		}
 
 		.btn__arrow {
 			background: $color-accent;
 			color: $color-white;
-		}
-
-		@media (any-hover: hover) {
-			&:hover:not(:disabled):not([aria-disabled="true"]) {
-				background: $color-surface;
-				box-shadow: 0 rem(8) rem(24) rgba($color-black, 0.08);
-			}
-		}
-
-		&:active:not(:disabled):not([aria-disabled="true"]) {
-			box-shadow: 0 rem(6) rem(3) rgba(240, 240, 240, 0.13);
 		}
 	}
 
