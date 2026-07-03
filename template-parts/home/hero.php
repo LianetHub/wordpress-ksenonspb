@@ -43,7 +43,7 @@ if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'
 								<?php endif; ?>
 								<?php if (is_array($slide_btn) && ! empty($slide_btn['url'])) : ?>
 									<a
-										class="hero__promo-btn btn btn--accent"
+										class="hero__promo-btn btn btn--primary"
 										href="<?php echo esc_url(ksenon_acf_link_url($slide_btn)); ?>"
 										<?php echo ksenon_acf_link_target($slide_btn) ? ' target="' . esc_attr(ksenon_acf_link_target($slide_btn)) . '"' : ''; ?>>
 										<?php echo esc_html(ksenon_acf_link_title($slide_btn, __('Подробнее', 'ksenonspb'))); ?>
@@ -80,7 +80,7 @@ if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'
 			<?php endif; ?>
 			<div class="hero__actions">
 				<?php if (is_array($btn) && ! empty($btn['url'])) : ?>
-					<?php ksenon_render_btn_arrow($btn, 'btn btn--arrow btn--accent hero__btn', __('Оценить ремонт', 'ksenonspb')); ?>
+					<?php ksenon_render_btn_arrow($btn, 'btn btn--primary btn--small hero__btn', __('Оценить ремонт', 'ksenonspb')); ?>
 				<?php endif; ?>
 				<?php if (is_array($btn_secondary) && ! empty($btn_secondary['url'])) : ?>
 					<a class="hero__btn-secondary btn btn--white "

@@ -55,7 +55,7 @@ if ( ! $after && has_post_thumbnail( $post ) ) {
 			<?php if ( $price ) : ?>
 				<div class="portfolio-card__price"><?php echo esc_html( $price ); ?></div>
 			<?php endif; ?>
-			<a class="portfolio-card__link btn btn--arrow btn--arrow-card" href="<?php echo esc_url( get_permalink( $post ) ); ?>">
+			<a class="portfolio-card__link btn" href="<?php echo esc_url( get_permalink( $post ) ); ?>">
 				<span class="btn__text"><?php esc_html_e( 'Подробнее', 'ksenonspb' ); ?></span>
 				<?php ksenon_btn_arrow_icon(); ?>
 			</a>

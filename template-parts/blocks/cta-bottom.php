@@ -47,7 +47,7 @@ if (! is_array($btn_secondary) || empty($btn_secondary['url'])) {
 			<p class="cta-bottom__text"><?php echo nl2br(esc_html($args['text'])); ?></p>
 		<?php endif; ?>
 		<div class="cta-bottom__actions">
-			<?php ksenon_render_btn_arrow($btn_primary, 'btn btn--arrow btn--large btn--arrow-inverse cta-bottom__btn', __('Оценить ремонт', 'ksenonspb')); ?>
+			<?php ksenon_render_btn_arrow($btn_primary, 'btn btn--primary-inverse btn--large cta-bottom__btn', __('Оценить ремонт', 'ksenonspb')); ?>
 			<a
 				class="btn btn--white-outline btn--large cta-bottom__btn-secondary"
 				href="<?php echo esc_url(ksenon_acf_link_url($btn_secondary)); ?>"

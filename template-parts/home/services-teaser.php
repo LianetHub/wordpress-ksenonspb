@@ -49,7 +49,7 @@ $more_link      = array(
 				<?php echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 				?>
 			</h2>
-			<?php ksenon_render_btn_arrow($more_link, 'btn btn--accent btn--arrow services-teaser__more', $more_label); ?>
+			<?php ksenon_render_btn_arrow($more_link, 'btn btn--primary btn--large services-teaser__more', $more_label); ?>
 		</div>
 		<div class="services-teaser__slider">
 			<div class="swiper">
