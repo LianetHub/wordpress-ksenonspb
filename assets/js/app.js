@@ -255,7 +255,6 @@ function initAccordion() {
 function initHome() {
 	initAudiencePills();
 	initHomePanels();
-	initWhyUsPanels();
 	initHomeSwipers();
 	initReviewsTabs();
 }
@@ -305,49 +304,6 @@ function initHomePanels() {
 					item.classList.add("_active");
 					head.setAttribute("aria-expanded", "true");
 				}
-			});
-		});
-	});
-}
-
-function initWhyUsPanels() {
-	document.querySelectorAll(".why-us__panels").forEach((wrap) => {
-		const items = wrap.querySelectorAll(".why-us__card");
-		const detail = wrap.querySelector(".why-us__detail");
-		if (!items.length || !detail) return;
-
-		const detailStep = detail.querySelector(".why-us__detail-step");
-		const detailTitle = detail.querySelector(".why-us__detail-title");
-		const detailText = detail.querySelector(".why-us__detail-text");
-
-		const updateDetail = (item) => {
-			const step = item.querySelector(".why-us__card-step");
-			const title = item.querySelector(".why-us__card-title");
-			const text = item.querySelector(".why-us__card-text");
-
-			if (detailStep) {
-				detailStep.textContent = step?.textContent?.trim() || "";
-				detailStep.hidden = !detailStep.textContent;
-			}
-			if (detailTitle) {
-				detailTitle.textContent = title?.textContent?.trim() || "";
-				detailTitle.hidden = !detailTitle.textContent;
-			}
-			if (detailText) {
-				detailText.innerHTML = text?.innerHTML?.trim() || "";
-				detailText.hidden = !detailText.textContent?.trim();
-			}
-		};
-
-		items.forEach((item) => {
-			const head = item.querySelector(".why-us__card-heading");
-			if (!head) return;
-
-			head.addEventListener("click", () => {
-				items.forEach((other) => other.classList.remove("_active"));
-				item.classList.add("_active");
-				head.setAttribute("aria-expanded", "true");
-				updateDetail(item);
 			});
 		});
 	});

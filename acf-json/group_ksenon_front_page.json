@@ -188,45 +188,115 @@
                             "label": "Заголовок",
                             "name": "title",
                             "type": "text",
-                            "default_value": "Почему мы?"
+                            "default_value": "Почему <span class=\"color-accent\">мы?</span>",
+                            "instructions": "Для акцента на части фразы используйте HTML: <span class=\"color-accent\">текст</span>"
                         },
                         {
-                            "key": "field_ksenon_wu_items",
-                            "label": "Пункты",
-                            "name": "items",
-                            "type": "repeater",
+                            "key": "field_ksenon_wu_card_1",
+                            "label": "Карточка 1",
+                            "name": "card_1",
+                            "type": "group",
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_ksenon_wu_item_title",
+                                    "key": "field_ksenon_wu_card_1_title",
                                     "label": "Заголовок",
                                     "name": "title",
-                                    "type": "text",
-                                    "parent_repeater": "field_ksenon_wu_items"
+                                    "type": "text"
                                 },
                                 {
-                                    "key": "field_ksenon_wu_item_text",
-                                    "label": "Текст",
-                                    "name": "text",
+                                    "key": "field_ksenon_wu_card_1_subtitle",
+                                    "label": "Подзаголовок",
+                                    "name": "subtitle",
                                     "type": "textarea",
-                                    "rows": 3,
-                                    "parent_repeater": "field_ksenon_wu_items"
+                                    "rows": 3
                                 },
                                 {
-                                    "key": "field_ksenon_wu_item_image",
-                                    "label": "Изображение",
+                                    "key": "field_ksenon_wu_card_1_image",
+                                    "label": "Фото на фоне",
                                     "name": "image",
                                     "type": "image",
-                                    "return_format": "array",
-                                    "parent_repeater": "field_ksenon_wu_items"
+                                    "return_format": "array"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_ksenon_wu_card_2",
+                            "label": "Карточка 2",
+                            "name": "card_2",
+                            "type": "group",
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_wu_card_2_title",
+                                    "label": "Заголовок",
+                                    "name": "title",
+                                    "type": "text"
                                 },
                                 {
-                                    "key": "field_ksenon_wu_item_step",
-                                    "label": "Шаг",
-                                    "name": "step",
-                                    "type": "text",
-                                    "placeholder": "01 / 04",
-                                    "parent_repeater": "field_ksenon_wu_items"
+                                    "key": "field_ksenon_wu_card_2_subtitle",
+                                    "label": "Подзаголовок",
+                                    "name": "subtitle",
+                                    "type": "textarea",
+                                    "rows": 3
+                                },
+                                {
+                                    "key": "field_ksenon_wu_card_2_image",
+                                    "label": "Фото на фоне",
+                                    "name": "image",
+                                    "type": "image",
+                                    "return_format": "array"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_ksenon_wu_card_3",
+                            "label": "Карточка 3",
+                            "name": "card_3",
+                            "type": "group",
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_wu_card_3_title",
+                                    "label": "Заголовок",
+                                    "name": "title",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "field_ksenon_wu_card_3_subtitle",
+                                    "label": "Подзаголовок",
+                                    "name": "subtitle",
+                                    "type": "textarea",
+                                    "rows": 3
+                                },
+                                {
+                                    "key": "field_ksenon_wu_card_3_image",
+                                    "label": "Фото на фоне",
+                                    "name": "image",
+                                    "type": "image",
+                                    "return_format": "array"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_ksenon_wu_card_4",
+                            "label": "Карточка 4",
+                            "name": "card_4",
+                            "type": "group",
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_ksenon_wu_card_4_title",
+                                    "label": "Заголовок",
+                                    "name": "title",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "field_ksenon_wu_card_4_subtitle",
+                                    "label": "Подзаголовок",
+                                    "name": "subtitle",
+                                    "type": "textarea",
+                                    "rows": 3
                                 }
                             ]
                         }
@@ -379,5 +449,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1783036800
+    "modified": 1783123200
 }
