@@ -35,8 +35,6 @@ add_action(
 		wp_enqueue_script('ksenonspb-fancybox', $uri . '/js/libs/fancybox.umd.js', array('ksenonspb-swiper'), $ver, true);
 		wp_enqueue_script('ksenonspb-app', $uri . '/js/app.min.js', array('ksenonspb-fancybox'), $ver, true);
 
-		$map = function_exists('ksenon_get_map_settings') ? ksenon_get_map_settings() : array();
-
 		wp_localize_script(
 			'ksenonspb-app',
 			'theme_ajax',
@@ -46,17 +44,6 @@ add_action(
 				'home_url' => home_url('/'),
 			)
 		);
-
-		if (! empty($map['apiKey'])) {
-			wp_localize_script(
-				'ksenonspb-app',
-				'theme_map',
-				array(
-					'apiKey' => $map['apiKey'],
-					'lang'   => 'ru_RU',
-				)
-			);
-		}
 	}
 );
 

@@ -1,6 +1,5 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
-@use "../../components/map-shimmer";
 .contacts {
 	padding: rem(40) 0;
 
@@ -122,21 +121,4 @@
 
 	}
 
-	&__map {
-		@include map-shimmer.map-container-loading;
-		border-radius: rem(10);
-		height: rem(220);
-
-		@media (min-width: $md3) {
-			height: rem(404);
-		}
-
-		iframe {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-	}
 }

@@ -109,6 +109,17 @@ add_filter(
 			$content
 		);
 
+		$policy_url = (string) ksenon_get_option('ssylka_na_politiku', '');
+		$opd_url    = (string) ksenon_get_option('ssylka_opd', '');
+
+		if ($policy_url) {
+			$content = str_replace('%policy_url%', esc_url($policy_url), $content);
+		}
+
+		if ($opd_url) {
+			$content = str_replace('%opd_url%', esc_url($opd_url), $content);
+		}
+
 		$content = preg_replace(
 			'/<span class="checkbox__box"[^>]*>\s*<svg[^>]*>.*?<\/svg>\s*<\/span>/s',
 			'<span class="checkbox__box" aria-hidden="true"></span>',

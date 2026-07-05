@@ -1084,43 +1084,6 @@ if (! function_exists('ksenon_get_phones')) {
 	}
 }
 
-if (! function_exists('ksenon_get_map_settings')) {
-	function ksenon_get_map_settings()
-	{
-		$icon_default = 'img/placemark.svg';
-		$icon         = ksenon_get_option('karta_ikonka', $icon_default);
-
-		return array(
-			'show'   => (bool) ksenon_get_option('karta_pokazyvat', 1),
-			'coords' => ksenon_get_option('karta_koordinaty', '59.985,30.315'),
-			'zoom'   => (int) ksenon_get_option('karta_zoom', 16),
-			'label'  => ksenon_get_option('karta_podpis', 'Карта'),
-			'apiKey' => ksenon_get_option('karta_api_klyuch', ''),
-			'icon'   => ksenon_acf_image_url($icon, 'full', ksenon_assets_uri($icon_default)),
-		);
-	}
-}
-
-if (! function_exists('ksenon_get_map_html')) {
-	function ksenon_get_map_html($id = 'contacts-map', $class = 'contacts-order__map')
-	{
-		$map = ksenon_get_map_settings();
-		if (! $map['show']) {
-			return '';
-		}
-
-		return sprintf(
-			'<div class="%1$s" id="%2$s" data-map data-coords="%3$s" data-zoom="%4$d" data-icon="%5$s" role="region" aria-label="%6$s" aria-busy="true"></div>',
-			esc_attr($class),
-			esc_attr($id),
-			esc_attr($map['coords']),
-			(int) $map['zoom'],
-			esc_url($map['icon']),
-			esc_attr($map['label'])
-		);
-	}
-}
-
 if (! function_exists('ksenon_get_main_class')) {
 	function ksenon_get_main_class()
 	{

@@ -94,8 +94,8 @@ body {
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -103,8 +103,8 @@ body {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -1205,19 +1205,14 @@ body {
 
 .cta-contacts .form__control,
 .cta-contacts .form-field {
-  display: block;
-  width: 100%;
   min-height: 3.125rem;
   padding: 0.9375rem 1.25rem;
   border: 0;
-  border-radius: 0.625rem;
-  background: #ffffff;
+  border-radius: 2.5rem;
+  background: #f7f7f7;
   color: #000000;
-  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 400;
-  line-height: 1.2;
-  -webkit-transition: border-color 0.25s ease, opacity 0.2s ease;
-  transition: border-color 0.25s ease, opacity 0.2s ease;
+  font-size: 1rem;
+  line-height: 1.3;
 }
 
 .cta-contacts .form__control::-webkit-input-placeholder, .cta-contacts .form-field::-webkit-input-placeholder {
@@ -1247,29 +1242,140 @@ body {
           box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
-.cta-contacts .form__control:disabled,
-.cta-contacts .form__control[aria-disabled=true],
-.cta-contacts .form-field:disabled,
-.cta-contacts .form-field[aria-disabled=true] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .cta-contacts .form__control:is(textarea),
 .cta-contacts .form-field:is(textarea) {
   min-height: 9.0625rem;
+  border-radius: 1.25rem;
   resize: none;
+}
+
+.cta-contacts .form-upload {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.9375rem;
+  min-height: 10.3125rem;
+  padding: 1.25rem;
+  border: 1px dashed #6f6f6f;
+  border-radius: 1.25rem;
+  background: #f7f7f7;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cta-contacts .form-upload__icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cta-contacts .form-upload__icon-svg {
+  display: block;
+  width: 3.4375rem;
+  height: 3.4375rem;
+}
+
+.cta-contacts .form-upload__title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.cta-contacts .form-upload__hint {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #6f6f6f;
+}
+
+.cta-contacts .form-upload .wpcf7-form-control-wrap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cta-contacts .form-upload .wpcf7-form-control-wrap input[type=file] {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.cta-contacts .checkbox {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0.9375rem;
+}
+
+.cta-contacts .checkbox__box {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.125rem;
+}
+
+.cta-contacts .checkbox__box::before {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  border-color: #fd8011;
+  background-color: transparent;
+}
+
+.cta-contacts .checkbox__input:checked + .checkbox__box::before,
+.cta-contacts .checkbox:has(.checkbox__input:checked) .checkbox__box::before,
+.cta-contacts .checkbox:has(input[type=checkbox]:checked) .checkbox__box::before {
+  background-color: #fd8011;
+  border-color: #fd8011;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 0.75rem 0.625rem;
+}
+
+.cta-contacts .checkbox__text,
+.cta-contacts .checkbox .wpcf7-list-item-label:not(:empty) {
+  min-height: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.cta-contacts .checkbox__text a,
+.cta-contacts .checkbox .wpcf7-list-item-label:not(:empty) a {
+  color: #fd8011;
 }
 
 .cta-contacts .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
 .cta-contacts .wpcf7-form-control-wrap:has(.wpcf7-submit) {
   min-height: 4.3125rem;
-  border-radius: 0.625rem;
+  padding: 1.25rem 2.1875rem;
+  border-radius: 2.5rem;
   background: #fd8011;
   color: #ffffff;
   text-transform: none;
   letter-spacing: normal;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .checkbox {
@@ -2716,26 +2822,6 @@ body {
   background-repeat: repeat-x;
   background-position: left center;
   opacity: 0.85;
-}
-
-@-webkit-keyframes map-shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes map-shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
 }
 
 @media (min-width: 575.98px) {

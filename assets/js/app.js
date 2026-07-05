@@ -1,7 +1,6 @@
 "use strict";
 
 import { initBlogFeed } from "./blog-feed.js";
-import { initYandexMaps } from "./map.js";
 import { initTooltips } from "./tooltip.js";
 document.addEventListener("DOMContentLoaded", () => {
 	initBurger();
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	initDevicesPage();
 	initRelatedEquipmentSwiper();
 	initPhoneMask();
-	initYandexMaps();
 	initCf7();
 });
 

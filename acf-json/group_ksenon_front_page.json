@@ -307,15 +307,7 @@
                     "name": "cta_contacts",
                     "label": "CTA + контакты",
                     "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_ksenon_cc_title",
-                            "label": "Заголовок",
-                            "name": "title",
-                            "type": "text",
-                            "default_value": "Оценим ваш случай за 1 рабочий день"
-                        }
-                    ]
+                    "sub_fields": []
                 },
                 "layout_ksenon_reviews": {
                     "key": "layout_ksenon_reviews",

@@ -57,7 +57,6 @@
 				<element value="alergobot_anim_wrap_close"/>
 				<element value="alergobot_render_blog_pagination"/>
 				<element value="alergobot_render_catalog_gallery_product"/>
-				<element value="alergobot_get_map_html"/>
 				<element value="alergobot_render_favicons"/>
 				<element value="alergobot_render_main_menu"/>
 				<element value="alergobot_cf7_form"/>

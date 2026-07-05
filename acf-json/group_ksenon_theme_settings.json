@@ -148,48 +148,6 @@
             "default_value": "Пн–Сб 10:00–20:00\nВоскресенье — выходной"
         },
         {
-            "key": "field_ksenon_ts_map_show",
-            "label": "Показывать карту",
-            "name": "karta_pokazyvat",
-            "type": "true_false",
-            "ui": 1,
-            "default_value": 1
-        },
-        {
-            "key": "field_ksenon_ts_map_coords",
-            "label": "Координаты карты",
-            "name": "karta_koordinaty",
-            "type": "text",
-            "default_value": "59.985,30.315"
-        },
-        {
-            "key": "field_ksenon_ts_map_zoom",
-            "label": "Zoom карты",
-            "name": "karta_zoom",
-            "type": "number",
-            "default_value": 16
-        },
-        {
-            "key": "field_ksenon_ts_map_label",
-            "label": "Подпись карты",
-            "name": "karta_podpis",
-            "type": "text",
-            "default_value": "КБ АВТО на карте"
-        },
-        {
-            "key": "field_ksenon_ts_map_key",
-            "label": "API-ключ Яндекс.Карт",
-            "name": "karta_api_klyuch",
-            "type": "text"
-        },
-        {
-            "key": "field_ksenon_ts_map_icon",
-            "label": "Иконка метки",
-            "name": "karta_ikonka",
-            "type": "image",
-            "return_format": "array"
-        },
-        {
             "key": "field_ksenon_ts_copyright",
             "label": "Копирайт",
             "name": "kopirajt",
@@ -437,6 +395,69 @@
             ]
         },
         {
+            "key": "field_ksenon_ts_cta_contacts_accordion",
+            "label": "CTA + контакты",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_title",
+            "label": "Заголовок",
+            "name": "cta_contacts_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Оценим ваш случай за <span class=\"color-accent\">1 рабочий день</span>"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_lead",
+            "label": "Подзаголовок",
+            "name": "cta_contacts_lead",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Прикрепите фото фары — пришлём предварительную смету и сроки. Без обязательств, без звонков с продажами."
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_car_image",
+            "label": "Фото авто (декор)",
+            "name": "cta_contacts_car_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_messenger_label",
+            "label": "Мессенджеры — метка",
+            "name": "cta_contacts_messenger_label",
+            "type": "text",
+            "default_value": "Не любите <span class=\"color-accent\">формы?</span>"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_messenger_title",
+            "label": "Мессенджеры — заголовок",
+            "name": "cta_contacts_messenger_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Напишите в мессенджер — ответим за <span class=\"color-accent\">15 минут</span>"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_messenger_text",
+            "label": "Мессенджеры — текст",
+            "name": "cta_contacts_messenger_text",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "В рабочее время. Пришлите фото — оценим без долгих переписок."
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_map_link_text",
+            "label": "Текст ссылки на карту",
+            "name": "cta_contacts_map_link_text",
+            "type": "text",
+            "default_value": "Открыть на карте →"
+        },
+        {
             "key": "field_ksenon_ts_cf7_consult",
             "label": "CF7: консультация",
             "name": "cf7_konsultaciya",
@@ -528,5 +549,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751097601
+    "modified": 1751752800
 }
