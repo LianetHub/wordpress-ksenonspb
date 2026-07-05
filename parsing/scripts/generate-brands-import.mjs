@@ -3,13 +3,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import XLSX from 'xlsx';
 
-import { resolveOfficialLogoUrl } from './brand-official-logos.mjs';
 import { DATA_DIR, fetchWithRetry, readJson, writeJson } from './utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const OLD_PAGES_JSON = path.join(DATA_DIR, 'old-pages.json');
-const SITE_LOGOS_JSON = path.join(DATA_DIR, 'brand-logos-site.json');
+const SITE_BRANDS_JSON = path.join(DATA_DIR, 'brand-logos-site.json');
 const DEFAULT_SITE_URL = 'http://ksenonspby.temp.swtest.ru';
 const OUTPUT_XLSX = path.join(DATA_DIR, 'brands-import.xlsx');
 const OUTPUT_JSON = path.join(DATA_DIR, 'brands-import.json');
@@ -18,23 +16,6 @@ const OUTPUT_CSV = path.join(DATA_DIR, 'brands-import.csv');
 const BRAND = 'КБ АВТО';
 const CITY = 'СПб';
 const CITY_LONG = 'Санкт-Петербург';
-
-/** Slug из спарсинга → slug по ТЗ */
-const SLUG_MAP = {
-	huyndai: 'hyundai',
-	scoda: 'skoda',
-};
-
-/** Человекочитаемое название для slug с исправлениями */
-const TITLE_BY_SLUG = {
-	hyundai: 'Hyundai',
-	skoda: 'Skoda',
-	'rolls-royce': 'Rolls-Royce',
-	'land-rover': 'Land Rover',
-	vw: 'Volkswagen',
-	drl: 'ДХО',
-	hpl: 'HPL',
-};
 
 const BRAND_HEADERS = ['title', 'slug', 'image'];
 
@@ -65,23 +46,6 @@ function truncate(text, max) {
 	return `${normalized.slice(0, max - 1).trim()}…`;
 }
 
-function brandSlugFromPath(pagePath) {
-	const parts = pagePath.replace(/^\/+|\/+$/g, '').split('/');
-	return parts[parts.length - 1] || '';
-}
-
-function titleFromOldPageTitle(rawTitle) {
-	const text = String(rawTitle ?? '').trim();
-	if (!text) {
-		return '';
-	}
-	return text.split(/\s+[—–-]\s+/)[0].trim();
-}
-
-function mapSlug(oldSlug) {
-	return SLUG_MAP[oldSlug] ?? oldSlug;
-}
-
 function brandSlugFromHref(href) {
 	try {
 		const pathname = new URL(href).pathname.replace(/^\/+|\/+$/g, '');
@@ -99,64 +63,83 @@ function normalizeUploadUrl(url) {
 		return '';
 	}
 
-	return text.replace(/-\d+x\d+(\.(png|jpe?g|webp))$/i, '$1');
+	return text.replace(/-\d+x\d+(\.(png|jpe?g|webp|svg))$/i, '$1');
 }
 
-async function fetchSiteLogos(siteUrl) {
+function titleFromCardHtml(cardHtml) {
+	const match = cardHtml.match(/class="brand-card__title"[^>]*>([^<]+)/i);
+	if (!match) {
+		return '';
+	}
+
+	return match[1].replace(/\s*→\s*$/u, '').trim();
+}
+
+function imageFromCardHtml(cardHtml) {
+	const match = cardHtml.match(/class="brand-card__logo"[^>]*src="([^"]+)"/i)
+		|| cardHtml.match(/src="([^"]+)"[^>]*class="brand-card__logo"/i);
+
+	return match ? normalizeUploadUrl(match[1]) : '';
+}
+
+async function fetchSiteBrands(siteUrl) {
 	const archiveUrl = `${siteUrl.replace(/\/+$/, '')}/marki/`;
 	const response = await fetchWithRetry(archiveUrl);
 	const html = await response.text();
-	const logosBySlug = new Map();
+	const brands = [];
 
 	const cardRe =
-		/<a[^>]+class="brand-card__link"[^>]+href="([^"]+)"[^>]*>[\s\S]*?<img[^>]+src="([^"]+)"[^>]*class="brand-card__logo"/gi;
+		/<a[^>]+class="brand-card__link"[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
 	let match;
 
 	while ((match = cardRe.exec(html)) !== null) {
 		const slug = brandSlugFromHref(match[1]);
-		const imageUrl = normalizeUploadUrl(match[2]);
+		const title = titleFromCardHtml(match[2]);
+		const image = imageFromCardHtml(match[2]);
 
-		if (slug && imageUrl) {
-			logosBySlug.set(slug, imageUrl);
+		if (!slug) {
+			continue;
 		}
+
+		brands.push({
+			slug,
+			title,
+			image,
+			image_source: 'site',
+		});
 	}
 
-	return Object.fromEntries(logosBySlug);
+	return brands;
 }
 
-async function loadSiteLogoMap({ shouldFetch, siteUrl }) {
+function emptySeoFields() {
+	return {
+		focus_keyword: '',
+		seo_title: '',
+		meta_description: '',
+		meta_keywords: '',
+		facebook_title: '',
+		twitter_title: '',
+	};
+}
+
+async function loadSiteBrands({ shouldFetch, siteUrl }) {
 	if (shouldFetch) {
-		const logos = await fetchSiteLogos(siteUrl);
-		await writeJson(SITE_LOGOS_JSON, {
+		const brands = await fetchSiteBrands(siteUrl);
+		await writeJson(SITE_BRANDS_JSON, {
 			fetched_at: new Date().toISOString(),
 			source: `${siteUrl.replace(/\/+$/, '')}/marki/`,
-			logos,
+			brands,
 		});
-		return logos;
+		return brands;
 	}
 
-	const cached = await readJson(SITE_LOGOS_JSON);
-	if (cached?.logos && Object.keys(cached.logos).length) {
-		return cached.logos;
+	const cached = await readJson(SITE_BRANDS_JSON);
+	if (cached?.brands?.length) {
+		return cached.brands;
 	}
 
 	return null;
-}
-
-function attachImages(brands, siteLogos) {
-	const warnings = [];
-
-	for (const brand of brands) {
-		const siteImage = siteLogos?.[brand.slug];
-		brand.image = siteImage || resolveOfficialLogoUrl(brand.slug);
-		brand.image_source = siteImage ? 'site' : 'official';
-
-		if (!brand.image) {
-			warnings.push(brand.slug);
-		}
-	}
-
-	return warnings;
 }
 
 function buildMetaKeywords(focusKeyword) {
@@ -242,49 +225,16 @@ function brandToRow(item) {
 	];
 }
 
-function readBrandsFromOldPages(oldPages) {
-	const pages = oldPages?.pages ?? [];
-
-	return pages
-		.filter(
-			(entry) =>
-				entry.type === 'category' &&
-				entry.path.startsWith('/category/portfolio/') &&
-				entry.path !== '/category/portfolio/',
-		)
-		.map((entry) => {
-			const oldSlug = brandSlugFromPath(entry.path);
-			const slug = mapSlug(oldSlug);
-			const parsedTitle = titleFromOldPageTitle(entry.title);
-
-			return {
-				old_slug: oldSlug,
-				slug,
-				title: TITLE_BY_SLUG[slug] ?? parsedTitle,
-				old_url: entry.url,
-				image: '',
-				image_source: '',
-				focus_keyword: '',
-				seo_title: '',
-				meta_description: '',
-				meta_keywords: '',
-				facebook_title: '',
-				twitter_title: '',
-			};
-		})
-		.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
-}
-
 function validateBrands(brands) {
-	if (brands.length !== 42) {
-		throw new Error(`Expected 42 brands, got ${brands.length}`);
+	if (!brands.length) {
+		throw new Error('No brands to export');
 	}
 
 	const slugs = new Set();
 
 	for (const brand of brands) {
 		if (!brand.title) {
-			throw new Error(`Brand "${brand.old_slug}" is missing title`);
+			throw new Error(`Brand "${brand.slug}" is missing title`);
 		}
 		if (!brand.slug) {
 			throw new Error(`Brand "${brand.title}" is missing slug`);
@@ -312,10 +262,7 @@ async function writeOutputs(brands) {
 		source: path.basename(OUTPUT_XLSX),
 		note:
 			'title → post_title, slug → post_name (URL /marki/{slug}/), image → Featured Image и/или ACF logo, SEO-колонки → Rank Math / Yoast. Уникальный идентификатор — slug.',
-		logo_sources: {
-			site: 'Логотипы с /marki/ staging/production (wp-content/uploads)',
-			official_fallback: 'Wikimedia Commons / carlogos.org — если нет в кэше сайта',
-		},
+		logo_source: 'Список марок и image URL с /marki/ staging/production',
 		columns: HEADERS,
 		brands,
 	};
@@ -331,33 +278,36 @@ async function main() {
 	const shouldFetchSite = process.argv.includes('--from-site');
 	const siteUrl = process.env.BRANDS_SITE_URL || DEFAULT_SITE_URL;
 
-	const oldPages = await readJson(OLD_PAGES_JSON);
-	if (!oldPages?.pages?.length) {
-		throw new Error(`No pages found in ${OLD_PAGES_JSON}`);
+	const brands = await loadSiteBrands({ shouldFetch: shouldFetchSite, siteUrl });
+	if (!brands?.length) {
+		throw new Error(
+			`No brands in cache. Run: npm run import:brands -- --from-site`,
+		);
 	}
 
-	const brands = readBrandsFromOldPages(oldPages);
-	const siteLogos = await loadSiteLogoMap({ shouldFetch: shouldFetchSite, siteUrl });
-	const missingImageWarnings = attachImages(brands, siteLogos);
-	const enriched = brands.map((brand) => enrichBrand(brand));
+	const enriched = brands.map((brand) =>
+		enrichBrand({
+			...emptySeoFields(),
+			...brand,
+		}),
+	);
+
+	const missingImages = enriched.filter((brand) => !brand.image).map((brand) => brand.slug);
 
 	validateBrands(enriched);
 	await writeOutputs(enriched);
 
-	const fromSite = enriched.filter((brand) => brand.image_source === 'site').length;
-
-	console.log(`Source: ${OLD_PAGES_JSON}`);
 	console.log(
-		`Logos: ${shouldFetchSite ? `fetched from ${siteUrl}/marki/` : SITE_LOGOS_JSON}`,
+		`Source: ${shouldFetchSite ? `${siteUrl}/marki/` : SITE_BRANDS_JSON}`,
 	);
 	console.log(`Generated ${OUTPUT_XLSX} (sheet: brands)`);
 	console.log(`Generated ${OUTPUT_JSON}`);
 	console.log(`Generated ${OUTPUT_CSV}`);
 	console.log(`Brands: ${enriched.length}`);
-	console.log(`Images from site: ${fromSite}/${enriched.length}`);
+	console.log(`Images: ${enriched.length - missingImages.length}/${enriched.length}`);
 
-	if (missingImageWarnings.length) {
-		console.warn(`Missing images for: ${missingImageWarnings.join(', ')}`);
+	if (missingImages.length) {
+		console.warn(`Missing images for: ${missingImages.join(', ')}`);
 	}
 }
 

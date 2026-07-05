@@ -1,48 +1,246 @@
 {
-  "fetched_at": "2026-07-03T16:04:31.811Z",
+  "fetched_at": "2026-07-05T17:17:28.937Z",
   "source": "http://ksenonspby.temp.swtest.ru/marki/",
-  "logos": {
-    "acura": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-acura_logo.svg.png",
-    "audi": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-audi-logo_2016.svg.png",
-    "bentley": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/bentley-logo.png",
-    "bmw": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-bmw.svg.png",
-    "cadillac": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/cadillac-logo.png",
-    "chevrolet": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-chevrolet-logo.png",
-    "chrysler": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-chryply_blue_pentastar.svg.png",
-    "dodge": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-dodge_logo.svg.png",
-    "ferrari": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/ferrari-logo.png",
-    "ford": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-ford_motor_company_logo.svg.png",
-    "honda": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-honda.svg.png",
-    "hpl": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-incandescent_light_bulb.svg.png",
-    "hummer": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-hummer.svg.png",
-    "hyundai": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-hyundai_motor_company_logo.svg.png",
-    "infiniti": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/infiniti-logo.png",
-    "jaguar": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/jaguar-logo.png",
-    "jeep": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-jeep_logo.svg.png",
-    "kia": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-kia_logo3.svg.png",
-    "ktm": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-ktm-logo.svg.png",
-    "land-rover": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/land-rover-logo.png",
-    "lexus": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/lexus-logo.png",
-    "maserati": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/maserati-logo.png",
-    "maybach": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-maybach-logo.svg.png",
-    "mazda": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mazda-logo.png",
-    "mercedes": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mercedes-benz-logo.png",
-    "mini": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mini-logo.png",
-    "mitsubishi": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-mitsubishi_logo.svg.png",
-    "nissan": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-nissan_logo.svg.png",
-    "opel": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-opel_logo_2023.svg.png",
-    "peugeot": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/peugeot-logo.png",
-    "porsche": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/porsche-logo.png",
-    "renault": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/renault-logo.png",
-    "rolls-royce": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-rolls-royce_motor_cars_logo.svg.png",
-    "saab": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/saab-logo.png",
-    "skoda": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/skoda-logo.png",
-    "ssangyong": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/ssangyong-logo.png",
-    "subaru": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/subaru-logo.png",
-    "suzuki": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/suzuki-logo.png",
-    "toyota": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-toyota.svg.png",
-    "vw": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-volkswagen_logo_2019.svg.png",
-    "volvo": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-volvo_logo.svg.png",
-    "drl": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-incandescent_light_bulb.svg.png"
-  }
+  "brands": [
+    {
+      "slug": "acura",
+      "title": "ACURA",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/acura.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "audi",
+      "title": "AUDI",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/audi-logo.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "bentley",
+      "title": "BENTLEY",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/bentley_logo.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "bmw",
+      "title": "BMW",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/bmw.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "cadillac",
+      "title": "CADILLAC",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/cadillac.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "chevrolet",
+      "title": "CHEVROLET",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/chevrolet.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "chrysler",
+      "title": "CHRYSLER",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-chryply_blue_pentastar.svg.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "dodge",
+      "title": "DODGE",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/dodge.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "ferrari",
+      "title": "FERRARI",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/ferrari-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "ford",
+      "title": "FORD",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-ford_motor_company_logo.svg.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "honda",
+      "title": "HONDA",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/honda.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "hummer",
+      "title": "HUMMER",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-hummer.svg.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "hyundai",
+      "title": "Hyundai",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/hyundai.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "infiniti",
+      "title": "INFINITI",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/infiniti-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "jaguar",
+      "title": "JAGUAR",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/jaguar-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "jeep",
+      "title": "JEEP",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-jeep_logo.svg.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "kia",
+      "title": "KIA",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/kia.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "ktm",
+      "title": "KTM",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/ktm.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "land-rover",
+      "title": "Land Rover",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/land-rover.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "lexus",
+      "title": "LEXUS",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/lexus.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "maserati",
+      "title": "Maserati",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/maserati_logo.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "maybach",
+      "title": "Maybach",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/maybach.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "mazda",
+      "title": "MAZDA",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mazda.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "mercedes",
+      "title": "MERCEDES",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mercedes.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "mini",
+      "title": "MINI",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mini-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "mitsubishi",
+      "title": "MITSUBISHI",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/mitsubishi.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "nissan",
+      "title": "NISSAN",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-nissan_logo.svg.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "opel",
+      "title": "OPEL",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/opel.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "peugeot",
+      "title": "PEUGEOT",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/peugeot.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "porsche",
+      "title": "PORSCHE",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/porsche-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "renault",
+      "title": "RENAULT",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/renault-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "rolls-royce",
+      "title": "Rolls-Royce",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/500px-rolls-royce_motor_cars_logo.svg.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "saab",
+      "title": "SAAB",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/saab.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "skoda",
+      "title": "Skoda",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/skoda.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "ssangyong",
+      "title": "SsangYong",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/ssangyong-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "subaru",
+      "title": "SUBARU",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/subaru-logo.png",
+      "image_source": "site"
+    },
+    {
+      "slug": "suzuki",
+      "title": "SUZUKI",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/suzuki.svg",
+      "image_source": "site"
+    },
+    {
+      "slug": "toyota",
+      "title": "TOYOTA",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/toyota.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "vw",
+      "title": "Volkswagen",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/volkswagen.webp",
+      "image_source": "site"
+    },
+    {
+      "slug": "volvo",
+      "title": "VOLVO",
+      "image": "http://ksenonspby.temp.swtest.ru/wp-content/uploads/2026/07/volvo.svg",
+      "image_source": "site"
+    }
+  ]
 }
