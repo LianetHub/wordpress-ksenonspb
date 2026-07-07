@@ -70,4 +70,8 @@
     <circle cx="27.5" cy="27.5" r="27.5" fill="#fff" />
     <path d="M27.5 18v19M18 27.5h19" stroke="#FD8011" stroke-width="2" stroke-linecap="round" />
   </symbol>
+  <symbol id="icon-max" viewBox="0 0 20 20" fill="none">
+    <circle cx="10" cy="10" r="10" fill="currentColor" />
+    <path d="M6.5 14V6h1.7l1.8 3.1 1.8-3.1H13v8h-1.4V9.4L9.9 14H9.1L7.9 9.4V14H6.5Z" fill="#fff" />
+  </symbol>
 </svg>

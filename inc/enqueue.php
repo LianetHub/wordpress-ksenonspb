@@ -31,9 +31,10 @@ add_action(
 			ksenon_enqueue_conditional_styles($uri, $ver);
 		}
 
+		wp_enqueue_script('jquery');
 		wp_enqueue_script('ksenonspb-swiper', $uri . '/js/libs/swiper-bundle.min.js', array(), $ver, true);
 		wp_enqueue_script('ksenonspb-fancybox', $uri . '/js/libs/fancybox.umd.js', array('ksenonspb-swiper'), $ver, true);
-		wp_enqueue_script('ksenonspb-app', $uri . '/js/app.min.js', array('ksenonspb-fancybox'), $ver, true);
+		wp_enqueue_script('ksenonspb-app', $uri . '/js/app.min.js', array('jquery', 'ksenonspb-fancybox'), $ver, true);
 
 		wp_localize_script(
 			'ksenonspb-app',

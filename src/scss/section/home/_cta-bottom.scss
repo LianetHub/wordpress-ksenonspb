@@ -18,7 +18,7 @@
 		gap: rem(32);
 
 		@media (min-width: $md3) {
-			gap: rem(41);
+			gap: rem(43);
 		}
 	}
 
@@ -26,7 +26,7 @@
 		max-width: rem(768);
 		margin: 0;
 		font-weight: 500;
-		line-height: 1;
+		line-height: normal;
 		color: $color-white;
 	}
 
@@ -67,12 +67,23 @@
 			width: rem(352);
 			max-width: none;
 		}
+
+		&.btn--large:has(.btn__arrow) {
+			gap: rem(36);
+			padding: rem(15) rem(6) rem(15) rem(40);
+
+			.btn__arrow {
+				width: rem(58);
+				height: rem(58);
+				margin-right: 0;
+			}
+		}
 	}
 
 	&__btn-secondary {
 		width: 100%;
 		max-width: rem(299);
-		border-width: rem(1);
+		border: rem(1) solid $color-white;
 		color: $color-surface;
 
 		@media (min-width: $md5) {

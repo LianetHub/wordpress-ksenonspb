@@ -40,19 +40,10 @@ $messenger_text = (string) ksenon_get_option(
 	__('В рабочее время. Пришлите фото — оценим без долгих переписок.', 'ksenonspb')
 );
 
-$map_link_text = (string) ksenon_get_option(
-	'cta_contacts_map_link_text',
-	__('Открыть на карте →', 'ksenonspb')
-);
-
 $car_image = ksenon_get_option('cta_contacts_car_image');
 $phones    = ksenon_get_phones();
 $addr      = ksenon_get_option('address');
 $hours     = ksenon_get_option('hours');
-
-$map_link = $addr
-	? 'https://yandex.ru/maps/?text=' . rawurlencode(wp_strip_all_tags((string) $addr))
-	: '';
 
 $hours_lines = array_values(
 	array_filter(
@@ -119,11 +110,6 @@ $hours_extra = array_slice($hours_lines, 1);
 									<div class="cta-contacts__info-body">
 										<span class="cta-contacts__info-label"><?php esc_html_e('Адрес', 'ksenonspb'); ?></span>
 										<p class="cta-contacts__info-value"><?php echo nl2br(esc_html($addr)); ?></p>
-										<?php if ($map_link && $map_link_text) : ?>
-											<a class="cta-contacts__info-link" href="<?php echo esc_url($map_link); ?>" target="_blank" rel="noopener noreferrer">
-												<?php echo esc_html($map_link_text); ?>
-											</a>
-										<?php endif; ?>
 									</div>
 								</div>
 							</div>

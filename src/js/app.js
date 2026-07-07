@@ -223,29 +223,59 @@ function initProductTableMore() {
 }
 
 function initAccordion() {
-	document.querySelectorAll("[data-accordion]").forEach((accordion) => {
-		const items = accordion.querySelectorAll(".accordion__item");
+	if (typeof jQuery === "undefined") {
+		return;
+	}
 
-		items.forEach((item) => {
-			const header = item.querySelector(".accordion__header");
+	const $ = jQuery;
+	const duration = 400;
 
-			if (!header) return;
+	$("[data-accordion]").each(function () {
+		const $accordion = $(this);
+		const $items = $accordion.find(".accordion__item");
 
-			header.addEventListener("click", () => {
-				const isOpen = item.classList.contains("_active");
+		$items.each(function () {
+			const $item = $(this);
+			const $body = $item.children(".accordion__body");
 
-				items.forEach((other) => {
-					other.classList.remove("_active");
-					other
-						.querySelector(".accordion__header")
-						?.setAttribute("aria-expanded", "false");
+			if (!$item.hasClass("_active")) {
+				$body.hide();
+			}
+		});
+
+		$items.find(".accordion__header").on("click", function () {
+			const $header = $(this);
+			const $item = $header.closest(".accordion__item");
+			const $body = $item.children(".accordion__body");
+			const isOpen = $item.hasClass("_active");
+
+			if (isOpen) {
+				$body.stop(true, true).slideToggle(duration, function () {
+					$item.removeClass("_active");
 				});
+				$header.attr("aria-expanded", "false");
+				return;
+			}
 
-				if (!isOpen) {
-					item.classList.add("_active");
-					header.setAttribute("aria-expanded", "true");
+			$items.not($item).each(function () {
+				const $other = $(this);
+
+				if (!$other.hasClass("_active")) {
+					return;
 				}
+
+				$other
+					.children(".accordion__body")
+					.stop(true, true)
+					.slideUp(duration, function () {
+						$other.removeClass("_active");
+					});
+				$other.find(".accordion__header").attr("aria-expanded", "false");
 			});
+
+			$item.addClass("_active");
+			$body.stop(true, true).slideToggle(duration);
+			$header.attr("aria-expanded", "true");
 		});
 	});
 }

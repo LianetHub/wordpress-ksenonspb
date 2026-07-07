@@ -453,22 +453,22 @@ if (! function_exists('ksenon_cta_form_config')) {
 	{
 		$variants = array(
 			'service_not_found' => array(
-				'title'       => __('Не нашли свою услугу?', 'ksenonspb'),
+				'title'       => (string) ksenon_get_option('cf7_title_service_not_found', __('Не нашли свою услугу?', 'ksenonspb')),
 				'cf7_option'  => 'cf7_zakaz',
 				'form_source' => __('Не нашли услугу', 'ksenonspb'),
 			),
 			'same_result'       => array(
-				'title'       => __('Хотите такой же результат?', 'ksenonspb'),
+				'title'       => (string) ksenon_get_option('cf7_title_same_result', __('Хотите такой же результат?', 'ksenonspb')),
 				'cf7_option'  => 'cf7_zakaz',
 				'form_source' => __('Хотите такой же результат', 'ksenonspb'),
 			),
 			'free_inspection'   => array(
-				'title'       => __('Убедились? Запишитесь на бесплатный осмотр', 'ksenonspb'),
+				'title'       => (string) ksenon_get_option('cf7_title_free_inspection', __('Убедились? Запишитесь на бесплатный осмотр', 'ksenonspb')),
 				'cf7_option'  => 'cf7_konsultaciya',
 				'form_source' => __('Бесплатный осмотр', 'ksenonspb'),
 			),
 			'appointment'       => array(
-				'title'       => __('Запишитесь на установку', 'ksenonspb'),
+				'title'       => (string) ksenon_get_option('cf7_title_appointment', __('Запишитесь на установку', 'ksenonspb')),
 				'cf7_option'  => 'cf7_zakaz',
 				'form_source' => __('Запись на установку', 'ksenonspb'),
 			),
@@ -1060,7 +1060,7 @@ if (! function_exists('ksenon_promotions_archive_url')) {
 }
 
 if (! function_exists('ksenon_get_phones')) {
-	function ksenon_get_phones($header_only = false)
+	function ksenon_get_phones()
 	{
 		$phones = array();
 
@@ -1072,9 +1072,6 @@ if (! function_exists('ksenon_get_phones')) {
 			the_row();
 			$number = get_sub_field('nomer');
 			if (! $number) {
-				continue;
-			}
-			if ($header_only && ! get_sub_field('v_shapke')) {
 				continue;
 			}
 			$phones[] = $number;
@@ -1174,6 +1171,34 @@ if (! function_exists('ksenon_get_option')) {
 	}
 }
 
+if (! function_exists('ksenon_get_policy_url')) {
+	function ksenon_get_policy_url()
+	{
+		return home_url('/politika-konfidentsialnosti/');
+	}
+}
+
+if (! function_exists('ksenon_get_opd_url')) {
+	function ksenon_get_opd_url()
+	{
+		return home_url('/soglasie-na-obrabotku-pd/');
+	}
+}
+
+if (! function_exists('ksenon_get_logo')) {
+	function ksenon_get_logo($variant = 'dark')
+	{
+		$key  = 'light' === $variant ? 'logo_light' : 'logo_dark';
+		$logo = ksenon_get_option_raw($key);
+
+		if ($logo) {
+			return $logo;
+		}
+
+		return ksenon_get_option_raw('logotip');
+	}
+}
+
 if (! function_exists('ksenon_render_favicons')) {
 	function ksenon_render_favicons()
 	{
@@ -1261,12 +1286,35 @@ if (! function_exists('ksenon_get_footer_domain')) {
 if (! function_exists('ksenon_get_social_links')) {
 	function ksenon_get_social_links()
 	{
+		$networks = array(
+			'telegram' => 'social_telegram',
+			'whatsapp' => 'social_whatsapp',
+			'vk'       => 'social_vk',
+			'youtube'  => 'social_youtube',
+			'max'      => 'social_max',
+		);
+
+		$links = array();
+
+		foreach ($networks as $network => $field) {
+			$url = trim((string) ksenon_get_option($field, ''));
+			if ($url) {
+				$links[] = array(
+					'network' => $network,
+					'url'     => $url,
+				);
+			}
+		}
+
+		if ($links) {
+			return $links;
+		}
+
 		$rows = ksenon_get_option('social_links', array());
 		if (! is_array($rows)) {
 			return array();
 		}
 
-		$links = array();
 		foreach ($rows as $row) {
 			if (! is_array($row)) {
 				continue;
@@ -1278,7 +1326,7 @@ if (! function_exists('ksenon_get_social_links')) {
 			}
 
 			$network = isset($row['network']) ? sanitize_key($row['network']) : '';
-			if (! in_array($network, array('telegram', 'whatsapp', 'vk', 'youtube'), true)) {
+			if (! in_array($network, array('telegram', 'whatsapp', 'vk', 'youtube', 'max'), true)) {
 				continue;
 			}
 
@@ -1300,6 +1348,7 @@ if (! function_exists('ksenon_get_footer_social_label')) {
 			'whatsapp' => 'WhatsApp',
 			'vk'       => 'VK',
 			'youtube'  => 'YouTube',
+			'max'      => 'MAX',
 		);
 
 		return $labels[$network] ?? $network;
@@ -1314,6 +1363,7 @@ if (! function_exists('ksenon_get_footer_social_icon')) {
 			'whatsapp' => '<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14.5 0C6.492 0 0 6.492 0 14.5c0 2.553.667 4.953 1.835 7.035L0 29l7.678-1.802A14.43 14.43 0 0 0 14.5 29C22.508 29 29 22.508 29 14.5S22.508 0 14.5 0Zm7.865 20.135c-.328.925-1.92 1.768-2.65 1.88-.675.102-1.545.145-2.495-.15-.575-.188-1.315-.44-2.265-.86-3.985-1.725-6.585-5.785-6.785-6.055-.195-.27-1.62-2.155-1.62-4.11 0-1.955 1.03-2.92 1.395-3.32.365-.4.795-.5 1.06-.5.265 0 .53.002.76.013.245.012.573-.093.895.685.328.795 1.115 2.725 1.213 2.923.098.198.163.428.033.688-.13.26-.195.425-.39.655-.195.23-.41.515-.585.69-.195.195-.398.405-.17.795.228.39 1.013 1.67 2.175 2.705 1.495 1.328 2.755 1.74 3.145 1.935.39.195.618.163.845-.098.228-.26.975-1.138 1.235-1.528.26-.39.52-.325.875-.195.355.13 2.255 1.063 2.64 1.255.385.193.64.288.735.445.095.158.095.915-.233 1.84Z" fill="#25D366"/></svg>',
 			'vk'       => '<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14.5 0C6.492 0 0 6.492 0 14.5S6.492 29 14.5 29 29 22.508 29 14.5 22.508 0 14.5 0Zm8.015 15.468c.885-.93 1.74-1.83 2.385-2.655.42-.54.735-1.005.735-1.455 0-.405-.285-.615-.855-.615h-2.25c-.675 0-.99.315-1.17.795-.405 1.08-.945 2.07-1.575 2.97-.225.315-.465.585-.72.585-.165 0-.24-.12-.24-.375v-2.85c0-.675-.195-.96-.765-.96-1.215 0-2.415.315-3.375 1.815-.975 1.53-1.455 3.375-1.455 3.375s-.075.465-.42.465H8.44c-.405 0-.495-.21-.375-.615.165-.555 1.95-4.455 4.05-6.675.78-.855 1.695-1.275 2.295-1.275.525 0 .675.285.675.93v2.175c0 .525.225.705.375.705.165 0 .3-.09.585-.375 1.005-1.065 1.725-2.715 1.725-2.715.09-.195.24-.375.615-.375h2.25c.675 0 .825.345.675.825-.225.765-1.185 2.385-1.185 2.385-.195.33-.27.495 0 .855.195.27.825.81 1.245 1.305.765.885 1.35 1.635 1.5 2.145.15.525-.075.795-.6.795h-2.25c-.48 0-.69-.225-.975-.615-.705-.945-1.47-1.845-1.845-2.325-.165-.21-.33-.255-.495-.075-.375.42-.855 1.065-1.275 1.545-.24.27-.495.285-.825.105-.615-.33-1.455-.975-2.025-1.755 2.55-3.795 4.755-8.07 4.755-8.07.12-.27.015-.495-.33-.495h-2.25c-.405 0-.585.195-.765.495 0 0-2.85 4.335-6.6 7.14-.375.285-.585.42-.795.42-.195 0-.285-.12-.285-.375v-2.85c0-.675-.24-.96-.855-.96-.675 0-1.365.165-1.365.675 0 .345.525.645.525 2.385 0 .72-.135 1.71-.405 2.385-.285.705-.795 1.305-1.185 1.305-.33 0-.585-.27-.585-.855V9.84c0-.675-.195-.96-.765-.96H4.89c-.405 0-.615.195-.615.495 0 .585.885 3.495 4.155 7.365 2.145 2.535 4.875 3.75 7.365 3.75.465 0 .705-.21.705-.675v-1.605c0-.585.255-.705.555-.585.345.135 1.365.855 1.905 1.545.345.435.615.63 1.005.63h2.25c.675 0 .825-.315.615-.795-.195-.435-1.425-2.385-1.425-2.385-.195-.27-.165-.495.075-.765.195-.225.735-.705 1.125-1.125Z" fill="#2787F5"/></svg>',
 			'youtube'  => '<svg width="34" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M33.12 3.78A4.24 4.24 0 0 0 30.15.82C27.52 0 17 0 17 0S6.48 0 3.85.82A4.24 4.24 0 0 0 .88 3.78 29.5 29.5 0 0 0 0 12a29.5 29.5 0 0 0 .88 8.22 4.24 4.24 0 0 0 2.97 2.96C6.48 24 17 24 17 24s10.52 0 13.15-.82a4.24 4.24 0 0 0 2.97-2.96A29.5 29.5 0 0 0 34 12a29.5 29.5 0 0 0-.88-8.22ZM13.6 17.14V6.86L22.4 12l-8.8 5.14Z" fill="#FF0000"/></svg>',
+			'max'      => '<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="14.5" cy="14.5" r="14.5" fill="#7B5CF6"/><path d="M9 19V10h2.4l2.6 4.5L16.6 10H19v9h-2.1v-5.2L14.2 19h-1.4l-2.7-5.2V19H9Z" fill="#fff"/></svg>',
 		);
 
 		return $icons[$network] ?? '';
@@ -1645,6 +1695,74 @@ if (! function_exists('ksenon_render_btn_arrow')) {
 			<?php ksenon_btn_arrow_icon(); ?>
 		</a>
 	<?php
+	}
+}
+
+if (! function_exists('ksenon_get_cta_bottom_popup_target')) {
+	function ksenon_get_cta_bottom_popup_target($action)
+	{
+		$targets = array(
+			'popup_order'         => '#popup-order',
+			'popup_consultation'  => '#popup-consultation',
+			'anchor_contacts'     => '#contacts',
+		);
+
+		return $targets[$action] ?? '';
+	}
+}
+
+if (! function_exists('ksenon_render_cta_bottom_button')) {
+	function ksenon_render_cta_bottom_button($link, $action, $class, $fallback_title = '', $with_arrow = false)
+	{
+		$title = ksenon_acf_link_title(is_array($link) ? $link : array(), $fallback_title);
+		if (! $title) {
+			return;
+		}
+
+		$popup_target = ksenon_get_cta_bottom_popup_target($action);
+
+		if ($popup_target && in_array($action, array('popup_order', 'popup_consultation'), true)) {
+		?>
+			<button
+				class="<?php echo esc_attr($class); ?>"
+				type="button"
+				data-fancybox
+				data-src="<?php echo esc_attr($popup_target); ?>">
+				<span class="btn__text"><?php echo esc_html($title); ?></span>
+				<?php if ($with_arrow) : ?>
+					<?php ksenon_btn_arrow_icon(); ?>
+				<?php endif; ?>
+			</button>
+		<?php
+			return;
+		}
+
+		if ('anchor_contacts' === $action) {
+			$link = array(
+				'url'    => '#contacts',
+				'title'  => $title,
+				'target' => '',
+			);
+		}
+
+		if (! is_array($link) || empty($link['url'])) {
+			return;
+		}
+
+		if ($with_arrow) {
+			ksenon_render_btn_arrow($link, $class, $fallback_title);
+			return;
+		}
+
+		$target = ksenon_acf_link_target($link);
+		?>
+		<a
+			class="<?php echo esc_attr($class); ?>"
+			href="<?php echo esc_url(ksenon_acf_link_url($link)); ?>"
+			<?php echo $target ? ' target="' . esc_attr($target) . '"' : ''; ?>>
+			<?php echo esc_html($title); ?>
+		</a>
+		<?php
 	}
 }
 

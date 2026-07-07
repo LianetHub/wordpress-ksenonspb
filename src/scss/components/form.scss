@@ -397,30 +397,45 @@ $cf7-error-border: #ff0000;
 	}
 
 	.checkbox {
+		display: flex;
+		width: 100%;
 		align-items: flex-start;
 		gap: rem(15);
+
+		$cta-checkbox-checked: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+		&__box::before,
+		.wpcf7-list-item-label:not(:empty)::before {
+			width: rem(24);
+			height: rem(24);
+			border-radius: rem(4);
+			border-color: $color-brand;
+			background-color: transparent;
+		}
 
 		&__box {
 			flex-shrink: 0;
 			width: rem(24);
 			height: rem(24);
 			margin-top: rem(2);
+		}
+
+		&:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty) {
+			padding-left: rem(34);
 
 			&::before {
-				width: rem(24);
-				height: rem(24);
-				border-radius: rem(4);
-				border-color: $color-brand;
-				background-color: transparent;
+				top: rem(2);
+				transform: none;
 			}
 		}
 
 		&__input:checked + .checkbox__box::before,
 		&:has(.checkbox__input:checked) .checkbox__box::before,
-		&:has(input[type="checkbox"]:checked) .checkbox__box::before {
+		&:has(input[type="checkbox"]:checked) .checkbox__box::before,
+		&:has(input[type="checkbox"]:checked) .wpcf7-list-item-label::before {
 			background-color: $color-brand;
 			border-color: $color-brand;
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+			background-image: $cta-checkbox-checked;
 			background-size: rem(12) rem(10);
 		}
 

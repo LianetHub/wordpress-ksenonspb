@@ -14,19 +14,10 @@
 </div>
 
 <div class="form__field">
-  [textarea your-message class:form-field placeholder "Что произошло - короткое описание"]
+  [textarea your-message class:form-field placeholder "Опишите задачу или вопрос"]
 </div>
 
-<div class="form-upload">
-  <div class="form-upload__icon" aria-hidden="true">
-    <svg class="form-upload__icon-svg" width="55" height="55"><use href="@img/icons.svg#icon-attach-plus"></use></svg>
-  </div>
-  <p class="form-upload__title">Прикрепить фото фары</p>
-  <p class="form-upload__hint">До 5 файлов • до 10 МБ каждый • JPG, PNG, HEIC</p>
-  [file your-photo class:form-upload__input filetypes:jpg|jpeg|png|heic limit:10mb]
-</div>
-
-<div class="checkbox cta-contacts__agree">
+<div class="checkbox cta-form__agree">
   [acceptance agree use_label_element optional]
   <span class="checkbox__box" aria-hidden="true"></span>
   <span class="checkbox__text">Согласен с <a href="%opd_url%" class="color-accent">обработкой персональных данных</a> и условиями <a href="%policy_url%" class="color-accent">политики конфиденциальности</a></span>

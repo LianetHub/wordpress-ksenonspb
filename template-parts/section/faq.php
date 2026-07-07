@@ -86,11 +86,13 @@ $render_faq_item = static function ($item) {
 					<p class="faq__intro"><?php echo nl2br(esc_html($intro)); ?></p>
 				<?php endif; ?>
 				<div class="faq__help">
-					<div class="faq__help-copy">
-						<p class="faq__help-title"><?php esc_html_e('Остались вопросы?', 'ksenonspb'); ?></p>
-						<p class="faq__help-text"><?php esc_html_e('Ответим в мессенджере в течение 15 минут в рабочее время.', 'ksenonspb'); ?></p>
+					<div class="faq__help-inner">
+						<div class="faq__help-copy">
+							<p class="faq__help-title"><?php esc_html_e('Остались вопросы?', 'ksenonspb'); ?></p>
+							<p class="faq__help-text"><?php esc_html_e('Ответим в мессенджере в течение 15 минут в рабочее время.', 'ksenonspb'); ?></p>
+						</div>
+						<?php ksenon_render_messenger_links('faq__messengers messenger-links', true); ?>
 					</div>
-					<?php ksenon_render_messenger_links('faq__messengers messenger-links', true); ?>
 				</div>
 			</aside>
 

@@ -407,9 +407,23 @@
                             "return_format": "array",
                             "default_value": {
                                 "title": "Оценить ремонт",
-                                "url": "#contacts",
+                                "url": "#popup-order",
                                 "target": ""
                             }
+                        },
+                        {
+                            "key": "field_ksenon_cb_btn_primary_action",
+                            "label": "Действие основной кнопки",
+                            "name": "btn_primary_action",
+                            "type": "select",
+                            "choices": {
+                                "popup_order": "Попап заявки",
+                                "popup_consultation": "Попап консультации",
+                                "anchor_contacts": "Якорь #contacts",
+                                "link": "Ссылка из поля"
+                            },
+                            "default_value": "popup_order",
+                            "return_format": "value"
                         },
                         {
                             "key": "field_ksenon_cb_btn_secondary",
@@ -419,9 +433,23 @@
                             "return_format": "array",
                             "default_value": {
                                 "title": "Связаться с нами",
-                                "url": "#contacts",
+                                "url": "#popup-consultation",
                                 "target": ""
                             }
+                        },
+                        {
+                            "key": "field_ksenon_cb_btn_secondary_action",
+                            "label": "Действие вторичной кнопки",
+                            "name": "btn_secondary_action",
+                            "type": "select",
+                            "choices": {
+                                "popup_order": "Попап заявки",
+                                "popup_consultation": "Попап консультации",
+                                "anchor_contacts": "Якорь #contacts",
+                                "link": "Ссылка из поля"
+                            },
+                            "default_value": "popup_consultation",
+                            "return_format": "value"
                         }
                     ]
                 }
@@ -441,5 +469,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1783123200
+    "modified": 1751842000
 }

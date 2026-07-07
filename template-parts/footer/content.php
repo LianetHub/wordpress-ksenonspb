@@ -6,7 +6,7 @@
  * @package ksenonspb
  */
 
-$logo         = ksenon_get_option('logotip');
+$logo         = ksenon_get_logo('light');
 $tagline      = ksenon_get_option('footer_tagline', __('Лаборатория автосвета с 2001', 'ksenonspb'));
 $description  = ksenon_get_option('footer_description', __('Ремонтируем фары, которые другие меняют целиком. Гарантия до 2 лет письменно', 'ksenonspb'));
 $phones       = ksenon_get_phones();
@@ -17,8 +17,8 @@ $hours        = ksenon_get_option('hours');
 $copyright    = ksenon_get_option('kopirajt', '© 2001–2026 КБ АВТО');
 $requisites   = ksenon_get_footer_requisites();
 $domain       = ksenon_get_footer_domain();
-$policy_link  = ksenon_get_option('ssylka_na_politiku');
-$link_opd     = ksenon_get_option('ssylka_opd');
+$policy_link  = ksenon_get_policy_url();
+$link_opd     = ksenon_get_opd_url();
 ?>
 <footer class="footer">
 	<div class="footer__container container">
@@ -121,12 +121,8 @@ $link_opd     = ksenon_get_option('ssylka_opd');
 			</div>
 
 			<div class="footer__bottom-links">
-				<?php if ($policy_link) : ?>
-					<a class="footer__legal" href="<?php echo ksenon_esc_link($policy_link); ?>"><?php esc_html_e('Политика конфиденциальности', 'ksenonspb'); ?></a>
-				<?php endif; ?>
-				<?php if ($link_opd) : ?>
-					<a class="footer__legal" href="<?php echo ksenon_esc_link($link_opd); ?>"><?php esc_html_e('Согласие на обработку ПД', 'ksenonspb'); ?></a>
-				<?php endif; ?>
+				<a class="footer__legal" href="<?php echo esc_url($policy_link); ?>"><?php esc_html_e('Политика конфиденциальности', 'ksenonspb'); ?></a>
+				<a class="footer__legal" href="<?php echo esc_url($link_opd); ?>"><?php esc_html_e('Согласие на обработку ПД', 'ksenonspb'); ?></a>
 			</div>
 		</div>
 	</div>

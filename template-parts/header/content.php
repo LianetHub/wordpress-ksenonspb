@@ -6,7 +6,7 @@
  * @package ksenonspb
  */
 
-$logo     = ksenon_get_option('logotip');
+$logo     = ksenon_get_logo('dark');
 $cta_text = ksenon_get_option('header_cta_text', __('Связаться с нами', 'ksenonspb'));
 $email    = ksenon_get_option('email');
 $address  = ksenon_get_option('address');

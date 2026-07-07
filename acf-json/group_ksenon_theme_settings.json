@@ -3,12 +3,85 @@
     "title": "Настройки сайта",
     "fields": [
         {
-            "key": "field_ksenon_ts_logo",
-            "label": "Логотип",
-            "name": "logotip",
+            "key": "field_ksenon_ts_branding_accordion",
+            "label": "Брендинг",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_logo_dark",
+            "label": "Логотип тёмный",
+            "name": "logo_dark",
             "type": "image",
+            "instructions": "Для светлого фона (шапка)",
             "return_format": "array",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_logo_light",
+            "label": "Логотип светлый",
+            "name": "logo_light",
+            "type": "image",
+            "instructions": "Для тёмного фона (подвал)",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_favicon_png",
+            "label": "Favicon PNG (96×96)",
+            "name": "favicon_png",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "mime_types": "png"
+        },
+        {
+            "key": "field_ksenon_ts_favicon_svg",
+            "label": "Favicon SVG",
+            "name": "favicon_svg",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "mime_types": "svg"
+        },
+        {
+            "key": "field_ksenon_ts_favicon_ico",
+            "label": "Favicon ICO",
+            "name": "favicon_ico",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "mime_types": "ico"
+        },
+        {
+            "key": "field_ksenon_ts_favicon_apple",
+            "label": "Apple Touch Icon (180×180)",
+            "name": "favicon_apple",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "mime_types": "png"
+        },
+        {
+            "key": "field_ksenon_ts_favicon_manifest_192",
+            "label": "Web App Icon 192×192",
+            "name": "favicon_manifest_192",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "mime_types": "png"
+        },
+        {
+            "key": "field_ksenon_ts_favicon_manifest_512",
+            "label": "Web App Icon 512×512",
+            "name": "favicon_manifest_512",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "mime_types": "png"
         },
         {
             "key": "field_ksenon_ts_header_accordion",
@@ -25,38 +98,6 @@
             "name": "header_cta_text",
             "type": "text",
             "default_value": "Связаться с нами"
-        },
-        {
-            "key": "field_ksenon_ts_phones",
-            "label": "Телефоны",
-            "name": "telefony",
-            "type": "repeater",
-            "layout": "table",
-            "button_label": "Добавить телефон",
-            "default_value": [
-                {
-                    "nomer": "+7 (812) 983-83-84",
-                    "v_shapke": 1
-                }
-            ],
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_ts_phone_number",
-                    "label": "Номер",
-                    "name": "nomer",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_ts_phones"
-                },
-                {
-                    "key": "field_ksenon_ts_phone_header",
-                    "label": "В шапке",
-                    "name": "v_shapke",
-                    "type": "true_false",
-                    "ui": 1,
-                    "default_value": 1,
-                    "parent_repeater": "field_ksenon_ts_phones"
-                }
-            ]
         },
         {
             "key": "field_ksenon_ts_menu",
@@ -125,6 +166,37 @@
             ]
         },
         {
+            "key": "field_ksenon_ts_contacts_accordion",
+            "label": "Контакты",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_phones",
+            "label": "Телефоны",
+            "name": "telefony",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить телефон",
+            "default_value": [
+                {
+                    "nomer": "+7 (812) 983-83-84"
+                }
+            ],
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_ts_phone_number",
+                    "label": "Номер",
+                    "name": "nomer",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_ts_phones"
+                }
+            ]
+        },
+        {
             "key": "field_ksenon_ts_email",
             "label": "E-mail",
             "name": "email",
@@ -146,13 +218,6 @@
             "type": "textarea",
             "rows": 2,
             "default_value": "Пн–Сб 10:00–20:00\nВоскресенье — выходной"
-        },
-        {
-            "key": "field_ksenon_ts_copyright",
-            "label": "Копирайт",
-            "name": "kopirajt",
-            "type": "text",
-            "default_value": "© 2001–2026 КБ АВТО"
         },
         {
             "key": "field_ksenon_ts_footer_accordion",
@@ -200,64 +265,289 @@
             "default_value": "ksenonspb.ru"
         },
         {
-            "key": "field_ksenon_ts_social_links",
-            "label": "Соцсети",
-            "name": "social_links",
-            "type": "repeater",
-            "layout": "table",
-            "button_label": "Добавить соцсеть",
-            "default_value": [
-                {
-                    "network": "telegram",
-                    "url": "https://t.me/ksenonspb"
-                },
-                {
-                    "network": "whatsapp",
-                    "url": "https://wa.me/78129838384"
-                }
-            ],
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_ts_social_network",
-                    "label": "Сеть",
-                    "name": "network",
-                    "type": "select",
-                    "choices": {
-                        "telegram": "Telegram",
-                        "whatsapp": "WhatsApp",
-                        "vk": "VK",
-                        "youtube": "YouTube"
-                    },
-                    "default_value": "telegram",
-                    "return_format": "value",
-                    "parent_repeater": "field_ksenon_ts_social_links"
-                },
-                {
-                    "key": "field_ksenon_ts_social_url",
-                    "label": "Ссылка",
-                    "name": "url",
-                    "type": "url",
-                    "parent_repeater": "field_ksenon_ts_social_links"
-                }
-            ]
-        },
-        {
-            "key": "field_ksenon_ts_policy",
-            "label": "Ссылка на политику",
-            "name": "ssylka_na_politiku",
-            "type": "page_link"
-        },
-        {
-            "key": "field_ksenon_ts_opd",
-            "label": "Ссылка «Согласие ОПД»",
-            "name": "ssylka_opd",
-            "type": "page_link"
+            "key": "field_ksenon_ts_copyright",
+            "label": "Копирайт",
+            "name": "kopirajt",
+            "type": "text",
+            "default_value": "© 2001–2026 КБ АВТО"
         },
         {
             "key": "field_ksenon_ts_cookies",
             "label": "Ссылка «Cookies»",
             "name": "ssylka_cookies",
             "type": "page_link"
+        },
+        {
+            "key": "field_ksenon_ts_social_accordion",
+            "label": "Соцсети",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_social_telegram",
+            "label": "Telegram",
+            "name": "social_telegram",
+            "type": "url",
+            "default_value": "https://t.me/ksenonspb"
+        },
+        {
+            "key": "field_ksenon_ts_social_whatsapp",
+            "label": "WhatsApp",
+            "name": "social_whatsapp",
+            "type": "url",
+            "default_value": "https://wa.me/78129838384"
+        },
+        {
+            "key": "field_ksenon_ts_social_vk",
+            "label": "VK",
+            "name": "social_vk",
+            "type": "url"
+        },
+        {
+            "key": "field_ksenon_ts_social_youtube",
+            "label": "YouTube",
+            "name": "social_youtube",
+            "type": "url"
+        },
+        {
+            "key": "field_ksenon_ts_social_max",
+            "label": "MAX",
+            "name": "social_max",
+            "type": "url"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_accordion",
+            "label": "Формы CF7",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_cf7_consult",
+            "label": "CF7: консультация",
+            "name": "cf7_konsultaciya",
+            "type": "text",
+            "placeholder": "[contact-form-7 id=\"1\" title=\"Консультация\"]"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_order",
+            "label": "CF7: заявка",
+            "name": "cf7_zakaz",
+            "type": "text",
+            "placeholder": "[contact-form-7 id=\"2\" title=\"Заявка\"]"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_presentation",
+            "label": "CF7: презентация",
+            "name": "cf7_prezentaciya",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_title",
+            "label": "Заголовок: CTA + контакты",
+            "name": "cta_contacts_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Оценим ваш случай за <span class=\"color-accent\">1 рабочий день</span>"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_title_service_not_found",
+            "label": "Заголовок: Не нашли свою услугу?",
+            "name": "cf7_title_service_not_found",
+            "type": "text",
+            "default_value": "Не нашли свою услугу?"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_title_same_result",
+            "label": "Заголовок: Хотите такой же результат?",
+            "name": "cf7_title_same_result",
+            "type": "text",
+            "default_value": "Хотите такой же результат?"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_title_free_inspection",
+            "label": "Заголовок: Бесплатный осмотр",
+            "name": "cf7_title_free_inspection",
+            "type": "text",
+            "default_value": "Убедились? Запишитесь на бесплатный осмотр"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_title_appointment",
+            "label": "Заголовок: Запись на установку",
+            "name": "cf7_title_appointment",
+            "type": "text",
+            "default_value": "Запишитесь на установку"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_accordion",
+            "label": "CTA + контакты",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_lead",
+            "label": "Подзаголовок",
+            "name": "cta_contacts_lead",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Прикрепите фото фары — пришлём предварительную смету и сроки. Без обязательств, без звонков с продажами."
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_car_image",
+            "label": "Фото авто (декор)",
+            "name": "cta_contacts_car_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_messenger_label",
+            "label": "Мессенджеры — метка",
+            "name": "cta_contacts_messenger_label",
+            "type": "text",
+            "default_value": "Не любите <span class=\"color-accent\">формы?</span>"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_messenger_title",
+            "label": "Мессенджеры — заголовок",
+            "name": "cta_contacts_messenger_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Напишите в мессенджер — ответим за <span class=\"color-accent\">15 минут</span>"
+        },
+        {
+            "key": "field_ksenon_ts_cta_contacts_messenger_text",
+            "label": "Мессенджеры — текст",
+            "name": "cta_contacts_messenger_text",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "В рабочее время. Пришлите фото — оценим без долгих переписок."
+        },
+        {
+            "key": "field_ksenon_ts_popup_accordion",
+            "label": "Попапы",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_popup_consult_title",
+            "label": "Попап консультации — заголовок",
+            "name": "popup_consult_title",
+            "type": "text",
+            "default_value": "Свяжитесь с нами"
+        },
+        {
+            "key": "field_ksenon_ts_popup_consult_lead",
+            "label": "Попап консультации — подзаголовок",
+            "name": "popup_consult_lead",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_ts_popup_order_title",
+            "label": "Попап заявки — заголовок",
+            "name": "popup_order_title",
+            "type": "text",
+            "default_value": "Оставить заявку"
+        },
+        {
+            "key": "field_ksenon_ts_popup_order_lead",
+            "label": "Попап заявки — подзаголовок",
+            "name": "popup_order_lead",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_ts_popup_order_image_1",
+            "label": "Попап заявки — фото 1",
+            "name": "popup_order_image_1",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_popup_order_image_2",
+            "label": "Попап заявки — фото 2",
+            "name": "popup_order_image_2",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_popup_presentation_title",
+            "label": "Попап презентации — заголовок",
+            "name": "popup_presentation_title",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_ts_popup_presentation_lead",
+            "label": "Попап презентации — подзаголовок",
+            "name": "popup_presentation_lead",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_ts_popup_presentation_image",
+            "label": "Попап презентации — изображение",
+            "name": "popup_presentation_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_ts_popup_partners_title",
+            "label": "Попап партнёров — заголовок",
+            "name": "popup_partners_title",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_ts_popup_partners_lead",
+            "label": "Попап партнёров — подзаголовок",
+            "name": "popup_partners_lead",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_ksenon_ts_popup_partners_action",
+            "label": "Попап партнёров — текст кнопки",
+            "name": "popup_partners_action",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_ts_popup_success",
+            "label": "Успешная отправка",
+            "name": "popup_success_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Спасибо! Ваша заявка отправлена"
+        },
+        {
+            "key": "field_ksenon_ts_popup_error",
+            "label": "Ошибка отправки",
+            "name": "popup_error_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Не удалось отправить. Попробуйте снова"
+        },
+        {
+            "key": "field_ksenon_ts_reviews_accordion",
+            "label": "Отзывы",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
         },
         {
             "key": "field_ksenon_ts_reviews",
@@ -395,131 +685,13 @@
             ]
         },
         {
-            "key": "field_ksenon_ts_cta_contacts_accordion",
-            "label": "CTA + контакты",
+            "key": "field_ksenon_ts_404_accordion",
+            "label": "404",
             "name": "",
             "type": "accordion",
             "open": 0,
             "multi_expand": 0,
             "endpoint": 0
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_title",
-            "label": "Заголовок",
-            "name": "cta_contacts_title",
-            "type": "textarea",
-            "rows": 2,
-            "default_value": "Оценим ваш случай за <span class=\"color-accent\">1 рабочий день</span>"
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_lead",
-            "label": "Подзаголовок",
-            "name": "cta_contacts_lead",
-            "type": "textarea",
-            "rows": 2,
-            "default_value": "Прикрепите фото фары — пришлём предварительную смету и сроки. Без обязательств, без звонков с продажами."
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_car_image",
-            "label": "Фото авто (декор)",
-            "name": "cta_contacts_car_image",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_messenger_label",
-            "label": "Мессенджеры — метка",
-            "name": "cta_contacts_messenger_label",
-            "type": "text",
-            "default_value": "Не любите <span class=\"color-accent\">формы?</span>"
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_messenger_title",
-            "label": "Мессенджеры — заголовок",
-            "name": "cta_contacts_messenger_title",
-            "type": "textarea",
-            "rows": 2,
-            "default_value": "Напишите в мессенджер — ответим за <span class=\"color-accent\">15 минут</span>"
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_messenger_text",
-            "label": "Мессенджеры — текст",
-            "name": "cta_contacts_messenger_text",
-            "type": "textarea",
-            "rows": 2,
-            "default_value": "В рабочее время. Пришлите фото — оценим без долгих переписок."
-        },
-        {
-            "key": "field_ksenon_ts_cta_contacts_map_link_text",
-            "label": "Текст ссылки на карту",
-            "name": "cta_contacts_map_link_text",
-            "type": "text",
-            "default_value": "Открыть на карте →"
-        },
-        {
-            "key": "field_ksenon_ts_cf7_consult",
-            "label": "CF7: консультация",
-            "name": "cf7_konsultaciya",
-            "type": "text",
-            "placeholder": "[contact-form-7 id=\"1\" title=\"Консультация\"]"
-        },
-        {
-            "key": "field_ksenon_ts_cf7_order",
-            "label": "CF7: заявка",
-            "name": "cf7_zakaz",
-            "type": "text",
-            "placeholder": "[contact-form-7 id=\"2\" title=\"Заявка\"]"
-        },
-        {
-            "key": "field_ksenon_ts_cf7_presentation",
-            "label": "CF7: презентация",
-            "name": "cf7_prezentaciya",
-            "type": "text"
-        },
-        {
-            "key": "field_ksenon_ts_popup_consult_title",
-            "label": "Попап консультации — заголовок",
-            "name": "popup_consult_title",
-            "type": "text",
-            "default_value": "Свяжитесь с нами"
-        },
-        {
-            "key": "field_ksenon_ts_popup_consult_lead",
-            "label": "Попап консультации — подзаголовок",
-            "name": "popup_consult_lead",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
-            "key": "field_ksenon_ts_popup_order_title",
-            "label": "Попап заявки — заголовок",
-            "name": "popup_order_title",
-            "type": "text",
-            "default_value": "Оставить заявку"
-        },
-        {
-            "key": "field_ksenon_ts_popup_order_lead",
-            "label": "Попап заявки — подзаголовок",
-            "name": "popup_order_lead",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
-            "key": "field_ksenon_ts_popup_success",
-            "label": "Успешная отправка",
-            "name": "popup_success_title",
-            "type": "textarea",
-            "rows": 2,
-            "default_value": "Спасибо! Ваша заявка отправлена"
-        },
-        {
-            "key": "field_ksenon_ts_popup_error",
-            "label": "Ошибка отправки",
-            "name": "popup_error_title",
-            "type": "textarea",
-            "rows": 2,
-            "default_value": "Не удалось отправить. Попробуйте снова"
         },
         {
             "key": "field_ksenon_ts_404_title",
@@ -549,5 +721,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751752800
+    "modified": 1751841600
 }
