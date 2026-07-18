@@ -1,9 +1,2 @@
-@use "../variables" as *;
-@use "../mixins" as *;
 @use "../components/accordion";
-
-.about-page,
-.about-video,
-.about-certificates {
-	// About page — fill during redesign
-}
+@use "../section/about/about-page";

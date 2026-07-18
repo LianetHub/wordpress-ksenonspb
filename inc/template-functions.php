@@ -464,7 +464,7 @@ if (! function_exists('ksenon_cta_form_config')) {
 			),
 			'free_inspection'   => array(
 				'title'       => (string) ksenon_get_option('cf7_title_free_inspection', __('Убедились? Запишитесь на бесплатный осмотр', 'ksenonspb')),
-				'cf7_option'  => 'cf7_konsultaciya',
+				'cf7_option'  => 'cf7_zakaz',
 				'form_source' => __('Бесплатный осмотр', 'ksenonspb'),
 			),
 			'appointment'       => array(

@@ -1,0 +1,137 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.about-page {
+	padding: rem(24) 0 rem(48);
+
+	@media (min-width: $md3) {
+		padding: rem(36) 0 rem(72);
+	}
+
+	&__title {
+		margin-bottom: rem(24);
+
+		@media (min-width: $md3) {
+			margin-bottom: rem(40);
+		}
+	}
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+
+		@media (min-width: $md3) {
+			gap: rem(38);
+		}
+	}
+
+	&__card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-height: rem(280);
+		border-radius: rem(24);
+		background: $color-surface;
+		overflow: hidden;
+
+		@media (min-width: $md3) {
+			min-height: rem(472);
+			border-radius: $radius-card;
+		}
+	}
+
+	&__card-body {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex: 1 1 auto;
+		gap: rem(24);
+		padding: rem(24) rem(20);
+		max-width: 58%;
+
+		@media (min-width: $md3) {
+			gap: rem(32);
+			padding: rem(36) rem(61) rem(39);
+			max-width: rem(620);
+		}
+	}
+
+	&__card-top {
+		display: flex;
+		flex-direction: column;
+		gap: rem(12);
+
+		@media (min-width: $md3) {
+			gap: rem(20);
+		}
+	}
+
+	&__card-title {
+		color: $color-black;
+		font-family: $font-family;
+		font-weight: 500;
+		line-height: 1.2;
+		@include adaptive-font(32, 67);
+	}
+
+	&__card-text {
+		color: $color-text-body;
+		font-family: $font-family;
+		font-weight: 400;
+		line-height: 1.3;
+		@include adaptive-font(14, 18);
+	}
+
+	&__card-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		align-self: flex-start;
+		min-height: rem(48);
+		padding: rem(12) rem(20);
+		border-radius: rem(16);
+		background: $color-accent;
+		color: $color-white;
+		font-family: $font-family;
+		font-size: rem(14);
+		font-weight: 500;
+		line-height: normal;
+		white-space: nowrap;
+
+		@media (min-width: $md3) {
+			min-height: rem(64);
+			padding: rem(20) rem(35);
+			border-radius: rem(22);
+			font-size: rem(20);
+		}
+	}
+
+	&__card-media {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		width: 55%;
+		pointer-events: none;
+
+		@media (min-width: $md3) {
+			width: 45%;
+			max-width: rem(551);
+		}
+	}
+
+	&__card-img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: right center;
+	}
+}

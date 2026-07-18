@@ -18,6 +18,14 @@
                     "parent_repeater": "field_ksenon_about_cards"
                 },
                 {
+                    "key": "field_ksenon_about_card_button",
+                    "label": "Кнопка",
+                    "name": "button",
+                    "type": "link",
+                    "return_format": "array",
+                    "parent_repeater": "field_ksenon_about_cards"
+                },
+                {
                     "key": "field_ksenon_about_card_text",
                     "label": "Текст",
                     "name": "text",
@@ -101,5 +109,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1752865200
 }

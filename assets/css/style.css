@@ -330,7 +330,7 @@ body {
   left: 0;
   width: 1.4375rem;
   height: 1.4375rem;
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/list-marker-plus.svg") no-repeat center/contain;
+  background: url("@img/list-marker-plus.svg") no-repeat center/contain;
 }
 .typography-block ol {
   counter-reset: typography-counter;
@@ -1660,7 +1660,7 @@ body {
   color: #fff;
 }
 .popup-modal#popup-success {
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/succes-modal-bg.svg") center 0/auto 100% no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("@img/succes-modal-bg.svg") center 0/auto 100% no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
 }
 .popup-modal__close {
   position: absolute;
@@ -1929,7 +1929,7 @@ body {
   height: 1.5rem;
 }
 .popup-modal--consult {
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-consult-decor-mobile.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("@img/modal-consult-decor-mobile.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
   text-align: center;
 }
 @media (max-width: 767.98px) {
@@ -1939,16 +1939,16 @@ body {
 }
 @media (min-width: 767.98px) {
   .popup-modal--consult {
-    background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-consult-decor.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+    background: url("@img/modal-consult-decor.webp") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
   }
 }
 .popup-modal--order {
   text-align: left;
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-order-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("@img/modal-order-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
 }
 @media (max-width: 991.98px) {
   .popup-modal--order {
-    background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-order-bg-mobile.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+    background: url("@img/modal-order-bg-mobile.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
   }
   .popup-modal--order .popup-modal__visual {
     display: grid;
@@ -1964,7 +1964,7 @@ body {
   }
 }
 .popup-modal--presentation {
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/modal-presentation-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
+  background: url("@img/modal-presentation-bg.svg") 0 0/cover no-repeat, linear-gradient(61deg, #e8720f 0%, #fd8011 99.68%);
 }
 @media (max-width: 767.98px) {
   .popup-modal--presentation .popup-modal__media {
@@ -4214,7 +4214,7 @@ body {
   margin: 0 auto;
   padding: 1.94rem 3.75rem;
   display: flex;
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/hero-headlight.webp") right center/43% auto no-repeat, #000;
+  background: url("@img/hero-headlight.webp") right center/43% auto no-repeat, #000;
 }
 @media (min-width: 991.98px) {
   .hero__promo {
@@ -5586,7 +5586,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/policy-decor.svg") 0 0/100% auto repeat-y;
+  background: url("@img/policy-decor.svg") 0 0/100% auto repeat-y;
   pointer-events: none;
 }
 @media (max-width: 767.98px) {
@@ -5607,3 +5607,138 @@ body {
   max-width: 54.75rem;
   margin: 0 auto;
 }
+
+.about-page {
+  padding: 1.5rem 0 3rem;
+}
+@media (min-width: 991.98px) {
+  .about-page {
+    padding: 2.25rem 0 4.5rem;
+  }
+}
+.about-page__title {
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 991.98px) {
+  .about-page__title {
+    margin-bottom: 2.5rem;
+  }
+}
+.about-page__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .about-page__cards {
+    gap: 2.375rem;
+  }
+}
+.about-page__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 17.5rem;
+  border-radius: 1.5rem;
+  background: #f7f7f7;
+  overflow: hidden;
+}
+@media (min-width: 991.98px) {
+  .about-page__card {
+    min-height: 29.5rem;
+    border-radius: 40px;
+  }
+}
+.about-page__card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  gap: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  max-width: 58%;
+}
+@media (min-width: 991.98px) {
+  .about-page__card-body {
+    gap: 2rem;
+    padding: 2.25rem 3.8125rem 2.4375rem;
+    max-width: 38.75rem;
+  }
+}
+.about-page__card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (min-width: 991.98px) {
+  .about-page__card-top {
+    gap: 1.25rem;
+  }
+}
+.about-page__card-title {
+  color: #000000;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: clamp(32px, 3.2407407407vw + 20.3333333333px, 67px);
+}
+.about-page__card-text {
+  color: #6f6f6f;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+  font-size: clamp(14px, 0.3703703704vw + 12.6666666667px, 18px);
+}
+.about-page__card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-height: 3rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  background: #fd8011;
+  color: #ffffff;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+}
+@media (min-width: 991.98px) {
+  .about-page__card-btn {
+    min-height: 4rem;
+    padding: 1.25rem 2.1875rem;
+    border-radius: 1.375rem;
+    font-size: 1.25rem;
+  }
+}
+.about-page__card-media {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 55%;
+  pointer-events: none;
+}
+@media (min-width: 991.98px) {
+  .about-page__card-media {
+    width: 45%;
+    max-width: 34.4375rem;
+  }
+}
+.about-page__card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+}
+
+/*# sourceMappingURL=style.css.map */
