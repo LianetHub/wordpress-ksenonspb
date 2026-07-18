@@ -104,7 +104,6 @@ $checkbox-check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 		.checkbox__text,
 		.wpcf7-list-item-label:not(:empty) {
 			position: relative;
-			padding-left: rem(42);
 
 			&::before {
 				float: none;
@@ -132,6 +131,7 @@ $checkbox-check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 
 	// CF7: квадрат на .wpcf7-list-item-label; статика: на .checkbox__box
 	&:has(.wpcf7-form-control-wrap) {
+
 		.checkbox__box,
 		.checkbox__text::before {
 			display: none;
