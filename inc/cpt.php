@@ -597,6 +597,17 @@ add_filter(
 			}
 		}
 
+		$page = get_page_by_path($request);
+		if ($page instanceof WP_Post) {
+			return array(
+				'pagename' => $request,
+			);
+		}
+
+		if (! empty($query_vars['service_category']) && empty($query_vars['pagename']) && empty($query_vars['page_id'])) {
+			unset($query_vars['service_category'], $query_vars['taxonomy'], $query_vars['term']);
+		}
+
 		return $query_vars;
 	},
 	1
