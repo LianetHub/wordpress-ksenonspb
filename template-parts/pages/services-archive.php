@@ -41,61 +41,68 @@ if ($archive_term instanceof WP_Term) {
 <section class="services-archive">
 	<div class="services-archive__container container">
 		<h1 class="services-archive__title title-lg"><?php echo esc_html($page_title); ?></h1>
+	</div>
+	<div class="services-archive__container container container--large">
+		<div class="services-archive__panel">
+			<?php if ($categories) : ?>
+				<nav class="services-archive__filters swiper" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
+					<div class="swiper-wrapper">
+						<a
+							class="services-archive__tab swiper-slide<?php echo $active_slug ? '' : ' _active'; ?>"
+							href="<?php echo esc_url(ksenon_services_archive_url()); ?>"
+							<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
+							<?php esc_html_e('Все', 'ksenonspb'); ?>
+						</a>
+						<?php foreach ($categories as $category) : ?>
+							<?php
+							$is_active = $active_top_slug === $category->slug;
+							?>
+							<a
+								class="services-archive__tab swiper-slide<?php echo $is_active ? ' _active' : ''; ?>"
+								href="<?php echo esc_url(ksenon_services_archive_url($category->slug)); ?>"
+								<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
+								<?php echo esc_html($category->name); ?>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				</nav>
+			<?php endif; ?>
 
-		<?php if ($categories) : ?>
-			<nav class="services-archive__filters blog-tabs" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
-				<a
-					class="blog-tabs__btn<?php echo $active_slug ? '' : ' _active'; ?>"
-					href="<?php echo esc_url(ksenon_services_archive_url()); ?>"
-					<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
-					<?php esc_html_e('Все', 'ksenonspb'); ?>
-				</a>
-				<?php foreach ($categories as $category) : ?>
+			<?php if ($subcategories) : ?>
+				<nav class="services-archive__subfilters swiper" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
+					<div class="swiper-wrapper">
+						<a
+							class="services-archive__tab swiper-slide<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
+							href="<?php echo esc_url(ksenon_services_archive_url($active_top_slug)); ?>"
+							<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
+							<?php esc_html_e('Все', 'ksenonspb'); ?>
+						</a>
+						<?php foreach ($subcategories as $subcategory) : ?>
+							<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
+							<a
+								class="services-archive__tab swiper-slide<?php echo $is_sub_active ? ' _active' : ''; ?>"
+								href="<?php echo esc_url(ksenon_services_archive_url($subcategory->slug)); ?>"
+								<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
+								<?php echo esc_html($subcategory->name); ?>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				</nav>
+			<?php endif; ?>
+
+			<?php if ($query->have_posts()) : ?>
+				<ul class="services-archive__grid">
 					<?php
-					$is_active = $active_top_slug === $category->slug;
+					while ($query->have_posts()) :
+						$query->the_post();
+						get_template_part('template-parts/blocks/service-card', null, array('post' => get_post()));
+					endwhile;
+					wp_reset_postdata();
 					?>
-					<a
-						class="blog-tabs__btn<?php echo $is_active ? ' _active' : ''; ?>"
-						href="<?php echo esc_url(ksenon_services_archive_url($category->slug)); ?>"
-						<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
-						<?php echo esc_html($category->name); ?>
-					</a>
-				<?php endforeach; ?>
-			</nav>
-		<?php endif; ?>
-
-		<?php if ($subcategories) : ?>
-			<nav class="services-archive__subfilters blog-tabs" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
-				<a
-					class="blog-tabs__btn<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
-					href="<?php echo esc_url(ksenon_services_archive_url($active_top_slug)); ?>"
-					<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
-					<?php esc_html_e('Все', 'ksenonspb'); ?>
-				</a>
-				<?php foreach ($subcategories as $subcategory) : ?>
-					<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
-					<a
-						class="blog-tabs__btn<?php echo $is_sub_active ? ' _active' : ''; ?>"
-						href="<?php echo esc_url(ksenon_services_archive_url($subcategory->slug)); ?>"
-						<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
-						<?php echo esc_html($subcategory->name); ?>
-					</a>
-				<?php endforeach; ?>
-			</nav>
-		<?php endif; ?>
-
-		<?php if ($query->have_posts()) : ?>
-			<ul class="services-archive__grid">
-				<?php
-				while ($query->have_posts()) :
-					$query->the_post();
-					get_template_part('template-parts/blocks/service-card', null, array('post' => get_post()));
-				endwhile;
-				wp_reset_postdata();
-				?>
-			</ul>
-			<?php ksenon_render_pagination($query, $active_slug); ?>
-		<?php endif; ?>
+				</ul>
+				<?php ksenon_render_pagination($query, $active_slug); ?>
+			<?php endif; ?>
+		</div>
 	</div>
 </section>
 <?php get_template_part('template-parts/blocks/cta-form', null, array('variant' => 'service_not_found')); ?>

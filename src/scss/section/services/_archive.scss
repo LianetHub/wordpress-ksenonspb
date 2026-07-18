@@ -9,18 +9,73 @@
 		padding: 0 0 rem(72);
 	}
 
-	&__container {
+
+
+	&__panel {
 		display: flex;
 		flex-direction: column;
 		gap: rem(24);
+		padding: rem(20);
+		border-radius: rem(40);
+		background: $color-surface;
+		margin-top: rem(24);
 
 		@media (min-width: $md3) {
+			margin-top: rem(36);
 			gap: rem(36);
+			padding: rem(42) rem(70);
 		}
 	}
 
-	&__filters {
-		margin: 0;
+	&__filters,
+	&__subfilters {
+		width: 100%;
+		padding: rem(10) rem(14);
+		border-radius: rem(62);
+		background: $color-white;
+		overflow: hidden;
+
+		@media (min-width: $md3) {
+			padding: rem(14) rem(30);
+		}
+	}
+
+	&__tab {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		padding: rem(12) rem(18);
+		border-radius: rem(40);
+		background: $color-surface;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(14);
+		font-weight: 500;
+		line-height: normal;
+		white-space: nowrap;
+		transition: background-color 0.2s ease, color 0.2s ease;
+
+		@media (min-width: $md3) {
+			padding: rem(15) rem(25);
+		}
+
+		&.swiper-slide {
+			width: auto;
+			height: auto;
+		}
+
+		&._active {
+			background: $color-accent;
+			color: $color-white;
+			pointer-events: none;
+		}
+
+		@media (any-hover: hover) {
+			&:hover:not(._active) {
+				background: color.adjust($color: $color-surface, $lightness: -5%);
+			}
+		}
 	}
 
 	&__grid {

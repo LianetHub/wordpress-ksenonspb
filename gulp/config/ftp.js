@@ -22,14 +22,18 @@ export function createFtpConnection() {
 		return null;
 	}
 
+	// Shared-хостинг часто рвёт PASV при нескольких data-соединениях —
+	// держим одну сессию, иначе падает на крупных файлах (шрифты).
 	return ftp.create( {
 		host: env.FTP_HOST,
 		user: env.FTP_USER,
 		password: env.FTP_PASSWORD,
 		port: env.FTP_PORT,
-		parallel: 3,
-		maxConnections: 3,
+		parallel: 1,
+		maxConnections: 1,
 		idleTimeout: 60_000,
+		pasvTimeout: 30_000,
+		connTimeout: 30_000,
 		log: ( ...args ) => console.log( '[FTP]', ...args ),
 	} );
 }

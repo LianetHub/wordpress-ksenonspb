@@ -32,13 +32,15 @@ function streamToPromise( stream ) {
 	} );
 }
 
-function deployToFtp( globs, label ) {
+const MAX_DEPLOY_ATTEMPTS = 3;
+
+function deployToFtp( globs, label, attempt = 1 ) {
 	const conn = createFtpConnection();
 	if ( ! conn ) {
 		return Promise.resolve();
 	}
 
-	if ( label ) {
+	if ( label && attempt === 1 ) {
 		log( label );
 	}
 
@@ -46,7 +48,16 @@ function deployToFtp( globs, label ) {
 		.src( globs, FTP_SRC_OPTIONS )
 		.pipe( conn.dest( ftpEnv.FTP_REMOTE_PATH, FTP_DEST_OPTIONS ) );
 
-	return streamToPromise( stream );
+	return streamToPromise( stream ).catch( ( error ) => {
+		if ( attempt >= MAX_DEPLOY_ATTEMPTS ) {
+			throw error;
+		}
+
+		log( `Retry ${ attempt }/${ MAX_DEPLOY_ATTEMPTS - 1 }: ${ error.message }` );
+		return new Promise( ( resolve ) => setTimeout( resolve, 1500 * attempt ) ).then( () =>
+			deployToFtp( globs, label, attempt + 1 )
+		);
+	} );
 }
 
 function reloadBrowserIfActive() {

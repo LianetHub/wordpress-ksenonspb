@@ -9,7 +9,7 @@
 
 	&.container--large {
 		@media (min-width: $md1) {
-			max-width: rem(1300);
+			max-width: rem(1380);
 		}
 	}
 
@@ -60,23 +60,24 @@ body {
 	background: $color-white;
 
 	&:not(.main--home) {
-		padding-top: rem(76);
+		// header padding-top + bar min-height + content gap
+		padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(24)});
 
 		@media (min-width: $md3) {
-			padding-top: rem(99);
+			padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)});
 		}
 	}
 }
 
 .admin-bar .main:not(.main--home) {
-	padding-top: calc(#{rem(76)} + 46px);
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(24)} + 46px);
 
 	@media screen and (min-width: 783px) {
-		padding-top: calc(#{rem(76)} + 32px);
+		padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(24)} + 32px);
 	}
 
 	@media (min-width: $md3) {
-		padding-top: calc(#{rem(99)} + 32px);
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)} + 32px);
 	}
 }
 

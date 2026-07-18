@@ -165,8 +165,62 @@
   gap: 1.5rem;
 }
 
-.services-archive__filters {
-  margin: 0;
+.services-archive__panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 2.5rem;
+  background: #f7f7f7;
+}
+
+.services-archive__filters,
+.services-archive__subfilters {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border-radius: 3.875rem;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.services-archive__tab {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  padding: 0.75rem 1.125rem;
+  border-radius: 2.5rem;
+  background: #f7f7f7;
+  color: #000000;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+  -webkit-transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.services-archive__tab.swiper-slide {
+  width: auto;
+  height: auto;
+}
+
+.services-archive__tab._active {
+  background: #fd8011;
+  color: #ffffff;
+  pointer-events: none;
 }
 
 .services-archive__grid {
@@ -301,6 +355,20 @@
   .services-archive__container {
     gap: 2.25rem;
   }
+
+  .services-archive__panel {
+    gap: 2.25rem;
+    padding: 2.625rem 4.375rem;
+  }
+
+  .services-archive__filters,
+  .services-archive__subfilters {
+    padding: 0.875rem 1.875rem;
+  }
+
+  .services-archive__tab {
+    padding: 0.9375rem 1.5625rem;
+  }
 }
 
 @media (min-width: 1199.98px) {
@@ -331,6 +399,10 @@
 
   .service-card--grey .service-card__link:hover:not(:disabled):not([aria-disabled=true]) {
     background: #ffffff;
+  }
+
+  .services-archive__tab:hover:not(._active) {
+    background: rgb(234.25, 234.25, 234.25);
   }
 
   .services-pagination__page:hover:not(._active) {

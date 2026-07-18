@@ -107,12 +107,36 @@
             "layout": "block",
             "button_label": "Добавить пункт",
             "default_value": [
-                {"nazvanie": "Услуги", "ssylka": "/uslugi/", "est_podmenyu": 0},
-                {"nazvanie": "Портфолио", "ssylka": "/portfolio/", "est_podmenyu": 0},
-                {"nazvanie": "Марки", "ssylka": "/marki/", "est_podmenyu": 0},
-                {"nazvanie": "О компании", "ssylka": "/o-kompanii/", "est_podmenyu": 0},
-                {"nazvanie": "Стоимость", "ssylka": "/stoimost/", "est_podmenyu": 0},
-                {"nazvanie": "Акции", "ssylka": "/akcii/", "est_podmenyu": 0}
+                {
+                    "nazvanie": "Услуги",
+                    "ssylka": "/uslugi/",
+                    "est_podmenyu": 0
+                },
+                {
+                    "nazvanie": "Портфолио",
+                    "ssylka": "/portfolio/",
+                    "est_podmenyu": 0
+                },
+                {
+                    "nazvanie": "Марки",
+                    "ssylka": "/marki/",
+                    "est_podmenyu": 0
+                },
+                {
+                    "nazvanie": "О компании",
+                    "ssylka": "/o-kompanii/",
+                    "est_podmenyu": 0
+                },
+                {
+                    "nazvanie": "Стоимость",
+                    "ssylka": "/stoimost/",
+                    "est_podmenyu": 0
+                },
+                {
+                    "nazvanie": "Акции",
+                    "ssylka": "/akcii/",
+                    "est_podmenyu": 0
+                }
             ],
             "sub_fields": [
                 {
@@ -144,7 +168,15 @@
                     "name": "podmenyu",
                     "type": "repeater",
                     "layout": "table",
-                    "conditional_logic": [[{"field": "field_ksenon_ts_menu_sub", "operator": "==", "value": "1"}]],
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_ksenon_ts_menu_sub",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "sub_fields": [
                         {
                             "key": "field_ksenon_ts_submenu_title",
@@ -340,12 +372,6 @@
             "name": "cf7_zakaz",
             "type": "text",
             "placeholder": "[contact-form-7 id=\"2\" title=\"Заявка\"]"
-        },
-        {
-            "key": "field_ksenon_ts_cf7_presentation",
-            "label": "CF7: презентация",
-            "name": "cf7_prezentaciya",
-            "type": "text"
         },
         {
             "key": "field_ksenon_ts_cta_contacts_title",
@@ -721,5 +747,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751841600
+    "modified": 1784379600
 }

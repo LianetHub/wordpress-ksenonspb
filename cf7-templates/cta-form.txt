@@ -1,31 +1,33 @@
 <div class="form">
 
-<div class="form__row">
-  <div class="form__field">
-    [text* your-name class:form-field placeholder "Ваше имя"]
+<div class="form__card">
+  <div class="form__row">
+    <div class="form__field">
+      [text* your-name class:form-field placeholder "Ваше имя"]
+    </div>
+    <div class="form__field">
+      [tel* your-phone class:form-field placeholder "+7(___)___-__-__"]
+    </div>
   </div>
+
   <div class="form__field">
-    [tel* your-phone class:form-field placeholder "+7(___)___-__-__"]
+    [text your-car class:form-field placeholder "Марка и модель авто"]
   </div>
-</div>
 
-<div class="form__field">
-  [text your-car class:form-field placeholder "Марка и модель авто"]
-</div>
+  <div class="form__field">
+    [textarea your-message class:form-field placeholder "Что произошло - короткое описание"]
+  </div>
 
-<div class="form__field">
-  [textarea your-message class:form-field placeholder "Опишите задачу или вопрос"]
-</div>
-
-<div class="checkbox cta-form__agree">
-  [acceptance agree use_label_element optional]
-  <span class="checkbox__box" aria-hidden="true"></span>
-  <span class="checkbox__text">Согласен с <a href="%opd_url%" class="color-accent">обработкой персональных данных</a> и условиями <a href="%policy_url%" class="color-accent">политики конфиденциальности</a></span>
-  [/acceptance]
+  <div class="checkbox cta-form__agree">
+    [acceptance agree use_label_element optional]
+    <span class="checkbox__box" aria-hidden="true"></span>
+    <span class="checkbox__text">Согласен с <a href="%opd_url%" class="color-accent">обработкой персональных данных</a> и условиями <a href="%policy_url%" class="color-accent">политики конфиденциальности</a></span>
+    [/acceptance]
+  </div>
 </div>
 
 <label class="form__submit">
-  [submit "Отправить заявку →"]
+  [submit "Подобрать услугу"]
 </label>
 
 [hidden form-source default:shortcode_attr]

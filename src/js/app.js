@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initHome();
 	initDevicesPage();
 	initRelatedEquipmentSwiper();
+	initServicesArchiveFilters();
 	initPhoneMask();
 	initCf7();
 });
@@ -690,4 +691,18 @@ function initRelatedEquipmentSwiper() {
 			prevEl: ".equipment--related .equipment__arrow--prev",
 		},
 	});
+}
+
+function initServicesArchiveFilters() {
+	if (typeof Swiper === "undefined") return;
+
+	document
+		.querySelectorAll(".services-archive__filters, .services-archive__subfilters")
+		.forEach((el) => {
+			new Swiper(el, {
+				slidesPerView: "auto",
+				spaceBetween: 20,
+				freeMode: true,
+			});
+		});
 }

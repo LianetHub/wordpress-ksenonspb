@@ -247,7 +247,7 @@ $cf7-error-border: #ff0000;
 			text-transform: uppercase;
 			cursor: pointer;
 
-			
+
 		}
 
 		.wpcf7-spinner {
@@ -281,6 +281,7 @@ $cf7-error-border: #ff0000;
 	}
 
 	&.submitting {
+
 		label.form__submit,
 		.form__submit:has(.wpcf7-form-control-wrap),
 		.wpcf7-form-control-wrap:has(.wpcf7-submit) {
@@ -315,6 +316,7 @@ $cf7-error-border: #ff0000;
 }
 
 .cta-contacts {
+
 	.form__control,
 	.form-field {
 		min-height: rem(50);
@@ -429,7 +431,7 @@ $cf7-error-border: #ff0000;
 			}
 		}
 
-		&__input:checked + .checkbox__box::before,
+		&__input:checked+.checkbox__box::before,
 		&:has(.checkbox__input:checked) .checkbox__box::before,
 		&:has(input[type="checkbox"]:checked) .checkbox__box::before,
 		&:has(input[type="checkbox"]:checked) .wpcf7-list-item-label::before {
@@ -464,6 +466,164 @@ $cf7-error-border: #ff0000;
 		letter-spacing: normal;
 		font-size: rem(24);
 		font-weight: 500;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: $color-accent-hover;
+			}
+		}
+	}
+}
+
+.cta-form {
+	padding: 0 0 rem(48);
+
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(72);
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: rem(24);
+		padding: rem(32) rem(20);
+		border-radius: rem(40);
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			gap: rem(42);
+			padding: rem(42) rem(40);
+		}
+	}
+
+	&__title {
+		margin: 0;
+		max-width: rem(690);
+		text-align: center;
+		color: $color-black;
+	}
+
+	&__body {
+		width: 100%;
+		max-width: rem(690);
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: rem(24);
+	}
+
+	.form__card {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+		padding: rem(24) rem(20);
+		border-radius: rem(40);
+		background: $color-white;
+
+		@media (min-width: $md3) {
+			padding: rem(40);
+		}
+	}
+
+	.form__row {
+		gap: rem(20);
+	}
+
+	.form__control,
+	.form-field {
+		min-height: rem(50);
+		padding: rem(15) rem(20);
+		border: 0;
+		border-radius: rem(40);
+		background: $color-surface;
+		color: $color-black;
+		font-size: rem(16);
+		line-height: 1.3;
+
+		&::placeholder {
+			color: $color-text-body;
+		}
+
+		&:focus {
+			box-shadow: inset 0 0 0 1px rgba($color-black, 0.08);
+		}
+
+		&:is(textarea) {
+			min-height: rem(145);
+			border-radius: rem(20);
+			resize: none;
+		}
+	}
+
+	.checkbox {
+		display: flex;
+		width: 100%;
+		align-items: flex-start;
+		gap: rem(15);
+
+		$cta-checkbox-checked: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+		&__box::before,
+		.wpcf7-list-item-label:not(:empty)::before {
+			width: rem(24);
+			height: rem(24);
+			border-radius: rem(4);
+			border-color: $color-brand;
+			background-color: transparent;
+		}
+
+		&__box {
+			flex-shrink: 0;
+			width: rem(24);
+			height: rem(24);
+		}
+
+		&__text,
+		.wpcf7-list-item-label:not(:empty) {
+			min-height: 0;
+			font-size: rem(14);
+			line-height: 1.3;
+			letter-spacing: normal;
+			color: $color-black;
+
+			a {
+				color: $color-brand;
+			}
+		}
+
+		&__input:checked+.checkbox__box::before,
+		&:has(.checkbox__input:checked) .checkbox__box::before,
+		&:has(input[type="checkbox"]:checked) .checkbox__box::before,
+		&:has(input[type="checkbox"]:checked) .wpcf7-list-item-label::before {
+			background-color: $color-brand;
+			border-color: $color-brand;
+			background-image: $cta-checkbox-checked;
+			background-size: rem(12) rem(10);
+		}
+	}
+
+	.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
+	label.form__submit,
+	.form__submit:has(.wpcf7-form-control-wrap),
+	.wpcf7-form-control-wrap:has(.wpcf7-submit) {
+		min-height: rem(70);
+		padding: rem(15) rem(40);
+		border-radius: rem(40);
+		background: $color-accent;
+		color: $color-white;
+		box-shadow: 0 rem(6) rem(3) rgba(253, 128, 17, 0.2);
+		text-transform: none;
+		letter-spacing: normal;
+		font-size: rem(18);
+		font-weight: 500;
+
+		@media (min-width: $md3) {
+			font-size: rem(24);
+		}
 
 		@media (any-hover: hover) {
 			&:hover {
