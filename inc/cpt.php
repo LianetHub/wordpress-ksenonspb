@@ -661,3 +661,130 @@ add_action(
 		);
 	}
 );
+
+/**
+ * CPT archives available as nav menu items.
+ *
+ * @return array<string, string> post_type => label
+ */
+if (! function_exists('ksenon_get_nav_menu_archives')) {
+	function ksenon_get_nav_menu_archives()
+	{
+		$items = array();
+
+		foreach (
+			array(
+				'service'   => __('Услуги', 'ksenonspb'),
+				'portfolio' => __('Портфолио', 'ksenonspb'),
+				'brand'     => __('Марки', 'ksenonspb'),
+				'promotion' => __('Акции', 'ksenonspb'),
+			) as $post_type => $fallback
+		) {
+			$pto = get_post_type_object($post_type);
+			$items[$post_type] = $pto && ! empty($pto->labels->name)
+				? (string) $pto->labels->name
+				: $fallback;
+		}
+
+		return $items;
+	}
+}
+
+/**
+ * Keep CPT / taxonomy / archives panels visible in Appearance → Menus.
+ *
+ * @param string[]   $hidden Hidden metabox IDs.
+ * @param WP_Screen  $screen Current screen.
+ * @return string[]
+ */
+if (! function_exists('ksenon_nav_menus_visible_metaboxes')) {
+	function ksenon_nav_menus_visible_metaboxes($hidden, $screen)
+	{
+		if (! $screen || 'nav-menus' !== $screen->id) {
+			return $hidden;
+		}
+
+		$always_show = array(
+			'add-post-type-service',
+			'add-post-type-portfolio',
+			'add-post-type-brand',
+			'add-post-type-promotion',
+			'add-service_category',
+			'ksenon-cpt-archives',
+		);
+
+		return array_values(array_diff((array) $hidden, $always_show));
+	}
+}
+
+add_filter('default_hidden_meta_boxes', 'ksenon_nav_menus_visible_metaboxes', 10, 2);
+add_filter('hidden_meta_boxes', 'ksenon_nav_menus_visible_metaboxes', 10, 2);
+
+/**
+ * Metabox: one-click CPT archive links for the menu editor.
+ */
+add_action(
+	'admin_head-nav-menus.php',
+	function () {
+		add_meta_box(
+			'ksenon-cpt-archives',
+			__('Архивы сайта', 'ksenonspb'),
+			'ksenon_nav_menu_archives_metabox',
+			'nav-menus',
+			'side',
+			'default'
+		);
+	}
+);
+
+if (! function_exists('ksenon_nav_menu_archives_metabox')) {
+	function ksenon_nav_menu_archives_metabox()
+	{
+		$archives = ksenon_get_nav_menu_archives();
+?>
+		<div id="posttype-ksenon-archives" class="posttypediv">
+			<div id="tabs-panel-ksenon-archives" class="tabs-panel tabs-panel-active">
+				<ul id="ksenon-archives-checklist" class="categorychecklist form-no-clear">
+					<?php
+					$i = -1;
+					foreach ($archives as $post_type => $label) :
+						$pto = get_post_type_object($post_type);
+						$url = get_post_type_archive_link($post_type);
+						if (! $pto || ! $url) {
+							continue;
+						}
+					?>
+						<li>
+							<label class="menu-item-title">
+								<input
+									type="checkbox"
+									class="menu-item-checkbox"
+									name="menu-item[<?php echo esc_attr((string) $i); ?>][menu-item-object-id]"
+									value="<?php echo esc_attr((string) $i); ?>" />
+								<?php echo esc_html($label); ?>
+							</label>
+							<input type="hidden" class="menu-item-type" name="menu-item[<?php echo esc_attr((string) $i); ?>][menu-item-type]" value="post_type_archive" />
+							<input type="hidden" class="menu-item-object" name="menu-item[<?php echo esc_attr((string) $i); ?>][menu-item-object]" value="<?php echo esc_attr($post_type); ?>" />
+							<input type="hidden" class="menu-item-title" name="menu-item[<?php echo esc_attr((string) $i); ?>][menu-item-title]" value="<?php echo esc_attr($label); ?>" />
+							<input type="hidden" class="menu-item-url" name="menu-item[<?php echo esc_attr((string) $i); ?>][menu-item-url]" value="<?php echo esc_url($url); ?>" />
+							<input type="hidden" class="menu-item-classes" name="menu-item[<?php echo esc_attr((string) $i); ?>][menu-item-classes]" value="" />
+						</li>
+					<?php
+						--$i;
+					endforeach;
+					?>
+				</ul>
+			</div>
+			<p class="button-controls wp-clearfix">
+				<span class="add-to-menu">
+					<input type="submit" class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e('Добавить в меню', 'ksenonspb'); ?>" name="add-post-type-menu-item" id="submit-posttype-ksenon-archives" />
+					<span class="spinner"></span>
+				</span>
+			</p>
+		</div>
+		<p class="description" style="padding:0 10px 10px;">
+			<?php esc_html_e('Категории услуг — в блоке «Категории услуг» слева (включите в «Настройки экрана», если не видно).', 'ksenonspb'); ?>
+		</p>
+<?php
+	}
+}

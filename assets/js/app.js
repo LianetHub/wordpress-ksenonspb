@@ -5,6 +5,7 @@ import { initTooltips } from "./tooltip.js";
 document.addEventListener("DOMContentLoaded", () => {
 	initBurger();
 	initHeaderScroll();
+	initHeaderSubmenus();
 	initFancybox();
 	initPartnersAutoPopup();
 	initBlogTabs();
@@ -46,7 +47,7 @@ function initBurger() {
 
 	drawer
 		.querySelectorAll(
-			".header-drawer__link, .header-drawer__primary, .header-drawer__logo",
+			".header-drawer__link, .header-drawer__submenu-link, .header-drawer__primary, .header-drawer__logo",
 		)
 		.forEach((link) => {
 			link.addEventListener("click", () => setMenuOpen(false));
@@ -59,6 +60,69 @@ function initBurger() {
 	});
 }
 
+function initHeaderSubmenus() {
+	const desktopItems = document.querySelectorAll(
+		".header__menu-item--has-sub",
+	);
+	const canHover = window.matchMedia("(any-hover: hover)").matches;
+
+	const setDesktopOpen = (item, isOpen) => {
+		item.classList.toggle("is-open", isOpen);
+		const link = item.querySelector(":scope > .header__link");
+		link?.setAttribute("aria-expanded", String(isOpen));
+	};
+
+	const closeAllDesktop = (except = null) => {
+		desktopItems.forEach((item) => {
+			if (item !== except) setDesktopOpen(item, false);
+		});
+	};
+
+	if (!canHover) {
+		desktopItems.forEach((item) => {
+			const link = item.querySelector(":scope > .header__link");
+			if (!link) return;
+
+			link.addEventListener("click", (e) => {
+				const isOpen = item.classList.contains("is-open");
+				if (!isOpen) {
+					e.preventDefault();
+					closeAllDesktop(item);
+					setDesktopOpen(item, true);
+				}
+			});
+		});
+
+		document.addEventListener("click", (e) => {
+			if (!e.target.closest(".header__menu-item--has-sub")) {
+				closeAllDesktop();
+			}
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") closeAllDesktop();
+		});
+	}
+
+	document
+		.querySelectorAll(".header-drawer__sub-toggle")
+		.forEach((toggle) => {
+			toggle.addEventListener("click", () => {
+				const item = toggle.closest(
+					".header-drawer__menu-item--has-sub",
+				);
+				if (!item) return;
+
+				const isOpen = item.classList.toggle("is-open");
+				toggle.setAttribute("aria-expanded", String(isOpen));
+				toggle.setAttribute(
+					"aria-label",
+					isOpen ? "Закрыть подменю" : "Открыть подменю",
+				);
+			});
+		});
+}
+
 function initHeaderScroll() {
 	const header = document.querySelector(".header");
 	if (!header) return;
@@ -66,7 +130,10 @@ function initHeaderScroll() {
 	const SCROLL_THRESHOLD = 46;
 
 	const update = () => {
-		header.classList.toggle("is-scrolled", window.scrollY > SCROLL_THRESHOLD);
+		header.classList.toggle(
+			"is-scrolled",
+			window.scrollY > SCROLL_THRESHOLD,
+		);
 	};
 
 	update();
@@ -271,7 +338,9 @@ function initAccordion() {
 					.slideUp(duration, function () {
 						$other.removeClass("_active");
 					});
-				$other.find(".accordion__header").attr("aria-expanded", "false");
+				$other
+					.find(".accordion__header")
+					.attr("aria-expanded", "false");
 			});
 
 			$item.addClass("_active");
@@ -697,7 +766,9 @@ function initServicesArchiveFilters() {
 	if (typeof Swiper === "undefined") return;
 
 	document
-		.querySelectorAll(".services-archive__filters, .services-archive__subfilters")
+		.querySelectorAll(
+			".services-archive__filters, .services-archive__subfilters",
+		)
 		.forEach((el) => {
 			new Swiper(el, {
 				slidesPerView: "auto",

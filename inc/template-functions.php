@@ -1254,21 +1254,6 @@ if (! function_exists('ksenon_get_web_manifest_data')) {
 	}
 }
 
-if (! function_exists('ksenon_render_main_menu')) {
-	function ksenon_render_main_menu($menu_class = 'header__menu', $item_class = 'header__item', $link_class = 'header__link')
-	{
-		get_template_part(
-			'template-parts/nav/menu',
-			null,
-			array(
-				'menu_class' => $menu_class,
-				'item_class' => $item_class,
-				'link_class' => $link_class,
-			)
-		);
-	}
-}
-
 if (! function_exists('ksenon_get_footer_domain')) {
 	function ksenon_get_footer_domain()
 	{
@@ -1414,40 +1399,6 @@ if (! function_exists('ksenon_get_footer_requisites')) {
 		}
 
 		return implode('. ', $parts);
-	}
-}
-
-if (! function_exists('ksenon_get_header_static_menu')) {
-	function ksenon_get_header_static_menu()
-	{
-		return array(
-			array(
-				'label'   => __('Услуги', 'ksenonspb'),
-				'url'     => home_url('/uslugi/'),
-				'has_sub' => true,
-				'primary' => true,
-			),
-			array(
-				'label' => __('Работы', 'ksenonspb'),
-				'url'   => home_url('/portfolio/'),
-			),
-			array(
-				'label' => __('Цены', 'ksenonspb'),
-				'url'   => home_url('/stoimost/'),
-			),
-			array(
-				'label' => __('О компании', 'ksenonspb'),
-				'url'   => home_url('/o-kompanii/'),
-			),
-			array(
-				'label' => __('Контакты', 'ksenonspb'),
-				'url'   => home_url('/#contacts'),
-			),
-			array(
-				'label' => __('Акции', 'ksenonspb'),
-				'url'   => home_url('/akcii/'),
-			),
-		);
 	}
 }
 

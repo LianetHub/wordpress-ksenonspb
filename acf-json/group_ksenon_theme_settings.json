@@ -100,104 +100,6 @@
             "default_value": "Связаться с нами"
         },
         {
-            "key": "field_ksenon_ts_menu",
-            "label": "Главное меню",
-            "name": "glavnoe_menyu",
-            "type": "repeater",
-            "layout": "block",
-            "button_label": "Добавить пункт",
-            "default_value": [
-                {
-                    "nazvanie": "Услуги",
-                    "ssylka": "/uslugi/",
-                    "est_podmenyu": 0
-                },
-                {
-                    "nazvanie": "Портфолио",
-                    "ssylka": "/portfolio/",
-                    "est_podmenyu": 0
-                },
-                {
-                    "nazvanie": "Марки",
-                    "ssylka": "/marki/",
-                    "est_podmenyu": 0
-                },
-                {
-                    "nazvanie": "О компании",
-                    "ssylka": "/o-kompanii/",
-                    "est_podmenyu": 0
-                },
-                {
-                    "nazvanie": "Стоимость",
-                    "ssylka": "/stoimost/",
-                    "est_podmenyu": 0
-                },
-                {
-                    "nazvanie": "Акции",
-                    "ssylka": "/akcii/",
-                    "est_podmenyu": 0
-                }
-            ],
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_ts_menu_title",
-                    "label": "Название",
-                    "name": "nazvanie",
-                    "type": "text",
-                    "required": 1,
-                    "parent_repeater": "field_ksenon_ts_menu"
-                },
-                {
-                    "key": "field_ksenon_ts_menu_link",
-                    "label": "Ссылка",
-                    "name": "ssylka",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_ts_menu"
-                },
-                {
-                    "key": "field_ksenon_ts_menu_sub",
-                    "label": "Есть подменю",
-                    "name": "est_podmenyu",
-                    "type": "true_false",
-                    "ui": 1,
-                    "parent_repeater": "field_ksenon_ts_menu"
-                },
-                {
-                    "key": "field_ksenon_ts_menu_submenu",
-                    "label": "Подменю",
-                    "name": "podmenyu",
-                    "type": "repeater",
-                    "layout": "table",
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_ksenon_ts_menu_sub",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "sub_fields": [
-                        {
-                            "key": "field_ksenon_ts_submenu_title",
-                            "label": "Название",
-                            "name": "nazvanie",
-                            "type": "text",
-                            "parent_repeater": "field_ksenon_ts_menu_submenu"
-                        },
-                        {
-                            "key": "field_ksenon_ts_submenu_link",
-                            "label": "Ссылка",
-                            "name": "ssylka",
-                            "type": "text",
-                            "parent_repeater": "field_ksenon_ts_menu_submenu"
-                        }
-                    ],
-                    "parent_repeater": "field_ksenon_ts_menu"
-                }
-            ]
-        },
-        {
             "key": "field_ksenon_ts_contacts_accordion",
             "label": "Контакты",
             "name": "",
@@ -747,5 +649,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784379600
+    "modified": 1784394657
 }

@@ -154,17 +154,6 @@
   padding: 1.5rem 0 3rem;
 }
 
-.services-archive__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 1.5rem;
-}
-
 .services-archive__panel {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -177,6 +166,7 @@
   padding: 1.25rem;
   border-radius: 2.5rem;
   background: #f7f7f7;
+  margin-top: 1.5rem;
 }
 
 .services-archive__filters,
@@ -352,11 +342,8 @@
     padding: 0 0 4.5rem;
   }
 
-  .services-archive__container {
-    gap: 2.25rem;
-  }
-
   .services-archive__panel {
+    margin-top: 2.25rem;
     gap: 2.25rem;
     padding: 2.625rem 4.375rem;
   }

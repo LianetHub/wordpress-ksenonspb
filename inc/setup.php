@@ -17,6 +17,7 @@ add_action(
 
 		register_nav_menus(
 			array(
+				'primary'     => esc_html__('Главное меню (шапка)', 'ksenonspb'),
 				'footer_menu' => esc_html__('Footer Menu (fallback)', 'ksenonspb'),
 			)
 		);

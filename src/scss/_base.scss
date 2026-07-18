@@ -13,6 +13,12 @@
 		}
 	}
 
+	&.container--medium {
+		@media (min-width: $md1) {
+			max-width: rem(1300);
+		}
+	}
+
 	@media (min-width: $md5) {
 		box-sizing: content-box;
 		max-width: rem(540);

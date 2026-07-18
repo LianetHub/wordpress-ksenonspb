@@ -13,7 +13,7 @@ $address  = ksenon_get_option('address');
 $phones   = ksenon_get_phones();
 ?>
 <header class="header">
-	<div class="header__container container container--large">
+	<div class="header__container container container--medium">
 		<div class="header__bar">
 			<?php if ($logo) : ?>
 				<a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
@@ -33,7 +33,7 @@ $phones   = ksenon_get_phones();
 				</a>
 			<?php endif; ?>
 
-			<?php get_template_part('template-parts/header/nav-static'); ?>
+			<?php get_template_part('template-parts/header/nav'); ?>
 
 			<div class="header__actions">
 				<?php if ($cta_text) : ?>
