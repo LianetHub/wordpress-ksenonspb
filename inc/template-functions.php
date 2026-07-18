@@ -977,7 +977,12 @@ if (! function_exists('ksenon_get_pagination_items')) {
 }
 
 if (! function_exists('ksenon_render_pagination')) {
-	function ksenon_render_pagination(WP_Query $query, $category_slug = '')
+	/**
+	 * @param WP_Query       $query
+	 * @param string         $category_slug
+	 * @param callable|null  $url_callback  function (int $page): string
+	 */
+	function ksenon_render_pagination(WP_Query $query, $category_slug = '', $url_callback = null)
 	{
 		$total = (int) $query->max_num_pages;
 		if ($total <= 1) {
@@ -986,47 +991,54 @@ if (! function_exists('ksenon_render_pagination')) {
 
 		$current = max(1, (int) get_query_var('paged'), (int) get_query_var('page'));
 		$items   = ksenon_get_pagination_items($current, $total);
-		$prev_url = $current > 1 ? ksenon_services_pagination_url($current - 1, $category_slug) : '';
-		$next_url = $current < $total ? ksenon_services_pagination_url($current + 1, $category_slug) : '';
+
+		if (! is_callable($url_callback)) {
+			$url_callback = static function ($page) use ($category_slug) {
+				return ksenon_services_pagination_url($page, $category_slug);
+			};
+		}
+
+		$prev_url = $current > 1 ? (string) $url_callback($current - 1) : '';
+		$next_url = $current < $total ? (string) $url_callback($current + 1) : '';
 ?>
-		<nav class="services-pagination" aria-label="<?php esc_attr_e('Навигация по страницам', 'ksenonspb'); ?>">
-			<div class="services-pagination__inner">
+		<nav class="cpt-pagination" aria-label="<?php esc_attr_e('Навигация по страницам', 'ksenonspb'); ?>">
+			<div class="cpt-pagination__inner">
 				<?php if ($prev_url) : ?>
-					<a class="services-pagination__arrow services-pagination__arrow--prev" href="<?php echo esc_url($prev_url); ?>" aria-label="<?php esc_attr_e('Предыдущая страница', 'ksenonspb'); ?>">
-						<?php ksenon_icon('icon-chevron-left', 8, 18, 'services-pagination__icon'); ?>
+					<a class="cpt-pagination__arrow cpt-pagination__arrow--prev" href="<?php echo esc_url($prev_url); ?>" aria-label="<?php esc_attr_e('Предыдущая страница', 'ksenonspb'); ?>">
+						<?php ksenon_icon('icon-chevron-left', 8, 18, 'cpt-pagination__icon'); ?>
 					</a>
 				<?php else : ?>
-					<span class="services-pagination__arrow services-pagination__arrow--prev services-pagination__arrow--disabled" aria-hidden="true">
-						<?php ksenon_icon('icon-chevron-left', 8, 18, 'services-pagination__icon'); ?>
+					<span class="cpt-pagination__arrow cpt-pagination__arrow--prev cpt-pagination__arrow--disabled" aria-hidden="true">
+						<?php ksenon_icon('icon-chevron-left', 8, 18, 'cpt-pagination__icon'); ?>
 					</span>
 				<?php endif; ?>
 
-				<div class="services-pagination__pages">
+				<div class="cpt-pagination__pages">
 					<?php foreach ($items as $item) : ?>
 						<?php if ('dots' === $item['type']) : ?>
-							<span class="services-pagination__page services-pagination__page--dots" aria-hidden="true">&hellip;</span>
+							<span class="cpt-pagination__page cpt-pagination__page--dots" aria-hidden="true">&hellip;</span>
 						<?php else : ?>
 							<?php
 							$page_num   = (int) $item['num'];
 							$is_current = $page_num === $current;
-							$page_url   = ksenon_services_pagination_url($page_num, $category_slug);
+							$page_url   = (string) $url_callback($page_num);
 							?>
 							<?php if ($is_current) : ?>
-								<span class="services-pagination__page _active" aria-current="page"><?php echo esc_html((string) $page_num); ?></span>
+								<span class="cpt-pagination__page _active" aria-current="page"><?php echo esc_html((string) $page_num); ?></span>
 							<?php else : ?>
-								<a class="services-pagination__page" href="<?php echo esc_url($page_url); ?>"><?php echo esc_html((string) $page_num); ?></a>
+								<a class="cpt-pagination__page" href="<?php echo esc_url($page_url); ?>"><?php echo esc_html((string) $page_num); ?></a>
 							<?php endif; ?>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</div>
 
 				<?php if ($next_url) : ?>
-					<a class="services-pagination__arrow services-pagination__arrow--next" href="<?php echo esc_url($next_url); ?>" aria-label="<?php esc_attr_e('Следующая страница', 'ksenonspb'); ?>">
-						<?php ksenon_icon('icon-chevron-right', 8, 18, 'services-pagination__icon'); ?>
+					<a class="cpt-pagination__arrow cpt-pagination__arrow--next" href="<?php echo esc_url($next_url); ?>" aria-label="<?php esc_attr_e('Следующая страница', 'ksenonspb'); ?>">
+						<?php ksenon_icon('icon-chevron-right', 8, 18, 'cpt-pagination__icon'); ?>
 					</a>
 				<?php else : ?>
-					<span class="services-pagination__arrow services-pagination__arrow--next services-pagination__arrow--disabled" aria-hidden="true">
-						<?php ksenon_icon('icon-chevron-right', 8, 18, 'services-pagination__icon'); ?>
+					<span class="cpt-pagination__arrow cpt-pagination__arrow--next cpt-pagination__arrow--disabled" aria-hidden="true">
+						<?php ksenon_icon('icon-chevron-right', 8, 18, 'cpt-pagination__icon'); ?>
 					</span>
 				<?php endif; ?>
 			</div>
@@ -1036,10 +1048,158 @@ if (! function_exists('ksenon_render_pagination')) {
 }
 
 if (! function_exists('ksenon_portfolio_archive_url')) {
-	function ksenon_portfolio_archive_url()
+	function ksenon_portfolio_archive_url($category_slug = '', $brand = '')
 	{
 		$url = get_post_type_archive_link('portfolio');
-		return $url ?: home_url('/portfolio/');
+		$url = $url ?: home_url('/portfolio/');
+
+		$args = array();
+		$category_slug = sanitize_title((string) $category_slug);
+		$brand         = trim((string) $brand);
+
+		if ($category_slug) {
+			$args['category'] = $category_slug;
+		}
+		if ($brand !== '') {
+			$args['brand'] = $brand;
+		}
+
+		return $args ? add_query_arg($args, $url) : $url;
+	}
+}
+
+if (! function_exists('ksenon_portfolio_pagination_url')) {
+	function ksenon_portfolio_pagination_url($page, $category_slug = '', $brand = '')
+	{
+		$page = max(1, (int) $page);
+		$url  = ksenon_portfolio_archive_url($category_slug, $brand);
+
+		if ($page <= 1) {
+			return $url;
+		}
+
+		if (get_option('permalink_structure')) {
+			$base = get_post_type_archive_link('portfolio') ?: home_url('/portfolio/');
+			$paged_url = user_trailingslashit(trailingslashit($base) . 'page/' . $page);
+			$query = array();
+			$category_slug = sanitize_title((string) $category_slug);
+			$brand         = trim((string) $brand);
+			if ($category_slug) {
+				$query['category'] = $category_slug;
+			}
+			if ($brand !== '') {
+				$query['brand'] = $brand;
+			}
+
+			return $query ? add_query_arg($query, $paged_url) : $paged_url;
+		}
+
+		return add_query_arg('paged', $page, $url);
+	}
+}
+
+if (! function_exists('ksenon_get_portfolio_filter_category_slug')) {
+	function ksenon_get_portfolio_filter_category_slug()
+	{
+		if (! isset($_GET['category'])) {
+			return '';
+		}
+
+		return sanitize_title(wp_unslash((string) $_GET['category']));
+	}
+}
+
+if (! function_exists('ksenon_get_portfolio_filter_brand_query')) {
+	function ksenon_get_portfolio_filter_brand_query()
+	{
+		if (! isset($_GET['brand'])) {
+			return '';
+		}
+
+		return sanitize_text_field(wp_unslash((string) $_GET['brand']));
+	}
+}
+
+if (! function_exists('ksenon_resolve_portfolio_brand')) {
+	/**
+	 * @param string $query Brand title or slug.
+	 * @return WP_Post|null
+	 */
+	function ksenon_resolve_portfolio_brand($query)
+	{
+		$query = trim((string) $query);
+		if ($query === '') {
+			return null;
+		}
+
+		$by_slug = get_posts(
+			array(
+				'post_type'              => 'brand',
+				'name'                   => sanitize_title($query),
+				'posts_per_page'         => 1,
+				'post_status'            => 'publish',
+				'no_found_rows'          => true,
+				'ignore_sticky_posts'    => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+			)
+		);
+		if ($by_slug) {
+			return $by_slug[0];
+		}
+
+		$by_title = get_posts(
+			array(
+				'post_type'              => 'brand',
+				'title'                  => $query,
+				'posts_per_page'         => 1,
+				'post_status'            => 'publish',
+				'no_found_rows'          => true,
+				'ignore_sticky_posts'    => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+			)
+		);
+
+		return $by_title ? $by_title[0] : null;
+	}
+}
+
+if (! function_exists('ksenon_get_service_ids_for_category')) {
+	/**
+	 * @param int $term_id
+	 * @return int[]
+	 */
+	function ksenon_get_service_ids_for_category($term_id)
+	{
+		$term_id = (int) $term_id;
+		if ($term_id <= 0) {
+			return array();
+		}
+
+		$include_children = (bool) get_term_children($term_id, 'service_category');
+		$ids = get_posts(
+			array(
+				'post_type'              => 'service',
+				'posts_per_page'         => -1,
+				'fields'                 => 'ids',
+				'post_status'            => 'publish',
+				'no_found_rows'          => true,
+				'ignore_sticky_posts'    => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+				'tax_query'              => array(
+					array(
+						'taxonomy'         => 'service_category',
+						'field'            => 'term_id',
+						'terms'            => array($term_id),
+						'include_children' => $include_children,
+					),
+				),
+			)
+		);
+
+		return array_map('intval', $ids);
 	}
 }
 

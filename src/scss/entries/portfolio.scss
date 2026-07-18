@@ -1,8 +1,9 @@
 @use "../variables" as *;
 @use "../mixins" as *;
 @use "../section/home/portfolio-teaser";
+@use "../section/services/archive";
 
-.portfolio-archive,
+.cpt-archive,
 .portfolio-teaser,
 .portfolio-card {
 	// Portfolio card styles are defined in home partial.

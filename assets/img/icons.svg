@@ -24,6 +24,11 @@
       d="M0.714233 10.4121C0.550903 10.558 0.285763 10.558 0.122433 10.4121C-0.0408373 10.2662 -0.0408373 10.0296 0.122433 9.88374L5.29919 5.26069L0.122433 0.636661C-0.0405173 0.490831 -0.0405173 0.255131 0.122433 0.109331C0.285763 -0.0365689 0.550903 -0.0365689 0.714233 0.109331L6.12537 4.94233C6.14874 4.95607 6.17121 4.97279 6.19177 4.99116C6.27313 5.06406 6.31385 5.15941 6.31384 5.25483V5.26655C6.31371 5.3619 6.27316 5.45741 6.19177 5.53022C6.17114 5.54865 6.14882 5.56528 6.12537 5.57905L0.714233 10.4121Z"
       fill="currentColor" />
   </symbol>
+  <symbol id="icon-compare" viewBox="0 0 40 42" fill="none">
+    <ellipse cx="20" cy="21" rx="20" ry="21" fill="#F7F7F7" />
+    <path d="M16 12.5L26 21.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    <path d="M16 29.5L26 20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </symbol>
   <symbol id="icon-arrow-up-right" viewBox="0 0 24 24" fill="none">
     <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round" />

@@ -99,6 +99,27 @@
 		height: 100%;
 	}
 
+	&__compare {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(40);
+		height: rem(42);
+		transform: translate(-50%, -50%);
+		pointer-events: none;
+	}
+
+	&__compare-icon {
+		display: block;
+		width: rem(40);
+		height: rem(42);
+		color: $color-black;
+	}
+
 	&__body {
 		display: flex;
 		flex-direction: column;

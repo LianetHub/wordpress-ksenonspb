@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initHome();
 	initDevicesPage();
 	initRelatedEquipmentSwiper();
-	initServicesArchiveFilters();
+	initCptArchiveFilters();
 	initPhoneMask();
 	initCf7();
 });
@@ -762,13 +762,11 @@ function initRelatedEquipmentSwiper() {
 	});
 }
 
-function initServicesArchiveFilters() {
+function initCptArchiveFilters() {
 	if (typeof Swiper === "undefined") return;
 
 	document
-		.querySelectorAll(
-			".services-archive__filters, .services-archive__subfilters",
-		)
+		.querySelectorAll(".cpt-archive__filters, .cpt-archive__subfilters")
 		.forEach((el) => {
 			new Swiper(el, {
 				slidesPerView: "auto",

@@ -844,7 +844,7 @@ body {
   resize: none;
 }
 
-.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)) {
+.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -875,7 +875,7 @@ body {
   margin-top: 0.5rem;
 }
 
-.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):active {
+.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn):active {
   -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
           transform: translateY(1px);
@@ -998,8 +998,8 @@ body {
   display: none;
 }
 
-.wpcf7-form label.form__submit,
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap) {
+.wpcf7-form label.form__submit:not(.btn),
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1030,28 +1030,28 @@ body {
   margin-top: 0.5rem;
 }
 
-.wpcf7-form label.form__submit:active,
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):active {
+.wpcf7-form label.form__submit:not(.btn):active,
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn):active {
   -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
           transform: translateY(1px);
 }
 
-.wpcf7-form label.form__submit,
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap) {
+.wpcf7-form label.form__submit:not(.btn),
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn) {
   position: relative;
   margin-inline: auto;
 }
 
-.wpcf7-form label.form__submit:has(input:disabled),
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):has(input:disabled) {
+.wpcf7-form label.form__submit:not(.btn):has(input:disabled),
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn):has(input:disabled) {
   pointer-events: none;
   cursor: default;
   opacity: 0.5;
 }
 
-.wpcf7-form label.form__submit .wpcf7-form-control-wrap:has(.wpcf7-submit),
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap) .wpcf7-form-control-wrap:has(.wpcf7-submit) {
+.wpcf7-form label.form__submit:not(.btn) .wpcf7-form-control-wrap:has(.wpcf7-submit),
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn) .wpcf7-form-control-wrap:has(.wpcf7-submit) {
   display: block;
   width: 100%;
   min-height: 0;
@@ -1067,8 +1067,8 @@ body {
           transform: none;
 }
 
-.wpcf7-form label.form__submit .wpcf7-submit,
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap) .wpcf7-submit {
+.wpcf7-form label.form__submit:not(.btn) .wpcf7-submit,
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn) .wpcf7-submit {
   display: block;
   width: 100%;
   min-height: 0;
@@ -1090,8 +1090,80 @@ body {
   cursor: pointer;
 }
 
-.wpcf7-form label.form__submit .wpcf7-spinner,
-.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap) .wpcf7-spinner {
+.wpcf7-form label.form__submit:not(.btn) .wpcf7-spinner,
+.wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn) .wpcf7-spinner {
+  display: none;
+}
+
+.wpcf7-form label.form__submit.btn,
+.wpcf7-form .form__submit.btn:has(.wpcf7-form-control-wrap) {
+  position: relative;
+  cursor: pointer;
+}
+
+.wpcf7-form label.form__submit.btn:has(input:disabled),
+.wpcf7-form .form__submit.btn:has(.wpcf7-form-control-wrap):has(input:disabled) {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.wpcf7-form label.form__submit.btn .btn__text,
+.wpcf7-form .form__submit.btn:has(.wpcf7-form-control-wrap) .btn__text {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 0;
+}
+
+.wpcf7-form label.form__submit.btn .wpcf7-form-control-wrap:has(.wpcf7-submit),
+.wpcf7-form .form__submit.btn:has(.wpcf7-form-control-wrap) .wpcf7-form-control-wrap:has(.wpcf7-submit) {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  width: auto;
+}
+
+.wpcf7-form label.form__submit.btn .wpcf7-submit,
+.wpcf7-form .form__submit.btn:has(.wpcf7-form-control-wrap) .wpcf7-submit {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  width: auto;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  cursor: pointer;
+}
+
+.wpcf7-form label.form__submit.btn .wpcf7-spinner,
+.wpcf7-form .form__submit.btn:has(.wpcf7-form-control-wrap) .wpcf7-spinner {
   display: none;
 }
 
@@ -1179,6 +1251,11 @@ body {
   color: transparent;
 }
 
+.wpcf7-form.submitting label.form__submit.btn .btn__arrow,
+.wpcf7-form.submitting .form__submit.btn .btn__arrow {
+  opacity: 0;
+}
+
 .wpcf7-form.submitting label.form__submit::after,
 .wpcf7-form.submitting .form__submit:has(.wpcf7-form-control-wrap)::after,
 .wpcf7-form.submitting .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap)::after {
@@ -1201,6 +1278,11 @@ body {
           animation: cf7-spinner-rotation 1s linear infinite;
   z-index: 3;
   color: #fd8011;
+}
+
+.wpcf7-form.submitting label.form__submit.btn::after,
+.wpcf7-form.submitting .form__submit.btn::after {
+  color: #ffffff;
 }
 
 .cta-contacts .form__control,
@@ -1330,13 +1412,28 @@ body {
   gap: 0.9375rem;
 }
 
-.cta-contacts .checkbox__box::before,
-.cta-contacts .checkbox .wpcf7-list-item-label:not(:empty)::before {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 0.25rem;
-  border-color: #fd8011;
-  background-color: transparent;
+.cta-contacts .checkbox:has(.wpcf7-form-control-wrap) .checkbox__box {
+  display: block;
+}
+
+.cta-contacts .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0.9375rem;
+  padding-left: 0;
+  min-height: 0;
+}
+
+.cta-contacts .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty)::before {
+  display: none;
+}
+
+.cta-contacts .checkbox:has(.wpcf7-form-control-wrap) .checkbox__text::before {
+  display: none;
 }
 
 .cta-contacts .checkbox__box {
@@ -1344,35 +1441,35 @@ body {
       flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
-  margin-top: 0.125rem;
+  margin-top: 0;
 }
 
-.cta-contacts .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty) {
-  padding-left: 2.125rem;
-}
-
-.cta-contacts .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty)::before {
-  top: 0.125rem;
-  -webkit-transform: none;
-      -ms-transform: none;
-          transform: none;
+.cta-contacts .checkbox__box::before {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #fd8011;
+  background-color: transparent;
+  background-image: none;
+  background-size: 1.5rem 1.5rem;
 }
 
 .cta-contacts .checkbox__input:checked + .checkbox__box::before,
 .cta-contacts .checkbox:has(.checkbox__input:checked) .checkbox__box::before,
-.cta-contacts .checkbox:has(input[type=checkbox]:checked) .checkbox__box::before,
-.cta-contacts .checkbox:has(input[type=checkbox]:checked) .wpcf7-list-item-label::before {
-  background-color: #fd8011;
-  border-color: #fd8011;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-size: 0.75rem 0.625rem;
+.cta-contacts .checkbox:has(input[type=checkbox]:checked) .checkbox__box::before {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M4.33333 0C3.18406 0 2.08186 0.456546 1.2692 1.2692C0.456546 2.08186 0 3.18406 0 4.33333V19.6667C0 20.8159 0.456546 21.9181 1.2692 22.7308C2.08186 23.5435 3.18406 24 4.33333 24H19.6667C20.8159 24 21.9181 23.5435 22.7308 22.7308C23.5435 21.9181 24 20.8159 24 19.6667V4.33333C24 3.18406 23.5435 2.08186 22.7308 1.2692C21.9181 0.456546 20.8159 0 19.6667 0H4.33333ZM19.04 8.37333L10.0347 17.3693C9.84717 17.5566 9.593 17.6618 9.328 17.6618C9.063 17.6618 8.80883 17.5566 8.62133 17.3693L4.96 13.7067C4.78336 13.5171 4.6872 13.2664 4.69177 13.0073C4.69634 12.7482 4.80129 12.5011 4.9845 12.3178C5.16772 12.1346 5.4149 12.0297 5.67397 12.0251C5.93304 12.0205 6.18377 12.1167 6.37333 12.2933L9.32933 15.248L17.6267 6.95867C17.7196 6.86587 17.83 6.79229 17.9514 6.74213C18.0728 6.69197 18.2029 6.66622 18.3343 6.66635C18.4656 6.66647 18.5957 6.69247 18.717 6.74285C18.8383 6.79324 18.9485 6.86702 19.0413 6.96C19.1341 7.05298 19.2077 7.16332 19.2579 7.28473C19.308 7.40614 19.3338 7.53625 19.3337 7.66761C19.3335 7.79897 19.3075 7.92903 19.2571 8.05034C19.2068 8.17166 19.133 8.28187 19.04 8.37467' fill='%23FD8011'/%3E%3C/svg%3E");
+  background-size: 1.5rem 1.5rem;
 }
 
 .cta-contacts .checkbox__text,
 .cta-contacts .checkbox .wpcf7-list-item-label:not(:empty) {
   min-height: 0;
   font-size: 1rem;
-  line-height: 1.3;
+  font-weight: 400;
+  line-height: normal;
   letter-spacing: normal;
   color: #000000;
 }
@@ -1380,10 +1477,18 @@ body {
 .cta-contacts .checkbox__text a,
 .cta-contacts .checkbox .wpcf7-list-item-label:not(:empty) a {
   color: #fd8011;
+  text-decoration: none;
 }
 
-.cta-contacts .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
-.cta-contacts .wpcf7-form-control-wrap:has(.wpcf7-submit) {
+.cta-contacts .checkbox .checkbox__text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 0;
+}
+
+.cta-contacts .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn),
+.cta-contacts .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
   min-height: 4.3125rem;
   padding: 1.25rem 2.1875rem;
   border-radius: 2.5rem;
@@ -1461,7 +1566,7 @@ body {
 .cta-form .form-field {
   min-height: 3.125rem;
   padding: 0.9375rem 1.25rem;
-  border: 0;
+  border: 0.0625rem solid transparent;
   border-radius: 2.5rem;
   background: #f7f7f7;
   color: #000000;
@@ -1496,6 +1601,24 @@ body {
           box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
+.cta-form .form__control.wpcf7-not-valid,
+.cta-form .form__control[aria-invalid=true],
+.cta-form .form-field.wpcf7-not-valid,
+.cta-form .form-field[aria-invalid=true] {
+  border-color: #ff0000;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.cta-form .form__control.wpcf7-not-valid:focus,
+.cta-form .form__control[aria-invalid=true]:focus,
+.cta-form .form-field.wpcf7-not-valid:focus,
+.cta-form .form-field[aria-invalid=true]:focus {
+  border-color: #ff0000;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .cta-form .form__control:is(textarea),
 .cta-form .form-field:is(textarea) {
   min-height: 9.0625rem;
@@ -1514,13 +1637,28 @@ body {
   gap: 0.9375rem;
 }
 
-.cta-form .checkbox__box::before,
-.cta-form .checkbox .wpcf7-list-item-label:not(:empty)::before {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 0.25rem;
-  border-color: #fd8011;
-  background-color: transparent;
+.cta-form .checkbox:has(.wpcf7-form-control-wrap) .checkbox__box {
+  display: block;
+}
+
+.cta-form .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 0.9375rem;
+  padding-left: 0;
+  min-height: 0;
+}
+
+.cta-form .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty)::before {
+  display: none;
+}
+
+.cta-form .checkbox:has(.wpcf7-form-control-wrap) .checkbox__text::before {
+  display: none;
 }
 
 .cta-form .checkbox__box {
@@ -1528,13 +1666,35 @@ body {
       flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
+  margin-top: 0;
+}
+
+.cta-form .checkbox__box::before {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #fd8011;
+  background-color: transparent;
+  background-image: none;
+  background-size: 1.5rem 1.5rem;
+}
+
+.cta-form .checkbox__input:checked + .checkbox__box::before,
+.cta-form .checkbox:has(.checkbox__input:checked) .checkbox__box::before,
+.cta-form .checkbox:has(input[type=checkbox]:checked) .checkbox__box::before {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M4.33333 0C3.18406 0 2.08186 0.456546 1.2692 1.2692C0.456546 2.08186 0 3.18406 0 4.33333V19.6667C0 20.8159 0.456546 21.9181 1.2692 22.7308C2.08186 23.5435 3.18406 24 4.33333 24H19.6667C20.8159 24 21.9181 23.5435 22.7308 22.7308C23.5435 21.9181 24 20.8159 24 19.6667V4.33333C24 3.18406 23.5435 2.08186 22.7308 1.2692C21.9181 0.456546 20.8159 0 19.6667 0H4.33333ZM19.04 8.37333L10.0347 17.3693C9.84717 17.5566 9.593 17.6618 9.328 17.6618C9.063 17.6618 8.80883 17.5566 8.62133 17.3693L4.96 13.7067C4.78336 13.5171 4.6872 13.2664 4.69177 13.0073C4.69634 12.7482 4.80129 12.5011 4.9845 12.3178C5.16772 12.1346 5.4149 12.0297 5.67397 12.0251C5.93304 12.0205 6.18377 12.1167 6.37333 12.2933L9.32933 15.248L17.6267 6.95867C17.7196 6.86587 17.83 6.79229 17.9514 6.74213C18.0728 6.69197 18.2029 6.66622 18.3343 6.66635C18.4656 6.66647 18.5957 6.69247 18.717 6.74285C18.8383 6.79324 18.9485 6.86702 19.0413 6.96C19.1341 7.05298 19.2077 7.16332 19.2579 7.28473C19.308 7.40614 19.3338 7.53625 19.3337 7.66761C19.3335 7.79897 19.3075 7.92903 19.2571 8.05034C19.2068 8.17166 19.133 8.28187 19.04 8.37467' fill='%23FD8011'/%3E%3C/svg%3E");
+  background-size: 1.5rem 1.5rem;
 }
 
 .cta-form .checkbox__text,
 .cta-form .checkbox .wpcf7-list-item-label:not(:empty) {
   min-height: 0;
-  font-size: 0.875rem;
-  line-height: 1.3;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: normal;
   letter-spacing: normal;
   color: #000000;
 }
@@ -1542,22 +1702,20 @@ body {
 .cta-form .checkbox__text a,
 .cta-form .checkbox .wpcf7-list-item-label:not(:empty) a {
   color: #fd8011;
+  text-decoration: none;
 }
 
-.cta-form .checkbox__input:checked + .checkbox__box::before,
-.cta-form .checkbox:has(.checkbox__input:checked) .checkbox__box::before,
-.cta-form .checkbox:has(input[type=checkbox]:checked) .checkbox__box::before,
-.cta-form .checkbox:has(input[type=checkbox]:checked) .wpcf7-list-item-label::before {
-  background-color: #fd8011;
-  border-color: #fd8011;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-size: 0.75rem 0.625rem;
+.cta-form .checkbox .checkbox__text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 0;
 }
 
-.cta-form .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
-.cta-form label.form__submit,
-.cta-form .form__submit:has(.wpcf7-form-control-wrap),
-.cta-form .wpcf7-form-control-wrap:has(.wpcf7-submit) {
+.cta-form .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn),
+.cta-form label.form__submit:not(.btn),
+.cta-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn),
+.cta-form .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
   min-height: 4.375rem;
   padding: 0.9375rem 2.5rem;
   border-radius: 2.5rem;
@@ -1569,6 +1727,11 @@ body {
   letter-spacing: normal;
   font-size: 1.125rem;
   font-weight: 500;
+}
+
+.cta-form label.form__submit.btn,
+.cta-form .form__submit.btn {
+  width: 100%;
 }
 
 .checkbox {
@@ -1671,7 +1834,6 @@ body {
 .checkbox:has(.wpcf7-form-control-wrap) .checkbox__text,
 .checkbox:has(.wpcf7-form-control-wrap) .wpcf7-list-item-label:not(:empty) {
   position: relative;
-  padding-left: 2.625rem;
 }
 
 .checkbox:has(.wpcf7-form-control-wrap) .checkbox__text::before,
@@ -3061,7 +3223,7 @@ body {
     min-height: 8.5625rem;
   }
 
-  .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)) {
+  .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn) {
     margin-top: 0;
     min-height: 3.75rem;
     font-size: 1.25rem;
@@ -3073,8 +3235,8 @@ body {
     min-height: 3.875rem;
   }
 
-  .wpcf7-form label.form__submit,
-  .wpcf7-form .form__submit:has(.wpcf7-form-control-wrap) {
+  .wpcf7-form label.form__submit:not(.btn),
+  .wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn) {
     margin-top: 0;
     min-height: 3.75rem;
     font-size: 1.25rem;
@@ -3164,10 +3326,10 @@ body {
     padding: 2.5rem;
   }
 
-  .cta-form .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
-  .cta-form label.form__submit,
-  .cta-form .form__submit:has(.wpcf7-form-control-wrap),
-  .cta-form .wpcf7-form-control-wrap:has(.wpcf7-submit) {
+  .cta-form .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn),
+  .cta-form label.form__submit:not(.btn),
+  .cta-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn),
+  .cta-form .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
     font-size: 1.5rem;
   }
 
@@ -3642,13 +3804,13 @@ body {
     border-width: 1px;
   }
 
-  .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):hover {
+  .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn):hover {
     background: #fd8011;
     color: #ffffff;
   }
 
-  .wpcf7-form label.form__submit:hover,
-  .wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):hover {
+  .wpcf7-form label.form__submit:not(.btn):hover,
+  .wpcf7-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn):hover {
     background: #fd8011;
     color: #ffffff;
   }
@@ -3658,15 +3820,15 @@ body {
     color: #ffffff;
   }
 
-  .cta-contacts .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):hover,
-  .cta-contacts .wpcf7-form-control-wrap:has(.wpcf7-submit):hover {
+  .cta-contacts .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn):hover,
+  .cta-contacts .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap):hover {
     background: #e8720f;
   }
 
-  .cta-form .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):hover,
-  .cta-form label.form__submit:hover,
-  .cta-form .form__submit:has(.wpcf7-form-control-wrap):hover,
-  .cta-form .wpcf7-form-control-wrap:has(.wpcf7-submit):hover {
+  .cta-form .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn):hover,
+  .cta-form label.form__submit:not(.btn):hover,
+  .cta-form .form__submit:has(.wpcf7-form-control-wrap):not(.btn):hover,
+  .cta-form .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap):hover {
     background: #e8720f;
   }
 

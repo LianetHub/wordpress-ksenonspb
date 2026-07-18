@@ -38,17 +38,17 @@ if ($archive_term instanceof WP_Term) {
 	$page_title = $archive_term->name;
 }
 ?>
-<section class="services-archive">
-	<div class="services-archive__container container">
-		<h1 class="services-archive__title title-lg"><?php echo esc_html($page_title); ?></h1>
+<section class="cpt-archive cpt-archive--services">
+	<div class="cpt-archive__container container">
+		<h1 class="cpt-archive__title title-lg"><?php echo esc_html($page_title); ?></h1>
 	</div>
-	<div class="services-archive__container container container--large">
-		<div class="services-archive__panel">
+	<div class="cpt-archive__container container container--large">
+		<div class="cpt-archive__panel">
 			<?php if ($categories) : ?>
-				<nav class="services-archive__filters swiper" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
+				<nav class="cpt-archive__filters swiper" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
 					<div class="swiper-wrapper">
 						<a
-							class="services-archive__tab swiper-slide<?php echo $active_slug ? '' : ' _active'; ?>"
+							class="cpt-archive__tab swiper-slide<?php echo $active_slug ? '' : ' _active'; ?>"
 							href="<?php echo esc_url(ksenon_services_archive_url()); ?>"
 							<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
 							<?php esc_html_e('Все', 'ksenonspb'); ?>
@@ -58,7 +58,7 @@ if ($archive_term instanceof WP_Term) {
 							$is_active = $active_top_slug === $category->slug;
 							?>
 							<a
-								class="services-archive__tab swiper-slide<?php echo $is_active ? ' _active' : ''; ?>"
+								class="cpt-archive__tab swiper-slide<?php echo $is_active ? ' _active' : ''; ?>"
 								href="<?php echo esc_url(ksenon_services_archive_url($category->slug)); ?>"
 								<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
 								<?php echo esc_html($category->name); ?>
@@ -69,10 +69,10 @@ if ($archive_term instanceof WP_Term) {
 			<?php endif; ?>
 
 			<?php if ($subcategories) : ?>
-				<nav class="services-archive__subfilters swiper" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
+				<nav class="cpt-archive__subfilters swiper" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
 					<div class="swiper-wrapper">
 						<a
-							class="services-archive__tab swiper-slide<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
+							class="cpt-archive__tab swiper-slide<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
 							href="<?php echo esc_url(ksenon_services_archive_url($active_top_slug)); ?>"
 							<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
 							<?php esc_html_e('Все', 'ksenonspb'); ?>
@@ -80,7 +80,7 @@ if ($archive_term instanceof WP_Term) {
 						<?php foreach ($subcategories as $subcategory) : ?>
 							<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
 							<a
-								class="services-archive__tab swiper-slide<?php echo $is_sub_active ? ' _active' : ''; ?>"
+								class="cpt-archive__tab swiper-slide<?php echo $is_sub_active ? ' _active' : ''; ?>"
 								href="<?php echo esc_url(ksenon_services_archive_url($subcategory->slug)); ?>"
 								<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
 								<?php echo esc_html($subcategory->name); ?>
@@ -91,7 +91,7 @@ if ($archive_term instanceof WP_Term) {
 			<?php endif; ?>
 
 			<?php if ($query->have_posts()) : ?>
-				<ul class="services-archive__grid">
+				<ul class="cpt-archive__grid">
 					<?php
 					while ($query->have_posts()) :
 						$query->the_post();

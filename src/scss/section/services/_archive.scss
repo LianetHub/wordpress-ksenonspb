@@ -2,14 +2,12 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
 
-.services-archive {
+.cpt-archive {
 	padding: rem(24) 0 rem(48);
 
 	@media (min-width: $md3) {
 		padding: 0 0 rem(72);
 	}
-
-
 
 	&__panel {
 		display: flex;
@@ -25,6 +23,65 @@
 			gap: rem(36);
 			padding: rem(42) rem(70);
 		}
+	}
+
+	&__search {
+		display: flex;
+		align-items: center;
+		gap: rem(12);
+		width: 100%;
+		padding: rem(10) rem(14);
+		border-radius: rem(62);
+		background: $color-white;
+
+		@media (min-width: $md3) {
+			padding: rem(14) rem(30);
+		}
+	}
+
+	&__search-field {
+		flex: 1;
+		min-width: 0;
+		padding: rem(12) rem(10);
+		border: 0;
+		border-radius: rem(40);
+		background: transparent;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(16);
+		font-weight: 500;
+		line-height: normal;
+
+		@media (min-width: $md3) {
+			padding: rem(15) rem(25);
+			font-size: rem(20);
+		}
+
+		&::placeholder {
+			color: #4d4d4d;
+		}
+	}
+
+	&__search-submit {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: rem(32);
+		height: rem(32);
+		padding: 0;
+		border: 0;
+		border-radius: 50%;
+		background: transparent;
+		cursor: pointer;
+		opacity: 0.8;
+	}
+
+	&__search-icon {
+		display: block;
+		width: rem(32);
+		height: rem(32);
+		object-fit: contain;
 	}
 
 	&__filters,
@@ -86,15 +143,23 @@
 		@media (min-width: $md4) {
 			grid-template-columns: repeat(2, 1fr);
 		}
+	}
 
+	&--services &__grid {
 		@media (min-width: $md2) {
 			grid-template-columns: repeat(3, 1fr);
 			gap: rem(24);
 		}
 	}
+
+	&--portfolio &__grid {
+		@media (min-width: $md2) {
+			gap: rem(24);
+		}
+	}
 }
 
-.services-pagination {
+.cpt-pagination {
 	display: flex;
 	justify-content: center;
 
@@ -167,7 +232,7 @@
 		}
 
 		@media (any-hover: hover) {
-			&:hover:not(.services-pagination__arrow--disabled) {
+			&:hover:not(.cpt-pagination__arrow--disabled) {
 				background: color.adjust($color: $color-surface, $lightness: -5%);
 			}
 		}
