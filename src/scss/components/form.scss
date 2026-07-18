@@ -143,7 +143,7 @@
 		}
 	}
 
-	&__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)) {
+	&__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn) {
 		@include form-submit-on-brand;
 	}
 
@@ -222,8 +222,8 @@ $cf7-error-border: #ff0000;
 	}
 
 	// <label class="form__submit">[submit]</label>
-	label.form__submit,
-	.form__submit:has(.wpcf7-form-control-wrap) {
+	label.form__submit:not(.btn),
+	.form__submit:has(.wpcf7-form-control-wrap):not(.btn) {
 		@include form-submit-on-brand;
 		position: relative;
 		margin-inline: auto;
@@ -246,8 +246,46 @@ $cf7-error-border: #ff0000;
 			letter-spacing: inherit;
 			text-transform: uppercase;
 			cursor: pointer;
+		}
 
+		.wpcf7-spinner {
+			display: none;
+		}
+	}
 
+	// <label class="btn … form__submit"><span class="btn__text">[submit]</span><span class="btn__arrow">…</span></label>
+	label.form__submit.btn,
+	.form__submit.btn:has(.wpcf7-form-control-wrap) {
+		position: relative;
+		cursor: pointer;
+
+		&:has(input:disabled) {
+			pointer-events: none;
+			cursor: default;
+			opacity: 0.5;
+		}
+
+		.btn__text {
+			display: inline-flex;
+			align-items: center;
+			min-width: 0;
+		}
+
+		.wpcf7-form-control-wrap:has(.wpcf7-submit) {
+			@include cf7-submit-inner-reset;
+			width: auto;
+		}
+
+		.wpcf7-submit {
+			@include cf7-submit-inner-reset;
+			width: auto;
+			color: inherit;
+			font: inherit;
+			font-weight: inherit;
+			letter-spacing: inherit;
+			text-transform: inherit;
+			white-space: inherit;
+			cursor: pointer;
 		}
 
 		.wpcf7-spinner {
@@ -294,6 +332,11 @@ $cf7-error-border: #ff0000;
 			color: transparent;
 		}
 
+		label.form__submit.btn .btn__arrow,
+		.form__submit.btn .btn__arrow {
+			opacity: 0;
+		}
+
 		label.form__submit::after,
 		.form__submit:has(.wpcf7-form-control-wrap)::after,
 		.wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap)::after {
@@ -311,6 +354,11 @@ $cf7-error-border: #ff0000;
 			animation: cf7-spinner-rotation 1s linear infinite;
 			z-index: 3;
 			color: $color-primary;
+		}
+
+		label.form__submit.btn::after,
+		.form__submit.btn::after {
+			color: $color-white;
 		}
 	}
 }
@@ -455,8 +503,8 @@ $cf7-error-border: #ff0000;
 		}
 	}
 
-	.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
-	.wpcf7-form-control-wrap:has(.wpcf7-submit) {
+	.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn),
+	.wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
 		min-height: rem(69);
 		padding: rem(20) rem(35);
 		border-radius: rem(40);
@@ -606,10 +654,10 @@ $cf7-error-border: #ff0000;
 		}
 	}
 
-	.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)),
-	label.form__submit,
-	.form__submit:has(.wpcf7-form-control-wrap),
-	.wpcf7-form-control-wrap:has(.wpcf7-submit) {
+	.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn),
+	label.form__submit:not(.btn),
+	.form__submit:has(.wpcf7-form-control-wrap):not(.btn),
+	.wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
 		min-height: rem(70);
 		padding: rem(15) rem(40);
 		border-radius: rem(40);
@@ -630,5 +678,10 @@ $cf7-error-border: #ff0000;
 				background: $color-accent-hover;
 			}
 		}
+	}
+
+	label.form__submit.btn,
+	.form__submit.btn {
+		width: 100%;
 	}
 }

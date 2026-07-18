@@ -26,8 +26,13 @@
   </div>
 </div>
 
-<label class="form__submit">
-  [submit "Подобрать услугу"]
+<label class="btn btn--primary btn--large form__submit">
+  <span class="btn__text">[submit "Подобрать услугу"]</span>
+  <span class="btn__arrow" aria-hidden="true">
+    <svg class="btn__arrow-icon" width="15" height="10" aria-hidden="true">
+      <use href="@img/icons.svg#icon-arrow-right"></use>
+    </svg>
+  </span>
 </label>
 
 [hidden form-source default:shortcode_attr]
