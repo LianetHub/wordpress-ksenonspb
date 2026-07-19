@@ -1,19 +1,19 @@
 import { appendFile, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import XLSX from 'xlsx';
 
 import {
 	BASE_URL,
 	DATA_DIR,
-	IMAGES_DIR,
 	LOGS_DIR,
 	PAGES_DIR,
 	PARSING_ROOT,
 	readJson,
 	slugFromPath,
 	sleep,
+	transliterateSlug,
 } from './utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -44,7 +44,6 @@ const PORTFOLIO_HEADERS = [
 	'slug',
 	'excerpt',
 	'hero_title',
-	'card_quote',
 	'hero_image',
 	'before_image',
 	'after_image',
@@ -55,7 +54,6 @@ const PORTFOLIO_HEADERS = [
 	'duration',
 	'task_description',
 	'case_description',
-	'what_we_did',
 	'work_done_json',
 	...Array.from({ length: WORK_DONE_FLAT_MAX }, (_, i) => [
 		`work_done_${i + 1}_title`,
@@ -210,31 +208,139 @@ function cleanTitle(value) {
 function normalizeUploadUrl(url) {
 	const text = String(url ?? '').trim();
 	if (!text) return '';
-	return text.replace(/-\d+x\d+(\.(png|jpe?g|webp|svg|gif))$/i, '$1');
+	return text
+		.replace(/^http:\/\//i, 'https://')
+		.replace(/-\d+x\d+(\.(png|jpe?g|webp|svg|gif))$/i, '$1');
 }
 
-function localImagePathToAbsolute(src) {
+/**
+ * Resolve local/file/relative image refs to absolute URLs on the old site.
+ * external/* → https://ksenonspb.ru/portfolio/{file}
+ * uploads/* → https://ksenonspb.ru/wp-content/uploads/{path}
+ */
+function resolveImageUrl(src) {
 	const text = String(src ?? '').trim();
 	if (!text) return '';
 
-	if (/^https?:\/\//i.test(text)) {
-		return normalizeUploadUrl(text);
+	let candidate = text;
+	if (/^file:/i.test(text)) {
+		try {
+			candidate = fileURLToPath(text);
+		} catch {
+			candidate = text.replace(/^file:\/\/\//i, '').replace(/^file:\/\//i, '');
+		}
+	}
+	candidate = candidate.replace(/\\/g, '/');
+
+	if (/^https?:\/\//i.test(candidate)) {
+		return normalizeUploadUrl(candidate);
 	}
 
 	const uploadsMatch =
-		text.match(/(?:^|\/)images\/uploads\/(.+)$/i)
-		|| text.match(/(?:^|\/)uploads\/(.+)$/i);
+		candidate.match(/(?:^|\/)(?:images\/)?uploads\/(.+)$/i)
+		|| candidate.match(/wp-content\/uploads\/(.+)$/i);
 	if (uploadsMatch) {
 		return normalizeUploadUrl(`${BASE_URL}/wp-content/uploads/${uploadsMatch[1]}`);
 	}
 
-	const externalMatch = text.match(/(?:^|\/)images\/external\/(.+)$/i);
+	const externalMatch = candidate.match(/(?:^|\/)(?:images\/)?external\/(.+)$/i);
 	if (externalMatch) {
-		const localPath = path.join(IMAGES_DIR, 'external', externalMatch[1]);
-		return pathToFileURL(localPath).href;
+		return `${BASE_URL}/portfolio/${path.basename(externalMatch[1])}`;
 	}
 
 	return '';
+}
+
+function localImagePathToAbsolute(src) {
+	return resolveImageUrl(src);
+}
+
+function extractDuration(text) {
+	const source = String(text ?? '');
+	const patterns = [
+		/срок\s*(?:выполнения|работ[ыа]?)?\s*(?:составляет|:)?\s*(\d+)\s*(рабоч(?:их|ий)\s+)?(дн(?:я|ей|ень)|час(?:а|ов)?)/i,
+		/за\s+(\d+)\s*(рабоч(?:их|ий)\s+)?(дн(?:я|ей|ень)|час(?:а|ов)?)/i,
+		/(\d+)\s*(рабоч(?:их|ий)\s+)?(дн(?:я|ей|ень)|час(?:а|ов)?)\s*(?:на\s+(?:выполнение|работ)|работы)/i,
+	];
+
+	for (const re of patterns) {
+		const match = source.match(re);
+		if (!match) continue;
+		const amount = match[1];
+		const working = match[2] ? 'рабочих ' : '';
+		const unitRaw = match[3].toLowerCase();
+		let unit = 'дней';
+		if (unitRaw.startsWith('час')) {
+			unit = Number(amount) === 1 ? 'час' : 'часов';
+		} else if (Number(amount) === 1) {
+			unit = 'день';
+		} else if (Number(amount) >= 2 && Number(amount) <= 4) {
+			unit = 'дня';
+		}
+		if (working && unit.startsWith('д')) {
+			return `${amount} рабочих ${Number(amount) === 1 ? 'дня' : 'дней'}`;
+		}
+		return `${amount} ${unit}`;
+	}
+
+	return '';
+}
+
+function normalizeCaseImages(item) {
+	const fromList = Array.isArray(item.photos_list)
+		? item.photos_list.map(resolveImageUrl).filter(Boolean)
+		: [];
+	const fromPipe = String(item.photos ?? '')
+		.split('|')
+		.map(resolveImageUrl)
+		.filter(Boolean);
+	const photos = [...new Set(fromList.length ? fromList : fromPipe)];
+
+	const workDone = Array.isArray(item.work_done)
+		? item.work_done.map((step) => ({
+			...step,
+			photo: resolveImageUrl(step?.photo),
+		}))
+		: [];
+
+	const rewriteHtmlUrls = (html) => String(html ?? '').replace(
+		/(src|href)=["']([^"']+)["']/gi,
+		(full, attr, url) => {
+			const resolved = resolveImageUrl(url);
+			return resolved ? `${attr}="${resolved}"` : full;
+		},
+	);
+
+	return {
+		...item,
+		hero_image: resolveImageUrl(item.hero_image),
+		before_image: resolveImageUrl(item.before_image),
+		after_image: resolveImageUrl(item.after_image),
+		featured_image: resolveImageUrl(item.featured_image),
+		photos: photos.join('|'),
+		photos_list: photos,
+		work_done: workDone,
+		case_description: rewriteHtmlUrls(item.case_description),
+		task_description: rewriteHtmlUrls(item.task_description),
+	};
+}
+
+function uniquifySlugs(cases) {
+	const used = new Set();
+	for (const item of cases) {
+		const legacy = item._legacy_slug || item.slug;
+		const base = transliterateSlug(legacy) || 'case';
+		let slug = base;
+		let n = 2;
+		while (used.has(slug)) {
+			slug = `${base}-${n}`;
+			n += 1;
+		}
+		used.add(slug);
+		item._legacy_slug = legacy;
+		item.slug = slug;
+	}
+	return cases;
 }
 
 function extractVideoUrl(document) {
@@ -526,13 +632,6 @@ function buildSeoFields(item) {
 	};
 }
 
-function workDoneToWhatWeDid(workDone) {
-	return (workDone || [])
-		.map((step) => String(step.title || step.text || '').trim())
-		.filter(Boolean)
-		.join('|');
-}
-
 function portfolioToRow(item, { forExcel = false } = {}) {
 	const seo = buildSeoFields(item);
 	const caseDescription = forExcel
@@ -557,7 +656,6 @@ function portfolioToRow(item, { forExcel = false } = {}) {
 		item.slug ?? '',
 		item.excerpt ?? '',
 		item.hero_title ?? '',
-		item.card_quote ?? '',
 		item.hero_image ?? '',
 		item.before_image ?? '',
 		item.after_image ?? '',
@@ -568,7 +666,6 @@ function portfolioToRow(item, { forExcel = false } = {}) {
 		item.duration ?? '',
 		taskDescription,
 		caseDescription,
-		item.what_we_did ?? '',
 		workDoneJson,
 		...flat,
 		item.related_brands ?? '',
@@ -608,10 +705,11 @@ function parsePortfolioCase({ pageEntry, meta, contentHtml, brandIndex, serviceI
 	const heroTitle = cleanTitle(
 		document.querySelector('.entry-title-primary')?.textContent ?? metaTitle,
 	);
-	const cardQuote =
+	const subtitle =
 		document.querySelector('.entry-subtitle')?.textContent?.replace(/\s+/g, ' ').trim() ?? '';
 	const title = heroTitle || metaTitle;
-	const slug = slugFromPath(meta.path ?? pageEntry.path);
+	const legacySlug = slugFromPath(meta.path ?? pageEntry.path);
+	const slug = transliterateSlug(legacySlug);
 
 	const cleaned = cleanEntryContent(document);
 	const cleanedHtml = cleaned?.innerHTML?.trim() ?? '';
@@ -624,7 +722,8 @@ function parsePortfolioCase({ pageEntry, meta, contentHtml, brandIndex, serviceI
 		) || photos[0] || '';
 	const video = extractVideoUrl(document);
 	const price = extractPrice(plainText);
-	const excerpt = cardQuote || truncate(firstParagraphText(document), 300);
+	const duration = extractDuration(plainText);
+	const excerpt = subtitle || truncate(firstParagraphText(document), 300);
 
 	const brands = resolveBrands({ article, title, brandIndex });
 	const tags = extractTags(document);
@@ -642,9 +741,9 @@ function parsePortfolioCase({ pageEntry, meta, contentHtml, brandIndex, serviceI
 		exclude_reason: classification.reason,
 		title,
 		slug,
+		_legacy_slug: legacySlug,
 		excerpt,
 		hero_title: title,
-		card_quote: cardQuote,
 		hero_image: heroImage,
 		before_image: '',
 		after_image: '',
@@ -653,10 +752,9 @@ function parsePortfolioCase({ pageEntry, meta, contentHtml, brandIndex, serviceI
 		photos_list: photos,
 		video,
 		price,
-		duration: '',
+		duration,
 		task_description: '',
 		case_description: cleanedHtml,
-		what_we_did: '',
 		work_done: [],
 		related_brands: brands.map((b) => b.title).join('|'),
 		related_services: services.map((s) => s.title).join('|'),
@@ -682,13 +780,14 @@ function extractJsonFromText(text) {
 }
 
 function sanitizeLlmResult(result, base) {
-	const photoSet = new Set(base.photos_list || []);
+	const photoSet = new Set((base.photos_list || []).map(resolveImageUrl).filter(Boolean));
 	const pickPhoto = (url) => {
-		const value = String(url ?? '').trim();
+		const value = resolveImageUrl(url) || String(url ?? '').trim();
 		if (!value) return '';
 		if (photoSet.has(value)) return value;
+		const baseName = path.basename(value.split('?')[0]);
 		const match = [...photoSet].find(
-			(p) => p.endsWith(value) || value.endsWith(path.basename(p)),
+			(p) => p === value || p.endsWith(baseName) || path.basename(p) === baseName,
 		);
 		return match || '';
 	};
@@ -706,6 +805,9 @@ function sanitizeLlmResult(result, base) {
 
 	const before = result.before_confident === false ? '' : pickPhoto(result.before_image);
 	const after = result.after_confident === false ? '' : pickPhoto(result.after_image);
+	const duration = String(result.duration ?? '').trim()
+		|| base.duration
+		|| extractDuration(base._plain_text || base.case_description || '');
 
 	const brands = Array.isArray(result.related_brands)
 		? result.related_brands.map((v) => String(v).trim()).filter(Boolean)
@@ -717,11 +819,11 @@ function sanitizeLlmResult(result, base) {
 	return {
 		excerpt: truncate(String(result.excerpt ?? base.excerpt ?? '').trim(), 300) || base.excerpt,
 		price: String(result.price ?? base.price ?? '').trim() || base.price,
+		duration,
 		task_description: String(result.task_description ?? '').trim(),
 		case_description: String(result.case_description ?? base.case_description ?? '').trim()
 			|| base.case_description,
 		work_done: workDone,
-		what_we_did: workDoneToWhatWeDid(workDone),
 		before_image: before,
 		after_image: after,
 		featured_image: after || before || base.featured_image || base.hero_image,
@@ -738,6 +840,7 @@ function buildLlmPrompt(item, brandTitles, serviceTitles) {
 {
   "excerpt": "краткое описание 1-2 предложения",
   "price": "цена работ вида \\"42 000 ₽\\" или пустая строка",
+  "duration": "срок работ вида \\"7 дней\\" / \\"2 часа\\" или пустая строка",
   "task_description": "что требовалось сделать (1-3 предложения; сгенерируй по смыслу если неявно)",
   "work_done": [{"title":"краткий заголовок шага","text":"1-2 предложения","photo":"URL из списка или \\"\\""}],
   "before_image": "URL из списка или \\"\\"",
@@ -756,6 +859,7 @@ function buildLlmPrompt(item, brandTitles, serviceTitles) {
 - Не выдумывай марки/услуги вне кандидатов.
 - Не включай чужие кейсы, магазины, телефоны, youtube-канал как контент.
 - work_done: 2–8 шагов по фактическим работам.
+- duration заполняй только если срок явно следует из текста, иначе пустая строка.
 
 Заголовок: ${item.title}
 Кандидаты марок: ${JSON.stringify(brandTitles)}
@@ -856,39 +960,45 @@ async function enrichWithLlm(cases, { forceLlm = false } = {}) {
 	};
 
 	const enriched = await mapPool(cases, LLM_CONCURRENCY, async (item) => {
-		if (!forceLlm && cache.cases[item.slug]) {
+		const cacheKey = item._legacy_slug || item.slug;
+		if (!forceLlm && cache.cases[cacheKey]) {
 			fromCache += 1;
-			return {
+			const cached = cache.cases[cacheKey];
+			const duration = String(cached.duration ?? '').trim()
+				|| item.duration
+				|| extractDuration(item._plain_text || item.case_description || '');
+			return normalizeCaseImages({
 				...item,
-				...cache.cases[item.slug],
+				...cached,
 				photos: item.photos,
 				photos_list: item.photos_list,
 				hero_image: item.hero_image,
 				hero_title: item.hero_title,
-				card_quote: item.card_quote,
 				old_url: item.old_url,
 				slug: item.slug,
+				_legacy_slug: item._legacy_slug,
 				title: item.title,
-			};
+				duration,
+			});
 		}
 
 		try {
 			const llm = await callLlm(item, apiKey);
-			cache.cases[item.slug] = llm;
+			cache.cases[cacheKey] = llm;
 			fresh += 1;
 			await persistCache();
 			if (fresh % 10 === 0) {
 				console.log(`LLM progress: fresh=${fresh}, cache_total=${Object.keys(cache.cases).length}`);
 			}
-			return { ...item, ...llm };
+			return normalizeCaseImages({ ...item, ...llm });
 		} catch (error) {
 			failed += 1;
 			await appendFile(
 				LLM_LOG,
-				`[${new Date().toISOString()}] FAIL ${item.slug}: ${error.message}\n`,
+				`[${new Date().toISOString()}] FAIL ${cacheKey}: ${error.message}\n`,
 				'utf8',
 			);
-			return item;
+			return normalizeCaseImages(item);
 		} finally {
 			await sleep(150);
 		}
@@ -917,9 +1027,12 @@ function stripInternal(item) {
 		_plain_text,
 		_service_titles,
 		_brand_titles,
+		_legacy_slug,
 		photos_list,
 		include,
 		exclude_reason,
+		what_we_did,
+		card_quote,
 		...rest
 	} = item;
 	return rest;
@@ -1042,6 +1155,8 @@ async function main() {
 
 	await writeExcluded(excluded);
 
+	uniquifySlugs(included);
+
 	let cases = included;
 	if (args.limit > 0) {
 		cases = included.slice(0, args.limit);
@@ -1052,21 +1167,39 @@ async function main() {
 		cases = await enrichWithLlm(cases, { forceLlm: args.forceLlm });
 	} else {
 		console.log('Skipping LLM (--skip-llm)');
+		cases = cases.map(normalizeCaseImages);
 	}
 
 	// If limited, still export only enriched subset for smoke; full set needs full run
-	const exportCases = args.limit > 0
+	const exportCases = (args.limit > 0
 		? [
 			...cases,
 			...included.slice(args.limit).map((item) => ({
 				...item,
-				// keep deterministic fields only for non-enriched remainder in limited mode?
-				// For limited smoke we export ONLY the limited cases.
 			})),
 		].slice(0, args.limit)
-		: cases;
+		: cases
+	).map((item) => {
+		const normalized = normalizeCaseImages(item);
+		if (!normalized.duration) {
+			normalized.duration = extractDuration(
+				normalized._plain_text || normalized.case_description || '',
+			);
+		}
+		return normalized;
+	});
 
 	validateCases(exportCases);
+
+	const fileUrlHits = exportCases.filter((item) => JSON.stringify(item).includes('file:'));
+	if (fileUrlHits.length) {
+		throw new Error(`file:// URLs remain in ${fileUrlHits.length} cases (e.g. ${fileUrlHits[0].slug})`);
+	}
+	const cyrillicSlugs = exportCases.filter((item) => /[а-яё]/i.test(item.slug));
+	if (cyrillicSlugs.length) {
+		throw new Error(`Cyrillic slugs remain: ${cyrillicSlugs.map((c) => c.slug).slice(0, 5).join(', ')}`);
+	}
+
 	await writeOutputs(exportCases);
 
 	const withBrands = exportCases.filter((item) => item.related_brands).length;
@@ -1077,6 +1210,7 @@ async function main() {
 	const withWork = exportCases.filter((item) => (item.work_done || []).length).length;
 	const withBefore = exportCases.filter((item) => item.before_image).length;
 	const withAfter = exportCases.filter((item) => item.after_image).length;
+	const withDuration = exportCases.filter((item) => item.duration).length;
 
 	console.log(`Generated ${OUTPUT_XLSX}`);
 	console.log(`Generated ${OUTPUT_JSON}`);
@@ -1088,6 +1222,7 @@ async function main() {
 	console.log(`With hero_image: ${withImages}/${exportCases.length}`);
 	console.log(`With video: ${withVideo}/${exportCases.length}`);
 	console.log(`With price: ${withPrice}/${exportCases.length}`);
+	console.log(`With duration: ${withDuration}/${exportCases.length}`);
 	console.log(`With work_done: ${withWork}/${exportCases.length}`);
 	console.log(`With before/after: ${withBefore}/${withAfter}`);
 }

@@ -137,6 +137,38 @@ export function slugFromPath(pathname) {
 	return decoded.replace(/[^\w\u0400-\u04FF.-]+/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || 'page';
 }
 
+const TRANSLIT_MAP = {
+	а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'e', ж: 'zh',
+	з: 'z', и: 'i', й: 'j', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o',
+	п: 'p', р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'h', ц: 'c',
+	ч: 'ch', ш: 'sh', щ: 'sch', ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya',
+};
+
+/**
+ * Latin slug via Russian transliteration (WP-friendly post_name).
+ * @param {string} value
+ * @returns {string}
+ */
+export function transliterateSlug(value) {
+	const text = String(value ?? '')
+		.trim()
+		.toLowerCase()
+		.replace(/ё/g, 'е');
+
+	let out = '';
+	for (const char of text) {
+		if (Object.prototype.hasOwnProperty.call(TRANSLIT_MAP, char)) {
+			out += TRANSLIT_MAP[char];
+		} else if (/[a-z0-9]/.test(char)) {
+			out += char;
+		} else {
+			out += '-';
+		}
+	}
+
+	return out.replace(/-+/g, '-').replace(/^-|-$/g, '') || 'page';
+}
+
 export function makePageId(type, pathname) {
 	const slug = slugFromPath(pathname);
 	if (type === 'category') {

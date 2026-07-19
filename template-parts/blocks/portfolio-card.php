@@ -15,16 +15,12 @@ if (! $post instanceof WP_Post) {
 
 $before = ksenon_get_post_field('before_image', $post->ID);
 $after  = ksenon_get_post_field('after_image', $post->ID);
-$quote  = (string) ksenon_get_post_field('card_quote', $post->ID);
+$quote  = has_excerpt($post) ? get_the_excerpt($post) : '';
 $price  = (string) ksenon_get_post_field('price', $post->ID);
 $title  = (string) ksenon_get_post_field('hero_title', $post->ID);
 
 if (! $title) {
 	$title = get_the_title($post);
-}
-
-if (! $quote && has_excerpt($post)) {
-	$quote = get_the_excerpt($post);
 }
 
 if (! $before) {

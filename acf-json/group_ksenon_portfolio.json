@@ -48,13 +48,6 @@
             "placeholder": "https://www.youtube.com/watch?v=..."
         },
         {
-            "key": "field_ksenon_portfolio_card_quote",
-            "label": "Цитата на карточке",
-            "name": "card_quote",
-            "type": "textarea",
-            "rows": 3
-        },
-        {
             "key": "field_ksenon_portfolio_price",
             "label": "Стоимость",
             "name": "price",
@@ -87,23 +80,6 @@
             "media_upload": 1
         },
         {
-            "key": "field_ksenon_portfolio_what_we_did",
-            "label": "Что мы сделали (кратко)",
-            "name": "what_we_did",
-            "type": "repeater",
-            "layout": "block",
-            "button_label": "Добавить пункт",
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_portfolio_what_text",
-                    "label": "Текст",
-                    "name": "text",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_portfolio_what_we_did"
-                }
-            ]
-        },
-        {
             "key": "field_ksenon_portfolio_work_process",
             "label": "Что мы сделали",
             "name": "work_process",
@@ -134,30 +110,6 @@
                     "return_format": "array",
                     "preview_size": "medium",
                     "parent_repeater": "field_ksenon_portfolio_work_process"
-                }
-            ]
-        },
-        {
-            "key": "field_ksenon_portfolio_components",
-            "label": "Использованные комплектующие",
-            "name": "components",
-            "type": "repeater",
-            "layout": "block",
-            "button_label": "Добавить комплектующее",
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_portfolio_component_name",
-                    "label": "Название",
-                    "name": "name",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_portfolio_components"
-                },
-                {
-                    "key": "field_ksenon_portfolio_component_desc",
-                    "label": "Описание",
-                    "name": "description",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_portfolio_components"
                 }
             ]
         },
@@ -195,5 +147,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1752910000
+    "modified": 1752914800
 }
