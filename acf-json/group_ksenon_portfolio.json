@@ -18,17 +18,34 @@
         },
         {
             "key": "field_ksenon_portfolio_before_image",
-            "label": "Карточка — до",
+            "label": "До",
             "name": "before_image",
             "type": "image",
             "return_format": "array"
         },
         {
             "key": "field_ksenon_portfolio_after_image",
-            "label": "Карточка — после",
+            "label": "После",
             "name": "after_image",
             "type": "image",
             "return_format": "array"
+        },
+        {
+            "key": "field_ksenon_portfolio_photos",
+            "label": "Галерея фото",
+            "name": "photos",
+            "type": "gallery",
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all"
+        },
+        {
+            "key": "field_ksenon_portfolio_video",
+            "label": "Видео (YouTube)",
+            "name": "video",
+            "type": "url",
+            "placeholder": "https://www.youtube.com/watch?v=..."
         },
         {
             "key": "field_ksenon_portfolio_card_quote",
@@ -45,8 +62,24 @@
             "placeholder": "42 000 ₽"
         },
         {
+            "key": "field_ksenon_portfolio_duration",
+            "label": "Срок",
+            "name": "duration",
+            "type": "text",
+            "placeholder": "7 дней"
+        },
+        {
+            "key": "field_ksenon_portfolio_task_description",
+            "label": "Описание задачи",
+            "name": "task_description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
             "key": "field_ksenon_portfolio_description",
-            "label": "Описание кейса",
+            "label": "Описание работы",
             "name": "case_description",
             "type": "wysiwyg",
             "tabs": "all",
@@ -55,7 +88,7 @@
         },
         {
             "key": "field_ksenon_portfolio_what_we_did",
-            "label": "Что мы сделали",
+            "label": "Что мы сделали (кратко)",
             "name": "what_we_did",
             "type": "repeater",
             "layout": "block",
@@ -72,7 +105,7 @@
         },
         {
             "key": "field_ksenon_portfolio_work_process",
-            "label": "Процесс работы",
+            "label": "Что мы сделали",
             "name": "work_process",
             "type": "repeater",
             "layout": "block",
@@ -91,6 +124,15 @@
                     "name": "text",
                     "type": "textarea",
                     "rows": 3,
+                    "parent_repeater": "field_ksenon_portfolio_work_process"
+                },
+                {
+                    "key": "field_ksenon_portfolio_step_image",
+                    "label": "Фото",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium",
                     "parent_repeater": "field_ksenon_portfolio_work_process"
                 }
             ]
@@ -124,7 +166,9 @@
             "label": "Связанные услуги",
             "name": "related_services",
             "type": "relationship",
-            "post_type": ["service"],
+            "post_type": [
+                "service"
+            ],
             "return_format": "object"
         },
         {
@@ -132,7 +176,9 @@
             "label": "Связанные марки",
             "name": "related_brands",
             "type": "relationship",
-            "post_type": ["brand"],
+            "post_type": [
+                "brand"
+            ],
             "return_format": "object"
         }
     ],
@@ -149,5 +195,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751040000
+    "modified": 1752910000
 }

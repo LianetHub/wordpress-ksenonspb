@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initPartnersAutoPopup();
 	initBlogTabs();
 	initProductTabs();
+	initCaseSteps();
 	initProductTableMore();
 	initAccordion();
 	initTooltips();
@@ -143,30 +144,36 @@ function initHeaderScroll() {
 function initFancybox() {
 	if (typeof Fancybox === "undefined") return;
 
-	Fancybox.bind('[data-fancybox]:not([data-fancybox="pick-video"])', {
-		mainClass: "fancybox-popup",
-		dragToClose: false,
-		placeFocusBack: true,
-		autoFocus: true,
-		trapFocus: true,
-	});
+	Fancybox.bind(
+		'[data-fancybox]:not([data-fancybox="pick-video"]):not([data-fancybox="case-video"])',
+		{
+			mainClass: "fancybox-popup",
+			dragToClose: false,
+			placeFocusBack: true,
+			autoFocus: true,
+			trapFocus: true,
+		},
+	);
 
-	Fancybox.bind('[data-fancybox="pick-video"]', {
-		mainClass: "fancybox-popup fancybox-video",
-		closeButton: true,
-		dragToClose: false,
-		placeFocusBack: true,
-		autoFocus: true,
-		trapFocus: true,
-		Html: {
-			preload: false,
-			iframeAttr: {
-				allow: "autoplay; fullscreen; picture-in-picture; encrypted-media",
-				allowfullscreen: "true",
-				referrerpolicy: "strict-origin-when-cross-origin",
+	Fancybox.bind(
+		'[data-fancybox="pick-video"], [data-fancybox="case-video"]',
+		{
+			mainClass: "fancybox-popup fancybox-video",
+			closeButton: true,
+			dragToClose: false,
+			placeFocusBack: true,
+			autoFocus: true,
+			trapFocus: true,
+			Html: {
+				preload: false,
+				iframeAttr: {
+					allow: "autoplay; fullscreen; picture-in-picture; encrypted-media",
+					allowfullscreen: "true",
+					referrerpolicy: "strict-origin-when-cross-origin",
+				},
 			},
 		},
-	});
+	);
 }
 
 function initPartnersAutoPopup() {
@@ -265,6 +272,77 @@ function initProductTabs() {
 			});
 		});
 	});
+}
+
+function initCaseSteps() {
+	const root = document.querySelector("[data-case-steps]");
+	if (!root) return;
+
+	const items = Array.from(root.querySelectorAll(".case-done__item"));
+	const buttons = Array.from(root.querySelectorAll("[data-case-step]"));
+	const shots = Array.from(root.querySelectorAll("[data-case-step-image]"));
+
+	if (!buttons.length) return;
+
+	const setActive = (index) => {
+		const activeIndex = Number(index);
+
+		buttons.forEach((button) => {
+			const isActive = Number(button.dataset.caseStep) === activeIndex;
+			button.classList.toggle("is-active", isActive);
+			button.setAttribute("aria-selected", String(isActive));
+			button.tabIndex = isActive ? 0 : -1;
+		});
+
+		items.forEach((item, i) => {
+			const isActive = i === activeIndex;
+			item.classList.toggle("is-active", isActive);
+
+			const panel = item.querySelector(".case-done__step-text");
+			if (panel) {
+				panel.hidden = !isActive;
+			}
+		});
+		shots.forEach((shot) => {
+			const shotIndex = Number(shot.dataset.caseStepImage);
+			const isActive = shotIndex === activeIndex;
+			const isPrev = shotIndex === activeIndex - 1;
+			const isNext = shotIndex === activeIndex + 1;
+
+			shot.classList.toggle("is-active", isActive);
+			shot.classList.toggle("is-prev", isPrev);
+			shot.classList.toggle("is-next", isNext);
+		});
+	};
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			setActive(button.dataset.caseStep);
+		});
+
+		button.addEventListener("keydown", (event) => {
+			const current = Number(button.dataset.caseStep);
+			let next = current;
+
+			if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+				next = Math.min(current + 1, buttons.length - 1);
+			} else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+				next = Math.max(current - 1, 0);
+			} else if (event.key === "Home") {
+				next = 0;
+			} else if (event.key === "End") {
+				next = buttons.length - 1;
+			} else {
+				return;
+			}
+
+			event.preventDefault();
+			setActive(next);
+			buttons[next]?.focus();
+		});
+	});
+
+	setActive(0);
 }
 
 function initProductTableMore() {

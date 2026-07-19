@@ -103,6 +103,10 @@
     <circle cx="27.5" cy="27.5" r="27.5" fill="#fff" />
     <path d="M27.5 18v19M18 27.5h19" stroke="#FD8011" stroke-width="2" stroke-linecap="round" />
   </symbol>
+  <symbol id="icon-play" viewBox="0 0 91 91" fill="none">
+    <circle cx="45.5" cy="45.5" r="45.5" fill="#FD8011" />
+    <path d="M61 45.5L35 60.5V30.5L61 45.5Z" fill="#fff" />
+  </symbol>
   <symbol id="icon-max" viewBox="0 0 29 29" fill="none">
     <circle cx="14.5" cy="14.5" r="14.5" fill="#7B5CF6" />
     <path d="M9 19V10h2.4l2.6 4.5L16.6 10H19v9h-2.1v-5.2L14.2 19h-1.4l-2.7-5.2V19H9Z" fill="#fff" />

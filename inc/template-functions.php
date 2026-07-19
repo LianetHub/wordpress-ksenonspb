@@ -1959,3 +1959,25 @@ if (! function_exists('ksenon_render_messenger_links')) {
 <?php
 	}
 }
+
+if (! function_exists('ksenon_youtube_id')) {
+	/**
+	 * Extract YouTube video ID from common URL formats.
+	 *
+	 * @param string $url YouTube URL.
+	 * @return string Video ID or empty string.
+	 */
+	function ksenon_youtube_id($url)
+	{
+		$url = trim((string) $url);
+		if ('' === $url) {
+			return '';
+		}
+
+		if (preg_match('~(?:youtu\.be/|youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/))([A-Za-z0-9_-]{11})~', $url, $matches)) {
+			return $matches[1];
+		}
+
+		return '';
+	}
+}
