@@ -77,5 +77,8 @@ $portfolio_url   = ksenon_portfolio_archive_url();
 				<?php endif; ?>
 			</div>
 		</div>
+		<div class="hero__image">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/home-hero-mobile.webp" alt="Авто">
+		</div>
 	</div>
 </section>

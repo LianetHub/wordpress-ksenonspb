@@ -69,13 +69,15 @@
 		}
 
 		&.btn--large:has(.btn__arrow) {
-			gap: rem(36);
-			padding: rem(15) rem(6) rem(15) rem(40);
+			@media (min-width: $md3) {
+				gap: rem(36);
+				padding: rem(15) rem(6) rem(15) rem(40);
 
-			.btn__arrow {
-				width: rem(58);
-				height: rem(58);
-				margin-right: 0;
+				.btn__arrow {
+					width: rem(58);
+					height: rem(58);
+					margin-right: 0;
+				}
 			}
 		}
 	}

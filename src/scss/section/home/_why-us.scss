@@ -10,8 +10,8 @@
 
 	&__grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: rem(10);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: rem(8);
 
 		@media (min-width: $md3) {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -21,10 +21,16 @@
 	}
 
 	&__title {
+		grid-column: 1 / -1;
+		margin-bottom: rem(22);
+		text-align: center;
+
 		@media (min-width: $md3) {
 			grid-column: 1;
 			grid-row: 1;
 			align-self: end;
+			margin-bottom: 0;
+			text-align: left;
 		}
 	}
 
@@ -32,11 +38,18 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		border-radius: rem(40);
+		border-radius: rem(20);
 		background: $color-surface;
 		overflow: hidden;
 
+		@media (min-width: $md3) {
+			border-radius: rem(40);
+		}
+
 		&--1 {
+			grid-column: 1 / -1;
+			min-height: rem(213);
+
 			@media (min-width: $md3) {
 				grid-column: 1;
 				grid-row: 2 / 4;
@@ -45,6 +58,8 @@
 		}
 
 		&--2 {
+			min-height: rem(282);
+
 			@media (min-width: $md3) {
 				grid-column: 2;
 				grid-row: 2;
@@ -53,6 +68,8 @@
 		}
 
 		&--3 {
+			min-height: rem(282);
+
 			@media (min-width: $md3) {
 				grid-column: 3;
 				grid-row: 1 / 3;
@@ -61,6 +78,9 @@
 		}
 
 		&--4 {
+			grid-column: 1 / -1;
+			min-height: rem(78);
+
 			@media (min-width: $md3) {
 				grid-column: 2 / 4;
 				grid-row: 3;
@@ -70,38 +90,50 @@
 	}
 
 	&__card-step {
-		position: absolute;
-		top: rem(30);
-		right: rem(40);
-		z-index: 2;
-		font-size: rem(14);
-		line-height: 1.2;
-		color: $color-text-muted;
-		white-space: nowrap;
+		display: none;
+
+		@media (min-width: $md3) {
+			display: block;
+			position: absolute;
+			top: rem(30);
+			right: rem(40);
+			z-index: 2;
+			font-size: rem(14);
+			line-height: 1.2;
+			color: $color-text-muted;
+			white-space: nowrap;
+		}
 
 		.why-us__card--accent & {
-			position: static;
-			width: 100%;
-			text-align: right;
-			margin-bottom: rem(10);
-			color: #b55906;
+			@media (min-width: $md3) {
+				position: static;
+				width: 100%;
+				text-align: right;
+				margin-bottom: rem(10);
+				color: #b55906;
+			}
 		}
 	}
 
 	&__card-body {
 		display: flex;
 		flex-direction: column;
-		gap: rem(15);
-		padding: rem(57) rem(40) rem(20);
+		gap: rem(6);
+		padding: rem(17) rem(17) rem(12);
+
+		@media (min-width: $md3) {
+			gap: rem(15);
+			padding: rem(57) rem(40) rem(20);
+		}
 
 		.why-us__card--accent & {
 			flex: 1 1 auto;
-			flex-direction: column;
-			gap: rem(10);
+			flex-direction: row;
+			align-items: center;
+			gap: rem(12);
 			padding: 0;
 
 			@media (min-width: $md3) {
-				flex-direction: row;
 				align-items: flex-start;
 				gap: rem(111);
 			}
@@ -111,7 +143,7 @@
 	&__card-title {
 		font-family: $font-family;
 		font-weight: 500;
-		font-size: rem(24);
+		font-size: rem(15);
 		line-height: 1.2;
 		color: $color-black;
 
@@ -119,20 +151,45 @@
 			font-size: rem(30);
 		}
 
+		.why-us__card--2 &,
+		.why-us__card--3 & {
+			font-size: rem(14);
+
+			@media (min-width: $md3) {
+				font-size: rem(30);
+			}
+		}
+
 		.why-us__card--accent & {
-			flex: 0 1 rem(307);
+			flex: 0 1 rem(128);
+			font-size: rem(14);
 			color: $color-white;
+
+			@media (min-width: $md3) {
+				flex: 0 1 rem(307);
+				font-size: rem(30);
+			}
 		}
 	}
 
 	&__card-text {
-		font-size: rem(16);
+		font-size: rem(12);
 		line-height: 1.25;
 		color: $color-text-muted;
 
+		@media (min-width: $md3) {
+			font-size: rem(16);
+		}
+
 		.why-us__card--accent & {
-			flex: 0 1 rem(291);
+			flex: 1 1 rem(167);
+			font-size: rem(9);
 			color: $color-white;
+
+			@media (min-width: $md3) {
+				flex: 0 1 rem(291);
+				font-size: rem(16);
+			}
 		}
 	}
 
@@ -143,9 +200,14 @@
 	}
 
 	&__card--accent {
-		padding: rem(30) rem(40) rem(40);
+		justify-content: center;
+		padding: rem(17);
 		background: $color-accent;
 		box-shadow: 0 rem(6) rem(3) rgba($color-accent, 0.2);
+
+		@media (min-width: $md3) {
+			padding: rem(30) rem(40) rem(40);
+		}
 	}
 
 	&__card-media {
@@ -154,7 +216,7 @@
 		overflow: hidden;
 
 		.why-us__card--1 & {
-			min-height: rem(220);
+			min-height: rem(138);
 
 			@media (min-width: $md3) {
 				min-height: rem(329);
@@ -162,7 +224,7 @@
 		}
 
 		.why-us__card--2 & {
-			min-height: rem(180);
+			min-height: rem(145);
 
 			@media (min-width: $md3) {
 				min-height: rem(247);
@@ -170,11 +232,12 @@
 		}
 
 		.why-us__card--3 & {
-			min-height: rem(200);
-			border-radius: 0 0 rem(40) rem(40);
+			min-height: rem(106);
+			border-radius: 0 0 rem(20) rem(20);
 
 			@media (min-width: $md3) {
 				min-height: rem(268);
+				border-radius: 0 0 rem(40) rem(40);
 			}
 		}
 	}
