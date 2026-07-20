@@ -183,6 +183,10 @@ add_action(
 			)
 		);
 
+		// Prefer over service %service_category% rules that otherwise match /portfolio/{slug}.
+		add_rewrite_rule('portfolio/([^/]+)(?:/([0-9]+))?/?$', 'index.php?portfolio=$matches[1]&page=$matches[2]', 'top');
+		add_rewrite_rule('portfolio/page/([0-9]+)/?$', 'index.php?post_type=portfolio&paged=$matches[1]', 'top');
+
 		register_post_type(
 			'brand',
 			array(
@@ -303,6 +307,9 @@ add_action(
 				'show_in_rest'        => true,
 			)
 		);
+
+		add_rewrite_rule('akcii/([^/]+)(?:/([0-9]+))?/?$', 'index.php?promotion=$matches[1]&page=$matches[2]', 'top');
+		add_rewrite_rule('akcii/page/([0-9]+)/?$', 'index.php?post_type=promotion&paged=$matches[1]', 'top');
 
 		register_post_type(
 			'review',
@@ -631,6 +638,39 @@ add_filter(
 		}
 
 		$segment_count = count($segments);
+
+		/*
+		 * Service rewrite slug "%service_category%" steals reserved CPT bases
+		 * (e.g. /portfolio/{slug} → post_type=service). Resolve those first.
+		 */
+		$reserved_cpt_bases = array(
+			'portfolio' => 'portfolio',
+			'marki'     => 'brand',
+			'akcii'     => 'promotion',
+		);
+		if (isset($reserved_cpt_bases[$segments[0]])) {
+			$post_type = $reserved_cpt_bases[$segments[0]];
+
+			if (1 === $segment_count) {
+				return array('post_type' => $post_type);
+			}
+
+			if (2 === $segment_count) {
+				$slug = sanitize_title($segments[1]);
+				return array(
+					'post_type' => $post_type,
+					'name'      => $slug,
+					$post_type  => $slug,
+				);
+			}
+
+			if (3 === $segment_count && 'page' === $segments[1] && ctype_digit((string) $segments[2])) {
+				return array(
+					'post_type' => $post_type,
+					'paged'     => (int) $segments[2],
+				);
+			}
+		}
 
 		if ($segment_count >= 2 && $segment_count <= 3) {
 			$post_id = ksenon_find_service_by_url_path($segments);

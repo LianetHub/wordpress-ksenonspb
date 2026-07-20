@@ -3,7 +3,7 @@
 
 .cookie-notice {
 	position: fixed;
-	z-index: 900;
+	z-index: 10050;
 	right: rem(12);
 	bottom: rem(12);
 	left: rem(12);
@@ -15,10 +15,13 @@
 	box-shadow: 0 rem(12) rem(40) rgba(0, 0, 0, 0.18);
 	color: $color-text;
 	font-family: $font-inter;
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
 	transition:
-		opacity 0.35s ease,
-		transform 0.35s ease,
-		visibility 0.35s ease;
+		opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		visibility 0.3s linear;
 
 	@media (min-width: $md4) {
 		right: rem(24);
@@ -28,12 +31,15 @@
 		padding: rem(24);
 	}
 
-	&[hidden],
+	&[hidden] {
+		display: none;
+	}
+
 	&--hidden {
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;
-		transform: translateY(rem(12));
+		transform: translateY(rem(16));
 	}
 
 	&__panel {
@@ -41,7 +47,6 @@
 		flex-direction: column;
 		gap: rem(20);
 
-		// display:flex перебивает UA [hidden] { display:none }
 		&[hidden] {
 			display: none;
 		}
@@ -89,18 +94,83 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: rem(10);
+		gap: rem(8);
 	}
 
 	&__btn {
 		flex: 0 1 auto;
 		justify-content: center;
+		min-height: rem(40);
+		padding: rem(8) rem(16);
+		border-radius: rem(52);
+		border: 1px solid transparent;
+		font-weight: 500;
+		font-size: rem(13);
+		line-height: 1.2;
 		white-space: nowrap;
+		cursor: pointer;
+		transform: translateY(0) scale(1);
+		transition:
+			background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+			border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+			color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+			opacity 0.25s ease;
 
-		&.btn--plain {
-			min-width: 0;
-			padding-inline: rem(8);
-			background: transparent;
+		&:active {
+			transform: translateY(0) scale(0.97);
+		}
+
+		&--accept {
+			background: $color-accent;
+			border-color: $color-accent;
+			color: $color-white;
+			box-shadow: 0 rem(4) rem(10) rgba(253, 128, 17, 0.25);
+
+			@media (any-hover: hover) {
+				&:hover {
+					background: $color-accent-hover;
+					border-color: $color-accent-hover;
+					box-shadow: 0 rem(6) rem(14) rgba(253, 128, 17, 0.35);
+					transform: translateY(rem(-1));
+				}
+			}
+
+			&:active {
+				box-shadow: 0 rem(2) rem(6) rgba(253, 128, 17, 0.2);
+			}
+		}
+
+		&--necessary {
+			background: $color-white;
+			border-color: #d0d0d0;
+			color: $color-text;
+			box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+			@media (any-hover: hover) {
+				&:hover {
+					border-color: $color-text;
+					background: $color-surface;
+					box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.06);
+					transform: translateY(rem(-1));
+				}
+			}
+		}
+
+		&--settings {
+			background: $color-surface;
+			border-color: transparent;
+			color: $color-text;
+			box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+			@media (any-hover: hover) {
+				&:hover {
+					background: $color-surface-hover;
+					box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.06);
+					transform: translateY(rem(-1));
+				}
+			}
 		}
 	}
 
@@ -115,6 +185,13 @@
 		padding: rem(14) rem(14) rem(14) rem(12);
 		border-radius: rem(14);
 		background: $color-surface;
+		transition: background-color 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: $color-surface-hover;
+			}
+		}
 	}
 
 	&__checkbox {
@@ -124,6 +201,14 @@
 
 		.checkbox__box {
 			margin-top: rem(2);
+			transition: transform 0.2s ease;
+
+			&::before {
+				transition:
+					background-color 0.2s ease,
+					border-color 0.2s ease,
+					background-image 0.2s ease;
+			}
 		}
 
 		.checkbox__text {

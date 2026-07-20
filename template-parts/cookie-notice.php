@@ -45,13 +45,13 @@ $has_consent = isset($_COOKIE['ksenon_cookie_consent']);
 			</p>
 		</div>
 		<div class="cookie-notice__actions">
-			<button type="button" class="cookie-notice__btn btn btn--primary btn--small" data-cookie-action="accept-all">
+			<button type="button" class="cookie-notice__btn cookie-notice__btn--accept" data-cookie-action="accept-all">
 				<?php esc_html_e('Принять все', 'ksenonspb'); ?>
 			</button>
-			<button type="button" class="cookie-notice__btn btn btn--secondary btn--small" data-cookie-action="necessary-only">
+			<button type="button" class="cookie-notice__btn cookie-notice__btn--necessary" data-cookie-action="necessary-only">
 				<?php esc_html_e('Только необходимые', 'ksenonspb'); ?>
 			</button>
-			<button type="button" class="cookie-notice__btn btn btn--plain btn--small" data-cookie-action="open-settings">
+			<button type="button" class="cookie-notice__btn cookie-notice__btn--settings" data-cookie-action="open-settings">
 				<?php esc_html_e('Настройки', 'ksenonspb'); ?>
 			</button>
 		</div>
@@ -113,10 +113,10 @@ $has_consent = isset($_COOKIE['ksenon_cookie_consent']);
 			</ul>
 		</div>
 		<div class="cookie-notice__actions">
-			<button type="button" class="cookie-notice__btn btn btn--primary btn--small" data-cookie-action="save-settings">
+			<button type="button" class="cookie-notice__btn cookie-notice__btn--accept" data-cookie-action="save-settings">
 				<?php esc_html_e('Сохранить', 'ksenonspb'); ?>
 			</button>
-			<button type="button" class="cookie-notice__btn btn btn--plain btn--small" data-cookie-action="back">
+			<button type="button" class="cookie-notice__btn cookie-notice__btn--settings" data-cookie-action="back">
 				<?php esc_html_e('Назад', 'ksenonspb'); ?>
 			</button>
 		</div>

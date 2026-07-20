@@ -74,11 +74,11 @@
 		position: relative;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		min-height: rem(200);
+		aspect-ratio: 332 / 200;
 		color: inherit;
 
 		@media (min-width: $md3) {
-			min-height: rem(246);
+			aspect-ratio: 610 / 246;
 		}
 
 		&--single {
@@ -88,17 +88,16 @@
 
 	&__image {
 		position: relative;
-		min-height: rem(200);
+		min-height: 0;
 		overflow: hidden;
-
-		@media (min-width: $md3) {
-			min-height: rem(246);
-		}
 	}
 
 	&__img {
+		position: absolute;
+		inset: 0;
 		width: 100%;
 		height: 100%;
+		transition: transform 0.35s ease;
 	}
 
 	&__compare {
@@ -116,6 +115,7 @@
 		transform: translate(-50%, -50%);
 		pointer-events: none;
 		color: $color-black;
+		transition: background-color 0.25s ease, color 0.25s ease;
 	}
 
 	&__compare-icon {
@@ -148,6 +148,7 @@
 
 		a {
 			color: inherit;
+			transition: color 0.2s ease;
 		}
 	}
 
@@ -213,6 +214,21 @@
 				background: $color-surface-hover;
 				box-shadow: none;
 			}
+		}
+	}
+
+	@media (any-hover: hover) {
+		&__media--single:hover &__img {
+			transform: scale(1.04);
+		}
+
+		&__media:not(.portfolio-card__media--single):hover &__compare {
+			background: $color-accent;
+			color: $color-white;
+		}
+
+		&__title a:hover {
+			color: $color-accent;
 		}
 	}
 }

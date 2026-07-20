@@ -10,6 +10,7 @@ const DEFAULT_PREFS = {
 
 let currentPrefs = null;
 let metrikaLoaded = false;
+let initialized = false;
 const changeListeners = [];
 
 function getThemeAjax() {
@@ -20,7 +21,14 @@ function parseConsentCookie(raw) {
 	if (!raw) return null;
 
 	try {
-		const data = JSON.parse(decodeURIComponent(raw));
+		let value = raw;
+		try {
+			value = decodeURIComponent(raw);
+		} catch (e) {
+			value = raw;
+		}
+
+		const data = JSON.parse(value);
 		if (!data || typeof data !== "object") return null;
 
 		return {
@@ -64,13 +72,17 @@ function notifyChange(prefs) {
 		try {
 			cb(prefs);
 		} catch (e) {
-			/* ignore listener errors */
+			/* ignore */
 		}
 	});
 
-	document.dispatchEvent(
-		new CustomEvent("ksenon:consent-change", { detail: prefs }),
-	);
+	try {
+		document.dispatchEvent(
+			new CustomEvent("ksenon:consent-change", { detail: prefs }),
+		);
+	} catch (e) {
+		/* ignore */
+	}
 }
 
 function getRoot() {
@@ -81,8 +93,7 @@ function showPanel(root, name) {
 	if (!root) return;
 
 	root.querySelectorAll("[data-cookie-panel]").forEach((panel) => {
-		const isActive = panel.getAttribute("data-cookie-panel") === name;
-		panel.hidden = !isActive;
+		panel.hidden = panel.getAttribute("data-cookie-panel") !== name;
 	});
 }
 
@@ -100,7 +111,11 @@ function syncCheckboxes(root, prefs) {
 }
 
 function readSettingsFromUi(root) {
-	const prefs = { ...DEFAULT_PREFS };
+	const prefs = {
+		necessary: true,
+		analytics: false,
+		marketing: false,
+	};
 	if (!root) return prefs;
 
 	root.querySelectorAll("[data-cookie-category]").forEach((input) => {
@@ -116,16 +131,22 @@ function hideNotice(root) {
 	if (!root) return;
 
 	root.classList.add("cookie-notice--hidden");
-	root.setAttribute("hidden", "");
 	root.classList.add("cookie-notice--has-consent");
+
+	window.setTimeout(() => {
+		if (!root.classList.contains("cookie-notice--hidden")) return;
+		root.setAttribute("hidden", "");
+	}, 320);
 }
 
 function showNotice(root) {
 	if (!root) return;
 
 	root.removeAttribute("hidden");
-	root.classList.remove("cookie-notice--hidden");
 	showPanel(root, "main");
+	// Force reflow so opacity/transform transition runs.
+	void root.offsetWidth;
+	root.classList.remove("cookie-notice--hidden");
 }
 
 function openSettingsUi(root) {
@@ -149,7 +170,6 @@ function setConsent(prefs) {
 	writeCookie(COOKIE_NAME, JSON.stringify(next), COOKIE_MAX_AGE);
 	notifyChange(next);
 	maybeLoadMetrika(next);
-
 	return next;
 }
 
@@ -186,66 +206,65 @@ function maybeLoadMetrika(prefs) {
 	});
 }
 
-function bindUi(root) {
-	if (!root || root.dataset.cookieBound === "1") return;
-	root.dataset.cookieBound = "1";
+function handleAction(action, root) {
+	if (!root || !action) return;
 
-	root.addEventListener("click", (event) => {
-		const btn = event.target.closest("[data-cookie-action]");
-		if (!btn || !root.contains(btn)) return;
+	if (action === "accept-all") {
+		setConsent({ analytics: true, marketing: true });
+		hideNotice(root);
+		return;
+	}
 
-		const action = btn.getAttribute("data-cookie-action");
+	if (action === "necessary-only") {
+		setConsent({ analytics: false, marketing: false });
+		hideNotice(root);
+		return;
+	}
 
-		if (action === "accept-all") {
-			setConsent({ analytics: true, marketing: true });
+	if (action === "open-settings") {
+		openSettingsUi(root);
+		return;
+	}
+
+	if (action === "back") {
+		if (currentPrefs) {
 			hideNotice(root);
-			return;
+		} else {
+			showPanel(root, "main");
 		}
+		return;
+	}
 
-		if (action === "necessary-only") {
-			setConsent({ analytics: false, marketing: false });
-			hideNotice(root);
-			return;
-		}
-
-		if (action === "open-settings") {
-			openSettingsUi(root);
-			return;
-		}
-
-		if (action === "back") {
-			if (currentPrefs) {
-				hideNotice(root);
-			} else {
-				showPanel(root, "main");
-			}
-			return;
-		}
-
-		if (action === "save-settings") {
-			setConsent(readSettingsFromUi(root));
-			hideNotice(root);
-		}
-	});
+	if (action === "save-settings") {
+		setConsent(readSettingsFromUi(root));
+		hideNotice(root);
+	}
 }
 
-function bindFooterTriggers() {
-	document.addEventListener("click", (event) => {
-		const trigger = event.target.closest("[data-cookie-settings]");
-		if (!trigger) return;
-
+function onDocumentClick(event) {
+	const settingsTrigger = event.target.closest("[data-cookie-settings]");
+	if (settingsTrigger) {
 		event.preventDefault();
-		const api = window.ksenonConsent;
-		if (api && typeof api.openSettings === "function") {
-			api.openSettings();
-		}
-	});
+		openSettingsUi(getRoot());
+		return;
+	}
+
+	const btn = event.target.closest("[data-cookie-action]");
+	if (!btn) return;
+
+	const root = getRoot();
+	if (!root || !root.contains(btn)) return;
+
+	event.preventDefault();
+	handleAction(btn.getAttribute("data-cookie-action"), root);
 }
 
 export function initCookieConsent() {
+	if (initialized) return;
+	initialized = true;
+
 	const root = getRoot();
 	const stored = parseConsentCookie(readCookie(COOKIE_NAME));
-
 	currentPrefs = stored;
 
 	window.ksenonConsent = {
@@ -273,22 +292,31 @@ export function initCookieConsent() {
 		},
 	};
 
-	bindFooterTriggers();
+	document.addEventListener("click", onDocumentClick);
 
 	if (!root) {
 		if (stored) maybeLoadMetrika(stored);
 		return;
 	}
 
-	bindUi(root);
-
 	if (stored) {
 		syncCheckboxes(root, stored);
-		hideNotice(root);
+		root.classList.add(
+			"cookie-notice--hidden",
+			"cookie-notice--has-consent",
+		);
+		root.setAttribute("hidden", "");
 		maybeLoadMetrika(stored);
 		return;
 	}
 
+	root.classList.add("cookie-notice--hidden");
 	showNotice(root);
 	showPanel(root, "main");
+}
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", initCookieConsent);
+} else {
+	initCookieConsent();
 }

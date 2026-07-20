@@ -3,6 +3,7 @@
 import { initCookieConsent } from "./cookie-consent.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+	initCookieConsent();
 	initBurger();
 	initHeaderScroll();
 	initHeaderSubmenus();
@@ -16,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	initCf7();
 	initFormUpload();
 	initYandexMap();
-	initCookieConsent();
 });
 
 function initBurger() {
