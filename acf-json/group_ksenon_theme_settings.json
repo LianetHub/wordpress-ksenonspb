@@ -349,7 +349,7 @@
             "label": "Ссылка «Все отзывы» — Drive2",
             "name": "reviews_url_drive2",
             "type": "url",
-            "default_value": "https://www.drive2.ru/o/kbauto#reviews"
+            "default_value": "https://www.drive2.ru/o/kbauto/reviews"
         },
         {
             "key": "field_ksenon_ts_404_accordion",
@@ -388,5 +388,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784571000
+    "modified": 1784572200
 }

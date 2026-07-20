@@ -446,7 +446,73 @@ if (! function_exists('ksenon_get_reviews_source_urls')) {
 
 		return array(
 			'yandex' => $yandex ?: 'https://yandex.ru/maps/user/kezdbvu6mzrqd3kzyurb1n08rc',
-			'drive2' => $drive2 ?: 'https://www.drive2.ru/o/kbauto#reviews',
+			'drive2' => $drive2 ?: 'https://www.drive2.ru/o/kbauto/reviews',
+		);
+	}
+}
+
+if (! function_exists('ksenon_format_review_date_label')) {
+	/**
+	 * Relative Russian date label for a review date (Y-m-d or timestamp).
+	 *
+	 * @param string|int $date Date string or unix timestamp.
+	 * @return string
+	 */
+	function ksenon_format_review_date_label($date)
+	{
+		if (is_numeric($date)) {
+			$ts = (int) $date;
+		} else {
+			$date = trim((string) $date);
+			if ('' === $date) {
+				return '';
+			}
+			$ts = strtotime($date);
+		}
+
+		if (! $ts) {
+			return '';
+		}
+
+		$now  = time();
+		$diff = max(0, $now - $ts);
+
+		if ($diff < DAY_IN_SECONDS) {
+			return __('сегодня', 'ksenonspb');
+		}
+
+		$days = (int) floor($diff / DAY_IN_SECONDS);
+		if ($days < 7) {
+			return sprintf(
+				/* translators: %s: day count with plural word */
+				__('%s назад', 'ksenonspb'),
+				$days . ' ' . ksenon_plural_ru($days, 'день', 'дня', 'дней')
+			);
+		}
+
+		$weeks = (int) floor($days / 7);
+		if ($weeks < 5) {
+			return sprintf(
+				__('%s назад', 'ksenonspb'),
+				$weeks . ' ' . ksenon_plural_ru($weeks, 'неделю', 'недели', 'недель')
+			);
+		}
+
+		$months = (int) floor($days / 30);
+		if ($months < 12) {
+			$months = max(1, $months);
+			return sprintf(
+				__('%s назад', 'ksenonspb'),
+				$months . ' ' . ksenon_plural_ru($months, 'месяц', 'месяца', 'месяцев')
+			);
+		}
+
+		$years = (int) floor($days / 365);
+		$years = max(1, $years);
+
+		return sprintf(
+			__('%s назад', 'ksenonspb'),
+			$years . ' ' . ksenon_plural_ru($years, 'год', 'года', 'лет')
 		);
 	}
 }
@@ -496,13 +562,19 @@ if (! function_exists('ksenon_get_reviews')) {
 				$source = 'yandex';
 			}
 
+			$review_date = (string) (get_field('review_date', $post_id) ?: '');
+			$date_label  = $review_date
+				? ksenon_format_review_date_label($review_date)
+				: '';
+
 			$reviews[] = array(
 				'name'        => $name,
 				'text'        => $text,
 				'photo'       => get_field('photo', $post_id) ?: null,
 				'rating'      => (int) (get_field('rating', $post_id) ?: 5),
 				'source'      => $source,
-				'date_label'  => (string) (get_field('date_label', $post_id) ?: ''),
+				'review_date' => $review_date,
+				'date_label'  => $date_label,
 				'car_model'   => (string) (get_field('car_model', $post_id) ?: ''),
 				'story_title' => (string) (get_field('story_title', $post_id) ?: ''),
 				'story_url'   => (string) (get_field('story_url', $post_id) ?: ''),

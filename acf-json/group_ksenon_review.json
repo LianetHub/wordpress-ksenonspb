@@ -40,10 +40,11 @@
         },
         {
             "key": "field_ksenon_review_date",
-            "label": "Дата",
-            "name": "date_label",
-            "type": "text",
-            "placeholder": "5 месяцев назад"
+            "label": "Дата отзыва",
+            "name": "review_date",
+            "type": "date_picker",
+            "display_format": "d.m.Y",
+            "return_format": "Y-m-d"
         },
         {
             "key": "field_ksenon_review_car",
@@ -94,5 +95,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784571000
+    "modified": 1784572200
 }

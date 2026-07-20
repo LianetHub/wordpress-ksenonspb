@@ -506,7 +506,9 @@ function initCaseSteps() {
 
 function initAccordion() {
 	document.querySelectorAll("[data-accordion]").forEach((accordion) => {
-		const items = Array.from(accordion.querySelectorAll(".accordion__item"));
+		const items = Array.from(
+			accordion.querySelectorAll(".accordion__item"),
+		);
 
 		items.forEach((item) => {
 			const header = item.querySelector(".accordion__header");
@@ -518,7 +520,8 @@ function initAccordion() {
 				items.forEach((other) => {
 					if (other === item) return;
 					other.classList.remove("_active");
-					const otherHeader = other.querySelector(".accordion__header");
+					const otherHeader =
+						other.querySelector(".accordion__header");
 					if (otherHeader) {
 						otherHeader.setAttribute("aria-expanded", "false");
 					}

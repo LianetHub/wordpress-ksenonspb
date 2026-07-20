@@ -95,6 +95,9 @@ $faq-accordion-duration: 0.45s;
 	}
 
 	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
 		padding: rem(40);
 		border-radius: rem(40);
 		background: $color-surface;
@@ -138,13 +141,6 @@ $faq-accordion-duration: 0.45s;
 	}
 
 	.accordion {
-		display: flex;
-		flex-direction: column;
-		gap: rem(20);
-		padding: 0;
-		border-radius: 0;
-		background: transparent;
-
 		&__item {
 			border: 0;
 			border-radius: rem(20);
@@ -167,7 +163,7 @@ $faq-accordion-duration: 0.45s;
 					min-height: 0;
 				}
 
-				> .accordion__body {
+				>.accordion__body {
 					grid-template-rows: 1fr;
 				}
 
@@ -267,8 +263,8 @@ $faq-accordion-duration: 0.45s;
 				max-width: rem(487);
 			}
 
-			p + p,
-			.faq-prices + p {
+			p+p,
+			.faq-prices+p {
 				margin-top: rem(20);
 			}
 
@@ -308,6 +304,7 @@ $faq-accordion-duration: 0.45s;
 
 @media (prefers-reduced-motion: reduce) {
 	.faq .accordion {
+
 		&__header,
 		&__toggle,
 		&__body,
