@@ -9,6 +9,7 @@
 $logo_light   = ksenon_get_option_raw('logo_light');
 $logo         = $logo_light ?: ksenon_get_logo('dark');
 $logo_on_dark = empty($logo_light);
+$brand_title  = ksenon_get_option('footer_brand_title', __('КБ авто', 'ksenonspb'));
 $tagline      = ksenon_get_option('footer_tagline', __('Лаборатория автосвета с 2001', 'ksenonspb'));
 $description  = ksenon_get_option('footer_description', __('Ремонтируем фары, которые другие меняют целиком. Гарантия до 2 лет письменно', 'ksenonspb'));
 $phones       = ksenon_get_phones();
@@ -27,24 +28,30 @@ $link_opd     = ksenon_get_opd_url();
 		<div class="footer__top">
 			<div class="footer__brand">
 				<div class="footer__brand-head">
-					<?php if ($logo) : ?>
-						<a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo<?php echo $logo_on_dark ? ' footer__logo--on-dark' : ''; ?>">
-							<?php
-							echo ksenon_acf_image(
-								$logo,
-								'full',
-								array(
-									'width'  => '141',
-									'height' => '39',
-								)
-							);
-							?>
-						</a>
-					<?php endif; ?>
+					<div class="footer__brand-identity">
+						<?php if ($brand_title) : ?>
+							<a href="<?php echo esc_url(home_url('/')); ?>" class="footer__brand-title"><?php echo esc_html($brand_title); ?></a>
+						<?php endif; ?>
 
-					<?php if ($tagline) : ?>
-						<p class="footer__tagline"><?php echo esc_html($tagline); ?></p>
-					<?php endif; ?>
+						<?php if ($logo) : ?>
+							<a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo<?php echo $logo_on_dark ? ' footer__logo--on-dark' : ''; ?>">
+								<?php
+								echo ksenon_acf_image(
+									$logo,
+									'full',
+									array(
+										'width'  => '33',
+										'height' => '39',
+									)
+								);
+								?>
+							</a>
+						<?php endif; ?>
+
+						<?php if ($tagline) : ?>
+							<p class="footer__tagline"><?php echo esc_html($tagline); ?></p>
+						<?php endif; ?>
+					</div>
 
 					<div class="footer__socials-wrap footer__socials-wrap--mobile">
 						<?php ksenon_render_footer_socials(); ?>
@@ -61,12 +68,6 @@ $link_opd     = ksenon_get_opd_url();
 					<?php endif; ?>
 					<?php if ($footer_phone) : ?>
 						<a class="footer__contact footer__contact--phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($footer_phone)); ?>"><?php echo esc_html($footer_phone); ?></a>
-					<?php endif; ?>
-					<?php if ($email) : ?>
-						<a class="footer__contact footer__contact--email" href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
-					<?php endif; ?>
-					<?php if ($hours) : ?>
-						<p class="footer__contact footer__contact--hours"><?php echo nl2br(esc_html($hours)); ?></p>
 					<?php endif; ?>
 				</div>
 

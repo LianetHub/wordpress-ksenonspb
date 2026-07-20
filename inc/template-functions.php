@@ -247,7 +247,9 @@ if (! function_exists('ksenon_menu_section_is_active')) {
 			case 'stoimost':
 				return is_page_template('page-stoimost.php') || is_page('stoimost');
 			case 'privacy-policy':
-				return is_page_template('page-policy.php') || is_page('privacy-policy');
+				return function_exists('ksenon_is_legal_page')
+					? ksenon_is_legal_page()
+					: (is_page_template('page-policy.php') || is_page('privacy-policy'));
 		}
 
 		return false;
@@ -1430,7 +1432,7 @@ if (! function_exists('ksenon_get_main_class')) {
 		if (is_page_template('page-stoimost.php')) {
 			return 'main--pricing';
 		}
-		if (is_page_template('page-policy.php') || is_page('privacy-policy')) {
+		if (function_exists('ksenon_is_legal_page') ? ksenon_is_legal_page() : (is_page_template('page-policy.php') || is_page('privacy-policy'))) {
 			return 'main--policy';
 		}
 
@@ -1481,14 +1483,20 @@ if (! function_exists('ksenon_get_option')) {
 if (! function_exists('ksenon_get_policy_url')) {
 	function ksenon_get_policy_url()
 	{
-		return home_url('/politika-konfidentsialnosti/');
+		$page_id = defined('KSENON_PAGE_PRIVACY_POLICY') ? (int) KSENON_PAGE_PRIVACY_POLICY : 3;
+		$url     = get_permalink($page_id);
+
+		return $url ? $url : home_url('/privacy-policy/');
 	}
 }
 
 if (! function_exists('ksenon_get_opd_url')) {
 	function ksenon_get_opd_url()
 	{
-		return home_url('/soglasie-na-obrabotku-pd/');
+		$page_id = defined('KSENON_PAGE_PERSONAL_DATA_CONSENT') ? (int) KSENON_PAGE_PERSONAL_DATA_CONSENT : 3555;
+		$url     = get_permalink($page_id);
+
+		return $url ? $url : home_url('/soglasie-na-obrabotku-personalnyh-dannyh/');
 	}
 }
 
@@ -2028,7 +2036,7 @@ if (! function_exists('ksenon_get_cta_bottom_popup_target')) {
 	function ksenon_get_cta_bottom_popup_target($action)
 	{
 		$targets = array(
-			'popup_order'         => '#popup-order',
+			'popup_order'         => '#popup-consultation',
 			'popup_consultation'  => '#popup-consultation',
 			'anchor_contacts'     => '#contacts',
 		);

@@ -436,7 +436,7 @@
                             "return_format": "array",
                             "default_value": {
                                 "title": "Оценить ремонт",
-                                "url": "#popup-order",
+                                "url": "#popup-consultation",
                                 "target": ""
                             }
                         },

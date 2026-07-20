@@ -34,7 +34,7 @@ $btn_secondary_action = sanitize_key((string) $args['btn_secondary_action']);
 
 if (! is_array($btn_primary) || empty($btn_primary['url'])) {
 	$btn_primary = array(
-		'url'   => '#popup-order',
+		'url'   => '#popup-consultation',
 		'title' => __('Оценить ремонт', 'ksenonspb'),
 	);
 }

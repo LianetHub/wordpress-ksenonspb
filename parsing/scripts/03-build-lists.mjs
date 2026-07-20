@@ -52,7 +52,8 @@ const INFO_PAGES = [
 	{ slug: 'podarochnye-sertifikaty', title: 'Подарочные сертификаты', template: 'page.php', old_paths: [] },
 	{ slug: 'priem-far-pochtoj', title: 'Приём фар почтой', template: 'page.php', old_paths: [] },
 	{ slug: 'otzyvy', title: 'Отзывы', template: 'page.php', old_paths: ['/about-us/reviews/'] },
-	{ slug: 'privacy-policy', title: 'Политика конфиденциальности', template: 'page-policy.php', old_paths: [] },
+	{ slug: 'privacy-policy', title: 'Политика конфиденциальности', template: 'page-policy.php', old_paths: [], note: 'WP page ID 3' },
+	{ slug: 'soglasie-na-obrabotku-personalnyh-dannyh', title: 'Согласие на обработку персональных данных', template: 'page-policy.php', old_paths: [], note: 'WP page ID 3555' },
 ];
 
 const OLD_SERVICE_PATHS = [

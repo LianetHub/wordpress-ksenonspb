@@ -92,7 +92,7 @@ function ksenon_enqueue_conditional_styles($uri, $ver)
 		wp_enqueue_style('ksenonspb-pricing', $uri . '/css/pricing.min.css', $deps, $ver);
 	}
 
-	if (is_page_template('page-policy.php') || is_page('privacy-policy') || is_page('politika-konfidentsialnosti')) {
+	if (function_exists('ksenon_is_legal_page') ? ksenon_is_legal_page() : (is_page_template('page-policy.php') || is_page('privacy-policy'))) {
 		wp_enqueue_style('ksenonspb-policy', $uri . '/css/policy.min.css', $deps, $ver);
 	}
 
