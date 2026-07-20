@@ -21,7 +21,6 @@
 		padding-top: rem(8);
 	}
 
-	&__container {}
 
 	&__bar {
 		pointer-events: auto;
@@ -244,6 +243,8 @@
 		background: transparent;
 		color: #000;
 		cursor: pointer;
+		position: relative;
+		z-index: 71;
 
 		@media (min-width: $md3) {
 			display: none;
@@ -258,10 +259,12 @@
 	z-index: 60;
 	pointer-events: none;
 	visibility: hidden;
+	transition: visibility 0s linear 0.35s;
 
 	&.is-open {
 		pointer-events: auto;
 		visibility: visible;
+		transition: visibility 0s linear 0s;
 
 		.header-drawer__backdrop {
 			opacity: 1;
@@ -279,7 +282,7 @@
 		background: rgba(0, 0, 0, 0.3);
 		opacity: 0;
 		cursor: pointer;
-		transition: opacity 0.3s ease;
+		transition: opacity 0.35s ease;
 	}
 
 	&__panel {
@@ -291,9 +294,12 @@
 		width: min(100%, rem(215));
 		height: 100%;
 		max-height: 100dvh;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: contain;
 		background: #fff;
-		border-radius: rem(20) 0 0 rem(20);
+		border-radius: rem(20) 0 rem(20) rem(20);
 		transform: translateX(100%);
 		transition: transform 0.35s ease;
 	}
@@ -301,6 +307,7 @@
 	&__top {
 		display: flex;
 		flex-direction: column;
+		flex-shrink: 0;
 		gap: rem(16);
 		padding: rem(16) rem(16) rem(20);
 		background: #fff;
@@ -436,25 +443,43 @@
 
 	&__bottom {
 		display: flex;
-		flex: 1 1 auto;
+		flex-shrink: 0;
 		flex-direction: column;
 		gap: rem(16);
 		margin-top: auto;
-		padding: rem(20) rem(16) rem(24);
+		padding: rem(28) rem(27) rem(24);
 		background: $color-surface;
-		border-radius: rem(20) rem(20) 0 0;
+		border-radius: rem(20);
 	}
 
 	&__contacts {
 		display: flex;
 		flex-direction: column;
-		gap: rem(14);
+		align-items: stretch;
+		width: rem(149);
 	}
 
 	&__contact {
 		display: flex;
 		align-items: flex-start;
 		gap: rem(6);
+		width: 100%;
+
+		&+& {
+			position: relative;
+			margin-top: rem(14);
+			padding-top: rem(14);
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: rem(114);
+				height: 1px;
+				background: rgba(0, 0, 0, 0.12);
+			}
+		}
 	}
 
 	&__contact-icon {
@@ -468,10 +493,16 @@
 
 		svg {
 			display: block;
+			width: 100%;
+			height: auto;
 		}
 	}
 
 	&__contact-text {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+		min-width: 0;
 		font-family: $font-inter;
 		font-size: rem(11);
 		font-weight: 400;
@@ -482,10 +513,6 @@
 	&__contact-line {
 		display: block;
 		color: inherit;
-
-		&+& {
-			margin-top: rem(10);
-		}
 
 		&--muted {
 			opacity: 0.6;
@@ -545,5 +572,78 @@
 	@media screen and (min-width: 783px) {
 		top: 32px;
 		height: calc(100dvh - 32px);
+	}
+}
+
+.icon-menu {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	width: rem(24);
+	height: rem(18);
+	padding: 0;
+	color: #313542;
+	background: transparent;
+	z-index: 110;
+	position: relative;
+	transition: color 0.3s ease;
+
+	@media (min-width: $md3) {
+		display: none;
+	}
+
+	& span {
+		display: block;
+		align-self: stretch;
+		padding: rem(2.5) 0;
+		transition: transform 0.4s ease 0.4s, opacity 0.4s ease 0.4s;
+		will-change: transform;
+
+
+		&::before {
+			content: "";
+			display: block;
+			height: rem(1.5);
+			border-radius: rem(2);
+			background: currentColor;
+			transition: transform 0.3s ease 0s;
+			will-change: transform;
+			margin: auto;
+		}
+	}
+
+	.header.open-menu & {
+		& span {
+			transition: transform 0.3s ease 0s, opacity 0.3s ease 0s, width 0s ease 0.4s;
+
+			&::before {
+				transition: transform 0.45s ease 0.35s, width 0.3s ease 0s;
+			}
+
+			&:first-child {
+				width: 100%;
+				transform: translateY(rem(6.5));
+
+				&::before {
+					transform: rotate(-135deg);
+				}
+			}
+
+			&:nth-child(2) {
+				opacity: 0;
+			}
+
+			&:nth-child(3) {
+				width: 100%;
+				transform: translateY(rem(-6.5));
+
+				&::before {
+					transform: rotate(-225deg);
+				}
+			}
+		}
 	}
 }

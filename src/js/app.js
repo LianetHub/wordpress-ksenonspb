@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initHeaderScroll();
 	initHeaderSubmenus();
 	initFancybox();
-	initPartnersAutoPopup();
+
 	initCaseSteps();
 	initAccordion();
 	initHome();
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initBurger() {
+	const header = document.querySelector(".header");
 	const drawer = document.querySelector(".header-drawer");
 	const toggle = document.querySelector(".header__toggle");
 	const backdrop = document.querySelector(".header-drawer__backdrop");
@@ -23,6 +24,7 @@ function initBurger() {
 
 	const setMenuOpen = (isOpen) => {
 		drawer.classList.toggle("is-open", isOpen);
+		header?.classList.toggle("open-menu", isOpen);
 		document.body.classList.toggle("lock", isOpen);
 		toggle.setAttribute("aria-expanded", String(isOpen));
 		toggle.setAttribute(
@@ -160,58 +162,6 @@ function initFancybox() {
 			},
 		},
 	});
-}
-
-function initPartnersAutoPopup() {
-	const COOKIE_NAME = "ksenon_partners_popup_seen";
-	const DELAY_MS = 30_000;
-	const COOKIE_DAYS = 30;
-
-	const getCookie = (name) => {
-		const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-		const match = document.cookie.match(
-			new RegExp(`(?:^|; )${escaped}=([^;]*)`),
-		);
-		return match ? decodeURIComponent(match[1]) : null;
-	};
-
-	const setCookie = (name, value) => {
-		const expires = new Date(
-			Date.now() + COOKIE_DAYS * 864e5,
-		).toUTCString();
-		document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
-	};
-
-	const hasSeenPopup = () => getCookie(COOKIE_NAME) === "1";
-
-	const markPopupSeen = () => setCookie(COOKIE_NAME, "1");
-
-	const popup = document.getElementById("popup-partners");
-	if (!popup || !popup.querySelector(".popup-modal__partners")) return;
-
-	document.addEventListener("click", (e) => {
-		const trigger = e.target.closest(
-			'[data-fancybox][data-src="#popup-partners"]',
-		);
-		if (trigger) markPopupSeen();
-	});
-
-	if (hasSeenPopup()) return;
-
-	setTimeout(() => {
-		if (hasSeenPopup()) return;
-		if (typeof Fancybox === "undefined") return;
-		if (Fancybox.getInstance()) return;
-
-		markPopupSeen();
-		Fancybox.show([{ src: "#popup-partners", type: "inline" }], {
-			mainClass: "fancybox-popup",
-			dragToClose: false,
-			placeFocusBack: true,
-			autoFocus: true,
-			trapFocus: true,
-		});
-	}, DELAY_MS);
 }
 
 function initCf7() {
@@ -407,7 +357,9 @@ function initReviewsTabs() {
 class ConditionSwiper {
 	constructor(slider, options, minWidth = 767.98) {
 		this.el =
-			typeof slider === "string" ? document.querySelector(slider) : slider;
+			typeof slider === "string"
+				? document.querySelector(slider)
+				: slider;
 		this.options = options;
 		this.minWidth = minWidth;
 		this.init = false;
@@ -489,7 +441,6 @@ function initHomeSwipers() {
 			},
 		});
 	}
-
 }
 
 function initPhoneMask() {

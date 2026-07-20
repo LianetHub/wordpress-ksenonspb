@@ -109,6 +109,25 @@
 	@media (min-width: $md4) {
 		min-height: rem(443);
 		border-radius: rem(40);
+
+	}
+
+	&.swiper-slide {
+		@media (min-width:$md4) {
+			width: calc(50% - rem(6));
+
+			&:not(:last-child) {
+				margin-right: rem(6);
+			}
+		}
+
+		@media (min-width:$md2) {
+			width: calc(33.333% - rem(12));
+
+			&:not(:last-child) {
+				margin-right: rem(20);
+			}
+		}
 	}
 
 	@media (any-hover: hover) {
@@ -135,14 +154,11 @@
 
 	&__head {
 		padding-bottom: rem(10);
-		background: linear-gradient(
-				90deg,
+		background: linear-gradient(90deg,
 				rgba(111, 111, 111, 0.26) 0%,
 				rgba(111, 111, 111, 0.26) 50%,
 				transparent 50%,
-				transparent 100%
-			)
-			0 bottom / rem(12) rem(1) repeat-x;
+				transparent 100%) 0 bottom / rem(12) rem(1) repeat-x;
 
 		@media (min-width: $md4) {
 			padding-bottom: rem(20);

@@ -45,16 +45,14 @@ $phones   = ksenon_get_phones();
 				<?php endif; ?>
 
 				<button
-					class="header__toggle"
+					class="header__toggle icon-menu"
 					type="button"
 					aria-label="<?php esc_attr_e('Открыть меню', 'ksenonspb'); ?>"
 					aria-expanded="false"
 					aria-controls="header-drawer">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-						<path d="M4 7H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-						<path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-						<path d="M4 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-					</svg>
+					<span></span>
+					<span></span>
+					<span></span>
 				</button>
 			</div>
 		</div>

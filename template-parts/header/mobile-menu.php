@@ -70,24 +70,39 @@ $has_menu = has_nav_menu('primary');
 			<?php if ($address || $email || $phones) : ?>
 				<div class="header-drawer__contacts">
 					<?php if ($address) : ?>
+						<?php
+						$address_lines = array_values(
+							array_filter(
+								array_map('trim', preg_split('/\r\n|\r|\n/', $address) ?: array()),
+								static function ($line) {
+									return '' !== $line;
+								}
+							)
+						);
+						?>
 						<div class="header-drawer__contact">
 							<span class="header-drawer__contact-icon" aria-hidden="true">
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M12 13.5C13.933 13.5 15.5 11.933 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.067 6.5 8.5 8.067 8.5 10C8.5 11.933 10.067 13.5 12 13.5Z" stroke="currentColor" stroke-width="1.2" />
-									<path d="M12 21.5C15.5 17.5 18.5 14.5147 18.5 10.5C18.5 7.18629 15.8137 4.5 12.5 4.5H11.5C8.18629 4.5 5.5 7.18629 5.5 10.5C5.5 14.5147 8.5 17.5 12 21.5Z" stroke="currentColor" stroke-width="1.2" />
+								<svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M17.5 3.682C24.083 3.682 29.419 9.018 29.419 15.601C29.419 22.184 24.083 27.52 17.5 27.52C10.917 27.52 5.581 22.184 5.581 15.601C5.581 9.018 10.917 3.682 17.5 3.682ZM17.5 8.449C17.184 8.449 16.881 8.575 16.657 8.799C16.434 9.022 16.308 9.325 16.308 9.641V15.601C16.308 15.917 16.434 16.22 16.657 16.443L20.233 20.019C20.458 20.236 20.759 20.356 21.071 20.354C21.384 20.351 21.683 20.226 21.904 20.005C22.125 19.784 22.25 19.485 22.253 19.172C22.256 18.86 22.135 18.559 21.918 18.334L18.692 15.107V9.641C18.692 9.325 18.566 9.022 18.343 8.799C18.119 8.575 17.816 8.449 17.5 8.449Z" fill="currentColor" />
 								</svg>
 							</span>
-							<p class="header-drawer__contact-text"><?php echo nl2br(esc_html($address)); ?></p>
+							<div class="header-drawer__contact-text">
+								<?php if ($address_lines) : ?>
+									<?php foreach ($address_lines as $line) : ?>
+										<span class="header-drawer__contact-line"><?php echo esc_html($line); ?></span>
+									<?php endforeach; ?>
+								<?php else : ?>
+									<span class="header-drawer__contact-line"><?php echo esc_html($address); ?></span>
+								<?php endif; ?>
+							</div>
 						</div>
 					<?php endif; ?>
 
 					<?php if ($email || $phones) : ?>
 						<div class="header-drawer__contact">
 							<span class="header-drawer__contact-icon" aria-hidden="true">
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M7 4H17C18.1046 4 19 4.89543 19 6V18C19 19.1046 18.1046 20 17 20H7C5.89543 20 5 19.1046 5 18V6C5 4.89543 5.89543 4 7 4Z" stroke="currentColor" stroke-width="1.2" />
-									<path d="M9 8H15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-									<path d="M9 12H15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+								<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M17.5 30C17.5 30 27 21.116 27 14.375C27 11.889 25.999 9.504 24.218 7.746C22.436 5.988 20.02 5 17.5 5C14.98 5 12.564 5.988 10.782 7.746C9.001 9.504 8 11.889 8 14.375C8 21.116 17.5 30 17.5 30ZM17.5 19.062C16.24 19.062 15.032 18.569 14.141 17.69C13.25 16.81 12.75 15.618 12.75 14.375C12.75 13.132 13.25 11.94 14.141 11.06C15.032 10.181 16.24 9.688 17.5 9.688C18.76 9.688 19.968 10.181 20.859 11.06C21.75 11.94 22.25 13.132 22.25 14.375C22.25 15.618 21.75 16.81 20.859 17.69C19.968 18.569 18.76 19.062 17.5 19.062Z" fill="currentColor" />
 								</svg>
 							</span>
 							<div class="header-drawer__contact-text">
