@@ -438,14 +438,6 @@
 			}
 		}
 
-		&:first-child {
-			max-width: rem(124);
-
-			@media (min-width: $md3) {
-				max-width: none;
-			}
-		}
-
 		&--button {
 			padding: 0;
 			border: 0;
@@ -459,9 +451,9 @@
 	}
 
 	&__bottom-links {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-items: start;
 		gap: rem(24) rem(32);
 
 		@media (min-width: $md3) {

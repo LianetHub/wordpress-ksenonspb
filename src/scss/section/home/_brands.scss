@@ -11,11 +11,39 @@
 	&__container {
 		display: flex;
 		flex-direction: column;
-		gap: rem(50);
+		gap: rem(30);
+
+		@media (max-width: $md4) {
+			align-items: stretch;
+		}
+
+		@media (min-width: $md3) {
+			gap: rem(50);
+		}
 	}
 
 	&__head.section-head {
 		margin-bottom: 0;
+
+		@media (max-width: $md4) {
+			display: contents;
+		}
+	}
+
+	&__title {
+		@media (max-width: $md4) {
+			order: 1;
+			margin-bottom: 0;
+			text-align: center;
+			@include adaptive-font(28, 48);
+		}
+	}
+
+	&__more {
+		@media (max-width: $md4) {
+			order: 3;
+			width: 100%;
+		}
 	}
 
 	&--archive {
@@ -29,9 +57,14 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: rem(20);
+		gap: rem(8);
+
+		@media (max-width: $md4) {
+			order: 2;
+		}
 
 		@media (min-width: $md5) {
+			gap: rem(20);
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 		}
 
@@ -41,24 +74,37 @@
 	}
 }
 
-.brands-section .brand-card {
-	height: rem(300);
-	min-height: rem(300);
-	border-radius: rem(40);
+.brands-section .brand-card,
+.service-brands .brand-card {
+	height: auto;
+	min-height: 0;
+	border-radius: rem(20);
 	background: $color-surface;
 	overflow: hidden;
+
+	@media (min-width: $md3) {
+		height: rem(300);
+		min-height: rem(300);
+		border-radius: rem(40);
+	}
 
 	&__link {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		gap: rem(29);
+		gap: rem(15);
 		height: 100%;
-		min-height: rem(300);
-		padding: rem(40) rem(20) rem(38);
+		min-height: 0;
+		padding: rem(30) rem(12);
 		color: $color-black;
 		transition: background-color 0.2s ease;
+
+		@media (min-width: $md3) {
+			gap: rem(29);
+			min-height: rem(300);
+			padding: rem(40) rem(20) rem(38);
+		}
 
 		@media (any-hover: hover) {
 			&:hover {
@@ -69,20 +115,32 @@
 
 	&__media {
 		display: flex;
-		flex: 1 1 auto;
+		flex: 0 0 auto;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		max-height: rem(169);
+		height: rem(85);
+		max-height: rem(85);
+
+		@media (min-width: $md3) {
+			flex: 1 1 auto;
+			height: auto;
+			max-height: rem(169);
+		}
 	}
 
 	&__logo {
 		display: block;
-		max-width: rem(170);
-		max-height: rem(169);
+		max-width: rem(117);
+		max-height: rem(85);
 		width: auto;
 		height: auto;
 		object-fit: contain;
+
+		@media (min-width: $md3) {
+			max-width: rem(170);
+			max-height: rem(169);
+		}
 	}
 
 	&__title {
@@ -90,9 +148,13 @@
 		margin: 0;
 		font-family: $font-family;
 		font-weight: 500;
-		font-size: rem(20);
+		font-size: rem(12);
 		line-height: normal;
 		text-align: center;
 		text-transform: uppercase;
+
+		@media (min-width: $md3) {
+			font-size: rem(20);
+		}
 	}
 }

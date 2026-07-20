@@ -18,7 +18,7 @@ if (! $logo && has_post_thumbnail($post)) {
 	$logo = get_post_thumbnail_id($post);
 }
 ?>
-<article class="brand-card">
+<li class="brand-card">
 	<a class="brand-card__link" href="<?php echo esc_url(get_permalink($post)); ?>">
 		<?php if ($logo) : ?>
 			<div class="brand-card__media">
@@ -27,4 +27,4 @@ if (! $logo && has_post_thumbnail($post)) {
 		<?php endif; ?>
 		<span class="brand-card__title"><?php echo esc_html(get_the_title($post)); ?> →</span>
 	</a>
-</article>
+</li>

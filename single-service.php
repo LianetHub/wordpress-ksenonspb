@@ -55,7 +55,7 @@ while (have_posts()) :
 				<section class="service-brands">
 					<div class="service-brands__container container">
 						<h2 class="service-brands__title title-md"><?php esc_html_e('Марки', 'ksenonspb'); ?></h2>
-						<div class="service-brands__grid">
+						<ul class="service-brands__grid">
 							<?php
 							while ($brands->have_posts()) :
 								$brands->the_post();
@@ -63,7 +63,7 @@ while (have_posts()) :
 							endwhile;
 							wp_reset_postdata();
 							?>
-						</div>
+						</ul>
 					</div>
 				</section>
 		<?php

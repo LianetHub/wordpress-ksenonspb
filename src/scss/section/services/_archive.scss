@@ -146,9 +146,66 @@
 	}
 
 	&--services &__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: rem(8);
+
+		@media (min-width: $md4) {
+			gap: rem(20);
+		}
+
 		@media (min-width: $md2) {
 			grid-template-columns: repeat(3, 1fr);
 			gap: rem(24);
+		}
+	}
+
+	&--services &__panel {
+		@media (max-width: $md4) {
+			padding: 0;
+			border-radius: 0;
+			background: transparent;
+			gap: rem(16);
+			margin-top: rem(16);
+		}
+	}
+
+	&--services .service-card {
+		@media (max-width: $md4) {
+			background: $color-surface;
+
+			.service-card__label {
+				background: $color-white;
+			}
+
+			.service-card__link {
+				background: $color-white;
+
+				@media (any-hover: hover) {
+					&:hover:not(:disabled):not([aria-disabled="true"]) {
+						background: $color-white;
+					}
+				}
+			}
+		}
+	}
+
+	&--services .service-card__link {
+		background: $color-surface;
+
+		@media (max-width: $md4) {
+			background: $color-white;
+		}
+
+		@media (any-hover: hover) {
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				background: color.adjust($color: $color-surface, $lightness: -5%);
+			}
+		}
+
+		@media (max-width: $md4) and (any-hover: hover) {
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				background: $color-white;
+			}
 		}
 	}
 

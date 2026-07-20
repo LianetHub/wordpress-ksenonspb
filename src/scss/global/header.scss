@@ -20,8 +20,14 @@
 	&.is-scrolled {
 		padding-top: rem(8);
 	}
+}
 
+html.with-fancybox body.hide-scrollbar .header {
+	right: var(--f-scrollbar-compensate, 0px);
+	width: auto;
+}
 
+.header {
 	&__bar {
 		pointer-events: auto;
 		display: flex;

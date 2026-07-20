@@ -27,7 +27,7 @@ $title_html = function_exists('ksenon_title_accent_html')
 				?>
 			</h1>
 		</div>
-		<div class="brands-section__grid">
+		<ul class="brands-section__grid">
 			<?php
 			while ($query->have_posts()) :
 				$query->the_post();
@@ -35,7 +35,7 @@ $title_html = function_exists('ksenon_title_accent_html')
 			endwhile;
 			wp_reset_postdata();
 			?>
-		</div>
+		</ul>
 	</div>
 </section>
 <?php

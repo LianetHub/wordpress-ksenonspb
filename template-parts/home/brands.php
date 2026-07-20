@@ -66,7 +66,7 @@ $more_link    = array(
 			</h2>
 			<?php ksenon_render_btn_arrow($more_link, 'btn btn--primary btn--large brands-section__more', $more_label); ?>
 		</div>
-		<div class="brands-section__grid">
+		<ul class="brands-section__grid">
 			<?php
 			while ($query->have_posts()) :
 				$query->the_post();
@@ -74,6 +74,6 @@ $more_link    = array(
 			endwhile;
 			wp_reset_postdata();
 			?>
-		</div>
+		</ul>
 	</div>
 </section>
