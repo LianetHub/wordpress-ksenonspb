@@ -12,7 +12,7 @@ if (! function_exists('ksenon_get_cpt_post_types')) {
 	 */
 	function ksenon_get_cpt_post_types()
 	{
-		return array('service', 'portfolio', 'brand', 'promotion');
+		return array('service', 'portfolio', 'brand', 'promotion', 'review');
 	}
 }
 
@@ -300,6 +300,62 @@ add_action(
 					'slug'       => 'akcii',
 					'with_front' => false,
 				),
+				'show_in_rest'        => true,
+			)
+		);
+
+		register_post_type(
+			'review',
+			array(
+				'labels'              => array(
+					'name'                     => 'Отзывы',
+					'singular_name'            => 'Отзыв',
+					'menu_name'                => 'Отзывы',
+					'name_admin_bar'           => 'Отзыв',
+					'archives'                 => 'Архив отзывов',
+					'attributes'               => 'Атрибуты отзыва',
+					'parent_item_colon'        => 'Родительский отзыв:',
+					'all_items'                => 'Все отзывы',
+					'add_new'                  => 'Добавить',
+					'add_new_item'             => 'Добавить отзыв',
+					'new_item'                 => 'Новый отзыв',
+					'edit_item'                => 'Редактировать отзыв',
+					'update_item'              => 'Обновить отзыв',
+					'view_item'                => 'Просмотреть отзыв',
+					'view_items'               => 'Просмотреть отзывы',
+					'search_items'             => 'Искать отзывы',
+					'not_found'                => 'Отзывы не найдены',
+					'not_found_in_trash'       => 'В корзине отзывов не найдено',
+					'featured_image'           => 'Фото автора',
+					'set_featured_image'       => 'Установить фото автора',
+					'remove_featured_image'    => 'Удалить фото автора',
+					'use_featured_image'       => 'Использовать как фото автора',
+					'insert_into_item'         => 'Вставить в отзыв',
+					'uploaded_to_this_item'    => 'Загружено для этого отзыва',
+					'items_list'               => 'Список отзывов',
+					'items_list_navigation'    => 'Навигация по списку отзывов',
+					'filter_items_list'        => 'Фильтровать список отзывов',
+					'filter_by_date'           => 'Фильтровать по дате',
+					'item_published'           => 'Отзыв опубликован',
+					'item_published_privately' => 'Отзыв опубликован приватно',
+					'item_reverted_to_draft'   => 'Отзыв возвращён в черновики',
+					'item_scheduled'           => 'Публикация отзыва запланирована',
+					'item_updated'             => 'Отзыв обновлён',
+					'item_link'                => 'Ссылка на отзыв',
+					'item_link_description'    => 'Ссылка на отдельный отзыв',
+				),
+				'public'              => false,
+				'publicly_queryable'  => false,
+				'show_ui'             => true,
+				'show_in_menu'        => true,
+				'show_in_nav_menus'   => false,
+				'menu_position'       => 9,
+				'menu_icon'           => 'dashicons-star-filled',
+				'capability_type'     => 'post',
+				'hierarchical'        => false,
+				'supports'            => array('title'),
+				'has_archive'         => false,
+				'rewrite'             => false,
 				'show_in_rest'        => true,
 			)
 		);

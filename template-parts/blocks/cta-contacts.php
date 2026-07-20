@@ -57,7 +57,7 @@ $hours_main  = $hours_lines[0] ?? '';
 $hours_extra = array_slice($hours_lines, 1);
 ?>
 <section class="cta-contacts" id="contacts">
-	<div class="cta-contacts__box">
+	<div class="cta-contacts__wrapper">
 		<?php if ($car_image) : ?>
 			<div class="cta-contacts__car" aria-hidden="true">
 				<?php
@@ -65,7 +65,7 @@ $hours_extra = array_slice($hours_lines, 1);
 					$car_image,
 					'full',
 					array(
-						'class'   => 'cta-contacts__car-img cover-image',
+						'class'   => 'cta-contacts__car-img',
 						'loading' => 'lazy',
 						'alt'     => '',
 					)
@@ -78,7 +78,8 @@ $hours_extra = array_slice($hours_lines, 1);
 			<div class="cta-contacts__layout">
 				<div class="cta-contacts__form-col">
 					<?php if ($title) : ?>
-						<h2 class="cta-contacts__title title-md"><?php echo nl2br(ksenon_kses_inline($title)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
+						<h2 class="cta-contacts__title title-md"><?php echo nl2br(ksenon_kses_inline($title)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+																	?></h2>
 					<?php endif; ?>
 					<?php if ($lead) : ?>
 						<p class="cta-contacts__lead"><?php echo esc_html($lead); ?></p>
@@ -91,10 +92,12 @@ $hours_extra = array_slice($hours_lines, 1);
 				<div class="cta-contacts__aside">
 					<div class="cta-contacts__messengers">
 						<?php if ($messenger_label) : ?>
-							<p class="cta-contacts__messengers-label"><?php echo ksenon_kses_inline($messenger_label); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+							<p class="cta-contacts__messengers-label"><?php echo ksenon_kses_inline($messenger_label); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+																		?></p>
 						<?php endif; ?>
 						<?php if ($messenger_title) : ?>
-							<h3 class="cta-contacts__messengers-title"><?php echo nl2br(ksenon_kses_inline($messenger_title)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h3>
+							<h3 class="cta-contacts__messengers-title"><?php echo nl2br(ksenon_kses_inline($messenger_title)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+																		?></h3>
 						<?php endif; ?>
 						<?php if ($messenger_text) : ?>
 							<p class="cta-contacts__messengers-text"><?php echo esc_html($messenger_text); ?></p>
@@ -106,7 +109,7 @@ $hours_extra = array_slice($hours_lines, 1);
 						<?php if ($addr) : ?>
 							<div class="cta-contacts__info-item">
 								<div class="cta-contacts__info-row">
-									<span class="cta-contacts__info-icon"><?php ksenon_icon('icon-location', 26, 26, 'cta-contacts__info-icon-svg'); ?></span>
+									<span class="cta-contacts__info-icon"><?php ksenon_icon('icon-location', 28, 28, 'cta-contacts__info-icon-svg'); ?></span>
 									<div class="cta-contacts__info-body">
 										<span class="cta-contacts__info-label"><?php esc_html_e('Адрес', 'ksenonspb'); ?></span>
 										<p class="cta-contacts__info-value"><?php echo nl2br(esc_html($addr)); ?></p>
@@ -115,10 +118,14 @@ $hours_extra = array_slice($hours_lines, 1);
 							</div>
 						<?php endif; ?>
 
+						<?php if ($addr && ($hours_main || $phones)) : ?>
+							<div class="cta-contacts__info-divider" aria-hidden="true"></div>
+						<?php endif; ?>
+
 						<?php if ($hours_main) : ?>
 							<div class="cta-contacts__info-item">
 								<div class="cta-contacts__info-row">
-									<span class="cta-contacts__info-icon"><?php ksenon_icon('icon-clock', 26, 26, 'cta-contacts__info-icon-svg'); ?></span>
+									<span class="cta-contacts__info-icon"><?php ksenon_icon('icon-clock', 28, 28, 'cta-contacts__info-icon-svg'); ?></span>
 									<div class="cta-contacts__info-body">
 										<span class="cta-contacts__info-label"><?php esc_html_e('Часы работы', 'ksenonspb'); ?></span>
 										<p class="cta-contacts__info-value"><?php echo esc_html($hours_main); ?></p>
@@ -128,6 +135,10 @@ $hours_extra = array_slice($hours_lines, 1);
 									</div>
 								</div>
 							</div>
+						<?php endif; ?>
+
+						<?php if ($hours_main && $phones) : ?>
+							<div class="cta-contacts__info-divider" aria-hidden="true"></div>
 						<?php endif; ?>
 
 						<?php if ($phones) : ?>

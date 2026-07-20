@@ -123,7 +123,43 @@
                     "label": "Ответ",
                     "name": "answer",
                     "type": "textarea",
-                    "rows": 3,
+                    "rows": 4,
+                    "instructions": "Текст до строк цен. Если цен нет — весь ответ целиком.",
+                    "parent_repeater": "field_ksenon_service_faq"
+                },
+                {
+                    "key": "field_ksenon_service_faq_prices",
+                    "label": "Строки цен",
+                    "name": "prices",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Добавить строку",
+                    "instructions": "Опционально. Например: Простая полировка — от 5 400 ₽.",
+                    "parent_repeater": "field_ksenon_service_faq",
+                    "sub_fields": [
+                        {
+                            "key": "field_ksenon_service_faq_price_label",
+                            "label": "Услуга",
+                            "name": "label",
+                            "type": "text",
+                            "parent_repeater": "field_ksenon_service_faq_prices"
+                        },
+                        {
+                            "key": "field_ksenon_service_faq_price_value",
+                            "label": "Цена",
+                            "name": "value",
+                            "type": "text",
+                            "parent_repeater": "field_ksenon_service_faq_prices"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_ksenon_service_faq_a_after",
+                    "label": "Текст после цен",
+                    "name": "answer_after",
+                    "type": "textarea",
+                    "rows": 2,
+                    "instructions": "Только если заполнены строки цен.",
                     "parent_repeater": "field_ksenon_service_faq"
                 },
                 {
@@ -156,5 +192,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1783036800
+    "modified": 1784563200
 }

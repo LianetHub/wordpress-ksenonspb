@@ -1,0 +1,98 @@
+{
+    "key": "group_ksenon_review",
+    "title": "Отзыв",
+    "fields": [
+        {
+            "key": "field_ksenon_review_text",
+            "label": "Текст отзыва",
+            "name": "text",
+            "type": "textarea",
+            "rows": 4
+        },
+        {
+            "key": "field_ksenon_review_photo",
+            "label": "Фото автора",
+            "name": "photo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_ksenon_review_rating",
+            "label": "Рейтинг",
+            "name": "rating",
+            "type": "number",
+            "min": 1,
+            "max": 5,
+            "default_value": 5
+        },
+        {
+            "key": "field_ksenon_review_source",
+            "label": "Источник",
+            "name": "source",
+            "type": "select",
+            "choices": {
+                "yandex": "Яндекс",
+                "drive2": "Drive2"
+            },
+            "default_value": "yandex",
+            "return_format": "value"
+        },
+        {
+            "key": "field_ksenon_review_date",
+            "label": "Дата",
+            "name": "date_label",
+            "type": "text",
+            "placeholder": "5 месяцев назад"
+        },
+        {
+            "key": "field_ksenon_review_car",
+            "label": "Авто",
+            "name": "car_model",
+            "type": "text",
+            "placeholder": "Volvo S60 · 2-е поколение, 2011"
+        },
+        {
+            "key": "field_ksenon_review_story_title",
+            "label": "Заголовок истории",
+            "name": "story_title",
+            "type": "text"
+        },
+        {
+            "key": "field_ksenon_review_story_url",
+            "label": "Ссылка на историю",
+            "name": "story_url",
+            "type": "url"
+        },
+        {
+            "key": "field_ksenon_review_story_image",
+            "label": "Фото авто в истории",
+            "name": "story_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_ksenon_review_verified",
+            "label": "Проверено Drive2",
+            "name": "verified",
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "review"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "modified": 1784571000
+}

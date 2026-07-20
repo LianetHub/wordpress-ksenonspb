@@ -1,6 +1,10 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
 
+.color-accent {
+	color: $color-accent;
+}
+
 .reviews {
 	padding: rem(40) 0;
 
@@ -8,28 +12,39 @@
 		padding: rem(60) 0;
 	}
 
+	&__head {
+		margin-bottom: rem(20);
+	}
+
 	&__tabs {
 		display: flex;
 		flex-wrap: wrap;
 		gap: rem(20);
-		margin-bottom: rem(24);
+		margin-bottom: rem(30);
 	}
 
 	&__tab {
+		min-width: rem(190);
 		min-height: rem(45);
-		padding: rem(12) rem(64);
-		border: 0;
-		border-radius: rem(62);
+		padding: rem(12) rem(40);
+		border-radius: rem(40);
 		background: $color-surface;
 		color: $color-black;
 		font-weight: 500;
-		font-size: rem(14);
+		font-size: rem(16);
 		cursor: pointer;
-		transition: background-color 0.25s ease;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
 
-		&._active {
-			background: $color-white;
-			box-shadow: inset 0 0 0 1px rgba($color-black, 0.08);
+		&--yandex._active {
+			background: #fce000;
+			color: $color-black;
+		}
+
+		&--drive2._active {
+			background: #c03;
+			color: $color-white;
 		}
 	}
 
@@ -52,17 +67,25 @@
 	}
 
 	&__card {
+		display: flex;
+		flex-direction: column;
+		gap: rem(30);
 		padding: rem(40);
 		border-radius: rem(40);
 		background: $color-surface;
 	}
 
+	&__card-top {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+	}
+
 	&__card-head {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 		justify-content: space-between;
 		gap: rem(16);
-		margin-bottom: rem(20);
 	}
 
 	&__author {
@@ -80,55 +103,133 @@
 		overflow: hidden;
 	}
 
+	&__name-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: rem(10);
+	}
+
 	&__name {
 		font-weight: 500;
-		font-size: rem(14);
+		font-size: rem(16);
+		line-height: 1.32;
 		color: $color-black;
+	}
+
+	&__satisfied {
+		display: inline-flex;
+		align-items: center;
+		gap: rem(4);
+		color: #60d669;
+	}
+
+	&__satisfied-icon {
+		flex-shrink: 0;
+		color: #60d669;
+	}
+
+	&__satisfied-text {
+		font-size: rem(10);
+		line-height: 1.32;
 	}
 
 	&__date {
 		font-size: rem(12);
+		line-height: 1.32;
 		color: $color-text-muted;
 	}
 
 	&__verified {
+		display: inline-flex;
 		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		gap: rem(10);
 		padding: rem(10) rem(30);
-		border-radius: rem(62);
+		border-radius: rem(40);
 		background: $color-white;
-		font-size: rem(12);
-		color: $color-text-muted;
+		font-size: rem(14);
+		line-height: 1.32;
+		color: $color-black;
+	}
+
+	&__verified-icon {
+		flex-shrink: 0;
+		color: $color-accent;
 	}
 
 	&__text {
-		margin: 0 0 rem(20);
-		font-size: rem(14);
-		line-height: 1.3;
-		color: $color-text-muted;
+		font-size: rem(16);
+		line-height: 1.32;
+		color: #2d2d2d;
 	}
 
 	&__story {
-		padding: rem(20);
-		border-radius: rem(10);
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		min-height: rem(111);
+		padding: rem(20) rem(50) rem(15) rem(20);
+		border-radius: rem(20);
 		background: $color-white;
+		overflow: hidden;
+	}
+
+	&__story-body {
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+		max-width: rem(320);
+		padding-right: rem(20);
 	}
 
 	&__story-label {
-		margin-bottom: rem(10);
 		font-size: rem(12);
+		line-height: 1.32;
 		color: $color-text-muted;
 	}
 
 	&__story-title {
 		display: block;
-		margin-bottom: rem(10);
-		font-weight: 500;
 		font-size: rem(14);
+		line-height: 1.32;
 		color: $color-black;
 	}
 
 	&__car {
-		font-size: rem(12);
+		font-size: rem(13);
+		line-height: 1.32;
+	}
+
+	&__car-name {
+		color: $color-black;
+	}
+
+	&__car-meta {
 		color: $color-text-muted;
+	}
+
+	&__story-image {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: rem(240);
+		height: rem(104);
+		border-radius: 0 0 rem(20) 0;
+		overflow: hidden;
+		pointer-events: none;
+
+		@media (max-width: ($md3 - 0.02)) {
+			width: rem(160);
+			height: rem(80);
+		}
+	}
+
+	&__story-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
 	}
 }

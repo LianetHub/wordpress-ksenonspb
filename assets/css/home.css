@@ -695,6 +695,17 @@
 }
 
 .cta-contacts .form-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cta-contacts .form-upload__dropzone {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -717,6 +728,29 @@
   background: #f7f7f7;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: border-color 0.2s ease, background-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+.cta-contacts .form-upload__dropzone:focus-within {
+  border-color: #fd8011;
+  background: rgba(253, 128, 17, 0.04);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(253, 128, 17, 0.12);
+          box-shadow: inset 0 0 0 1px rgba(253, 128, 17, 0.12);
+}
+
+.cta-contacts .form-upload__dropzone.is-dragover {
+  border-color: #fd8011;
+  background: rgba(253, 128, 17, 0.06);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(253, 128, 17, 0.16);
+          box-shadow: inset 0 0 0 1px rgba(253, 128, 17, 0.16);
+}
+
+.cta-contacts .form-upload.is-full .form-upload__dropzone {
+  opacity: 0.55;
+  cursor: default;
 }
 
 .cta-contacts .form-upload__icon {
@@ -729,6 +763,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .cta-contacts .form-upload__icon-svg {
@@ -751,17 +787,149 @@
   color: #6f6f6f;
 }
 
-.cta-contacts .form-upload .wpcf7-form-control-wrap {
+.cta-contacts .form-upload__dropzone .wpcf7-form-control-wrap {
   position: absolute;
   inset: 0;
+  z-index: 1;
   opacity: 0;
   cursor: pointer;
 }
 
-.cta-contacts .form-upload .wpcf7-form-control-wrap input[type=file] {
+.cta-contacts .form-upload__dropzone .wpcf7-form-control-wrap input[type=file] {
   width: 100%;
   height: 100%;
   cursor: pointer;
+}
+
+.cta-contacts .form-upload.is-full .form-upload__dropzone .wpcf7-form-control-wrap {
+  pointer-events: none;
+}
+
+.cta-contacts .form-upload__list {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+  gap: 0.625rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-contacts .form-upload__list[hidden] {
+  display: none;
+}
+
+.cta-contacts .form-upload__item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.cta-contacts .form-upload__thumb {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #f7f7f7;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cta-contacts .form-upload__thumb-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cta-contacts .form-upload__thumb-placeholder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #6f6f6f;
+}
+
+.cta-contacts .form-upload__thumb-placeholder svg {
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.cta-contacts .form-upload__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: #6f6f6f;
+}
+
+.cta-contacts .form-upload__remove {
+  position: absolute;
+  top: -0.375rem;
+  right: -0.375rem;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.12);
+}
+
+.cta-contacts .form-upload__remove svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.cta-contacts .form-upload__error {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  color: #c0392b;
+  text-align: left;
+}
+
+.cta-contacts .form-upload__error[hidden] {
+  display: none;
 }
 
 .cta-contacts .checkbox {
@@ -1249,22 +1417,31 @@
 }
 
 .faq .accordion__item._active .accordion__toggle {
-  display: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .faq .accordion__item._active .accordion__header {
-  display: block;
   padding: 2.5rem 2.5rem 0;
   min-height: 0;
-  pointer-events: auto;
 }
 
 .faq .accordion__item._active > .accordion__body {
-  display: block;
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .faq .accordion__item._active .accordion__answer {
-  padding: 0.625rem 2.5rem 2.5rem;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition-delay: 0.08s, 0.08s;
+          transition-delay: 0.08s, 0.08s;
 }
 
 .faq .accordion__header {
@@ -1286,6 +1463,8 @@
   cursor: pointer;
   text-align: left;
   font-family: inherit;
+  -webkit-transition: padding 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: padding 0.45s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .faq .accordion__question {
@@ -1317,6 +1496,9 @@
   height: 2.9375rem;
   border-radius: 1.46875rem;
   background: #f7f7f7;
+  overflow: hidden;
+  -webkit-transition: width 0.45s cubic-bezier(0.33, 1, 0.68, 1), height 0.45s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.25s ease, visibility 0.25s ease;
+  transition: width 0.45s cubic-bezier(0.33, 1, 0.68, 1), height 0.45s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .faq .accordion__toggle-icon {
@@ -1325,26 +1507,35 @@
 }
 
 .faq .accordion__body {
-  display: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 0fr;
+  grid-template-rows: 0fr;
+  -webkit-transition: grid-template-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: grid-template-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: grid-template-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1), -ms-grid-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .faq .accordion__inner {
-  overflow: visible;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .faq .accordion__answer {
-  padding: 0;
+  padding: 0.625rem 2.5rem 2.5rem;
   color: #6f6f6f;
   font-size: 1rem;
   font-weight: 400;
   line-height: normal;
   max-width: none;
-  opacity: 1;
-  -webkit-transform: none;
-      -ms-transform: none;
-          transform: none;
-  -webkit-transition: none;
-  transition: none;
+  opacity: 0;
+  -webkit-transform: translateY(-0.375rem);
+      -ms-transform: translateY(-0.375rem);
+          transform: translateY(-0.375rem);
+  -webkit-transition: opacity 0.35s ease, -webkit-transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: opacity 0.35s ease, -webkit-transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.33, 1, 0.68, 1), -webkit-transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .faq .accordion__answer:empty {
@@ -2364,17 +2555,16 @@
 }
 
 .cta-contacts {
-  padding: 1.25rem 0.9375rem 2.5rem;
+  padding: 1rem 0.9375rem 1.875rem;
 }
 
-.cta-contacts__box {
+.cta-contacts__wrapper {
   position: relative;
   max-width: 86.25rem;
-  margin: 0 auto;
-  border-radius: 3.875rem;
   background: #f7f7f7;
   color: #000000;
   overflow: hidden;
+  border-radius: 1.25rem;
 }
 
 .cta-contacts__car {
@@ -2441,6 +2631,17 @@
   background: #ffffff;
 }
 
+.cta-contacts__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.25rem;
+}
+
 .cta-contacts__messengers-label {
   margin: 0 0 1.25rem;
   font-size: 1rem;
@@ -2496,10 +2697,13 @@
       flex-shrink: 0;
 }
 
-.cta-contacts__info-item:not(:last-child) {
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+.cta-contacts__info-divider {
+  width: 100%;
+  height: 0.5px;
+  background-image: repeating-linear-gradient(to right, rgba(111, 111, 111, 0.26) 0, rgba(111, 111, 111, 0.26) 0.4375rem, transparent 0.4375rem, transparent 0.875rem);
+  background-size: 100% 0.5px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .cta-contacts__info-row {
@@ -2524,18 +2728,26 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 1.625rem;
-  height: 1.625rem;
+  width: 1.75rem;
+  height: 1.75rem;
   color: #fd8011;
 }
 
 .cta-contacts__info-icon-svg {
   display: block;
-  width: 1.625rem;
-  height: 1.625rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .cta-contacts__info-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.375rem;
   min-width: 0;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -2544,9 +2756,8 @@
 
 .cta-contacts__info-label {
   display: block;
-  margin-bottom: 0.375rem;
   font-size: 1rem;
-  line-height: 1.3;
+  line-height: normal;
   text-transform: uppercase;
   color: #6f6f6f;
 }
@@ -2556,26 +2767,32 @@
   display: block;
   color: #000000;
   font-size: 1rem;
-  line-height: 1.3;
+  line-height: normal;
 }
 
 .cta-contacts__info-note {
-  margin: 0.375rem 0 0;
   font-size: 0.875rem;
-  line-height: 1.3;
+  line-height: normal;
   color: #6f6f6f;
 }
 
 .cta-contacts__info-link {
   display: inline-block;
-  margin-top: 0.375rem;
   color: #fd8011;
   font-size: 0.875rem;
-  line-height: 1.3;
+  line-height: normal;
+}
+
+.color-accent {
+  color: #fd8011;
 }
 
 .reviews {
   padding: 2.5rem 0;
+}
+
+.reviews__head {
+  margin-bottom: 1.25rem;
 }
 
 .reviews__tabs {
@@ -2585,27 +2802,31 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.875rem;
 }
 
 .reviews__tab {
+  min-width: 11.875rem;
   min-height: 2.8125rem;
-  padding: 0.75rem 4rem;
-  border: 0;
-  border-radius: 3.875rem;
+  padding: 0.75rem 2.5rem;
+  border-radius: 2.5rem;
   background: #f7f7f7;
   color: #000000;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   cursor: pointer;
-  -webkit-transition: background-color 0.25s ease;
-  transition: background-color 0.25s ease;
+  -webkit-transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.reviews__tab._active {
-  background: #ffffff;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+.reviews__tab--yandex._active {
+  background: #fce000;
+  color: #000000;
+}
+
+.reviews__tab--drive2._active {
+  background: #c03;
+  color: #ffffff;
 }
 
 .reviews__panel {
@@ -2625,23 +2846,41 @@
 }
 
 .reviews__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.875rem;
   padding: 2.5rem;
   border-radius: 2.5rem;
   background: #f7f7f7;
+}
+
+.reviews__card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.25rem;
 }
 
 .reviews__card-head {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.25rem;
 }
 
 .reviews__author {
@@ -2664,57 +2903,158 @@
   overflow: hidden;
 }
 
+.reviews__name-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.625rem;
+}
+
 .reviews__name {
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  line-height: 1.32;
   color: #000000;
+}
+
+.reviews__satisfied {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.25rem;
+  color: #60d669;
+}
+
+.reviews__satisfied-icon {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  color: #60d669;
+}
+
+.reviews__satisfied-text {
+  font-size: 0.625rem;
+  line-height: 1.32;
 }
 
 .reviews__date {
   font-size: 0.75rem;
+  line-height: 1.32;
   color: #6f6f6f;
 }
 
 .reviews__verified {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.625rem;
   padding: 0.625rem 1.875rem;
-  border-radius: 3.875rem;
+  border-radius: 2.5rem;
   background: #ffffff;
-  font-size: 0.75rem;
-  color: #6f6f6f;
+  font-size: 0.875rem;
+  line-height: 1.32;
+  color: #000000;
+}
+
+.reviews__verified-icon {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  color: #fd8011;
 }
 
 .reviews__text {
-  margin: 0 0 1.25rem;
-  font-size: 0.875rem;
-  line-height: 1.3;
-  color: #6f6f6f;
+  font-size: 1rem;
+  line-height: 1.32;
+  color: #2d2d2d;
 }
 
 .reviews__story {
-  padding: 1.25rem;
-  border-radius: 0.625rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  min-height: 6.9375rem;
+  padding: 1.25rem 3.125rem 0.9375rem 1.25rem;
+  border-radius: 1.25rem;
   background: #ffffff;
+  overflow: hidden;
+}
+
+.reviews__story-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.625rem;
+  max-width: 20rem;
+  padding-right: 1.25rem;
 }
 
 .reviews__story-label {
-  margin-bottom: 0.625rem;
   font-size: 0.75rem;
+  line-height: 1.32;
   color: #6f6f6f;
 }
 
 .reviews__story-title {
   display: block;
-  margin-bottom: 0.625rem;
-  font-weight: 500;
   font-size: 0.875rem;
+  line-height: 1.32;
   color: #000000;
 }
 
 .reviews__car {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.32;
+}
+
+.reviews__car-name {
+  color: #000000;
+}
+
+.reviews__car-meta {
   color: #6f6f6f;
+}
+
+.reviews__story-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 15rem;
+  height: 6.5rem;
+  border-radius: 0 0 1.25rem 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.reviews__story-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .cta-bottom {
@@ -2815,6 +3155,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .cta-contacts {
+    padding: 1.25rem 0.9375rem 2.5rem;
+  }
+
   .cta-bottom__actions {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -2890,6 +3234,14 @@
   .service-card {
     min-height: 27.6875rem;
     border-radius: 2.5rem;
+  }
+
+  .service-card.swiper-slide {
+    width: calc(50% - 0.375rem);
+  }
+
+  .service-card.swiper-slide:not(:last-child) {
+    margin-right: 0.375rem;
   }
 
   .service-card__inner {
@@ -3276,6 +3628,11 @@
     padding: 1.875rem 1.875rem 3.75rem;
   }
 
+  .cta-contacts__wrapper {
+    border-radius: 2.5rem;
+    margin: 0 -2rem;
+  }
+
   .cta-contacts__car {
     display: block;
     position: absolute;
@@ -3297,6 +3654,10 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: start;
+  }
+
+  .cta-contacts__aside {
+    padding-top: 14.125rem;
   }
 
   .cta-contacts__messengers-title {
@@ -3340,6 +3701,14 @@
   .hero__wrapper {
     padding: 7.25rem 1.875rem 7.25rem;
   }
+
+  .service-card.swiper-slide {
+    width: calc(33.333% - 0.75rem);
+  }
+
+  .service-card.swiper-slide:not(:last-child) {
+    margin-right: 1.25rem;
+  }
 }
 
 @media (min-width: 1399.98px) {
@@ -3349,6 +3718,17 @@
 
   .portfolio-teaser__wrapper {
     margin: 0 auto;
+  }
+
+  .cta-contacts__wrapper {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 991.96px) {
+  .reviews__story-image {
+    width: 10rem;
+    height: 5rem;
   }
 }
 
@@ -3462,6 +3842,32 @@
     color: #ffffff;
   }
 
+  .cta-contacts .form-upload__dropzone:hover {
+    border-color: #fd8011;
+    background: rgba(253, 128, 17, 0.04);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(253, 128, 17, 0.12);
+            box-shadow: inset 0 0 0 1px rgba(253, 128, 17, 0.12);
+  }
+
+  .cta-contacts .form-upload__dropzone:hover .form-upload__icon {
+    opacity: 0.85;
+  }
+
+  .cta-contacts .form-upload.is-full .form-upload__dropzone:hover {
+    border-color: #6f6f6f;
+    background: #f7f7f7;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+
+  .cta-contacts .form-upload.is-full .form-upload__dropzone:hover .form-upload__icon {
+    opacity: 1;
+  }
+
+  .cta-contacts .form-upload__remove:hover {
+    color: #fd8011;
+  }
+
   .cta-contacts .form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn):hover,
   .cta-contacts .wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap):hover {
     background: #e8720f;
@@ -3560,6 +3966,23 @@
   }
 
   .accordion__answer {
+    opacity: 1;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+  }
+
+  .faq .accordion__header,
+  .faq .accordion__toggle,
+  .faq .accordion__body,
+  .faq .accordion__answer {
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    -webkit-transition-delay: 0s !important;
+            transition-delay: 0s !important;
+  }
+
+  .faq .accordion__answer {
     opacity: 1;
     -webkit-transform: none;
         -ms-transform: none;

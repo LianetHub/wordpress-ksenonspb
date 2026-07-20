@@ -2,20 +2,33 @@
 @use "../../mixins" as *;
 
 .cta-contacts {
-	padding: rem(20) rem(15) rem(40);
+	padding: rem(16) rem(15) rem(30);
+
+	@media (min-width: $md5) {
+		padding: rem(20) rem(15) rem(40);
+	}
 
 	@media (min-width: $md3) {
 		padding: rem(30) rem(30) rem(60);
 	}
 
-	&__box {
+	// Серая подложка — тот же паттерн, что у .hero__wrapper
+	&__wrapper {
 		position: relative;
 		max-width: rem(1380);
-		margin: 0 auto;
-		border-radius: rem(62);
 		background: $color-surface;
 		color: $color-black;
 		overflow: hidden;
+		border-radius: rem(20);
+
+		@media (min-width: $md3) {
+			border-radius: rem(40);
+			margin: 0 -2rem;
+		}
+
+		@media (min-width: $md1) {
+			margin: 0 auto;
+		}
 	}
 
 	&__car {
@@ -89,6 +102,11 @@
 	&__aside {
 		display: grid;
 		gap: rem(20);
+
+		// Figma: авто (top 134, h 188) над карточкой мессенджеров (top 296)
+		@media (min-width: $md3) {
+			padding-top: rem(226);
+		}
 	}
 
 	&__messengers,
@@ -96,6 +114,12 @@
 		padding: rem(40);
 		border-radius: rem(40);
 		background: $color-white;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
 	}
 
 	&__messengers-label {
@@ -165,12 +189,19 @@
 		}
 	}
 
-	&__info-item {
-		&:not(:last-child) {
-			margin-bottom: rem(20);
-			padding-bottom: rem(20);
-			border-bottom: 1px solid rgba($color-black, 0.08);
-		}
+	&__info-divider {
+		width: 100%;
+		height: 0.5px;
+		background-image: repeating-linear-gradient(
+			to right,
+			rgba($color-text-body, 0.26) 0,
+			rgba($color-text-body, 0.26) rem(7),
+			transparent rem(7),
+			transparent rem(14)
+		);
+		background-size: 100% 0.5px;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 
 	&__info-row {
@@ -184,27 +215,28 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: rem(26);
-		height: rem(26);
+		width: rem(28);
+		height: rem(28);
 		color: $color-brand;
 	}
 
 	&__info-icon-svg {
 		display: block;
-		width: rem(26);
-		height: rem(26);
+		flex-shrink: 0;
 	}
 
 	&__info-body {
+		display: flex;
+		flex-direction: column;
+		gap: rem(6);
 		min-width: 0;
 		flex: 1;
 	}
 
 	&__info-label {
 		display: block;
-		margin-bottom: rem(6);
 		font-size: rem(16);
-		line-height: 1.3;
+		line-height: normal;
 		text-transform: uppercase;
 		color: $color-text-body;
 	}
@@ -214,21 +246,19 @@
 		display: block;
 		color: $color-black;
 		font-size: rem(16);
-		line-height: 1.3;
+		line-height: normal;
 	}
 
 	&__info-note {
-		margin: rem(6) 0 0;
 		font-size: rem(14);
-		line-height: 1.3;
+		line-height: normal;
 		color: $color-text-body;
 	}
 
 	&__info-link {
 		display: inline-block;
-		margin-top: rem(6);
 		color: $color-brand;
 		font-size: rem(14);
-		line-height: 1.3;
+		line-height: normal;
 	}
 }

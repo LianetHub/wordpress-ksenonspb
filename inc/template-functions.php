@@ -401,10 +401,31 @@ if (! function_exists('ksenon_normalize_faq_items')) {
 			if ('' === $question) {
 				continue;
 			}
+
+			$prices = array();
+			if (! empty($item['prices']) && is_array($item['prices'])) {
+				foreach ($item['prices'] as $row) {
+					if (! is_array($row)) {
+						continue;
+					}
+					$label = trim((string) ($row['label'] ?? ''));
+					$value = trim((string) ($row['value'] ?? ''));
+					if ('' === $label && '' === $value) {
+						continue;
+					}
+					$prices[] = array(
+						'label' => $label,
+						'value' => $value,
+					);
+				}
+			}
+
 			$normalized[] = array(
-				'question' => $question,
-				'answer'   => (string) ($item['answer'] ?? ''),
-				'is_open'  => ! empty($item['is_open']),
+				'question'     => $question,
+				'answer'       => (string) ($item['answer'] ?? ''),
+				'answer_after' => (string) ($item['answer_after'] ?? ''),
+				'prices'       => $prices,
+				'is_open'      => ! empty($item['is_open']),
 			);
 		}
 
@@ -412,37 +433,85 @@ if (! function_exists('ksenon_normalize_faq_items')) {
 	}
 }
 
+if (! function_exists('ksenon_get_reviews_source_urls')) {
+	/**
+	 * External “all reviews” URLs by source tab.
+	 *
+	 * @return array{yandex: string, drive2: string}
+	 */
+	function ksenon_get_reviews_source_urls()
+	{
+		$yandex = trim((string) ksenon_get_option('reviews_url_yandex', ''));
+		$drive2 = trim((string) ksenon_get_option('reviews_url_drive2', ''));
+
+		return array(
+			'yandex' => $yandex ?: 'https://yandex.ru/maps/user/kezdbvu6mzrqd3kzyurb1n08rc',
+			'drive2' => $drive2 ?: 'https://www.drive2.ru/o/kbauto#reviews',
+		);
+	}
+}
+
 if (! function_exists('ksenon_get_reviews')) {
+	/**
+	 * Reviews from CPT `review`.
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
 	function ksenon_get_reviews()
 	{
-		$rows = ksenon_get_option('reviews', array());
-		if (! is_array($rows)) {
+		if (! function_exists('get_field')) {
 			return array();
 		}
 
+		$query = new WP_Query(
+			array(
+				'post_type'              => 'review',
+				'post_status'            => 'publish',
+				'posts_per_page'         => -1,
+				'orderby'                => array(
+					'menu_order' => 'ASC',
+					'date'       => 'DESC',
+				),
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => true,
+				'update_post_term_cache' => false,
+			)
+		);
+
 		$reviews = array();
-		foreach ($rows as $row) {
-			if (! is_array($row)) {
+		foreach ($query->posts as $post) {
+			if (! $post instanceof WP_Post) {
 				continue;
 			}
-			$text = trim((string) ($row['text'] ?? ''));
-			$name = trim((string) ($row['name'] ?? ''));
+
+			$post_id = (int) $post->ID;
+			$name    = trim(get_the_title($post));
+			$text    = trim((string) get_field('text', $post_id));
 			if ('' === $text && '' === $name) {
 				continue;
 			}
+
+			$source = sanitize_key((string) get_field('source', $post_id));
+			if (! in_array($source, array('yandex', 'drive2'), true)) {
+				$source = 'yandex';
+			}
+
 			$reviews[] = array(
 				'name'        => $name,
 				'text'        => $text,
-				'photo'       => $row['photo'] ?? null,
-				'rating'      => (int) ($row['rating'] ?? 5),
-				'source'      => (string) ($row['source'] ?? 'yandex'),
-				'date_label'  => (string) ($row['date_label'] ?? ''),
-				'car_model'   => (string) ($row['car_model'] ?? ''),
-				'story_title' => (string) ($row['story_title'] ?? ''),
-				'story_url'   => (string) ($row['story_url'] ?? ''),
-				'verified'    => ! empty($row['verified']),
+				'photo'       => get_field('photo', $post_id) ?: null,
+				'rating'      => (int) (get_field('rating', $post_id) ?: 5),
+				'source'      => $source,
+				'date_label'  => (string) (get_field('date_label', $post_id) ?: ''),
+				'car_model'   => (string) (get_field('car_model', $post_id) ?: ''),
+				'story_title' => (string) (get_field('story_title', $post_id) ?: ''),
+				'story_url'   => (string) (get_field('story_url', $post_id) ?: ''),
+				'story_image' => get_field('story_image', $post_id) ?: null,
+				'verified'    => (bool) get_field('verified', $post_id),
 			);
 		}
+
+		wp_reset_postdata();
 
 		return $reviews;
 	}

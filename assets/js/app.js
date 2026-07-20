@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initCptArchiveFilters();
 	initPhoneMask();
 	initCf7();
+	initFormUpload();
 });
 
 function initBurger() {
@@ -178,6 +179,260 @@ function initCf7() {
 	document.addEventListener("wpcf7spam", () => showStatusPopup(true));
 }
 
+function initFormUpload() {
+	const MAX_FILES = 5;
+	const MAX_SIZE = 10 * 1024 * 1024;
+	const ALLOWED_EXT = new Set(["jpg", "jpeg", "png", "heic"]);
+	const ALLOWED_MIME = new Set([
+		"image/jpeg",
+		"image/png",
+		"image/heic",
+		"image/heif",
+	]);
+	const PREVIEW_MIME = new Set(["image/jpeg", "image/png"]);
+
+	const roots = document.querySelectorAll("[data-form-upload]");
+	if (!roots.length) return;
+
+	const getExt = (name) => {
+		const parts = String(name || "")
+			.toLowerCase()
+			.split(".");
+		return parts.length > 1 ? parts.pop() : "";
+	};
+
+	const isAllowedFile = (file) => {
+		const ext = getExt(file.name);
+		if (ALLOWED_EXT.has(ext)) return true;
+		return ALLOWED_MIME.has(file.type);
+	};
+
+	const canPreview = (file) => {
+		if (PREVIEW_MIME.has(file.type)) return true;
+		const ext = getExt(file.name);
+		return ext === "jpg" || ext === "jpeg" || ext === "png";
+	};
+
+	const getIconsBase = (root) => {
+		const href =
+			root
+				.querySelector(".form-upload__icon-svg use")
+				?.getAttribute("href") ||
+			root
+				.querySelector(".form-upload__icon-svg use")
+				?.getAttribute("xlink:href") ||
+			"";
+		const hashIndex = href.indexOf("#");
+		return hashIndex >= 0 ? href.slice(0, hashIndex) : href;
+	};
+
+	const syncInputFiles = (input, files) => {
+		const transfer = new DataTransfer();
+		files.forEach((file) => transfer.items.add(file));
+		input.files = transfer.files;
+	};
+
+	roots.forEach((root) => {
+		const dropzone = root.querySelector(".form-upload__dropzone");
+		const input = root.querySelector('input[type="file"]');
+		const list = root.querySelector("[data-form-upload-list]");
+		const errorEl = root.querySelector("[data-form-upload-error]");
+
+		if (!input || !list) return;
+
+		const iconsBase = getIconsBase(root);
+		let files = [];
+		const objectUrls = new Map();
+
+		const setError = (message) => {
+			if (!errorEl) return;
+			if (message) {
+				errorEl.textContent = message;
+				errorEl.hidden = false;
+			} else {
+				errorEl.textContent = "";
+				errorEl.hidden = true;
+			}
+		};
+
+		const revokeAllUrls = () => {
+			objectUrls.forEach((url) => URL.revokeObjectURL(url));
+			objectUrls.clear();
+		};
+
+		const updateFullState = () => {
+			root.classList.toggle("is-full", files.length >= MAX_FILES);
+		};
+
+		const render = () => {
+			revokeAllUrls();
+			list.innerHTML = "";
+
+			if (!files.length) {
+				list.hidden = true;
+				updateFullState();
+				return;
+			}
+
+			list.hidden = false;
+			const fragment = document.createDocumentFragment();
+
+			files.forEach((file, index) => {
+				const item = document.createElement("li");
+				item.className = "form-upload__item";
+
+				const thumb = document.createElement("div");
+				thumb.className = "form-upload__thumb";
+
+				if (canPreview(file)) {
+					const img = document.createElement("img");
+					img.className = "form-upload__thumb-img";
+					img.alt = "";
+					const url = URL.createObjectURL(file);
+					objectUrls.set(index, url);
+					img.src = url;
+					thumb.appendChild(img);
+				} else {
+					const placeholder = document.createElement("div");
+					placeholder.className = "form-upload__thumb-placeholder";
+					placeholder.setAttribute("aria-hidden", "true");
+					placeholder.innerHTML = iconsBase
+						? `<svg width="28" height="28"><use href="${iconsBase}#icon-attach-plus"></use></svg>`
+						: "";
+					thumb.appendChild(placeholder);
+				}
+
+				const removeBtn = document.createElement("button");
+				removeBtn.type = "button";
+				removeBtn.className = "form-upload__remove";
+				removeBtn.setAttribute(
+					"aria-label",
+					`Удалить файл ${file.name}`,
+				);
+				removeBtn.innerHTML = iconsBase
+					? `<svg width="20" height="20" aria-hidden="true"><use href="${iconsBase}#icon-close-circle"></use></svg>`
+					: "×";
+				removeBtn.addEventListener("click", (event) => {
+					event.preventDefault();
+					event.stopPropagation();
+					files = files.filter((_, i) => i !== index);
+					syncInputFiles(input, files);
+					setError("");
+					render();
+				});
+
+				const name = document.createElement("span");
+				name.className = "form-upload__name";
+				name.textContent = file.name;
+				name.title = file.name;
+
+				thumb.appendChild(removeBtn);
+				item.appendChild(thumb);
+				item.appendChild(name);
+				fragment.appendChild(item);
+			});
+
+			list.appendChild(fragment);
+			updateFullState();
+		};
+
+		const clear = () => {
+			files = [];
+			syncInputFiles(input, files);
+			setError("");
+			render();
+			input.value = "";
+		};
+
+		const addFiles = (incoming) => {
+			const messages = [];
+			const next = [...files];
+
+			Array.from(incoming).forEach((file) => {
+				if (next.length >= MAX_FILES) {
+					messages.push(
+						`Можно прикрепить не больше ${MAX_FILES} файлов`,
+					);
+					return;
+				}
+
+				if (!isAllowedFile(file)) {
+					messages.push(`«${file.name}»: недопустимый формат`);
+					return;
+				}
+
+				if (file.size > MAX_SIZE) {
+					messages.push(`«${file.name}»: больше 10 МБ`);
+					return;
+				}
+
+				const duplicate = next.some(
+					(existing) =>
+						existing.name === file.name &&
+						existing.size === file.size &&
+						existing.lastModified === file.lastModified,
+				);
+				if (duplicate) return;
+
+				next.push(file);
+			});
+
+			files = next.slice(0, MAX_FILES);
+			syncInputFiles(input, files);
+			setError(messages[0] || "");
+			render();
+		};
+
+		input.addEventListener("change", () => {
+			const selected = Array.from(input.files || []);
+			if (!selected.length) return;
+
+			// Сброс value до sync, чтобы повторный выбор тех же файлов сработал;
+			// актуальный FileList затем записывается через DataTransfer в addFiles.
+			input.value = "";
+			addFiles(selected);
+		});
+
+		const form = root.closest(".wpcf7-form") || root.closest("form");
+		const onCf7Clear = (event) => {
+			const targetForm = event.target;
+			if (!form || !targetForm) return;
+			if (targetForm === form || targetForm.contains(root)) {
+				clear();
+			}
+		};
+
+		document.addEventListener("wpcf7mailsent", onCf7Clear);
+		document.addEventListener("wpcf7reset", onCf7Clear);
+
+		if (dropzone) {
+			dropzone.addEventListener("dragover", (event) => {
+				event.preventDefault();
+				if (files.length >= MAX_FILES) return;
+				dropzone.classList.add("is-dragover");
+			});
+
+			dropzone.addEventListener("dragleave", () => {
+				dropzone.classList.remove("is-dragover");
+			});
+
+			dropzone.addEventListener("drop", (event) => {
+				event.preventDefault();
+				dropzone.classList.remove("is-dragover");
+				if (files.length >= MAX_FILES) {
+					setError(`Можно прикрепить не больше ${MAX_FILES} файлов`);
+					return;
+				}
+				if (event.dataTransfer?.files?.length) {
+					addFiles(event.dataTransfer.files);
+				}
+			});
+		}
+
+		updateFullState();
+	});
+}
+
 function initCaseSteps() {
 	const root = document.querySelector("[data-case-steps]");
 	if (!root) return;
@@ -250,61 +505,34 @@ function initCaseSteps() {
 }
 
 function initAccordion() {
-	if (typeof jQuery === "undefined") {
-		return;
-	}
+	document.querySelectorAll("[data-accordion]").forEach((accordion) => {
+		const items = Array.from(accordion.querySelectorAll(".accordion__item"));
 
-	const $ = jQuery;
-	const duration = 400;
+		items.forEach((item) => {
+			const header = item.querySelector(".accordion__header");
+			if (!header) return;
 
-	$("[data-accordion]").each(function () {
-		const $accordion = $(this);
-		const $items = $accordion.find(".accordion__item");
+			header.addEventListener("click", () => {
+				const isOpen = item.classList.contains("_active");
 
-		$items.each(function () {
-			const $item = $(this);
-			const $body = $item.children(".accordion__body");
-
-			if (!$item.hasClass("_active")) {
-				$body.hide();
-			}
-		});
-
-		$items.find(".accordion__header").on("click", function () {
-			const $header = $(this);
-			const $item = $header.closest(".accordion__item");
-			const $body = $item.children(".accordion__body");
-			const isOpen = $item.hasClass("_active");
-
-			if (isOpen) {
-				$body.stop(true, true).slideToggle(duration, function () {
-					$item.removeClass("_active");
+				items.forEach((other) => {
+					if (other === item) return;
+					other.classList.remove("_active");
+					const otherHeader = other.querySelector(".accordion__header");
+					if (otherHeader) {
+						otherHeader.setAttribute("aria-expanded", "false");
+					}
 				});
-				$header.attr("aria-expanded", "false");
-				return;
-			}
 
-			$items.not($item).each(function () {
-				const $other = $(this);
-
-				if (!$other.hasClass("_active")) {
+				if (isOpen) {
+					item.classList.remove("_active");
+					header.setAttribute("aria-expanded", "false");
 					return;
 				}
 
-				$other
-					.children(".accordion__body")
-					.stop(true, true)
-					.slideUp(duration, function () {
-						$other.removeClass("_active");
-					});
-				$other
-					.find(".accordion__header")
-					.attr("aria-expanded", "false");
+				item.classList.add("_active");
+				header.setAttribute("aria-expanded", "true");
 			});
-
-			$item.addClass("_active");
-			$body.stop(true, true).slideToggle(duration);
-			$header.attr("aria-expanded", "true");
 		});
 	});
 }
@@ -318,7 +546,18 @@ function initReviewsTabs() {
 	document.querySelectorAll("[data-reviews]").forEach((root) => {
 		const tabs = root.querySelectorAll("[data-reviews-tab]");
 		const panels = root.querySelectorAll("[data-reviews-panel]");
+		const moreBtn = root.querySelector(".reviews__more");
 		if (!tabs.length || !panels.length) return;
+
+		const sourceUrls = {
+			yandex: root.getAttribute("data-url-yandex") || "",
+			drive2: root.getAttribute("data-url-drive2") || "",
+		};
+
+		const setMoreUrl = (source) => {
+			if (!moreBtn || !sourceUrls[source]) return;
+			moreBtn.setAttribute("href", sourceUrls[source]);
+		};
 
 		tabs.forEach((tab) => {
 			tab.addEventListener("click", () => {
@@ -340,6 +579,8 @@ function initReviewsTabs() {
 						panel.getAttribute("data-reviews-panel") === target,
 					);
 				});
+
+				setMoreUrl(target);
 			});
 		});
 	});

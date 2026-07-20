@@ -8,7 +8,7 @@
  * @var array $args {
  *     @type string $title Section title.
  *     @type string $intro Sidebar intro.
- *     @type array  $items FAQ items with question, answer, is_open keys.
+ *     @type array  $items FAQ items with question, answer, answer_after, prices, is_open keys.
  * }
  */
 
@@ -37,10 +37,30 @@ foreach ($items as $item) {
 		continue;
 	}
 
+	$prices = array();
+	if (! empty($item['prices']) && is_array($item['prices'])) {
+		foreach ($item['prices'] as $row) {
+			if (! is_array($row)) {
+				continue;
+			}
+			$label = trim((string) ($row['label'] ?? ''));
+			$value = trim((string) ($row['value'] ?? ''));
+			if ('' === $label && '' === $value) {
+				continue;
+			}
+			$prices[] = array(
+				'label' => $label,
+				'value' => $value,
+			);
+		}
+	}
+
 	$faq_items[] = array(
-		'question' => $question,
-		'answer'   => (string) ($item['answer'] ?? ''),
-		'is_open'  => ! empty($item['is_open']),
+		'question'     => $question,
+		'answer'       => (string) ($item['answer'] ?? ''),
+		'answer_after' => (string) ($item['answer_after'] ?? ''),
+		'prices'       => $prices,
+		'is_open'      => ! empty($item['is_open']),
 	);
 }
 
@@ -57,7 +77,10 @@ if (! $title) {
 }
 
 $render_faq_item = static function ($item) {
-	$is_open = ! empty($item['is_open']);
+	$is_open      = ! empty($item['is_open']);
+	$answer       = trim((string) ($item['answer'] ?? ''));
+	$answer_after = trim((string) ($item['answer_after'] ?? ''));
+	$prices       = (array) ($item['prices'] ?? array());
 ?>
 	<div class="accordion__item<?php echo $is_open ? ' _active' : ''; ?>">
 		<button class="accordion__header" type="button" aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>">
@@ -68,7 +91,24 @@ $render_faq_item = static function ($item) {
 		</button>
 		<div class="accordion__body">
 			<div class="accordion__inner">
-				<div class="accordion__answer"><?php echo wp_kses_post(wpautop($item['answer'] ?? '')); ?></div>
+				<div class="accordion__answer">
+					<?php if ($answer) : ?>
+						<?php echo wp_kses_post(wpautop($answer)); ?>
+					<?php endif; ?>
+					<?php if ($prices) : ?>
+						<ul class="faq-prices">
+							<?php foreach ($prices as $row) : ?>
+								<li class="faq-prices__row">
+									<span class="faq-prices__label"><?php echo esc_html($row['label'] ?? ''); ?></span>
+									<span class="faq-prices__value"><?php echo esc_html($row['value'] ?? ''); ?></span>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+					<?php if ($answer_after) : ?>
+						<?php echo wp_kses_post(wpautop($answer_after)); ?>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 	</div>

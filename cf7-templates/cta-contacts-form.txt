@@ -17,13 +17,17 @@
   [textarea your-message class:form-field placeholder "Что произошло - короткое описание"]
 </div>
 
-<div class="form-upload">
-  <div class="form-upload__icon" aria-hidden="true">
-    <svg class="form-upload__icon-svg" width="55" height="55"><use href="@img/icons.svg#icon-attach-plus"></use></svg>
+<div class="form-upload" data-form-upload>
+  <div class="form-upload__dropzone">
+    <div class="form-upload__icon" aria-hidden="true">
+      <svg class="form-upload__icon-svg" width="55" height="55"><use href="@img/icons.svg#icon-attach-plus"></use></svg>
+    </div>
+    <p class="form-upload__title">Прикрепить фото фары</p>
+    <p class="form-upload__hint">До 5 файлов • до 10 МБ каждый • JPG, PNG, HEIC</p>
+    [file your-photo multiple class:form-upload__input filetypes:jpg|jpeg|png|heic limit:10mb]
   </div>
-  <p class="form-upload__title">Прикрепить фото фары</p>
-  <p class="form-upload__hint">До 5 файлов • до 10 МБ каждый • JPG, PNG, HEIC</p>
-  [file your-photo class:form-upload__input filetypes:jpg|jpeg|png|heic limit:10mb]
+  <ul class="form-upload__list" data-form-upload-list hidden></ul>
+  <p class="form-upload__error" data-form-upload-error hidden></p>
 </div>
 
 <div class="checkbox cta-contacts__agree">
@@ -33,8 +37,13 @@
   [/acceptance]
 </div>
 
-<label class="form__submit">
-  [submit "Отправить заявку →"]
+<label class="btn btn--primary btn--large form__submit">
+  <span class="btn__text">[submit "Отправить заявку"]</span>
+  <span class="btn__arrow" aria-hidden="true">
+    <svg class="btn__arrow-icon" width="15" height="10" aria-hidden="true">
+      <use href="@img/icons.svg#icon-arrow-right"></use>
+    </svg>
+  </span>
 </label>
 
 [hidden form-source default:shortcode_attr]

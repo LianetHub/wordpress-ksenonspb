@@ -1,6 +1,9 @@
 @use "../variables" as *;
 @use "../mixins" as *;
 
+$faq-accordion-ease: cubic-bezier(0.33, 1, 0.68, 1);
+$faq-accordion-duration: 0.45s;
+
 .faq {
 	padding: rem(40) 0;
 
@@ -151,22 +154,27 @@
 
 			&._active {
 				.accordion__toggle {
-					display: none;
+					width: 0;
+					height: 0;
+					opacity: 0;
+					visibility: hidden;
+					pointer-events: none;
+					overflow: hidden;
 				}
 
 				.accordion__header {
-					display: block;
 					padding: rem(40) rem(40) 0;
 					min-height: 0;
-					pointer-events: auto;
 				}
 
 				> .accordion__body {
-					display: block;
+					grid-template-rows: 1fr;
 				}
 
 				.accordion__answer {
-					padding: rem(10) rem(40) rem(40);
+					opacity: 1;
+					transform: translateY(0);
+					transition-delay: 0.08s, 0.08s;
 				}
 			}
 
@@ -190,6 +198,7 @@
 			cursor: pointer;
 			text-align: left;
 			font-family: inherit;
+			transition: padding $faq-accordion-duration $faq-accordion-ease;
 		}
 
 		&__question {
@@ -212,6 +221,12 @@
 			height: rem(47);
 			border-radius: rem(23.5);
 			background: $color-surface;
+			overflow: hidden;
+			transition:
+				width $faq-accordion-duration $faq-accordion-ease,
+				height $faq-accordion-duration $faq-accordion-ease,
+				opacity 0.25s ease,
+				visibility 0.25s ease;
 		}
 
 		&__toggle-icon {
@@ -220,23 +235,28 @@
 		}
 
 		&__body {
-			display: none;
+			display: grid;
+			grid-template-rows: 0fr;
+			transition: grid-template-rows $faq-accordion-duration $faq-accordion-ease;
 		}
 
 		&__inner {
-			overflow: visible;
+			overflow: hidden;
+			min-height: 0;
 		}
 
 		&__answer {
-			padding: 0;
+			padding: rem(10) rem(40) rem(40);
 			color: $color-text-body;
 			font-size: rem(16);
 			font-weight: 400;
 			line-height: normal;
 			max-width: none;
-			opacity: 1;
-			transform: none;
-			transition: none;
+			opacity: 0;
+			transform: translateY(rem(-6));
+			transition:
+				opacity 0.35s ease,
+				transform $faq-accordion-duration $faq-accordion-ease;
 
 			&:empty {
 				display: none;
@@ -282,6 +302,23 @@
 					white-space: nowrap;
 				}
 			}
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.faq .accordion {
+		&__header,
+		&__toggle,
+		&__body,
+		&__answer {
+			transition-duration: 0.01ms !important;
+			transition-delay: 0s !important;
+		}
+
+		&__answer {
+			opacity: 1;
+			transform: none;
 		}
 	}
 }
