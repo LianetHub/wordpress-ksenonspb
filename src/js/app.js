@@ -1,6 +1,6 @@
 "use strict";
 
-import { initBlogFeed } from "./blog-feed.js";
+
 import { initTooltips } from "./tooltip.js";
 document.addEventListener("DOMContentLoaded", () => {
 	initBurger();
@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	initHeaderSubmenus();
 	initFancybox();
 	initPartnersAutoPopup();
-	initBlogTabs();
 	initProductTabs();
 	initCaseSteps();
 	initProductTableMore();
@@ -242,12 +241,6 @@ function initCf7() {
 	document.addEventListener("wpcf7spam", () => showStatusPopup(true));
 }
 
-function initBlogTabs() {
-	const feed = document.querySelector("[data-blog-feed]");
-	if (!feed || typeof theme_ajax === "undefined") return;
-
-	initBlogFeed(feed, theme_ajax);
-}
 
 function initProductTabs() {
 	const tabs = document.querySelectorAll("[data-product-tab]");
@@ -516,6 +509,44 @@ function initReviewsTabs() {
 	});
 }
 
+/**
+ * @class ConditionSwiper
+ * Desktop-only Swiper: init above breakpoint, CSS grid on mobile.
+ *
+ * @param {string|Element} slider
+ * @param {Object} options
+ * @param {number} [minWidth=767.98]
+ * @see https://swiperjs.com/get-started
+ */
+class ConditionSwiper {
+	constructor(slider, options, minWidth = 767.98) {
+		this.el =
+			typeof slider === "string" ? document.querySelector(slider) : slider;
+		this.options = options;
+		this.minWidth = minWidth;
+		this.init = false;
+		this.swiper = null;
+
+		if (!this.el || typeof Swiper === "undefined") return;
+
+		this.handleResize();
+		window.addEventListener("resize", () => this.handleResize());
+	}
+
+	handleResize() {
+		if (window.innerWidth > this.minWidth) {
+			if (!this.init) {
+				this.init = true;
+				this.swiper = new Swiper(this.el, this.options);
+			}
+		} else if (this.init) {
+			this.swiper.destroy(true, true);
+			this.swiper = null;
+			this.init = false;
+		}
+	}
+}
+
 function initHomeSwipers() {
 	if (typeof Swiper === "undefined") return;
 
@@ -550,23 +581,25 @@ function initHomeSwipers() {
 		".services-teaser__slider .swiper",
 	);
 	if (servicesTeaserEl) {
-		new Swiper(servicesTeaserEl, {
-			slidesPerView: 1.15,
+		const servicesTeaserRoot = servicesTeaserEl.closest(".services-teaser");
+
+		new ConditionSwiper(servicesTeaserEl, {
+			slidesPerView: 2,
 			spaceBetween: 10,
-			loop: true,
+			watchOverflow: true,
 			breakpoints: {
-				575.98: {
-					slidesPerView: 2,
-					spaceBetween: 10,
-				},
 				991.98: {
 					slidesPerView: 3,
 					spaceBetween: 20,
 				},
 			},
 			navigation: {
-				nextEl: ".services-teaser__next",
-				prevEl: ".services-teaser__prev",
+				nextEl: servicesTeaserRoot?.querySelector(
+					".services-teaser__next",
+				),
+				prevEl: servicesTeaserRoot?.querySelector(
+					".services-teaser__prev",
+				),
 			},
 		});
 	}
