@@ -104,13 +104,13 @@ add_action(
 ?>
 	<style type="text/css">
 		h2.hndle.ui-sortable-handle {
-			background: #1a5f4a;
+			background: #FD8011;
 			color: #fff !important;
 			transition: all 0.25s;
 		}
 
 		.acf-field.acf-accordion .acf-label.acf-accordion-title {
-			background: #e8f4ef;
+			background: #FFF4EB;
 			transition: all 0.25s;
 		}
 
@@ -120,11 +120,11 @@ add_action(
 		}
 
 		.acf-field p.description {
-			color: #c47a00;
+			color: #AF5B10;
 		}
 
 		.acf-field-group {
-			border: 1px solid #1a5f4a !important;
+			border: 1px solid #FD8011 !important;
 		}
 	</style>
 <?php

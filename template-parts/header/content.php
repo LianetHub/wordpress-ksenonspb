@@ -6,11 +6,10 @@
  * @package ksenonspb
  */
 
-$logo     = ksenon_get_logo('dark');
-$cta_text = ksenon_get_option('header_cta_text', __('Связаться с нами', 'ksenonspb'));
-$email    = ksenon_get_option('email');
-$address  = ksenon_get_option('address');
-$phones   = ksenon_get_phones();
+$logo    = ksenon_get_logo('dark');
+$email   = ksenon_get_option('email');
+$address = ksenon_get_option('address');
+$phones  = ksenon_get_phones();
 ?>
 <header class="header">
 	<div class="header__container container container--medium">
@@ -36,13 +35,11 @@ $phones   = ksenon_get_phones();
 			<?php get_template_part('template-parts/header/nav'); ?>
 
 			<div class="header__actions">
-				<?php if ($cta_text) : ?>
-					<button
-						class="header__cta"
-						type="button"
-						data-fancybox
-						data-src="#popup-consultation"><?php echo esc_html($cta_text); ?></button>
-				<?php endif; ?>
+				<button
+					class="header__cta"
+					type="button"
+					data-fancybox
+					data-src="#popup-consultation"><?php esc_html_e('Связаться с нами', 'ksenonspb'); ?></button>
 
 				<button
 					class="header__toggle icon-menu"

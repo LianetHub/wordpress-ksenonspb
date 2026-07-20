@@ -1362,10 +1362,10 @@ if (! function_exists('ksenon_get_logo')) {
 if (! function_exists('ksenon_render_favicons')) {
 	function ksenon_render_favicons()
 	{
-		$png_url      = ksenon_acf_image_url(ksenon_get_option('favicon_png'), 'full', ksenon_assets_uri('favicon-96x96.png'));
-		$svg_url      = ksenon_acf_image_url(ksenon_get_option('favicon_svg'), 'full', ksenon_assets_uri('favicon.svg'));
-		$ico_url      = ksenon_acf_image_url(ksenon_get_option('favicon_ico'), 'full', ksenon_assets_uri('favicon.ico'));
-		$apple_url    = ksenon_acf_image_url(ksenon_get_option('favicon_apple'), 'full', ksenon_assets_uri('apple-touch-icon.png'));
+		$png_url      = ksenon_assets_uri('favicon-96x96.png');
+		$svg_url      = ksenon_assets_uri('favicon.svg');
+		$ico_url      = ksenon_assets_uri('favicon.ico');
+		$apple_url    = ksenon_assets_uri('apple-touch-icon.png');
 		$manifest_url = ksenon_web_manifest_url();
 
 		printf('<link rel="icon" type="image/png" href="%s" sizes="96x96">' . "\n", esc_url($png_url));
@@ -1387,21 +1387,18 @@ if (! function_exists('ksenon_web_manifest_url')) {
 if (! function_exists('ksenon_get_web_manifest_data')) {
 	function ksenon_get_web_manifest_data()
 	{
-		$icon_192 = ksenon_acf_image_url(ksenon_get_option('favicon_manifest_192'), 'full', ksenon_assets_uri('web-app-manifest-192x192.png'));
-		$icon_512 = ksenon_acf_image_url(ksenon_get_option('favicon_manifest_512'), 'full', ksenon_assets_uri('web-app-manifest-512x512.png'));
-
 		return array(
 			'name'             => 'КБ АВТО',
 			'short_name'       => 'КБ АВТО',
 			'icons'            => array(
 				array(
-					'src'     => $icon_192,
+					'src'     => ksenon_assets_uri('web-app-manifest-192x192.png'),
 					'sizes'   => '192x192',
 					'type'    => 'image/png',
 					'purpose' => 'maskable',
 				),
 				array(
-					'src'     => $icon_512,
+					'src'     => ksenon_assets_uri('web-app-manifest-512x512.png'),
 					'sizes'   => '512x512',
 					'type'    => 'image/png',
 					'purpose' => 'maskable',

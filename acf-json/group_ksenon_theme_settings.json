@@ -30,76 +30,6 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_ksenon_ts_favicon_png",
-            "label": "Favicon PNG (96×96)",
-            "name": "favicon_png",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "mime_types": "png"
-        },
-        {
-            "key": "field_ksenon_ts_favicon_svg",
-            "label": "Favicon SVG",
-            "name": "favicon_svg",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "mime_types": "svg"
-        },
-        {
-            "key": "field_ksenon_ts_favicon_ico",
-            "label": "Favicon ICO",
-            "name": "favicon_ico",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "mime_types": "ico"
-        },
-        {
-            "key": "field_ksenon_ts_favicon_apple",
-            "label": "Apple Touch Icon (180×180)",
-            "name": "favicon_apple",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "mime_types": "png"
-        },
-        {
-            "key": "field_ksenon_ts_favicon_manifest_192",
-            "label": "Web App Icon 192×192",
-            "name": "favicon_manifest_192",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "mime_types": "png"
-        },
-        {
-            "key": "field_ksenon_ts_favicon_manifest_512",
-            "label": "Web App Icon 512×512",
-            "name": "favicon_manifest_512",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "mime_types": "png"
-        },
-        {
-            "key": "field_ksenon_ts_header_accordion",
-            "label": "Шапка",
-            "name": "",
-            "type": "accordion",
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 0
-        },
-        {
-            "key": "field_ksenon_ts_header_cta",
-            "label": "Текст кнопки CTA",
-            "name": "header_cta_text",
-            "type": "text",
-            "default_value": "Связаться с нами"
-        },
-        {
             "key": "field_ksenon_ts_contacts_accordion",
             "label": "Контакты",
             "name": "",
@@ -369,20 +299,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_ksenon_ts_popup_consult_title",
-            "label": "Попап консультации — заголовок",
-            "name": "popup_consult_title",
-            "type": "text",
-            "default_value": "Свяжитесь с нами"
-        },
-        {
-            "key": "field_ksenon_ts_popup_consult_lead",
-            "label": "Попап консультации — подзаголовок",
-            "name": "popup_consult_lead",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
             "key": "field_ksenon_ts_popup_order_title",
             "label": "Попап заявки — заголовок",
             "name": "popup_order_title",
@@ -395,62 +311,6 @@
             "name": "popup_order_lead",
             "type": "textarea",
             "rows": 2
-        },
-        {
-            "key": "field_ksenon_ts_popup_order_image_1",
-            "label": "Попап заявки — фото 1",
-            "name": "popup_order_image_1",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_ksenon_ts_popup_order_image_2",
-            "label": "Попап заявки — фото 2",
-            "name": "popup_order_image_2",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_ksenon_ts_popup_presentation_title",
-            "label": "Попап презентации — заголовок",
-            "name": "popup_presentation_title",
-            "type": "text"
-        },
-        {
-            "key": "field_ksenon_ts_popup_presentation_lead",
-            "label": "Попап презентации — подзаголовок",
-            "name": "popup_presentation_lead",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
-            "key": "field_ksenon_ts_popup_presentation_image",
-            "label": "Попап презентации — изображение",
-            "name": "popup_presentation_image",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_ksenon_ts_popup_partners_title",
-            "label": "Попап партнёров — заголовок",
-            "name": "popup_partners_title",
-            "type": "text"
-        },
-        {
-            "key": "field_ksenon_ts_popup_partners_lead",
-            "label": "Попап партнёров — подзаголовок",
-            "name": "popup_partners_lead",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
-            "key": "field_ksenon_ts_popup_partners_action",
-            "label": "Попап партнёров — текст кнопки",
-            "name": "popup_partners_action",
-            "type": "text"
         },
         {
             "key": "field_ksenon_ts_popup_success",
@@ -649,5 +509,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784394657
+    "modified": 1784567700
 }
