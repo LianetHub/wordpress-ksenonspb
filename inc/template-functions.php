@@ -2089,9 +2089,11 @@ if (! function_exists('ksenon_render_cta_bottom_button')) {
 				type="button"
 				data-fancybox
 				data-src="<?php echo esc_attr($popup_target); ?>">
-				<span class="btn__text"><?php echo esc_html($title); ?></span>
 				<?php if ($with_arrow) : ?>
+					<span class="btn__text"><?php echo esc_html($title); ?></span>
 					<?php ksenon_btn_arrow_icon(); ?>
+				<?php else : ?>
+					<?php echo esc_html($title); ?>
 				<?php endif; ?>
 			</button>
 		<?php
