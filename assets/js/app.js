@@ -490,26 +490,6 @@ function initHomeSwipers() {
 		});
 	}
 
-	const portfolioEl = document.querySelector(".portfolio-teaser__slider");
-	if (portfolioEl) {
-		new Swiper(portfolioEl, {
-			slidesPerView: 1,
-			spaceBetween: 20,
-			breakpoints: {
-				991.98: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-					enabled:
-						portfolioEl.querySelectorAll(".swiper-slide").length >
-						2,
-				},
-			},
-			navigation: {
-				nextEl: ".portfolio-teaser__next",
-				prevEl: ".portfolio-teaser__prev",
-			},
-		});
-	}
 }
 
 function initPhoneMask() {

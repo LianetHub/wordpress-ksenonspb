@@ -29,6 +29,18 @@ if (! $before) {
 if (! $after && has_post_thumbnail($post)) {
 	$after = get_post_thumbnail_id($post);
 }
+
+$price_html = '';
+if ($price) {
+	$digits = preg_replace('/\D/u', '', $price);
+	if ('' !== $digits && (int) $digits > 0) {
+		$nbsp       = "\xc2\xa0";
+		$price_html = esc_html(number_format((int) $digits, 0, '', $nbsp))
+			. ' <span class="portfolio-card__currency">₽</span>';
+	} else {
+		$price_html = esc_html($price);
+	}
+}
 ?>
 <article class="portfolio-card">
 	<div class="portfolio-card__media">
@@ -54,8 +66,8 @@ if (! $after && has_post_thumbnail($post)) {
 			<p class="portfolio-card__quote"><?php echo esc_html($quote); ?></p>
 		<?php endif; ?>
 		<div class="portfolio-card__footer">
-			<?php if ($price) : ?>
-				<div class="portfolio-card__price"><?php echo esc_html($price); ?></div>
+			<?php if ($price_html) : ?>
+				<div class="portfolio-card__price"><?php echo $price_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 			<?php endif; ?>
 			<a class="portfolio-card__link btn" href="<?php echo esc_url(get_permalink($post)); ?>">
 				<span class="btn__text"><?php esc_html_e('Подробнее', 'ksenonspb'); ?></span>
