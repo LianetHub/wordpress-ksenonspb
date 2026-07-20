@@ -1,21 +1,14 @@
 "use strict";
 
-
-import { initTooltips } from "./tooltip.js";
 document.addEventListener("DOMContentLoaded", () => {
 	initBurger();
 	initHeaderScroll();
 	initHeaderSubmenus();
 	initFancybox();
 	initPartnersAutoPopup();
-	initProductTabs();
 	initCaseSteps();
-	initProductTableMore();
 	initAccordion();
-	initTooltips();
 	initHome();
-	initDevicesPage();
-	initRelatedEquipmentSwiper();
 	initCptArchiveFilters();
 	initPhoneMask();
 	initCf7();
@@ -143,36 +136,30 @@ function initHeaderScroll() {
 function initFancybox() {
 	if (typeof Fancybox === "undefined") return;
 
-	Fancybox.bind(
-		'[data-fancybox]:not([data-fancybox="pick-video"]):not([data-fancybox="case-video"])',
-		{
-			mainClass: "fancybox-popup",
-			dragToClose: false,
-			placeFocusBack: true,
-			autoFocus: true,
-			trapFocus: true,
-		},
-	);
+	Fancybox.bind('[data-fancybox]:not([data-fancybox="case-video"])', {
+		mainClass: "fancybox-popup",
+		dragToClose: false,
+		placeFocusBack: true,
+		autoFocus: true,
+		trapFocus: true,
+	});
 
-	Fancybox.bind(
-		'[data-fancybox="pick-video"], [data-fancybox="case-video"]',
-		{
-			mainClass: "fancybox-popup fancybox-video",
-			closeButton: true,
-			dragToClose: false,
-			placeFocusBack: true,
-			autoFocus: true,
-			trapFocus: true,
-			Html: {
-				preload: false,
-				iframeAttr: {
-					allow: "autoplay; fullscreen; picture-in-picture; encrypted-media",
-					allowfullscreen: "true",
-					referrerpolicy: "strict-origin-when-cross-origin",
-				},
+	Fancybox.bind('[data-fancybox="case-video"]', {
+		mainClass: "fancybox-popup fancybox-video",
+		closeButton: true,
+		dragToClose: false,
+		placeFocusBack: true,
+		autoFocus: true,
+		trapFocus: true,
+		Html: {
+			preload: false,
+			iframeAttr: {
+				allow: "autoplay; fullscreen; picture-in-picture; encrypted-media",
+				allowfullscreen: "true",
+				referrerpolicy: "strict-origin-when-cross-origin",
 			},
 		},
-	);
+	});
 }
 
 function initPartnersAutoPopup() {
@@ -239,32 +226,6 @@ function initCf7() {
 	document.addEventListener("wpcf7mailsent", () => showStatusPopup(false));
 	document.addEventListener("wpcf7mailfailed", () => showStatusPopup(true));
 	document.addEventListener("wpcf7spam", () => showStatusPopup(true));
-}
-
-
-function initProductTabs() {
-	const tabs = document.querySelectorAll("[data-product-tab]");
-	const panels = document.querySelectorAll("[data-product-panel]");
-
-	if (!tabs.length || !panels.length) return;
-
-	tabs.forEach((tab) => {
-		tab.addEventListener("click", () => {
-			const target = tab.dataset.productTab;
-
-			tabs.forEach((item) => {
-				const isActive = item === tab;
-				item.classList.toggle("_active", isActive);
-				item.setAttribute("aria-selected", String(isActive));
-			});
-
-			panels.forEach((panel) => {
-				const isActive = panel.dataset.productPanel === target;
-				panel.classList.toggle("_active", isActive);
-				panel.hidden = !isActive;
-			});
-		});
-	});
 }
 
 function initCaseSteps() {
@@ -338,29 +299,6 @@ function initCaseSteps() {
 	setActive(0);
 }
 
-function initProductTableMore() {
-	const wrap = document.querySelector("[data-product-table]");
-	const btn = document.querySelector("[data-product-table-more]");
-
-	if (!wrap || !btn) return;
-
-	const rows = wrap.querySelectorAll(".product-table tbody tr");
-
-	if (rows.length <= 10) {
-		btn.closest(".product-table__foot")?.remove();
-		return;
-	}
-
-	btn.addEventListener("click", () => {
-		const expanded = wrap.classList.toggle("product-table-wrap--expanded");
-		wrap.querySelector(".product-table")?.classList.toggle(
-			"product-table--expanded",
-			expanded,
-		);
-		btn.setAttribute("aria-expanded", String(expanded));
-	});
-}
-
 function initAccordion() {
 	if (typeof jQuery === "undefined") {
 		return;
@@ -422,60 +360,8 @@ function initAccordion() {
 }
 
 function initHome() {
-	initAudiencePills();
-	initHomePanels();
 	initHomeSwipers();
 	initReviewsTabs();
-}
-
-function initAudiencePills() {
-	const root = document.querySelector("[data-audience]");
-	if (!root) return;
-
-	const cards = root.querySelectorAll("[data-audience-card]");
-
-	cards.forEach((card) => {
-		card.addEventListener("click", () => {
-			const isOpen = card.classList.contains("_active");
-
-			cards.forEach((item) => {
-				item.classList.remove("_active");
-				item.setAttribute("aria-expanded", "false");
-			});
-
-			if (!isOpen) {
-				card.classList.add("_active");
-				card.setAttribute("aria-expanded", "true");
-			}
-		});
-	});
-}
-
-function initHomePanels() {
-	document.querySelectorAll("[data-panels]").forEach((wrap) => {
-		const items = wrap.querySelectorAll(".panels__item");
-
-		items.forEach((item) => {
-			const head = item.querySelector(".panels__heading");
-			if (!head) return;
-
-			head.addEventListener("click", () => {
-				const isOpen = item.classList.contains("_active");
-
-				items.forEach((other) => {
-					other.classList.remove("_active");
-					other
-						.querySelector(".panels__heading")
-						?.setAttribute("aria-expanded", "false");
-				});
-
-				if (!isOpen) {
-					item.classList.add("_active");
-					head.setAttribute("aria-expanded", "true");
-				}
-			});
-		});
-	});
 }
 
 function initReviewsTabs() {
@@ -624,95 +510,6 @@ function initHomeSwipers() {
 			},
 		});
 	}
-
-	const chooseEl = document.querySelector(".choose__slider");
-	if (chooseEl) {
-		new Swiper(chooseEl, {
-			slidesPerView: 1,
-			spaceBetween: 10,
-			breakpoints: {
-				991: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-			},
-			navigation: {
-				nextEl: ".choose__arrow--next",
-				prevEl: ".choose__arrow--prev",
-			},
-		});
-	}
-
-	const processEl = document.querySelector(".process__slider");
-	if (processEl) {
-		new Swiper(processEl, {
-			slidesPerView: "auto",
-			spaceBetween: 10,
-			breakpoints: {
-				991: {
-					enabled: false,
-				},
-			},
-		});
-	}
-
-	const partnersEl = document.querySelector(".partners__slider");
-	if (partnersEl) {
-		new Swiper(partnersEl, {
-			slidesPerView: "auto",
-			spaceBetween: 12,
-			breakpoints: {
-				575.98: {
-					slidesPerView: 3,
-					spaceBetween: 12,
-				},
-				991.98: {
-					slidesPerView: 4,
-					spaceBetween: 16,
-				},
-				1199.98: {
-					slidesPerView: 5,
-					spaceBetween: 20,
-				},
-			},
-		});
-	}
-
-	const docsEl = document.querySelector(".docs__slider");
-	if (docsEl) {
-		new Swiper(docsEl, {
-			slidesPerView: "auto",
-			spaceBetween: 10,
-			loop: true,
-			autoplay: {
-				delay: 5000,
-				disableOnInteraction: false,
-				stopOnLastSlide: false,
-			},
-			breakpoints: {
-				767.98: {
-					slidesPerView: 2,
-					spaceBetween: 15,
-				},
-				991.98: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1199.98: {
-					slidesPerView: 4,
-					spaceBetween: 20,
-				},
-			},
-			pagination: {
-				el: ".docs__slider-pagination",
-				clickable: true,
-			},
-			navigation: {
-				nextEl: ".docs__arrow--next",
-				prevEl: ".docs__arrow--prev",
-			},
-		});
-	}
 }
 
 function initPhoneMask() {
@@ -789,87 +586,6 @@ function initPhoneMask() {
 		input.addEventListener("keydown", onPhoneKeyDown);
 		input.addEventListener("input", onPhoneInput);
 		input.addEventListener("paste", onPhonePaste);
-	});
-}
-
-function initDevicesPage() {
-	initDevicesWorkMore();
-	initDevicesBenefitsSwiper();
-}
-
-function initDevicesWorkMore() {
-	const root = document.querySelector("[data-devices-work-text]");
-	const btn = document.querySelector("[data-devices-work-more]");
-
-	if (!root || !btn) return;
-
-	const labelMore = btn.dataset.labelMore || "Еще";
-	const labelLess = btn.dataset.labelLess || "Свернуть";
-
-	btn.addEventListener("click", () => {
-		const expanded = root.classList.toggle("_expanded");
-		btn.setAttribute("aria-expanded", String(expanded));
-		btn.textContent = expanded ? labelLess : labelMore;
-	});
-}
-
-function initDevicesBenefitsSwiper() {
-	if (typeof Swiper === "undefined") return;
-
-	const slider = document.querySelector(".devices-benefits__slider");
-	if (!slider) return;
-
-	new Swiper(slider, {
-		slidesPerView: "auto",
-		spaceBetween: 10,
-		breakpoints: {
-			767.98: {
-				slidesPerView: 2,
-				spaceBetween: 20,
-				allowTouchMove: false,
-			},
-			1199.98: {
-				slidesPerView: 3,
-				spaceBetween: 20,
-				allowTouchMove: false,
-			},
-		},
-		navigation: {
-			nextEl: ".devices-benefits__arrow--next",
-			prevEl: ".devices-benefits__arrow--prev",
-		},
-	});
-}
-
-function initRelatedEquipmentSwiper() {
-	if (typeof Swiper === "undefined") return;
-
-	const slider = document.querySelector(
-		".equipment--related .equipment__slider",
-	);
-	if (!slider) return;
-
-	new Swiper(slider, {
-		slidesPerView: 1.15,
-		spaceBetween: 10,
-		breakpoints: {
-			575.98: {
-				slidesPerView: 2,
-				spaceBetween: 10,
-			},
-			991.98: {
-				slidesPerView: 3,
-				spaceBetween: 20,
-			},
-			1199.98: {
-				slidesPerView: 4,
-				spaceBetween: 20,
-			},
-		},
-		navigation: {
-			nextEl: ".equipment--related .equipment__arrow--next",
-			prevEl: ".equipment--related .equipment__arrow--prev",
-		},
 	});
 }
 
