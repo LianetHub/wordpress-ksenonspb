@@ -95,6 +95,21 @@ add_action(
 	}
 );
 
+// Do not guess similar permalinks on 404 (avoids unexpected redirects).
+add_filter('do_redirect_guess_404_permalink', '__return_false');
+
+add_filter(
+	'redirect_canonical',
+	function ($redirect_url) {
+		if (is_404()) {
+			return false;
+		}
+
+		return $redirect_url;
+	},
+	10
+);
+
 add_filter(
 	'upload_mimes',
 	function ($mimes) {

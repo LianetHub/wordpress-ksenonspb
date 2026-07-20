@@ -1,5 +1,7 @@
 "use strict";
 
+import { initCookieConsent } from "./cookie-consent.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 	initBurger();
 	initHeaderScroll();
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initCf7();
 	initFormUpload();
 	initYandexMap();
+	initCookieConsent();
 });
 
 function initBurger() {
@@ -865,4 +868,3 @@ function initYandexMap() {
 
 	observer.observe(mapContainer);
 }
-

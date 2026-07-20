@@ -182,10 +182,39 @@
             "default_value": "© 2001–2026 КБ АВТО"
         },
         {
+            "key": "field_ksenon_ts_analytics_accordion",
+            "label": "Аналитика и cookie",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_analytics_enabled",
+            "label": "Включить аналитику",
+            "name": "analytics_enabled",
+            "type": "true_false",
+            "instructions": "Яндекс.Метрика загружается только после явного согласия пользователя на аналитические cookie.",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Вкл",
+            "ui_off_text": "Выкл"
+        },
+        {
+            "key": "field_ksenon_ts_yandex_metrika_id",
+            "label": "ID Яндекс.Метрики",
+            "name": "yandex_metrika_id",
+            "type": "text",
+            "instructions": "Номер счётчика. Скрипт подключается только при включённой аналитике и согласии пользователя.",
+            "placeholder": "12345678"
+        },
+        {
             "key": "field_ksenon_ts_cookies",
             "label": "Ссылка «Cookies»",
             "name": "ssylka_cookies",
-            "type": "page_link"
+            "type": "page_link",
+            "instructions": "Страница «Политика в отношении cookie». Если пусто — используется страница ID 3562."
         },
         {
             "key": "field_ksenon_ts_social_accordion",
@@ -434,5 +463,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784579000
+    "modified": 1784577023
 }

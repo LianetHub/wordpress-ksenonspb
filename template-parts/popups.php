@@ -15,8 +15,11 @@ $error_title   = ksenon_get_option('popup_error_title');
 	<!-- Связаться с нами -->
 	<div id="popup-consultation" class="popup-modal popup-modal--consult">
 		<div class="popup-modal__inner">
-			<h2 class="popup-modal__title title title-popup"><?php esc_html_e('Свяжитесь с нами', 'ksenonspb'); ?></h2>
-			<div class="popup-modal__content popup-modal__content--center">
+			<header class="popup-modal__header">
+				<h2 class="popup-modal__title title title-popup"><?php esc_html_e('Свяжитесь с нами', 'ksenonspb'); ?></h2>
+				<p class="popup-modal__lead"><?php esc_html_e('Оставьте контакты — перезвоним и ответим на вопросы', 'ksenonspb'); ?></p>
+			</header>
+			<div class="popup-modal__content">
 				<div class="popup-modal__form">
 					<?php ksenon_cf7_form('cf7_zakaz', __('Заявка (попап)', 'ksenonspb')); ?>
 				</div>
@@ -39,7 +42,7 @@ $error_title   = ksenon_get_option('popup_error_title');
 		</div>
 	</div>
 	<!-- Ошибка -->
-	<div id="popup-error" class="popup-modal popup-modal--status">
+	<div id="popup-error" class="popup-modal popup-modal--status popup-modal--status-error">
 		<div class="popup-modal__inner">
 			<div class="popup-modal__status">
 				<svg class="popup-modal__status-icon popup-modal__status-icon--error icon" width="28" height="28" aria-hidden="true">

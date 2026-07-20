@@ -1500,6 +1500,33 @@ if (! function_exists('ksenon_get_opd_url')) {
 	}
 }
 
+if (! function_exists('ksenon_get_cookies_policy_url')) {
+	/**
+	 * URL страницы «Политика в отношении cookie».
+	 * ACF «ssylka_cookies» перекрывает ID по умолчанию, если задан.
+	 */
+	function ksenon_get_cookies_policy_url()
+	{
+		$acf = function_exists('ksenon_get_option') ? ksenon_get_option('ssylka_cookies', '') : '';
+
+		if (is_numeric($acf) && (int) $acf > 0) {
+			$url = get_permalink((int) $acf);
+			if ($url) {
+				return $url;
+			}
+		}
+
+		if (is_string($acf) && $acf !== '') {
+			return $acf;
+		}
+
+		$page_id = defined('KSENON_PAGE_COOKIE_POLICY') ? (int) KSENON_PAGE_COOKIE_POLICY : 3562;
+		$url     = get_permalink($page_id);
+
+		return $url ? $url : home_url('/politika-v-otnoshenii-cookie/');
+	}
+}
+
 if (! function_exists('ksenon_get_logo')) {
 	function ksenon_get_logo($variant = 'dark')
 	{

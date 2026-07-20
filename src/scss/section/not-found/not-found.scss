@@ -1,70 +1,120 @@
 @use "../../variables" as *;
 @use "../../mixins" as *;
+
+// Gradient on main so it fills header offset and is not clipped by the section.
+.main--not-found {
+	background:
+		radial-gradient(ellipse 70% 55% at 50% 12%, rgba($color-accent, 0.16), transparent 70%),
+		radial-gradient(ellipse 45% 40% at 12% 88%, rgba($color-accent, 0.08), transparent 65%),
+		radial-gradient(ellipse 40% 35% at 88% 78%, rgba($color-text, 0.04), transparent 60%);
+}
+
 .not-found {
-	padding: rem(16) 0 rem(60);
+	position: relative;
+	isolation: isolate;
+	padding: rem(24) 0 rem(72);
 
 	@media (min-width: $md3) {
-		padding: rem(20) 0 rem(100);
+		padding: rem(40) 0 rem(120);
 	}
 
 	&__container {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		text-align: center;
+	}
+
+	&__code {
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+		gap: rem(4);
+		margin-bottom: rem(8);
+		font-family: $font-family;
+		font-weight: 700;
+		line-height: 0.9;
+		letter-spacing: -0.06em;
+		user-select: none;
+		@include adaptive-font(96, 168);
+
+		@media (min-width: $md3) {
+			gap: rem(8);
+			margin-bottom: rem(12);
+		}
+	}
+
+	&__digit {
+		color: $color-text;
+		animation: not-found-float 5.5s ease-in-out infinite;
+
+		&:nth-child(2) {
+			animation-delay: 0.35s;
+		}
+
+		&:nth-child(3) {
+			animation-delay: 0.7s;
+		}
+
+		&--accent {
+			position: relative;
+			color: $color-accent;
+			text-shadow: 0 rem(12) rem(32) rgba($color-accent, 0.35);
+
+			&::after {
+				content: "";
+				position: absolute;
+				left: 50%;
+				bottom: 12%;
+				width: 72%;
+				height: 8%;
+				transform: translateX(-50%);
+				border-radius: 100%;
+				background: rgba($color-accent, 0.35);
+				filter: blur(rem(10));
+			}
+		}
 	}
 
 	&__head {
 		width: 100%;
-		max-width: rem(332);
-		text-align: center;
+		max-width: rem(560);
+	}
 
-		@media (min-width: $md3) {
-			max-width: none;
-		}
+	&__title {
+		color: $color-text;
+		letter-spacing: -0.03em;
 	}
 
 	&__text {
-		margin: rem(10) 0 0;
-
-		@media (max-width:$md5) {
-			max-width: 80%;
-			margin-inline: auto
-		}
-	}
-
-	&__visual {
-		width: 100%;
-		max-width: rem(703);
-		margin-top: rem(14);
-		margin-inline: auto;
-
-		& img {
-			width: 100%;
-			height: auto;
-		}
+		max-width: rem(420);
+		margin: rem(12) auto 0;
+		color: $color-text-muted;
 
 		@media (min-width: $md3) {
-			margin-top: rem(12);
+			margin-top: rem(16);
 		}
 	}
-
-
 
 	&__actions {
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
 		width: 100%;
+		max-width: rem(440);
 		gap: rem(10);
-		margin-top: rem(18);
+		margin-top: rem(28);
 
 		@media (min-width: $md3) {
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
-			gap: rem(20);
-			margin-top: rem(45);
+			max-width: none;
+			gap: rem(16);
+			margin-top: rem(40);
 		}
 	}
 
@@ -73,8 +123,27 @@
 		min-height: rem(52);
 
 		@media (min-width: $md3) {
-			width: rem(426);
+			width: auto;
+			min-width: rem(260);
 			min-height: $btn-height;
 		}
+	}
+}
+
+@keyframes not-found-float {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(rem(-8));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.not-found__digit {
+		animation: none;
 	}
 }

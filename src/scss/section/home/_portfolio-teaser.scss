@@ -75,9 +75,14 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		min-height: rem(200);
+		color: inherit;
 
 		@media (min-width: $md3) {
 			min-height: rem(246);
+		}
+
+		&--single {
+			grid-template-columns: 1fr;
 		}
 	}
 
@@ -106,15 +111,17 @@
 		justify-content: center;
 		width: rem(40);
 		height: rem(42);
+		border-radius: 50%;
+		background: $color-surface;
 		transform: translate(-50%, -50%);
 		pointer-events: none;
-		color: $color-accent;
+		color: $color-black;
 	}
 
 	&__compare-icon {
 		display: block;
-		width: rem(40);
-		height: rem(42);
+		width: rem(13);
+		height: rem(20);
 	}
 
 	&__body {
@@ -137,6 +144,10 @@
 
 		@media (min-width: $md3) {
 			font-size: rem(20);
+		}
+
+		a {
+			color: inherit;
 		}
 	}
 

@@ -14,9 +14,13 @@ if (! defined('KSENON_PAGE_PERSONAL_DATA_CONSENT')) {
 	define('KSENON_PAGE_PERSONAL_DATA_CONSENT', 3555);
 }
 
+if (! defined('KSENON_PAGE_COOKIE_POLICY')) {
+	define('KSENON_PAGE_COOKIE_POLICY', 3562);
+}
+
 /** Bump when legal HTML content files change to re-seed posts. */
 if (! defined('KSENON_LEGAL_CONTENT_VERSION')) {
-	define('KSENON_LEGAL_CONTENT_VERSION', 1);
+	define('KSENON_LEGAL_CONTENT_VERSION', 3);
 }
 
 if (! function_exists('ksenon_get_legal_page_ids')) {
@@ -28,6 +32,7 @@ if (! function_exists('ksenon_get_legal_page_ids')) {
 		return array(
 			(int) KSENON_PAGE_PRIVACY_POLICY,
 			(int) KSENON_PAGE_PERSONAL_DATA_CONSENT,
+			(int) KSENON_PAGE_COOKIE_POLICY,
 		);
 	}
 }
@@ -62,6 +67,7 @@ if (! function_exists('ksenon_get_legal_content_path')) {
 		$map = array(
 			(int) KSENON_PAGE_PRIVACY_POLICY        => 'privacy-policy.html',
 			(int) KSENON_PAGE_PERSONAL_DATA_CONSENT => 'consent-personal-data.html',
+			(int) KSENON_PAGE_COOKIE_POLICY         => 'cookie-policy.html',
 		);
 
 		$page_id = (int) $page_id;
@@ -96,15 +102,37 @@ if (! function_exists('ksenon_get_legal_content_html')) {
 			array(
 				'{{policy_url}}',
 				'{{opd_url}}',
+				'{{cookies_url}}',
 			),
 			array(
 				esc_url(ksenon_get_policy_url()),
 				esc_url(ksenon_get_opd_url()),
+				esc_url(ksenon_get_cookies_policy_url()),
 			),
 			$html
 		);
 
 		return trim($html);
+	}
+}
+
+if (! function_exists('ksenon_get_cookies_policy_section_html')) {
+	/**
+	 * @deprecated Dedicated cookie policy page (KSENON_PAGE_COOKIE_POLICY) is used instead.
+	 * @return string
+	 */
+	function ksenon_get_cookies_policy_section_html()
+	{
+		$path = KSENON_DIR . '/content/legal/cookie-policy.html';
+		if (! is_readable($path)) {
+			$path = KSENON_DIR . '/content/legal/cookies-section.html';
+		}
+		if (! is_readable($path)) {
+			return '';
+		}
+
+		$html = file_get_contents($path);
+		return false === $html ? '' : trim($html);
 	}
 }
 

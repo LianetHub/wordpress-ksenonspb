@@ -49,6 +49,12 @@
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   min-height: 12.5rem;
+  color: inherit;
+}
+
+.portfolio-card__media--single {
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
 }
 
 .portfolio-card__image {
@@ -78,17 +84,19 @@
           justify-content: center;
   width: 2.5rem;
   height: 2.625rem;
+  border-radius: 50%;
+  background: #f7f7f7;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   pointer-events: none;
-  color: #fd8011;
+  color: #000000;
 }
 
 .portfolio-card__compare-icon {
   display: block;
-  width: 2.5rem;
-  height: 2.625rem;
+  width: 0.8125rem;
+  height: 1.25rem;
 }
 
 .portfolio-card__body {
@@ -111,6 +119,10 @@
   font-weight: 500;
   line-height: 1.3;
   color: #000000;
+}
+
+.portfolio-card__title a {
+  color: inherit;
 }
 
 .portfolio-card__quote {

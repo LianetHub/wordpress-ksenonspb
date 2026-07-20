@@ -660,8 +660,25 @@ add_filter(
 			);
 		}
 
+		/*
+		 * Taxonomy rewrite slug "." matches almost any path as service_category.
+		 * If the term / service / page was not resolved above, strip that catch-all
+		 * match — but do NOT leave query vars empty (WP then serves the front page
+		 * and redirect_canonical 301s the URL to "/").
+		 */
 		if (! empty($query_vars['service_category']) && empty($query_vars['pagename']) && empty($query_vars['page_id'])) {
 			unset($query_vars['service_category'], $query_vars['taxonomy'], $query_vars['term']);
+
+			$remaining = array_filter(
+				$query_vars,
+				static function ($value) {
+					return null !== $value && false !== $value && '' !== $value && array() !== $value;
+				}
+			);
+
+			if (empty($remaining)) {
+				return array('error' => '404');
+			}
 		}
 
 		return $query_vars;

@@ -1,413 +1,261 @@
 @use "../variables" as *;
 @use "../mixins" as *;
-$popup-gradient: linear-gradient(61deg, $color-accent-hover 0%, $color-accent 99.68%);
 
 .f-button.is-close-button {
-	--f-close-button-width: #{rem(42)};
-	--f-close-button-height: #{rem(42)};
-	--f-close-button-svg-stroke-width: #{rem(1.5)};
-	--f-close-button-svg-width: #{rem(32)};
-	--f-close-button-svg-height: #{rem(32)};
-	--f-close-button-color: #{rgba(#fff, 1)};
-	--f-close-button-hover-color: #000;
-	top: #{rem(8)};
-	right: #{rem(8)};
+	--f-close-button-width: #{rem(40)};
+	--f-close-button-height: #{rem(40)};
+	--f-close-button-svg-stroke-width: #{rem(1.75)};
+	--f-close-button-svg-width: #{rem(22)};
+	--f-close-button-svg-height: #{rem(22)};
+	--f-close-button-color: #{$color-black};
+	--f-close-button-hover-color: #{$color-black};
+	--f-button-bg: #{rgba($color-black, 0.04)};
+	--f-button-hover-bg: #{rgba($color-black, 0.08)};
+	top: #{rem(12)};
+	right: #{rem(12)};
+	border-radius: rem(100);
+	transition:
+		background-color 0.2s ease,
+		transform 0.2s ease;
 
 	@media (min-width: $md4) {
-		top: #{rem(14)};
-		right: #{rem(14)};
+		top: #{rem(18)};
+		right: #{rem(18)};
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			transform: scale(1.04);
+		}
 	}
 }
 
 .popup-modal {
+	position: relative;
 	width: 100%;
-	max-width: rem(873);
-	border-radius: rem(10);
-	background: $popup-gradient;
-	color: #fff;
+	max-width: rem(520);
+	border-radius: rem(24);
+	background: $color-white;
+	color: $color-black;
+	box-shadow:
+		0 rem(24) rem(64) rgba($color-black, 0.14),
+		0 rem(2) rem(8) rgba($color-black, 0.04);
 
-	&#popup-success {
-		background: url("@img/succes-modal-bg.svg") center 0 / auto 100% no-repeat, $popup-gradient;
+	@media (min-width: $md4) {
+		border-radius: rem(32);
 	}
 
-	&__close {
-		position: absolute;
-		top: rem(16);
-		right: rem(16);
-		z-index: 3;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: rem(32);
-		height: rem(32);
-		border: 0;
-		background: transparent;
-		color: #fff;
-		cursor: pointer;
-		transition: opacity 0.2s ease;
+	&__inner {
+		padding: rem(24) rem(16) rem(20);
 
-		@media (any-hover: hover) {
-			&:hover {
-				opacity: 0.75;
-			}
+		@media (min-width: $md4) {
+			padding: rem(28) rem(28) rem(24);
 		}
+	}
+
+	&__header {
+		margin: 0 0 rem(16);
+		text-align: left;
 	}
 
 	&__content {
 		position: relative;
 		z-index: 1;
-
-		&--center {
-			max-width: rem(426);
-			margin: 0 auto;
-			text-align: center;
-		}
-	}
-
-	&__layout {
-		position: relative;
-		z-index: 1;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: rem(24);
-		align-items: center;
-
-		@media (min-width: $md3) {
-			grid-template-columns: 1.1fr 0.9fr;
-			gap: rem(32);
-		}
-
-		&--reverse {
-			@media (min-width: $md3) {
-				grid-template-columns: 0.9fr 1.1fr;
-			}
-		}
 	}
 
 	&__title {
 		margin: 0 0 rem(10);
-		color: #fff;
+		color: $color-black;
+		letter-spacing: -0.03em;
 	}
 
 	&__lead {
-		margin: 0 0 rem(20);
-		line-height: 1.3;
-		@include adaptive-font(14, 18);
-		max-width: 29.125rem;
-		margin-inline: auto;
-
-		.popup-modal__content--center & {
-			max-width: rem(466);
-			margin-left: auto;
-			margin-right: auto;
-		}
-	}
-
-	&__fields {
-		display: flex;
-		flex-direction: column;
-		gap: rem(10);
-	}
-
-	&__field {
-		display: block;
-	}
-
-	&__input {
-		width: 100%;
-		min-height: rem(52);
-		padding: rem(10) rem(20);
-		border: rem(0.5) solid #fff;
-		border-radius: rem(10);
-		background: transparent;
-		color: #fff;
-		font-family: $font-family;
-		font-weight: 400;
-		line-height: 1.2;
-		letter-spacing: -0.02em;
-		transition: border-color 0.25s ease;
-		@include adaptive-font(16, 18);
-
-		&::placeholder {
-			color: rgba(255, 255, 255, 0.85);
-		}
-
-		&:focus {
-			border-width: rem(1);
-		}
-	}
-
-	&__agree {
-		align-items: flex-start;
-
-		.checkbox__text a {
-			color: inherit;
-			text-decoration: underline;
-			text-underline-offset: rem(2);
-			@media (any-hover: hover) {
-				&:hover {
-				}
-			}
-		}
-	}
-
-	&__submit {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		min-height: rem(60);
-		margin-top: rem(10);
-		padding: rem(10) rem(20);
-		border: 0;
-		border-radius: rem(10);
-		background: $color-surface-mint;
-		color: $color-primary;
-		font-family: $font-family;
-		font-weight: 500;
-		line-height: 1.2;
-		letter-spacing: $btn-letter-spacing;
-		text-transform: uppercase;
-		cursor: pointer;
-		transition:
-			background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-			transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-		@include adaptive-font(16, 20);
-
-		@media (any-hover: hover) {
-			&:hover {
-				background: #fff;
-				transform: translateY(-2px);
-			}
-		}
-
-		&:active {
-			transform: translateY(1px) scale(0.98);
-		}
+		margin: 0;
+		max-width: rem(380);
+		line-height: 1.45;
+		color: $color-text-body;
+		@include adaptive-font(14, 16);
 	}
 
 	&__form {
 		display: flex;
 		flex-direction: column;
-		gap: rem(10);
+		gap: rem(12);
 
-		.form__control {
-			min-height: rem(52);
-			padding-block: 0.875rem;
-		}
-	}
-
-	&__visual {
-		display: none;
-		position: relative;
-
-		height: 100%;
-
-		@media (min-width: $md3) {
-			display: block;
-		}
-	}
-
-	&__photo {
-		border-radius: rem(10);
-		overflow: hidden;
-
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
+		.form,
+		.wpcf7-form {
+			display: flex;
+			flex-direction: column;
+			gap: rem(12);
 		}
 
-		@media (max-width:$md3) {
-			&:first-child {
-				margin-top: rem(60);
-			}
+		.form__card {
+			display: flex;
+			flex-direction: column;
+			gap: rem(12);
+			padding: 0;
+			border-radius: 0;
+			background: transparent;
 		}
 
-		@media (min-width:$md2) {
-			position: absolute;
-			width: rem(182);
-			height: rem(169);
-			background: $color-accent;
+		.form__row {
+			display: grid;
+			gap: rem(12);
 
-			&:first-child {
-				right: 0;
-				top: 2rem;
-			}
-
-			&:last-child {
-				right: rem(182);
-				bottom: 0;
-			}
-
-		}
-
-	}
-
-	&__media {
-		display: flex;
-		justify-content: center;
-		margin-bottom: rem(16);
-
-		@media (min-width: $md3) {
-			margin-bottom: 0;
-			align-items: center;
-		}
-
-		img {
-			max-width: rem(280);
-			width: 100%;
-			height: auto;
-			filter: drop-shadow(rem(2) rem(2) rem(8) $color-primary);
-
-			@media (min-width: $md3) {
-				max-width: rem(327);
-			}
-		}
-	}
-
-	&__partners {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		gap: rem(10);
-		width: 100%;
-	}
-
-	&__partner {
-		flex: 0 1 calc((100% - rem(10)) / 2);
-		min-width: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: rem(10);
-		min-height: rem(115);
-		padding: rem(12) rem(10);
-		border: rem(0.5) solid #fff;
-		border-radius: rem(10);
-		background: $color-surface-tab;
-		backdrop-filter: blur(10px);
-		transition: box-shadow 0.25s ease;
-
-		@media (min-width: $md4) {
-			flex-basis: calc((100% - rem(20)) / 3);
-		}
-
-		@media (min-width: $md3) {
-			flex-basis: calc((100% - rem(40)) / 5);
-		}
-
-		@media (any-hover: hover) {
-			&:hover {
-				box-shadow: 0 rem(8) rem(24) rgba($color-primary, 0.15);
-			}
-		}
-	}
-
-	&__partner-logo {
-		display: block;
-		max-width: rem(120);
-		max-height: rem(53);
-		width: auto;
-		height: auto;
-		object-fit: contain;
-		margin: auto;
-	}
-
-	&__partner-action {
-	
-		display: inline-flex;
-		align-items: center;
-		gap: rem(10);
-		color: $color-primary;
-		font-weight: 500;
-		font-size: rem(14);
-		line-height: 1.2;
-		letter-spacing: -0.02em;
-		text-transform: uppercase;
-	}
-
-	&__partner-icon {
-		width: rem(24);
-		height: rem(24);
-	}
-
-	&--consult {
-		background: url("@img/modal-consult-decor-mobile.webp") 0 0 / cover no-repeat, $popup-gradient;
-		text-align: center;
-
-		@media (max-width:$md4) {
-			padding-bottom: rem(145);
-		}
-
-		@media (min-width:$md4) {
-			background: url("@img/modal-consult-decor.webp") 0 0 / cover no-repeat, $popup-gradient;
-		}
-	}
-
-	// Заказ — форма слева
-	&--order {
-		text-align: left;
-		background: url("@img/modal-order-bg.svg") 0 0 / cover no-repeat, $popup-gradient;
-
-		@media (max-width: ($md3)) {
-			background: url("@img/modal-order-bg-mobile.svg") 0 0 / cover no-repeat, $popup-gradient;
-
-			.popup-modal__visual {
-				display: grid;
+			@media (min-width: $md5) {
 				grid-template-columns: 1fr 1fr;
-				gap: rem(10);
-				position: static;
-				min-height: 0;
+			}
+		}
 
-				.popup-modal__photo {
-					position: static;
-					width: 100%;
-					height: rem(140);
+		.form__field {
+			min-width: 0;
+		}
+
+		.form__control,
+		.form-field,
+		input[type="text"],
+		input[type="tel"],
+		input[type="email"],
+		textarea {
+			width: 100%;
+			min-height: rem(52);
+			padding: rem(14) rem(18);
+			border: 1px solid transparent;
+			border-radius: rem(14);
+			background: $color-surface;
+			color: $color-black;
+			font-family: $font-family;
+			font-size: rem(16);
+			line-height: 1.3;
+			transition:
+				border-color 0.2s ease,
+				background-color 0.2s ease,
+				box-shadow 0.2s ease;
+
+			&::placeholder {
+				color: $color-text-muted;
+			}
+
+			&:focus {
+				border-color: rgba($color-black, 0.12);
+				background: $color-white;
+				box-shadow: 0 0 0 rem(3) rgba($color-black, 0.04);
+				outline: none;
+			}
+
+			&.wpcf7-not-valid,
+			&[aria-invalid="true"] {
+				border-color: #e35d5d;
+				box-shadow: none;
+			}
+		}
+
+		textarea {
+			min-height: rem(110);
+			resize: vertical;
+		}
+
+		.checkbox {
+			align-items: flex-start;
+			gap: rem(12);
+
+			&__text,
+			.wpcf7-list-item-label:not(:empty) {
+				font-size: rem(13);
+				line-height: 1.4;
+				color: $color-text-body;
+
+				a {
+					color: $color-black;
+					text-decoration: underline;
+					text-underline-offset: rem(2);
 				}
 			}
 		}
-	}
 
-	// Презентация
-	&--presentation {
-		background: url("@img/modal-presentation-bg.svg") 0 0 / cover no-repeat, $popup-gradient;
+		.form__submit:not(.wpcf7-submit):not(:has(.wpcf7-form-control-wrap)):not(.btn),
+		label.form__submit:not(.btn),
+		.form__submit:has(.wpcf7-form-control-wrap):not(.btn),
+		.wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			min-height: rem(56);
+			margin-top: rem(4);
+			padding: rem(14) rem(24);
+			border-radius: rem(100);
+			background: $color-black;
+			color: $color-white;
+			font-family: $font-family;
+			font-size: rem(16);
+			font-weight: 500;
+			letter-spacing: -0.02em;
+			text-transform: none;
+			box-shadow: none;
+			cursor: pointer;
+			transition:
+				background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+				transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 
-		.popup-modal__media {
-			@media (max-width:$md4) {
-				order: 1;
+			@media (any-hover: hover) {
+				&:hover {
+					background: #1a1a1a;
+					transform: translateY(-1px);
+				}
+			}
+
+			&:active {
+				transform: translateY(1px) scale(0.99);
 			}
 		}
 
+		label.form__submit.btn,
+		.form__submit.btn {
+			width: 100%;
+		}
 	}
 
-	// Партнёры
-	&--partners {
-		max-width: rem(873);
+	&--consult {
+		overflow: hidden;
+		isolation: isolate;
 
-		text-align: center;
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0 auto auto 0;
+			width: rem(220);
+			height: rem(220);
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba($color-black, 0.04) 0%, transparent 70%);
+			transform: translate(-40%, -40%);
+			pointer-events: none;
+		}
 
-		.popup-modal__lead {
-			max-width: rem(500);
-			margin-inline: auto;
+		.popup-modal__inner {
+			position: relative;
 		}
 	}
 
 	// Статус: успех / ошибка
 	&--status {
-		max-width: rem(650);
+		max-width: rem(420);
 		width: 100%;
 
 		.popup-modal__inner {
-			min-height: rem(124);
+			min-height: rem(160);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-
+			padding-block: rem(40);
 		}
+	}
 
+	&--status-error {
+		.popup-modal__status-icon {
+			color: #c44a4a;
+			background: rgba(#c44a4a, 0.08);
+		}
 	}
 
 	&__status {
@@ -416,39 +264,48 @@ $popup-gradient: linear-gradient(61deg, $color-accent-hover 0%, $color-accent 99
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: rem(10);
+		gap: rem(14);
 		text-align: center;
 	}
 
 	&__status-icon {
-		width: rem(28);
-		height: rem(28);
-		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(56);
+		height: rem(56);
+		padding: rem(14);
+		border-radius: 50%;
+		background: rgba($color-black, 0.06);
+		color: $color-black;
 
 		&--error {
-			color: #ffd4d4;
+			color: #c44a4a;
 		}
 	}
 
 	&__status-title {
-
+		margin: 0;
 		font-weight: 500;
-		line-height: 1.2;
-		letter-spacing: -0.04em;
-		@include adaptive-font(22, 28);
+		line-height: 1.25;
+		letter-spacing: -0.03em;
+		color: $color-black;
+		@include adaptive-font(20, 24);
 	}
 }
 
 // Fancybox: кастомизация контейнера
 .fancybox-popup {
-	--fancybox-bg: rgba(34, 34, 34, 0.55);
+	--fancybox-bg: rgba(18, 18, 18, 0.62);
 
 	.fancybox__backdrop {
 		background: var(--fancybox-bg);
+		backdrop-filter: blur(8px);
 	}
 
 	.fancybox__content {
 		background: transparent;
+		padding: 0;
 	}
 
 	.fancybox__slide {

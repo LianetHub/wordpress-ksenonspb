@@ -40,9 +40,12 @@ add_action(
 			'ksenonspb-app',
 			'theme_ajax',
 			array(
-				'ajax_url' => admin_url('admin-ajax.php'),
-				'nonce'    => wp_create_nonce('ksenon_nonce'),
-				'home_url' => home_url('/'),
+				'ajax_url'          => admin_url('admin-ajax.php'),
+				'nonce'             => wp_create_nonce('ksenon_nonce'),
+				'home_url'          => home_url('/'),
+				'metrika_id'        => (string) ksenon_get_option('yandex_metrika_id', ''),
+				'analytics_enabled' => ksenon_get_option('analytics_enabled', false) ? '1' : '0',
+				'policy_url'        => function_exists('ksenon_get_policy_url') ? ksenon_get_policy_url() : home_url('/privacy-policy/'),
 			)
 		);
 	}

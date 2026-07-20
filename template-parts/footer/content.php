@@ -22,6 +22,7 @@ $requisites   = ksenon_get_footer_requisites();
 $domain       = ksenon_get_footer_domain();
 $policy_link  = ksenon_get_policy_url();
 $link_opd     = ksenon_get_opd_url();
+$cookies_policy_url = ksenon_get_cookies_policy_url();
 ?>
 <footer class="footer">
 	<div class="footer__container container">
@@ -126,6 +127,10 @@ $link_opd     = ksenon_get_opd_url();
 			<div class="footer__bottom-links">
 				<a class="footer__legal" href="<?php echo esc_url($policy_link); ?>"><?php esc_html_e('Политика конфиденциальности', 'ksenonspb'); ?></a>
 				<a class="footer__legal" href="<?php echo esc_url($link_opd); ?>"><?php esc_html_e('Согласие на обработку ПД', 'ksenonspb'); ?></a>
+				<a class="footer__legal" href="<?php echo esc_url($cookies_policy_url); ?>"><?php esc_html_e('Политика в отношении cookie', 'ksenonspb'); ?></a>
+				<button type="button" class="footer__legal footer__legal--button" data-cookie-settings>
+					<?php esc_html_e('Настройки cookie', 'ksenonspb'); ?>
+				</button>
 			</div>
 		</div>
 	</div>

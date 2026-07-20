@@ -1,5 +1,6 @@
 @use "../variables" as *;
 @use "../mixins" as *;
+
 .footer {
 	padding: rem(30) 0 rem(24);
 	color: #fff;
@@ -444,16 +445,28 @@
 				max-width: none;
 			}
 		}
+
+		&--button {
+			padding: 0;
+			border: 0;
+			background: none;
+			color: inherit;
+			font: inherit;
+			letter-spacing: inherit;
+			text-align: left;
+			cursor: pointer;
+		}
 	}
 
 	&__bottom-links {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: flex-start;
-		gap: rem(52);
+		gap: rem(24) rem(32);
 
 		@media (min-width: $md3) {
 			flex-shrink: 0;
-			gap: rem(40);
+			gap: rem(24) rem(40);
 		}
 	}
 }
