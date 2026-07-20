@@ -2,7 +2,7 @@
 @use "../../mixins" as *;
 
 .hero {
-	padding: rem(16) rem(15) rem(40);
+	padding: rem(16) rem(15) rem(30);
 
 	@media (min-width:$md5) {
 		padding: rem(20) rem(15) rem(40);
@@ -212,6 +212,8 @@
 	&__image {
 		margin-top: 3rem;
 		margin-inline: rem(-8);
+		display: flex;
+		justify-content: center;
 
 		@media (min-width:$md3) {
 			display: none;

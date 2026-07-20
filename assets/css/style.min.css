@@ -4260,7 +4260,7 @@ body {
 }
 
 .hero {
-  padding: 1rem 0.9375rem 2.5rem;
+  padding: 1rem 0.9375rem 1.875rem;
 }
 @media (min-width: 575.98px) {
   .hero {
@@ -4451,6 +4451,8 @@ body {
 .hero__image {
   margin-top: 3rem;
   margin-inline: -0.5rem;
+  display: flex;
+  justify-content: center;
 }
 @media (min-width: 991.98px) {
   .hero__image {
