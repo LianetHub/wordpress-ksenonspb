@@ -449,7 +449,7 @@ $cf7-error-border: #ff0000;
 	.form-field {
 		min-height: rem(50);
 		padding: rem(15) rem(20);
-		border: 0;
+		border: rem(1) solid transparent;
 		border-radius: rem(40);
 		background: $color-surface;
 		color: $color-black;
@@ -462,6 +462,17 @@ $cf7-error-border: #ff0000;
 
 		&:focus {
 			box-shadow: inset 0 0 0 1px rgba($color-black, 0.08);
+		}
+
+		&.wpcf7-not-valid,
+		&[aria-invalid="true"] {
+			border-color: $cf7-error-border;
+			box-shadow: none;
+
+			&:focus {
+				border-color: $cf7-error-border;
+				box-shadow: none;
+			}
 		}
 
 		&:is(textarea) {
@@ -587,8 +598,10 @@ $cf7-error-border: #ff0000;
 			grid-template-columns: repeat(auto-fill, minmax(rem(72), 1fr));
 			gap: rem(10);
 			width: 100%;
+			padding: rem(6) rem(6) 0 0;
 			position: relative;
 			z-index: 2;
+			overflow: visible;
 
 			&[hidden] {
 				display: none;

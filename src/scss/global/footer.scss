@@ -80,6 +80,11 @@
 				height: rem(39);
 			}
 		}
+
+		// Тёмный логотип на тёмном фоне (пока в ACF не загружен logo_light)
+		&--on-dark img {
+			filter: brightness(0) invert(1);
+		}
 	}
 
 	&__tagline {

@@ -115,8 +115,8 @@ function buildUrlMapping(entries) {
 	add('/каталог-по-машинам/', '/marki/', 'Каталог по маркам');
 	add('/ремонт-фар/', '/uslugi/', 'Главная услуга');
 	add('/другие-услуги/', '/uslugi/', 'Другие услуги');
-	add('/контакты/', '/#contacts', 'Контакты → якорь на главной');
-	add('/contact-us/', '/#contacts', 'Contact us');
+	add('/контакты/', '/kontakty/', 'Контакты');
+	add('/contact-us/', '/kontakty/', 'Contact us → Контакты');
 	add('/about-us/', '/o-kompanii/', 'О компании');
 	add('/about-us/reviews/', '/otzyvy/', 'Отзывы');
 	add('/our-team/', '/komanda/', 'Команда');

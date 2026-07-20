@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initPhoneMask();
 	initCf7();
 	initFormUpload();
+	initYandexMap();
 });
 
 function initBurger() {
@@ -326,8 +327,8 @@ function initFormUpload() {
 				name.textContent = file.name;
 				name.title = file.name;
 
-				thumb.appendChild(removeBtn);
 				item.appendChild(thumb);
+				item.appendChild(removeBtn);
 				item.appendChild(name);
 				fragment.appendChild(item);
 			});
@@ -776,4 +777,91 @@ function initCptArchiveFilters() {
 				freeMode: true,
 			});
 		});
+}
+
+function initYandexMap() {
+	const mapContainer = document.getElementById("map");
+	if (!mapContainer) return;
+
+	const getIconParams = () => {
+		const width = window.innerWidth;
+		let size = [104, 116];
+
+		if (width <= 767) {
+			size = [78, 88];
+		} else if (width <= 1024) {
+			size = [67, 75];
+		}
+
+		return {
+			size,
+			offset: [-(size[0] / 2), -size[1]],
+		};
+	};
+
+	const init = () => {
+		const rawCoords = mapContainer.dataset.coords;
+		const coords = rawCoords
+			? rawCoords.split(",").map((item) => parseFloat(item.trim()))
+			: [60.006714, 30.35932];
+
+		if (coords.length < 2 || coords.some((n) => Number.isNaN(n))) {
+			return;
+		}
+
+		const zoom = parseInt(mapContainer.dataset.zoom, 10) || 16;
+		const iconPath = mapContainer.dataset.icon;
+		const iconParams = getIconParams();
+
+		const map = new ymaps.Map("map", {
+			center: coords,
+			zoom,
+			controls: ["zoomControl"],
+		});
+
+		map.behaviors.disable("scrollZoom");
+
+		const placemarkOptions = {};
+
+		if (iconPath) {
+			Object.assign(placemarkOptions, {
+				iconLayout: "default#image",
+				iconImageHref: iconPath,
+				iconImageSize: iconParams.size,
+				iconImageOffset: iconParams.offset,
+			});
+		}
+
+		map.geoObjects.add(new ymaps.Placemark(coords, {}, placemarkOptions));
+	};
+
+	const loadScript = () => {
+		if (typeof ymaps !== "undefined") {
+			ymaps.ready(init);
+			return;
+		}
+
+		const apiKey = mapContainer.dataset.apikey || "";
+		const script = document.createElement("script");
+		script.src = `https://api-maps.yandex.ru/2.1/?${apiKey ? `apikey=${encodeURIComponent(apiKey)}&` : ""}lang=ru_RU`;
+		script.async = true;
+		script.onload = () => {
+			ymaps.ready(init);
+		};
+		document.head.appendChild(script);
+	};
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					loadScript();
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{ rootMargin: "200px" },
+	);
+
+	observer.observe(mapContainer);
 }

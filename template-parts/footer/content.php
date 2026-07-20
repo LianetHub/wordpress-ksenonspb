@@ -6,7 +6,9 @@
  * @package ksenonspb
  */
 
-$logo         = ksenon_get_logo('light');
+$logo_light   = ksenon_get_option_raw('logo_light');
+$logo         = $logo_light ?: ksenon_get_logo('dark');
+$logo_on_dark = empty($logo_light);
 $tagline      = ksenon_get_option('footer_tagline', __('Лаборатория автосвета с 2001', 'ksenonspb'));
 $description  = ksenon_get_option('footer_description', __('Ремонтируем фары, которые другие меняют целиком. Гарантия до 2 лет письменно', 'ksenonspb'));
 $phones       = ksenon_get_phones();
@@ -26,7 +28,7 @@ $link_opd     = ksenon_get_opd_url();
 			<div class="footer__brand">
 				<div class="footer__brand-head">
 					<?php if ($logo) : ?>
-						<a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo">
+						<a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo<?php echo $logo_on_dark ? ' footer__logo--on-dark' : ''; ?>">
 							<?php
 							echo ksenon_acf_image(
 								$logo,
@@ -73,7 +75,7 @@ $link_opd     = ksenon_get_opd_url();
 				</div>
 			</div>
 
-			<?php get_template_part('template-parts/footer/nav-static'); ?>
+			<?php get_template_part('template-parts/footer/nav'); ?>
 
 			<div class="footer__contacts footer__contacts--desktop">
 				<p class="footer__contacts-title"><?php esc_html_e('Контакты', 'ksenonspb'); ?></p>

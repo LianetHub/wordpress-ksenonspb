@@ -46,17 +46,17 @@
     },
     {
       "old_url": "https://ksenonspb.ru/контакты/",
-      "new_url": "https://ksenonspb.ru/#contacts",
+      "new_url": "https://ksenonspb.ru/kontakty/",
       "old_path": "/контакты/",
-      "new_path": "/#contacts/",
-      "note": "Контакты → якорь на главной"
+      "new_path": "/kontakty/",
+      "note": "Контакты"
     },
     {
       "old_url": "https://ksenonspb.ru/contact-us/",
-      "new_url": "https://ksenonspb.ru/#contacts",
+      "new_url": "https://ksenonspb.ru/kontakty/",
       "old_path": "/contact-us/",
-      "new_path": "/#contacts/",
-      "note": "Contact us"
+      "new_path": "/kontakty/",
+      "note": "Contact us → Контакты"
     },
     {
       "old_url": "https://ksenonspb.ru/about-us/",

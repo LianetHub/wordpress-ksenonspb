@@ -241,6 +241,9 @@ if (! function_exists('ksenon_menu_section_is_active')) {
 				return is_post_type_archive('promotion') || is_singular('promotion');
 			case 'o-kompanii':
 				return is_page_template('page-o-kompanii.php') || is_page('o-kompanii');
+			case 'kontakty':
+			case 'contacts':
+				return is_page_template('page-kontakty.php') || is_page('kontakty') || is_page('contacts');
 			case 'stoimost':
 				return is_page_template('page-stoimost.php') || is_page('stoimost');
 			case 'privacy-policy':
@@ -1421,6 +1424,9 @@ if (! function_exists('ksenon_get_main_class')) {
 		if (is_page_template('page-o-kompanii.php')) {
 			return 'main--about';
 		}
+		if (is_page_template('page-kontakty.php') || is_page('kontakty') || is_page('contacts')) {
+			return 'main--contacts';
+		}
 		if (is_page_template('page-stoimost.php')) {
 			return 'main--pricing';
 		}
@@ -1754,11 +1760,84 @@ if (! function_exists('ksenon_get_header_social_icon')) {
 	}
 }
 
+if (! function_exists('ksenon_get_footer_nav_columns')) {
+	/**
+	 * Footer menu columns: theme_location + default title.
+	 *
+	 * @return array<string, array{location: string, title: string}>
+	 */
+	function ksenon_get_footer_nav_columns()
+	{
+		return array(
+			'services' => array(
+				'location' => 'footer_services',
+				'title'    => __('Услуги', 'ksenonspb'),
+			),
+			'info'     => array(
+				'location' => 'footer_info',
+				'title'    => __('Информация', 'ksenonspb'),
+			),
+		);
+	}
+}
+
+if (! function_exists('ksenon_get_footer_nav_title')) {
+	/**
+	 * Column title: assigned menu name, otherwise default.
+	 *
+	 * @param string $location Theme location slug.
+	 * @param string $default  Fallback title.
+	 */
+	function ksenon_get_footer_nav_title($location, $default = '')
+	{
+		$locations = get_nav_menu_locations();
+		if (empty($locations[$location])) {
+			return $default;
+		}
+
+		$menu = wp_get_nav_menu_object($locations[$location]);
+		if ($menu && ! empty($menu->name)) {
+			return $menu->name;
+		}
+
+		return $default;
+	}
+}
+
+if (! function_exists('ksenon_render_footer_nav_menu')) {
+	/**
+	 * Render one footer column from a theme location.
+	 *
+	 * @param string $location Theme location slug.
+	 * @return bool Whether the menu was rendered.
+	 */
+	function ksenon_render_footer_nav_menu($location)
+	{
+		if (! has_nav_menu($location)) {
+			return false;
+		}
+
+		wp_nav_menu(
+			array(
+				'theme_location' => $location,
+				'container'      => false,
+				'menu_class'     => 'footer__menu',
+				'depth'          => 1,
+				'fallback_cb'    => false,
+				'walker'         => new Ksenon_Walker_Footer_Nav(),
+				'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+			)
+		);
+
+		return true;
+	}
+}
+
 if (! function_exists('ksenon_get_footer_static_menus')) {
 	function ksenon_get_footer_static_menus()
 	{
 		$service_items = array();
-		$featured = array(
+		$featured      = array(
 			'ustanovka-biled',
 			'remont-posle-povrezhdeniy',
 			'polirovka-shlifovka',

@@ -20,6 +20,7 @@ require_once $ksenon_inc . 'template-tags.php';
 require_once $ksenon_inc . 'template-functions.php';
 require_once $ksenon_inc . 'format-helpers.php';
 require_once $ksenon_inc . 'class-ksenon-walker-header-nav.php';
+require_once $ksenon_inc . 'class-ksenon-walker-footer-nav.php';
 require_once $ksenon_inc . 'setup.php';
 require_once $ksenon_inc . 'cleanup.php';
 require_once $ksenon_inc . 'enqueue.php';

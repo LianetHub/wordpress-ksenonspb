@@ -96,6 +96,14 @@
 .messenger-links__item svg {
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+.messenger-links__item--telegram svg {
+  width: 1rem;
+  height: 0.875rem;
+}
+
+.messenger-links__item--whatsapp svg {
   width: 1.25rem;
   height: 1.25rem;
 }

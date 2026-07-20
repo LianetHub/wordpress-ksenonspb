@@ -29,6 +29,12 @@ $faq-accordion-duration: 0.45s;
 		padding: rem(40);
 		border-radius: rem(40);
 		background: $color-surface;
+
+		@media (min-width: $md3) {
+			position: sticky;
+			top: rem(120);
+			align-self: start;
+		}
 	}
 
 	&__label {

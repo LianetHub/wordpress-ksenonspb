@@ -84,6 +84,52 @@
             "default_value": "Пн–Сб 10:00–20:00\nВоскресенье — выходной"
         },
         {
+            "key": "field_ksenon_ts_map_accordion",
+            "label": "Карта",
+            "name": "",
+            "type": "accordion",
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_ksenon_ts_map_api_key",
+            "label": "API-ключ Яндекс.Карт",
+            "name": "map_api_key",
+            "type": "text",
+            "instructions": "Ключ JavaScript API и HTTP Геокодер: https://developer.tech.yandex.ru/"
+        },
+        {
+            "key": "field_ksenon_ts_map_coords",
+            "label": "Координаты метки",
+            "name": "map_coords",
+            "type": "text",
+            "instructions": "Широта и долгота через запятую, например: 60.006714,30.359320",
+            "default_value": "60.006714,30.359320",
+            "placeholder": "60.006714,30.359320"
+        },
+        {
+            "key": "field_ksenon_ts_map_zoom",
+            "label": "Масштаб карты",
+            "name": "map_zoom",
+            "type": "number",
+            "default_value": 16,
+            "min": 1,
+            "max": 21,
+            "step": 1
+        },
+        {
+            "key": "field_ksenon_ts_map_placemark",
+            "label": "Иконка метки",
+            "name": "map_placemark",
+            "type": "image",
+            "instructions": "SVG или PNG. Если пусто — используется стандартная иконка темы.",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "mime_types": "svg,png,webp,jpg,jpeg"
+        },
+        {
             "key": "field_ksenon_ts_footer_accordion",
             "label": "Подвал",
             "name": "",
@@ -388,5 +434,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784572200
+    "modified": 1784579000
 }
