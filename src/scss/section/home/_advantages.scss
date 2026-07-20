@@ -10,12 +10,8 @@
 
 	&__grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: rem(10);
-
-		@media (min-width: $md5) {
-			grid-template-columns: repeat(2, 1fr);
-		}
+		grid-template-columns: repeat(2, 1fr);
+		gap: rem(7) rem(8);
 
 		@media (min-width: $md3) {
 			grid-template-columns: repeat(4, 1fr);
@@ -24,40 +20,66 @@
 	}
 
 	&__card {
-		min-height: rem(177);
-		padding: rem(36) rem(45);
-		border-radius: rem(40);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: rem(100);
+		padding: rem(17) rem(26);
+		border-radius: rem(20);
 		background: $color-surface;
 		color: #000;
 		transition: background-color 0.3s ease, color 0.3s ease;
 
+		@media (min-width: $md3) {
+			min-height: rem(177);
+			padding: rem(36) rem(45);
+			border-radius: rem(40);
+		}
+
 		&._selected {
-			background: #FD8011;
+			background: $color-accent;
 			color: #fff;
 		}
 
 		@media (any-hover: hover) {
 			&:hover {
-				background: #FD8011;
+				background: $color-accent;
 				color: #fff;
 			}
 		}
 	}
 
 	&__value {
-		margin-bottom: rem(42);
 		font-family: $font-family;
 		font-weight: 500;
-		font-size: rem(36);
+		font-size: rem(24);
 		line-height: 1.1;
 
-
-
+		@media (min-width: $md3) {
+			margin-bottom: rem(42);
+			font-size: rem(36);
+		}
 	}
 
 	&__label {
-		font-size: rem(15);
+		max-width: rem(110);
+		font-size: rem(12);
 		line-height: 1.3;
+		color: $color-text-secondary;
 
+		@media (min-width: $md3) {
+			max-width: none;
+			font-size: rem(15);
+		}
+
+		.advantages__card._selected & {
+			color: inherit;
+		}
+
+		@media (any-hover: hover) {
+			.advantages__card:hover & {
+				color: inherit;
+			}
+		}
 	}
 }

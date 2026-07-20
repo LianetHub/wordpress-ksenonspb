@@ -6,24 +6,12 @@
  * @package ksenonspb
  */
 
-$title         = (string) ksenon_home_get('title');
-$text          = (string) ksenon_home_get('text');
-$btn           = ksenon_home_get('btn');
-$btn_secondary = ksenon_home_get('btn_secondary');
-$slides        = ksenon_home_rows('slides');
-
-if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'])) {
-	$portfolio_count = ksenon_count_cpt('portfolio');
-	$btn_secondary   = array(
-		'url'    => ksenon_portfolio_archive_url(),
-		'title'  => sprintf(
-			/* translators: %d: portfolio items count */
-			__('Смотреть %d работ', 'ksenonspb'),
-			$portfolio_count
-		),
-		'target' => '',
-	);
-}
+$title           = (string) ksenon_home_get('title');
+$text            = (string) ksenon_home_get('text');
+$btn             = ksenon_home_get('btn');
+$slides          = ksenon_home_rows('slides');
+$portfolio_count = ksenon_count_cpt('portfolio');
+$portfolio_url   = ksenon_portfolio_archive_url();
 ?>
 <section class="hero">
 	<div class="hero__wrapper">
@@ -82,11 +70,9 @@ if (! $btn_secondary || ! is_array($btn_secondary) || empty($btn_secondary['url'
 				<?php if (is_array($btn) && ! empty($btn['url'])) : ?>
 					<?php ksenon_render_btn_arrow($btn, 'btn btn--primary btn--small hero__btn', __('Оценить ремонт', 'ksenonspb')); ?>
 				<?php endif; ?>
-				<?php if (is_array($btn_secondary) && ! empty($btn_secondary['url'])) : ?>
-					<a class="hero__btn-secondary btn btn--white "
-						href="<?php echo esc_url(ksenon_acf_link_url($btn_secondary)); ?>"
-						<?php echo ksenon_acf_link_target($btn_secondary) ? ' target="' . esc_attr(ksenon_acf_link_target($btn_secondary)) . '"' : ''; ?>>
-						<?php echo esc_html(ksenon_acf_link_title($btn_secondary)); ?>
+				<?php if ($portfolio_count > 0 && $portfolio_url) : ?>
+					<a class="hero__btn-secondary btn btn--white" href="<?php echo esc_url($portfolio_url); ?>">
+						<?php echo esc_html(ksenon_portfolio_works_label($portfolio_count)); ?>
 					</a>
 				<?php endif; ?>
 			</div>

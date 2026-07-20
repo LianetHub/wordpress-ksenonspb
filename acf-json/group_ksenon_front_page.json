@@ -37,13 +37,6 @@
                             "return_format": "array"
                         },
                         {
-                            "key": "field_ksenon_hero_btn_secondary",
-                            "label": "Кнопка вторичная",
-                            "name": "btn_secondary",
-                            "type": "link",
-                            "return_format": "array"
-                        },
-                        {
                             "key": "field_ksenon_hero_slides",
                             "label": "Промо-слайды",
                             "name": "slides",
@@ -469,5 +462,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1751842000
+    "modified": 1753019580
 }

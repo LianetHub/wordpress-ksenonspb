@@ -134,16 +134,16 @@ body {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -4352,13 +4352,8 @@ body {
 }
 .advantages__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.625rem;
-}
-@media (min-width: 575.98px) {
-  .advantages__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4375rem 0.5rem;
 }
 @media (min-width: 991.98px) {
   .advantages__grid {
@@ -4367,33 +4362,64 @@ body {
   }
 }
 .advantages__card {
-  min-height: 11.0625rem;
-  padding: 2.25rem 2.8125rem;
-  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 6.25rem;
+  padding: 1.0625rem 1.625rem;
+  border-radius: 1.25rem;
   background: #f7f7f7;
   color: #000;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+@media (min-width: 991.98px) {
+  .advantages__card {
+    min-height: 11.0625rem;
+    padding: 2.25rem 2.8125rem;
+    border-radius: 2.5rem;
+  }
+}
 .advantages__card._selected {
-  background: #FD8011;
+  background: #fd8011;
   color: #fff;
 }
 @media (any-hover: hover) {
   .advantages__card:hover {
-    background: #FD8011;
+    background: #fd8011;
     color: #fff;
   }
 }
 .advantages__value {
-  margin-bottom: 2.625rem;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 500;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   line-height: 1.1;
 }
+@media (min-width: 991.98px) {
+  .advantages__value {
+    margin-bottom: 2.625rem;
+    font-size: 2.25rem;
+  }
+}
 .advantages__label {
-  font-size: 0.9375rem;
+  max-width: 6.875rem;
+  font-size: 0.75rem;
   line-height: 1.3;
+  color: #261c13;
+}
+@media (min-width: 991.98px) {
+  .advantages__label {
+    max-width: none;
+    font-size: 0.9375rem;
+  }
+}
+.advantages__card._selected .advantages__label {
+  color: inherit;
+}
+@media (any-hover: hover) {
+  .advantages__card:hover .advantages__label {
+    color: inherit;
+  }
 }
 
 .color-accent {
