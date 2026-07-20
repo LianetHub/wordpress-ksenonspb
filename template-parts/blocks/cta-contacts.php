@@ -58,22 +58,6 @@ $hours_extra = array_slice($hours_lines, 1);
 ?>
 <section class="cta-contacts" id="contacts">
 	<div class="cta-contacts__wrapper">
-		<?php if ($car_image) : ?>
-			<div class="cta-contacts__car" aria-hidden="true">
-				<?php
-				echo ksenon_acf_image(
-					$car_image,
-					'full',
-					array(
-						'class'   => 'cta-contacts__car-img',
-						'loading' => 'lazy',
-						'alt'     => '',
-					)
-				);
-				?>
-			</div>
-		<?php endif; ?>
-
 		<div class="cta-contacts__inner">
 			<div class="cta-contacts__layout">
 				<div class="cta-contacts__form-col">
@@ -90,6 +74,22 @@ $hours_extra = array_slice($hours_lines, 1);
 				</div>
 
 				<div class="cta-contacts__aside">
+					<?php if ($car_image) : ?>
+						<div class="cta-contacts__car">
+							<?php
+							echo ksenon_acf_image(
+								$car_image,
+								'full',
+								array(
+									'class'   => 'cta-contacts__car-img',
+									'loading' => 'lazy',
+									'alt'     => '',
+								)
+							);
+							?>
+						</div>
+					<?php endif; ?>
+
 					<div class="cta-contacts__messengers">
 						<?php if ($messenger_label) : ?>
 							<p class="cta-contacts__messengers-label"><?php echo ksenon_kses_inline($messenger_label); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 

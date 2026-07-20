@@ -3257,22 +3257,26 @@ body {
 .faq__title {
   margin: 0;
   color: #000000;
+  font-size: 3rem;
   font-weight: 500;
   line-height: normal;
 }
+@media (max-width: 991.98px) {
+  .faq__title {
+    font-size: 1.5rem;
+  }
+}
 .faq__intro {
   margin: 0;
+  max-width: 26.75rem;
   font-size: 1rem;
+  font-weight: 400;
   line-height: normal;
   color: #6f6f6f;
 }
-@media (min-width: 991.98px) {
-  .faq__intro {
-    max-width: 26.75rem;
-  }
-}
 .faq__help {
-  padding: 1.25rem 3.125rem 0.9375rem 1.25rem;
+  width: 100%;
+  padding: 1.25rem 1.25rem 0.9375rem 1.25rem;
   border-radius: 1.25rem;
   background: #ffffff;
 }
@@ -3300,6 +3304,7 @@ body {
   line-height: 1.32;
 }
 .faq__messengers {
+  flex-wrap: nowrap;
   gap: 1.25rem;
 }
 .faq__content {
@@ -3311,6 +3316,7 @@ body {
   background: #f7f7f7;
 }
 .faq .messenger-links__item {
+  gap: 0.625rem;
   min-height: 3.125rem;
   padding: 0.9375rem 2.1875rem;
   border-radius: 2.5rem;
@@ -3339,6 +3345,14 @@ body {
 .faq .messenger-links__icon {
   flex-shrink: 0;
 }
+.faq .messenger-links__item--telegram .faq .messenger-links__icon {
+  width: 1rem;
+  height: 0.875rem;
+}
+.faq .messenger-links__item--whatsapp .faq .messenger-links__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
 .faq .accordion__item {
   border: 0;
   border-radius: 1.25rem;
@@ -3347,14 +3361,14 @@ body {
   transition: none;
 }
 .faq .accordion__item._active .accordion__toggle {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  overflow: hidden;
+  background: #fd8011;
+  transform: rotate(45deg);
+}
+.faq .accordion__item._active .accordion__toggle .accordion__toggle-icon {
+  color: #ffffff;
 }
 .faq .accordion__item._active .accordion__header {
+  align-items: flex-start;
   padding: 2.5rem 2.5rem 0;
   min-height: 0;
 }
@@ -3405,12 +3419,14 @@ body {
   height: 2.9375rem;
   border-radius: 1.46875rem;
   background: #f7f7f7;
+  transform: rotate(0deg);
   overflow: hidden;
-  transition: width 0.45s cubic-bezier(0.33, 1, 0.68, 1), height 0.45s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.25s ease, visibility 0.25s ease;
+  transition: background-color 0.45s cubic-bezier(0.33, 1, 0.68, 1), transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .faq .accordion__toggle-icon {
   display: block;
   color: #fd8011;
+  transition: color 0.45s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .faq .accordion__body {
   display: grid;
@@ -3472,7 +3488,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .faq .accordion__header, .faq .accordion__toggle, .faq .accordion__body, .faq .accordion__answer {
+  .faq .accordion__header, .faq .accordion__toggle, .faq .accordion__toggle-icon, .faq .accordion__body, .faq .accordion__answer {
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
@@ -4471,6 +4487,12 @@ body {
 }
 .messenger-links__item svg {
   flex-shrink: 0;
+}
+.messenger-links__item--telegram svg {
+  width: 1rem;
+  height: 0.875rem;
+}
+.messenger-links__item--whatsapp svg {
   width: 1.25rem;
   height: 1.25rem;
 }
@@ -5605,7 +5627,6 @@ body {
   }
 }
 .cta-contacts__wrapper {
-  position: relative;
   max-width: 86.25rem;
   background: #f7f7f7;
   color: #000000;
@@ -5624,29 +5645,17 @@ body {
   }
 }
 .cta-contacts__car {
-  display: none;
-  pointer-events: none;
-}
-@media (min-width: 991.98px) {
-  .cta-contacts__car {
-    display: block;
-    position: absolute;
-    top: 8.375rem;
-    right: 4.375rem;
-    z-index: 1;
-    width: 38.5rem;
-    height: 11.75rem;
-  }
+  margin-top: auto;
+  margin-bottom: -1.25rem;
+  width: 100%;
+  line-height: 0;
 }
 .cta-contacts__car-img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right bottom;
+  height: auto;
 }
 .cta-contacts__inner {
-  position: relative;
-  z-index: 2;
   padding: 1.5rem 1.25rem 1.5rem;
 }
 @media (min-width: 991.98px) {
@@ -5662,7 +5671,7 @@ body {
   .cta-contacts__layout {
     grid-template-columns: 38.125rem 1fr;
     gap: 1.25rem;
-    align-items: start;
+    align-items: end;
   }
 }
 .cta-contacts__form-col {
@@ -5689,11 +5698,6 @@ body {
 .cta-contacts__aside {
   display: grid;
   gap: 1.25rem;
-}
-@media (min-width: 991.98px) {
-  .cta-contacts__aside {
-    padding-top: 14.125rem;
-  }
 }
 .cta-contacts__messengers, .cta-contacts__info {
   padding: 2.5rem;
@@ -5761,6 +5765,14 @@ body {
 }
 .cta-contacts .messenger-links__icon {
   flex-shrink: 0;
+}
+.cta-contacts .messenger-links__item--telegram .cta-contacts .messenger-links__icon {
+  width: 1rem;
+  height: 0.875rem;
+}
+.cta-contacts .messenger-links__item--whatsapp .cta-contacts .messenger-links__icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 .cta-contacts__info-divider {
   width: 100%;
@@ -5959,6 +5971,8 @@ body {
 }
 .reviews__satisfied-icon {
   flex-shrink: 0;
+  width: 0.75rem;
+  height: 0.75rem;
   color: #60d669;
 }
 .reviews__satisfied-text {

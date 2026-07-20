@@ -42,23 +42,27 @@ $faq-accordion-duration: 0.45s;
 	&__title {
 		margin: 0;
 		color: $color-black;
+		font-size: rem(48);
 		font-weight: 500;
 		line-height: normal;
+
+		@media (max-width: $md3) {
+			font-size: rem(24);
+		}
 	}
 
 	&__intro {
 		margin: 0;
+		max-width: rem(428);
 		font-size: rem(16);
+		font-weight: 400;
 		line-height: normal;
 		color: $color-text-body;
-
-		@media (min-width: $md3) {
-			max-width: rem(428);
-		}
 	}
 
 	&__help {
-		padding: rem(20) rem(50) rem(15) rem(20);
+		width: 100%;
+		padding: rem(20) rem(20) rem(15) rem(20);
 		border-radius: rem(20);
 		background: $color-white;
 	}
@@ -91,6 +95,7 @@ $faq-accordion-duration: 0.45s;
 	}
 
 	&__messengers {
+		flex-wrap: nowrap;
 		gap: rem(20);
 	}
 
@@ -105,6 +110,7 @@ $faq-accordion-duration: 0.45s;
 
 	.messenger-links {
 		&__item {
+			gap: rem(10);
 			min-height: rem(50);
 			padding: rem(15) rem(35);
 			border-radius: rem(40);
@@ -138,6 +144,16 @@ $faq-accordion-duration: 0.45s;
 		&__icon {
 			flex-shrink: 0;
 		}
+
+		&__item--telegram &__icon {
+			width: rem(16);
+			height: rem(14);
+		}
+
+		&__item--whatsapp &__icon {
+			width: rem(20);
+			height: rem(20);
+		}
 	}
 
 	.accordion {
@@ -150,15 +166,16 @@ $faq-accordion-duration: 0.45s;
 
 			&._active {
 				.accordion__toggle {
-					width: 0;
-					height: 0;
-					opacity: 0;
-					visibility: hidden;
-					pointer-events: none;
-					overflow: hidden;
+					background: $color-brand;
+					transform: rotate(45deg);
+
+					.accordion__toggle-icon {
+						color: $color-white;
+					}
 				}
 
 				.accordion__header {
+					align-items: flex-start;
 					padding: rem(40) rem(40) 0;
 					min-height: 0;
 				}
@@ -217,17 +234,17 @@ $faq-accordion-duration: 0.45s;
 			height: rem(47);
 			border-radius: rem(23.5);
 			background: $color-surface;
+			transform: rotate(0deg);
 			overflow: hidden;
 			transition:
-				width $faq-accordion-duration $faq-accordion-ease,
-				height $faq-accordion-duration $faq-accordion-ease,
-				opacity 0.25s ease,
-				visibility 0.25s ease;
+				background-color $faq-accordion-duration $faq-accordion-ease,
+				transform $faq-accordion-duration $faq-accordion-ease;
 		}
 
 		&__toggle-icon {
 			display: block;
 			color: $color-brand;
+			transition: color $faq-accordion-duration $faq-accordion-ease;
 		}
 
 		&__body {
@@ -307,6 +324,7 @@ $faq-accordion-duration: 0.45s;
 
 		&__header,
 		&__toggle,
+		&__toggle-icon,
 		&__body,
 		&__answer {
 			transition-duration: 0.01ms !important;

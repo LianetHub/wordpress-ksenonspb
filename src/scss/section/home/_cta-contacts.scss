@@ -12,9 +12,7 @@
 		padding: rem(30) rem(30) rem(60);
 	}
 
-	// Серая подложка — тот же паттерн, что у .hero__wrapper
 	&__wrapper {
-		position: relative;
 		max-width: rem(1380);
 		background: $color-surface;
 		color: $color-black;
@@ -32,30 +30,19 @@
 	}
 
 	&__car {
-		display: none;
-		pointer-events: none;
-
-		@media (min-width: $md3) {
-			display: block;
-			position: absolute;
-			top: rem(134);
-			right: rem(70);
-			z-index: 1;
-			width: rem(616);
-			height: rem(188);
-		}
+		margin-top: auto;
+		margin-bottom: -1.25rem;
+		width: 100%;
+		line-height: 0;
 	}
 
 	&__car-img {
+		display: block;
 		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		object-position: right bottom;
+		height: auto;
 	}
 
 	&__inner {
-		position: relative;
-		z-index: 2;
 		padding: rem(24) rem(20) rem(24);
 
 		@media (min-width: $md3) {
@@ -70,7 +57,7 @@
 		@media (min-width: $md3) {
 			grid-template-columns: rem(610) 1fr;
 			gap: rem(20);
-			align-items: start;
+			align-items: end;
 		}
 	}
 
@@ -102,11 +89,6 @@
 	&__aside {
 		display: grid;
 		gap: rem(20);
-
-		// Figma: авто (top 134, h 188) над карточкой мессенджеров (top 296)
-		@media (min-width: $md3) {
-			padding-top: rem(226);
-		}
 	}
 
 	&__messengers,
@@ -187,18 +169,26 @@
 		&__icon {
 			flex-shrink: 0;
 		}
+
+		&__item--telegram &__icon {
+			width: rem(16);
+			height: rem(14);
+		}
+
+		&__item--whatsapp &__icon {
+			width: rem(20);
+			height: rem(20);
+		}
 	}
 
 	&__info-divider {
 		width: 100%;
 		height: 0.5px;
-		background-image: repeating-linear-gradient(
-			to right,
-			rgba($color-text-body, 0.26) 0,
-			rgba($color-text-body, 0.26) rem(7),
-			transparent rem(7),
-			transparent rem(14)
-		);
+		background-image: repeating-linear-gradient(to right,
+				rgba($color-text-body, 0.26) 0,
+				rgba($color-text-body, 0.26) rem(7),
+				transparent rem(7),
+				transparent rem(14));
 		background-size: 100% 0.5px;
 		background-repeat: no-repeat;
 		background-position: center;

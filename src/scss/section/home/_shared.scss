@@ -80,6 +80,14 @@
 
 		svg {
 			flex-shrink: 0;
+		}
+
+		&--telegram svg {
+			width: rem(16);
+			height: rem(14);
+		}
+
+		&--whatsapp svg {
 			width: rem(20);
 			height: rem(20);
 		}

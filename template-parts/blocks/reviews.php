@@ -131,7 +131,7 @@ $title_html = function_exists('ksenon_title_accent_html')
 														<?php endif; ?>
 														<?php if ($satisfied) : ?>
 															<span class="reviews__satisfied">
-																<?php ksenon_icon('icon-review-thumbs', 8, 8, 'reviews__satisfied-icon'); ?>
+																<?php ksenon_icon('icon-review-thumbs', 12, 12, 'reviews__satisfied-icon'); ?>
 																<span class="reviews__satisfied-text"><?php esc_html_e('доволен', 'ksenonspb'); ?></span>
 															</span>
 														<?php endif; ?>
