@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initPhoneMask();
 	initCf7();
 	initFormUpload();
+	initPortfolioCardImages();
 	initYandexMap();
 });
 
@@ -989,6 +990,27 @@ function initPortfolioBrandSearch() {
 		if (!form.contains(event.target)) {
 			close();
 		}
+	});
+}
+
+function initPortfolioCardImages() {
+	const images = document.querySelectorAll(".portfolio-card__img");
+	if (!images.length) return;
+
+	const markLoaded = (img) => {
+		if (img.classList.contains("_loaded")) return;
+		img.classList.add("_loaded");
+		img.closest(".portfolio-card__image")?.classList.add("_loaded");
+	};
+
+	images.forEach((img) => {
+		if (img.complete) {
+			markLoaded(img);
+			return;
+		}
+
+		img.addEventListener("load", () => markLoaded(img), { once: true });
+		img.addEventListener("error", () => markLoaded(img), { once: true });
 	});
 }
 

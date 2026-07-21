@@ -120,6 +120,24 @@
 		position: relative;
 		min-height: 0;
 		overflow: hidden;
+		background: linear-gradient(
+			90deg,
+			rgba($color-accent, 0.1) 25%,
+			rgba($color-accent, 0.2) 50%,
+			rgba($color-accent, 0.1) 75%
+		);
+		background-size: 200% 100%;
+		animation: portfolio-card-shimmer 3s infinite linear;
+
+		&._loaded {
+			animation: none;
+			background: $color-surface;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+			background: $color-surface;
+		}
 	}
 
 	&__img {
@@ -127,7 +145,16 @@
 		inset: 0;
 		width: 100%;
 		height: 100%;
-		transition: transform 0.35s ease;
+		opacity: 0;
+		transition: opacity 0.35s ease, transform 0.35s ease;
+
+		&._loaded {
+			opacity: 1;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
 	}
 
 	&__compare {
@@ -295,5 +322,15 @@
 		&__title a:hover {
 			color: $color-accent;
 		}
+	}
+}
+
+@keyframes portfolio-card-shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+
+	100% {
+		background-position: 200% 0;
 	}
 }
