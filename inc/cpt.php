@@ -672,6 +672,29 @@ add_filter(
 			}
 		}
 
+		/*
+		 * Taxonomy archives use pretty pagination: /{category-path}/page/{n}/.
+		 * WP rewrite (CPT slug %service_category%) otherwise treats this as a
+		 * single service with query var "page" (multipage post), not "paged".
+		 */
+		if (
+			$segment_count >= 3
+			&& 'page' === $segments[$segment_count - 2]
+			&& ctype_digit((string) $segments[$segment_count - 1])
+		) {
+			$paged             = (int) $segments[$segment_count - 1];
+			$category_segments = array_slice($segments, 0, $segment_count - 2);
+			$paged_category    = ksenon_find_service_category_by_url_path($category_segments);
+			if ($paged_category instanceof WP_Term && $paged > 0) {
+				return array(
+					'taxonomy'         => 'service_category',
+					'service_category' => $paged_category->slug,
+					'term'             => $paged_category->slug,
+					'paged'            => $paged,
+				);
+			}
+		}
+
 		if ($segment_count >= 2 && $segment_count <= 3) {
 			$post_id = ksenon_find_service_by_url_path($segments);
 			if ($post_id > 0) {
@@ -771,6 +794,10 @@ add_action(
 			)
 		);
 
+		// Keep in sync with template-parts/pages/services-archive.php (custom query uses 9).
+		// Otherwise WP handle_404() treats /page/2/ as beyond max_num_pages when Reading
+		// settings use a larger posts_per_page.
+		$query->set('posts_per_page', 9);
 		$query->set('post_type', 'service');
 		$query->set(
 			'tax_query',
