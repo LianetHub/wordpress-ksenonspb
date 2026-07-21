@@ -3,34 +3,46 @@
     "title": "Марка",
     "fields": [
         {
-            "key": "field_ksenon_brand_logo",
-            "label": "Логотип марки",
-            "name": "logo",
-            "type": "image",
-            "return_format": "array"
-        },
-        {
             "key": "field_ksenon_brand_hero_title",
             "label": "Hero — заголовок",
             "name": "hero_title",
             "type": "textarea",
-            "rows": 2
+            "rows": 2,
+            "instructions": "Например: Ремонт фар BMW. Если пусто — берётся заголовок записи."
         },
         {
-            "key": "field_ksenon_brand_hero_image",
-            "label": "Hero — изображение",
-            "name": "hero_image",
-            "type": "image",
-            "return_format": "array"
+            "key": "field_ksenon_brand_features_title",
+            "label": "Особенности — заголовок секции",
+            "name": "features_title",
+            "type": "text",
+            "instructions": "Например: Особенности ремонта фар BMW"
         },
         {
             "key": "field_ksenon_brand_features",
             "label": "Особенности марки",
             "name": "features",
-            "type": "wysiwyg",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить особенность",
+            "min": 0,
+            "max": 8,
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_brand_feature_title",
+                    "label": "Заголовок",
+                    "name": "feature_title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_brand_features"
+                },
+                {
+                    "key": "field_ksenon_brand_feature_text",
+                    "label": "Текст",
+                    "name": "feature_text",
+                    "type": "textarea",
+                    "rows": 4,
+                    "parent_repeater": "field_ksenon_brand_features"
+                }
+            ]
         },
         {
             "key": "field_ksenon_brand_related_services",
@@ -111,5 +123,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1753113600
 }

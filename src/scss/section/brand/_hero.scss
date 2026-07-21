@@ -1,0 +1,42 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.brand-hero {
+	padding: rem(24) 0 rem(20);
+
+	@media (min-width: $md3) {
+		padding: rem(32) 0 rem(24);
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(28);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			@include adaptive-font(36, 48);
+		}
+	}
+}
+
+.main--brand {
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)});
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)});
+	}
+}
+
+.admin-bar .main--brand {
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 46px);
+
+	@media screen and (min-width: 783px) {
+		padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 32px);
+	}
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)} + 32px);
+	}
+}

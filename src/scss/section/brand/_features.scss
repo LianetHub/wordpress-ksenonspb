@@ -1,0 +1,99 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.brand-features {
+	padding: 0 0 rem(32);
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(60);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+
+		@media (min-width: $md3) {
+			gap: rem(32);
+		}
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(22);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			font-size: rem(36);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: rem(16);
+
+		@media (min-width: $md4) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: rem(20);
+		}
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		overflow: hidden;
+		border-radius: rem(20);
+
+		@media (min-width: $md3) {
+			border-radius: rem(40);
+		}
+	}
+
+	&__card-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: rem(48);
+		padding: rem(12) rem(16);
+		border-radius: rem(20);
+		background: $color-accent;
+		color: $color-white;
+		font-family: $font-family;
+		font-size: rem(16);
+		font-weight: 500;
+		line-height: normal;
+		text-align: center;
+
+		@media (min-width: $md3) {
+			min-height: rem(62);
+			padding: rem(15) rem(20);
+			border-radius: rem(40);
+			font-size: rem(20);
+		}
+	}
+
+	&__card-text {
+		flex: 1 1 auto;
+		margin-top: rem(-20);
+		padding: rem(36) rem(16) rem(20);
+		border-radius: 0 0 rem(20) rem(20);
+		background: $color-surface;
+		color: $color-text-secondary;
+		font-family: $font-family;
+		font-size: rem(14);
+		font-weight: 400;
+		line-height: 1.45;
+
+		@media (min-width: $md3) {
+			margin-top: rem(-31);
+			padding: rem(48) rem(40) rem(28);
+			border-radius: 0 0 rem(40) rem(40);
+			font-size: rem(15);
+			line-height: normal;
+		}
+	}
+}

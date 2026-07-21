@@ -21,7 +21,7 @@
 	&__top {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: stretch;
 		gap: rem(20);
 		width: 100%;
 
@@ -37,12 +37,16 @@
 	&__title {
 		min-width: 0;
 		flex: 1 1 auto;
+		font-family: $font-family;
+		font-size: rem(28);
+		font-style: normal;
 		font-weight: 500;
+		line-height: normal;
 		color: $color-black;
-		text-align: center;
+		text-align: left;
 
 		@media (min-width: $md3) {
-			text-align: left;
+			@include adaptive-font(36, 48);
 		}
 	}
 
@@ -73,5 +77,26 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+}
+
+.main--service {
+	// header padding-top + bar min-height + tighter content gap on mobile
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)});
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)});
+	}
+}
+
+.admin-bar .main--service {
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 46px);
+
+	@media screen and (min-width: 783px) {
+		padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 32px);
+	}
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)} + 32px);
 	}
 }

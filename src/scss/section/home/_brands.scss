@@ -158,3 +158,15 @@
 		}
 	}
 }
+
+.main--service .brands-section__title {
+	@media (max-width: $md4) {
+		font-family: $font-family;
+		font-size: rem(20);
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+		text-align: left;
+	}
+}

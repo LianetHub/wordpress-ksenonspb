@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initAccordion();
 	initHome();
 	initCptArchiveFilters();
+	initBrandServicesFilter();
 	initPortfolioBrandSearch();
 	initPhoneMask();
 	initCf7();
@@ -782,6 +783,37 @@ function initCptArchiveFilters() {
 				freeMode: true,
 			});
 		});
+}
+
+function initBrandServicesFilter() {
+	document.querySelectorAll("[data-brand-services]").forEach((root) => {
+		const buttons = Array.from(root.querySelectorAll("[data-brand-filter]"));
+		const cards = Array.from(root.querySelectorAll(".service-card[data-categories]"));
+		if (!buttons.length || !cards.length) return;
+
+		const setActive = (activeBtn) => {
+			const filter = activeBtn.getAttribute("data-brand-filter") || "all";
+
+			buttons.forEach((btn) => {
+				const isActive = btn === activeBtn;
+				btn.classList.toggle("_active", isActive);
+				btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+			});
+
+			cards.forEach((card) => {
+				if (filter === "all") {
+					card.hidden = false;
+					return;
+				}
+				const cats = (card.getAttribute("data-categories") || "").split(/\s+/).filter(Boolean);
+				card.hidden = !cats.includes(filter);
+			});
+		};
+
+		buttons.forEach((btn) => {
+			btn.addEventListener("click", () => setActive(btn));
+		});
+	});
 }
 
 function initPortfolioBrandSearch() {

@@ -101,6 +101,49 @@ const LEGACY_TAG_MAP = {
 	'ремонт отражателей': 'Ремонт отражателей фар — чистка или замена рефлекторов',
 };
 
+/** Aliases / substrings → exact service title from services-import.json */
+const SERVICE_KEYWORD_MAP = [
+	{ title: 'Изготовление дневных ходовых огней (ДХО)', keywords: ['установка дхо', 'изготовление дхо', 'дхо', 'drl', 'дневных ходовых', 'дневные ходовые'] },
+	{ title: 'Ремонт штатных ДХО', keywords: ['ремонт дхо', 'кольца дхо', 'пожелтели кольца'] },
+	{ title: 'Установка Bi-LED (светодиодных) линз', keywords: ['bi-led', 'bi led', 'biled', 'bi_led', 'би-лед', 'би лед', 'билед', 'aozoom', 'luma i5', 'koito'] },
+	{ title: 'Установка лазерных (Laser) линз', keywords: ['laser', 'лазерн'] },
+	{ title: 'Замена линз в фарах', keywords: ['замена линз', 'ретрофит', 'линз в фары', 'линзы в фары'] },
+	{ title: 'Замена штатных линз на оригинал или аналог', keywords: ['штатных линз', 'оригинал или аналог'] },
+	{ title: 'Замена стёкол фар', keywords: ['замена стекл', 'замена стёкл', 'стекла фар', 'стекло фар', 'стекол фар', 'стёкол фар'] },
+	{ title: 'Ремонт фар', keywords: ['ремонт фар', 'ремонт фары', 'ремонт матрич', 'восстановление фар', 'подубитых фар', 'спасаем led'] },
+	{ title: 'Ремонт штатных светодиодных фар (LED-ремонт)', keywords: ['led-ремонт', 'led ремонт', 'ремонт led фар', 'матричных led', 'led фары', 'led фара'] },
+	{ title: 'Ремонт штатных светодиодных фонарей', keywords: ['заднего фонаря', 'задних фонар', 'ремонт фонар', 'led фонар', 'задний фонарь'] },
+	{ title: 'Покраска масок фар', keywords: ['покраска масок', 'покраска маски', 'масок фар', 'маска фар'] },
+	{ title: 'Устранение запотевания фар', keywords: ['запотев', 'запотевающ'] },
+	{ title: 'Химическая чистка фары изнутри', keywords: ['химическая чистка', 'чистка фары', 'чистка фар', 'чистка изнутри'] },
+	{ title: 'Полировка и шлифовка фар', keywords: ['полировка', 'шлифовка'] },
+	{ title: 'Установка ксенона', keywords: ['установка ксенона', 'установка би-ксенона', 'би-ксенон', 'биксенон'] },
+	{ title: 'Ремонт корпуса фар', keywords: ['ремонт корпуса', 'корпуса фар', 'корпус фар'] },
+	{ title: 'Установка и программная активация ПТФ', keywords: ['активация птф', 'установка птф', 'программная активация птф'] },
+	{ title: 'Установка светодиодных противотуманных фар', keywords: ['светодиодных противотуман', 'led птф', 'led противотуман'] },
+	{ title: 'Замена стёкол противотуманных фар', keywords: ['стекол противотуман', 'стёкол противотуман', 'стекла птф'] },
+	{ title: 'Замена ламп в ПТФ', keywords: ['ламп в птф', 'лампы птф'] },
+	{ title: 'Замена ламп на светодиодные — салон, габариты, подсветка номера', keywords: ['ламп на светодиод', 'led ламп', 'подсветка номера'] },
+	{ title: 'Комплексное улучшение света фар', keywords: ['тюнинг оптик', 'улучшение света', 'улучшения света', 'проблема плохого света', 'плохого света'] },
+	{ title: 'Тюнинг подсветки — Ангельские и Дьявольские глазки', keywords: ['ангельск', 'дьявольск', 'глазки'] },
+	{ title: 'Установка динамических («бегущих») поворотников', keywords: ['бегущ', 'динамических поворот', 'динамические поворот'] },
+	{ title: 'Ремонт отражателей фар — чистка или замена рефлекторов', keywords: ['ремонт отражател', 'замена рефлектор', 'отражателей'] },
+	{ title: 'Восстановление отражателей методом вакуумного напыления', keywords: ['вакуумного напыления', 'напыление отражател'] },
+	{ title: 'Восстановление креплений («ушек») фары', keywords: ['ушек', 'креплений фары', 'крепления фары'] },
+	{ title: 'Ремонт корректора фар — ручные и автоматические корректоры', keywords: ['ремонт корректор', 'автокорректор'] },
+	{ title: 'Установка автокорректоров фар', keywords: ['установка автокорректор'] },
+	{ title: 'Ремонт омывателя фар', keywords: ['омывател'] },
+	{ title: 'Замена штатных блоков розжига и ламп', keywords: ['блок розжига', 'блоки розжига'] },
+	{ title: 'Ремонт ксеноновых фар', keywords: ['ремонт ксенон'] },
+	{ title: 'Ремонт систем адаптивного освещения (AFS)', keywords: ['ремонт адаптива', 'адаптивного освещения', 'система afs', 'afs'] },
+	{ title: 'Ремонт и перепайка драйверов (плат управления) LED', keywords: ['драйвер', 'перепайк', 'плат управления'] },
+	{ title: 'Ремонт контроллеров управления фарой (ЭБУ)', keywords: ['контроллер', 'эбу фар', 'блок управления фарой'] },
+	{ title: 'Замена внутренней проводки фары', keywords: ['замена проводк', 'внутренней проводк', 'проводки фары'] },
+	{ title: 'Программное отключение опроса ламп («обманки»)', keywords: ['обманк', 'опроса ламп'] },
+	{ title: 'Кодирование и программирование штатных блоков управления светом + компьютерная диагностика', keywords: ['кодирован', 'программирован'] },
+	{ title: 'Регулировка света фар на оптическом стенде', keywords: ['регулировка света', 'оптическом стенде', 'оптический стенд'] },
+];
+
 const IGNORED_CATEGORY_SLUGS = new Set([
 	'portfolio',
 	'uncategorized',
@@ -130,6 +173,14 @@ const EXCLUDE_TITLE_RE = [
 	/^ремонт задних фонарей$/i,
 	/^ремонт запотевающих фар$/i,
 ];
+
+/** Manual fixes keyed by legacy slug (old WP path). */
+const CASE_OVERRIDES = {
+	'4729-2': {
+		title: 'Toyota Alphard 4WD - переделка оптики',
+		slug: 'toyota-alphard-4wd-peredelka-optiki',
+	},
+};
 
 function parseArgs(argv) {
 	const args = { limit: 0, skipLlm: false, forceLlm: false };
@@ -343,6 +394,32 @@ function uniquifySlugs(cases) {
 	return cases;
 }
 
+function applyCaseOverrides(cases) {
+	const used = new Set(cases.map((item) => item.slug));
+	for (const item of cases) {
+		const legacy = item._legacy_slug || item.slug;
+		const override = CASE_OVERRIDES[legacy];
+		if (!override) continue;
+
+		if (override.title) {
+			item.title = override.title;
+			item.hero_title = override.title;
+		}
+		if (override.slug && override.slug !== item.slug) {
+			used.delete(item.slug);
+			let slug = override.slug;
+			let n = 2;
+			while (used.has(slug)) {
+				slug = `${override.slug}-${n}`;
+				n += 1;
+			}
+			used.add(slug);
+			item.slug = slug;
+		}
+	}
+	return cases;
+}
+
 function extractVideoUrl(document) {
 	const iframes = [...document.querySelectorAll('iframe[src]')];
 	for (const iframe of iframes) {
@@ -529,31 +606,91 @@ function mapTagToService(tag, serviceIndex) {
 	return null;
 }
 
-function matchServicesFromTitle(title, serviceIndex) {
-	const normalizedTitle = normalizeText(title);
+function buildSearchBlob(parts) {
+	return normalizeText(parts.filter(Boolean).join(' '));
+}
+
+function matchServicesFromKeywords(text, serviceIndex) {
+	const normalized = normalizeText(text);
+	if (!normalized) return [];
+	const matches = [];
+	for (const entry of SERVICE_KEYWORD_MAP) {
+		const service = serviceIndex.byTitle.get(entry.title);
+		if (!service) continue;
+		const hit = entry.keywords.some((keyword) => {
+			const needle = normalizeText(keyword);
+			return needle.length >= 3 && normalized.includes(needle);
+		});
+		if (hit) matches.push(service);
+	}
+	return matches;
+}
+
+function matchServicesFromTitle(text, serviceIndex) {
+	const normalizedText = normalizeText(text);
 	const matches = [];
 	for (const service of serviceIndex.list) {
 		const normalizedService = normalizeText(service.title);
 		const keyword = normalizedService.split(/[—(]/)[0].trim();
-		if (keyword.length >= 8 && normalizedTitle.includes(keyword)) {
+		if (keyword.length >= 8 && normalizedText.includes(keyword)) {
 			matches.push(service);
 		}
 	}
 	return matches;
 }
 
-function resolveServices({ tags, title, serviceIndex }) {
+function resolveServices({ tags = [], title = '', excerpt = '', taskDescription = '', plainText = '', serviceIndex }) {
 	const services = new Map();
-	for (const tag of tags) {
-		const service = mapTagToService(tag, serviceIndex);
+	const add = (service) => {
 		if (service) services.set(service.title, service);
+	};
+
+	for (const tag of tags) {
+		add(mapTagToService(tag, serviceIndex));
 	}
-	if (!services.size) {
-		for (const service of matchServicesFromTitle(title, serviceIndex)) {
-			services.set(service.title, service);
-		}
+
+	const blob = buildSearchBlob([title, excerpt, taskDescription, plainText]);
+	for (const service of matchServicesFromKeywords(blob, serviceIndex)) {
+		add(service);
 	}
+	for (const service of matchServicesFromTitle(blob, serviceIndex)) {
+		add(service);
+	}
+
 	return [...services.values()];
+}
+
+function preferNonEmpty(primary, fallback) {
+	const a = String(primary ?? '').trim();
+	const b = String(fallback ?? '').trim();
+	return a || b;
+}
+
+function fillMissingRelatedServices(cases, serviceIndex) {
+	let filled = 0;
+	const result = cases.map((item) => {
+		if (String(item.related_services ?? '').trim()) {
+			return item;
+		}
+		const services = resolveServices({
+			tags: [],
+			title: item.title,
+			excerpt: item.excerpt,
+			taskDescription: item.task_description,
+			plainText: item._plain_text,
+			serviceIndex,
+		});
+		if (!services.length) return item;
+		filled += 1;
+		const titles = services.map((s) => s.title);
+		return {
+			...item,
+			related_services: titles.join('|'),
+			_service_titles: titles,
+		};
+	});
+	console.log(`fillMissingRelatedServices: filled ${filled}/${cases.length}`);
+	return result;
 }
 
 const CAR_BRAND_RE =
@@ -727,7 +864,13 @@ function parsePortfolioCase({ pageEntry, meta, contentHtml, brandIndex, serviceI
 
 	const brands = resolveBrands({ article, title, brandIndex });
 	const tags = extractTags(document);
-	const services = resolveServices({ tags, title, serviceIndex });
+	const services = resolveServices({
+		tags,
+		title,
+		excerpt,
+		plainText,
+		serviceIndex,
+	});
 
 	const classification = classifyCase({
 		title,
@@ -828,8 +971,8 @@ function sanitizeLlmResult(result, base) {
 		after_image: after,
 		featured_image: after || before || base.featured_image || base.hero_image,
 		video: String(result.video ?? base.video ?? '').trim() || base.video,
-		related_brands: brands.join('|') || base.related_brands,
-		related_services: services.join('|') || base.related_services,
+		related_brands: preferNonEmpty(brands.join('|'), base.related_brands),
+		related_services: preferNonEmpty(services.join('|'), base.related_services),
 	};
 }
 
@@ -871,14 +1014,18 @@ ${truncate(item._plain_text || '', LLM_TEXT_MAX)}
 `;
 }
 
-async function callLlm(item, apiKey, retries = 3) {
+async function callLlm(item, apiKey, allServiceTitles = [], retries = 3) {
 	const { Agent } = await import('@cursor/sdk');
+	const heuristicServices = item._service_titles?.length
+		? item._service_titles
+		: (item.related_services || '').split('|').filter(Boolean);
+	const serviceCandidates = heuristicServices.length
+		? heuristicServices
+		: allServiceTitles;
 	const prompt = buildLlmPrompt(
 		item,
 		item._brand_titles?.length ? item._brand_titles : (item.related_brands || '').split('|').filter(Boolean),
-		item._service_titles?.length
-			? item._service_titles
-			: (item.related_services || '').split('|').filter(Boolean),
+		serviceCandidates,
 	);
 
 	let lastError;
@@ -935,12 +1082,59 @@ async function mapPool(items, concurrency, mapper) {
 	return results;
 }
 
-async function enrichWithLlm(cases, { forceLlm = false } = {}) {
+function mergeLlmFields(item, llmFields) {
+	const merged = {
+		...item,
+		...llmFields,
+		photos: item.photos,
+		photos_list: item.photos_list,
+		hero_image: item.hero_image,
+		hero_title: item.hero_title,
+		old_url: item.old_url,
+		slug: item.slug,
+		_legacy_slug: item._legacy_slug,
+		title: item.title,
+		related_brands: preferNonEmpty(llmFields.related_brands, item.related_brands),
+		related_services: preferNonEmpty(llmFields.related_services, item.related_services),
+	};
+	if (merged.related_services) {
+		merged._service_titles = merged.related_services.split('|').filter(Boolean);
+	}
+	return normalizeCaseImages(merged);
+}
+
+async function applyLlmCache(cases) {
+	const cache = (await readJson(LLM_CACHE_JSON, { cases: {} })) || { cases: {} };
+	if (!cache.cases) cache.cases = {};
+
+	let fromCache = 0;
+	const result = cases.map((item) => {
+		const cacheKey = item._legacy_slug || item.slug;
+		const cached = cache.cases[cacheKey];
+		if (!cached) {
+			return normalizeCaseImages(item);
+		}
+		fromCache += 1;
+		const duration = String(cached.duration ?? '').trim()
+			|| item.duration
+			|| extractDuration(item._plain_text || item.case_description || '');
+		return mergeLlmFields(item, { ...cached, duration });
+	});
+
+	console.log(`LLM cache applied: ${fromCache}/${cases.length}`);
+	return result;
+}
+
+async function enrichWithLlm(cases, { forceLlm = false, serviceIndex = null } = {}) {
 	await loadEnvFile();
 	const apiKey = process.env.CURSOR_API_KEY;
 	if (!apiKey) {
 		throw new Error('CURSOR_API_KEY is missing. Set it in .env or environment.');
 	}
+
+	const allServiceTitles = serviceIndex
+		? serviceIndex.list.map((s) => s.title)
+		: [];
 
 	const cache = (await readJson(LLM_CACHE_JSON, { cases: {} })) || { cases: {} };
 	if (!cache.cases) cache.cases = {};
@@ -967,30 +1161,18 @@ async function enrichWithLlm(cases, { forceLlm = false } = {}) {
 			const duration = String(cached.duration ?? '').trim()
 				|| item.duration
 				|| extractDuration(item._plain_text || item.case_description || '');
-			return normalizeCaseImages({
-				...item,
-				...cached,
-				photos: item.photos,
-				photos_list: item.photos_list,
-				hero_image: item.hero_image,
-				hero_title: item.hero_title,
-				old_url: item.old_url,
-				slug: item.slug,
-				_legacy_slug: item._legacy_slug,
-				title: item.title,
-				duration,
-			});
+			return mergeLlmFields(item, { ...cached, duration });
 		}
 
 		try {
-			const llm = await callLlm(item, apiKey);
+			const llm = await callLlm(item, apiKey, allServiceTitles);
 			cache.cases[cacheKey] = llm;
 			fresh += 1;
 			await persistCache();
 			if (fresh % 10 === 0) {
 				console.log(`LLM progress: fresh=${fresh}, cache_total=${Object.keys(cache.cases).length}`);
 			}
-			return normalizeCaseImages({ ...item, ...llm });
+			return mergeLlmFields(item, llm);
 		} catch (error) {
 			failed += 1;
 			await appendFile(
@@ -1156,6 +1338,7 @@ async function main() {
 	await writeExcluded(excluded);
 
 	uniquifySlugs(included);
+	applyCaseOverrides(included);
 
 	let cases = included;
 	if (args.limit > 0) {
@@ -1164,11 +1347,14 @@ async function main() {
 	}
 
 	if (!args.skipLlm) {
-		cases = await enrichWithLlm(cases, { forceLlm: args.forceLlm });
+		cases = await enrichWithLlm(cases, { forceLlm: args.forceLlm, serviceIndex });
 	} else {
-		console.log('Skipping LLM (--skip-llm)');
-		cases = cases.map(normalizeCaseImages);
+		console.log('Skipping LLM API (--skip-llm); applying local cache');
+		cases = await applyLlmCache(cases);
 	}
+
+	cases = fillMissingRelatedServices(cases, serviceIndex);
+	applyCaseOverrides(cases);
 
 	// If limited, still export only enriched subset for smoke; full set needs full run
 	const exportCases = (args.limit > 0

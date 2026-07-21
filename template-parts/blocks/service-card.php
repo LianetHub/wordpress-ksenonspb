@@ -25,6 +25,20 @@ if (! empty($args['class'])) {
 	$card_class .= ' ' . $args['class'];
 }
 
+$filter_slugs = array();
+if (! empty($args['filter_slugs']) && is_array($args['filter_slugs'])) {
+	$filter_slugs = array_values(
+		array_filter(
+			array_map(
+				static function ($slug) {
+					return sanitize_title((string) $slug);
+				},
+				$args['filter_slugs']
+			)
+		)
+	);
+}
+
 $permalink = '';
 $title     = '';
 $price_raw = 0;
@@ -87,8 +101,12 @@ if (function_exists('ksenon_format_price_from')) {
 		}
 	}
 }
+$li_attrs = 'class="' . esc_attr($card_class) . '"';
+if ($filter_slugs) {
+	$li_attrs .= ' data-categories="' . esc_attr(implode(' ', $filter_slugs)) . '"';
+}
 ?>
-<li class="<?php echo esc_attr($card_class); ?>">
+<li <?php echo $li_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<div class="service-card__inner">
 		<div class="service-card__head">
 			<a class="service-card__title" href="<?php echo esc_url($permalink); ?>">

@@ -85,7 +85,7 @@ while (have_posts()) :
 			<section class="service-pricing">
 				<div class="service-pricing__container container">
 					<?php if ($price_has_rows) : ?>
-						<h2 class="service-pricing__title title-md"><?php esc_html_e('Что входит в услугу', 'ksenonspb'); ?></h2>
+						<h2 class="service-pricing__title"><?php esc_html_e('Что входит в услугу', 'ksenonspb'); ?></h2>
 						<table class="service-pricing__table">
 							<colgroup>
 								<col class="service-pricing__col service-pricing__col--name" />

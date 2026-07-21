@@ -1,0 +1,114 @@
+@use "sass:color";
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.brand-services {
+	padding: 0 0 rem(32);
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(40);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+
+		@media (min-width: $md3) {
+			gap: rem(28);
+		}
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(28);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			@include adaptive-font(36, 48);
+		}
+	}
+
+	&__panel {
+		display: flex;
+		flex-direction: column;
+		gap: rem(16);
+		padding: 0;
+		border-radius: 0;
+		background: transparent;
+
+		@media (min-width: $md4) {
+			gap: rem(36);
+			padding: rem(42) rem(70);
+			border-radius: rem(40);
+			background: $color-surface;
+		}
+	}
+
+	&__filters {
+		.cpt-archive__tab {
+			cursor: pointer;
+			border: 0;
+			appearance: none;
+
+			&._active {
+				pointer-events: none;
+			}
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: rem(8);
+
+		@media (min-width: $md4) {
+			gap: rem(20);
+		}
+
+		@media (min-width: $md2) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: rem(24);
+		}
+
+		.service-card[hidden] {
+			display: none;
+		}
+	}
+
+	.service-card {
+		@media (max-width: $md4) {
+			background: $color-surface;
+
+			.service-card__label {
+				background: $color-white;
+			}
+
+			.service-card__link {
+				background: $color-white;
+			}
+		}
+	}
+
+	.service-card__link {
+		background: $color-surface;
+
+		@media (max-width: $md4) {
+			background: $color-white;
+		}
+
+		@media (any-hover: hover) {
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				background: color.adjust($color: $color-surface, $lightness: -5%);
+			}
+		}
+
+		@media (max-width: $md4) and (any-hover: hover) {
+			&:hover:not(:disabled):not([aria-disabled="true"]) {
+				background: $color-white;
+			}
+		}
+	}
+}

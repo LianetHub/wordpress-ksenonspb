@@ -148,10 +148,9 @@ $query = ksenon_query_portfolio($query_args);
 								$brands->the_post();
 								$brand_id    = get_the_ID();
 								$brand_title = get_the_title();
-								$logo        = ksenon_get_post_field('logo', $brand_id);
-								if (! $logo && has_post_thumbnail($brand_id)) {
-									$logo = get_post_thumbnail_id($brand_id);
-								}
+								$logo = has_post_thumbnail($brand_id)
+									? get_post_thumbnail_id($brand_id)
+									: null;
 								$option_id = 'portfolio-brand-option-' . (int) $brand_id;
 								?>
 								<li class="cpt-archive__brands-item" role="presentation">

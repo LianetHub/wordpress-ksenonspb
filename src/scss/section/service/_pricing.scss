@@ -19,12 +19,16 @@
 	}
 
 	&__title {
+		font-family: $font-family;
+		font-size: rem(20);
+		font-style: normal;
 		font-weight: 500;
+		line-height: normal;
 		color: $color-black;
-		text-align: center;
+		text-align: left;
 
 		@media (min-width: $md3) {
-			text-align: left;
+			@include adaptive-font(24, 48);
 		}
 	}
 
@@ -253,20 +257,22 @@
 		}
 
 		&__head--main {
-			padding: rem(5);
 			background: $color-surface;
 			border-radius: rem(30);
 		}
 
 		&__head--main .service-pricing__th {
-			padding: 0;
-			background: transparent;
+			padding: rem(5);
+			background: $color-surface;
 			border-radius: 0;
 			vertical-align: middle;
 
-			&:first-child,
-			&:last-child {
-				border-radius: 0;
+			&:first-child {
+				border-radius: rem(30) 0 0 rem(30);
+			}
+
+			&.service-pricing__th--duration {
+				border-radius: 0 rem(30) rem(30) 0;
 			}
 		}
 

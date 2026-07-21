@@ -13,16 +13,13 @@ if (! $post instanceof WP_Post) {
 	return;
 }
 
-$logo = ksenon_get_post_field('logo', $post->ID);
-if (! $logo && has_post_thumbnail($post)) {
-	$logo = get_post_thumbnail_id($post);
-}
+$image = has_post_thumbnail($post) ? get_post_thumbnail_id($post) : null;
 ?>
 <li class="brand-card">
 	<a class="brand-card__link" href="<?php echo esc_url(get_permalink($post)); ?>">
-		<?php if ($logo) : ?>
+		<?php if ($image) : ?>
 			<div class="brand-card__media">
-				<?php echo ksenon_acf_image($logo, 'medium', array('class' => 'brand-card__logo')); ?>
+				<?php echo ksenon_acf_image($image, 'medium', array('class' => 'brand-card__logo')); ?>
 			</div>
 		<?php endif; ?>
 		<span class="brand-card__title"><?php echo esc_html(get_the_title($post)); ?> →</span>

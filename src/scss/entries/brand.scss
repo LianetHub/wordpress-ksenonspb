@@ -2,6 +2,11 @@
 @use "../mixins" as *;
 @use "../section/home/shared";
 @use "../section/home/brands";
+@use "../section/home/portfolio-teaser";
+@use "../section/services/archive";
+@use "../section/brand/hero";
+@use "../section/brand/features";
+@use "../section/brand/services";
 
 .color-accent {
 	color: $color-accent;

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * WP All Import helpers for CPT service.
+ * WP All Import helpers for CPT service / brand.
  *
- * Важно: не мапить ACF-repeaters price_* / faq через Variable Mode + PHP.
+ * Важно: не мапить ACF-repeaters price_* / faq / features через Variable Mode + PHP.
  * Хук пишет repeaters сам из колонок CSV (или из meta ksenon_raw_*).
  *
  * @package ksenonspb
@@ -272,8 +272,69 @@ function ksenon_wpai_service_saved_post($post_id, $xml_node = null, $is_update =
 	}
 }
 
+/**
+ * @param string $raw Pipe/colon encoded feature rows (title::text).
+ * @return array<int, array{feature_title:string,feature_text:string}>
+ */
+function ksenon_wpai_parse_feature_rows($raw)
+{
+	$rows = array();
+	$raw = ksenon_wpai_normalize_encoded_rows($raw);
+	if ($raw === '') {
+		return $rows;
+	}
+
+	foreach (explode('|', $raw) as $chunk) {
+		$chunk = trim((string) $chunk);
+		if ($chunk === '') {
+			continue;
+		}
+		$parts = array_map('trim', explode('::', $chunk, 2));
+		$rows[] = array(
+			'feature_title' => isset($parts[0]) ? $parts[0] : '',
+			'feature_text'  => isset($parts[1]) ? $parts[1] : '',
+		);
+	}
+
+	return $rows;
+}
+
+/**
+ * @param int                    $post_id   Post ID.
+ * @param SimpleXMLElement|mixed $xml_node  Record.
+ * @param mixed                  $is_update Update flag.
+ */
+function ksenon_wpai_brand_saved_post($post_id, $xml_node = null, $is_update = null)
+{
+	$post_id = (int) $post_id;
+	if ($post_id <= 0 || get_post_type($post_id) !== 'brand') {
+		return;
+	}
+	if (! function_exists('update_field')) {
+		return;
+	}
+
+	$record = array();
+	if ($xml_node !== null) {
+		$decoded = json_decode(wp_json_encode($xml_node), true);
+		if (is_array($decoded)) {
+			$record = $decoded;
+		}
+	}
+
+	$raw = ksenon_wpai_get_raw($post_id, $record, 'features', 'ksenon_raw_features');
+	if ($raw === '') {
+		return;
+	}
+
+	$rows = ksenon_wpai_parse_feature_rows($raw);
+	ksenon_wpai_set_repeater('field_ksenon_brand_features', $rows, $post_id);
+	delete_post_meta($post_id, 'ksenon_raw_features');
+}
+
 // Поздний приоритет — после ACF Add-On у WP All Import.
 if (function_exists('add_action')) {
 	add_action('pmxi_saved_post', 'ksenon_wpai_service_saved_post', 9999, 3);
+	add_action('pmxi_saved_post', 'ksenon_wpai_brand_saved_post', 9999, 3);
 }
 
