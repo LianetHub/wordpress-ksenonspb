@@ -1,10 +1,11 @@
 @use "../variables" as *;
 @use "../mixins" as *;
+@use "../section/home/shared";
+@use "../section/home/brands";
+@use "../section/home/portfolio-teaser";
+@use "../section/service/hero";
 @use "../section/service/pricing";
 
-.service-page,
-.service-hero,
-.service-brands,
-.service-portfolio {
-	// Single service — fill during redesign
+.color-accent {
+	color: $color-accent;
 }

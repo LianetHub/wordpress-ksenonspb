@@ -281,7 +281,8 @@ const SEO_HEADERS = [
 const HEADERS = [...SERVICE_HEADERS, ...SEO_HEADERS];
 
 const IMPORT_NOTE =
-	'title → post_title (уникальный ID). slug → meta service_slug. price → ACF price_from. desc → card_excerpt. benefits → card_labels. category → taxonomy service_category (по названию). image → Featured Image + ACF card_image (URL со старого сайта; карта в service-images-map.json, пересбор: node parsing/scripts/pick-service-images.mjs). price_main / price_extra / price_diagnostics → ACF repeaters (строки через |, поля name::price::duration::warranty через ::; пустая гарантия = -). warranty_text → ACF warranty_text. related_brands → ACF relationship по post title через |. faq_title → ACF faq_title. faq → ACF faq (question::answer через |). Портфолио НЕ импортируется здесь — источник истины portfolio.related_services (обратный запрос на single-service).';
+	'title → post_title (уникальный ID). slug → meta service_slug. price → ACF price_from. desc → card_excerpt. benefits → card_labels. category → taxonomy service_category (по названию). image → Featured Image + ACF card_image (URL со старого сайта; карта в service-images-map.json). price_main / price_extra / price_diagnostics / faq — строки name::price::duration::warranty (faq: question::answer) через |; в WPAI НЕ мапить subfields PHP-функцией (Variable Repeater ломается). Парсинг: тема inc/wp-all-import.php (pmxi_saved_post). Запасной путь: custom fields ksenon_raw_price_main / ksenon_raw_price_extra / ksenon_raw_price_diagnostics / ksenon_raw_faq = {column[1]} целиком. warranty_text → ACF. related_brands → relationship по title через |. faq_title → ACF. Портфолио — только portfolio.related_services.';
+
 
 /**
  * Название категории по URL услуги — struktura-sayta-remont-far.md §2.1–2.5.

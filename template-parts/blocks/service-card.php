@@ -27,7 +27,6 @@ if (! empty($args['class'])) {
 
 $permalink = '';
 $title     = '';
-$image     = null;
 $price_raw = 0;
 $excerpt   = '';
 $labels    = array();
@@ -52,16 +51,11 @@ if ($term instanceof WP_Term) {
 } else {
 	$permalink = get_permalink($post);
 	$title     = get_the_title($post);
-	$image     = ksenon_get_post_field('card_image', $post->ID);
 	$price_raw = ksenon_get_post_field('price_from', $post->ID);
 	$excerpt   = (string) ksenon_get_post_field('card_excerpt', $post->ID);
 	$labels    = function_exists('ksenon_normalize_card_labels')
 		? ksenon_normalize_card_labels(ksenon_get_post_field('card_labels', $post->ID))
 		: array();
-
-	if (! $image && has_post_thumbnail($post)) {
-		$image = get_post_thumbnail_id($post);
-	}
 
 	if (! $excerpt && has_excerpt($post)) {
 		$excerpt = get_the_excerpt($post);
@@ -93,25 +87,15 @@ if (function_exists('ksenon_format_price_from')) {
 		}
 	}
 }
-
-$bg_style = '';
-if ($image) {
-	$image_url = is_array($image) ? ($image['url'] ?? '') : wp_get_attachment_image_url($image, 'large');
-	if ($image_url) {
-		$bg_style = ' style="background-image:url(' . esc_url($image_url) . ')"';
-	}
-}
 ?>
-<li class="<?php echo esc_attr($card_class); ?>" <?php echo $bg_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-													?>>
+<li class="<?php echo esc_attr($card_class); ?>">
 	<div class="service-card__inner">
 		<div class="service-card__head">
 			<a class="service-card__title" href="<?php echo esc_url($permalink); ?>">
 				<?php echo esc_html($title); ?>
 			</a>
 			<?php if ($price) : ?>
-				<div class="service-card__price"><?php echo $price; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-													?></div>
+				<div class="service-card__price"><?php echo $price; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 			<?php endif; ?>
 		</div>
 		<?php if ($excerpt) : ?>

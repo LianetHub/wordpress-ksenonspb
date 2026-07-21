@@ -62,6 +62,17 @@
   position: relative;
   min-height: 0;
   overflow: hidden;
+  background: -webkit-gradient(linear, left top, right top, color-stop(25%, rgba(253, 128, 17, 0.1)), color-stop(50%, rgba(253, 128, 17, 0.2)), color-stop(75%, rgba(253, 128, 17, 0.1)));
+  background: linear-gradient(90deg, rgba(253, 128, 17, 0.1) 25%, rgba(253, 128, 17, 0.2) 50%, rgba(253, 128, 17, 0.1) 75%);
+  background-size: 200% 100%;
+  -webkit-animation: portfolio-card-shimmer 3s infinite linear;
+          animation: portfolio-card-shimmer 3s infinite linear;
+}
+
+.portfolio-card__image._loaded {
+  -webkit-animation: none;
+          animation: none;
+  background: #f7f7f7;
 }
 
 .portfolio-card__img {
@@ -69,10 +80,15 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  -webkit-transition: -webkit-transform 0.35s ease;
-  transition: -webkit-transform 0.35s ease;
-  transition: transform 0.35s ease;
-  transition: transform 0.35s ease, -webkit-transform 0.35s ease;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s ease, -webkit-transform 0.35s ease;
+  transition: opacity 0.35s ease, -webkit-transform 0.35s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease, -webkit-transform 0.35s ease;
+}
+
+.portfolio-card__img._loaded {
+  opacity: 1;
 }
 
 .portfolio-card__compare {
@@ -192,6 +208,26 @@
   height: 2.125rem;
   background: #fd8011;
   color: #ffffff;
+}
+
+@-webkit-keyframes portfolio-card-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes portfolio-card-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .case-page {
@@ -895,6 +931,19 @@
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-card__image {
+    -webkit-animation: none;
+            animation: none;
+    background: #f7f7f7;
+  }
+
+  .portfolio-card__img {
+    -webkit-transition: none;
+    transition: none;
   }
 }
 
