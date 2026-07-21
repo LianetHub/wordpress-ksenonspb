@@ -15,33 +15,103 @@ while (have_posts()) :
 	<article class="service-page">
 		<section class="service-hero">
 			<div class="service-hero__container container">
-				<h1 class="service-hero__title title-lg"><?php echo esc_html((string) ksenon_get_post_field('hero_title', $post_id) ?: get_the_title()); ?></h1>
-				<?php if (ksenon_get_post_field('hero_text', $post_id)) : ?>
-					<p class="service-hero__text"><?php echo nl2br(esc_html((string) ksenon_get_post_field('hero_text', $post_id))); ?></p>
+				<h1 class="service-hero__title title-lg"><?php the_title(); ?></h1>
+				<?php
+				$hero_text = (string) (ksenon_get_post_field('card_excerpt', $post_id) ?: get_the_excerpt());
+				if ($hero_text) :
+					?>
+					<p class="service-hero__text"><?php echo nl2br(esc_html($hero_text)); ?></p>
 				<?php endif; ?>
 				<?php
-				$hero_image = ksenon_get_post_field('hero_image', $post_id);
+				$hero_image = ksenon_get_post_field('card_image', $post_id);
 				if ($hero_image) {
 					echo ksenon_acf_image($hero_image, 'large', array('class' => 'service-hero__img'));
+				} elseif (has_post_thumbnail($post_id)) {
+					echo get_the_post_thumbnail($post_id, 'large', array('class' => 'service-hero__img'));
 				}
 				?>
 			</div>
 		</section>
 
 		<?php
-		$included = ksenon_get_post_field('included_items', $post_id);
-		if (is_array($included) && $included) :
+		$price_sections = array(
+			array(
+				'key'   => 'price_main',
+				'title' => __('Основные работы', 'ksenonspb'),
+				'mod'   => 'main',
+			),
+			array(
+				'key'   => 'price_extra',
+				'title' => __('Дополнительные работы (по необходимости)', 'ksenonspb'),
+				'mod'   => 'extra',
+			),
+			array(
+				'key'   => 'price_diagnostics',
+				'title' => __('Диагностика', 'ksenonspb'),
+				'mod'   => 'diagnostics',
+			),
+		);
+		$price_has_rows = false;
+		foreach ($price_sections as $section) {
+			$rows = ksenon_get_post_field($section['key'], $post_id);
+			if (is_array($rows) && $rows) {
+				foreach ($rows as $row) {
+					if (! empty($row['name'])) {
+						$price_has_rows = true;
+						break 2;
+					}
+				}
+			}
+		}
+		$warranty_text = (string) (ksenon_get_post_field('warranty_text', $post_id) ?: '');
+		if ($price_has_rows || $warranty_text) :
 		?>
-			<section class="service-included">
-				<div class="service-included__container container">
-					<h2 class="service-included__title title-md"><?php echo esc_html((string) (ksenon_get_post_field('included_title', $post_id) ?: __('Что входит в услугу', 'ksenonspb'))); ?></h2>
-					<ul class="service-included__list">
-						<?php foreach ($included as $row) : ?>
-							<?php if (! empty($row['text'])) : ?>
-								<li><?php echo esc_html($row['text']); ?></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					</ul>
+			<section class="service-pricing">
+				<div class="service-pricing__container container">
+					<?php if ($price_has_rows) : ?>
+						<div class="service-pricing__tables">
+							<?php foreach ($price_sections as $section) : ?>
+								<?php
+								$rows = ksenon_get_post_field($section['key'], $post_id);
+								if (! is_array($rows) || ! $rows) {
+									continue;
+								}
+								$visible_rows = array_values(
+									array_filter(
+										$rows,
+										static function ($row) {
+											return ! empty($row['name']);
+										}
+									)
+								);
+								if (! $visible_rows) {
+									continue;
+								}
+								?>
+								<div class="service-pricing__block service-pricing__block--<?php echo esc_attr($section['mod']); ?>">
+									<div class="service-pricing__head">
+										<span class="service-pricing__section-title"><?php echo esc_html($section['title']); ?></span>
+										<span class="service-pricing__col-label"><?php esc_html_e('Цена', 'ksenonspb'); ?></span>
+										<span class="service-pricing__col-label"><?php esc_html_e('Срок', 'ksenonspb'); ?></span>
+										<span class="service-pricing__col-label"><?php esc_html_e('Гарантия', 'ksenonspb'); ?></span>
+									</div>
+									<ul class="service-pricing__list">
+										<?php foreach ($visible_rows as $row) : ?>
+											<li class="service-pricing__row">
+												<span class="service-pricing__name"><?php echo esc_html((string) $row['name']); ?></span>
+												<span class="service-pricing__price"><?php echo esc_html((string) ($row['price'] ?? '')); ?></span>
+												<span class="service-pricing__duration"><?php echo esc_html((string) ($row['duration'] ?? '')); ?></span>
+												<span class="service-pricing__warranty"><?php echo esc_html((string) ($row['warranty'] ?? '')); ?></span>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+					<?php if ($warranty_text) : ?>
+						<p class="service-pricing__warranty-text"><?php echo nl2br(esc_html($warranty_text)); ?></p>
+					<?php endif; ?>
 				</div>
 			</section>
 		<?php endif; ?>

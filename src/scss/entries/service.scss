@@ -1,8 +1,9 @@
 @use "../variables" as *;
 @use "../mixins" as *;
+@use "../section/service/pricing";
+
 .service-page,
 .service-hero,
-.service-included,
 .service-brands,
 .service-portfolio {
 	// Single service — fill during redesign

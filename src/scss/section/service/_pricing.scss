@@ -1,0 +1,138 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.service-pricing {
+	padding: rem(48) 0 rem(64);
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(28);
+	}
+
+	&__tables {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+	}
+
+	&__block {
+		border-radius: rem(16);
+		overflow: hidden;
+		background: $color-white;
+		border: 1px solid rgba($color-black, 0.06);
+	}
+
+	&__head {
+		display: grid;
+		grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(rem(88), 0.7fr));
+		gap: rem(12);
+		align-items: center;
+		padding: rem(14) rem(20);
+		background: $color-surface;
+	}
+
+	&__section-title {
+		font-family: $font-family;
+		font-weight: 600;
+		font-size: rem(16);
+		letter-spacing: -0.02em;
+		color: $color-text;
+	}
+
+	&__block--main &__section-title {
+		color: $color-accent;
+	}
+
+	&__col-label {
+		font-size: rem(13);
+		font-weight: 500;
+		color: $color-text-muted;
+		text-align: right;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(rem(88), 0.7fr));
+		gap: rem(12);
+		align-items: center;
+		padding: rem(16) rem(20);
+		border-top: 1px solid rgba($color-black, 0.06);
+	}
+
+	&__name {
+		font-size: rem(15);
+		font-weight: 500;
+		color: $color-text;
+		letter-spacing: -0.01em;
+	}
+
+	&__price,
+	&__duration,
+	&__warranty {
+		font-size: rem(14);
+		color: $color-text-body;
+		text-align: right;
+	}
+
+	&__price {
+		font-weight: 600;
+		color: $color-text;
+	}
+
+	&__warranty-text {
+		max-width: rem(820);
+		font-size: rem(15);
+		line-height: 1.55;
+		color: $color-text-body;
+	}
+
+	@media (max-width: $md4) {
+		padding: rem(32) 0 rem(48);
+
+		&__head {
+			grid-template-columns: 1fr;
+			padding: rem(14) rem(16);
+		}
+
+		&__col-label {
+			display: none;
+		}
+
+		&__row {
+			grid-template-columns: 1fr;
+			gap: rem(6);
+			padding: rem(14) rem(16);
+		}
+
+		&__price,
+		&__duration,
+		&__warranty {
+			text-align: left;
+			font-size: rem(13);
+		}
+
+		&__price::before {
+			content: "Цена: ";
+			font-weight: 500;
+			color: $color-text-muted;
+		}
+
+		&__duration::before {
+			content: "Срок: ";
+			font-weight: 500;
+			color: $color-text-muted;
+		}
+
+		&__warranty::before {
+			content: "Гарантия: ";
+			font-weight: 500;
+			color: $color-text-muted;
+		}
+	}
+}

@@ -46,49 +46,129 @@
             ]
         },
         {
-            "key": "field_ksenon_service_hero_title",
-            "label": "Hero — заголовок",
-            "name": "hero_title",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
-            "key": "field_ksenon_service_hero_text",
-            "label": "Hero — текст",
-            "name": "hero_text",
-            "type": "textarea",
-            "rows": 3
-        },
-        {
-            "key": "field_ksenon_service_hero_image",
-            "label": "Hero — изображение",
-            "name": "hero_image",
-            "type": "image",
-            "return_format": "array"
-        },
-        {
-            "key": "field_ksenon_service_included_title",
-            "label": "Что входит — заголовок",
-            "name": "included_title",
-            "type": "text",
-            "default_value": "Что входит в услугу"
-        },
-        {
-            "key": "field_ksenon_service_included_items",
-            "label": "Что входит — пункты",
-            "name": "included_items",
+            "key": "field_ksenon_service_price_main",
+            "label": "Прайс — основные работы",
+            "name": "price_main",
             "type": "repeater",
-            "layout": "block",
-            "button_label": "Добавить пункт",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "instructions": "Колонки: описание, цена, срок, гарантия.",
             "sub_fields": [
                 {
-                    "key": "field_ksenon_service_included_text",
-                    "label": "Текст",
-                    "name": "text",
+                    "key": "field_ksenon_service_price_main_name",
+                    "label": "Описание",
+                    "name": "name",
                     "type": "text",
-                    "parent_repeater": "field_ksenon_service_included_items"
+                    "parent_repeater": "field_ksenon_service_price_main"
+                },
+                {
+                    "key": "field_ksenon_service_price_main_price",
+                    "label": "Цена",
+                    "name": "price",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_main"
+                },
+                {
+                    "key": "field_ksenon_service_price_main_duration",
+                    "label": "Срок",
+                    "name": "duration",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_main"
+                },
+                {
+                    "key": "field_ksenon_service_price_main_warranty",
+                    "label": "Гарантия",
+                    "name": "warranty",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_main"
                 }
             ]
+        },
+        {
+            "key": "field_ksenon_service_price_extra",
+            "label": "Прайс — дополнительные работы",
+            "name": "price_extra",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "instructions": "По необходимости. Колонки: описание, цена, срок, гарантия.",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_price_extra_name",
+                    "label": "Описание",
+                    "name": "name",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_extra"
+                },
+                {
+                    "key": "field_ksenon_service_price_extra_price",
+                    "label": "Цена",
+                    "name": "price",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_extra"
+                },
+                {
+                    "key": "field_ksenon_service_price_extra_duration",
+                    "label": "Срок",
+                    "name": "duration",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_extra"
+                },
+                {
+                    "key": "field_ksenon_service_price_extra_warranty",
+                    "label": "Гарантия",
+                    "name": "warranty",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_extra"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_service_price_diagnostics",
+            "label": "Прайс — диагностика",
+            "name": "price_diagnostics",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "instructions": "Колонки: описание, цена, срок, гарантия.",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_price_diagnostics_name",
+                    "label": "Описание",
+                    "name": "name",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_diagnostics"
+                },
+                {
+                    "key": "field_ksenon_service_price_diagnostics_price",
+                    "label": "Цена",
+                    "name": "price",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_diagnostics"
+                },
+                {
+                    "key": "field_ksenon_service_price_diagnostics_duration",
+                    "label": "Срок",
+                    "name": "duration",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_diagnostics"
+                },
+                {
+                    "key": "field_ksenon_service_price_diagnostics_warranty",
+                    "label": "Гарантия",
+                    "name": "warranty",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_price_diagnostics"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_service_warranty_text",
+            "label": "Текст гарантии",
+            "name": "warranty_text",
+            "type": "textarea",
+            "rows": 3,
+            "instructions": "Блок под прайс-таблицей."
         },
         {
             "key": "field_ksenon_service_related_brands",
@@ -192,5 +272,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784563200
+    "modified": 1784635200
 }
