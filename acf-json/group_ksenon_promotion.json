@@ -3,18 +3,47 @@
     "title": "Акция",
     "fields": [
         {
+            "key": "field_ksenon_promo_badge",
+            "label": "Бейдж",
+            "name": "badge",
+            "type": "text",
+            "instructions": "Например: Акция месяца"
+        },
+        {
             "key": "field_ksenon_promo_hero_title",
             "label": "Hero — заголовок",
             "name": "hero_title",
             "type": "textarea",
-            "rows": 2
+            "rows": 2,
+            "instructions": "Если пусто — берётся заголовок записи."
         },
         {
-            "key": "field_ksenon_promo_hero_image",
-            "label": "Hero — изображение",
-            "name": "hero_image",
-            "type": "image",
-            "return_format": "array"
+            "key": "field_ksenon_promo_hero_subtitle",
+            "label": "Hero — подзаголовок",
+            "name": "hero_subtitle",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_ksenon_promo_price_old",
+            "label": "Старая цена",
+            "name": "price_old",
+            "type": "text",
+            "instructions": "Например: от 18 000 ₽"
+        },
+        {
+            "key": "field_ksenon_promo_price_new",
+            "label": "Новая цена",
+            "name": "price_new",
+            "type": "text",
+            "instructions": "Например: от 14 900 ₽"
+        },
+        {
+            "key": "field_ksenon_promo_price_savings",
+            "label": "Экономия",
+            "name": "price_savings",
+            "type": "text",
+            "instructions": "Например: экономия 3 100 ₽"
         },
         {
             "key": "field_ksenon_promo_before_after",
@@ -22,7 +51,15 @@
             "name": "before_after",
             "type": "gallery",
             "return_format": "array",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "instructions": "Два изображения: до и после"
+        },
+        {
+            "key": "field_ksenon_promo_package_name",
+            "label": "Название пакета",
+            "name": "package_name",
+            "type": "text",
+            "instructions": "Для заголовка «Что входит в «…»». Например: пакет BI-LED"
         },
         {
             "key": "field_ksenon_promo_package_items",
@@ -30,6 +67,7 @@
             "name": "package_items",
             "type": "repeater",
             "layout": "block",
+            "button_label": "Добавить пункт",
             "sub_fields": [
                 {
                     "key": "field_ksenon_promo_package_text",
@@ -46,6 +84,7 @@
             "name": "benefits_cards",
             "type": "repeater",
             "layout": "block",
+            "button_label": "Добавить преимущество",
             "sub_fields": [
                 {
                     "key": "field_ksenon_promo_benefit_title",
@@ -86,5 +125,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1753113600
 }

@@ -1,7 +1,11 @@
 @use "../variables" as *;
 @use "../mixins" as *;
-.promotion-page,
-.promotions-archive,
-.promotion-card {
-	// Promotions — fill during redesign
-}
+@use "../section/home/shared";
+@use "../section/home/advantages";
+@use "../section/home/reviews";
+@use "../section/promotion/archive";
+@use "../section/promotion/card";
+@use "../section/promotion/hero";
+@use "../section/promotion/gallery";
+@use "../section/promotion/package";
+@use "../section/promotion/page";

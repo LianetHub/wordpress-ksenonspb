@@ -11,62 +11,120 @@ get_header();
 while (have_posts()) :
 	the_post();
 	$post_id = get_the_ID();
+
+	$badge          = (string) ksenon_get_post_field('badge', $post_id);
+	$hero_title     = (string) (ksenon_get_post_field('hero_title', $post_id) ?: get_the_title());
+	$hero_subtitle  = (string) ksenon_get_post_field('hero_subtitle', $post_id);
+	$price_old      = (string) ksenon_get_post_field('price_old', $post_id);
+	$price_new      = (string) ksenon_get_post_field('price_new', $post_id);
+	$price_savings  = (string) ksenon_get_post_field('price_savings', $post_id);
+	$package_name   = (string) ksenon_get_post_field('package_name', $post_id);
+	$package_items  = (array) ksenon_get_post_field('package_items', $post_id);
+	$gallery        = (array) ksenon_get_post_field('before_after', $post_id);
+	$benefits       = (array) ksenon_get_post_field('benefits_cards', $post_id);
+
+	$package_items = array_values(
+		array_filter(
+			$package_items,
+			static function ($row) {
+				return is_array($row) && '' !== trim((string) ($row['text'] ?? ''));
+			}
+		)
+	);
 ?>
 	<article class="promotion-page">
 		<section class="promotion-hero">
 			<div class="promotion-hero__container container">
-				<h1 class="promotion-hero__title title-lg"><?php echo esc_html((string) (ksenon_get_post_field('hero_title', $post_id) ?: get_the_title())); ?></h1>
-				<?php
-				$hero_image = ksenon_get_post_field('hero_image', $post_id);
-				if ($hero_image) {
-					echo ksenon_acf_image($hero_image, 'large', array('class' => 'promotion-hero__img'));
-				}
-				?>
+				<div class="promotion-hero__box">
+					<?php if ($badge) : ?>
+						<span class="promotion-hero__badge"><?php echo esc_html($badge); ?></span>
+					<?php endif; ?>
+					<h1 class="promotion-hero__title"><?php echo esc_html($hero_title); ?></h1>
+					<?php if ($hero_subtitle) : ?>
+						<p class="promotion-hero__subtitle"><?php echo esc_html($hero_subtitle); ?></p>
+					<?php endif; ?>
+					<?php if ($price_old || $price_new || $price_savings) : ?>
+						<div class="promotion-hero__pricing">
+							<?php if ($price_old) : ?>
+								<span class="promotion-hero__price-old"><?php echo esc_html($price_old); ?></span>
+							<?php endif; ?>
+							<?php if ($price_new) : ?>
+								<span class="promotion-hero__price-new"><?php echo esc_html($price_new); ?></span>
+							<?php endif; ?>
+							<?php if ($price_savings) : ?>
+								<span class="promotion-hero__savings"><?php echo esc_html($price_savings); ?></span>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
 		</section>
 
-		<?php
-		$gallery = (array) ksenon_get_post_field('before_after', $post_id);
-		if ($gallery) :
-		?>
+		<?php if ($gallery) : ?>
 			<section class="promotion-gallery">
 				<div class="promotion-gallery__container container">
-					<h2 class="promotion-gallery__title title-md"><?php esc_html_e('Результат до и после', 'ksenonspb'); ?></h2>
+					<h2 class="promotion-gallery__title">
+						<?php
+						echo wp_kses(
+							sprintf(
+								/* translators: %s: word "после" highlighted */
+								__('Результат до и %s', 'ksenonspb'),
+								'<span class="color-accent">' . esc_html__('после', 'ksenonspb') . '</span>'
+							),
+							array('span' => array('class' => true))
+						);
+						?>
+					</h2>
 					<div class="promotion-gallery__grid">
 						<?php foreach ($gallery as $image) : ?>
-							<?php echo ksenon_acf_image($image, 'large', array('class' => 'promotion-gallery__img')); ?>
+							<div class="promotion-gallery__item">
+								<?php echo ksenon_acf_image($image, 'large', array('class' => 'promotion-gallery__img cover-image')); ?>
+							</div>
 						<?php endforeach; ?>
 					</div>
 				</div>
 			</section>
 		<?php endif; ?>
 
-		<?php
-		$package = (array) ksenon_get_post_field('package_items', $post_id);
-		if ($package) :
-		?>
+		<?php if ($package_items) : ?>
 			<section class="promotion-package">
 				<div class="promotion-package__container container">
-					<h2 class="promotion-package__title title-md"><?php esc_html_e('Что входит в пакет', 'ksenonspb'); ?></h2>
-					<ul class="promotion-package__list">
-						<?php foreach ($package as $row) : ?>
-							<?php if (! empty($row['text'])) : ?>
-								<li><?php echo esc_html($row['text']); ?></li>
+					<div class="promotion-package__box">
+						<h2 class="promotion-package__title">
+							<?php if ($package_name) : ?>
+								<?php
+								echo wp_kses(
+									sprintf(
+										/* translators: %s: package name */
+										__('Что входит в «%s»', 'ksenonspb'),
+										'<span class="color-accent">' . esc_html($package_name) . '</span>'
+									),
+									array('span' => array('class' => true))
+								);
+								?>
+							<?php else : ?>
+								<?php esc_html_e('Что входит в пакет', 'ksenonspb'); ?>
 							<?php endif; ?>
-						<?php endforeach; ?>
-					</ul>
+						</h2>
+						<ol class="promotion-package__list">
+							<?php foreach ($package_items as $index => $row) : ?>
+								<li class="promotion-package__item">
+									<span class="promotion-package__num" aria-hidden="true"><?php echo esc_html((string) ($index + 1)); ?></span>
+									<span class="promotion-package__text"><?php echo esc_html($row['text']); ?></span>
+								</li>
+							<?php endforeach; ?>
+						</ol>
+					</div>
 				</div>
 			</section>
 		<?php endif; ?>
 
 		<?php
-		$benefits = (array) ksenon_get_post_field('benefits_cards', $post_id);
 		if ($benefits) :
 			get_template_part(
 				'template-parts/blocks/advantages',
 				null,
 				array(
-					'title' => __('Преимущества акции', 'ksenonspb'),
 					'items' => $benefits,
 				)
 			);

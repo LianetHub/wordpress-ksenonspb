@@ -16,19 +16,7 @@ get_header();
 			if (have_posts()) :
 				while (have_posts()) :
 					the_post();
-			?>
-					<article class="promotion-card">
-						<a class="promotion-card__link" href="<?php the_permalink(); ?>">
-							<h2 class="promotion-card__title"><?php the_title(); ?></h2>
-							<?php if (has_excerpt()) : ?>
-								<p class="promotion-card__excerpt"><?php echo esc_html(get_the_excerpt()); ?></p>
-							<?php endif; ?>
-							<?php if (ksenon_get_post_field('valid_until')) : ?>
-								<p class="promotion-card__date"><?php echo esc_html((string) ksenon_get_post_field('valid_until')); ?></p>
-							<?php endif; ?>
-						</a>
-					</article>
-			<?php
+					get_template_part('template-parts/blocks/promotion-card', null, array('post' => get_post()));
 				endwhile;
 			endif;
 			?>

@@ -1,0 +1,24 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+// On promotion pages all advantage cards stay accent (Figma).
+.promotion-page {
+	.advantages__card {
+		background: $color-accent;
+		color: #fff;
+
+		.advantages__label {
+			color: inherit;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: $color-accent-hover;
+			}
+		}
+	}
+
+	.color-accent {
+		color: $color-accent;
+	}
+}

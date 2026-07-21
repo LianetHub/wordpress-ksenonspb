@@ -8714,3 +8714,687 @@ html.with-fancybox body.hide-scrollbar .header {
     background-position: 200% 0;
   }
 }
+.brand-hero {
+  padding: 1.5rem 0 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .brand-hero {
+    padding: 2rem 0 1.5rem;
+  }
+}
+.brand-hero__title {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .brand-hero__title {
+    font-size: clamp(36px, 1.1111111111vw + 32px, 48px);
+  }
+}
+
+.main--brand {
+  padding-top: calc(2.875rem + 3.75rem + 0.5rem);
+}
+@media (min-width: 991.98px) {
+  .main--brand {
+    padding-top: calc(2.875rem + 4.9375rem + 1.5rem);
+  }
+}
+
+.admin-bar .main--brand {
+  padding-top: calc(2.875rem + 3.75rem + 0.5rem + 46px);
+}
+@media screen and (min-width: 783px) {
+  .admin-bar .main--brand {
+    padding-top: calc(2.875rem + 3.75rem + 0.5rem + 32px);
+  }
+}
+@media (min-width: 991.98px) {
+  .admin-bar .main--brand {
+    padding-top: calc(2.875rem + 4.9375rem + 1.5rem + 32px);
+  }
+}
+
+.brand-features {
+  padding: 0 0 2rem;
+}
+@media (min-width: 991.98px) {
+  .brand-features {
+    padding: 0 0 3.75rem;
+  }
+}
+.brand-features__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .brand-features__container {
+    gap: 2rem;
+  }
+}
+.brand-features__title {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .brand-features__title {
+    font-size: 2.25rem;
+  }
+}
+.brand-features__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 767.98px) {
+  .brand-features__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+.brand-features__card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .brand-features__card {
+    border-radius: 2.5rem;
+  }
+}
+.brand-features__card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1.25rem;
+  background: #fd8011;
+  color: #ffffff;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+@media (min-width: 991.98px) {
+  .brand-features__card-title {
+    min-height: 3.875rem;
+    padding: 0.9375rem 1.25rem;
+    border-radius: 2.5rem;
+    font-size: 1.25rem;
+  }
+}
+.brand-features__card-text {
+  flex: 1 1 auto;
+  margin-top: -1.25rem;
+  padding: 2.25rem 1rem 1.25rem;
+  border-radius: 0 0 1.25rem 1.25rem;
+  background: #f7f7f7;
+  color: #261c13;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+@media (min-width: 991.98px) {
+  .brand-features__card-text {
+    margin-top: -1.9375rem;
+    padding: 3rem 2.5rem 1.75rem;
+    border-radius: 0 0 2.5rem 2.5rem;
+    font-size: 0.9375rem;
+    line-height: normal;
+  }
+}
+
+.brand-services {
+  padding: 0 0 2rem;
+}
+@media (min-width: 991.98px) {
+  .brand-services {
+    padding: 0 0 2.5rem;
+  }
+}
+.brand-services__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .brand-services__container {
+    gap: 1.75rem;
+  }
+}
+.brand-services__title {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .brand-services__title {
+    font-size: clamp(36px, 1.1111111111vw + 32px, 48px);
+  }
+}
+.brand-services__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+@media (min-width: 767.98px) {
+  .brand-services__panel {
+    gap: 2.25rem;
+    padding: 2.625rem 4.375rem;
+    border-radius: 2.5rem;
+    background: #f7f7f7;
+  }
+}
+.brand-services__filters .cpt-archive__tab {
+  cursor: pointer;
+  border: 0;
+  appearance: none;
+}
+.brand-services__filters .cpt-archive__tab._active {
+  pointer-events: none;
+}
+.brand-services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+@media (min-width: 767.98px) {
+  .brand-services__grid {
+    gap: 1.25rem;
+  }
+}
+@media (min-width: 1199.98px) {
+  .brand-services__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+.brand-services__grid .service-card[hidden] {
+  display: none;
+}
+@media (max-width: 767.98px) {
+  .brand-services .service-card {
+    background: #f7f7f7;
+  }
+  .brand-services .service-card .service-card__label {
+    background: #ffffff;
+  }
+  .brand-services .service-card .service-card__link {
+    background: #ffffff;
+  }
+}
+.brand-services .service-card__link {
+  background: #f7f7f7;
+}
+@media (max-width: 767.98px) {
+  .brand-services .service-card__link {
+    background: #ffffff;
+  }
+}
+@media (any-hover: hover) {
+  .brand-services .service-card__link:hover:not(:disabled):not([aria-disabled=true]) {
+    background: rgb(234.25, 234.25, 234.25);
+  }
+}
+@media (max-width: 767.98px) and (any-hover: hover) {
+  .brand-services .service-card__link:hover:not(:disabled):not([aria-disabled=true]) {
+    background: #ffffff;
+  }
+}
+
+.promotions-archive {
+  padding: 1.5rem 0 2.5rem;
+}
+@media (min-width: 991.98px) {
+  .promotions-archive {
+    padding: 2rem 0 3.75rem;
+  }
+}
+.promotions-archive__title {
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 500;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotions-archive__title {
+    margin-bottom: 2rem;
+  }
+}
+.promotions-archive__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .promotions-archive__list {
+    gap: 1.25rem;
+  }
+}
+
+.main--promotions {
+  padding-top: calc(2.875rem + 3.75rem + 0.5rem);
+}
+@media (min-width: 991.98px) {
+  .main--promotions {
+    padding-top: calc(2.875rem + 4.9375rem + 1.5rem);
+  }
+}
+
+.admin-bar .main--promotions {
+  padding-top: calc(2.875rem + 3.75rem + 0.5rem + 46px);
+}
+@media screen and (min-width: 783px) {
+  .admin-bar .main--promotions {
+    padding-top: calc(2.875rem + 3.75rem + 0.5rem + 32px);
+  }
+}
+@media (min-width: 991.98px) {
+  .admin-bar .main--promotions {
+    padding-top: calc(2.875rem + 4.9375rem + 1.5rem + 32px);
+  }
+}
+
+.promotion-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: #f7f7f7;
+}
+@media (min-width: 991.98px) {
+  .promotion-card {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2.3125rem;
+    padding: 2.3125rem;
+    border-radius: 40px;
+    min-height: 23.75rem;
+  }
+}
+.promotion-card__media {
+  display: block;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 338/306;
+  border-radius: 1.25rem;
+  background: #d9d9d9;
+}
+@media (min-width: 991.98px) {
+  .promotion-card__media {
+    width: 21.125rem;
+    min-height: 19.125rem;
+    aspect-ratio: auto;
+    border-radius: 40px;
+  }
+}
+.promotion-card__media--empty {
+  pointer-events: none;
+}
+.promotion-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.promotion-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 1rem;
+}
+@media (min-width: 991.98px) {
+  .promotion-card__body {
+    gap: 1.25rem;
+    padding-top: 0rem;
+  }
+}
+.promotion-card__title {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotion-card__title {
+    font-size: 2rem;
+  }
+}
+.promotion-card__title a {
+  color: inherit;
+}
+.promotion-card__excerpt {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotion-card__excerpt {
+    max-width: 43.8125rem;
+    font-size: 1.25rem;
+  }
+}
+.promotion-card__link {
+  align-self: flex-start;
+  margin-top: auto;
+  min-width: 10rem;
+}
+@media (min-width: 991.98px) {
+  .promotion-card__link {
+    min-width: 11.875rem;
+  }
+}
+
+.promotion-hero {
+  padding: 1.5rem 0 1.25rem;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero {
+    padding: 2rem 0 1.5rem;
+  }
+}
+.promotion-hero__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: 1.25rem;
+  background: #f7f7f7;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__box {
+    gap: 1.5rem;
+    padding: 3.125rem 3.75rem;
+    border-radius: 40px;
+  }
+}
+.promotion-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  background: #fd8011;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #fff;
+}
+.promotion-hero__title {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__title {
+    font-size: clamp(36px, 1.1111111111vw + 32px, 48px);
+  }
+}
+.promotion-hero__subtitle {
+  max-width: 56.25rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #6f6f6f;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__subtitle {
+    font-size: 1.5rem;
+  }
+}
+.promotion-hero__pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__pricing {
+    gap: 1rem 1.5rem;
+  }
+}
+.promotion-hero__price-old {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #6f6f6f;
+  text-decoration: line-through;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__price-old {
+    font-size: 1.5rem;
+  }
+}
+.promotion-hero__price-new {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #fd8011;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__price-new {
+    font-size: 2.5rem;
+  }
+}
+.promotion-hero__savings {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.875rem;
+  border-radius: 100px;
+  background: #e8f5e9;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #2e7d32;
+}
+@media (min-width: 991.98px) {
+  .promotion-hero__savings {
+    font-size: 0.875rem;
+  }
+}
+
+.main--promotion {
+  padding-top: calc(2.875rem + 3.75rem + 0.5rem);
+}
+@media (min-width: 991.98px) {
+  .main--promotion {
+    padding-top: calc(2.875rem + 4.9375rem + 1.5rem);
+  }
+}
+
+.admin-bar .main--promotion {
+  padding-top: calc(2.875rem + 3.75rem + 0.5rem + 46px);
+}
+@media screen and (min-width: 783px) {
+  .admin-bar .main--promotion {
+    padding-top: calc(2.875rem + 3.75rem + 0.5rem + 32px);
+  }
+}
+@media (min-width: 991.98px) {
+  .admin-bar .main--promotion {
+    padding-top: calc(2.875rem + 4.9375rem + 1.5rem + 32px);
+  }
+}
+
+.promotion-gallery {
+  padding: 1.25rem 0;
+}
+@media (min-width: 991.98px) {
+  .promotion-gallery {
+    padding: 2.5rem 0;
+  }
+}
+.promotion-gallery__title {
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotion-gallery__title {
+    margin-bottom: 2rem;
+    font-size: 2.25rem;
+  }
+}
+.promotion-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 991.98px) {
+  .promotion-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+.promotion-gallery__item {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  aspect-ratio: 610/360;
+  background: #f7f7f7;
+}
+@media (min-width: 991.98px) {
+  .promotion-gallery__item {
+    border-radius: 40px;
+  }
+}
+.promotion-gallery__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promotion-package {
+  padding: 1.25rem 0;
+}
+@media (min-width: 991.98px) {
+  .promotion-package {
+    padding: 2.5rem 0;
+  }
+}
+.promotion-package__box {
+  padding: 1.5rem 1.25rem;
+  border-radius: 1.25rem;
+  background: #f7f7f7;
+}
+@media (min-width: 991.98px) {
+  .promotion-package__box {
+    padding: 3.125rem 3.75rem;
+    border-radius: 40px;
+  }
+}
+.promotion-package__title {
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotion-package__title {
+    margin-bottom: 2rem;
+    font-size: 2.25rem;
+  }
+}
+.promotion-package__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (min-width: 991.98px) {
+  .promotion-package__list {
+    gap: 1rem;
+  }
+}
+.promotion-package__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.125rem;
+  border-radius: 1rem;
+  background: #fff;
+}
+@media (min-width: 991.98px) {
+  .promotion-package__item {
+    gap: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    border-radius: 1.5rem;
+  }
+}
+.promotion-package__num {
+  flex-shrink: 0;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #fd8011;
+}
+@media (min-width: 991.98px) {
+  .promotion-package__num {
+    font-size: 1.5rem;
+  }
+}
+.promotion-package__text {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000000;
+}
+@media (min-width: 991.98px) {
+  .promotion-package__text {
+    font-size: 1.25rem;
+  }
+}
+
+.promotion-page .advantages__card {
+  background: #fd8011;
+  color: #fff;
+}
+.promotion-page .advantages__card .advantages__label {
+  color: inherit;
+}
+@media (any-hover: hover) {
+  .promotion-page .advantages__card:hover {
+    background: #e8720f;
+  }
+}
+.promotion-page .color-accent {
+  color: #fd8011;
+}

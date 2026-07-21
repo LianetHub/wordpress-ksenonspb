@@ -1,0 +1,100 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.promotion-card {
+	display: flex;
+	flex-direction: column;
+	gap: rem(20);
+	padding: rem(20);
+	border-radius: rem(20);
+	background: $color-surface;
+
+	@media (min-width: $md3) {
+		flex-direction: row;
+		align-items: stretch;
+		gap: rem(37);
+		padding: rem(37);
+		border-radius: $radius-card;
+		min-height: rem(380);
+	}
+
+	&__media {
+		display: block;
+		flex-shrink: 0;
+		overflow: hidden;
+		width: 100%;
+		aspect-ratio: 338 / 306;
+		border-radius: rem(20);
+		background: #d9d9d9;
+
+		@media (min-width: $md3) {
+			width: rem(338);
+			min-height: rem(306);
+			aspect-ratio: auto;
+			border-radius: $radius-card;
+		}
+
+		&--empty {
+			pointer-events: none;
+		}
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		min-width: 0;
+		gap: rem(16);
+
+		@media (min-width: $md3) {
+			gap: rem(20);
+			padding-top: rem(0);
+		}
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(22);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			font-size: rem(32);
+		}
+
+		a {
+			color: inherit;
+		}
+	}
+
+	&__excerpt {
+		font-family: $font-family;
+		font-size: rem(16);
+		font-weight: 500;
+		line-height: 1.4;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			max-width: rem(701);
+			font-size: rem(20);
+		}
+	}
+
+	&__link {
+		align-self: flex-start;
+		margin-top: auto;
+		min-width: rem(160);
+
+		@media (min-width: $md3) {
+			min-width: rem(190);
+		}
+	}
+}

@@ -1,0 +1,51 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.promotions-archive {
+	padding: rem(24) 0 rem(40);
+
+	@media (min-width: $md3) {
+		padding: rem(32) 0 rem(60);
+	}
+
+	&__title {
+		margin-bottom: rem(20);
+		font-family: $font-family;
+		font-weight: 500;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			margin-bottom: rem(32);
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+
+		@media (min-width: $md3) {
+			gap: rem(20);
+		}
+	}
+}
+
+.main--promotions {
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)});
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)});
+	}
+}
+
+.admin-bar .main--promotions {
+	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 46px);
+
+	@media screen and (min-width: 783px) {
+		padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 32px);
+	}
+
+	@media (min-width: $md3) {
+		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)} + 32px);
+	}
+}

@@ -31,3 +31,12 @@
 @use "section/policy/policy";
 @use "section/about/about-page";
 @use "section/contacts/contacts";
+@use "section/brand/hero" as brand-hero;
+@use "section/brand/features" as brand-features;
+@use "section/brand/services" as brand-services;
+@use "section/promotion/archive" as promotion-archive;
+@use "section/promotion/card" as promotion-card;
+@use "section/promotion/hero" as promotion-hero;
+@use "section/promotion/gallery" as promotion-gallery;
+@use "section/promotion/package" as promotion-package;
+@use "section/promotion/page" as promotion-page;
