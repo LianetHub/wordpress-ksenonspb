@@ -26,6 +26,7 @@ const PROMO_HEADERS = [
 	'package_items',
 	'benefits',
 	'valid_until',
+	'poster',
 	'featured_image',
 	'before_after',
 ];
@@ -40,6 +41,56 @@ const SEO_HEADERS = [
 ];
 
 const HEADERS = [...PROMO_HEADERS, ...SEO_HEADERS];
+
+/**
+ * Фото из кейсов портфолио (реальные до/после, без плейсхолдеров).
+ * before_after — URL через | (до|после) для ACF gallery.
+ * poster — заглавное фото карточки архива; featured_image — WP Featured Image.
+ */
+const CASE_IMAGES = {
+	/** Kia Ceed III — BI LED Aozoom A4 вместо штатного галогена */
+	aozoom: {
+		before: 'https://ksenonspb.ru/wp-content/uploads/2020/11/52AAAgHa0-A-9601.jpg',
+		after: 'https://ksenonspb.ru/portfolio/0MAAAgO60-A-960.jpg',
+	},
+	/** AUDI R8 — установка Bi-LED (результат как идея подарка) */
+	gift: {
+		before: 'https://ksenonspb.ru/portfolio/jwAAAgDI0OA-960.jpg',
+		after: 'https://ksenonspb.ru/wp-content/uploads/2018/07/YYAAAgDI0OA-960.jpg',
+	},
+	/** MERСEDES ML — полировка и шлифовка фар */
+	polish: {
+		before: 'https://ksenonspb.ru/wp-content/uploads/2016/08/1-1.jpg',
+		after: 'https://ksenonspb.ru/wp-content/uploads/2016/08/5.jpg',
+		/** Обложка услуги «Полировка, шлифовка и бронировка стекол фар» */
+		poster: 'https://ksenonspb.ru/wp-content/uploads/2016/09/polish-1.jpg',
+	},
+	/** AUDI Q3 — ремонт фар после ДТП */
+	dtp: {
+		before: 'https://ksenonspb.ru/portfolio/KkAAAgII9OA-1920.jpg',
+		after: 'https://ksenonspb.ru/wp-content/uploads/2020/03/YwAAAgKI9OA-19201.jpg',
+	},
+};
+
+function encodeBeforeAfter(before, after) {
+	return [before, after].map((url) => String(url ?? '').trim()).filter(Boolean).join('|');
+}
+
+function imagesFromCase(key) {
+	const images = CASE_IMAGES[key];
+	if (!images) {
+		return { poster: '', featured_image: '', before_after: '' };
+	}
+
+	const poster = images.poster || images.after || '';
+	const featured = images.after || poster;
+
+	return {
+		poster,
+		featured_image: featured,
+		before_after: encodeBeforeAfter(images.before, images.after),
+	};
+}
 
 /** Статический сид — на старом сайте акций не было. */
 const PROMOTIONS = [
@@ -69,6 +120,7 @@ const PROMOTIONS = [
 			{ title: 'Бесплатная диагностика фар', text: 'Перед началом работ' },
 		],
 		valid_until: '31.12.2026',
+		...imagesFromCase('aozoom'),
 	},
 	{
 		title: 'Идеи подарков автомобилистам: подарочные сертификаты',
@@ -96,6 +148,7 @@ const PROMOTIONS = [
 			{ title: 'Консультация', text: 'Поможем выбрать подходящий пакет' },
 		],
 		valid_until: '31.12.2026',
+		...imagesFromCase('gift'),
 	},
 	{
 		title: 'Полировка и бронирование стекол фар со скидкой',
@@ -123,6 +176,7 @@ const PROMOTIONS = [
 			{ title: 'Гарантия на работу', text: 'Письменно — до 12 месяцев' },
 		],
 		valid_until: '31.08.2026',
+		...imagesFromCase('polish'),
 	},
 	{
 		title: 'Ремонт оптики после ДТП — скидка 15%',
@@ -150,6 +204,7 @@ const PROMOTIONS = [
 			{ title: 'Стенд регулировки', text: 'Свет как с завода после ремонта' },
 		],
 		valid_until: '30.09.2026',
+		...imagesFromCase('dtp'),
 	},
 ];
 
@@ -200,6 +255,7 @@ function enrichPromotion(promo) {
 
 	return {
 		...promo,
+		poster: promo.poster ?? '',
 		featured_image: promo.featured_image ?? '',
 		before_after: promo.before_after ?? '',
 		package_items_encoded: encodePackageItems(promo.package_items),
@@ -230,6 +286,7 @@ function promotionToRow(item) {
 		item.package_items_encoded ?? encodePackageItems(item.package_items),
 		item.benefits_encoded ?? encodeBenefits(item.benefits),
 		item.valid_until ?? '',
+		item.poster ?? '',
 		item.featured_image ?? '',
 		item.before_after ?? '',
 		seo['Focus Keyword'],
@@ -275,10 +332,6 @@ function validatePromotions(promotions) {
 async function writeOutputs(promotions) {
 	const rows = [HEADERS, ...promotions.map((promo) => promotionToRow(promo))];
 
-	const workbook = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet(rows), 'promotions');
-	XLSX.writeFile(workbook, OUTPUT_XLSX);
-
 	const exportList = promotions.map((promo) => ({
 		title: promo.title,
 		slug: promo.slug,
@@ -293,6 +346,7 @@ async function writeOutputs(promotions) {
 		package_items: promo.package_items_encoded,
 		benefits: promo.benefits_encoded,
 		valid_until: promo.valid_until,
+		poster: promo.poster,
 		featured_image: promo.featured_image,
 		before_after: promo.before_after,
 		focus_keyword: promo.focus_keyword,
@@ -307,7 +361,7 @@ async function writeOutputs(promotions) {
 		generated_for: 'WP All Import — CPT promotion',
 		source: path.basename(OUTPUT_XLSX),
 		note:
-			'title → post_title, slug → post_name (URL /akcii/{slug}/), excerpt → post_excerpt (карточка архива). badge / hero_* / price_* / package_name → ACF. package_items — строки через |; benefits — title::text через |. featured_image / before_after — URL картинок (можно заполнить вручную в WP). SEO-колонки → Rank Math. Уникальный идентификатор — slug. На старом сайте акций не было — контент сгенерирован.',
+			'title → post_title, slug → post_name (URL /akcii/{slug}/), excerpt → post_excerpt (карточка архива). badge / hero_* / price_* / package_name → ACF. package_items / benefits — НЕ мапить в ACF Variable Mode: пишет тема (inc/wp-all-import.php); запасной путь ksenon_raw_package_items / ksenon_raw_benefits = {column[1]}. package_items — строки через |; benefits — title::text через | → ACF benefits_cards. poster → ACF poster; featured_image → WP Featured Image; before_after — до|после (ACF gallery). SEO-колонки → Rank Math. Уникальный идентификатор — slug. На старом сайте акций не было — контент сгенерирован.',
 		columns: HEADERS,
 		promotions: exportList,
 	};
@@ -317,6 +371,23 @@ async function writeOutputs(promotions) {
 	const csvLines = rows.map((row) => row.map(escapeCsvCell).join(';'));
 	const csvContent = `\uFEFF${csvLines.join('\r\n')}`;
 	await writeFile(OUTPUT_CSV, csvContent, 'utf8');
+
+	const workbook = XLSX.utils.book_new();
+	XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet(rows), 'promotions');
+
+	try {
+		XLSX.writeFile(workbook, OUTPUT_XLSX);
+	} catch (error) {
+		if (error && (error.code === 'EBUSY' || error.code === 'EPERM')) {
+			const fallback = path.join(DATA_DIR, 'promotions-import.new.xlsx');
+			XLSX.writeFile(workbook, fallback);
+			console.warn(
+				`XLSX locked (${OUTPUT_XLSX}). Wrote fallback: ${fallback}. Close Excel and rename/replace.`
+			);
+		} else {
+			throw error;
+		}
+	}
 }
 
 async function main() {

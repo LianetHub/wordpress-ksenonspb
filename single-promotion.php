@@ -7,7 +7,7 @@
  */
 
 get_header();
-
+    10|
 while (have_posts()) :
 	the_post();
 	$post_id = get_the_ID();
@@ -35,21 +35,27 @@ while (have_posts()) :
 	<article class="promotion-page">
 		<section class="promotion-hero">
 			<div class="promotion-hero__container container">
+				<?php if ($badge) : ?>
+					<span class="promotion-hero__badge"><?php echo esc_html($badge); ?></span>
+				<?php endif; ?>
 				<div class="promotion-hero__box">
-					<?php if ($badge) : ?>
-						<span class="promotion-hero__badge"><?php echo esc_html($badge); ?></span>
-					<?php endif; ?>
-					<h1 class="promotion-hero__title"><?php echo esc_html($hero_title); ?></h1>
-					<?php if ($hero_subtitle) : ?>
-						<p class="promotion-hero__subtitle"><?php echo esc_html($hero_subtitle); ?></p>
-					<?php endif; ?>
+					<div class="promotion-hero__intro">
+						<h1 class="promotion-hero__title"><?php echo esc_html($hero_title); ?></h1>
+						<?php if ($hero_subtitle) : ?>
+							<p class="promotion-hero__subtitle"><?php echo esc_html($hero_subtitle); ?></p>
+						<?php endif; ?>
+					</div>
 					<?php if ($price_old || $price_new || $price_savings) : ?>
 						<div class="promotion-hero__pricing">
-							<?php if ($price_old) : ?>
-								<span class="promotion-hero__price-old"><?php echo esc_html($price_old); ?></span>
-							<?php endif; ?>
-							<?php if ($price_new) : ?>
-								<span class="promotion-hero__price-new"><?php echo esc_html($price_new); ?></span>
+							<?php if ($price_old || $price_new) : ?>
+								<div class="promotion-hero__prices">
+									<?php if ($price_old) : ?>
+										<span class="promotion-hero__price-old"><?php echo esc_html($price_old); ?></span>
+									<?php endif; ?>
+									<?php if ($price_new) : ?>
+										<span class="promotion-hero__price-new"><?php echo esc_html($price_new); ?></span>
+									<?php endif; ?>
+								</div>
 							<?php endif; ?>
 							<?php if ($price_savings) : ?>
 								<span class="promotion-hero__savings"><?php echo esc_html($price_savings); ?></span>

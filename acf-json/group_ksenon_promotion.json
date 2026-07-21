@@ -46,6 +46,15 @@
             "instructions": "Например: экономия 3 100 ₽"
         },
         {
+            "key": "field_ksenon_promo_poster",
+            "label": "Постер карточки",
+            "name": "poster",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Заглавное фото в карточке архива акций. Если пусто — берётся изображение записи."
+        },
+        {
             "key": "field_ksenon_promo_before_after",
             "label": "До и после",
             "name": "before_after",
@@ -125,5 +134,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1753113600
+    "modified": 1753128000
 }

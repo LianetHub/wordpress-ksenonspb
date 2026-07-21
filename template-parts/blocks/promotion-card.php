@@ -14,13 +14,14 @@ if (! $post instanceof WP_Post) {
 }
 
 $permalink = get_permalink($post);
-$image_id  = has_post_thumbnail($post) ? get_post_thumbnail_id($post) : null;
+$poster    = function_exists('get_field') ? get_field('poster', $post) : null;
+$image     = $poster ?: (has_post_thumbnail($post) ? get_post_thumbnail_id($post) : null);
 $excerpt   = has_excerpt($post) ? get_the_excerpt($post) : '';
 ?>
 <article class="promotion-card">
-	<?php if ($image_id) : ?>
+	<?php if ($image) : ?>
 		<a class="promotion-card__media" href="<?php echo esc_url($permalink); ?>">
-			<?php echo ksenon_acf_image($image_id, 'medium_large', array('class' => 'promotion-card__img cover-image')); ?>
+			<?php echo ksenon_acf_image($image, 'medium_large', array('class' => 'promotion-card__img cover-image')); ?>
 		</a>
 	<?php else : ?>
 		<a class="promotion-card__media promotion-card__media--empty" href="<?php echo esc_url($permalink); ?>" aria-hidden="true" tabindex="-1"></a>

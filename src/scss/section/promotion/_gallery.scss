@@ -9,23 +9,23 @@
 	}
 
 	&__title {
-		margin-bottom: rem(20);
+		margin-bottom: rem(30);
 		font-family: $font-family;
-		font-size: rem(24);
+		font-size: rem(28);
 		font-weight: 500;
 		line-height: normal;
 		color: $color-black;
 
 		@media (min-width: $md3) {
 			margin-bottom: rem(32);
-			font-size: rem(36);
+			font-size: rem(48);
 		}
 	}
 
 	&__grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: rem(12);
+		gap: rem(21);
 
 		@media (min-width: $md3) {
 			grid-template-columns: repeat(2, 1fr);
@@ -35,12 +35,12 @@
 
 	&__item {
 		overflow: hidden;
-		border-radius: rem(20);
-		aspect-ratio: 610 / 360;
+		border-radius: rem(40);
+		aspect-ratio: 315 / 246;
 		background: $color-surface;
 
 		@media (min-width: $md3) {
-			border-radius: $radius-card;
+			aspect-ratio: 610 / 360;
 		}
 	}
 

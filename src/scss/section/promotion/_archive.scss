@@ -22,10 +22,12 @@
 	&__list {
 		display: flex;
 		flex-direction: column;
-		gap: rem(20);
+		gap: rem(25);
+		margin-inline: -1rem;
 
 		@media (min-width: $md3) {
 			gap: rem(20);
+			margin-inline: 0;
 		}
 	}
 }

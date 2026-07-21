@@ -3,12 +3,38 @@
 
 // On promotion pages all advantage cards stay accent (Figma).
 .promotion-page {
+	.color-accent {
+		color: $color-accent;
+	}
+
+	.advantages__grid {
+		grid-template-columns: 1fr;
+		gap: rem(15);
+
+		@media (min-width: $md3) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: rem(20);
+		}
+	}
+
 	.advantages__card {
+		gap: rem(15);
+		justify-content: center;
+		min-height: 0;
+		padding: rem(25);
+		border-radius: rem(40);
 		background: $color-accent;
 		color: #fff;
 
+		@media (min-width: $md3) {
+			min-height: rem(177);
+			padding: rem(36) rem(45);
+		}
+
 		.advantages__label {
+			max-width: none;
 			color: inherit;
+			font-size: rem(15);
 		}
 
 		@media (any-hover: hover) {
@@ -18,7 +44,15 @@
 		}
 	}
 
-	.color-accent {
-		color: $color-accent;
+	.advantages__value {
+		font-size: rem(20);
+		font-weight: 600;
+		line-height: normal;
+
+		@media (min-width: $md3) {
+			margin-bottom: 0;
+			font-size: rem(36);
+			font-weight: 500;
+		}
 	}
 }

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * WP All Import helpers for CPT service / brand.
+ * WP All Import helpers for CPT service / brand / promotion.
  *
- * Важно: не мапить ACF-repeaters price_* / faq / features через Variable Mode + PHP.
- * Хук пишет repeaters сам из колонок CSV (или из meta ksenon_raw_*).
+ * Важно: не мапить ACF-repeaters price_* / faq / features / package_items / benefits
+ * через Variable Mode + PHP. Хук пишет repeaters сам из колонок CSV (или из meta ksenon_raw_*).
  *
  * @package ksenonspb
  */
@@ -332,9 +332,166 @@ function ksenon_wpai_brand_saved_post($post_id, $xml_node = null, $is_update = n
 	delete_post_meta($post_id, 'ksenon_raw_features');
 }
 
+/**
+ * Нормализует колонки только с `|` (без `::`), напр. package_items.
+ *
+ * Нельзя гнать через ksenon_wpai_normalize_encoded_rows: при 2–4 сегментах
+ * без `::` она ошибочно склеивает их через `::`.
+ *
+ * @param mixed $value Node / meta value.
+ * @return string
+ */
+function ksenon_wpai_normalize_pipe_only_rows($value)
+{
+	if ($value instanceof SimpleXMLElement) {
+		$as_array = json_decode(wp_json_encode($value), true);
+		if (is_array($as_array)) {
+			$value = $as_array;
+		} else {
+			return trim((string) $value);
+		}
+	}
+
+	if (! is_array($value)) {
+		return trim((string) $value);
+	}
+
+	$list = array();
+	$is_list = array_keys($value) === range(0, count($value) - 1);
+	if ($is_list) {
+		foreach ($value as $item) {
+			$str = ksenon_wpai_scalar_string($item);
+			if ($str !== '') {
+				$list[] = $str;
+			}
+		}
+	} else {
+		return ksenon_wpai_scalar_string($value);
+	}
+
+	return $list ? implode('|', $list) : '';
+}
+
+/**
+ * @param int                 $post_id  Post ID.
+ * @param array<string,mixed> $record   Import record.
+ * @param string              $column   CSV column.
+ * @param string              $meta_key Temp meta.
+ * @return string
+ */
+function ksenon_wpai_get_raw_pipe_only($post_id, array $record, $column, $meta_key)
+{
+	$from_meta = get_post_meta($post_id, $meta_key, true);
+	if (is_string($from_meta) && trim($from_meta) !== '') {
+		return ksenon_wpai_normalize_pipe_only_rows($from_meta);
+	}
+
+	$from_node = ksenon_wpai_record_raw($record, $column);
+	if ($from_node !== null && $from_node !== '') {
+		return ksenon_wpai_normalize_pipe_only_rows($from_node);
+	}
+
+	return '';
+}
+
+/**
+ * @param string $raw Pipe-encoded package items (plain text rows).
+ * @return array<int, array{text:string}>
+ */
+function ksenon_wpai_parse_package_item_rows($raw)
+{
+	$rows = array();
+	$raw  = ksenon_wpai_normalize_pipe_only_rows($raw);
+	if ($raw === '') {
+		return $rows;
+	}
+
+	foreach (explode('|', $raw) as $chunk) {
+		$text = trim((string) $chunk);
+		if ($text === '') {
+			continue;
+		}
+		$rows[] = array('text' => $text);
+	}
+
+	return $rows;
+}
+
+/**
+ * @param string $raw Pipe/colon encoded benefit rows (title::text).
+ * @return array<int, array{title:string,text:string}>
+ */
+function ksenon_wpai_parse_benefit_rows($raw)
+{
+	$rows = array();
+	$raw  = ksenon_wpai_normalize_encoded_rows($raw);
+	if ($raw === '') {
+		return $rows;
+	}
+
+	foreach (explode('|', $raw) as $chunk) {
+		$chunk = trim((string) $chunk);
+		if ($chunk === '') {
+			continue;
+		}
+		$parts = array_map('trim', explode('::', $chunk, 2));
+		$rows[] = array(
+			'title' => isset($parts[0]) ? $parts[0] : '',
+			'text'  => isset($parts[1]) ? $parts[1] : '',
+		);
+	}
+
+	return $rows;
+}
+
+/**
+ * @param int                    $post_id   Post ID.
+ * @param SimpleXMLElement|mixed $xml_node  Record.
+ * @param mixed                  $is_update Update flag.
+ */
+function ksenon_wpai_promotion_saved_post($post_id, $xml_node = null, $is_update = null)
+{
+	$post_id = (int) $post_id;
+	if ($post_id <= 0 || get_post_type($post_id) !== 'promotion') {
+		return;
+	}
+	if (! function_exists('update_field')) {
+		return;
+	}
+
+	$record = array();
+	if ($xml_node !== null) {
+		$decoded = json_decode(wp_json_encode($xml_node), true);
+		if (is_array($decoded)) {
+			$record = $decoded;
+		}
+	}
+
+	$package_raw = ksenon_wpai_get_raw_pipe_only($post_id, $record, 'package_items', 'ksenon_raw_package_items');
+	if ($package_raw !== '') {
+		ksenon_wpai_set_repeater(
+			'field_ksenon_promo_package_items',
+			ksenon_wpai_parse_package_item_rows($package_raw),
+			$post_id
+		);
+		delete_post_meta($post_id, 'ksenon_raw_package_items');
+	}
+
+	$benefits_raw = ksenon_wpai_get_raw($post_id, $record, 'benefits', 'ksenon_raw_benefits');
+	if ($benefits_raw !== '') {
+		ksenon_wpai_set_repeater(
+			'field_ksenon_promo_benefits',
+			ksenon_wpai_parse_benefit_rows($benefits_raw),
+			$post_id
+		);
+		delete_post_meta($post_id, 'ksenon_raw_benefits');
+	}
+}
+
 // Поздний приоритет — после ACF Add-On у WP All Import.
 if (function_exists('add_action')) {
 	add_action('pmxi_saved_post', 'ksenon_wpai_service_saved_post', 9999, 3);
 	add_action('pmxi_saved_post', 'ksenon_wpai_brand_saved_post', 9999, 3);
+	add_action('pmxi_saved_post', 'ksenon_wpai_promotion_saved_post', 9999, 3);
 }
 
