@@ -742,6 +742,7 @@ $cf7-error-border: #ff0000;
 		@include cta-checkbox;
 
 		@media (max-width: $md3) {
+
 			&__text,
 			.wpcf7-list-item-label:not(:empty) {
 				font-size: rem(10);
@@ -805,6 +806,10 @@ $cf7-error-border: #ff0000;
 		max-width: rem(690);
 		text-align: center;
 		color: $color-black;
+
+		@media (max-width:$md4) {
+			font-size: rem(20);
+		}
 	}
 
 	&__body {
@@ -899,6 +904,7 @@ $cf7-error-border: #ff0000;
 		@include cta-checkbox;
 
 		@media (max-width: $md3) {
+
 			&__text,
 			.wpcf7-list-item-label:not(:empty) {
 				font-size: rem(10);
