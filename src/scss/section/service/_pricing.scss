@@ -2,7 +2,7 @@
 @use "../../mixins" as *;
 
 .service-pricing {
-	padding: rem(32) 0 rem(48);
+	padding: rem(24) 0 rem(40);
 
 	@media (min-width: $md3) {
 		padding: rem(40) 0 rem(60);
@@ -11,7 +11,7 @@
 	&__container {
 		display: flex;
 		flex-direction: column;
-		gap: rem(32);
+		gap: rem(24);
 
 		@media (min-width: $md3) {
 			gap: rem(60);
@@ -19,150 +19,191 @@
 	}
 
 	&__title {
-		margin: 0;
 		font-weight: 500;
 		color: $color-black;
-	}
-
-	&__tables {
-		display: flex;
-		flex-direction: column;
-		gap: rem(40);
+		text-align: center;
 
 		@media (min-width: $md3) {
-			gap: rem(48);
+			text-align: left;
 		}
 	}
 
-	&__block {
-		display: flex;
-		flex-direction: column;
-		gap: rem(20);
+	&__table {
+		width: 100%;
+		border-collapse: separate;
+		border-spacing: 0;
+		table-layout: fixed;
 	}
 
-	&__head {
+	&__col--price {
+		width: rem(170);
+	}
+
+	&__col--duration {
+		width: rem(120);
+	}
+
+	&__col--warranty {
+		width: rem(150);
+	}
+
+	&__head--solo {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
-		gap: rem(12) rem(20);
-		padding: rem(8);
+		padding: rem(5);
 		background: $color-surface;
-		border-radius: rem(40);
+		border-radius: rem(30);
+
+		@media (min-width: $md3) {
+			padding: rem(8);
+			border-radius: rem(40);
+		}
+	}
+
+	&__th {
+		padding: rem(8);
+		vertical-align: middle;
+		font-weight: 500;
+		background: $color-surface;
+
+		&:first-child {
+			border-radius: rem(40) 0 0 rem(40);
+			text-align: left;
+		}
+
+		&:last-child {
+			border-radius: 0 rem(40) rem(40) 0;
+		}
+
+		&--price,
+		&--duration,
+		&--warranty {
+			text-align: center;
+		}
 	}
 
 	&__section-title {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: rem(15) rem(20);
+		padding: rem(10) rem(20);
 		border-radius: rem(40);
 		background: $color-white;
 		font-family: $font-family;
 		font-weight: 500;
-		font-size: rem(16);
+		font-size: rem(10);
 		line-height: normal;
-		color: $color-black;
-		letter-spacing: -0.01em;
-	}
-
-	&__block--main &__section-title,
-	&__block--extra &__section-title,
-	&__block--diagnostics &__section-title {
 		color: $color-accent;
+		letter-spacing: -0.01em;
+		white-space: nowrap;
+
+		@media (min-width: $md3) {
+			padding: rem(15) rem(20);
+			font-size: rem(16);
+		}
 	}
 
 	&__section-note {
+		margin-left: rem(6);
 		font-weight: 500;
-		font-size: rem(16);
-		color: #9f9f9f;
-	}
-
-	&__cols {
-		display: none;
-		align-items: center;
-		gap: rem(16);
-
-		@media (min-width: $md3) {
-			display: flex;
-		}
+		font-size: inherit;
+		color: #868686;
 	}
 
 	&__col-label {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		min-width: rem(99);
-		padding: rem(15) rem(20);
+		min-width: rem(57);
+		padding: rem(10) rem(20);
 		border-radius: rem(40);
 		background: $color-white;
-		font-size: rem(16);
+		font-size: rem(10);
 		font-weight: 500;
 		color: $color-black;
 		text-align: center;
-	}
-
-	&__list {
-		display: flex;
-		flex-direction: column;
-		padding: 0 rem(8);
+		white-space: nowrap;
 
 		@media (min-width: $md3) {
-			padding: 0 rem(40);
+			min-width: rem(99);
+			padding: rem(15) rem(20);
+			font-size: rem(16);
 		}
+	}
+
+	&__th--warranty &__col-label {
+		min-width: rem(137);
+	}
+
+	&__section-cell {
+		padding: rem(24) 0 rem(8);
+		text-align: left;
+		font-weight: 500;
+		background: transparent;
+
+		@media (min-width: $md3) {
+			padding-top: rem(48);
+		}
+	}
+
+	&__body:first-child &__section-cell {
+		padding-top: 0;
 	}
 
 	&__row {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: rem(8);
-		align-items: center;
-		padding: rem(16) 0;
-		border-bottom: 1px solid rgba($color-black, 0.08);
-
-		&:last-child {
+		&:last-child .service-pricing__cell {
 			border-bottom: 0;
 		}
+	}
+
+	&__cell {
+		padding: rem(10) rem(4);
+		vertical-align: middle;
+		font-size: rem(9);
+		font-weight: 400;
+		line-height: 1.35;
+		color: $color-black;
+		border-bottom: 1px dashed rgba($color-black, 0.12);
 
 		@media (min-width: $md3) {
-			grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(rem(80), 0.55fr));
-			gap: rem(24);
-			padding: rem(18) 0;
+			padding: rem(18) rem(12);
+			font-size: rem(15);
 		}
 	}
 
 	&__name {
-		font-size: rem(15);
-		font-weight: 400;
-		color: $color-black;
-		line-height: 1.35;
+		text-align: left;
+		padding-left: rem(16);
+
+		@media (min-width: $md3) {
+			padding-left: rem(40);
+		}
 	}
 
 	&__price,
 	&__duration,
 	&__warranty {
-		font-size: rem(15);
-		font-weight: 400;
-		color: $color-black;
-		line-height: 1.35;
+		text-align: center;
+	}
 
+	&__warranty {
 		@media (min-width: $md3) {
-			text-align: right;
+			padding-right: rem(40);
 		}
 	}
 
 	&__note {
 		display: flex;
-		align-items: flex-start;
-		gap: rem(16);
-		padding: rem(20) rem(24);
+		align-items: center;
+		gap: rem(12);
+		padding: rem(17) rem(24);
 		background: $color-surface;
-		border-radius: rem(20);
+		border-radius: rem(12);
 
 		@media (min-width: $md3) {
-			align-items: center;
 			gap: rem(20);
 			padding: rem(30) rem(50);
+			border-radius: rem(20);
 		}
 	}
 
@@ -171,39 +212,114 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		color: $color-accent;
+		color: $color-black;
 
-		svg {
+		svg,
+		.service-pricing__note-icon-svg {
 			display: block;
-			width: rem(28);
-			height: rem(35);
+			width: rem(16);
+			height: rem(20);
+			color: $color-black;
+			fill: currentColor;
+
+			@media (min-width: $md3) {
+				width: rem(28);
+				height: rem(35);
+			}
 		}
 	}
 
 	&__warranty-text {
-		margin: 0;
-		font-size: rem(15);
+		font-size: rem(9);
 		line-height: 1.45;
 		color: $color-black;
+
+		@media (min-width: $md3) {
+			font-size: rem(15);
+		}
 	}
 
-	@media (max-width: $md4) {
-		&__price:not(:empty)::before {
-			content: "Цена: ";
-			font-weight: 500;
-			color: $color-text-muted;
+	@media (max-width: ($md3 - 0.02px)) {
+		&__col--warranty {
+			width: 0;
 		}
 
-		&__duration:not(:empty)::before {
-			content: "Срок: ";
-			font-weight: 500;
-			color: $color-text-muted;
+		&__col--price {
+			width: 32%;
 		}
 
-		&__warranty:not(:empty)::before {
-			content: "Гарантия: ";
-			font-weight: 500;
-			color: $color-text-muted;
+		&__col--duration {
+			width: 22%;
+		}
+
+		&__head--main {
+			padding: rem(5);
+			background: $color-surface;
+			border-radius: rem(30);
+		}
+
+		&__head--main .service-pricing__th {
+			padding: 0;
+			background: transparent;
+			border-radius: 0;
+			vertical-align: middle;
+
+			&:first-child,
+			&:last-child {
+				border-radius: 0;
+			}
+		}
+
+		&__th--name {
+			width: auto;
+			text-align: left;
+		}
+
+		&__th--price,
+		&__th--duration {
+			width: auto;
+			text-align: center;
+		}
+
+		&__th--warranty,
+		&__warranty {
+			display: none;
+		}
+
+		&__section-title {
+			white-space: normal;
+			text-align: center;
+		}
+
+		&__cell {
+			padding-top: rem(12);
+			padding-bottom: rem(12);
+		}
+
+		&__name {
+			padding-left: rem(16);
+			padding-right: rem(8);
+		}
+
+		&__price,
+		&__duration {
+			padding-left: rem(4);
+			padding-right: rem(4);
+		}
+	}
+
+	@media (min-width: $md3) {
+		&__head--main .service-pricing__th {
+			padding: rem(8);
+			background: $color-surface;
+
+			&:first-child {
+				border-radius: rem(40) 0 0 rem(40);
+			}
+
+			&:last-child {
+				border-radius: 0 rem(40) rem(40) 0;
+			}
 		}
 	}
 }

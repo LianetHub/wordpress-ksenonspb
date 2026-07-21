@@ -1107,7 +1107,10 @@ function enrichService(service, imageByTitle = {}) {
 		...service,
 		reference_url: referenceUrl,
 		category: service.category || categoryFromUrl(referenceUrl),
-		image: service.image || generated.image,
+		// Карта фото всегда перезаписывает image (пустая карта = очистка).
+		image: Object.prototype.hasOwnProperty.call(imageByTitle, service.title)
+			? generated.image
+			: service.image || generated.image,
 		price_main: service.price_main || generated.price_main,
 		price_extra: service.price_extra || generated.price_extra,
 		price_diagnostics: service.price_diagnostics || generated.price_diagnostics,
@@ -1328,7 +1331,15 @@ async function rebuildSourceXlsx(imageByTitle = {}) {
 
 	const workbook = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet(serviceRows), 'services');
-	XLSX.writeFile(workbook, OUTPUT_XLSX);
+	try {
+		XLSX.writeFile(workbook, OUTPUT_XLSX);
+	} catch (error) {
+		if (error && error.code === 'EBUSY') {
+			console.warn(`WARN: ${OUTPUT_XLSX} is locked (close Excel). JSON/CSV still written.`);
+		} else {
+			throw error;
+		}
+	}
 
 	return services.length;
 }
@@ -1363,7 +1374,15 @@ async function main() {
 
 	const workbook = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet(serviceRows), 'services');
-	XLSX.writeFile(workbook, OUTPUT_XLSX);
+	try {
+		XLSX.writeFile(workbook, OUTPUT_XLSX);
+	} catch (error) {
+		if (error && error.code === 'EBUSY') {
+			console.warn(`WARN: ${OUTPUT_XLSX} is locked (close Excel). JSON/CSV still written.`);
+		} else {
+			throw error;
+		}
+	}
 
 	const csvLines = serviceRows.map((row) => row.map(escapeCsvCell).join(';'));
 	const csvContent = `\uFEFF${csvLines.join('\r\n')}`;

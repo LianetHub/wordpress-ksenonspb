@@ -1,260 +1,260 @@
 {
-  "generated_at": "2026-07-21T13:06:31.642Z",
-  "note": "title → absolute image URL from old site (ksenonspb.ru). Prefer old article hero, else portfolio case.",
+  "generated_at": "2026-07-21T14:30:34.953Z",
+  "note": "title → image. Match service name to portfolio-excluded page or portfolio case title, take photo from there.",
   "images": {
-    "Замена линз в фарах": "https://ksenonspb.ru/wp-content/uploads/2016/09/biled.jpg",
-    "Установка лазерных (Laser) линз": "https://ksenonspb.ru/wp-content/uploads/2018/07/YYAAAgDI0OA-960.jpg",
+    "Замена линз в фарах": "https://ksenonspb.ru/wp-content/uploads/2018/05/e84.jpg",
+    "Установка лазерных (Laser) линз": "https://ksenonspb.ru/wp-content/uploads/2023/03/A0uDlazmT8Im_nUrRIfPLQVxYZs-960.jpg",
     "Полировка и шлифовка фар": "https://ksenonspb.ru/wp-content/uploads/2016/09/polish-1.jpg",
-    "Ремонт фар": "https://ksenonspb.ru/wp-content/uploads/2026/01/8FeX41yZ3b2mVdd1jWi45NW5uoY-960.jpg",
+    "Ремонт фар": "https://ksenonspb.ru/wp-content/uploads/2018/05/e90.jpg",
     "Замена стёкол фар": "https://ksenonspb.ru/wp-content/uploads/2016/08/img_6069.jpg",
     "Устранение запотевания фар": "https://ksenonspb.ru/wp-content/uploads/2016/09/misted-1.jpg",
-    "Установка Bi-LED (светодиодных) линз": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-36.jpg",
+    "Установка Bi-LED (светодиодных) линз": "https://ksenonspb.ru/wp-content/uploads/2016/09/biled.jpg",
     "Установка ксенона": "https://ksenonspb.ru/wp-content/uploads/2016/09/xenon.jpg",
-    "Замена штатных линз на оригинал или аналог": "https://ksenonspb.ru/wp-content/uploads/2018/09/F4AAAgKEmOA-960.jpg",
-    "Тюнинг подсветки — Ангельские и Дьявольские глазки": "https://ksenonspb.ru/wp-content/uploads/2018/05/5141ad6393277.jpeg",
+    "Замена штатных линз на оригинал или аналог": "https://ksenonspb.ru/wp-content/uploads/2020/03/nCAAAgMzVeA-19201-1.jpg",
+    "Тюнинг подсветки — Ангельские и Дьявольские глазки": "https://ksenonspb.ru/wp-content/uploads/2020/03/2SAAAgFshOA-19201.jpg",
     "Покраска масок фар": "https://ksenonspb.ru/wp-content/uploads/2016/09/paint.png",
-    "Изготовление дневных ходовых огней (ДХО)": "https://ksenonspb.ru/wp-content/uploads/2018/07/kyaaagkceoa-960.jpg",
+    "Изготовление дневных ходовых огней (ДХО)": "https://ksenonspb.ru/wp-content/uploads/2016/08/IMG_4529.jpg",
     "Регулировка света фар на оптическом стенде": "https://ksenonspb.ru/wp-content/uploads/2016/09/reg.jpg",
     "Замена штатных блоков розжига и ламп": "https://ksenonspb.ru/wp-content/uploads/2018/05/aeecc8es-960-1.jpg",
     "Ремонт штатных ДХО": "https://ksenonspb.ru/wp-content/uploads/2020/11/drQAAgC09-A-9601.jpg",
     "Установка динамических («бегущих») поворотников": "https://ksenonspb.ru/wp-content/uploads/2020/03/MAAAgENOOA-19201.jpg",
-    "Ремонт штатных светодиодных фар (LED-ремонт)": "https://ksenonspb.ru/wp-content/uploads/2018/06/YoAAAgFugOA-960.jpg",
-    "Ремонт штатных светодиодных фонарей": "https://ksenonspb.ru/wp-content/uploads/2016/09/rear-1.jpg",
-    "Установка и программная активация ПТФ": "https://ksenonspb.ru/wp-content/uploads/2016/09/ledfog.png",
-    "Установка светодиодных противотуманных фар": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-35.jpg",
-    "Замена стёкол противотуманных фар": "https://ksenonspb.ru/wp-content/uploads/2018/07/s0AAAgHi0OA-960.jpg",
-    "Замена ламп в ПТФ": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-8.jpg",
-    "Замена ламп на светодиодные — салон, габариты, подсветка номера": "https://ksenonspb.ru/wp-content/uploads/2016/08/img_3959.jpg",
-    "Ремонт корректора фар — ручные и автоматические корректоры": "https://ksenonspb.ru/wp-content/uploads/2016/09/e-repair-1.jpg",
-    "Ремонт омывателя фар": "https://ksenonspb.ru/wp-content/uploads/2016/09/how-to-choose-the-best-car-amplifier.jpg",
+    "Ремонт штатных светодиодных фар (LED-ремонт)": "https://ksenonspb.ru/wp-content/uploads/2018/05/f01led.jpg",
+    "Ремонт штатных светодиодных фонарей": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-9.jpg",
+    "Установка и программная активация ПТФ": "https://ksenonspb.ru/wp-content/uploads/2020/03/6f637804k444-19201.jpg",
+    "Установка светодиодных противотуманных фар": "https://ksenonspb.ru/wp-content/uploads/2020/03/EAAAAgNVReA-19201.jpg",
+    "Замена стёкол противотуманных фар": "https://ksenonspb.ru/wp-content/uploads/2020/11/i-AAAgO2yeA-9601.jpg",
+    "Замена ламп в ПТФ": "https://ksenonspb.ru/wp-content/uploads/2020/03/6f637804k444-19201.jpg",
+    "Замена ламп на светодиодные — салон, габариты, подсветка номера": "https://ksenonspb.ru/wp-content/uploads/2018/05/e53.jpg",
+    "Ремонт корректора фар — ручные и автоматические корректоры": "https://ksenonspb.ru/wp-content/uploads/2018/05/sequoia-1.jpg",
+    "Ремонт омывателя фар": "https://ksenonspb.ru/wp-content/uploads/2016/08/IMG_toyota-nolden-pioneer-bixenon-1.jpg",
     "Ремонт отражателей фар — чистка или замена рефлекторов": "https://ksenonspb.ru/wp-content/uploads/2016/09/reflector-1.png",
     "Ремонт корпуса фар": "https://ksenonspb.ru/wp-content/uploads/2020/03/9AAAAgDfYuA-19201.jpg",
-    "Восстановление креплений («ушек») фары": "https://ksenonspb.ru/wp-content/uploads/2020/03/syAAAgDNyeA-19201.jpg",
-    "Ремонт ксеноновых фар": "https://ksenonspb.ru/wp-content/uploads/2018/05/6f836g4k337-960.jpg",
-    "Комплексное улучшение света фар": "https://ksenonspb.ru/wp-content/uploads/2026/01/QwisvkNREXiXiDRRslmWElJGht4-960.jpg",
-    "Ремонт фар европейских производителей": "https://ksenonspb.ru/wp-content/uploads/2022/04/S7jUlvfRpkxQN06kpudCI9as0o-960.jpg",
-    "Ремонт фар китайских производителей": "https://ksenonspb.ru/wp-content/uploads/2026/01/esD-5MJQmzWE3pRTnr1UMgEKJiU-960.jpg",
-    "Ремонт фар американского рынка": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-23.jpg",
-    "Ремонт систем адаптивного освещения (AFS)": "https://ksenonspb.ru/wp-content/uploads/2021/06/RagnnEphveQZgBY29n3396qgdmc-9601.jpg",
-    "Восстановление отражателей методом вакуумного напыления": "https://ksenonspb.ru/wp-content/uploads/2018/05/avensis-1.jpeg",
-    "Ремонт и перепайка драйверов (плат управления) LED": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-9.jpg",
-    "Ремонт контроллеров управления фарой (ЭБУ)": "https://ksenonspb.ru/wp-content/uploads/2016/09/harness.jpeg",
-    "Химическая чистка фары изнутри": "https://ksenonspb.ru/wp-content/uploads/2020/03/nwAAAgARPOA-19201.jpg",
-    "Программное отключение опроса ламп («обманки»)": "https://ksenonspb.ru/wp-content/uploads/2018/05/2013-dodge-ram-1500-quad-laramie-truck-angular-front.png",
-    "Замена внутренней проводки фары": "https://ksenonspb.ru/wp-content/uploads/2026/01/sT1Au9E5E4tZRh3x-yY-TtGRJck-1920.jpg",
-    "Установка автокорректоров фар": "https://ksenonspb.ru/wp-content/uploads/2020/03/hoAAAgDOIuA-19201.jpg",
-    "Кодирование и программирование штатных блоков управления светом + компьютерная диагностика": "https://ksenonspb.ru/wp-content/uploads/2016/09/heads.png"
+    "Восстановление креплений («ушек») фары": "https://ksenonspb.ru/wp-content/uploads/2020/11/h0AAAgEVyeA-9601.jpg",
+    "Ремонт ксеноновых фар": "https://ksenonspb.ru/wp-content/uploads/2018/05/m37-1.jpg",
+    "Комплексное улучшение света фар": "https://ksenonspb.ru/portfolio/7MAAAgAzWOA-1920.jpg",
+    "Ремонт фар европейских производителей": "https://ksenonspb.ru/wp-content/uploads/2018/05/16c6149s-960.jpg",
+    "Ремонт фар китайских производителей": "https://ksenonspb.ru/wp-content/uploads/2020/11/KFAAAgLSoeA-9601.jpg",
+    "Ремонт фар американского рынка": "https://ksenonspb.ru/wp-content/uploads/2020/03/BYAAAgOQwuA-19201.jpg",
+    "Ремонт систем адаптивного освещения (AFS)": "https://ksenonspb.ru/wp-content/uploads/2018/05/b6ceb9ds-960.jpg",
+    "Восстановление отражателей методом вакуумного напыления": "https://ksenonspb.ru/wp-content/uploads/2016/09/reflector-1.png",
+    "Ремонт и перепайка драйверов (плат управления) LED": "https://ksenonspb.ru/wp-content/uploads/2020/03/SGAAAgIfOeA-19201.jpg",
+    "Ремонт контроллеров управления фарой (ЭБУ)": "https://ksenonspb.ru/wp-content/uploads/2016/09/e-repair-1.jpg",
+    "Химическая чистка фары изнутри": "https://ksenonspb.ru/wp-content/uploads/2016/09/cleaning-1.jpg",
+    "Программное отключение опроса ламп («обманки»)": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-23.jpg",
+    "Замена внутренней проводки фары": "https://ksenonspb.ru/wp-content/uploads/2021/09/5D7ZL-EXgUe6NbclWgUam9SMyS0-9601.jpg",
+    "Установка автокорректоров фар": "https://ksenonspb.ru/wp-content/uploads/2021/09/IKgT7yLzjx-1W7XenovHwM91Iys-960.jpg",
+    "Кодирование и программирование штатных блоков управления светом + компьютерная диагностика": "https://ksenonspb.ru/wp-content/uploads/2016/09/e-repair-1.jpg"
   },
   "details": {
     "Замена линз в фарах": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/biled.jpg",
-      "source": "/установка-светодиодных-линз/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/e84.jpg",
+      "source": "BMW X1 E84 — замена линз",
+      "via": "case:after_image"
     },
     "Установка лазерных (Laser) линз": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/07/YYAAAgDI0OA-960.jpg",
-      "source": "/установка-линз-bi-led-optima-professional/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2023/03/A0uDlazmT8Im_nUrRIfPLQVxYZs-960.jpg",
+      "source": "BMW X7 Lazer — ремонт выгоревшей ресницы.",
+      "via": "case:hero_image"
     },
     "Полировка и шлифовка фар": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/polish-1.jpg",
-      "source": "/полировка-стекол-фар/",
-      "via": "cover"
+      "source": "Полировка, шлифовка и бронировка стекол фар",
+      "via": "excluded-cover"
     },
     "Ремонт фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2026/01/8FeX41yZ3b2mVdd1jWi45NW5uoY-960.jpg",
-      "source": "/ремонт-фар/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/e90.jpg",
+      "source": "BMW 3er E90 — ремонт фар",
+      "via": "case:hero_image"
     },
     "Замена стёкол фар": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/08/img_6069.jpg",
-      "source": "/замена-стекол-фар/",
-      "via": "cover"
+      "source": "Замена стекол и корпусов фар",
+      "via": "excluded-cover"
     },
     "Устранение запотевания фар": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/misted-1.jpg",
-      "source": "/ремонт-запотевающих-фар/",
-      "via": "cover"
+      "source": "Ремонт запотевающих фар",
+      "via": "excluded-cover"
     },
     "Установка Bi-LED (светодиодных) линз": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-36.jpg",
-      "source": "/установка-светодиодных-линз/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/biled.jpg",
+      "source": "Установка Bi LED линзовых элементов",
+      "via": "excluded-cover"
     },
     "Установка ксенона": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/xenon.jpg",
-      "source": "/установка-биксеноновых-линз/",
-      "via": "cover"
+      "source": "Установка биксеноновых модулей",
+      "via": "excluded-cover"
     },
     "Замена штатных линз на оригинал или аналог": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/09/F4AAAgKEmOA-960.jpg",
-      "source": "/установка-светодиодных-линз-bmw-e87/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/nCAAAgMzVeA-19201-1.jpg",
+      "source": "Cadillac XT5 — меняем штатные LED линзы HELLA",
+      "via": "case:featured_image"
     },
     "Тюнинг подсветки — Ангельские и Дьявольские глазки": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/5141ad6393277.jpeg",
-      "source": "/мотоцикл-ktm-990-smt-тюнинг-оптики/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/2SAAAgFshOA-19201.jpg",
+      "source": "BMW X5 E53 рестайлинг . Замена колец на LED DRL от TAU tech",
+      "via": "case:featured_image"
     },
     "Покраска масок фар": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/paint.png",
-      "source": "/покраска-фар/",
-      "via": "cover"
+      "source": "Покраска фар",
+      "via": "excluded-cover"
     },
     "Изготовление дневных ходовых огней (ДХО)": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/07/kyaaagkceoa-960.jpg",
-      "source": "/светодиодный-тюнинг-light-label/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/08/IMG_4529.jpg",
+      "source": "ACURA MDX",
+      "via": "case:featured_image"
     },
     "Регулировка света фар на оптическом стенде": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/reg.jpg",
-      "source": "/регулировка-фар/",
-      "via": "cover"
+      "source": "Регулировка фар",
+      "via": "excluded-cover"
     },
     "Замена штатных блоков розжига и ламп": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/aeecc8es-960-1.jpg",
-      "source": "/поддельные-блоки-розжига-toyota-и-lexus/",
-      "via": "cover"
+      "source": "Блоки розжига TOYOTA и LEXUS",
+      "via": "excluded-cover"
     },
     "Ремонт штатных ДХО": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2020/11/drQAAgC09-A-9601.jpg",
-      "source": "/hyundai-i40-ремонт-штатных-дхо/",
-      "via": "cover"
+      "source": "Hyundai i40 — ремонт штатных ДХО",
+      "via": "case:hero_image"
     },
     "Установка динамических («бегущих») поворотников": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/MAAAgENOOA-19201.jpg",
-      "source": "/land-rover-range-rover-sport-2010-ремонт-фонарей-glohh-и-бегущий-пов/",
-      "via": "cover"
+      "source": "Land Rover Range Rover Sport 2010 — ремонт фонарей Glohh и бегущий поворотник",
+      "via": "case:hero_image"
     },
     "Ремонт штатных светодиодных фар (LED-ремонт)": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/06/YoAAAgFugOA-960.jpg",
-      "source": "/ремонт-светодиодной-фары-audi/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/f01led.jpg",
+      "source": "BMW 7 F01 — ремонт LED фары",
+      "via": "case:after_image"
     },
     "Ремонт штатных светодиодных фонарей": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/rear-1.jpg",
-      "source": "/ремонт-задних-фонарей/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-9.jpg",
+      "source": "Ремонт светодиодных фонарей",
+      "via": "excluded-cover"
     },
     "Установка и программная активация ПТФ": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/ledfog.png",
-      "source": "/установка-противотуманок/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/6f637804k444-19201.jpg",
+      "source": "LED ПТФ TOYOTA original",
+      "via": "case:featured_image"
     },
     "Установка светодиодных противотуманных фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-35.jpg",
-      "source": "/установка-противотуманок/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/EAAAAgNVReA-19201.jpg",
+      "source": "Dodge RAM — установка BI LED + ПТФ Morimoto / ремонт фонаря.",
+      "via": "case:after_image"
     },
     "Замена стёкол противотуманных фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/07/s0AAAgHi0OA-960.jpg",
-      "source": "/замена-стекол-фар/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/11/i-AAAgO2yeA-9601.jpg",
+      "source": "Hyundai Santa Fe — ремонт штатных ПТФ с ДХО",
+      "via": "case:featured_image"
     },
     "Замена ламп в ПТФ": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-8.jpg",
-      "source": "/chevrolet-tahoe-iii-установка-светодиодных-линз/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/6f637804k444-19201.jpg",
+      "source": "LED ПТФ TOYOTA original",
+      "via": "case:featured_image"
     },
     "Замена ламп на светодиодные — салон, габариты, подсветка номера": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/08/img_3959.jpg",
-      "source": "/chevrolet-tahoe-2007-2014-установка-светодиодов/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/e53.jpg",
+      "source": "BMW X5 E53 — установка светодиодов",
+      "via": "case:after_image"
     },
     "Ремонт корректора фар — ручные и автоматические корректоры": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/e-repair-1.jpg",
-      "source": "/комлпексный-ремонт-автоэлектрики/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/sequoia-1.jpg",
+      "source": "Toyota Sequoia — установка квадро-светодиодов",
+      "via": "case:hero_image"
     },
     "Ремонт омывателя фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/how-to-choose-the-best-car-amplifier.jpg",
-      "source": "/автоэлектрика/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/08/IMG_toyota-nolden-pioneer-bixenon-1.jpg",
+      "source": "TOYOTA TUNDRA",
+      "via": "case:after_image"
     },
     "Ремонт отражателей фар — чистка или замена рефлекторов": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/reflector-1.png",
-      "source": "/восстановление-отражателей/",
-      "via": "cover"
+      "source": "Восстановление отражателей",
+      "via": "excluded-cover"
     },
     "Ремонт корпуса фар": {
       "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/9AAAAgDfYuA-19201.jpg",
-      "source": "/bmw-x4-ремонт-корпуса-фары-с-разбором-по-ш/",
-      "via": "cover"
+      "source": "BMW X4 — ремонт корпуса фары с разбором по штатному герметику",
+      "via": "case:hero_image"
     },
     "Восстановление креплений («ушек») фары": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/syAAAgDNyeA-19201.jpg",
-      "source": "/bentley-continental-gt-i-восстановление-подубитых-фар/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/11/h0AAAgEVyeA-9601.jpg",
+      "source": "Bentley Continental GT I — восстановление подубитых фар",
+      "via": "case:hero_image"
     },
     "Ремонт ксеноновых фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/6f836g4k337-960.jpg",
-      "source": "/audi-q5-замена-штатного-ксенона-и-установка/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/m37-1.jpg",
+      "source": "INFINITI M37 — ремонт ксеноновых фар",
+      "via": "case:hero_image"
     },
     "Комплексное улучшение света фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2026/01/QwisvkNREXiXiDRRslmWElJGht4-960.jpg",
-      "source": "/bmw-e70-несколько-вариантов-улучшения-свет/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/portfolio/7MAAAgAzWOA-1920.jpg",
+      "source": "BMW E70. Несколько вариантов улучшения света от ксенона до LED линз.",
+      "via": "case:photos"
     },
     "Ремонт фар европейских производителей": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2022/04/S7jUlvfRpkxQN06kpudCI9as0o-960.jpg",
-      "source": "/ремонт-фар-bentley/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/16c6149s-960.jpg",
+      "source": "Bentley Continental GT — ремонт фар",
+      "via": "case:hero_image"
     },
     "Ремонт фар китайских производителей": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2026/01/esD-5MJQmzWE3pRTnr1UMgEKJiU-960.jpg",
-      "source": "/установка-линз-bi-led-optima-professional/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/11/KFAAAgLSoeA-9601.jpg",
+      "source": "Kia Ceed II — проблема ДХО. Ремонт с гарантией",
+      "via": "case:hero_image"
     },
     "Ремонт фар американского рынка": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-23.jpg",
-      "source": "/chevrolet-tahoe-2014-установка-светодиодных-линз/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/BYAAAgOQwuA-19201.jpg",
+      "source": "Cadillac Escalade III — BI LED I.LENS NEW и HPL Crossfire",
+      "via": "case:after_image"
     },
     "Ремонт систем адаптивного освещения (AFS)": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2021/06/RagnnEphveQZgBY29n3396qgdmc-9601.jpg",
-      "source": "/skoda-octavia-a7-замена-би-ксенон-afl-на-bi-led-aozoom-a6-orion/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/b6ceb9ds-960.jpg",
+      "source": "AUDI Q7 AFS адаптив + BI-LED OPTIMA",
+      "via": "case:hero_image"
     },
     "Восстановление отражателей методом вакуумного напыления": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/avensis-1.jpeg",
-      "source": "/toyota-avensis-ii-замена-отражателей/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/reflector-1.png",
+      "source": "Восстановление отражателей",
+      "via": "excluded-cover"
     },
     "Ремонт и перепайка драйверов (плат управления) LED": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-9.jpg",
-      "source": "/ремонт-светодиодных-фонарей/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/SGAAAgIfOeA-19201.jpg",
+      "source": "MAZDA CX5",
+      "via": "case:featured_image"
     },
     "Ремонт контроллеров управления фарой (ЭБУ)": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/harness.jpeg",
-      "source": "/ремонт-электронных-блоков-управлени/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/e-repair-1.jpg",
+      "source": "Ремонт электронных блоков управления",
+      "via": "excluded-meta"
     },
     "Химическая чистка фары изнутри": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/nwAAAgARPOA-19201.jpg",
-      "source": "/volvo-s80-xc70-чистка-изнутри-и-замена-отражате/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/cleaning-1.jpg",
+      "source": "Чистка фар изнутри",
+      "via": "excluded-cover"
     },
     "Программное отключение опроса ламп («обманки»)": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/2013-dodge-ram-1500-quad-laramie-truck-angular-front.png",
-      "source": "/установка-биксеноновых-линз/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2018/05/tmp-23.jpg",
+      "source": "Chevrolet Tahoe 2014 — установка светодиодов",
+      "via": "case:featured_image"
     },
     "Замена внутренней проводки фары": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2026/01/sT1Au9E5E4tZRh3x-yY-TtGRJck-1920.jpg",
-      "source": "/ремонт-светодиодной-фары-audi/",
-      "via": "meta"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2021/09/5D7ZL-EXgUe6NbclWgUam9SMyS0-9601.jpg",
+      "source": "Opel Insignia — проблемы фар и как их не надо делать",
+      "via": "case:hero_image"
     },
     "Установка автокорректоров фар": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2020/03/hoAAAgDOIuA-19201.jpg",
-      "source": "/audi-a8-iii-d4-проблема-плохого-света-фар/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2021/09/IKgT7yLzjx-1W7XenovHwM91Iys-960.jpg",
+      "source": "v70 Замена стёкол фар на новые и Bi led взамен галогена",
+      "via": "case:hero_image"
     },
     "Кодирование и программирование штатных блоков управления светом + компьютерная диагностика": {
-      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/heads.png",
-      "source": "/инсталляция-штатных-головных-устрой/",
-      "via": "cover"
+      "image": "https://ksenonspb.ru/wp-content/uploads/2016/09/e-repair-1.jpg",
+      "source": "Ремонт электронных блоков управления",
+      "via": "excluded-meta"
     }
   }
 }

@@ -86,7 +86,13 @@ while (have_posts()) :
 				<div class="service-pricing__container container">
 					<?php if ($price_has_rows) : ?>
 						<h2 class="service-pricing__title title-md"><?php esc_html_e('Что входит в услугу', 'ksenonspb'); ?></h2>
-						<div class="service-pricing__tables">
+						<table class="service-pricing__table">
+							<colgroup>
+								<col class="service-pricing__col service-pricing__col--name" />
+								<col class="service-pricing__col service-pricing__col--price" />
+								<col class="service-pricing__col service-pricing__col--duration" />
+								<col class="service-pricing__col service-pricing__col--warranty" />
+							</colgroup>
 							<?php foreach ($price_sections as $section) : ?>
 								<?php
 								$rows = ksenon_get_post_field($section['key'], $post_id);
@@ -104,41 +110,81 @@ while (have_posts()) :
 								if (! $visible_rows) {
 									continue;
 								}
+
+								$section_title_html  = esc_html($section['title']);
+								if (! empty($section['note'])) {
+									$section_title_html .= ' <span class="service-pricing__section-note">' . esc_html($section['note']) . '</span>';
+								}
 								?>
-								<div class="service-pricing__block service-pricing__block--<?php echo esc_attr($section['mod']); ?>">
-									<div class="service-pricing__head">
-										<span class="service-pricing__section-title">
-											<?php echo esc_html($section['title']); ?>
-											<?php if (! empty($section['note'])) : ?>
-												<span class="service-pricing__section-note"><?php echo esc_html($section['note']); ?></span>
-											<?php endif; ?>
-										</span>
-										<?php if ('main' === $section['mod']) : ?>
-											<span class="service-pricing__cols" aria-hidden="true">
+								<?php if ('main' === $section['mod']) : ?>
+									<thead class="service-pricing__head service-pricing__head--main">
+										<tr>
+											<th scope="col" class="service-pricing__th service-pricing__th--name">
+												<span class="service-pricing__section-title"><?php echo $section_title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+											</th>
+											<th scope="col" class="service-pricing__th service-pricing__th--price">
 												<span class="service-pricing__col-label"><?php esc_html_e('Цена', 'ksenonspb'); ?></span>
+											</th>
+											<th scope="col" class="service-pricing__th service-pricing__th--duration">
 												<span class="service-pricing__col-label"><?php esc_html_e('Срок', 'ksenonspb'); ?></span>
+											</th>
+											<th scope="col" class="service-pricing__th service-pricing__th--warranty">
 												<span class="service-pricing__col-label"><?php esc_html_e('Гарантия', 'ksenonspb'); ?></span>
-											</span>
-										<?php endif; ?>
-									</div>
-									<ul class="service-pricing__list">
+											</th>
+										</tr>
+									</thead>
+									<tbody class="service-pricing__body service-pricing__body--main">
 										<?php foreach ($visible_rows as $row) : ?>
-											<li class="service-pricing__row">
-												<span class="service-pricing__name"><?php echo esc_html((string) $row['name']); ?></span>
-												<span class="service-pricing__price"><?php echo esc_html((string) ($row['price'] ?? '')); ?></span>
-												<span class="service-pricing__duration"><?php echo esc_html((string) ($row['duration'] ?? '')); ?></span>
-												<span class="service-pricing__warranty"><?php echo esc_html((string) ($row['warranty'] ?? '')); ?></span>
-											</li>
+											<tr class="service-pricing__row">
+												<td class="service-pricing__cell service-pricing__name" data-label="<?php esc_attr_e('Услуга', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) $row['name']); ?>
+												</td>
+												<td class="service-pricing__cell service-pricing__price" data-label="<?php esc_attr_e('Цена', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) ($row['price'] ?? '')); ?>
+												</td>
+												<td class="service-pricing__cell service-pricing__duration" data-label="<?php esc_attr_e('Срок', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) ($row['duration'] ?? '')); ?>
+												</td>
+												<td class="service-pricing__cell service-pricing__warranty" data-label="<?php esc_attr_e('Гарантия', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) ($row['warranty'] ?? '')); ?>
+												</td>
+											</tr>
 										<?php endforeach; ?>
-									</ul>
-								</div>
+									</tbody>
+								<?php else : ?>
+									<tbody class="service-pricing__body service-pricing__body--<?php echo esc_attr($section['mod']); ?>">
+										<tr class="service-pricing__section-row">
+											<th colspan="4" scope="colgroup" class="service-pricing__section-cell">
+												<div class="service-pricing__head service-pricing__head--solo">
+													<span class="service-pricing__section-title"><?php echo $section_title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+												</div>
+											</th>
+										</tr>
+										<?php foreach ($visible_rows as $row) : ?>
+											<tr class="service-pricing__row">
+												<td class="service-pricing__cell service-pricing__name" data-label="<?php esc_attr_e('Услуга', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) $row['name']); ?>
+												</td>
+												<td class="service-pricing__cell service-pricing__price" data-label="<?php esc_attr_e('Цена', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) ($row['price'] ?? '')); ?>
+												</td>
+												<td class="service-pricing__cell service-pricing__duration" data-label="<?php esc_attr_e('Срок', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) ($row['duration'] ?? '')); ?>
+												</td>
+												<td class="service-pricing__cell service-pricing__warranty" data-label="<?php esc_attr_e('Гарантия', 'ksenonspb'); ?>">
+													<?php echo esc_html((string) ($row['warranty'] ?? '')); ?>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								<?php endif; ?>
 							<?php endforeach; ?>
-						</div>
+						</table>
 					<?php endif; ?>
 					<?php if ($warranty_text) : ?>
 						<div class="service-pricing__note">
 							<span class="service-pricing__note-icon" aria-hidden="true">
-								<?php ksenon_icon('icon-location', 28, 35, 'service-pricing__note-icon-svg'); ?>
+								<?php ksenon_icon('icon-shield', 28, 35, 'service-pricing__note-icon-svg'); ?>
 							</span>
 							<p class="service-pricing__warranty-text"><?php echo nl2br(esc_html($warranty_text)); ?></p>
 						</div>
@@ -162,8 +208,9 @@ while (have_posts()) :
 					'template-parts/blocks/brands-section',
 					null,
 					array(
-						'query' => $brands,
-						'title' => __('Подойдет <span class="color-accent">для вашей</span> марки', 'ksenonspb'),
+						'query'     => $brands,
+						'title'     => __('Подойдет <span class="color-accent">для вашей</span> марки', 'ksenonspb'),
+						'show_more' => false,
 					)
 				);
 			}
