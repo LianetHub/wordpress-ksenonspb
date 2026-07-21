@@ -6275,16 +6275,12 @@ html.with-fancybox body.hide-scrollbar .header {
   margin: 0 0 0.625rem;
   max-width: 33.125rem;
   color: #000000;
-  font-size: 1.25rem;
-  line-height: 1.2;
   text-align: center;
 }
 @media (min-width: 991.98px) {
   .cta-contacts__title {
     margin: 0 0 1.25rem;
-    font-size: inherit;
     text-align: left;
-    line-height: 1.2;
   }
 }
 .cta-contacts__lead {

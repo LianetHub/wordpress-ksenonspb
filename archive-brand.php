@@ -38,5 +38,16 @@ $title_html = function_exists('ksenon_title_accent_html')
 		</ul>
 	</div>
 </section>
+
+<?php get_template_part('template-parts/blocks/cta-contacts'); ?>
+
 <?php
+get_template_part(
+	'template-parts/blocks/cta-bottom',
+	null,
+	array(
+		'title' => __('Опишите проблему — оценим быстро и по делу', 'ksenonspb'),
+	)
+);
+
 get_footer();
