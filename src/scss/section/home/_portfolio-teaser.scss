@@ -196,7 +196,7 @@
 		gap: rem(16);
 		margin-top: auto;
 		padding-top: rem(20);
-		border-top: 1px solid rgba($color-black, 0.08);
+		border-top: 1px dashed rgba($color-black, 0.08);
 	}
 
 	&__price {

@@ -14,7 +14,7 @@ while (have_posts()) :
 ?>
 	<section class="policy">
 		<div class="policy__container container">
-			<div class="policy__inner typography-block <?php echo ksenon_anim_class('fade-up'); ?>">
+			<div class="policy__inner typography-block">
 				<h1><?php the_title(); ?></h1>
 				<?php the_content(); ?>
 			</div>

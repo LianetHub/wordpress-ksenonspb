@@ -31,12 +31,12 @@ if (! $items) {
 		<ul class="advantages__grid">
 			<?php foreach ($items as $item) : ?>
 				<?php
-				$card_class = 'advantages__card ' . ksenon_anim_class('fade-up');
+				$card_class = 'advantages__card';
 				if (! empty($item['selected'])) {
 					$card_class .= ' _selected';
 				}
 				?>
-				<li class="<?php echo esc_attr(trim($card_class)); ?>">
+				<li class="<?php echo esc_attr($card_class); ?>">
 					<?php if (! empty($item['title'])) : ?>
 						<div class="advantages__value"><?php echo esc_html($item['title']); ?></div>
 					<?php endif; ?>

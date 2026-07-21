@@ -6,13 +6,6 @@
  * @package ksenonspb
  */
 
-if (! function_exists('ksenon_anim_class')) {
-	function ksenon_anim_class(string $type = 'fade-up', string $extra = ''): string
-	{
-		return '';
-	}
-}
-
 if (! function_exists('ksenon_home_get')) {
 	function ksenon_home_get($key, $default = '')
 	{

@@ -120,8 +120,8 @@ $render_faq_item = static function ($item) {
 		<div class="faq__layout">
 			<aside class="faq__sidebar">
 				<div class="faq__header">
-					<p class="faq__label <?php echo ksenon_anim_class('fade-up'); ?>"><?php esc_html_e('FAQ', 'ksenonspb'); ?></p>
-					<h2 class="faq__title title-md <?php echo ksenon_anim_class('fade-up'); ?>"><?php echo ksenon_faq_title_html($title); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+					<p class="faq__label"><?php esc_html_e('FAQ', 'ksenonspb'); ?></p>
+					<h2 class="faq__title title-md"><?php echo ksenon_faq_title_html($title); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 																								?></h2>
 					<?php if ($intro) : ?>
 						<p class="faq__intro"><?php echo nl2br(esc_html($intro)); ?></p>

@@ -52,9 +52,6 @@
 				<element value="alergobot_acf_link_url"/>
 				<element value="alergobot_acf_link_title"/>
 				<element value="alergobot_acf_link_target"/>
-				<element value="alergobot_anim_class"/>
-				<element value="alergobot_anim_wrap_open"/>
-				<element value="alergobot_anim_wrap_close"/>
 				<element value="alergobot_render_blog_pagination"/>
 				<element value="alergobot_render_catalog_gallery_product"/>
 				<element value="alergobot_render_favicons"/>

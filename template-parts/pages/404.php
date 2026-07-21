@@ -12,7 +12,7 @@ $icons    = ksenon_assets_uri('img/icons.svg');
 ?>
 <section class="not-found" aria-labelledby="not-found-title">
 	<div class="not-found__container container">
-		<div class="not-found__code <?php echo ksenon_anim_class('blur-up', '_anim-no-hide'); ?>" aria-hidden="true">
+		<div class="not-found__code" aria-hidden="true">
 			<span class="not-found__digit">4</span>
 			<span class="not-found__digit not-found__digit--accent">0</span>
 			<span class="not-found__digit">4</span>
@@ -20,14 +20,14 @@ $icons    = ksenon_assets_uri('img/icons.svg');
 
 		<div class="not-found__head">
 			<?php if ($title) : ?>
-				<h1 id="not-found-title" class="not-found__title title title-md <?php echo ksenon_anim_class('blur-up', '_anim-no-hide'); ?>"><?php echo esc_html($title); ?></h1>
+				<h1 id="not-found-title" class="not-found__title title title-md"><?php echo esc_html($title); ?></h1>
 			<?php endif; ?>
 			<?php if ($subtitle) : ?>
-				<p class="not-found__text text-lead <?php echo ksenon_anim_class('fade-up', '_anim-no-hide'); ?>"><?php echo esc_html($subtitle); ?></p>
+				<p class="not-found__text text-lead"><?php echo esc_html($subtitle); ?></p>
 			<?php endif; ?>
 		</div>
 
-		<div class="not-found__actions <?php echo ksenon_anim_class('fade-up', '_anim-no-hide'); ?>">
+		<div class="not-found__actions">
 			<a class="btn btn--primary not-found__btn" href="<?php echo esc_url(home_url('/')); ?>">
 				<?php esc_html_e('Вернуться на главную', 'ksenonspb'); ?>
 				<svg class="btn__icon" width="28" height="28" aria-hidden="true">

@@ -60,29 +60,6 @@
 		flex: 1 1 auto;
 	}
 
-	.anim-wrap {
-		display: block;
-
-		&--inline {
-			display: inline-flex;
-			max-width: 100%;
-		}
-
-		&--fill {
-			display: flex;
-			width: 100%;
-
-			> .btn {
-				flex: 1 1 auto;
-				width: 100%;
-			}
-		}
-
-		&:has(.product-hero__order) {
-			order: 1;
-		}
-	}
-
 	&__order {
 		margin-top: auto;
 		width: 100%;
