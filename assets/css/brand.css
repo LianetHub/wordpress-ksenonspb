@@ -158,8 +158,8 @@
 .brands-section__grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(0, 1fr))[2];
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 
@@ -246,8 +246,8 @@
 @media (min-width: 575.98px) {
   .brands-section__grid {
     gap: 1.25rem;
-    -ms-grid-columns: (minmax(0, 1fr))[3];
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    -ms-grid-columns: (1fr)[3];
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -279,8 +279,8 @@
   }
 
   .brands-section__grid {
-    -ms-grid-columns: (minmax(0, 1fr))[4];
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    -ms-grid-columns: (1fr)[4];
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .brands-section .brand-card,

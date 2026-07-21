@@ -88,10 +88,13 @@
 	&__subfilters {
 		width: 100%;
 		padding: rem(10) rem(14);
-		border-radius: rem(62);
-		background: $color-white;
-		overflow: hidden;
+		overflow: visible;
 
+		@media (min-width:$md4) {
+			border-radius: rem(62);
+			background: $color-white;
+			overflow: hidden;
+		}
 		@media (min-width: $md3) {
 			padding: rem(14) rem(30);
 		}
@@ -146,7 +149,7 @@
 	}
 
 	&--services &__grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: rem(8);
 
 		@media (min-width: $md4) {
@@ -219,34 +222,42 @@
 .cpt-pagination {
 	display: flex;
 	justify-content: center;
+	max-width: 100%;
+	
 
 	&__inner {
 		display: flex;
 		align-items: center;
-		gap: rem(20);
-		padding: rem(14) rem(30);
-		border-radius: rem(62);
+		gap: rem(15);
+		max-width: 100%;
+		padding: rem(10) rem(22);
+		border-radius: rem(46);
 		background: $color-white;
+		@media (max-width:$md4) {
+			max-width: max-content;
+			margin: 0 -1.5rem;
+		}
 	}
 
 	&__pages {
 		display: flex;
 		align-items: center;
-		gap: rem(20);
+		gap: rem(15);
+		min-width: 0;
 	}
 
 	&__page {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		min-width: rem(46);
-		height: rem(47);
-		padding: rem(15) rem(20);
-		border-radius: rem(40);
+		min-width: rem(34);
+		height: rem(35);
+		padding: rem(11) rem(15);
+		border-radius: rem(30);
 		background: $color-surface;
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(14);
+		font-size: rem(10);
 		font-weight: 500;
 		line-height: normal;
 		white-space: nowrap;
@@ -259,8 +270,8 @@
 		}
 
 		&--dots {
-			min-width: rem(46);
-			padding: rem(15) rem(18);
+			min-width: rem(34);
+			padding: rem(11) rem(13);
 			pointer-events: none;
 		}
 
@@ -276,8 +287,8 @@
 		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
-		width: rem(46);
-		height: rem(47);
+		width: rem(34);
+		height: rem(35);
 		border-radius: 50%;
 		background: $color-surface;
 		color: $color-black;
@@ -297,7 +308,7 @@
 
 	&__icon {
 		display: block;
-		width: rem(8);
-		height: rem(18);
+		width: rem(6);
+		height: rem(13);
 	}
 }

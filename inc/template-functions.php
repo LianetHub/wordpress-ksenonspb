@@ -1048,7 +1048,8 @@ if (! function_exists('ksenon_get_pagination_items')) {
 		$current = max(1, (int) $current);
 		$total   = max(1, (int) $total);
 
-		if ($total <= 6) {
+		// Keep at most 4 page numbers + optional dots (Figma: ← 1 2 3 4 … →).
+		if ($total <= 5) {
 			$items = array();
 			for ($i = 1; $i <= $total; $i++) {
 				$items[] = array(
@@ -1069,20 +1070,12 @@ if (! function_exists('ksenon_get_pagination_items')) {
 				);
 			}
 			$items[] = array('type' => 'dots');
-			$items[] = array(
-				'type' => 'page',
-				'num'  => $total,
-			);
 
 			return $items;
 		}
 
 		if ($current >= $total - 3) {
-			$items   = array(
-				array(
-					'type' => 'page',
-					'num'  => 1,
-				),
+			$items = array(
 				array('type' => 'dots'),
 			);
 			for ($i = $total - 3; $i <= $total; $i++) {
@@ -1096,10 +1089,6 @@ if (! function_exists('ksenon_get_pagination_items')) {
 		}
 
 		return array(
-			array(
-				'type' => 'page',
-				'num'  => 1,
-			),
 			array('type' => 'dots'),
 			array(
 				'type' => 'page',
@@ -1114,10 +1103,6 @@ if (! function_exists('ksenon_get_pagination_items')) {
 				'num'  => $current + 1,
 			),
 			array('type' => 'dots'),
-			array(
-				'type' => 'page',
-				'num'  => $total,
-			),
 		);
 	}
 }
@@ -1151,11 +1136,11 @@ if (! function_exists('ksenon_render_pagination')) {
 			<div class="cpt-pagination__inner">
 				<?php if ($prev_url) : ?>
 					<a class="cpt-pagination__arrow cpt-pagination__arrow--prev" href="<?php echo esc_url($prev_url); ?>" aria-label="<?php esc_attr_e('Предыдущая страница', 'ksenonspb'); ?>">
-						<?php ksenon_icon('icon-chevron-left', 8, 18, 'cpt-pagination__icon'); ?>
+						<?php ksenon_icon('icon-chevron-left', 6, 13, 'cpt-pagination__icon'); ?>
 					</a>
 				<?php else : ?>
 					<span class="cpt-pagination__arrow cpt-pagination__arrow--prev cpt-pagination__arrow--disabled" aria-hidden="true">
-						<?php ksenon_icon('icon-chevron-left', 8, 18, 'cpt-pagination__icon'); ?>
+						<?php ksenon_icon('icon-chevron-left', 6, 13, 'cpt-pagination__icon'); ?>
 					</span>
 				<?php endif; ?>
 
@@ -1180,11 +1165,11 @@ if (! function_exists('ksenon_render_pagination')) {
 
 				<?php if ($next_url) : ?>
 					<a class="cpt-pagination__arrow cpt-pagination__arrow--next" href="<?php echo esc_url($next_url); ?>" aria-label="<?php esc_attr_e('Следующая страница', 'ksenonspb'); ?>">
-						<?php ksenon_icon('icon-chevron-right', 8, 18, 'cpt-pagination__icon'); ?>
+						<?php ksenon_icon('icon-chevron-right', 6, 13, 'cpt-pagination__icon'); ?>
 					</a>
 				<?php else : ?>
 					<span class="cpt-pagination__arrow cpt-pagination__arrow--next cpt-pagination__arrow--disabled" aria-hidden="true">
-						<?php ksenon_icon('icon-chevron-right', 8, 18, 'cpt-pagination__icon'); ?>
+						<?php ksenon_icon('icon-chevron-right', 6, 13, 'cpt-pagination__icon'); ?>
 					</span>
 				<?php endif; ?>
 			</div>

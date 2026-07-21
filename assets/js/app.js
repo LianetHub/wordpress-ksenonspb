@@ -788,12 +788,12 @@ function initYandexMap() {
 
 	const getIconParams = () => {
 		const width = window.innerWidth;
-		let size = [104, 116];
+		let size = [62, 70];
 
 		if (width <= 767) {
-			size = [78, 88];
+			size = [47, 53];
 		} else if (width <= 1024) {
-			size = [67, 75];
+			size = [40, 45];
 		}
 
 		return {

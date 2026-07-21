@@ -1295,8 +1295,8 @@ body {
 }
 
 .cta-contacts .form__row {
-  -ms-grid-columns: (minmax(0, 1fr))[2];
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 
@@ -1763,8 +1763,8 @@ body {
 }
 
 .cta-form .form__row {
-  -ms-grid-columns: (minmax(0, 1fr))[2];
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  -ms-grid-columns: (1fr)[2];
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 

@@ -618,8 +618,8 @@
   }
 
   .portfolio-teaser__grid {
-    -ms-grid-columns: (minmax(0, 1fr))[2];
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
 }
@@ -735,8 +735,8 @@
   }
 
   .case-done__layout {
-    -ms-grid-columns: minmax(0, 452px) minmax(0, 1fr);
-    grid-template-columns: minmax(0, 452px) minmax(0, 1fr);
+    -ms-grid-columns: minmax(0, 452px) 1fr;
+    grid-template-columns: minmax(0, 452px) 1fr;
     gap: 3rem;
     -webkit-box-align: center;
         -ms-flex-align: center;

@@ -56,7 +56,7 @@
 
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		gap: rem(8);
 
 		@media (max-width: $md4) {
@@ -65,11 +65,11 @@
 
 		@media (min-width: $md5) {
 			gap: rem(20);
-			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-columns: repeat(3, 1fr);
 		}
 
 		@media (min-width: $md3) {
-			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 }

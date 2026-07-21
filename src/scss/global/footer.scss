@@ -371,7 +371,7 @@
 
 		@media (min-width: $md3) {
 			flex-direction: row;
-			align-items: flex-end;
+			align-items: flex-start;
 			justify-content: space-between;
 			gap: rem(24);
 		}
@@ -442,9 +442,6 @@
 			padding: 0;
 			border: 0;
 			background: none;
-			color: inherit;
-			font: inherit;
-			letter-spacing: inherit;
 			text-align: left;
 			cursor: pointer;
 		}
@@ -452,13 +449,13 @@
 
 	&__bottom-links {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 		align-items: start;
 		gap: rem(24) rem(32);
 
 		@media (min-width: $md3) {
 			flex-shrink: 0;
-			gap: rem(24) rem(40);
+			gap: rem(12) rem(40);
 		}
 	}
 }

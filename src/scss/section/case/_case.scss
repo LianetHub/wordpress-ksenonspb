@@ -202,7 +202,7 @@
 		align-items: start;
 
 		@media (min-width: $md3) {
-			grid-template-columns: minmax(0, 452px) minmax(0, 1fr);
+			grid-template-columns: minmax(0, 452px) 1fr;
 			gap: rem(48);
 			align-items: center;
 		}
