@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initCptArchiveFilters();
 	initBrandServicesFilter();
 	initPortfolioBrandSearch();
+	initPricingPage();
 	initPhoneMask();
 	initCf7();
 	initFormUpload();
@@ -593,6 +594,89 @@ function initReviewsTabs() {
 				setMoreUrl(target);
 			});
 		});
+	});
+}
+
+function initPricingPage() {
+	initPricingTabs();
+	initGiftAmounts();
+}
+
+function initPricingTabs() {
+	document.querySelectorAll("[data-pricing]").forEach((root) => {
+		const tabs = root.querySelectorAll("[data-pricing-tab]");
+		const panels = root.querySelectorAll("[data-pricing-panel]");
+		if (!tabs.length || !panels.length) return;
+
+		tabs.forEach((tab) => {
+			tab.addEventListener("click", () => {
+				const target = tab.getAttribute("data-pricing-tab");
+				if (!target) return;
+
+				tabs.forEach((item) => {
+					const isActive = item === tab;
+					item.classList.toggle("_active", isActive);
+					item.setAttribute("aria-selected", isActive ? "true" : "false");
+				});
+
+				panels.forEach((panel) => {
+					const isActive =
+						panel.getAttribute("data-pricing-panel") === target;
+					panel.classList.toggle("_active", isActive);
+					panel.hidden = !isActive;
+				});
+			});
+		});
+	});
+}
+
+function initGiftAmounts() {
+	document.querySelectorAll("[data-gift-amounts]").forEach((root) => {
+		const pills = root.querySelectorAll("[data-gift-amount]");
+		if (!pills.length) return;
+
+		const getSelected = () => {
+			const active = root.querySelector("[data-gift-amount]._active");
+			return active?.getAttribute("data-gift-amount") || "";
+		};
+
+		const formatAmount = (value) => {
+			if (!value || value === "custom") {
+				return value === "custom" ? "Своя сумма" : "";
+			}
+			const amount = Number(value);
+			if (!Number.isFinite(amount) || amount <= 0) return "";
+			return `${amount.toLocaleString("ru-RU").replace(/\s/g, "\u00a0")}\u00a0₽`;
+		};
+
+		const syncCertificateForm = () => {
+			const popup = document.querySelector("#popup-certificate");
+			if (!popup) return;
+			const input = popup.querySelector(
+				'input[name="certificate-amount"]',
+			);
+			if (!input) return;
+			input.value = formatAmount(getSelected());
+		};
+
+		pills.forEach((pill) => {
+			pill.addEventListener("click", () => {
+				pills.forEach((item) => {
+					const isActive = item === pill;
+					item.classList.toggle("_active", isActive);
+					item.setAttribute("aria-pressed", isActive ? "true" : "false");
+				});
+				syncCertificateForm();
+			});
+		});
+
+		root.querySelectorAll("[data-gift-open]").forEach((btn) => {
+			btn.addEventListener("click", () => {
+				syncCertificateForm();
+			});
+		});
+
+		syncCertificateForm();
 	});
 }
 

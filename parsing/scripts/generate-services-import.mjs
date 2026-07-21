@@ -256,6 +256,8 @@ const SERVICE_HEADERS = [
 	'title',
 	'slug',
 	'price',
+	'duration',
+	'price_note',
 	'desc',
 	'benefits',
 	'category',
@@ -281,7 +283,7 @@ const SEO_HEADERS = [
 const HEADERS = [...SERVICE_HEADERS, ...SEO_HEADERS];
 
 const IMPORT_NOTE =
-	'title → post_title (уникальный ID). slug → meta service_slug. price → ACF price_from. desc → card_excerpt. benefits → card_labels. category → taxonomy service_category (по названию). image → Featured Image + ACF card_image (URL со старого сайта; карта в service-images-map.json). price_main / price_extra / price_diagnostics / faq — строки name::price::duration::warranty (faq: question::answer) через |; в WPAI НЕ мапить subfields PHP-функцией (Variable Repeater ломается). Парсинг: тема inc/wp-all-import.php (pmxi_saved_post). Запасной путь: custom fields ksenon_raw_price_main / ksenon_raw_price_extra / ksenon_raw_price_diagnostics / ksenon_raw_faq = {column[1]} целиком. warranty_text → ACF. related_brands → relationship по title через |. faq_title → ACF. Портфолио — только portfolio.related_services.';
+	'title → post_title (уникальный ID). slug → meta service_slug. price → ACF price_from. duration → ACF duration (колонка «Срок» на странице цен). price_note → ACF price_note (серая приписка в скобках). desc → card_excerpt. benefits → card_labels. category → taxonomy service_category (по названию). image → Featured Image + ACF card_image (URL со старого сайта; карта в service-images-map.json). price_main / price_extra / price_diagnostics / faq — строки name::price::duration::warranty (faq: question::answer) через |; в WPAI НЕ мапить subfields PHP-функцией (Variable Repeater ломается). Парсинг: тема inc/wp-all-import.php (pmxi_saved_post). Запасной путь: custom fields ksenon_raw_price_main / ksenon_raw_price_extra / ksenon_raw_price_diagnostics / ksenon_raw_faq = {column[1]} целиком. warranty_text → ACF. related_brands → relationship по title через |. faq_title → ACF. Портфолио — только portfolio.related_services.';
 
 
 /**
@@ -1014,6 +1016,38 @@ function buildFaq(title, price, profile) {
 	]);
 }
 
+/**
+ * Summary duration for pricing page table — prefer paid/main row from price_main.
+ *
+ * @param {string} priceMain
+ * @returns {string}
+ */
+function durationFromPriceMain(priceMain) {
+	const rows = String(priceMain ?? '')
+		.split('|')
+		.map((row) => row.trim())
+		.filter(Boolean);
+
+	let fallback = '';
+
+	for (const row of rows) {
+		const parts = row.split('::');
+		const price = String(parts[1] ?? '').trim();
+		const duration = String(parts[2] ?? '').trim();
+		if (!duration) {
+			continue;
+		}
+		if (!fallback) {
+			fallback = duration;
+		}
+		if (/от\s|\bбесплатно\b/i.test(price) || /^\d/.test(price)) {
+			return duration;
+		}
+	}
+
+	return fallback;
+}
+
 function buildServiceExtras(service, imageByTitle = {}) {
 	const title = service.title;
 	const profile = SERVICE_PROFILE_BY_TITLE[title] || 'repair_general';
@@ -1022,6 +1056,8 @@ function buildServiceExtras(service, imageByTitle = {}) {
 	return {
 		image: String(imageByTitle[title] ?? '').trim(),
 		...prices,
+		duration: durationFromPriceMain(prices.price_main),
+		price_note: '',
 		warranty_text: WARRANTY_TEXT,
 		related_brands: brandsForProfile(profile).join('|'),
 		faq_title: FAQ_TITLE,
@@ -1078,6 +1114,8 @@ function normalizeService(raw) {
 		title,
 		slug,
 		price: raw.price ?? '',
+		duration: String(raw.duration ?? '').trim(),
+		price_note: String(raw.price_note ?? '').trim(),
 		desc: String(raw.desc ?? '').trim(),
 		benefits: String(raw.benefits ?? '').trim(),
 		category: String(raw.category ?? '').trim(),
@@ -1114,6 +1152,11 @@ function enrichService(service, imageByTitle = {}) {
 		price_main: service.price_main || generated.price_main,
 		price_extra: service.price_extra || generated.price_extra,
 		price_diagnostics: service.price_diagnostics || generated.price_diagnostics,
+		duration:
+			service.duration ||
+			durationFromPriceMain(service.price_main || generated.price_main) ||
+			generated.duration,
+		price_note: service.price_note || generated.price_note,
 		warranty_text: service.warranty_text || generated.warranty_text,
 		related_brands: service.related_brands || generated.related_brands,
 		faq_title: service.faq_title || generated.faq_title,
@@ -1134,6 +1177,8 @@ function serviceToRow(item) {
 		item.title ?? '',
 		item.slug ?? '',
 		item.price ?? '',
+		item.duration ?? '',
+		item.price_note ?? '',
 		item.desc ?? '',
 		item.benefits ?? '',
 		item.category ?? '',
@@ -1260,6 +1305,8 @@ function readLegacyContentMap() {
 
 		contentByCanonical.set(canonicalTitle, {
 			price: row.price ?? '',
+			duration: String(row.duration ?? '').trim(),
+			price_note: String(row.price_note ?? '').trim(),
 			desc: String(row.desc ?? '').trim(),
 			benefits: String(row.benefits ?? '').trim(),
 			image: String(row.image ?? '').trim(),
@@ -1293,6 +1340,8 @@ function buildCanonicalServices() {
 			title,
 			slug: slugFromUrl(url),
 			price: legacy.price ?? defaults.price ?? '',
+			duration: legacy.duration ?? '',
+			price_note: legacy.price_note ?? '',
 			desc: legacy.desc ?? defaults.desc ?? '',
 			benefits: legacy.benefits ?? defaults.benefits ?? '',
 			image: legacy.image ?? '',

@@ -152,3 +152,38 @@ if (! function_exists('ksenon_format_price_from')) {
 		);
 	}
 }
+
+if (! function_exists('ksenon_format_price_table')) {
+	/**
+	 * Price cell for the pricing page table: "от N ₽" or "Бесплатно".
+	 *
+	 * @param mixed $value ACF price_from.
+	 * @return string
+	 */
+	function ksenon_format_price_table($value)
+	{
+		if (is_numeric($value)) {
+			$amount = (int) $value;
+		} else {
+			$digits = preg_replace('/\D/u', '', (string) $value);
+			if ('' === $digits) {
+				return esc_html__('Бесплатно', 'ksenonspb');
+			}
+			$amount = (int) $digits;
+		}
+
+		if ($amount <= 0) {
+			return esc_html__('Бесплатно', 'ksenonspb');
+		}
+
+		$nbsp = "\xc2\xa0";
+
+		return esc_html(
+			sprintf(
+				/* translators: %s: formatted amount */
+				__('от %s ₽', 'ksenonspb'),
+				number_format($amount, 0, '', $nbsp)
+			)
+		);
+	}
+}

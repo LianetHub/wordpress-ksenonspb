@@ -6,8 +6,12 @@
  * @package ksenonspb
  */
 
-$success_title = ksenon_get_option('popup_success_title');
-$error_title   = ksenon_get_option('popup_error_title');
+$success_title       = ksenon_get_option('popup_success_title');
+$error_title         = ksenon_get_option('popup_error_title');
+$installment_title   = ksenon_get_option('popup_installment_title') ?: __('Оформить рассрочку', 'ksenonspb');
+$installment_lead    = ksenon_get_option('popup_installment_lead');
+$certificate_title   = ksenon_get_option('popup_certificate_title') ?: __('Оформить сертификат', 'ksenonspb');
+$certificate_lead    = ksenon_get_option('popup_certificate_lead');
 
 ?>
 
@@ -27,6 +31,39 @@ $error_title   = ksenon_get_option('popup_error_title');
 		</div>
 	</div>
 
+	<!-- Рассрочка -->
+	<div id="popup-installment" class="popup-modal popup-modal--consult">
+		<div class="popup-modal__inner">
+			<header class="popup-modal__header">
+				<h2 class="popup-modal__title title title-popup"><?php echo esc_html((string) $installment_title); ?></h2>
+				<?php if ($installment_lead) : ?>
+					<p class="popup-modal__lead"><?php echo esc_html((string) $installment_lead); ?></p>
+				<?php endif; ?>
+			</header>
+			<div class="popup-modal__content">
+				<div class="popup-modal__form">
+					<?php ksenon_cf7_form('cf7_installment', __('Рассрочка (попап)', 'ksenonspb')); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Сертификат -->
+	<div id="popup-certificate" class="popup-modal popup-modal--consult">
+		<div class="popup-modal__inner">
+			<header class="popup-modal__header">
+				<h2 class="popup-modal__title title title-popup"><?php echo esc_html((string) $certificate_title); ?></h2>
+				<?php if ($certificate_lead) : ?>
+					<p class="popup-modal__lead"><?php echo esc_html((string) $certificate_lead); ?></p>
+				<?php endif; ?>
+			</header>
+			<div class="popup-modal__content">
+				<div class="popup-modal__form">
+					<?php ksenon_cf7_form('cf7_certificate', __('Сертификат (попап)', 'ksenonspb')); ?>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Заявка отправлена -->
 	<div id="popup-success" class="popup-modal popup-modal--status">

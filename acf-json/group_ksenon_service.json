@@ -20,6 +20,22 @@
             "placeholder": "5000"
         },
         {
+            "key": "field_ksenon_service_duration",
+            "label": "Срок (таблица цен)",
+            "name": "duration",
+            "type": "text",
+            "placeholder": "1-2 дня",
+            "instructions": "Колонка «Срок» на странице Стоимость услуг."
+        },
+        {
+            "key": "field_ksenon_service_price_note",
+            "label": "Примечание к названию (таблица цен)",
+            "name": "price_note",
+            "type": "text",
+            "placeholder": "осмотр без разборки",
+            "instructions": "Серая приписка в скобках после названия на странице цен."
+        },
+        {
             "key": "field_ksenon_service_card_excerpt",
             "label": "Описание на карточке",
             "name": "card_excerpt",

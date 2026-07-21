@@ -281,6 +281,20 @@
             "placeholder": "[contact-form-7 id=\"2\" title=\"Заявка\"]"
         },
         {
+            "key": "field_ksenon_ts_cf7_installment",
+            "label": "CF7: рассрочка",
+            "name": "cf7_installment",
+            "type": "text",
+            "placeholder": "[contact-form-7 id=\"3\" title=\"Рассрочка\"]"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_certificate",
+            "label": "CF7: сертификат",
+            "name": "cf7_certificate",
+            "type": "text",
+            "placeholder": "[contact-form-7 id=\"4\" title=\"Сертификат\"]"
+        },
+        {
             "key": "field_ksenon_ts_cta_contacts_title",
             "label": "Заголовок: CTA + контакты",
             "name": "cta_contacts_title",
@@ -388,6 +402,36 @@
             "rows": 2
         },
         {
+            "key": "field_ksenon_ts_popup_installment_title",
+            "label": "Попап рассрочки — заголовок",
+            "name": "popup_installment_title",
+            "type": "text",
+            "default_value": "Оформить рассрочку"
+        },
+        {
+            "key": "field_ksenon_ts_popup_installment_lead",
+            "label": "Попап рассрочки — подзаголовок",
+            "name": "popup_installment_lead",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Оставьте контакты — перезвоним и расскажем условия"
+        },
+        {
+            "key": "field_ksenon_ts_popup_certificate_title",
+            "label": "Попап сертификата — заголовок",
+            "name": "popup_certificate_title",
+            "type": "text",
+            "default_value": "Оформить сертификат"
+        },
+        {
+            "key": "field_ksenon_ts_popup_certificate_lead",
+            "label": "Попап сертификата — подзаголовок",
+            "name": "popup_certificate_lead",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Оставьте контакты — уточним номинал и способ получения"
+        },
+        {
             "key": "field_ksenon_ts_popup_success",
             "label": "Успешная отправка",
             "name": "popup_success_title",
@@ -463,5 +507,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784577023
+    "modified": 1753118500
 }

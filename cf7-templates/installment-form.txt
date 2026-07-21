@@ -1,0 +1,42 @@
+<div class="form">
+
+<div class="form__card">
+  <div class="form__row">
+    <div class="form__field">
+      [text* your-name class:form-field placeholder "Ваше имя"]
+    </div>
+    <div class="form__field">
+      [tel* your-phone class:form-field placeholder "+7(___)___-__-__"]
+    </div>
+  </div>
+
+  <div class="form__field">
+    [text your-car class:form-field placeholder "Марка и модель авто"]
+  </div>
+
+  <div class="form__field">
+    [textarea your-message class:form-field placeholder "Комментарий (необязательно)"]
+  </div>
+
+  <div class="checkbox cta-form__agree">
+    [acceptance agree use_label_element optional]
+    <span class="checkbox__box" aria-hidden="true"></span>
+    <span class="checkbox__text">Согласен с <a href="%opd_url%" class="color-accent">обработкой персональных данных</a> и условиями <a href="%policy_url%" class="color-accent">политики конфиденциальности</a></span>
+    [/acceptance]
+  </div>
+</div>
+
+<label class="btn btn--primary btn--large form__submit">
+  <span class="btn__text">[submit "Отправить заявку"]</span>
+  <span class="btn__arrow" aria-hidden="true">
+    <svg class="btn__arrow-icon" width="15" height="10" aria-hidden="true">
+      <use href="@img/icons.svg#icon-arrow-right"></use>
+    </svg>
+  </span>
+</label>
+
+[hidden form-source default:shortcode_attr]
+[hidden form-page]
+[hidden form-time]
+
+</div>

@@ -7,52 +7,52 @@
             "label": "Hero — заголовок",
             "name": "hero_title",
             "type": "textarea",
-            "rows": 2
+            "rows": 2,
+            "default_value": "Стоимость услуг"
         },
         {
-            "key": "field_ksenon_pricing_hero_text",
-            "label": "Hero — текст",
-            "name": "hero_text",
+            "key": "field_ksenon_pricing_hero_notice",
+            "label": "Hero — дисклеймер",
+            "name": "hero_notice",
             "type": "textarea",
-            "rows": 3
+            "rows": 2,
+            "default_value": "Цены ориентировочные — точная стоимость рассчитывается после бесплатного осмотра"
         },
         {
-            "key": "field_ksenon_pricing_hero_image",
-            "label": "Hero — изображение",
-            "name": "hero_image",
-            "type": "image",
-            "return_format": "array"
+            "key": "field_ksenon_pricing_table_col_work",
+            "label": "Таблица — колонка «Вид работы»",
+            "name": "table_col_work",
+            "type": "text",
+            "default_value": "Вид работы"
         },
         {
-            "key": "field_ksenon_pricing_table",
-            "label": "Таблица цен",
-            "name": "price_table",
-            "type": "repeater",
-            "layout": "table",
-            "button_label": "Добавить строку",
-            "sub_fields": [
-                {
-                    "key": "field_ksenon_pricing_service_name",
-                    "label": "Услуга",
-                    "name": "service_name",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_pricing_table"
-                },
-                {
-                    "key": "field_ksenon_pricing_price_from",
-                    "label": "Цена от",
-                    "name": "price_from",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_pricing_table"
-                },
-                {
-                    "key": "field_ksenon_pricing_note",
-                    "label": "Примечание",
-                    "name": "note",
-                    "type": "text",
-                    "parent_repeater": "field_ksenon_pricing_table"
-                }
-            ]
+            "key": "field_ksenon_pricing_table_col_price",
+            "label": "Таблица — колонка «Цена»",
+            "name": "table_col_price",
+            "type": "text",
+            "default_value": "Цена"
+        },
+        {
+            "key": "field_ksenon_pricing_table_col_duration",
+            "label": "Таблица — колонка «Срок»",
+            "name": "table_col_duration",
+            "type": "text",
+            "default_value": "Срок"
+        },
+        {
+            "key": "field_ksenon_pricing_price_tabs",
+            "label": "Вкладки таблицы (категории услуг)",
+            "name": "price_tabs",
+            "type": "taxonomy",
+            "taxonomy": "service_category",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 1,
+            "instructions": "Порядок выбранных категорий = порядок вкладок. Строки таблицы — опубликованные услуги из категории."
         },
         {
             "key": "field_ksenon_pricing_why_title",
@@ -67,6 +67,7 @@
             "name": "why_prices_cards",
             "type": "repeater",
             "layout": "block",
+            "button_label": "Добавить карточку",
             "sub_fields": [
                 {
                     "key": "field_ksenon_pricing_why_card_title",
@@ -89,31 +90,95 @@
             "key": "field_ksenon_pricing_installment_title",
             "label": "Рассрочка — заголовок",
             "name": "installment_title",
-            "type": "text"
+            "type": "text",
+            "default_value": "Рассрочка"
         },
         {
             "key": "field_ksenon_pricing_installment_text",
-            "label": "Рассрочка — текст",
+            "label": "Рассрочка — подзаголовок",
             "name": "installment_text",
-            "type": "wysiwyg",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Оплачивайте частями — без банка и переплат"
+        },
+        {
+            "key": "field_ksenon_pricing_installment_rows",
+            "label": "Рассрочка — строки",
+            "name": "installment_rows",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_pricing_installment_row_label",
+                    "label": "Название",
+                    "name": "label",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_installment_rows"
+                },
+                {
+                    "key": "field_ksenon_pricing_installment_row_value",
+                    "label": "Значение",
+                    "name": "value",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_installment_rows"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_pricing_installment_btn",
+            "label": "Рассрочка — кнопка",
+            "name": "installment_btn",
+            "type": "text",
+            "default_value": "Взять рассрочку"
         },
         {
             "key": "field_ksenon_pricing_gift_title",
-            "label": "Подарочный сертификат — заголовок",
+            "label": "Сертификаты — заголовок",
             "name": "gift_title",
-            "type": "text"
+            "type": "text",
+            "default_value": "Подарочные сертификаты"
         },
         {
             "key": "field_ksenon_pricing_gift_text",
-            "label": "Подарочный сертификат — текст",
+            "label": "Сертификаты — подзаголовок",
             "name": "gift_text",
-            "type": "wysiwyg",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Отличный подарок автовладельцу — на любой номинал"
+        },
+        {
+            "key": "field_ksenon_pricing_gift_amounts",
+            "label": "Сертификаты — номиналы",
+            "name": "gift_amounts",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить номинал",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_pricing_gift_amount_value",
+                    "label": "Сумма",
+                    "name": "amount",
+                    "type": "number",
+                    "min": 0,
+                    "step": 1,
+                    "parent_repeater": "field_ksenon_pricing_gift_amounts"
+                }
+            ]
+        },
+        {
+            "key": "field_ksenon_pricing_gift_custom_label",
+            "label": "Сертификаты — «Своя сумма»",
+            "name": "gift_custom_label",
+            "type": "text",
+            "default_value": "Своя сумма"
+        },
+        {
+            "key": "field_ksenon_pricing_gift_btn",
+            "label": "Сертификаты — кнопка",
+            "name": "gift_btn",
+            "type": "text",
+            "default_value": "Взять сертификат"
         }
     ],
     "location": [
@@ -129,5 +194,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1753118400
 }
