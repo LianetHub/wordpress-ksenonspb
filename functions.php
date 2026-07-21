@@ -6,7 +6,7 @@
  * @package ksenonspb
  */
 
-define('KSENON_VERSION', '2.0.5');
+define('KSENON_VERSION', '2.0.10');
 define('KSENON_DIR', get_template_directory());
 define('KSENON_URI', get_template_directory_uri());
 define('KSENON_ASSETS_URI', KSENON_URI . '/assets');
