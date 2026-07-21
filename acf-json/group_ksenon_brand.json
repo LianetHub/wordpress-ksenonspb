@@ -45,14 +45,6 @@
             ]
         },
         {
-            "key": "field_ksenon_brand_related_services",
-            "label": "Связанные услуги",
-            "name": "related_services",
-            "type": "relationship",
-            "post_type": ["service"],
-            "return_format": "object"
-        },
-        {
             "key": "field_ksenon_brand_popular_models",
             "label": "Популярные модели",
             "name": "popular_models",
@@ -123,5 +115,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1753113600
+    "modified": 1753117200
 }

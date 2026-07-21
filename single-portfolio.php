@@ -92,9 +92,9 @@ while (have_posts()) :
 
 		<?php if ($task_description) : ?>
 			<section class="case-task">
-				<div class="case-task__container container typography-block">
+				<div class="case-task__container container">
 					<h2 class="case-task__title title-md"><?php esc_html_e('Описание задачи', 'ksenonspb'); ?></h2>
-					<div class="case-task__text">
+					<div class="case-task__text typography-block">
 						<?php echo wp_kses_post($task_description); ?>
 					</div>
 				</div>

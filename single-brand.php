@@ -62,16 +62,18 @@ while (have_posts()) :
 		<?php endif; ?>
 
 		<?php
-		$service_ids = ksenon_get_related_ids('related_services', $post_id);
-		$services    = $service_ids
-			? ksenon_query_services(
-				array(
-					'post__in'       => $service_ids,
-					'orderby'        => 'post__in',
-					'posts_per_page' => count($service_ids),
-				)
+		$services = ksenon_query_services(
+			array(
+				'posts_per_page' => -1,
+				'meta_query'     => array(
+					array(
+						'key'     => 'related_brands',
+						'value'   => '"' . $post_id . '"',
+						'compare' => 'LIKE',
+					),
+				),
 			)
-			: null;
+		);
 
 		if ($services instanceof WP_Query && $services->have_posts()) :
 			$filter_terms = array();
@@ -182,7 +184,7 @@ while (have_posts()) :
 		if ($portfolio->have_posts()) {
 			$portfolio_title = sprintf(
 				/* translators: %s: brand name */
-				__('Примеры работ - только %s', 'ksenonspb'),
+				__('Примеры работ %s', 'ksenonspb'),
 				$brand_title
 			);
 			get_template_part(
