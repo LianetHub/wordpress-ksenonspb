@@ -134,16 +134,16 @@ body {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -330,7 +330,7 @@ body {
   left: 0;
   width: 1.4375rem;
   height: 1.4375rem;
-  background: url("/wp-content/themes/ksenonspby-theme/assets/img/list-marker-plus.svg") no-repeat center/contain;
+  background: url("@img/list-marker-plus.svg") no-repeat center/contain;
 }
 .typography-block ol {
   counter-reset: typography-counter;
@@ -5017,7 +5017,7 @@ html.with-fancybox body.hide-scrollbar .header {
     max-width: 64.375rem;
     margin: 0 auto;
     padding: 1.94rem 3.75rem;
-    background: url("/wp-content/themes/ksenonspby-theme/assets/img/hero-headlight.webp") right center/43% auto no-repeat, #000;
+    background: url("@img/hero-headlight.webp") right center/43% auto no-repeat, #000;
     display: flex;
     margin-bottom: 3.25rem;
   }
@@ -8925,7 +8925,7 @@ html.with-fancybox body.hide-scrollbar .header {
 .about-page__cards {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.6875rem;
 }
 @media (min-width: 991.98px) {
   .about-page__cards {
@@ -8936,8 +8936,8 @@ html.with-fancybox body.hide-scrollbar .header {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 17.5rem;
-  border-radius: 1.5rem;
+  min-height: 8.625rem;
+  border-radius: 0.6875rem;
   background: #f7f7f7;
   overflow: hidden;
 }
@@ -8954,8 +8954,8 @@ html.with-fancybox body.hide-scrollbar .header {
   flex-direction: column;
   justify-content: space-between;
   flex: 1 1 auto;
-  gap: 1.5rem;
-  padding: 1.5rem 1.25rem;
+  gap: 0.75rem;
+  padding: 0.625rem 1.0625rem;
   max-width: 58%;
 }
 @media (min-width: 991.98px) {
@@ -8978,32 +8978,52 @@ html.with-fancybox body.hide-scrollbar .header {
 .about-page__card-title {
   color: #000000;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.2;
-  font-size: clamp(32px, 3.2407407407vw + 20.3333333333px, 67px);
+}
+@media (min-width: 991.98px) {
+  .about-page__card-title {
+    font-size: clamp(32px, 3.2407407407vw + 20.3333333333px, 67px);
+  }
 }
 .about-page__card-text {
   color: #6f6f6f;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 400;
   line-height: 1.3;
-  font-size: clamp(14px, 0.3703703704vw + 12.6666666667px, 18px);
+  font-size: clamp(9px, 0.8333333333vw + 6px, 18px);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+  overflow: hidden;
+}
+@media (min-width: 991.98px) {
+  .about-page__card-text {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
 }
 .about-page__card-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   align-self: flex-start;
-  min-height: 3rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 1rem;
+  min-height: 1.4375rem;
+  padding: 0.34375rem 0.625rem;
+  border-radius: 0.375rem;
   background: #fd8011;
   color: #ffffff;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.625rem;
   font-weight: 500;
   line-height: normal;
   white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+.about-page__card-btn:hover {
+  background: #e8720f;
 }
 @media (min-width: 991.98px) {
   .about-page__card-btn {
@@ -9015,14 +9035,13 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 .about-page__card-media {
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0 0 0 auto;
   z-index: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-end;
-  width: 55%;
+  width: 50%;
+  height: 100%;
   pointer-events: none;
 }
 @media (min-width: 991.98px) {
@@ -9035,6 +9054,7 @@ html.with-fancybox body.hide-scrollbar .header {
   display: block;
   width: 100%;
   height: 100%;
+  min-height: 100%;
   object-fit: contain;
   object-position: right center;
 }
@@ -10443,3 +10463,5 @@ html.with-fancybox body.hide-scrollbar .header {
 .pricing-extra__btn {
   width: 100%;
 }
+
+/*# sourceMappingURL=style.css.map */

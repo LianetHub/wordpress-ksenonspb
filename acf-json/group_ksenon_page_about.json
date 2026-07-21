@@ -74,26 +74,6 @@
                     "parent_repeater": "field_ksenon_about_advantages"
                 }
             ]
-        },
-        {
-            "key": "field_ksenon_about_video_url",
-            "label": "Видео (URL)",
-            "name": "video_url",
-            "type": "url"
-        },
-        {
-            "key": "field_ksenon_about_video_poster",
-            "label": "Постер видео",
-            "name": "video_poster",
-            "type": "image",
-            "return_format": "array"
-        },
-        {
-            "key": "field_ksenon_about_certificates",
-            "label": "Сертификаты",
-            "name": "certificates",
-            "type": "gallery",
-            "return_format": "array"
         }
     ],
     "location": [
@@ -109,5 +89,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1752865200
+    "modified": 1784662496
 }
