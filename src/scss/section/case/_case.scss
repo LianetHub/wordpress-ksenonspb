@@ -28,7 +28,6 @@
 	}
 
 	&__title {
-		max-width: rem(715);
 		color: $color-black;
 	}
 
@@ -90,10 +89,23 @@
 		}
 	}
 
+	&__media {
+		overflow: hidden;
+		border-radius: rem(20);
+		aspect-ratio: 343 / 138;
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			border-radius: $radius-card;
+			aspect-ratio: 99 / 40;
+		}
+	}
+
 	&__img {
 		display: block;
 		width: 100%;
 		height: 100%;
+		object-fit: cover;
 	}
 
 	&__badge {
@@ -127,35 +139,32 @@
 	}
 
 	&__container {
-		max-width: rem(790);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: rem(16);
+	
 	}
 
 	&__title {
-		margin: 0 0 rem(12);
 		color: $color-black;
 
-		@media (min-width: $md3) {
-			margin-bottom: rem(16);
+		&.title-md {
+			color: $color-black;
 		}
 	}
 
 	&__text {
+		width: 100%;
+		max-width: rem(790);
 		font-size: rem(15);
-		line-height: 1.45;
+		font-weight: 400;
+		line-height: normal;
 		color: $color-black;
+		word-break: break-word;
 
-		&.typography-block {
-			color: $color-black;
-			font-size: rem(15);
-			line-height: 1.45;
-		}
-
-		p {
-			margin: 0 0 rem(12);
-
-			&:last-child {
-				margin-bottom: 0;
-			}
+		p + p {
+			margin-top: 1em;
 		}
 	}
 }
@@ -227,6 +236,7 @@
 	}
 
 	&__item {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -238,6 +248,7 @@
 		border-radius: rem(20);
 		background: rgba($color-white, 0.8);
 		color: #555;
+		cursor: pointer;
 		transition:
 			background-color 0.25s ease,
 			color 0.25s ease,
@@ -265,12 +276,20 @@
 		color: inherit;
 		text-align: left;
 		cursor: pointer;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+		}
 	}
 
 	&__step-head {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		align-items: baseline;
-		flex-wrap: wrap;
 		gap: rem(6);
 		font-size: rem(18);
 		font-weight: 500;
@@ -281,21 +300,16 @@
 		}
 	}
 
-	&__item.is-active .case-done__step-head {
-		font-size: rem(20);
-
-		@media (min-width: $md3) {
-			font-size: rem(24);
-		}
-	}
-
 	&__step-num {
 		flex-shrink: 0;
 	}
 
 	&__step-arrow {
+		display: inline-block;
 		color: $color-accent;
-		transition: opacity 0.2s ease;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease;
 	}
 
 	&__item.is-active .case-done__step-arrow {
@@ -303,12 +317,30 @@
 	}
 
 	&__step-text {
-		display: block;
+		position: relative;
+		z-index: 1;
+		display: none;
 		max-width: rem(317);
 		font-size: rem(13);
 		font-weight: 400;
 		line-height: 1.4;
 		color: #707070;
+	}
+
+	&__item.is-active .case-done__step-text {
+		display: block;
+	}
+
+	@media (any-hover: hover) {
+		&__item:not(.is-active):hover {
+			background: rgba($color-white, 0.95);
+			color: $color-black;
+			box-shadow: 0 rem(4) rem(16) rgba($color-black, 0.04);
+		}
+
+		&__item:not(.is-active):hover .case-done__step-arrow {
+			transform: translateX(rem(3));
+		}
 	}
 
 	&__media {

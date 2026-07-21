@@ -27,7 +27,7 @@
 		color: $color-black;
 
 		@media (min-width: $md3) {
-			@include adaptive-font(36, 48);
+			font-size: rem(48);
 		}
 	}
 

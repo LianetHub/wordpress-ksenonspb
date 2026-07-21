@@ -21,7 +21,7 @@ while (have_posts()) :
 	<article class="brand-page">
 		<section class="brand-hero">
 			<div class="brand-hero__container container">
-				<h1 class="brand-hero__title title-lg"><?php echo esc_html($hero_title); ?></h1>
+				<h1 class="brand-hero__title"><?php echo esc_html($hero_title); ?></h1>
 			</div>
 		</section>
 
@@ -44,7 +44,7 @@ while (have_posts()) :
 			?>
 			<section class="brand-features">
 				<div class="brand-features__container container">
-					<h2 class="brand-features__title title-md"><?php echo esc_html($features_title); ?></h2>
+					<h2 class="brand-features__title"><?php echo esc_html($features_title); ?></h2>
 					<ul class="brand-features__grid">
 						<?php foreach ($feature_rows as $feature) : ?>
 							<li class="brand-features__card">
@@ -125,7 +125,7 @@ while (have_posts()) :
 			?>
 			<section class="brand-services">
 				<div class="brand-services__container container container--large">
-					<h2 class="brand-services__title title-lg">
+					<h2 class="brand-services__title">
 						<?php echo wp_kses_post($services_title); ?>
 					</h2>
 					<div class="brand-services__panel" data-brand-services>
@@ -184,7 +184,7 @@ while (have_posts()) :
 		if ($portfolio->have_posts()) {
 			$portfolio_title = sprintf(
 				/* translators: %s: brand name */
-				__('Примеры работ %s', 'ksenonspb'),
+				__('Примеры работ - только %s', 'ksenonspb'),
 				$brand_title
 			);
 			get_template_part(

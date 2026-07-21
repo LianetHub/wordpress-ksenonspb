@@ -19,12 +19,14 @@ while (have_posts()) :
 
 	$before = ksenon_get_post_field('before_image', $post_id);
 	$after  = ksenon_get_post_field('after_image', $post_id);
+	$has_compare = (bool) ($before && $after);
 
-	if (! $before) {
-		$before = ksenon_get_post_field('hero_image', $post_id);
-	}
-	if (! $after && has_post_thumbnail($post_id)) {
-		$after = get_post_thumbnail_id($post_id);
+	$single = null;
+	if (! $has_compare) {
+		$single = $after ?: $before ?: ksenon_get_post_field('hero_image', $post_id);
+		if (! $single && has_post_thumbnail($post_id)) {
+			$single = get_post_thumbnail_id($post_id);
+		}
 	}
 
 	$task_description = (string) ksenon_get_post_field('task_description', $post_id);
@@ -44,6 +46,9 @@ while (have_posts()) :
 	}
 	if (! $video_poster && $after) {
 		$video_poster = ksenon_acf_image_url($after, 'large');
+	}
+	if (! $video_poster && $single) {
+		$video_poster = ksenon_acf_image_url($single, 'large');
 	}
 	if (! $video_poster && ! empty($process[0]['image'])) {
 		$video_poster = ksenon_acf_image_url($process[0]['image'], 'large');
@@ -69,22 +74,26 @@ while (have_posts()) :
 			</div>
 		</section>
 
-		<?php if ($before || $after) : ?>
+		<?php if ($has_compare) : ?>
 			<section class="case-before-after">
 				<div class="case-before-after__container container">
 					<div class="case-before-after__grid">
-						<?php if ($before) : ?>
-							<figure class="case-before-after__item">
-								<?php echo ksenon_acf_image($before, 'large', array('class' => 'case-before-after__img cover-image')); ?>
-								<figcaption class="case-before-after__badge"><?php esc_html_e('До', 'ksenonspb'); ?></figcaption>
-							</figure>
-						<?php endif; ?>
-						<?php if ($after) : ?>
-							<figure class="case-before-after__item">
-								<?php echo ksenon_acf_image($after, 'large', array('class' => 'case-before-after__img cover-image')); ?>
-								<figcaption class="case-before-after__badge"><?php esc_html_e('После', 'ksenonspb'); ?></figcaption>
-							</figure>
-						<?php endif; ?>
+						<figure class="case-before-after__item">
+							<?php echo ksenon_acf_image($before, 'large', array('class' => 'case-before-after__img cover-image')); ?>
+							<figcaption class="case-before-after__badge"><?php esc_html_e('До', 'ksenonspb'); ?></figcaption>
+						</figure>
+						<figure class="case-before-after__item">
+							<?php echo ksenon_acf_image($after, 'large', array('class' => 'case-before-after__img cover-image')); ?>
+							<figcaption class="case-before-after__badge"><?php esc_html_e('После', 'ksenonspb'); ?></figcaption>
+						</figure>
+					</div>
+				</div>
+			</section>
+		<?php elseif ($single) : ?>
+			<section class="case-before-after case-before-after--single">
+				<div class="case-before-after__container container">
+					<div class="case-before-after__media">
+						<?php echo ksenon_acf_image($single, 'large', array('class' => 'case-before-after__img cover-image')); ?>
 					</div>
 				</div>
 			</section>
@@ -94,7 +103,7 @@ while (have_posts()) :
 			<section class="case-task">
 				<div class="case-task__container container">
 					<h2 class="case-task__title title-md"><?php esc_html_e('Описание задачи', 'ksenonspb'); ?></h2>
-					<div class="case-task__text typography-block">
+					<div class="case-task__text">
 						<?php echo wp_kses_post($task_description); ?>
 					</div>
 				</div>
@@ -193,7 +202,6 @@ while (have_posts()) :
 						class="case-video__link"
 						href="<?php echo esc_url($video); ?>"
 						data-fancybox="case-video"
-						data-type="video"
 						aria-label="<?php esc_attr_e('Смотреть видео процесса работы', 'ksenonspb'); ?>">
 						<?php if ($video_poster) : ?>
 							<img

@@ -2,7 +2,7 @@
 @use "../../mixins" as *;
 
 .brand-hero {
-	padding: rem(24) 0 rem(20);
+	padding: rem(16) 0 rem(16);
 
 	@media (min-width: $md3) {
 		padding: rem(32) 0 rem(24);
@@ -16,7 +16,7 @@
 		color: $color-black;
 
 		@media (min-width: $md3) {
-			@include adaptive-font(36, 48);
+			font-size: rem(48);
 		}
 	}
 }
