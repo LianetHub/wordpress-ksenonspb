@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initAccordion();
 	initHome();
 	initCptArchiveFilters();
+	initPortfolioBrandSearch();
 	initPhoneMask();
 	initCf7();
 	initFormUpload();
@@ -780,6 +781,215 @@ function initCptArchiveFilters() {
 				freeMode: true,
 			});
 		});
+}
+
+function initPortfolioBrandSearch() {
+	const form = document.querySelector("[data-portfolio-brand-search]");
+	if (!form) return;
+
+	const input = form.querySelector(".cpt-archive__search-field");
+	const clearBtn = form.querySelector(".cpt-archive__search-clear");
+	const popup = form.querySelector(".cpt-archive__brands");
+	const listbox = form.querySelector(".cpt-archive__brands-grid");
+	const empty = form.querySelector(".cpt-archive__brands-empty");
+
+	if (!input) return;
+
+	const options = listbox
+		? Array.from(listbox.querySelectorAll(".cpt-archive__brands-option"))
+		: [];
+	let activeIndex = -1;
+	let blurTimer = null;
+	const hadBrandOnLoad = input.value.trim() !== "";
+
+	const syncClearButton = () => {
+		if (!clearBtn) return;
+		clearBtn.hidden = input.value.trim() === "";
+	};
+
+	const getVisibleOptions = () =>
+		options.filter((option) => !option.closest(".cpt-archive__brands-item")?.hidden);
+
+	const setExpanded = (isOpen) => {
+		if (!popup) return;
+		input.setAttribute("aria-expanded", isOpen ? "true" : "false");
+		popup.hidden = !isOpen;
+		if (!isOpen) {
+			clearActive();
+		}
+	};
+
+	const clearActive = () => {
+		activeIndex = -1;
+		input.removeAttribute("aria-activedescendant");
+		options.forEach((option) => {
+			option.setAttribute("aria-selected", "false");
+			option.classList.remove("_active");
+		});
+	};
+
+	const setActive = (index) => {
+		const visible = getVisibleOptions();
+		clearActive();
+		if (!visible.length || index < 0 || index >= visible.length) {
+			return;
+		}
+		activeIndex = index;
+		const option = visible[index];
+		option.setAttribute("aria-selected", "true");
+		option.classList.add("_active");
+		input.setAttribute("aria-activedescendant", option.id);
+		option.scrollIntoView({ block: "nearest" });
+	};
+
+	const filterOptions = () => {
+		if (!listbox) return;
+
+		const query = input.value.trim().toLowerCase();
+		let visibleCount = 0;
+
+		options.forEach((option) => {
+			const brand = (option.dataset.brand || "").toLowerCase();
+			const match = !query || brand.includes(query);
+			const item = option.closest(".cpt-archive__brands-item");
+			if (item) {
+				item.hidden = !match;
+			}
+			if (match) {
+				visibleCount += 1;
+			}
+		});
+
+		if (empty) {
+			empty.hidden = visibleCount > 0;
+		}
+		listbox.hidden = visibleCount === 0;
+		clearActive();
+	};
+
+	const selectOption = (option) => {
+		if (!option) return;
+		input.value = option.dataset.brand || "";
+		syncClearButton();
+		setExpanded(false);
+		form.requestSubmit ? form.requestSubmit() : form.submit();
+	};
+
+	const open = () => {
+		if (!popup) return;
+		filterOptions();
+		setExpanded(true);
+	};
+
+	const close = () => {
+		setExpanded(false);
+	};
+
+	const clearField = () => {
+		input.value = "";
+		syncClearButton();
+		filterOptions();
+
+		if (hadBrandOnLoad) {
+			input.removeAttribute("name");
+			setExpanded(false);
+			form.requestSubmit ? form.requestSubmit() : form.submit();
+			return;
+		}
+
+		input.focus();
+		open();
+	};
+
+	syncClearButton();
+
+	if (clearBtn) {
+		clearBtn.addEventListener("mousedown", (event) => {
+			event.preventDefault();
+		});
+		clearBtn.addEventListener("click", (event) => {
+			event.preventDefault();
+			clearField();
+		});
+	}
+
+	input.addEventListener("focus", () => {
+		if (blurTimer) {
+			clearTimeout(blurTimer);
+			blurTimer = null;
+		}
+		open();
+	});
+
+	input.addEventListener("click", () => {
+		open();
+	});
+
+	input.addEventListener("input", () => {
+		syncClearButton();
+		if (popup && popup.hidden) {
+			setExpanded(true);
+		}
+		filterOptions();
+	});
+
+	input.addEventListener("blur", () => {
+		blurTimer = setTimeout(() => {
+			if (!form.contains(document.activeElement)) {
+				close();
+			}
+		}, 150);
+	});
+
+	input.addEventListener("keydown", (event) => {
+		const visible = getVisibleOptions();
+
+		switch (event.key) {
+			case "ArrowDown":
+				event.preventDefault();
+				if (!popup || popup.hidden) {
+					open();
+				}
+				setActive(activeIndex < visible.length - 1 ? activeIndex + 1 : 0);
+				break;
+			case "ArrowUp":
+				event.preventDefault();
+				if (!popup || popup.hidden) {
+					open();
+				}
+				setActive(activeIndex > 0 ? activeIndex - 1 : visible.length - 1);
+				break;
+			case "Enter":
+				if (popup && !popup.hidden && activeIndex >= 0 && visible[activeIndex]) {
+					event.preventDefault();
+					selectOption(visible[activeIndex]);
+				}
+				break;
+			case "Escape":
+				if (popup && !popup.hidden) {
+					event.preventDefault();
+					close();
+				}
+				break;
+			default:
+				break;
+		}
+	});
+
+	options.forEach((option) => {
+		option.addEventListener("mousedown", (event) => {
+			event.preventDefault();
+		});
+		option.addEventListener("click", () => {
+			selectOption(option);
+		});
+	});
+
+	document.addEventListener("click", (event) => {
+		if (!form.contains(event.target)) {
+			close();
+		}
+	});
 }
 
 function initYandexMap() {

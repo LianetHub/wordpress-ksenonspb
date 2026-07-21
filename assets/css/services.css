@@ -162,12 +162,14 @@
           flex-direction: column;
   gap: 1.5rem;
   padding: 1.25rem;
+  overflow: visible;
   border-radius: 2.5rem;
   background: #f7f7f7;
   margin-top: 1.5rem;
 }
 
 .cpt-archive__search {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,6 +179,7 @@
   gap: 0.75rem;
   width: 100%;
   padding: 0.625rem 0.875rem;
+  overflow: visible;
   border-radius: 3.875rem;
   background: #ffffff;
 }
@@ -217,6 +220,41 @@
   color: #4d4d4d;
 }
 
+.cpt-archive__search-clear {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #4d4d4d;
+  cursor: pointer;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s ease, color 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.cpt-archive__search-clear[hidden] {
+  display: none;
+}
+
+.cpt-archive__search-clear-icon {
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
 .cpt-archive__search-submit {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -245,6 +283,121 @@
   height: 2rem;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.cpt-archive__brands {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-height: 27.625rem;
+  padding: 1.25rem;
+  overflow: auto;
+  border-radius: 1.625rem;
+  background: #ffffff;
+  -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+          box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.cpt-archive__brands-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(0, 1fr))[5];
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.6875rem 0.8125rem;
+}
+
+.cpt-archive__brands-item {
+  min-width: 0;
+}
+
+.cpt-archive__brands-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0.625rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: #f7f7f7;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+.cpt-archive__brands-option._active,
+.cpt-archive__brands-option:focus-visible {
+  outline: 2px solid #fd8011;
+  outline-offset: 2px;
+}
+
+.cpt-archive__brands-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 3.125rem;
+  max-height: 3.125rem;
+}
+
+.cpt-archive__brands-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.cpt-archive__brands-fallback {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #000000;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.cpt-archive__brands-empty {
+  padding: 1.5rem 0.5rem;
+  color: #4d4d4d;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+.cpt-archive__empty {
+  padding: 2.5rem 1rem;
+  color: #4d4d4d;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
 }
 
 .cpt-archive__filters,
@@ -326,8 +479,8 @@
           align-items: center;
   gap: 0.9375rem;
   max-width: 100%;
-  padding: 0.625rem 1.375rem;
   border-radius: 2.875rem;
+  padding: 0.625rem 1.375rem;
   background: #ffffff;
 }
 
@@ -497,6 +650,41 @@
     font-size: 1.25rem;
   }
 
+  .cpt-archive__brands {
+    top: calc(100% + 0.5rem);
+    padding: 1.875rem;
+    border-radius: 2.5rem;
+  }
+
+  .cpt-archive__brands-grid {
+    -ms-grid-columns: (minmax(0, 1fr))[12];
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .cpt-archive__brands-option {
+    padding: 0.9375rem;
+    border-radius: 0.75rem;
+  }
+
+  .cpt-archive__brands-logo {
+    max-width: 3.625rem;
+    max-height: 3.625rem;
+  }
+
+  .cpt-archive__brands-fallback {
+    font-size: 0.6875rem;
+  }
+
+  .cpt-archive__brands-empty {
+    font-size: 1rem;
+  }
+
+  .cpt-archive__empty {
+    padding: 3.75rem 1.5rem;
+    font-size: 1.25rem;
+  }
+
   .cpt-archive__filters,
   .cpt-archive__subfilters {
     padding: 0.875rem 1.875rem;
@@ -548,6 +736,12 @@
   .cpt-archive--portfolio .cpt-archive__search-field {
     padding: 0.9375rem 1.5625rem;
     font-size: 0.6875rem;
+  }
+
+  .cpt-archive--portfolio .cpt-archive__search-clear,
+  .cpt-archive--portfolio .cpt-archive__search-clear-icon {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
   .cpt-archive--portfolio .cpt-archive__search-submit,
@@ -680,6 +874,7 @@
   }
 
   .cpt-pagination__inner {
+    padding: 0.625rem 0.5rem;
     max-width: -webkit-max-content;
     max-width: -moz-max-content;
     max-width: max-content;
@@ -717,6 +912,15 @@
 
   .service-card--grey .service-card__link:hover:not(:disabled):not([aria-disabled=true]) {
     background: #ffffff;
+  }
+
+  .cpt-archive__search-clear:hover {
+    opacity: 1;
+    color: #000000;
+  }
+
+  .cpt-archive__brands-option:hover {
+    background: rgb(236.8, 236.8, 236.8);
   }
 
   .cpt-archive__tab:hover:not(._active) {

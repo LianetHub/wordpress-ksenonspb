@@ -25,6 +25,13 @@ $subcategories = $active_top_slug ? ksenon_get_service_subcategories($active_top
 $brand_query   = ksenon_get_portfolio_filter_brand_query();
 $brand_post    = ksenon_resolve_portfolio_brand($brand_query);
 $brand_value   = $brand_post instanceof WP_Post ? get_the_title($brand_post) : $brand_query;
+$archive_title = $brand_value !== ''
+	? sprintf(
+		/* translators: %s: car brand name */
+		__('Наше портфолио — %s', 'ksenonspb'),
+		$brand_value
+	)
+	: __('Наше портфолио', 'ksenonspb');
 $brands        = ksenon_query_brands(
 	array(
 		'posts_per_page' => -1,
@@ -92,11 +99,11 @@ $query = ksenon_query_portfolio($query_args);
 ?>
 <section class="cpt-archive cpt-archive--portfolio">
 	<div class="cpt-archive__container container">
-		<h1 class="cpt-archive__title title-lg"><?php echo esc_html__('Наше портфолио', 'ksenonspb'); ?></h1>
+		<h1 class="cpt-archive__title title-lg"><?php echo esc_html($archive_title); ?></h1>
 	</div>
 	<div class="cpt-archive__container container container--large">
 		<div class="cpt-archive__panel">
-			<form class="cpt-archive__search" method="get" action="<?php echo esc_url(ksenon_portfolio_archive_url()); ?>" role="search">
+			<form class="cpt-archive__search" method="get" action="<?php echo esc_url(ksenon_portfolio_archive_url()); ?>" role="search" data-portfolio-brand-search>
 				<?php if ($active_slug) : ?>
 					<input type="hidden" name="category" value="<?php echo esc_attr($active_slug); ?>">
 				<?php endif; ?>
@@ -104,23 +111,26 @@ $query = ksenon_query_portfolio($query_args);
 				<input
 					id="portfolio-brand-search"
 					class="cpt-archive__search-field"
-					type="search"
+					type="text"
 					name="brand"
 					value="<?php echo esc_attr($brand_value); ?>"
 					placeholder="<?php esc_attr_e('Выберите марку..', 'ksenonspb'); ?>"
-					list="portfolio-brands"
+					enterkeyhint="search"
+					role="combobox"
+					aria-expanded="false"
+					aria-controls="portfolio-brand-listbox"
+					aria-autocomplete="list"
+					aria-haspopup="listbox"
 					autocomplete="off">
-				<?php if ($brands->have_posts()) : ?>
-					<datalist id="portfolio-brands">
-						<?php
-						while ($brands->have_posts()) :
-							$brands->the_post();
-						?>
-							<option value="<?php echo esc_attr(get_the_title()); ?>"></option>
-						<?php endwhile; ?>
-						<?php wp_reset_postdata(); ?>
-					</datalist>
-				<?php endif; ?>
+				<button
+					class="cpt-archive__search-clear"
+					type="button"
+					aria-label="<?php esc_attr_e('Очистить', 'ksenonspb'); ?>"
+					<?php echo $brand_value === '' ? ' hidden' : ''; ?>>
+					<svg class="cpt-archive__search-clear-icon" width="28" height="28" aria-hidden="true" focusable="false">
+						<use href="<?php echo esc_url(ksenon_assets_uri('img/icons.svg')); ?>#icon-close-circle"></use>
+					</svg>
+				</button>
 				<button class="cpt-archive__search-submit" type="submit" aria-label="<?php esc_attr_e('Искать', 'ksenonspb'); ?>">
 					<img
 						class="cpt-archive__search-icon"
@@ -130,6 +140,54 @@ $query = ksenon_query_portfolio($query_args);
 						alt=""
 						decoding="async">
 				</button>
+				<?php if ($brands->have_posts()) : ?>
+					<div class="cpt-archive__brands" id="portfolio-brand-popup" hidden>
+						<ul class="cpt-archive__brands-grid" id="portfolio-brand-listbox" role="listbox" aria-label="<?php esc_attr_e('Марки автомобилей', 'ksenonspb'); ?>">
+							<?php
+							while ($brands->have_posts()) :
+								$brands->the_post();
+								$brand_id    = get_the_ID();
+								$brand_title = get_the_title();
+								$logo        = ksenon_get_post_field('logo', $brand_id);
+								if (! $logo && has_post_thumbnail($brand_id)) {
+									$logo = get_post_thumbnail_id($brand_id);
+								}
+								$option_id = 'portfolio-brand-option-' . (int) $brand_id;
+								?>
+								<li class="cpt-archive__brands-item" role="presentation">
+									<button
+										type="button"
+										class="cpt-archive__brands-option"
+										id="<?php echo esc_attr($option_id); ?>"
+										role="option"
+										aria-selected="false"
+										data-brand="<?php echo esc_attr($brand_title); ?>"
+										aria-label="<?php echo esc_attr($brand_title); ?>">
+										<?php if ($logo) : ?>
+											<span class="cpt-archive__brands-logo">
+												<?php
+												echo ksenon_acf_image(
+													$logo,
+													'full',
+													array(
+														'class'   => 'cpt-archive__brands-img',
+														'alt'     => $brand_title,
+														'loading' => 'lazy',
+													)
+												);
+												?>
+											</span>
+										<?php else : ?>
+											<span class="cpt-archive__brands-fallback"><?php echo esc_html($brand_title); ?></span>
+										<?php endif; ?>
+									</button>
+								</li>
+							<?php endwhile; ?>
+							<?php wp_reset_postdata(); ?>
+						</ul>
+						<p class="cpt-archive__brands-empty" hidden role="status"><?php esc_html_e('Ничего не найдено', 'ksenonspb'); ?></p>
+					</div>
+				<?php endif; ?>
 			</form>
 
 			<?php if ($categories) : ?>
@@ -195,6 +253,8 @@ $query = ksenon_query_portfolio($query_args);
 					}
 				);
 				?>
+			<?php else : ?>
+				<p class="cpt-archive__empty" role="status"><?php esc_html_e('Ничего не найдено', 'ksenonspb'); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>

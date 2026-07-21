@@ -4216,6 +4216,12 @@ body {
   }
 }
 
+@media (max-width: 767.98px) {
+  .cta-form__title {
+    font-size: 1.25rem;
+  }
+}
+
 @media (max-width: 575.98px) {
   .title-md--panels {
     letter-spacing: -0.04em;
