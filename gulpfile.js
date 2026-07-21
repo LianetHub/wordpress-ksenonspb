@@ -32,15 +32,9 @@ import {
 	withFtpDeploy,
 } from './gulp/tasks/ftp.js';
 
-// DEV: единый CSS-бандл вместо code-splitting (scssEntries).
-// Раскомментировать scssEntries в watcher и assetsTasks при возврате к сплиттингу.
-const devScssTask = scss;
-// const devScssTask = gulp.parallel( scss, scssEntries );
+const devScssTask = gulp.parallel( scss, scssEntries );
 
-const devCssDeployGlobs = [
-	`${ path.build.css }style.css`,
-	`${ path.build.css }style.min.css`,
-];
+const devCssDeployGlobs = `${ path.build.css }**/*`;
 
 const noReload = { reload: false };
 
@@ -86,12 +80,11 @@ const fonts = gulp.series(
 	fontsStyle
 );
 
-// DEV: без scssEntries — один style.min.css на все страницы.
 const devAssetsTasks = gulp.parallel(
 	copy,
 	normalize,
 	scss,
-	// scssEntries,
+	scssEntries,
 	copyCssLibs,
 	favicon,
 	js,

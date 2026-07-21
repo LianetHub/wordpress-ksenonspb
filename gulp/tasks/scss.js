@@ -146,8 +146,6 @@ const compileScss = (srcGlob, title = "SCSS") => {
 		.pipe(app.plugins.browsersync.stream());
 };
 
-// DEV: code-splitting отключён в gulpfile.js (scssEntries не вызывается).
-// Раскомментировать использование в gulpfile при возврате к сплиттингу.
 export const scssEntries = () => {
 	return compileScss(app.path.src.scssEntries, "SCSS Entries");
 };

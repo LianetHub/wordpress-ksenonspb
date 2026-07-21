@@ -6,13 +6,12 @@
  * @package ksenonspb
  */
 
-define('KSENON_VERSION', '2.0.4');
+define('KSENON_VERSION', '2.0.5');
 define('KSENON_DIR', get_template_directory());
 define('KSENON_URI', get_template_directory_uri());
 define('KSENON_ASSETS_URI', KSENON_URI . '/assets');
 
-// DEV: единый CSS-бандл вместо code-splitting. Вернуть false при возврате к сплиттингу.
-define('KSENON_CSS_BUNDLE', true);
+define('KSENON_CSS_BUNDLE', false);
 
 $ksenon_inc = KSENON_DIR . '/inc/';
 

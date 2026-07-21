@@ -16,19 +16,19 @@ add_action(
 		wp_enqueue_style('ksenonspb-fancybox', $uri . '/css/libs/fancybox.min.css', array(), $ver);
 		wp_enqueue_style('ksenonspb-reset', $uri . '/css/reset.min.css', array(), $ver);
 
-		// DEV: единый CSS-бандл (code-splitting отключён). См. KSENON_CSS_BUNDLE в functions.php.
 		if (defined('KSENON_CSS_BUNDLE') && KSENON_CSS_BUNDLE && file_exists(KSENON_DIR . '/assets/css/style.min.css')) {
 			wp_enqueue_style('ksenonspb-style-bundle', $uri . '/css/style.min.css', array('ksenonspb-reset'), $ver);
 		} else {
-			wp_enqueue_style('ksenonspb-global', $uri . '/css/style-global.min.css', array('ksenonspb-reset'), $ver);
-			wp_enqueue_style('ksenonspb-header', $uri . '/css/header.min.css', array('ksenonspb-global'), $ver);
-			wp_enqueue_style('ksenonspb-footer', $uri . '/css/footer.min.css', array('ksenonspb-global'), $ver);
+			$has_global = file_exists(KSENON_DIR . '/assets/css/style-global.min.css');
 
-			if (file_exists(KSENON_DIR . '/assets/css/style.min.css')) {
+			if ($has_global) {
+				wp_enqueue_style('ksenonspb-global', $uri . '/css/style-global.min.css', array('ksenonspb-reset'), $ver);
+				wp_enqueue_style('ksenonspb-header', $uri . '/css/header.min.css', array('ksenonspb-global'), $ver);
+				wp_enqueue_style('ksenonspb-footer', $uri . '/css/footer.min.css', array('ksenonspb-global'), $ver);
+				ksenon_enqueue_conditional_styles($uri, $ver);
+			} elseif (file_exists(KSENON_DIR . '/assets/css/style.min.css')) {
 				wp_enqueue_style('ksenonspb-style-bundle', $uri . '/css/style.min.css', array('ksenonspb-reset'), $ver);
 			}
-
-			ksenon_enqueue_conditional_styles($uri, $ver);
 		}
 
 		wp_enqueue_script('jquery');
