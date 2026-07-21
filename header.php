@@ -20,6 +20,9 @@ $main_class = ksenon_get_main_class();
 	if ( function_exists( 'get_field' ) && is_singular( 'page' ) ) {
 		$keywords = (string) get_field( 'keywords', get_queried_object_id() );
 	}
+	if ( '' === $keywords && ( is_page_template( 'page-stoimost.php' ) || is_page( 'stoimost' ) ) ) {
+		$keywords = 'стоимость услуг, цены на ремонт фар, цены на тюнинг фар, прайс ремонт фар СПб, стоимость ремонта фар, цена полировки фар, рассрочка ремонт фар, подарочный сертификат автосвет, КБ АВТО';
+	}
 	if ( $keywords ) :
 		?>
 	<meta name="keywords" content="<?php echo esc_attr( wp_strip_all_tags( $keywords ) ); ?>">

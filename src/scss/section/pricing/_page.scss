@@ -1,0 +1,542 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.pricing-page {
+	padding: rem(36) 0 rem(40);
+
+	@media (min-width: $md3) {
+		padding: rem(60) 0 rem(48);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: rem(16);
+
+		@media (min-width: $md3) {
+			gap: rem(24);
+		}
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(28);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			font-size: rem(48);
+		}
+	}
+
+	&__notice {
+		display: inline-flex;
+		align-items: center;
+		gap: rem(8);
+		max-width: 100%;
+		padding: rem(10) rem(16);
+		border-radius: rem(20);
+		background: $color-surface;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 400;
+		line-height: 1.35;
+
+		@media (min-width: $md3) {
+			gap: rem(13);
+			padding: rem(12) rem(20);
+			font-size: rem(12);
+			line-height: normal;
+		}
+	}
+
+	&__notice-icon {
+		flex: 0 0 auto;
+		width: rem(9);
+		height: rem(9);
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			width: rem(15);
+			height: rem(15);
+		}
+	}
+
+	&__notice-text {
+		flex: 1 1 auto;
+	}
+
+	&__tabs {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(4);
+		width: 100%;
+		padding: rem(4);
+		border-radius: rem(21);
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			gap: rem(8);
+			padding: rem(8);
+			border-radius: rem(40);
+		}
+	}
+
+	&__tab {
+		flex: 1 1 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: rem(37);
+		padding: rem(8) rem(10);
+		border: 0;
+		border-radius: rem(21);
+		background: $color-white;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(12);
+		font-weight: 500;
+		line-height: normal;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
+
+		@media (min-width: $md3) {
+			min-height: rem(50);
+			padding: rem(15) rem(20);
+			border-radius: rem(40);
+			font-size: rem(20);
+		}
+
+		&._active {
+			background: $color-accent;
+			color: $color-white;
+		}
+	}
+
+	&__table-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		padding: rem(5) rem(4);
+		border-radius: rem(13);
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			width: calc(100% - #{rem(210)});
+			margin-left: auto;
+			margin-right: auto;
+			padding: rem(8);
+			border-radius: rem(40);
+		}
+	}
+
+	&__col-labels {
+		display: flex;
+		align-items: center;
+		gap: rem(48);
+
+		@media (min-width: $md3) {
+			gap: rem(181);
+		}
+	}
+
+	&__col-label {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: rem(56);
+		padding: rem(5) rem(7);
+		border-radius: rem(13);
+		background: $color-white;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 500;
+		line-height: normal;
+		white-space: nowrap;
+
+		@media (min-width: $md3) {
+			min-width: rem(127);
+			padding: rem(15) rem(20);
+			border-radius: rem(40);
+			font-size: rem(16);
+		}
+
+		&--work {
+			color: $color-accent;
+			min-width: rem(89);
+
+			@media (min-width: $md3) {
+				min-width: rem(163);
+			}
+		}
+	}
+
+	&__panel {
+		width: 100%;
+
+		&:not(._active) {
+			display: none;
+		}
+
+		@media (min-width: $md3) {
+			width: calc(100% - #{rem(300)});
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: rem(6);
+		width: 100%;
+
+		@media (min-width: $md3) {
+			gap: rem(18);
+		}
+	}
+
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(12);
+		padding-bottom: rem(6);
+		border-bottom: 1px solid rgba($color-black, 0.12);
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 400;
+		line-height: normal;
+
+		@media (min-width: $md3) {
+			gap: rem(24);
+			padding-bottom: rem(18);
+			font-size: rem(15);
+		}
+
+		&:last-child {
+			border-bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	&__work {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	&__work-name {
+		display: inline;
+	}
+
+	&__work-note {
+		display: inline;
+		color: #686868;
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex: 0 0 auto;
+		width: rem(167);
+		gap: rem(12);
+
+		@media (min-width: $md3) {
+			width: rem(388);
+		}
+	}
+
+	&__price {
+		flex: 0 0 auto;
+		white-space: nowrap;
+	}
+
+	&__duration {
+		flex: 0 0 auto;
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	&__empty {
+		color: $color-text-muted;
+		font-family: $font-family;
+		font-size: rem(14);
+	}
+}
+
+.pricing-why {
+	padding: 0 0 rem(40);
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(60);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+
+		@media (min-width: $md3) {
+			gap: rem(32);
+		}
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(28);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			font-size: rem(48);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: rem(11);
+
+		@media (min-width: $md3) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: rem(20);
+		}
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		gap: rem(8);
+		padding: rem(20) rem(15);
+		border-radius: rem(17);
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			gap: rem(42);
+			min-height: rem(213);
+			padding: rem(39) rem(52) rem(52) rem(39);
+			border-radius: rem(40);
+		}
+
+		&:last-child:nth-child(odd) {
+			grid-column: 1 / -1;
+
+			@media (min-width: $md3) {
+				grid-column: auto;
+			}
+		}
+	}
+
+	&__card-title {
+		font-family: $font-family;
+		font-size: rem(13);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-black;
+
+		@media (min-width: $md3) {
+			font-size: rem(36);
+			text-align: center;
+			white-space: nowrap;
+		}
+	}
+
+	&__card-text {
+		color: $color-text-secondary;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 400;
+		line-height: 1.35;
+
+		@media (min-width: $md3) {
+			font-size: rem(15);
+			line-height: normal;
+		}
+	}
+}
+
+.pricing-extra {
+	padding: 0 0 rem(40);
+
+	@media (min-width: $md3) {
+		padding: 0 0 rem(80);
+	}
+
+	&__container {
+		width: 100%;
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: rem(22);
+		padding: rem(16);
+		border-radius: rem(20);
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			flex-direction: row;
+			gap: rem(20);
+			padding: rem(43) rem(51);
+			border-radius: rem(40);
+		}
+	}
+
+	&__col {
+		display: flex;
+		flex-direction: column;
+		gap: rem(12);
+		flex: 1 1 0;
+		min-width: 0;
+
+		@media (min-width: $md3) {
+			gap: rem(18);
+		}
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		gap: rem(12);
+		padding: rem(16) rem(20) rem(20);
+		border-radius: rem(20);
+		background: $color-white;
+
+		@media (min-width: $md3) {
+			gap: rem(20);
+			min-height: rem(346);
+			padding: rem(28) rem(40) rem(32);
+			border-radius: rem(40);
+		}
+	}
+
+	&__title {
+		font-family: $font-family;
+		font-size: rem(20);
+		font-weight: 500;
+		line-height: normal;
+		color: $color-accent;
+
+		@media (min-width: $md3) {
+			font-size: rem(36);
+		}
+	}
+
+	&__lead {
+		color: $color-text-secondary;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 400;
+		line-height: 1.35;
+
+		@media (min-width: $md3) {
+			font-size: rem(15);
+			line-height: normal;
+		}
+	}
+
+	&__rows {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		margin-top: rem(8);
+		padding: rem(12) rem(20);
+		border-radius: rem(17);
+		background: $color-surface;
+
+		@media (min-width: $md3) {
+			margin-top: auto;
+			padding: rem(20) rem(35);
+			border-radius: rem(30);
+		}
+	}
+
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(16);
+		padding: rem(8) 0;
+		border-bottom: 1px dashed rgba($color-black, 0.18);
+		color: $color-text-secondary;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 400;
+		line-height: normal;
+
+		@media (min-width: $md3) {
+			padding: rem(10) 0;
+			font-size: rem(16);
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	&__row-label,
+	&__row-value {
+		flex: 0 1 auto;
+	}
+
+	&__amounts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: rem(8);
+		margin-top: rem(8);
+
+		@media (min-width: $md3) {
+			margin-top: auto;
+			gap: rem(8);
+		}
+	}
+
+	&__amount {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: rem(8) rem(22);
+		border: 0;
+		border-radius: rem(22);
+		background: $color-surface;
+		color: $color-black;
+		font-family: $font-family;
+		font-size: rem(10);
+		font-weight: 500;
+		line-height: normal;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
+
+		@media (min-width: $md3) {
+			padding: rem(15) rem(40);
+			border-radius: rem(40);
+			font-size: rem(16);
+		}
+
+		&._active {
+			background: $color-accent;
+			color: $color-white;
+		}
+
+		&--custom {
+			width: auto;
+		}
+	}
+
+	&__btn {
+		width: 100%;
+	}
+}

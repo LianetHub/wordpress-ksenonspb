@@ -9,7 +9,7 @@
             "type": "text",
             "instructions": "Ключевые слова для meta name=\"keywords\". Через запятую.",
             "default_value": "",
-            "placeholder": "ремонт фар, тюнинг оптики, ксенон, СПб"
+            "placeholder": "стоимость услуг, цены на ремонт фар, прайс ремонт фар СПб, КБ АВТО"
         }
     ],
     "location": [
@@ -25,5 +25,5 @@
     "position": "side",
     "style": "default",
     "active": true,
-    "modified": 1750953600
+    "modified": 1753120000
 }

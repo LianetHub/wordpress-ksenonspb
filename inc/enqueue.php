@@ -91,7 +91,7 @@ function ksenon_enqueue_conditional_styles($uri, $ver)
 		wp_enqueue_style('ksenonspb-contacts', $uri . '/css/contacts.min.css', $deps, $ver);
 	}
 
-	if (is_page_template('page-stoimost.php')) {
+	if (is_page_template('page-stoimost.php') || is_page('stoimost')) {
 		wp_enqueue_style('ksenonspb-pricing', $uri . '/css/pricing.min.css', $deps, $ver);
 	}
 
