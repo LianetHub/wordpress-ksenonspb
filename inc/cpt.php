@@ -466,18 +466,13 @@ if (! function_exists('ksenon_get_service_category_path')) {
 
 if (! function_exists('ksenon_get_service_url_slug')) {
 	/**
-	 * Public URL segment for a service (meta service_slug from import, fallback post_name).
+	 * Public URL segment for a service — classic WordPress post_name (editable slug).
 	 */
 	function ksenon_get_service_url_slug($post_id)
 	{
 		$post_id = (int) $post_id;
 		if ($post_id <= 0) {
 			return '';
-		}
-
-		$service_slug = get_post_meta($post_id, 'service_slug', true);
-		if (is_string($service_slug) && '' !== trim($service_slug)) {
-			return sanitize_title($service_slug);
 		}
 
 		$post = get_post($post_id);
@@ -487,6 +482,81 @@ if (! function_exists('ksenon_get_service_url_slug')) {
 			: '';
 	}
 }
+
+if (! function_exists('ksenon_sync_service_slug_meta_to_post_name')) {
+	/**
+	 * One-time: copy legacy import meta service_slug into post_name
+	 * so public URLs keep working after switching to classic slug.
+	 */
+	function ksenon_sync_service_slug_meta_to_post_name()
+	{
+		if (get_option('ksenon_synced_service_slug_to_post_name')) {
+			return;
+		}
+
+		$post_ids = get_posts(
+			array(
+				'post_type'              => 'service',
+				'post_status'            => 'any',
+				'posts_per_page'         => -1,
+				'fields'                 => 'ids',
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => true,
+				'update_post_term_cache' => false,
+				'meta_query'             => array(
+					array(
+						'key'     => 'service_slug',
+						'compare' => 'EXISTS',
+					),
+				),
+			)
+		);
+
+		foreach ($post_ids as $post_id) {
+			$post_id = (int) $post_id;
+			$meta    = get_post_meta($post_id, 'service_slug', true);
+			if (! is_string($meta) || '' === trim($meta)) {
+				continue;
+			}
+
+			$desired = sanitize_title($meta);
+			$post    = get_post($post_id);
+			if (! $post instanceof WP_Post || ! $desired || $post->post_name === $desired) {
+				continue;
+			}
+
+			$conflict = get_posts(
+				array(
+					'post_type'              => 'service',
+					'post_status'            => 'any',
+					'name'                   => $desired,
+					'post__not_in'           => array($post_id),
+					'posts_per_page'         => 1,
+					'fields'                 => 'ids',
+					'no_found_rows'          => true,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache' => false,
+				)
+			);
+
+			if (! empty($conflict)) {
+				continue;
+			}
+
+			wp_update_post(
+				array(
+					'ID'        => $post_id,
+					'post_name' => $desired,
+				)
+			);
+		}
+
+		update_option('ksenon_synced_service_slug_to_post_name', 1, true);
+	}
+}
+
+add_action('admin_init', 'ksenon_sync_service_slug_meta_to_post_name');
+add_action('init', 'ksenon_sync_service_slug_meta_to_post_name', 20);
 
 if (! function_exists('ksenon_get_service_category_top_parent_slug')) {
 	/**
@@ -574,24 +644,20 @@ if (! function_exists('ksenon_find_service_by_url_path')) {
 		}
 
 		$category_path = implode('/', array_slice($segments, 0, -1));
-		$candidates = get_posts(
+		$candidates    = get_posts(
 			array(
 				'post_type'              => 'service',
 				'post_status'            => 'publish',
 				'posts_per_page'         => -1,
 				'fields'                 => 'ids',
+				'name'                   => $url_slug,
 				'no_found_rows'          => true,
-				'update_post_meta_cache' => true,
+				'update_post_meta_cache' => false,
 				'update_post_term_cache' => true,
-				'meta_query'             => array(
-					array(
-						'key'   => 'service_slug',
-						'value' => $url_slug,
-					),
-				),
 			)
 		);
 
+		// Legacy import meta — only if post_name was not synced yet.
 		if (empty($candidates)) {
 			$candidates = get_posts(
 				array(
@@ -599,10 +665,15 @@ if (! function_exists('ksenon_find_service_by_url_path')) {
 					'post_status'            => 'publish',
 					'posts_per_page'         => -1,
 					'fields'                 => 'ids',
-					'name'                   => $url_slug,
 					'no_found_rows'          => true,
-					'update_post_meta_cache' => false,
+					'update_post_meta_cache' => true,
 					'update_post_term_cache' => true,
+					'meta_query'             => array(
+						array(
+							'key'   => 'service_slug',
+							'value' => $url_slug,
+						),
+					),
 				)
 			);
 		}
@@ -751,7 +822,7 @@ add_filter(
 
 add_filter(
 	'post_type_link',
-	function ($permalink, $post) {
+	function ($permalink, $post, $leavename = false) {
 		if (! $post instanceof WP_Post || 'service' !== $post->post_type) {
 			return $permalink;
 		}
@@ -762,15 +833,23 @@ add_filter(
 		}
 
 		$path = ksenon_get_service_category_path($term);
-		$url_slug = ksenon_get_service_url_slug((int) $post->ID);
-		if (! $path || ! $url_slug) {
+		if (! $path) {
+			return $permalink;
+		}
+
+		/*
+		 * When $leavename is true (sample permalink UI), keep %postname%
+		 * so wp-admin shows the classic "Edit" slug button.
+		 */
+		$url_slug = $leavename ? '%postname%' : ksenon_get_service_url_slug((int) $post->ID);
+		if (! $url_slug) {
 			return $permalink;
 		}
 
 		return home_url(user_trailingslashit($path . '/' . $url_slug));
 	},
 	10,
-	2
+	3
 );
 
 add_action(
