@@ -455,12 +455,12 @@
 }
 .cpt-archive__brands-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.6875rem 0.8125rem;
 }
 @media (min-width: 991.98px) {
   .cpt-archive__brands-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(12, 1fr);
     gap: 1.25rem;
   }
 }

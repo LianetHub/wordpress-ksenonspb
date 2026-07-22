@@ -6735,12 +6735,12 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 .cpt-archive__brands-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.6875rem 0.8125rem;
 }
 @media (min-width: 991.98px) {
   .cpt-archive__brands-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(12, 1fr);
     gap: 1.25rem;
   }
 }
@@ -8746,7 +8746,7 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 @media (min-width: 767.98px) {
   .brand-features__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
 }
@@ -8866,7 +8866,7 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 .brand-services__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 @media (min-width: 767.98px) {
@@ -8876,7 +8876,7 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 @media (min-width: 1199.98px) {
   .brand-services__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
 }
@@ -9684,12 +9684,12 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 .pricing-why__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.6875rem;
 }
 @media (min-width: 991.98px) {
   .pricing-why__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
 }
@@ -9727,8 +9727,6 @@ html.with-fancybox body.hide-scrollbar .header {
 @media (min-width: 991.98px) {
   .pricing-why__card-title {
     font-size: 2.25rem;
-    text-align: center;
-    white-space: nowrap;
   }
 }
 .pricing-why__card-text {
