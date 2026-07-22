@@ -6,21 +6,19 @@
  * @package ksenonspb
  */
 
-$hero_title = function_exists('get_field') ? (string) get_field('hero_title') : '';
+$hero_title = (string) (ksenon_get_post_field('hero_title') ?: '');
 if ('' === $hero_title) {
 	$hero_title = get_the_title();
 }
 
-$hero_notice = function_exists('get_field')
-	? (string) get_field('hero_notice')
-	: '';
+$hero_notice = (string) (ksenon_get_post_field('hero_notice') ?: '');
 if ('' === $hero_notice) {
 	$hero_notice = __('Цены ориентировочные — точная стоимость рассчитывается после бесплатного осмотра', 'ksenonspb');
 }
 
-$col_work     = function_exists('get_field') && get_field('table_col_work') ? (string) get_field('table_col_work') : __('Вид работы', 'ksenonspb');
-$col_price    = function_exists('get_field') && get_field('table_col_price') ? (string) get_field('table_col_price') : __('Цена', 'ksenonspb');
-$col_duration = function_exists('get_field') && get_field('table_col_duration') ? (string) get_field('table_col_duration') : __('Срок', 'ksenonspb');
+$col_work     = (string) (ksenon_get_post_field('table_col_work') ?: __('Вид работы', 'ksenonspb'));
+$col_price    = (string) (ksenon_get_post_field('table_col_price') ?: __('Цена', 'ksenonspb'));
+$col_duration = (string) (ksenon_get_post_field('table_col_duration') ?: __('Срок', 'ksenonspb'));
 
 $pricing_tabs = array(
 	array(
@@ -88,10 +86,9 @@ foreach ($pricing_tabs as $tab) {
 	);
 }
 
-$why_title = function_exists('get_field') && get_field('why_prices_title')
-	? (string) get_field('why_prices_title')
-	: __('Почему цены разные?', 'ksenonspb');
-$why_cards = function_exists('get_field') ? (array) get_field('why_prices_cards') : array();
+$why_title = (string) (ksenon_get_post_field('why_prices_title') ?: __('Почему цены разные?', 'ksenonspb'));
+$why_cards = ksenon_get_post_field('why_prices_cards');
+$why_cards = is_array($why_cards) ? $why_cards : array();
 $why_cards = array_values(
 	array_filter(
 		$why_cards,
@@ -101,9 +98,10 @@ $why_cards = array_values(
 	)
 );
 
-$installment_title = function_exists('get_field') ? (string) get_field('installment_title') : '';
-$installment_text  = function_exists('get_field') ? (string) get_field('installment_text') : '';
-$installment_rows  = function_exists('get_field') ? (array) get_field('installment_rows') : array();
+$installment_title = (string) (ksenon_get_post_field('installment_title') ?: '');
+$installment_text  = (string) (ksenon_get_post_field('installment_text') ?: '');
+$installment_rows  = ksenon_get_post_field('installment_rows');
+$installment_rows  = is_array($installment_rows) ? $installment_rows : array();
 $installment_rows  = array_values(
 	array_filter(
 		$installment_rows,
@@ -112,13 +110,12 @@ $installment_rows  = array_values(
 		}
 	)
 );
-$installment_btn = function_exists('get_field') && get_field('installment_btn')
-	? (string) get_field('installment_btn')
-	: __('Взять рассрочку', 'ksenonspb');
+$installment_btn = (string) (ksenon_get_post_field('installment_btn') ?: __('Взять рассрочку', 'ksenonspb'));
 
-$gift_title = function_exists('get_field') ? (string) get_field('gift_title') : '';
-$gift_text  = function_exists('get_field') ? (string) get_field('gift_text') : '';
-$gift_amounts = function_exists('get_field') ? (array) get_field('gift_amounts') : array();
+$gift_title   = (string) (ksenon_get_post_field('gift_title') ?: '');
+$gift_text    = (string) (ksenon_get_post_field('gift_text') ?: '');
+$gift_amounts = ksenon_get_post_field('gift_amounts');
+$gift_amounts = is_array($gift_amounts) ? $gift_amounts : array();
 $gift_amounts = array_values(
 	array_filter(
 		$gift_amounts,
@@ -127,12 +124,8 @@ $gift_amounts = array_values(
 		}
 	)
 );
-$gift_custom_label = function_exists('get_field') && get_field('gift_custom_label')
-	? (string) get_field('gift_custom_label')
-	: __('Своя сумма', 'ksenonspb');
-$gift_btn = function_exists('get_field') && get_field('gift_btn')
-	? (string) get_field('gift_btn')
-	: __('Взять сертификат', 'ksenonspb');
+$gift_custom_label = (string) (ksenon_get_post_field('gift_custom_label') ?: __('Своя сумма', 'ksenonspb'));
+$gift_btn          = (string) (ksenon_get_post_field('gift_btn') ?: __('Взять сертификат', 'ksenonspb'));
 
 $icons = ksenon_assets_uri('img/icons.svg');
 $nbsp  = "\xc2\xa0";

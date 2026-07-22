@@ -31,14 +31,14 @@
 
 	&__car {
 		margin-top: auto;
-		margin-bottom: -1.25rem;
+		margin-bottom: -2.5rem;
 		width: 100%;
 		line-height: 0;
 
 		@media (max-width: $md3) {
 			order: 1;
 			margin-top: 0;
-			margin-bottom: rem(-8);
+			margin-bottom: rem(-16);
 		}
 	}
 

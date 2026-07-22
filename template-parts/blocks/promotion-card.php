@@ -14,7 +14,7 @@ if (! $post instanceof WP_Post) {
 }
 
 $permalink = get_permalink($post);
-$poster    = function_exists('get_field') ? get_field('poster', $post) : null;
+$poster    = function_exists('ksenon_get_post_field') ? ksenon_get_post_field('poster', $post->ID) : null;
 $image     = $poster ?: (has_post_thumbnail($post) ? get_post_thumbnail_id($post) : null);
 $excerpt   = has_excerpt($post) ? get_the_excerpt($post) : '';
 ?>

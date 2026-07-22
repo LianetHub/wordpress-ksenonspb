@@ -4084,7 +4084,7 @@ body {
 }
 .cta-contacts__car {
   margin-top: auto;
-  margin-bottom: -1.25rem;
+  margin-bottom: -2.5rem;
   width: 100%;
   line-height: 0;
 }
@@ -4092,7 +4092,7 @@ body {
   .cta-contacts__car {
     order: 1;
     margin-top: 0;
-    margin-bottom: -0.5rem;
+    margin-bottom: -1rem;
   }
 }
 .cta-contacts__car-img {

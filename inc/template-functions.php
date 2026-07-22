@@ -523,7 +523,7 @@ if (! function_exists('ksenon_get_reviews')) {
 	 */
 	function ksenon_get_reviews()
 	{
-		if (! function_exists('get_field')) {
+		if (! function_exists('ksenon_get_post_field')) {
 			return array();
 		}
 
@@ -550,17 +550,17 @@ if (! function_exists('ksenon_get_reviews')) {
 
 			$post_id = (int) $post->ID;
 			$name    = trim(get_the_title($post));
-			$text    = trim((string) get_field('text', $post_id));
+			$text    = trim((string) ksenon_get_post_field('text', $post_id));
 			if ('' === $text && '' === $name) {
 				continue;
 			}
 
-			$source = sanitize_key((string) get_field('source', $post_id));
+			$source = sanitize_key((string) ksenon_get_post_field('source', $post_id));
 			if (! in_array($source, array('yandex', 'drive2'), true)) {
 				$source = 'yandex';
 			}
 
-			$review_date = (string) (get_field('review_date', $post_id) ?: '');
+			$review_date = (string) (ksenon_get_post_field('review_date', $post_id) ?: '');
 			$date_label  = $review_date
 				? ksenon_format_review_date_label($review_date)
 				: '';
@@ -568,16 +568,16 @@ if (! function_exists('ksenon_get_reviews')) {
 			$reviews[] = array(
 				'name'        => $name,
 				'text'        => $text,
-				'photo'       => get_field('photo', $post_id) ?: null,
-				'rating'      => (int) (get_field('rating', $post_id) ?: 5),
+				'photo'       => ksenon_get_post_field('photo', $post_id) ?: null,
+				'rating'      => (int) (ksenon_get_post_field('rating', $post_id) ?: 5),
 				'source'      => $source,
 				'review_date' => $review_date,
 				'date_label'  => $date_label,
-				'car_model'   => (string) (get_field('car_model', $post_id) ?: ''),
-				'story_title' => (string) (get_field('story_title', $post_id) ?: ''),
-				'story_url'   => (string) (get_field('story_url', $post_id) ?: ''),
-				'story_image' => get_field('story_image', $post_id) ?: null,
-				'verified'    => (bool) get_field('verified', $post_id),
+				'car_model'   => (string) (ksenon_get_post_field('car_model', $post_id) ?: ''),
+				'story_title' => (string) (ksenon_get_post_field('story_title', $post_id) ?: ''),
+				'story_url'   => (string) (ksenon_get_post_field('story_url', $post_id) ?: ''),
+				'story_image' => ksenon_get_post_field('story_image', $post_id) ?: null,
+				'verified'    => (bool) ksenon_get_post_field('verified', $post_id),
 			);
 		}
 
