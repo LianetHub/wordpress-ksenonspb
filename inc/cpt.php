@@ -852,6 +852,58 @@ add_filter(
 	3
 );
 
+add_filter(
+	'term_link',
+	function ($termlink, $term, $taxonomy) {
+		if ('service_category' !== $taxonomy || ! $term instanceof WP_Term) {
+			return $termlink;
+		}
+
+		/*
+		 * Taxonomy rewrite slug is "." (root URLs without /service_category/).
+		 * Core get_term_link() then emits "/./slug/" — browsers normalize it,
+		 * but Yoast sitemap and HTML hrefs keep the literal "./".
+		 */
+		$path = ksenon_get_service_category_path($term);
+		if (! $path) {
+			return $termlink;
+		}
+
+		$fixed = home_url(user_trailingslashit($path));
+
+		// #region agent log
+		$tax_obj       = get_taxonomy('service_category');
+		$rewrite_slug  = (is_object($tax_obj) && ! empty($tax_obj->rewrite['slug']))
+			? (string) $tax_obj->rewrite['slug']
+			: '';
+		$payload       = array(
+			'sessionId'    => 'd653c7',
+			'runId'        => 'post-fix',
+			'hypothesisId' => 'H1',
+			'location'     => 'inc/cpt.php:term_link',
+			'message'      => 'service_category term_link fixed',
+			'data'         => array(
+				'termlinkRaw'  => $termlink,
+				'termlinkFixed'=> $fixed,
+				'termSlug'     => $term->slug,
+				'path'         => $path,
+				'rewriteSlug'  => $rewrite_slug,
+				'hasDotSlash'  => false !== strpos($fixed, '/./'),
+			),
+			'timestamp'    => (int) round(microtime(true) * 1000),
+		);
+		$line = wp_json_encode($payload) . "\n";
+		$log  = get_stylesheet_directory() . '/debug-d653c7.log';
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
+		@file_put_contents($log, $line, FILE_APPEND);
+		// #endregion
+
+		return $fixed;
+	},
+	10,
+	3
+);
+
 add_action(
 	'pre_get_posts',
 	function ($query) {
