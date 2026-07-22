@@ -37,21 +37,22 @@ while (have_posts()) :
 		}
 	));
 
-	$video_poster = '';
+	$video_poster_yt    = '';
+	$video_poster_image = null;
 	if ($video) {
 		$video_id = ksenon_youtube_id($video);
 		if ($video_id) {
-			$video_poster = 'https://i.ytimg.com/vi/' . rawurlencode($video_id) . '/hqdefault.jpg';
+			$video_poster_yt = 'https://i.ytimg.com/vi/' . rawurlencode($video_id) . '/hqdefault.jpg';
 		}
 	}
-	if (! $video_poster && $after) {
-		$video_poster = ksenon_acf_image_url($after, 'large');
-	}
-	if (! $video_poster && $single) {
-		$video_poster = ksenon_acf_image_url($single, 'large');
-	}
-	if (! $video_poster && ! empty($process[0]['image'])) {
-		$video_poster = ksenon_acf_image_url($process[0]['image'], 'large');
+	if (! $video_poster_yt) {
+		if ($after) {
+			$video_poster_image = $after;
+		} elseif ($single) {
+			$video_poster_image = $single;
+		} elseif (! empty($process[0]['image'])) {
+			$video_poster_image = $process[0]['image'];
+		}
 	}
 ?>
 	<article class="case-page">
@@ -203,13 +204,27 @@ while (have_posts()) :
 						href="<?php echo esc_url($video); ?>"
 						data-fancybox="case-video"
 						aria-label="<?php esc_attr_e('Смотреть видео процесса работы', 'ksenonspb'); ?>">
-						<?php if ($video_poster) : ?>
+						<?php if ($video_poster_yt) : ?>
 							<img
 								class="case-video__poster cover-image"
-								src="<?php echo esc_url($video_poster); ?>"
+								src="<?php echo esc_url($video_poster_yt); ?>"
 								alt=""
+								width="480"
+								height="360"
 								loading="lazy"
 								decoding="async">
+						<?php elseif ($video_poster_image) : ?>
+							<?php
+							echo ksenon_acf_image(
+								$video_poster_image,
+								'large',
+								array(
+									'class'   => 'case-video__poster cover-image',
+									'alt'     => '',
+									'loading' => 'lazy',
+								)
+							);
+							?>
 						<?php endif; ?>
 						<span class="case-video__play">
 							<?php ksenon_icon('icon-play', 91, 91, 'case-video__play-icon'); ?>

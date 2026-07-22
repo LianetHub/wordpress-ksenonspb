@@ -8580,7 +8580,7 @@ html.with-fancybox body.hide-scrollbar .header {
   }
 }
 .contacts__item-address, .contacts__item-text {
-  color: #6f6f6f;
+  color: #000000;
   font-weight: 500;
   line-height: 130%;
   letter-spacing: -0.00938rem;
@@ -8605,7 +8605,7 @@ html.with-fancybox body.hide-scrollbar .header {
   gap: 0.25rem;
 }
 .contacts__item-link {
-  color: #6f6f6f;
+  color: #000000;
   font-weight: 500;
   font-size: 0.875rem;
   letter-spacing: -0.00938rem;

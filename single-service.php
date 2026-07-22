@@ -35,10 +35,15 @@ while (have_posts()) :
 					?>
 					<div class="service-hero__media">
 						<?php
+						$hero_attrs = array(
+							'class'         => 'service-hero__img',
+							'loading'       => 'eager',
+							'fetchpriority' => 'high',
+						);
 						if ($hero_image) {
-							echo ksenon_acf_image($hero_image, 'large', array('class' => 'service-hero__img'));
+							echo ksenon_acf_image($hero_image, 'large', $hero_attrs);
 						} else {
-							echo get_the_post_thumbnail($post_id, 'large', array('class' => 'service-hero__img'));
+							echo get_the_post_thumbnail($post_id, 'large', $hero_attrs);
 						}
 						?>
 					</div>
