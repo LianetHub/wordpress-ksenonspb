@@ -407,6 +407,7 @@
 
 	&__card {
 		display: flex;
+		flex: 1 1 auto;
 		flex-direction: column;
 		gap: rem(12);
 		padding: rem(16) rem(20) rem(20);

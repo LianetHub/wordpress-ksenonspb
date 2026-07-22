@@ -40,21 +40,6 @@
             "default_value": "Срок"
         },
         {
-            "key": "field_ksenon_pricing_price_tabs",
-            "label": "Вкладки таблицы (категории услуг)",
-            "name": "price_tabs",
-            "type": "taxonomy",
-            "taxonomy": "service_category",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "object",
-            "multiple": 1,
-            "instructions": "Порядок выбранных категорий = порядок вкладок. Строки таблицы — опубликованные услуги из категории."
-        },
-        {
             "key": "field_ksenon_pricing_why_title",
             "label": "Почему цены разные — заголовок",
             "name": "why_prices_title",
@@ -194,5 +179,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1753120000
+    "modified": 1753212260
 }

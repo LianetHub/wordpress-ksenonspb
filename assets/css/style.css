@@ -134,16 +134,16 @@ body {
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -933,6 +933,10 @@ body {
 .form-field:disabled, .form-field[aria-disabled=true] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+.form-field:read-only {
+  opacity: 0.72;
+  cursor: default;
 }
 
 .form-field-wrap {
@@ -9782,6 +9786,7 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 .pricing-extra__card {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem 1.25rem 1.25rem;

@@ -231,6 +231,11 @@ $cta-checkbox-checked: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 
 .form-field {
 	@include form-control-on-brand;
+
+	&:read-only {
+		opacity: 0.72;
+		cursor: default;
+	}
 }
 
 .form-field-wrap {

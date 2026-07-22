@@ -640,15 +640,6 @@ function initGiftAmounts() {
 			return active?.getAttribute("data-gift-amount") || "";
 		};
 
-		const formatAmount = (value) => {
-			if (!value || value === "custom") {
-				return value === "custom" ? "Своя сумма" : "";
-			}
-			const amount = Number(value);
-			if (!Number.isFinite(amount) || amount <= 0) return "";
-			return `${amount.toLocaleString("ru-RU").replace(/\s/g, "\u00a0")}\u00a0₽`;
-		};
-
 		const syncCertificateForm = () => {
 			const popup = document.querySelector("#popup-certificate");
 			if (!popup) return;
@@ -656,7 +647,17 @@ function initGiftAmounts() {
 				'input[name="certificate-amount"]',
 			);
 			if (!input) return;
-			input.value = formatAmount(getSelected());
+
+			const selected = getSelected();
+			const isCustom = !selected || selected === "custom";
+
+			if (isCustom) {
+				input.value = "";
+				input.readOnly = false;
+			} else {
+				input.value = selected;
+				input.readOnly = true;
+			}
 		};
 
 		pills.forEach((pill) => {

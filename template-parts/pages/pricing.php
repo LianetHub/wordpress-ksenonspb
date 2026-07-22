@@ -22,35 +22,47 @@ $col_work     = function_exists('get_field') && get_field('table_col_work') ? (s
 $col_price    = function_exists('get_field') && get_field('table_col_price') ? (string) get_field('table_col_price') : __('Цена', 'ksenonspb');
 $col_duration = function_exists('get_field') && get_field('table_col_duration') ? (string) get_field('table_col_duration') : __('Срок', 'ksenonspb');
 
-$price_tabs_raw = function_exists('get_field') ? get_field('price_tabs') : array();
-$price_tabs     = array();
-if (is_array($price_tabs_raw)) {
-	foreach ($price_tabs_raw as $term) {
-		if ($term instanceof WP_Term) {
-			$price_tabs[] = $term;
-		} elseif (is_numeric($term)) {
-			$maybe = get_term((int) $term, 'service_category');
-			if ($maybe instanceof WP_Term && ! is_wp_error($maybe)) {
-				$price_tabs[] = $maybe;
-			}
-		}
-	}
-}
+$pricing_tabs = array(
+	array(
+		'key'   => 'remont',
+		'label' => __('Ремонт', 'ksenonspb'),
+		'tax'   => array(
+			'taxonomy'         => 'service_category',
+			'field'            => 'term_id',
+			'terms'            => array(18),
+			'include_children' => true,
+		),
+	),
+	array(
+		'key'   => 'tyuning',
+		'label' => __('Тюнинг', 'ksenonspb'),
+		'tax'   => array(
+			'taxonomy'         => 'service_category',
+			'field'            => 'term_id',
+			'terms'            => array(17),
+			'include_children' => true,
+		),
+	),
+	array(
+		'key'   => 'complex',
+		'label' => __('Сложные работы', 'ksenonspb'),
+		'tax'   => array(
+			'taxonomy'         => 'service_category',
+			'field'            => 'term_id',
+			'terms'            => array(17, 18),
+			'operator'         => 'NOT IN',
+			'include_children' => true,
+		),
+	),
+);
 
 $tab_panels = array();
-foreach ($price_tabs as $term) {
+foreach ($pricing_tabs as $tab) {
 	$query = ksenon_query_services(
 		array(
 			'posts_per_page'         => -1,
 			'update_post_meta_cache' => true,
-			'tax_query'              => array(
-				array(
-					'taxonomy'         => 'service_category',
-					'field'            => 'term_id',
-					'terms'            => array((int) $term->term_id),
-					'include_children' => true,
-				),
-			),
+			'tax_query'              => array($tab['tax']),
 		)
 	);
 
@@ -70,8 +82,9 @@ foreach ($price_tabs as $term) {
 	}
 
 	$tab_panels[] = array(
-		'term' => $term,
-		'rows' => $rows,
+		'key'   => $tab['key'],
+		'label' => $tab['label'],
+		'rows'  => $rows,
 	);
 }
 
@@ -141,9 +154,9 @@ $nbsp  = "\xc2\xa0";
 			<div class="pricing-page__tabs" role="tablist" aria-label="<?php esc_attr_e('Категории услуг', 'ksenonspb'); ?>">
 				<?php foreach ($tab_panels as $index => $panel) : ?>
 					<?php
-					$term      = $panel['term'];
-					$tab_id    = 'pricing-tab-' . (int) $term->term_id;
-					$panel_id  = 'pricing-panel-' . (int) $term->term_id;
+					$tab_key   = (string) $panel['key'];
+					$tab_id    = 'pricing-tab-' . $tab_key;
+					$panel_id  = 'pricing-panel-' . $tab_key;
 					$is_active = 0 === $index;
 					?>
 					<button
@@ -153,9 +166,9 @@ $nbsp  = "\xc2\xa0";
 						role="tab"
 						aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
 						aria-controls="<?php echo esc_attr($panel_id); ?>"
-						data-pricing-tab="<?php echo esc_attr((string) $term->term_id); ?>"
+						data-pricing-tab="<?php echo esc_attr($tab_key); ?>"
 					>
-						<?php echo esc_html($term->name); ?>
+						<?php echo esc_html((string) $panel['label']); ?>
 					</button>
 				<?php endforeach; ?>
 			</div>
@@ -170,9 +183,9 @@ $nbsp  = "\xc2\xa0";
 
 			<?php foreach ($tab_panels as $index => $panel) : ?>
 				<?php
-				$term      = $panel['term'];
-				$panel_id  = 'pricing-panel-' . (int) $term->term_id;
-				$tab_id    = 'pricing-tab-' . (int) $term->term_id;
+				$tab_key   = (string) $panel['key'];
+				$panel_id  = 'pricing-panel-' . $tab_key;
+				$tab_id    = 'pricing-tab-' . $tab_key;
 				$is_active = 0 === $index;
 				?>
 				<div
@@ -180,7 +193,7 @@ $nbsp  = "\xc2\xa0";
 					id="<?php echo esc_attr($panel_id); ?>"
 					role="tabpanel"
 					aria-labelledby="<?php echo esc_attr($tab_id); ?>"
-					data-pricing-panel="<?php echo esc_attr((string) $term->term_id); ?>"
+					data-pricing-panel="<?php echo esc_attr($tab_key); ?>"
 					<?php echo $is_active ? '' : ' hidden'; ?>
 				>
 					<?php if ($panel['rows']) : ?>
@@ -305,7 +318,7 @@ $nbsp  = "\xc2\xa0";
 						</article>
 						<button
 							type="button"
-							class="btn btn--white-outline btn--large pricing-extra__btn"
+							class="btn btn--white btn--large pricing-extra__btn"
 							data-fancybox
 							data-src="#popup-certificate"
 							data-gift-open

@@ -10,8 +10,9 @@
     </div>
   </div>
 
-  <div class="form__field">
-    [text certificate-amount class:form-field placeholder "Номинал сертификата"]
+  <div class="form__field form-field-wrap">
+    <span class="form-field__label">Номинал сертификата, ₽</span>
+    [number* certificate-amount class:form-field min:1 step:1 placeholder "Введите сумму"]
   </div>
 
   <div class="form__field">
