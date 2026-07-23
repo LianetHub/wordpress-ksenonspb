@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	initCaseSteps();
 	initCaseGallery();
+	initCaseVideoPosterFallback();
 	initAccordion();
 	initHome();
 	initCptArchiveFilters();
@@ -546,6 +547,17 @@ function initCaseGallery() {
 					loop: slides.length > 3,
 				},
 			},
+		});
+	});
+}
+
+function initCaseVideoPosterFallback() {
+	document.querySelectorAll("[data-yt-fallback]").forEach((img) => {
+		img.addEventListener("error", () => {
+			const fallback = img.getAttribute("data-yt-fallback");
+			if (!fallback) return;
+			img.removeAttribute("data-yt-fallback");
+			img.src = fallback;
 		});
 	});
 }

@@ -39,11 +39,15 @@ while (have_posts()) :
 	));
 
 	$video_poster_yt    = '';
+	$video_poster_yt_fallback = '';
 	$video_poster_image = null;
 	if ($video) {
 		$video_id = ksenon_youtube_id($video);
 		if ($video_id) {
-			$video_poster_yt = 'https://i.ytimg.com/vi/' . rawurlencode($video_id) . '/hqdefault.jpg';
+			$yt_base = 'https://i.ytimg.com/vi/' . rawurlencode($video_id) . '/';
+			// maxresdefault (~1280×720); hqdefault — запасной, если maxres нет.
+			$video_poster_yt          = $yt_base . 'maxresdefault.jpg';
+			$video_poster_yt_fallback = $yt_base . 'hqdefault.jpg';
 		}
 	}
 	if (! $video_poster_yt) {
@@ -271,15 +275,16 @@ while (have_posts()) :
 								class="case-video__poster cover-image"
 								src="<?php echo esc_url($video_poster_yt); ?>"
 								alt=""
-								width="480"
-								height="360"
+								width="1280"
+								height="720"
 								loading="lazy"
-								decoding="async">
+								decoding="async"
+								data-yt-fallback="<?php echo esc_url($video_poster_yt_fallback); ?>">
 						<?php elseif ($video_poster_image) : ?>
 							<?php
 							echo ksenon_acf_image(
 								$video_poster_image,
-								'large',
+								'full',
 								array(
 									'class'   => 'case-video__poster cover-image',
 									'alt'     => '',
