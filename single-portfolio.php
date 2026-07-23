@@ -30,6 +30,7 @@ while (have_posts()) :
 	}
 
 	$task_description = (string) ksenon_get_post_field('task_description', $post_id);
+	$case_description = (string) ksenon_get_post_field('case_description', $post_id);
 	$photos           = array_values(array_filter((array) ksenon_get_post_field('photos', $post_id)));
 	$process          = array_values(array_filter(
 		(array) ksenon_get_post_field('work_process', $post_id),
@@ -79,6 +80,7 @@ while (have_posts()) :
 				<?php endif; ?>
 			</div>
 		</section>
+		
 
 		<?php if ($has_compare) : ?>
 			<section class="case-before-after">
@@ -200,6 +202,16 @@ while (have_posts()) :
 			</section>
 		<?php endif; ?>
 
+		<?php if ($case_description) : ?>
+			<div class="case-description">
+				<div class="case-description__container container">
+					<div class="case-description__text">
+						<?php echo wp_kses_post($case_description); ?>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>	
+		
 		<?php if ($photos) : ?>
 			<section class="case-gallery">
 				<div class="case-gallery__container container">
@@ -260,6 +272,7 @@ while (have_posts()) :
 				</div>
 			</section>
 		<?php endif; ?>
+	
 
 		<?php if ($video) : ?>
 			<section class="case-video">
