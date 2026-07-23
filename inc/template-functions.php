@@ -1036,12 +1036,19 @@ if (! function_exists('ksenon_services_pagination_url')) {
 }
 
 if (! function_exists('ksenon_get_pagination_items')) {
+	/**
+	 * Standard truncated pagination: always keep first + last as anchors.
+	 * Examples: 1 2 3 … 99 | 1 … 6 7 8 … 99 | 1 … 97 98 99
+	 *
+	 * @param int $current
+	 * @param int $total
+	 * @return array<int, array{type: string, num?: int}>
+	 */
 	function ksenon_get_pagination_items($current, $total)
 	{
 		$current = max(1, (int) $current);
 		$total   = max(1, (int) $total);
 
-		// Keep at most 4 page numbers + optional dots (Figma: ← 1 2 3 4 … →).
 		if ($total <= 5) {
 			$items = array();
 			for ($i = 1; $i <= $total; $i++) {
@@ -1054,49 +1061,57 @@ if (! function_exists('ksenon_get_pagination_items')) {
 			return $items;
 		}
 
-		if ($current <= 4) {
-			$items = array();
-			for ($i = 1; $i <= 4; $i++) {
-				$items[] = array(
-					'type' => 'page',
-					'num'  => $i,
-				);
-			}
-			$items[] = array('type' => 'dots');
+		$pages = array(1);
 
-			return $items;
+		// Sliding window around the current page (prev, current, next).
+		$window_start = max(2, $current - 1);
+		$window_end   = min($total - 1, $current + 1);
+
+		// Near edges: widen the visible range so we don't show awkward tiny gaps.
+		if ($current <= 3) {
+			$window_start = 2;
+			$window_end   = 3;
+		} elseif ($current >= $total - 2) {
+			$window_start = $total - 2;
+			$window_end   = $total - 1;
 		}
 
-		if ($current >= $total - 3) {
-			$items = array(
-				array('type' => 'dots'),
-			);
-			for ($i = $total - 3; $i <= $total; $i++) {
-				$items[] = array(
-					'type' => 'page',
-					'num'  => $i,
-				);
+		// If the gap before/after the window is a single page, show it instead of dots.
+		if ($window_start > 2) {
+			if (2 === $window_start - 1) {
+				$pages[] = 2;
+			} else {
+				$pages[] = 'dots';
 			}
-
-			return $items;
 		}
 
-		return array(
-			array('type' => 'dots'),
-			array(
-				'type' => 'page',
-				'num'  => $current - 1,
-			),
-			array(
-				'type' => 'page',
-				'num'  => $current,
-			),
-			array(
-				'type' => 'page',
-				'num'  => $current + 1,
-			),
-			array('type' => 'dots'),
-		);
+		for ($i = $window_start; $i <= $window_end; $i++) {
+			$pages[] = $i;
+		}
+
+		if ($window_end < $total - 1) {
+			if ($window_end + 1 === $total - 1) {
+				$pages[] = $total - 1;
+			} else {
+				$pages[] = 'dots';
+			}
+		}
+
+		$pages[] = $total;
+
+		$items = array();
+		foreach ($pages as $page) {
+			if ('dots' === $page) {
+				$items[] = array('type' => 'dots');
+			} else {
+				$items[] = array(
+					'type' => 'page',
+					'num'  => (int) $page,
+				);
+			}
+		}
+
+		return $items;
 	}
 }
 

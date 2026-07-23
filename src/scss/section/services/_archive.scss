@@ -462,7 +462,6 @@
 	display: flex;
 	justify-content: center;
 	max-width: 100%;
-	
 
 	&__inner {
 		display: flex;
@@ -472,9 +471,10 @@
 		border-radius: rem(46);
 		padding: rem(10) rem(22);
 		background: $color-white;
-		@media (max-width:$md4) {
-			padding: rem(10) rem(8);
-			max-width: max-content;
+
+		@media (max-width: $md4) {
+			gap: rem(4);
+			padding: rem(6) rem(6);
 			margin: 0 -1.5rem;
 		}
 	}
@@ -484,6 +484,10 @@
 		align-items: center;
 		gap: rem(15);
 		min-width: 0;
+
+		@media (max-width: $md4) {
+			gap: rem(3);
+		}
 	}
 
 	&__page {
@@ -515,6 +519,18 @@
 			pointer-events: none;
 		}
 
+		@media (max-width: $md4) {
+			min-width: rem(28);
+			height: rem(28);
+			padding: rem(4) rem(5);
+			font-size: rem(9);
+
+			&--dots {
+				min-width: rem(20);
+				padding: rem(4) rem(2);
+			}
+		}
+
 		@media (any-hover: hover) {
 			&:hover:not(._active) {
 				background: color.adjust($color: $color-surface, $lightness: -5%);
@@ -537,6 +553,11 @@
 		&--disabled {
 			opacity: 0.4;
 			pointer-events: none;
+		}
+
+		@media (max-width: $md4) {
+			width: rem(28);
+			height: rem(28);
 		}
 
 		@media (any-hover: hover) {
