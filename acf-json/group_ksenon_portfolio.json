@@ -18,17 +18,23 @@
         },
         {
             "key": "field_ksenon_portfolio_before_image",
-            "label": "До",
+            "label": "Фото до",
             "name": "before_image",
             "type": "image",
-            "return_format": "array"
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 0
         },
         {
             "key": "field_ksenon_portfolio_after_image",
-            "label": "После",
+            "label": "Фото после",
             "name": "after_image",
             "type": "image",
-            "return_format": "array"
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 0
         },
         {
             "key": "field_ksenon_portfolio_photos",
@@ -147,5 +153,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1752914800
+    "modified": 1784817200
 }
