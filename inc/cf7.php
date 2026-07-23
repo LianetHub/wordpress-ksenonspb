@@ -214,14 +214,30 @@ function ksenon_cf7_format_agree_value($value)
 add_action(
 	'wpcf7_mail_failed',
 	function ($contact_form) {
-		if (! defined('WP_DEBUG') || ! WP_DEBUG) {
-			return;
-		}
-
 		error_log('CF7 mail failed for form #' . $contact_form->id());
 	},
 	10,
 	1
+);
+
+/**
+ * Логирует причину отказа wp_mail (SMTP / PHP mail).
+ */
+add_action(
+	'wp_mail_failed',
+	function ($error) {
+		if (! is_wp_error($error)) {
+			return;
+		}
+
+		error_log('wp_mail failed: ' . $error->get_error_message());
+
+		$data = $error->get_error_data();
+
+		if (is_array($data)) {
+			error_log('wp_mail failed data: ' . wp_json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+		}
+	}
 );
 
 /**
@@ -291,6 +307,28 @@ add_filter(
 );
 
 /**
+ * Форматирует номинал сертификата для письма.
+ */
+function ksenon_cf7_format_certificate_amount($value)
+{
+	$raw = ksenon_cf7_field_value($value);
+	$raw = preg_replace('/[^\d.,]/', '', $raw);
+
+	if ('' === $raw) {
+		return '';
+	}
+
+	$raw    = str_replace(',', '.', $raw);
+	$number = (float) $raw;
+
+	if ($number <= 0) {
+		return $raw;
+	}
+
+	return number_format($number, 0, ',', ' ') . ' ₽';
+}
+
+/**
  * Форматирование mail-тегов для писем.
  */
 add_filter(
@@ -308,14 +346,28 @@ add_filter(
 			return $html ? esc_html($formatted) : $formatted;
 		}
 
-		if ('your-message' === $field) {
-			$message = ksenon_cf7_field_value($submitted);
+		if ('certificate-amount' === $field) {
+			$formatted = ksenon_cf7_format_certificate_amount($submitted);
 
-			if ('' === $message) {
+			if ('' === $formatted) {
 				return $html ? '&mdash;' : '—';
 			}
 
-			return $html ? nl2br(esc_html($message), false) : $message;
+			return $html ? esc_html($formatted) : $formatted;
+		}
+
+		if (in_array($field, array('your-message', 'your-car'), true)) {
+			$value = ksenon_cf7_field_value($submitted);
+
+			if ('' === $value) {
+				return $html ? '&mdash;' : '—';
+			}
+
+			if ('your-message' === $field) {
+				return $html ? nl2br(esc_html($value), false) : $value;
+			}
+
+			return $html ? esc_html($value) : $value;
 		}
 
 		return $replaced;

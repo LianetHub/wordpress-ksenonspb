@@ -172,7 +172,6 @@ html.with-fancybox body.hide-scrollbar .header {
 		transform: translateY(rem(-4));
 		transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 
-		// Невидимый мост через зазор — иначе hover срывается при движении к dropdown
 		&::before {
 			content: "";
 			position: absolute;
