@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initFancybox();
 
 	initCaseSteps();
+	initCaseGallery();
 	initAccordion();
 	initHome();
 	initCptArchiveFilters();
@@ -147,9 +148,18 @@ function initHeaderScroll() {
 function initFancybox() {
 	if (typeof Fancybox === "undefined") return;
 
-	Fancybox.bind('[data-fancybox]:not([data-fancybox="case-video"])', {
-		mainClass: "fancybox-popup",
-		dragToClose: false,
+	Fancybox.bind(
+		'[data-fancybox]:not([data-fancybox="case-video"]):not([data-fancybox="case-gallery"])',
+		{
+			mainClass: "fancybox-popup",
+			dragToClose: false,
+			placeFocusBack: true,
+			autoFocus: true,
+			trapFocus: true,
+		},
+	);
+
+	Fancybox.bind('[data-fancybox="case-gallery"]', {
 		placeFocusBack: true,
 		autoFocus: true,
 		trapFocus: true,
@@ -510,6 +520,34 @@ function initCaseSteps() {
 	});
 
 	setActive(0);
+}
+
+function initCaseGallery() {
+	if (typeof Swiper === "undefined") return;
+
+	document.querySelectorAll(".case-gallery__slider").forEach((sliderEl) => {
+		const root = sliderEl.closest(".case-gallery");
+		const slides = sliderEl.querySelectorAll(".swiper-slide");
+		if (!slides.length) return;
+
+		new Swiper(sliderEl, {
+			slidesPerView: 1.15,
+			spaceBetween: 16,
+			watchOverflow: true,
+			loop: slides.length > 2,
+			navigation: {
+				nextEl: root?.querySelector(".case-gallery__next"),
+				prevEl: root?.querySelector(".case-gallery__prev"),
+			},
+			breakpoints: {
+				991.98: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+					loop: slides.length > 3,
+				},
+			},
+		});
+	});
 }
 
 function initAccordion() {

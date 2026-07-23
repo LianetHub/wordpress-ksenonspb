@@ -30,6 +30,7 @@ while (have_posts()) :
 	}
 
 	$task_description = (string) ksenon_get_post_field('task_description', $post_id);
+	$photos           = array_values(array_filter((array) ksenon_get_post_field('photos', $post_id)));
 	$process          = array_values(array_filter(
 		(array) ksenon_get_post_field('work_process', $post_id),
 		static function ($step) {
@@ -189,6 +190,67 @@ while (have_posts()) :
 									</div>
 								</div>
 							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</section>
+		<?php endif; ?>
+
+		<?php if ($photos) : ?>
+			<section class="case-gallery">
+				<div class="case-gallery__container container">
+					<div class="case-gallery__head">
+						<h2 class="case-gallery__title title-md"><?php esc_html_e('Галерея', 'ksenonspb'); ?></h2>
+						<div class="case-gallery__nav">
+							<button
+								type="button"
+								class="case-gallery__prev swiper-button-prev"
+								aria-label="<?php esc_attr_e('Предыдущее фото', 'ksenonspb'); ?>">
+								<?php ksenon_icon('icon-chevron-left', 5, 8, 'case-gallery__nav-icon'); ?>
+							</button>
+							<button
+								type="button"
+								class="case-gallery__next swiper-button-next"
+								aria-label="<?php esc_attr_e('Следующее фото', 'ksenonspb'); ?>">
+								<?php ksenon_icon('icon-chevron-right', 5, 8, 'case-gallery__nav-icon'); ?>
+							</button>
+						</div>
+					</div>
+					<div class="case-gallery__slider swiper">
+						<div class="swiper-wrapper">
+							<?php foreach ($photos as $image) : ?>
+								<?php
+								$full_url = ksenon_acf_image_url($image, 'full');
+								if (! $full_url) {
+									continue;
+								}
+								$alt = '';
+								if (is_array($image) && ! empty($image['alt'])) {
+									$alt = (string) $image['alt'];
+								}
+								?>
+								<div class="case-gallery__slide swiper-slide">
+									<a
+										class="case-gallery__link"
+										href="<?php echo esc_url($full_url); ?>"
+										data-fancybox="case-gallery"
+										<?php if ($alt) : ?>
+											data-caption="<?php echo esc_attr($alt); ?>"
+										<?php endif; ?>>
+										<?php
+										echo ksenon_acf_image(
+											$image,
+											'large',
+											array(
+												'class'   => 'case-gallery__img cover-image',
+												'alt'     => $alt,
+												'loading' => 'lazy',
+											)
+										);
+										?>
+									</a>
+								</div>
+							<?php endforeach; ?>
 						</div>
 					</div>
 				</div>
