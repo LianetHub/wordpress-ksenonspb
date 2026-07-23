@@ -216,8 +216,10 @@ html.with-fancybox body.hide-scrollbar .header {
 		padding: rem(8) rem(18);
 		border: 0;
 		border-radius: rem(40);
-		background: $color-surface;
-		color: $color-black;
+		background: $color-accent;
+		color: $color-white;
+		border: none;
+		box-shadow: 0 rem(6) rem(3) rgba(253, 128, 17, 0.2);
 		font-family: $font-family;
 		font-size: rem(10);
 		font-weight: 400;
@@ -234,7 +236,7 @@ html.with-fancybox body.hide-scrollbar .header {
 
 		@media (any-hover: hover) {
 			&:hover {
-				background: $color-surface-hover;
+				background: $color-accent-hover;
 			}
 		}
 	}
