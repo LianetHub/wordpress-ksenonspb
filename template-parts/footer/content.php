@@ -12,9 +12,8 @@ $logo_on_dark = empty($logo_light);
 $brand_title  = ksenon_get_option('footer_brand_title', __('КБ авто', 'ksenonspb'));
 $tagline      = ksenon_get_option('footer_tagline', __('Лаборатория автосвета с 2001', 'ksenonspb'));
 $description  = ksenon_get_option('footer_description', __('Ремонтируем фары, которые другие меняют целиком. Гарантия до 2 лет письменно', 'ksenonspb'));
-$phones       = ksenon_get_phones();
-$footer_phone = $phones[0] ?? '';
-$email        = ksenon_get_option('email');
+$phones      = ksenon_get_phones();
+$email       = ksenon_get_option('email');
 $address      = ksenon_get_option('address');
 $hours        = ksenon_get_option('hours');
 $copyright    = ksenon_get_option('kopirajt', '© 2001–2026 КБ АВТО');
@@ -67,9 +66,9 @@ $cookies_policy_url = ksenon_get_cookies_policy_url();
 					<?php if ($address) : ?>
 						<p class="footer__contact footer__contact--address"><?php echo esc_html($address); ?></p>
 					<?php endif; ?>
-					<?php if ($footer_phone) : ?>
-						<a class="footer__contact footer__contact--phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($footer_phone)); ?>"><?php echo esc_html($footer_phone); ?></a>
-					<?php endif; ?>
+					<?php foreach ($phones as $phone) : ?>
+						<a class="footer__contact footer__contact--phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($phone)); ?>"><?php echo esc_html($phone); ?></a>
+					<?php endforeach; ?>
 				</div>
 
 				<div class="footer__socials-wrap footer__socials-wrap--desktop">
@@ -89,9 +88,9 @@ $cookies_policy_url = ksenon_get_cookies_policy_url();
 					</div>
 				<?php endif; ?>
 
-				<?php if ($footer_phone) : ?>
-					<a class="footer__contact footer__contact--phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($footer_phone)); ?>"><?php echo esc_html($footer_phone); ?></a>
-				<?php endif; ?>
+				<?php foreach ($phones as $phone) : ?>
+					<a class="footer__contact footer__contact--phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($phone)); ?>"><?php echo esc_html($phone); ?></a>
+				<?php endforeach; ?>
 
 				<?php if ($email) : ?>
 					<div class="footer__contact-group">

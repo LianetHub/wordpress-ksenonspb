@@ -81,8 +81,6 @@ $portfolio_url   = ksenon_portfolio_archive_url();
 			<img
 				src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/home-hero-mobile.webp'); ?>"
 				alt="<?php esc_attr_e('Авто', 'ksenonspb'); ?>"
-				width="686"
-				height="358"
 				loading="eager"
 				fetchpriority="high"
 				decoding="async">

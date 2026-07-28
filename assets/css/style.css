@@ -8873,13 +8873,6 @@ html.with-fancybox body.hide-scrollbar .header {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
-  border-radius: 1.375rem;
-}
-@media (min-width: 991.98px) {
-  .brand-features__card {
-    border-radius: 2.5rem;
-  }
 }
 .brand-features__card-title {
   position: relative;
