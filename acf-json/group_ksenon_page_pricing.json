@@ -164,6 +164,39 @@
             "name": "gift_btn",
             "type": "text",
             "default_value": "Взять сертификат"
+        },
+        {
+            "key": "field_ksenon_pricing_faq_title",
+            "label": "FAQ — заголовок",
+            "name": "faq_title",
+            "type": "text",
+            "default_value": "Частые вопросы о ценах"
+        },
+        {
+            "key": "field_ksenon_pricing_faq",
+            "label": "FAQ — вопросы",
+            "name": "faq",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить вопрос",
+            "instructions": "Если пусто — на странице показываются три дефолтных вопроса про цены «от», диагностику и точную стоимость.",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_pricing_faq_q",
+                    "label": "Вопрос",
+                    "name": "question",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_faq"
+                },
+                {
+                    "key": "field_ksenon_pricing_faq_a",
+                    "label": "Ответ",
+                    "name": "answer",
+                    "type": "textarea",
+                    "rows": 3,
+                    "parent_repeater": "field_ksenon_pricing_faq"
+                }
+            ]
         }
     ],
     "location": [
@@ -179,5 +212,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1753212260
+    "modified": 1754074800
 }

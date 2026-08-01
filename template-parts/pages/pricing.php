@@ -99,10 +99,14 @@ $why_cards = array_values(
 );
 
 $installment_title = (string) (ksenon_get_post_field('installment_title') ?: '');
-$installment_text  = (string) (ksenon_get_post_field('installment_text') ?: '');
-$installment_rows  = ksenon_get_post_field('installment_rows');
-$installment_rows  = is_array($installment_rows) ? $installment_rows : array();
-$installment_rows  = array_values(
+// CMS typo on money page: «Расрочка» → «Рассрочка».
+if ('Расрочка' === $installment_title) {
+	$installment_title = __('Рассрочка', 'ksenonspb');
+}
+$installment_text = (string) (ksenon_get_post_field('installment_text') ?: '');
+$installment_rows = ksenon_get_post_field('installment_rows');
+$installment_rows = is_array($installment_rows) ? $installment_rows : array();
+$installment_rows = array_values(
 	array_filter(
 		$installment_rows,
 		static function ($row) {
@@ -126,6 +130,25 @@ $gift_amounts = array_values(
 );
 $gift_custom_label = (string) (ksenon_get_post_field('gift_custom_label') ?: __('Своя сумма', 'ksenonspb'));
 $gift_btn          = (string) (ksenon_get_post_field('gift_btn') ?: __('Взять сертификат', 'ksenonspb'));
+
+$faq_title = (string) (ksenon_get_post_field('faq_title') ?: __('Частые вопросы о ценах', 'ksenonspb'));
+$faq_items = ksenon_normalize_faq_items((array) ksenon_get_post_field('faq'));
+if (! $faq_items) {
+	$faq_items = array(
+		array(
+			'question' => __('Почему цена «от»?', 'ksenonspb'),
+			'answer'   => __('На сайте указана стартовая стоимость типовой работы. Итог зависит от модели, состояния фары, объёма работ и комплектующих — точную сумму считаем после бесплатного осмотра.', 'ksenonspb'),
+		),
+		array(
+			'question' => __('Входит ли диагностика?', 'ksenonspb'),
+			'answer'   => __('Да. Осмотр и диагностика бесплатные: смотрим фару, фиксируем дефекты и озвучиваем смету до начала работ.', 'ksenonspb'),
+		),
+		array(
+			'question' => __('Можно ли узнать точную цену заранее?', 'ksenonspb'),
+			'answer'   => __('Можно ориентироваться по прайсу и прислать фото — дадим предварительную оценку. Финальная стоимость подтверждается после осмотра в сервисе.', 'ksenonspb'),
+		),
+	);
+}
 
 $icons = ksenon_assets_uri('img/icons.svg');
 $nbsp  = "\xc2\xa0";
@@ -324,3 +347,14 @@ $nbsp  = "\xc2\xa0";
 		</div>
 	</section>
 <?php endif; ?>
+
+<?php get_template_part('template-parts/blocks/cta-form', null, array('variant' => 'free_inspection')); ?>
+
+<?php
+ksenon_render_faq(
+	array(
+		'title' => $faq_title,
+		'items' => $faq_items,
+	)
+);
+?>
