@@ -33,6 +33,31 @@ if (! function_exists('ksenon_title_accent_html')) {
 	}
 }
 
+if (! function_exists('ksenon_fix_hanging_prepositions')) {
+	/**
+	 * Glue short Russian prepositions/conjunctions to the next word with NBSP.
+	 *
+	 * @param string $text Plain text.
+	 * @return string
+	 */
+	function ksenon_fix_hanging_prepositions($text)
+	{
+		$text = (string) $text;
+		if ('' === $text) {
+			return '';
+		}
+
+		$nbsp  = "\xc2\xa0";
+		$words = 'а|без|в|во|для|до|за|и|из|из-за|из-под|или|к|ко|между|на|над|не|ни|но|о|об|обо|от|перед|по|под|при|про|с|со|у|через|что';
+
+		return (string) preg_replace(
+			'/(?<=^|[\s' . $nbsp . '(«„"\'])(' . $words . ')\s+/ui',
+			'$1' . $nbsp,
+			$text
+		);
+	}
+}
+
 if (! function_exists('ksenon_plural_ru')) {
 	/**
 	 * Russian plural form by count.

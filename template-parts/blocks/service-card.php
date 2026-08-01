@@ -39,11 +39,13 @@ if (! empty($args['filter_slugs']) && is_array($args['filter_slugs'])) {
 	);
 }
 
-$permalink = '';
-$title     = '';
-$price_raw = 0;
-$excerpt   = '';
-$labels    = array();
+$permalink  = '';
+$title      = '';
+$price_raw  = 0;
+$excerpt    = '';
+$labels     = array();
+$image      = null;
+$show_media = false;
 
 if ($term instanceof WP_Term) {
 	$permalink = function_exists('ksenon_service_category_url')
@@ -74,6 +76,17 @@ if ($term instanceof WP_Term) {
 	if (! $excerpt && has_excerpt($post)) {
 		$excerpt = get_the_excerpt($post);
 	}
+
+	// Same source as service page hero: ACF card_image → featured image.
+	$image = ksenon_get_post_field('card_image', $post->ID);
+	if (! $image && has_post_thumbnail($post)) {
+		$image = get_post_thumbnail_id($post);
+	}
+	$show_media = true;
+}
+
+if ($show_media) {
+	$card_class .= ' service-card--has-media';
 }
 
 $price = '';
@@ -107,10 +120,36 @@ if ($filter_slugs) {
 }
 ?>
 <li <?php echo $li_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<?php if ($show_media) : ?>
+		<a
+			class="service-card__media<?php echo $image ? '' : ' service-card__media--empty'; ?>"
+			href="<?php echo esc_url($permalink); ?>"
+			<?php echo $image ? '' : ' aria-hidden="true" tabindex="-1"'; ?>
+		>
+			<?php
+			if ($image) {
+				echo ksenon_acf_image(
+					$image,
+					'medium_large',
+					array(
+						'class'   => 'service-card__img cover-image',
+						'alt'     => $title,
+						'loading' => 'lazy',
+					)
+				);
+			}
+			?>
+		</a>
+	<?php endif; ?>
 	<div class="service-card__inner">
 		<div class="service-card__head">
 			<a class="service-card__title" href="<?php echo esc_url($permalink); ?>">
-				<?php echo esc_html($title); ?>
+				<?php
+				$title_out = function_exists('ksenon_fix_hanging_prepositions')
+					? ksenon_fix_hanging_prepositions($title)
+					: $title;
+				echo esc_html($title_out);
+				?>
 			</a>
 			<?php if ($price) : ?>
 				<div class="service-card__price"><?php echo $price; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
