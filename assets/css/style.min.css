@@ -7505,6 +7505,12 @@ html.with-fancybox body.hide-scrollbar .header {
   border-spacing: 0;
   table-layout: fixed;
 }
+@media (max-width: 991.98px) {
+  .service-pricing__table {
+    margin-inline: -0.5rem;
+    width: calc(100% + 1rem);
+  }
+}
 .service-pricing__col--price {
   width: 10.625rem;
 }
@@ -7552,7 +7558,7 @@ html.with-fancybox body.hide-scrollbar .header {
   background: #ffffff;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 500;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   line-height: normal;
   color: #fd8011;
   letter-spacing: -0.01em;
@@ -7578,7 +7584,8 @@ html.with-fancybox body.hide-scrollbar .header {
   padding: 0.625rem 1.25rem;
   border-radius: 2.5rem;
   background: #ffffff;
-  font-size: 0.625rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #000000;
   text-align: center;
@@ -7612,11 +7619,12 @@ html.with-fancybox body.hide-scrollbar .header {
   border-bottom: 0;
 }
 .service-pricing__cell {
-  padding: 0.625rem 0.25rem;
+  padding: 0.75rem 0.5rem;
   vertical-align: middle;
-  font-size: 0.5625rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.35;
+  line-height: 1.4;
   color: #000000;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
 }
@@ -7629,11 +7637,15 @@ html.with-fancybox body.hide-scrollbar .header {
 .service-pricing__name {
   text-align: left;
   padding-left: 1rem;
+  font-weight: 500;
 }
 @media (min-width: 991.98px) {
   .service-pricing__name {
     padding-left: 2.5rem;
   }
+}
+.service-pricing__price {
+  font-weight: 600;
 }
 .service-pricing__price, .service-pricing__duration, .service-pricing__warranty {
   text-align: center;
@@ -7681,7 +7693,9 @@ html.with-fancybox body.hide-scrollbar .header {
   }
 }
 .service-pricing__warranty-text {
-  font-size: 0.5625rem;
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 1.45;
   color: #000000;
 }
@@ -7737,11 +7751,11 @@ html.with-fancybox body.hide-scrollbar .header {
   }
   .service-pricing__name {
     padding-left: 1rem;
-    padding-right: 0.5rem;
+    padding-right: 0.625rem;
   }
   .service-pricing__price, .service-pricing__duration {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 @media (min-width: 991.98px) {
