@@ -43,6 +43,7 @@ add_action(
 				'ajax_url'          => admin_url('admin-ajax.php'),
 				'nonce'             => wp_create_nonce('ksenon_nonce'),
 				'home_url'          => home_url('/'),
+				'thanks_url'        => home_url('/thanks/'),
 				'metrika_id'        => (string) ksenon_get_option('yandex_metrika_id', ''),
 				'analytics_enabled' => ksenon_get_option('analytics_enabled', false) ? '1' : '0',
 				'policy_url'        => function_exists('ksenon_get_policy_url') ? ksenon_get_policy_url() : home_url('/privacy-policy/'),
@@ -89,6 +90,10 @@ function ksenon_enqueue_conditional_styles($uri, $ver)
 
 	if (is_page_template('page-kontakty.php') || is_page('kontakty') || is_page('contacts')) {
 		wp_enqueue_style('ksenonspb-contacts', $uri . '/css/contacts.min.css', $deps, $ver);
+	}
+
+	if (is_page_template('page-thanks.php') || is_page('thanks')) {
+		wp_enqueue_style('ksenonspb-thanks', $uri . '/css/thanks.min.css', $deps, $ver);
 	}
 
 	if (is_page_template('page-stoimost.php') || is_page('stoimost')) {

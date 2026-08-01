@@ -318,6 +318,93 @@ add_filter(
 );
 
 /**
+ * Нормализует телефон до цифр (RU: 7/8 + 10 цифр).
+ */
+function ksenon_cf7_normalize_phone_digits($value)
+{
+	$digits = preg_replace('/\D+/', '', (string) $value);
+
+	return is_string($digits) ? $digits : '';
+}
+
+/**
+ * Проверяет, что телефон соответствует маске +7 / 8 и полному номеру.
+ */
+function ksenon_cf7_is_valid_ru_phone($value)
+{
+	$digits = ksenon_cf7_normalize_phone_digits($value);
+
+	if (11 !== strlen($digits)) {
+		return false;
+	}
+
+	return in_array($digits[0], array('7', '8'), true);
+}
+
+/**
+ * Серверная валидация телефона (полный RU-номер).
+ *
+ * @param WPCF7_Validation $result Результат валидации.
+ * @param WPCF7_FormTag    $tag    Тег поля.
+ */
+function ksenon_cf7_validate_tel($result, $tag)
+{
+	if ('your-phone' !== $tag->name) {
+		return $result;
+	}
+
+	$value = isset($_POST[ $tag->name ]) ? wp_unslash($_POST[ $tag->name ]) : '';
+	$value = is_array($value) ? implode('', $value) : (string) $value;
+	$value = trim($value);
+
+	if ('' === $value || ! ksenon_cf7_is_valid_ru_phone($value)) {
+		$result->invalidate(
+			$tag,
+			__('Укажите корректный номер телефона в формате +7 (___) ___-__-__', 'ksenonspb')
+		);
+	}
+
+	return $result;
+}
+
+add_filter('wpcf7_validate_tel', 'ksenon_cf7_validate_tel', 20, 2);
+add_filter('wpcf7_validate_tel*', 'ksenon_cf7_validate_tel', 20, 2);
+
+/**
+ * Серверная валидация согласия на обработку ПД.
+ *
+ * @param WPCF7_Validation $result Результат валидации.
+ * @param WPCF7_FormTag    $tag    Тег поля.
+ */
+function ksenon_cf7_validate_acceptance($result, $tag)
+{
+	if ('agree' !== $tag->name) {
+		return $result;
+	}
+
+	$value = isset($_POST[ $tag->name ]) ? wp_unslash($_POST[ $tag->name ]) : '';
+
+	if (is_array($value)) {
+		$value = reset($value);
+	}
+
+	$value = is_string($value) ? strtolower(trim($value)) : '';
+
+	$accepted = in_array($value, array('1', 'on', 'yes', 'true'), true);
+
+	if (! $accepted) {
+		$result->invalidate(
+			$tag,
+			__('Необходимо согласие на обработку персональных данных', 'ksenonspb')
+		);
+	}
+
+	return $result;
+}
+
+add_filter('wpcf7_validate_acceptance', 'ksenon_cf7_validate_acceptance', 20, 2);
+
+/**
  * Серверный fallback для скрытых мета-полей CF7.
  */
 add_filter(

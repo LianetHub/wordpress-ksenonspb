@@ -1426,6 +1426,9 @@ if (! function_exists('ksenon_get_main_class')) {
 		if (is_page_template('page-kontakty.php') || is_page('kontakty') || is_page('contacts')) {
 			return 'main--contacts';
 		}
+		if (is_page_template('page-thanks.php') || is_page('thanks')) {
+			return 'main--thanks';
+		}
 		if (is_page_template('page-stoimost.php')) {
 			return 'main--pricing';
 		}

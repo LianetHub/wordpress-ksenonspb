@@ -185,12 +185,82 @@ function initFancybox() {
 }
 
 function initCf7() {
-	const showStatusPopup = (isError) => {
+	const showErrorPopup = () => {
 		if (typeof Fancybox === "undefined") return;
 
-		const target = isError ? "#popup-error" : "#popup-success";
 		Fancybox.close();
-		Fancybox.show([{ src: target, type: "inline" }]);
+		Fancybox.show([{ src: "#popup-error", type: "inline" }]);
+	};
+
+	const getThanksUrl = () => {
+		const ajax = typeof theme_ajax !== "undefined" ? theme_ajax : {};
+		const url = typeof ajax.thanks_url === "string" ? ajax.thanks_url.trim() : "";
+		return url || "/thanks/";
+	};
+
+	const getPhoneDigits = (value) => String(value || "").replace(/\D/g, "");
+
+	const isValidRuPhone = (value) => {
+		const digits = getPhoneDigits(value);
+		return digits.length === 11 && (digits[0] === "7" || digits[0] === "8");
+	};
+
+	const getConsentCheckbox = (form) =>
+		form.querySelector(
+			'.wpcf7-acceptance input[type="checkbox"], input[name="agree"][type="checkbox"], input[name="agree[]"][type="checkbox"]',
+		);
+
+	const getSubmitButton = (form) =>
+		form.querySelector(
+			'input.wpcf7-submit[type="submit"], input[type="submit"].wpcf7-submit, input[type="submit"]',
+		);
+
+	const syncFormSubmitState = (form) => {
+		if (!(form instanceof Element)) return;
+
+		const submit = getSubmitButton(form);
+		if (!submit) return;
+
+		const consent = getConsentCheckbox(form);
+		const phone = form.querySelector('input[type="tel"]');
+		const consentOk = !consent || consent.checked;
+		const phoneOk = !phone || isValidRuPhone(phone.value);
+
+		submit.disabled = !(consentOk && phoneOk);
+	};
+
+	const bindFormGuards = (form) => {
+		if (!(form instanceof HTMLFormElement) || form.dataset.ksenonGuardsBound === "1") {
+			return;
+		}
+
+		form.dataset.ksenonGuardsBound = "1";
+
+		const consent = getConsentCheckbox(form);
+		const phone = form.querySelector('input[type="tel"]');
+
+		if (consent) {
+			consent.addEventListener("change", () => syncFormSubmitState(form));
+		}
+
+		if (phone) {
+			["input", "change", "blur", "keyup"].forEach((eventName) => {
+				phone.addEventListener(eventName, () => syncFormSubmitState(form));
+			});
+		}
+
+		form.addEventListener("submit", (event) => {
+			const consentEl = getConsentCheckbox(form);
+			const phoneEl = form.querySelector('input[type="tel"]');
+
+			if ((consentEl && !consentEl.checked) || (phoneEl && !isValidRuPhone(phoneEl.value))) {
+				event.preventDefault();
+				event.stopPropagation();
+				syncFormSubmitState(form);
+			}
+		});
+
+		syncFormSubmitState(form);
 	};
 
 	const applySubmitLabel = (root) => {
@@ -205,6 +275,8 @@ function initCf7() {
 		}
 	};
 
+	document.querySelectorAll(".wpcf7-form").forEach((form) => bindFormGuards(form));
+
 	document
 		.querySelectorAll("[data-submit-label]")
 		.forEach((root) => applySubmitLabel(root));
@@ -216,13 +288,19 @@ function initCf7() {
 				if (!(form instanceof Element)) return;
 				const root = form.closest("[data-submit-label]");
 				if (root) applySubmitLabel(root);
+				if (form instanceof HTMLFormElement) {
+					bindFormGuards(form);
+					syncFormSubmitState(form);
+				}
 			});
 		},
 	);
 
-	document.addEventListener("wpcf7mailsent", () => showStatusPopup(false));
-	document.addEventListener("wpcf7mailfailed", () => showStatusPopup(true));
-	document.addEventListener("wpcf7spam", () => showStatusPopup(true));
+	document.addEventListener("wpcf7mailsent", () => {
+		window.location.assign(getThanksUrl());
+	});
+	document.addEventListener("wpcf7mailfailed", () => showErrorPopup());
+	document.addEventListener("wpcf7spam", () => showErrorPopup());
 }
 
 function initFormUpload() {

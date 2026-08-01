@@ -20,7 +20,7 @@
   </div>
 
   <div class="checkbox cta-form__agree">
-    [acceptance agree use_label_element optional]
+    [acceptance agree use_label_element]
     <span class="checkbox__box" aria-hidden="true"></span>
     <span class="checkbox__text">Согласен с <a href="%opd_url%" class="color-accent">обработкой персональных данных</a> и условиями <a href="%policy_url%" class="color-accent">политики конфиденциальности</a></span>
     [/acceptance]
