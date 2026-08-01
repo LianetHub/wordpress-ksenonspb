@@ -912,11 +912,28 @@ function initCptArchiveFilters() {
 	document
 		.querySelectorAll(".cpt-archive__filters, .cpt-archive__subfilters")
 		.forEach((el) => {
-			new Swiper(el, {
+			const slides = Array.from(el.querySelectorAll(".swiper-slide"));
+			const activeIndex = Math.max(
+				0,
+				slides.findIndex(
+					(slide) =>
+						slide.classList.contains("_active") ||
+						slide.getAttribute("aria-current") === "page",
+				),
+			);
+
+			const swiper = new Swiper(el, {
 				slidesPerView: "auto",
 				spaceBetween: 20,
 				freeMode: true,
+				initialSlide: activeIndex,
 			});
+
+			if (activeIndex > 0) {
+				requestAnimationFrame(() => {
+					swiper.slideTo(activeIndex, 0);
+				});
+			}
 		});
 }
 
@@ -955,70 +972,87 @@ function initPortfolioBrandSearch() {
 	const form = document.querySelector("[data-portfolio-brand-search]");
 	if (!form) return;
 
-	const input = form.querySelector(".cpt-archive__search-field");
-	const clearBtn = form.querySelector(".cpt-archive__search-clear");
-	const popup = form.querySelector(".cpt-archive__brands");
+	const valueInput = form.querySelector("[data-brand-value]");
+	const desktopInput = form.querySelector("[data-brand-desktop-input]");
+	const sheetSearch = form.querySelector("[data-brand-sheet-search]");
+	const clearBtns = Array.from(form.querySelectorAll("[data-brand-clear]"));
+	const openBtns = Array.from(form.querySelectorAll("[data-brand-sheet-open]"));
+	const closeBtns = Array.from(form.querySelectorAll("[data-brand-sheet-close]"));
+	const sheet = form.querySelector("[data-brand-sheet]");
+	const brands = form.querySelector("[data-brand-grid]");
 	const listbox = form.querySelector(".cpt-archive__brands-grid");
 	const empty = form.querySelector(".cpt-archive__brands-empty");
-
-	if (!input) return;
+	const triggerLabel = form.querySelector("[data-brand-trigger-label]");
+	const placeholderText = desktopInput?.getAttribute("placeholder") || "Выберите марку..";
+	const mobileMq = window.matchMedia("(max-width: 767.98px)");
 
 	const options = listbox
 		? Array.from(listbox.querySelectorAll(".cpt-archive__brands-option"))
 		: [];
-	let activeIndex = -1;
-	let blurTimer = null;
-	const hadBrandOnLoad = input.value.trim() !== "";
+	let focusIndex = -1;
+	const initialBrand = (valueInput?.value || desktopInput?.value || "").trim();
+	const hadBrandOnLoad = initialBrand !== "";
+	let committedBrand = initialBrand;
+	let sheetOpen = false;
 
-	const syncClearButton = () => {
-		if (!clearBtn) return;
-		clearBtn.hidden = input.value.trim() === "";
+	const normalizeBrand = (value) => (value || "").trim().toLowerCase();
+
+	const isMobile = () => mobileMq.matches;
+
+	const syncClearButtons = () => {
+		const hasValue = committedBrand !== "" || (desktopInput?.value || "").trim() !== "";
+		clearBtns.forEach((btn) => {
+			btn.hidden = !hasValue;
+		});
 	};
 
-	const getVisibleOptions = () =>
-		options.filter((option) => !option.closest(".cpt-archive__brands-item")?.hidden);
-
-	const setExpanded = (isOpen) => {
-		if (!popup) return;
-		input.setAttribute("aria-expanded", isOpen ? "true" : "false");
-		popup.hidden = !isOpen;
-		if (!isOpen) {
-			clearActive();
+	const syncValueInput = (brand) => {
+		if (!valueInput) return;
+		if (brand) {
+			valueInput.disabled = false;
+			valueInput.value = brand;
+		} else {
+			valueInput.value = "";
+			valueInput.disabled = true;
 		}
 	};
 
-	const clearActive = () => {
-		activeIndex = -1;
-		input.removeAttribute("aria-activedescendant");
+	const syncTriggerLabel = () => {
+		if (!triggerLabel) return;
+		triggerLabel.textContent = committedBrand || placeholderText;
+		triggerLabel.classList.toggle("is-placeholder", committedBrand === "");
+	};
+
+	const clearFocus = () => {
+		focusIndex = -1;
+		desktopInput?.removeAttribute("aria-activedescendant");
 		options.forEach((option) => {
-			option.setAttribute("aria-selected", "false");
 			option.classList.remove("_active");
 		});
 	};
 
-	const setActive = (index) => {
-		const visible = getVisibleOptions();
-		clearActive();
-		if (!visible.length || index < 0 || index >= visible.length) {
-			return;
+	const showAllOptions = () => {
+		options.forEach((option) => {
+			const item = option.closest(".cpt-archive__brands-item");
+			if (item) {
+				item.hidden = false;
+			}
+		});
+		if (empty) {
+			empty.hidden = true;
 		}
-		activeIndex = index;
-		const option = visible[index];
-		option.setAttribute("aria-selected", "true");
-		option.classList.add("_active");
-		input.setAttribute("aria-activedescendant", option.id);
-		option.scrollIntoView({ block: "nearest" });
+		if (listbox) {
+			listbox.hidden = false;
+		}
 	};
 
-	const filterOptions = () => {
-		if (!listbox) return;
-
-		const query = input.value.trim().toLowerCase();
+	const filterSheetOptions = (query) => {
+		const normalized = normalizeBrand(query);
 		let visibleCount = 0;
 
 		options.forEach((option) => {
-			const brand = (option.dataset.brand || "").toLowerCase();
-			const match = !query || brand.includes(query);
+			const brand = normalizeBrand(option.dataset.brand);
+			const match = !normalized || brand.includes(normalized);
 			const item = option.closest(".cpt-archive__brands-item");
 			if (item) {
 				item.hidden = !match;
@@ -1031,133 +1065,288 @@ function initPortfolioBrandSearch() {
 		if (empty) {
 			empty.hidden = visibleCount > 0;
 		}
-		listbox.hidden = visibleCount === 0;
-		clearActive();
+		if (listbox) {
+			listbox.hidden = visibleCount === 0;
+		}
+		clearFocus();
+	};
+
+	const syncSelectionClasses = () => {
+		const selected = normalizeBrand(committedBrand);
+		if (brands) {
+			brands.classList.toggle("cpt-archive__brands--active", selected !== "");
+		}
+		options.forEach((option) => {
+			const isSelected = selected !== "" && normalizeBrand(option.dataset.brand) === selected;
+			option.classList.toggle("is-active", isSelected);
+			option.setAttribute("aria-selected", isSelected ? "true" : "false");
+		});
+	};
+
+	const setFocus = (index) => {
+		const visible = options.filter((option) => !option.closest(".cpt-archive__brands-item")?.hidden);
+		clearFocus();
+		if (!visible.length || index < 0 || index >= visible.length) {
+			return;
+		}
+		focusIndex = index;
+		const option = visible[index];
+		option.classList.add("_active");
+		desktopInput?.setAttribute("aria-activedescendant", option.id);
+		option.scrollIntoView({ block: "nearest" });
+	};
+
+	const findExactOption = (query) => {
+		const normalized = normalizeBrand(query);
+		if (!normalized) return null;
+		return options.find((option) => normalizeBrand(option.dataset.brand) === normalized) || null;
+	};
+
+	const submitForm = () => {
+		if (form.requestSubmit) {
+			form.requestSubmit();
+		} else {
+			form.submit();
+		}
+	};
+
+	const updateSheetKeyboardOffset = () => {
+		if (!sheet || !sheetOpen || !isMobile()) return;
+		const panel = sheet.querySelector(".cpt-archive__brand-sheet-panel");
+		if (!panel) return;
+		const viewport = window.visualViewport;
+		const keyboardOffset = viewport
+			? Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop)
+			: 0;
+		panel.style.setProperty("--brand-sheet-keyboard", `${keyboardOffset}px`);
+	};
+
+	let sheetCloseTimer = null;
+
+	const closeSheet = () => {
+		if (!sheet) return;
+		sheetOpen = false;
+		sheet.classList.remove("is-open");
+		document.body.classList.remove("lock");
+		openBtns.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
+		if (sheetSearch) {
+			sheetSearch.value = "";
+		}
+		showAllOptions();
+		syncSelectionClasses();
+		const panel = sheet.querySelector(".cpt-archive__brand-sheet-panel");
+		panel?.style.removeProperty("--brand-sheet-keyboard");
+
+		if (sheetCloseTimer) {
+			clearTimeout(sheetCloseTimer);
+		}
+		sheetCloseTimer = window.setTimeout(() => {
+			if (!sheetOpen && isMobile()) {
+				sheet.hidden = true;
+			}
+		}, 280);
+	};
+
+	const openSheet = () => {
+		if (!sheet || !isMobile()) return;
+		if (sheetCloseTimer) {
+			clearTimeout(sheetCloseTimer);
+			sheetCloseTimer = null;
+		}
+		sheetOpen = true;
+		sheet.hidden = false;
+		requestAnimationFrame(() => {
+			sheet.classList.add("is-open");
+		});
+		document.body.classList.add("lock");
+		openBtns.forEach((btn) => btn.setAttribute("aria-expanded", "true"));
+		if (sheetSearch) {
+			sheetSearch.value = "";
+		}
+		showAllOptions();
+		syncSelectionClasses();
+		updateSheetKeyboardOffset();
 	};
 
 	const selectOption = (option) => {
 		if (!option) return;
-		input.value = option.dataset.brand || "";
-		syncClearButton();
-		setExpanded(false);
-		form.requestSubmit ? form.requestSubmit() : form.submit();
-	};
 
-	const open = () => {
-		if (!popup) return;
-		filterOptions();
-		setExpanded(true);
-	};
+		const brand = (option.dataset.brand || "").trim();
+		const isSame = normalizeBrand(brand) === normalizeBrand(committedBrand);
 
-	const close = () => {
-		setExpanded(false);
-	};
-
-	const clearField = () => {
-		input.value = "";
-		syncClearButton();
-		filterOptions();
-
-		if (hadBrandOnLoad) {
-			input.removeAttribute("name");
-			setExpanded(false);
-			form.requestSubmit ? form.requestSubmit() : form.submit();
+		if (isSame) {
+			committedBrand = "";
+			if (desktopInput) {
+				desktopInput.value = "";
+			}
+			syncValueInput("");
+			syncTriggerLabel();
+			syncClearButtons();
+			syncSelectionClasses();
+			closeSheet();
+			submitForm();
 			return;
 		}
 
-		input.focus();
-		open();
+		committedBrand = brand;
+		if (desktopInput) {
+			desktopInput.value = brand;
+		}
+		syncValueInput(brand);
+		syncTriggerLabel();
+		syncClearButtons();
+		syncSelectionClasses();
+		closeSheet();
+		submitForm();
 	};
 
-	syncClearButton();
+	const clearField = () => {
+		const shouldReload = hadBrandOnLoad || committedBrand !== "";
+		committedBrand = "";
+		if (desktopInput) {
+			desktopInput.value = "";
+		}
+		if (sheetSearch) {
+			sheetSearch.value = "";
+		}
+		syncValueInput("");
+		syncTriggerLabel();
+		syncClearButtons();
+		showAllOptions();
+		syncSelectionClasses();
+		closeSheet();
 
-	if (clearBtn) {
-		clearBtn.addEventListener("mousedown", (event) => {
+		if (shouldReload) {
+			submitForm();
+			return;
+		}
+
+		if (!isMobile()) {
+			desktopInput?.focus();
+		}
+	};
+
+	syncValueInput(committedBrand);
+	syncTriggerLabel();
+	syncClearButtons();
+	syncSelectionClasses();
+	showAllOptions();
+	desktopInput?.setAttribute("aria-expanded", "true");
+
+	clearBtns.forEach((btn) => {
+		btn.addEventListener("mousedown", (event) => {
 			event.preventDefault();
 		});
-		clearBtn.addEventListener("click", (event) => {
+		btn.addEventListener("click", (event) => {
 			event.preventDefault();
 			clearField();
 		});
-	}
-
-	input.addEventListener("focus", () => {
-		if (blurTimer) {
-			clearTimeout(blurTimer);
-			blurTimer = null;
-		}
-		open();
 	});
 
-	input.addEventListener("click", () => {
-		open();
+	openBtns.forEach((btn) => {
+		btn.addEventListener("click", (event) => {
+			event.preventDefault();
+			openSheet();
+		});
 	});
 
-	input.addEventListener("input", () => {
-		syncClearButton();
-		if (popup && popup.hidden) {
-			setExpanded(true);
-		}
-		filterOptions();
+	closeBtns.forEach((btn) => {
+		btn.addEventListener("click", (event) => {
+			event.preventDefault();
+			closeSheet();
+		});
 	});
 
-	input.addEventListener("blur", () => {
-		blurTimer = setTimeout(() => {
-			if (!form.contains(document.activeElement)) {
-				close();
-			}
-		}, 150);
+	desktopInput?.addEventListener("input", () => {
+		const exact = findExactOption(desktopInput.value);
+		committedBrand = exact ? (exact.dataset.brand || "").trim() : "";
+		syncValueInput(desktopInput.value.trim());
+		syncTriggerLabel();
+		syncClearButtons();
+		showAllOptions();
+		syncSelectionClasses();
+		clearFocus();
 	});
 
-	input.addEventListener("keydown", (event) => {
-		const visible = getVisibleOptions();
+	desktopInput?.addEventListener("keydown", (event) => {
+		const visible = options.filter((option) => !option.closest(".cpt-archive__brands-item")?.hidden);
 
 		switch (event.key) {
 			case "ArrowDown":
 				event.preventDefault();
-				if (!popup || popup.hidden) {
-					open();
-				}
-				setActive(activeIndex < visible.length - 1 ? activeIndex + 1 : 0);
+				setFocus(focusIndex < visible.length - 1 ? focusIndex + 1 : 0);
 				break;
 			case "ArrowUp":
 				event.preventDefault();
-				if (!popup || popup.hidden) {
-					open();
-				}
-				setActive(activeIndex > 0 ? activeIndex - 1 : visible.length - 1);
+				setFocus(focusIndex > 0 ? focusIndex - 1 : visible.length - 1);
 				break;
 			case "Enter":
-				if (popup && !popup.hidden && activeIndex >= 0 && visible[activeIndex]) {
+				if (focusIndex >= 0 && visible[focusIndex]) {
 					event.preventDefault();
-					selectOption(visible[activeIndex]);
+					selectOption(visible[focusIndex]);
+				} else {
+					syncValueInput(desktopInput.value.trim());
 				}
 				break;
 			case "Escape":
-				if (popup && !popup.hidden) {
-					event.preventDefault();
-					close();
-				}
+				event.preventDefault();
+				clearFocus();
 				break;
 			default:
 				break;
 		}
 	});
 
+	sheetSearch?.addEventListener("input", () => {
+		filterSheetOptions(sheetSearch.value);
+	});
+
+	sheetSearch?.addEventListener("focus", () => {
+		updateSheetKeyboardOffset();
+	});
+
 	options.forEach((option) => {
-		option.addEventListener("mousedown", (event) => {
-			event.preventDefault();
-		});
 		option.addEventListener("click", () => {
 			selectOption(option);
 		});
 	});
 
-	document.addEventListener("click", (event) => {
-		if (!form.contains(event.target)) {
-			close();
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape" && sheetOpen) {
+			event.preventDefault();
+			closeSheet();
 		}
 	});
+
+	window.visualViewport?.addEventListener("resize", updateSheetKeyboardOffset);
+	window.visualViewport?.addEventListener("scroll", updateSheetKeyboardOffset);
+
+	form.addEventListener("submit", () => {
+		const typed = (desktopInput?.value || committedBrand || "").trim();
+		syncValueInput(typed);
+	});
+
+	mobileMq.addEventListener("change", () => {
+		if (!isMobile()) {
+			sheetOpen = false;
+			document.body.classList.remove("lock");
+			if (sheet) {
+				sheet.hidden = false;
+				sheet.classList.remove("is-open");
+			}
+			showAllOptions();
+			syncSelectionClasses();
+		} else if (sheet) {
+			sheetOpen = false;
+			sheet.hidden = true;
+			sheet.classList.remove("is-open");
+			document.body.classList.remove("lock");
+		}
+	});
+
+	if (!isMobile() && sheet) {
+		sheet.hidden = false;
+	}
 }
 
 function initPortfolioCardImages() {
