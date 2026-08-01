@@ -310,11 +310,25 @@
             "default_value": "Не нашли свою услугу?"
         },
         {
+            "key": "field_ksenon_ts_cf7_btn_service_not_found",
+            "label": "Кнопка: Не нашли свою услугу?",
+            "name": "cf7_btn_service_not_found",
+            "type": "text",
+            "default_value": "Подобрать услугу"
+        },
+        {
             "key": "field_ksenon_ts_cf7_title_same_result",
             "label": "Заголовок: Хотите такой же результат?",
             "name": "cf7_title_same_result",
             "type": "text",
             "default_value": "Хотите такой же результат?"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_btn_same_result",
+            "label": "Кнопка: Хотите такой же результат?",
+            "name": "cf7_btn_same_result",
+            "type": "text",
+            "default_value": "Отправить заявку"
         },
         {
             "key": "field_ksenon_ts_cf7_title_free_inspection",
@@ -324,11 +338,25 @@
             "default_value": "Убедились? Запишитесь на бесплатный осмотр"
         },
         {
+            "key": "field_ksenon_ts_cf7_btn_free_inspection",
+            "label": "Кнопка: Бесплатный осмотр",
+            "name": "cf7_btn_free_inspection",
+            "type": "text",
+            "default_value": "Записаться на осмотр"
+        },
+        {
             "key": "field_ksenon_ts_cf7_title_appointment",
             "label": "Заголовок: Запись на установку",
             "name": "cf7_title_appointment",
             "type": "text",
             "default_value": "Запишитесь на установку"
+        },
+        {
+            "key": "field_ksenon_ts_cf7_btn_appointment",
+            "label": "Кнопка: Запись на установку",
+            "name": "cf7_btn_appointment",
+            "type": "text",
+            "default_value": "Записаться"
         },
         {
             "key": "field_ksenon_ts_cta_contacts_accordion",

@@ -24,8 +24,8 @@ $certificate_lead    = ksenon_get_option('popup_certificate_lead');
 				<p class="popup-modal__lead"><?php esc_html_e('Оставьте контакты — перезвоним и ответим на вопросы', 'ksenonspb'); ?></p>
 			</header>
 			<div class="popup-modal__content">
-				<div class="popup-modal__form">
-					<?php ksenon_cf7_form('cf7_zakaz', __('Заявка (попап)', 'ksenonspb')); ?>
+				<div class="popup-modal__form" data-submit-label="<?php echo esc_attr__('Отправить заявку', 'ksenonspb'); ?>">
+					<?php ksenon_cf7_form('cf7_zakaz', __('Заявка (попап)', 'ksenonspb'), '', __('Отправить заявку', 'ksenonspb')); ?>
 				</div>
 			</div>
 		</div>

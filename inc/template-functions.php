@@ -592,24 +592,28 @@ if (! function_exists('ksenon_cta_form_config')) {
 	{
 		$variants = array(
 			'service_not_found' => array(
-				'title'       => (string) ksenon_get_option('cf7_title_service_not_found', __('Не нашли свою услугу?', 'ksenonspb')),
-				'cf7_option'  => 'cf7_zakaz',
-				'form_source' => __('Не нашли услугу', 'ksenonspb'),
+				'title'        => (string) ksenon_get_option('cf7_title_service_not_found', __('Не нашли свою услугу?', 'ksenonspb')),
+				'submit_label' => (string) ksenon_get_option('cf7_btn_service_not_found', __('Подобрать услугу', 'ksenonspb')),
+				'cf7_option'   => 'cf7_zakaz',
+				'form_source'  => __('Не нашли услугу', 'ksenonspb'),
 			),
 			'same_result'       => array(
-				'title'       => (string) ksenon_get_option('cf7_title_same_result', __('Хотите такой же результат?', 'ksenonspb')),
-				'cf7_option'  => 'cf7_zakaz',
-				'form_source' => __('Хотите такой же результат', 'ksenonspb'),
+				'title'        => (string) ksenon_get_option('cf7_title_same_result', __('Хотите такой же результат?', 'ksenonspb')),
+				'submit_label' => (string) ksenon_get_option('cf7_btn_same_result', __('Отправить заявку', 'ksenonspb')),
+				'cf7_option'   => 'cf7_zakaz',
+				'form_source'  => __('Хотите такой же результат', 'ksenonspb'),
 			),
 			'free_inspection'   => array(
-				'title'       => (string) ksenon_get_option('cf7_title_free_inspection', __('Убедились? Запишитесь на бесплатный осмотр', 'ksenonspb')),
-				'cf7_option'  => 'cf7_zakaz',
-				'form_source' => __('Бесплатный осмотр', 'ksenonspb'),
+				'title'        => (string) ksenon_get_option('cf7_title_free_inspection', __('Убедились? Запишитесь на бесплатный осмотр', 'ksenonspb')),
+				'submit_label' => (string) ksenon_get_option('cf7_btn_free_inspection', __('Записаться на осмотр', 'ksenonspb')),
+				'cf7_option'   => 'cf7_zakaz',
+				'form_source'  => __('Бесплатный осмотр', 'ksenonspb'),
 			),
 			'appointment'       => array(
-				'title'       => (string) ksenon_get_option('cf7_title_appointment', __('Запишитесь на установку', 'ksenonspb')),
-				'cf7_option'  => 'cf7_zakaz',
-				'form_source' => __('Запись на установку', 'ksenonspb'),
+				'title'        => (string) ksenon_get_option('cf7_title_appointment', __('Запишитесь на установку', 'ksenonspb')),
+				'submit_label' => (string) ksenon_get_option('cf7_btn_appointment', __('Записаться', 'ksenonspb')),
+				'cf7_option'   => 'cf7_zakaz',
+				'form_source'  => __('Запись на установку', 'ksenonspb'),
 			),
 		);
 
@@ -1943,11 +1947,16 @@ if (! function_exists('ksenon_get_footer_static_menus')) {
 }
 
 if (! function_exists('ksenon_cf7_form')) {
-	function ksenon_cf7_form($option_key, $source = '', $fallback_shortcode = '')
+	function ksenon_cf7_form($option_key, $source = '', $fallback_shortcode = '', $submit_label = '')
 	{
 		$shortcode = ksenon_get_option($option_key, $fallback_shortcode);
 		if ($shortcode && function_exists('wpcf7_contact_form')) {
-			ksenon_cf7_set_render_context($source);
+			ksenon_cf7_set_render_context(
+				$source,
+				array(
+					'submit_label' => $submit_label,
+				)
+			);
 			echo do_shortcode($shortcode);
 			ksenon_cf7_clear_render_context();
 		}

@@ -193,6 +193,33 @@ function initCf7() {
 		Fancybox.show([{ src: target, type: "inline" }]);
 	};
 
+	const applySubmitLabel = (root) => {
+		const label = (root.getAttribute("data-submit-label") || "").trim();
+		if (!label) return;
+
+		const submit = root.querySelector(
+			'input.wpcf7-submit[type="submit"], input[type="submit"].wpcf7-submit, input[type="submit"]',
+		);
+		if (submit && submit.value !== label) {
+			submit.value = label;
+		}
+	};
+
+	document
+		.querySelectorAll("[data-submit-label]")
+		.forEach((root) => applySubmitLabel(root));
+
+	["wpcf7invalid", "wpcf7spam", "wpcf7mailfailed", "wpcf7mailsent", "wpcf7reset"].forEach(
+		(eventName) => {
+			document.addEventListener(eventName, (event) => {
+				const form = event.target;
+				if (!(form instanceof Element)) return;
+				const root = form.closest("[data-submit-label]");
+				if (root) applySubmitLabel(root);
+			});
+		},
+	);
+
 	document.addEventListener("wpcf7mailsent", () => showStatusPopup(false));
 	document.addEventListener("wpcf7mailfailed", () => showStatusPopup(true));
 	document.addEventListener("wpcf7spam", () => showStatusPopup(true));

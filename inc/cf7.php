@@ -10,14 +10,49 @@
 add_filter('wpcf7_autop_or_not', '__return_false');
 
 /**
- * Контекст рендера CF7: источник формы и мета-поля.
+ * Контекст рендера CF7: источник формы, мета-поля и опции вывода.
+ *
+ * @param string $source Источник заявки (форма-source).
+ * @param array  $args {
+ *     @type string $submit_label Текст кнопки отправки (подмена value у submit).
+ * }
  */
-function ksenon_cf7_set_render_context($source = '')
+function ksenon_cf7_set_render_context($source = '', $args = array())
 {
 	$GLOBALS['ksenon_cf7_render_context'] = array(
-		'form-source' => '' !== $source ? $source : __('Форма с сайта', 'ksenonspb'),
-		'form-page'   => ksenon_cf7_build_form_page_meta(),
-		'form-time'   => (string) time(),
+		'form-source'   => '' !== $source ? $source : __('Форма с сайта', 'ksenonspb'),
+		'form-page'     => ksenon_cf7_build_form_page_meta(),
+		'form-time'     => (string) time(),
+		'_submit_label' => sanitize_text_field((string) ($args['submit_label'] ?? '')),
+	);
+}
+
+/**
+ * Подменяет value у кнопки submit CF7.
+ */
+function ksenon_cf7_replace_submit_label($content, $label)
+{
+	$label = trim((string) $label);
+
+	if ('' === $label) {
+		return $content;
+	}
+
+	$escaped = esc_attr($label);
+
+	return (string) preg_replace_callback(
+		'/<input\b(?=[^>]*\b(?:type=["\']submit["\']|class=["\'][^"\']*\bwpcf7-submit\b))[^>]*>/i',
+		static function ($matches) use ($escaped) {
+			$tag = $matches[0];
+
+			if (preg_match('/\bvalue=/i', $tag)) {
+				return (string) preg_replace('/\bvalue=(["\'])[^"\']*\1/i', 'value="' . $escaped . '"', $tag, 1);
+			}
+
+			return (string) preg_replace('/\s*\/?>$/', ' value="' . $escaped . '">', $tag);
+		},
+		$content,
+		1
 	);
 }
 
@@ -126,7 +161,7 @@ add_filter(
 );
 
 /**
- * Заполняет скрытые мета-поля CF7 при рендере формы.
+ * Заполняет скрытые мета-поля CF7 и подменяет текст кнопки при рендере формы.
  */
 add_filter(
 	'wpcf7_form_elements',
@@ -138,8 +173,14 @@ add_filter(
 		}
 
 		foreach ($context as $name => $value) {
+			if (str_starts_with((string) $name, '_')) {
+				continue;
+			}
+
 			$content = ksenon_cf7_set_hidden_field($content, $name, $value);
 		}
+
+		$content = ksenon_cf7_replace_submit_label($content, $context['_submit_label'] ?? '');
 
 		return $content;
 	},
@@ -379,7 +420,7 @@ add_filter(
 /**
  * Map popup forms to CF7 shortcodes (set in ACF Options).
  */
-function ksenon_popup_cf7($key, $source = '', $default_shortcode = '')
+function ksenon_popup_cf7($key, $source = '', $default_shortcode = '', $submit_label = '')
 {
-	ksenon_cf7_form($key, $source, $default_shortcode);
+	ksenon_cf7_form($key, $source, $default_shortcode, $submit_label);
 }
