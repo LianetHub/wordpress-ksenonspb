@@ -508,30 +508,24 @@
 
 	&__filters,
 	&__subfilters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: rem(8) rem(6);
 		width: 100%;
-		padding: rem(10) rem(14);
-		overflow: hidden;
+		padding: 0;
+		border-radius: rem(20);
 
 		@media (min-width: $md4) {
-			border-radius: rem(62);
+			gap: rem(16) rem(14);
+			padding: rem(10) rem(14);
+			border-radius: rem(26);
 			background: $color-white;
 		}
 
 		@media (min-width: $md3) {
+			gap: rem(20);
 			padding: rem(14) rem(30);
-		}
-
-		.swiper-wrapper {
-			display: flex;
-			flex-wrap: nowrap;
-			width: auto;
-			box-sizing: content-box;
-		}
-
-		.swiper-slide {
-			width: auto;
-			flex-shrink: 0;
-			height: auto;
+			border-radius: rem(40);
 		}
 	}
 
@@ -540,25 +534,24 @@
 		align-items: center;
 		justify-content: center;
 		width: auto;
-		padding: rem(12) rem(18);
+		padding: rem(8) rem(12);
 		border-radius: rem(40);
 		background: $color-surface;
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(14);
+		font-size: rem(12);
 		font-weight: 500;
 		line-height: normal;
 		white-space: nowrap;
 		transition: background-color 0.2s ease, color 0.2s ease;
 
-		@media (min-width: $md3) {
-			padding: rem(15) rem(25);
+		@media (min-width: $md4) {
+			padding: rem(12) rem(18);
+			font-size: rem(14);
 		}
 
-		&.swiper-slide {
-			width: auto;
-			height: auto;
-			flex-shrink: 0;
+		@media (min-width: $md3) {
+			padding: rem(15) rem(25);
 		}
 
 		&._active {

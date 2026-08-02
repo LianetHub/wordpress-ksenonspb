@@ -6,6 +6,16 @@
     <path
       d="M52 70C61.9411 70 70 61.9411 70 52C70 42.0589 61.9411 34 52 34C42.0589 34 34 42.0589 34 52C34 61.9411 42.0589 70 52 70Z"
       fill="white" />
+    <text
+      fill="#FD8011"
+      font-family="Montserrat, Inter, Arial, sans-serif"
+      font-weight="700"
+      font-size="13"
+      letter-spacing="-0.02em"
+      text-anchor="middle">
+      <tspan x="52" y="48">КБ</tspan>
+      <tspan x="52" y="62">авто</tspan>
+    </text>
   </g>
   <defs>
     <clipPath id="clip0_2239_92">

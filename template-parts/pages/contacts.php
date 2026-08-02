@@ -124,28 +124,7 @@ $logo_url  = ksenon_acf_image_url(ksenon_get_logo('dark'), 'full');
 					role="region"
 					aria-label="<?php esc_attr_e('Карта проезда', 'ksenonspb'); ?>"></div>
 
-				<?php if ($map_route_url || $map_taxi_url) : ?>
-					<div class="contacts__map-actions">
-						<?php if ($map_route_url) : ?>
-							<a
-								class="contacts__map-link"
-								href="<?php echo esc_url($map_route_url); ?>"
-								target="_blank"
-								rel="noopener noreferrer">
-								<?php esc_html_e('Как добраться', 'ksenonspb'); ?>
-							</a>
-						<?php endif; ?>
-						<?php if ($map_taxi_url) : ?>
-							<a
-								class="contacts__map-link contacts__map-link--secondary"
-								href="<?php echo esc_url($map_taxi_url); ?>"
-								target="_blank"
-								rel="noopener noreferrer">
-								<?php esc_html_e('Доехать на такси', 'ksenonspb'); ?>
-							</a>
-						<?php endif; ?>
-					</div>
-				<?php endif; ?>
+				
 			</div>
 		<?php endif; ?>
 	</div>

@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	initCaseVideoPosterFallback();
 	initAccordion();
 	initHome();
-	initCptArchiveFilters();
 	initBrandServicesFilter();
 	initPortfolioBrandSearch();
 	initPricingPage();
@@ -1082,37 +1081,6 @@ function initPhoneMask() {
 	});
 }
 
-function initCptArchiveFilters() {
-	if (typeof Swiper === "undefined") return;
-
-	document
-		.querySelectorAll(".cpt-archive__filters, .cpt-archive__subfilters")
-		.forEach((el) => {
-			const slides = Array.from(el.querySelectorAll(".swiper-slide"));
-			const activeIndex = Math.max(
-				0,
-				slides.findIndex(
-					(slide) =>
-						slide.classList.contains("_active") ||
-						slide.getAttribute("aria-current") === "page",
-				),
-			);
-
-			const swiper = new Swiper(el, {
-				slidesPerView: "auto",
-				spaceBetween: 20,
-				freeMode: true,
-				initialSlide: activeIndex,
-			});
-
-			if (activeIndex > 0) {
-				requestAnimationFrame(() => {
-					swiper.slideTo(activeIndex, 0);
-				});
-			}
-		});
-}
-
 function initBrandServicesFilter() {
 	document.querySelectorAll("[data-brand-services]").forEach((root) => {
 		const buttons = Array.from(root.querySelectorAll("[data-brand-filter]"));
@@ -1560,18 +1528,14 @@ function initYandexMap() {
 			size = [40, 45];
 		}
 
+		// Сдвиг вниз: острие у «начала» здания, а не в середине
+		const tipShiftY = 12;
+
 		return {
 			size,
-			offset: [-(size[0] / 2), -size[1]],
+			offset: [-(size[0] / 2), -size[1] + tipShiftY],
 		};
 	};
-
-	const escapeHtml = (value) =>
-		String(value || "")
-			.replace(/&/g, "&amp;")
-			.replace(/</g, "&lt;")
-			.replace(/>/g, "&gt;")
-			.replace(/"/g, "&quot;");
 
 	const init = () => {
 		const rawCoords = mapContainer.dataset.coords;
@@ -1587,10 +1551,6 @@ function initYandexMap() {
 		const iconPath = mapContainer.dataset.icon;
 		const iconParams = getIconParams();
 		const title = (mapContainer.dataset.title || "КБ авто").trim() || "КБ авто";
-		const address = (mapContainer.dataset.address || "").trim();
-		const [lat, lon] = coords;
-		const routeUrl = `https://yandex.ru/maps/?rtext=~${lat},${lon}&rtt=auto`;
-		const taxiUrl = `https://taxi.yandex.ru/?gto=${lon},${lat}`;
 
 		const map = new ymaps.Map("map", {
 			center: coords,
@@ -1600,50 +1560,33 @@ function initYandexMap() {
 
 		map.behaviors.disable("scrollZoom");
 
-		const balloonBody = [
-			address
-				? `<p class="contacts-map-balloon__address">${escapeHtml(address).replace(/\n/g, "<br>")}</p>`
-				: "",
-			`<div class="contacts-map-balloon__actions">
-				<a class="contacts-map-balloon__link" href="${routeUrl}" target="_blank" rel="noopener noreferrer">Как добраться</a>
-				<a class="contacts-map-balloon__link contacts-map-balloon__link--secondary" href="${taxiUrl}" target="_blank" rel="noopener noreferrer">Доехать на такси</a>
-			</div>`,
-		].join("");
-
-		const placemarkProperties = {
-			hintContent: title,
-			balloonContentHeader: escapeHtml(title),
-			balloonContentBody: balloonBody,
-			iconContent: title,
-		};
-
 		const placemarkOptions = {
-			hideIconOnBalloonOpen: false,
+			hasBalloon: false,
 		};
 
 		if (iconPath) {
-			const captionLayout = ymaps.templateLayoutFactory.createClass(
-				'<div class="contacts-map__caption">$[properties.iconContent]</div>',
-			);
-
 			Object.assign(placemarkOptions, {
-				iconLayout: "default#imageWithContent",
+				iconLayout: "default#image",
 				iconImageHref: iconPath,
 				iconImageSize: iconParams.size,
 				iconImageOffset: iconParams.offset,
-				iconContentOffset: [iconParams.size[0] + 4, Math.round(iconParams.size[1] / 2) - 12],
-				iconContentLayout: captionLayout,
 			});
 		} else {
 			Object.assign(placemarkOptions, {
 				preset: "islands#orangeDotIconWithCaption",
-				iconCaption: title,
+				iconCaption: "КБ\nавто",
 			});
 		}
 
-		const placemark = new ymaps.Placemark(coords, placemarkProperties, placemarkOptions);
-		map.geoObjects.add(placemark);
-		placemark.balloon.open();
+		map.geoObjects.add(
+			new ymaps.Placemark(
+				coords,
+				{
+					hintContent: title,
+				},
+				placemarkOptions,
+			),
+		);
 	};
 
 	const loadScript = () => {

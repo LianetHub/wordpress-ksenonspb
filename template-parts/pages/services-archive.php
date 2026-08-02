@@ -45,48 +45,44 @@ if ($archive_term instanceof WP_Term) {
 	<div class="cpt-archive__container container container--large">
 		<div class="cpt-archive__panel">
 			<?php if ($categories) : ?>
-				<nav class="cpt-archive__filters swiper" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
-					<div class="swiper-wrapper">
+				<nav class="cpt-archive__filters" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
+					<a
+						class="cpt-archive__tab<?php echo $active_slug ? '' : ' _active'; ?>"
+						href="<?php echo esc_url(ksenon_services_archive_url()); ?>"
+						<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
+						<?php esc_html_e('Все', 'ksenonspb'); ?>
+					</a>
+					<?php foreach ($categories as $category) : ?>
+						<?php
+						$is_active = $active_top_slug === $category->slug;
+						?>
 						<a
-							class="cpt-archive__tab swiper-slide<?php echo $active_slug ? '' : ' _active'; ?>"
-							href="<?php echo esc_url(ksenon_services_archive_url()); ?>"
-							<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
-							<?php esc_html_e('Все', 'ksenonspb'); ?>
+							class="cpt-archive__tab<?php echo $is_active ? ' _active' : ''; ?>"
+							href="<?php echo esc_url(ksenon_services_archive_url($category->slug)); ?>"
+							<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
+							<?php echo esc_html($category->name); ?>
 						</a>
-						<?php foreach ($categories as $category) : ?>
-							<?php
-							$is_active = $active_top_slug === $category->slug;
-							?>
-							<a
-								class="cpt-archive__tab swiper-slide<?php echo $is_active ? ' _active' : ''; ?>"
-								href="<?php echo esc_url(ksenon_services_archive_url($category->slug)); ?>"
-								<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
-								<?php echo esc_html($category->name); ?>
-							</a>
-						<?php endforeach; ?>
-					</div>
+					<?php endforeach; ?>
 				</nav>
 			<?php endif; ?>
 
 			<?php if ($subcategories) : ?>
-				<nav class="cpt-archive__subfilters swiper" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
-					<div class="swiper-wrapper">
+				<nav class="cpt-archive__subfilters" aria-label="<?php esc_attr_e('Подкатегории услуг', 'ksenonspb'); ?>">
+					<a
+						class="cpt-archive__tab<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
+						href="<?php echo esc_url(ksenon_services_archive_url($active_top_slug)); ?>"
+						<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
+						<?php esc_html_e('Все', 'ksenonspb'); ?>
+					</a>
+					<?php foreach ($subcategories as $subcategory) : ?>
+						<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
 						<a
-							class="cpt-archive__tab swiper-slide<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
-							href="<?php echo esc_url(ksenon_services_archive_url($active_top_slug)); ?>"
-							<?php echo ($archive_term && $archive_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
-							<?php esc_html_e('Все', 'ksenonspb'); ?>
+							class="cpt-archive__tab<?php echo $is_sub_active ? ' _active' : ''; ?>"
+							href="<?php echo esc_url(ksenon_services_archive_url($subcategory->slug)); ?>"
+							<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
+							<?php echo esc_html($subcategory->name); ?>
 						</a>
-						<?php foreach ($subcategories as $subcategory) : ?>
-							<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
-							<a
-								class="cpt-archive__tab swiper-slide<?php echo $is_sub_active ? ' _active' : ''; ?>"
-								href="<?php echo esc_url(ksenon_services_archive_url($subcategory->slug)); ?>"
-								<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
-								<?php echo esc_html($subcategory->name); ?>
-							</a>
-						<?php endforeach; ?>
-					</div>
+					<?php endforeach; ?>
 				</nav>
 			<?php endif; ?>
 

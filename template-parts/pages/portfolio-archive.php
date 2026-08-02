@@ -290,46 +290,42 @@ $query = ksenon_query_portfolio($query_args);
 			</form>
 
 			<?php if ($categories) : ?>
-				<nav class="cpt-archive__filters swiper" aria-label="<?php esc_attr_e('Фильтр портфолио по категориям', 'ksenonspb'); ?>">
-					<div class="swiper-wrapper">
+				<nav class="cpt-archive__filters" aria-label="<?php esc_attr_e('Фильтр портфолио по категориям', 'ksenonspb'); ?>">
+					<a
+						class="cpt-archive__tab<?php echo $active_slug ? '' : ' _active'; ?>"
+						href="<?php echo esc_url(ksenon_portfolio_archive_url('', $brand_query)); ?>"
+						<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
+						<?php esc_html_e('Все', 'ksenonspb'); ?>
+					</a>
+					<?php foreach ($categories as $category) : ?>
+						<?php $is_active = $active_top_slug === $category->slug; ?>
 						<a
-							class="cpt-archive__tab swiper-slide<?php echo $active_slug ? '' : ' _active'; ?>"
-							href="<?php echo esc_url(ksenon_portfolio_archive_url('', $brand_query)); ?>"
-							<?php echo $active_slug ? '' : ' aria-current="page"'; ?>>
-							<?php esc_html_e('Все', 'ksenonspb'); ?>
+							class="cpt-archive__tab<?php echo $is_active ? ' _active' : ''; ?>"
+							href="<?php echo esc_url(ksenon_portfolio_archive_url($category->slug, $brand_query)); ?>"
+							<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
+							<?php echo esc_html($category->name); ?>
 						</a>
-						<?php foreach ($categories as $category) : ?>
-							<?php $is_active = $active_top_slug === $category->slug; ?>
-							<a
-								class="cpt-archive__tab swiper-slide<?php echo $is_active ? ' _active' : ''; ?>"
-								href="<?php echo esc_url(ksenon_portfolio_archive_url($category->slug, $brand_query)); ?>"
-								<?php echo $is_active ? ' aria-current="page"' : ''; ?>>
-								<?php echo esc_html($category->name); ?>
-							</a>
-						<?php endforeach; ?>
-					</div>
+					<?php endforeach; ?>
 				</nav>
 			<?php endif; ?>
 
 			<?php if ($subcategories) : ?>
-				<nav class="cpt-archive__subfilters swiper" aria-label="<?php esc_attr_e('Подкатегории портфолио', 'ksenonspb'); ?>">
-					<div class="swiper-wrapper">
+				<nav class="cpt-archive__subfilters" aria-label="<?php esc_attr_e('Подкатегории портфолио', 'ksenonspb'); ?>">
+					<a
+						class="cpt-archive__tab<?php echo ($active_term && $active_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
+						href="<?php echo esc_url(ksenon_portfolio_archive_url($active_top_slug, $brand_query)); ?>"
+						<?php echo ($active_term && $active_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
+						<?php esc_html_e('Все', 'ksenonspb'); ?>
+					</a>
+					<?php foreach ($subcategories as $subcategory) : ?>
+						<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
 						<a
-							class="cpt-archive__tab swiper-slide<?php echo ($active_term && $active_term->slug === $active_top_slug) ? ' _active' : ''; ?>"
-							href="<?php echo esc_url(ksenon_portfolio_archive_url($active_top_slug, $brand_query)); ?>"
-							<?php echo ($active_term && $active_term->slug === $active_top_slug) ? ' aria-current="page"' : ''; ?>>
-							<?php esc_html_e('Все', 'ksenonspb'); ?>
+							class="cpt-archive__tab<?php echo $is_sub_active ? ' _active' : ''; ?>"
+							href="<?php echo esc_url(ksenon_portfolio_archive_url($subcategory->slug, $brand_query)); ?>"
+							<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
+							<?php echo esc_html($subcategory->name); ?>
 						</a>
-						<?php foreach ($subcategories as $subcategory) : ?>
-							<?php $is_sub_active = $active_slug === $subcategory->slug; ?>
-							<a
-								class="cpt-archive__tab swiper-slide<?php echo $is_sub_active ? ' _active' : ''; ?>"
-								href="<?php echo esc_url(ksenon_portfolio_archive_url($subcategory->slug, $brand_query)); ?>"
-								<?php echo $is_sub_active ? ' aria-current="page"' : ''; ?>>
-								<?php echo esc_html($subcategory->name); ?>
-							</a>
-						<?php endforeach; ?>
-					</div>
+					<?php endforeach; ?>
 				</nav>
 			<?php endif; ?>
 

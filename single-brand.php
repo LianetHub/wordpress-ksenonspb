@@ -135,21 +135,19 @@ while (have_posts()) :
 					</h2>
 					<div class="brand-services__panel" data-brand-services>
 						<?php if ($filter_terms) : ?>
-							<nav class="cpt-archive__filters swiper brand-services__filters" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
-								<div class="swiper-wrapper">
-									<button type="button" class="cpt-archive__tab swiper-slide _active" data-brand-filter="all" aria-pressed="true">
-										<?php esc_html_e('Все', 'ksenonspb'); ?>
+							<nav class="cpt-archive__filters brand-services__filters" aria-label="<?php esc_attr_e('Фильтр услуг по категориям', 'ksenonspb'); ?>">
+								<button type="button" class="cpt-archive__tab _active" data-brand-filter="all" aria-pressed="true">
+									<?php esc_html_e('Все', 'ksenonspb'); ?>
+								</button>
+								<?php foreach ($filter_terms as $term) : ?>
+									<button
+										type="button"
+										class="cpt-archive__tab"
+										data-brand-filter="<?php echo esc_attr($term->slug); ?>"
+										aria-pressed="false">
+										<?php echo esc_html($term->name); ?>
 									</button>
-									<?php foreach ($filter_terms as $term) : ?>
-										<button
-											type="button"
-											class="cpt-archive__tab swiper-slide"
-											data-brand-filter="<?php echo esc_attr($term->slug); ?>"
-											aria-pressed="false">
-											<?php echo esc_html($term->name); ?>
-										</button>
-									<?php endforeach; ?>
-								</div>
+								<?php endforeach; ?>
 							</nav>
 						<?php endif; ?>
 
