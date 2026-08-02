@@ -1,0 +1,120 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.sticky-cta {
+	position: fixed;
+	z-index: 900;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: rem(10) rem(12) calc(#{rem(10)} + env(safe-area-inset-bottom, 0px));
+	pointer-events: none;
+
+	@media (min-width: $md3) {
+		display: none;
+	}
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		gap: rem(8);
+		width: 100%;
+		max-width: rem(480);
+		margin-inline: auto;
+		padding: rem(8);
+		border-radius: rem(52);
+		background: $color-surface;
+		box-shadow: 0 rem(-4) rem(24) rgba($color-black, 0.08);
+		pointer-events: auto;
+	}
+
+	&__btn {
+		flex: 1 1 auto;
+		min-width: 0;
+		min-height: rem(48);
+		padding: rem(12) rem(16);
+		border-radius: rem(52);
+		font-size: rem(14);
+		font-weight: 600;
+		justify-content: center;
+	}
+
+	&__icon {
+		display: inline-flex;
+		flex: 0 0 rem(48);
+		align-items: center;
+		justify-content: center;
+		width: rem(48);
+		height: rem(48);
+		border: 1.5px solid $color-accent;
+		border-radius: 50%;
+		background: $color-white;
+		color: $color-accent;
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease,
+			border-color 0.2s ease,
+			opacity 0.2s ease,
+			transform 0.2s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: rgba($color-accent, 0.08);
+			}
+		}
+
+		&:active {
+			transform: scale(0.96);
+		}
+
+		&--telegram {
+			border-color: $color-telegram;
+			background: $color-telegram;
+			color: $color-white;
+
+			@media (any-hover: hover) {
+				&:hover {
+					background: $color-telegram;
+					opacity: 0.92;
+				}
+			}
+		}
+
+		&--whatsapp {
+			border-color: $color-whatsapp;
+			background: $color-whatsapp;
+			color: $color-white;
+
+			@media (any-hover: hover) {
+				&:hover {
+					background: $color-whatsapp;
+					opacity: 0.92;
+				}
+			}
+		}
+	}
+
+	&__icon-svg {
+		display: block;
+		flex-shrink: 0;
+		width: rem(22);
+		height: rem(22);
+
+		&--telegram {
+			width: rem(18);
+			height: rem(16);
+		}
+
+		&--whatsapp {
+			width: rem(20);
+			height: rem(20);
+		}
+	}
+}
+
+body.has-sticky-cta {
+	@media (max-width: $md3) {
+		padding-bottom: calc(#{rem(76)} + env(safe-area-inset-bottom, 0px));
+	}
+}

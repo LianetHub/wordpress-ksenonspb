@@ -286,8 +286,14 @@ $cf7-error-border: #ff0000;
 
 		&:has(input:disabled) {
 			pointer-events: none;
-			cursor: default;
-			opacity: 0.5;
+			cursor: not-allowed;
+			opacity: 1;
+			background: $color-accent-muted;
+			box-shadow: none;
+
+			.btn__arrow {
+				opacity: 0.55;
+			}
 		}
 
 		.wpcf7-form-control-wrap:has(.wpcf7-submit) {
@@ -317,8 +323,14 @@ $cf7-error-border: #ff0000;
 
 		&:has(input:disabled) {
 			pointer-events: none;
-			cursor: default;
-			opacity: 0.5;
+			cursor: not-allowed;
+			opacity: 1;
+			background: $color-accent-muted;
+			box-shadow: none;
+
+			.btn__arrow {
+				opacity: 0.55;
+			}
 		}
 
 		.btn__text {
@@ -367,11 +379,25 @@ $cf7-error-border: #ff0000;
 		}
 	}
 
-	&:has(.wpcf7-submit[disabled]) label.form__submit,
-	&:has(.wpcf7-submit[disabled]) .form__submit:has(.wpcf7-form-control-wrap),
+	&:has(.wpcf7-submit[disabled]) label.form__submit.btn,
+	&:has(.wpcf7-submit[disabled]) .form__submit.btn:has(.wpcf7-form-control-wrap) {
+		cursor: not-allowed;
+		opacity: 1;
+		background: $color-accent-muted;
+		box-shadow: none;
+
+		.btn__arrow {
+			opacity: 0.55;
+		}
+	}
+
+	&:has(.wpcf7-submit[disabled]) label.form__submit:not(.btn),
+	&:has(.wpcf7-submit[disabled]) .form__submit:has(.wpcf7-form-control-wrap):not(.btn),
 	&:has(.wpcf7-submit[disabled]) .wpcf7-form-control-wrap:has(.wpcf7-submit) {
 		cursor: not-allowed;
-		opacity: 0.7;
+		opacity: 1;
+		background: $color-accent-muted;
+		box-shadow: none;
 	}
 
 	&.submitting {
@@ -892,15 +918,15 @@ $cf7-error-border: #ff0000;
 	label.form__submit:not(.btn),
 	.form__submit:has(.wpcf7-form-control-wrap):not(.btn),
 	.wpcf7-form-control-wrap:has(.wpcf7-submit):not(label.form__submit .wpcf7-form-control-wrap):not(.form__submit .wpcf7-form-control-wrap) {
-		min-height: rem(39);
-		padding: rem(6) rem(16);
-		border-radius: rem(20);
+		min-height: rem(48);
+		padding: rem(10) rem(16);
+		border-radius: rem(52);
 		background: $color-accent;
 		color: $color-white;
 		box-shadow: 0 rem(2.5) rem(1.2) rgba(253, 128, 17, 0.2);
 		text-transform: none;
 		letter-spacing: normal;
-		font-size: rem(10);
+		font-size: rem(14);
 		font-weight: 600;
 		width: 100%;
 

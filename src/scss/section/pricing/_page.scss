@@ -537,5 +537,10 @@
 
 	&__btn {
 		width: 100%;
+		min-height: rem(48);
+
+		@media (min-width: $md3) {
+			min-height: rem(70);
+		}
 	}
 }

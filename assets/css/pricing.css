@@ -517,4 +517,10 @@
 }
 .pricing-extra__btn {
   width: 100%;
+  min-height: 3rem;
+}
+@media (min-width: 991.98px) {
+  .pricing-extra__btn {
+    min-height: 4.375rem;
+  }
 }

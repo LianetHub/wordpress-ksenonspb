@@ -71,7 +71,7 @@ $portfolio_url   = ksenon_portfolio_archive_url();
 					<?php ksenon_render_btn_arrow($btn, 'btn btn--primary btn--small hero__btn', __('Оценить ремонт', 'ksenonspb')); ?>
 				<?php endif; ?>
 				<?php if ($portfolio_count > 0 && $portfolio_url) : ?>
-					<a class="hero__btn-secondary btn btn--white" href="<?php echo esc_url($portfolio_url); ?>">
+					<a class="hero__btn-secondary btn btn--secondary" href="<?php echo esc_url($portfolio_url); ?>">
 						<?php echo esc_html(ksenon_portfolio_works_label($portfolio_count)); ?>
 					</a>
 				<?php endif; ?>

@@ -65,18 +65,18 @@
 	&__btn {
 		width: auto;
 		max-width: none;
-		min-height: rem(38);
+		min-height: rem(48);
 		height: auto;
-		padding: rem(4) rem(4) rem(4) rem(18);
-		border-radius: rem(19);
+		padding: rem(6) rem(6) rem(6) rem(18);
+		border-radius: rem(52);
 		font-size: rem(12);
 		gap: rem(10);
 		box-shadow: 0 rem(2.85) rem(1.42) rgba($color-accent, 0.2);
 
 		&.btn--large:has(.btn__arrow) {
-			padding: rem(4) rem(4) rem(4) rem(18);
+			padding: rem(6) rem(6) rem(6) rem(18);
 			gap: rem(10);
-			min-height: rem(38);
+			min-height: rem(48);
 			height: auto;
 
 			.btn__arrow {
@@ -145,11 +145,11 @@
 		width: auto;
 		max-width: none;
 		min-width: 0;
-		min-height: rem(38);
+		min-height: rem(48);
 		height: auto;
-		padding: rem(11) rem(20);
+		padding: rem(12) rem(20);
 		border: rem(1) solid $color-white;
-		border-radius: rem(19);
+		border-radius: rem(52);
 		color: $color-surface;
 		font-size: rem(12);
 		gap: 0;

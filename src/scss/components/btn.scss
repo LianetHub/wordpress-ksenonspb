@@ -9,8 +9,8 @@
 	justify-content: center;
 	user-select: none;
 	gap: rem(5);
-	min-height: rem(44);
-	padding: rem(6) rem(15);
+	min-height: rem(48);
+	padding: rem(8) rem(16);
 	border: 1px solid transparent;
 	border-radius: rem(52);
 	font-weight: 500;
@@ -47,7 +47,7 @@
 
 	&:has(.btn__arrow) {
 		justify-content: space-between;
-		min-height: rem(44);
+		min-height: rem(48);
 		padding: rem(6) rem(10) rem(6) rem(15);
 
 		.btn__arrow {
@@ -114,8 +114,12 @@
 		}
 	}
 
+	&.btn--full {
+		width: 100%;
+	}
+
 	&.btn--small {
-		min-height: rem(44);
+		min-height: rem(48);
 		padding: rem(6) rem(10) rem(6) rem(15);
 
 		&:has(.btn__arrow) {
@@ -132,10 +136,10 @@
 	}
 
 	&.btn--large {
-		min-height: rem(53);
+		min-height: rem(52);
 		height: auto;
 		padding: rem(8) rem(6) rem(8) rem(22);
-		border-radius: rem(22);
+		border-radius: rem(52);
 		font-size: rem(14);
 		line-height: 1;
 		font-weight: 500;
@@ -201,6 +205,21 @@
 			color: $color-accent;
 		}
 
+		&:disabled,
+		&[aria-disabled="true"],
+		&.btn--disabled {
+			opacity: 1;
+			background: $color-accent-muted;
+			color: $color-white;
+			box-shadow: none;
+
+			.btn__arrow {
+				opacity: 0.55;
+				background: $color-white;
+				color: $color-accent-muted;
+			}
+		}
+
 		@media (min-width: 1200px) and (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
 				background: $color-accent-hover;
@@ -243,13 +262,13 @@
 	}
 
 	&.btn--secondary {
-		background: $color-white;
-		border-color: $color-black;
-		color: $color-black;
+		background: transparent;
+		border-color: $color-accent;
+		color: $color-accent;
 
 		@media (any-hover: hover) {
 			&:hover:not(:disabled):not([aria-disabled="true"]) {
-				background: $color-surface;
+				background: rgba($color-accent, 0.06);
 			}
 		}
 	}
@@ -268,6 +287,7 @@
 
 	&.btn--white {
 		background: $color-white;
+		border-color: #e8e8e8;
 		color: $color-black;
 
 		.btn__arrow {

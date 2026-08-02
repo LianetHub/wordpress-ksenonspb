@@ -80,6 +80,21 @@ $certificate_lead    = ksenon_get_option('popup_certificate_lead');
 		</div>
 	</div>
 
+	<!-- Мессенджеры (липкая панель / чат) -->
+	<div id="popup-messengers" class="popup-modal popup-modal--consult popup-modal--messengers">
+		<div class="popup-modal__inner">
+			<header class="popup-modal__header">
+				<h2 class="popup-modal__title title title-popup"><?php esc_html_e('Написать нам', 'ksenonspb'); ?></h2>
+				<p class="popup-modal__lead"><?php esc_html_e('Выберите мессенджер — ответим быстро', 'ksenonspb'); ?></p>
+			</header>
+			<div class="popup-modal__content">
+				<div class="popup-modal__messengers">
+					<?php ksenon_render_messenger_links('messenger-links', true); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Заявка отправлена -->
 	<div id="popup-success" class="popup-modal popup-modal--status">
 		<div class="popup-modal__inner">

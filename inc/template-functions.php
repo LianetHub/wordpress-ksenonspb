@@ -2048,6 +2048,37 @@ if (! function_exists('ksenon_render_home_arrow')) {
 	}
 }
 
+if (! function_exists('ksenon_should_show_sticky_cta')) {
+	/**
+	 * Sticky CTA on long conversion pages (service, pricing) — mobile only via CSS.
+	 *
+	 * @return bool
+	 */
+	function ksenon_should_show_sticky_cta()
+	{
+		if (is_singular('service')) {
+			return true;
+		}
+
+		if (is_page_template('page-stoimost.php') || is_page('stoimost')) {
+			return true;
+		}
+
+		return false;
+	}
+}
+
+add_filter(
+	'body_class',
+	static function ($classes) {
+		if (ksenon_should_show_sticky_cta()) {
+			$classes[] = 'has-sticky-cta';
+		}
+
+		return $classes;
+	}
+);
+
 if (! function_exists('ksenon_btn_arrow_icon')) {
 	function ksenon_btn_arrow_icon()
 	{

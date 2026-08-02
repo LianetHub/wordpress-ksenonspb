@@ -9,6 +9,7 @@
 </main>
 <?php get_template_part('template-parts/footer/content'); ?>
 </div>
+<?php get_template_part('template-parts/sticky-cta'); ?>
 <?php get_template_part('template-parts/popups'); ?>
 <?php get_template_part('template-parts/cookie-notice'); ?>
 <?php wp_footer(); ?>

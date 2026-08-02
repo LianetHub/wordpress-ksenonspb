@@ -313,21 +313,23 @@
 	&__link {
 		width: 100%;
 		margin-top: auto;
+		min-height: rem(44);
+		border: 1px solid #e8e8e8;
 
 		@media (max-width: $md4) {
-			min-height: rem(28);
-			padding: rem(4) rem(2) rem(4) rem(10);
-			border-radius: rem(14);
-			font-size: rem(9);
+			min-height: rem(44);
+			padding: rem(6) rem(6) rem(6) rem(14);
+			border-radius: rem(52);
+			font-size: rem(12);
 			gap: rem(8);
 
 			.btn__arrow {
-				width: rem(22);
-				height: rem(22);
+				width: rem(28);
+				height: rem(28);
 
 				.btn__arrow-icon {
-					width: rem(10);
-					height: rem(10);
+					width: rem(11);
+					height: rem(8);
 				}
 			}
 		}
