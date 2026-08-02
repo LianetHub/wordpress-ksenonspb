@@ -719,10 +719,28 @@ function initReviewsTabs() {
 			yandex: root.getAttribute("data-url-yandex") || "",
 			drive2: root.getAttribute("data-url-drive2") || "",
 		};
+		const sourceLabels = {
+			yandex: root.getAttribute("data-label-yandex") || "",
+			drive2: root.getAttribute("data-label-drive2") || "",
+		};
 
-		const setMoreUrl = (source) => {
-			if (!moreBtn || !sourceUrls[source]) return;
-			moreBtn.setAttribute("href", sourceUrls[source]);
+		const setMoreLink = (source) => {
+			if (!moreBtn) return;
+
+			const url = sourceUrls[source];
+			if (url) {
+				moreBtn.setAttribute("href", url);
+			}
+
+			const label = sourceLabels[source];
+			if (!label) return;
+
+			const textEl = moreBtn.querySelector(".btn__text");
+			if (textEl) {
+				textEl.textContent = label;
+			} else {
+				moreBtn.textContent = label;
+			}
 		};
 
 		tabs.forEach((tab) => {
@@ -746,7 +764,7 @@ function initReviewsTabs() {
 					);
 				});
 
-				setMoreUrl(target);
+				setMoreLink(target);
 			});
 		});
 	});

@@ -20,7 +20,8 @@ if (! $reviews) {
 	return;
 }
 
-$source_urls = ksenon_get_reviews_source_urls();
+$source_urls  = ksenon_get_reviews_source_urls();
+$more_labels  = ksenon_get_reviews_more_labels();
 
 $grouped = array(
 	'yandex' => array(),
@@ -48,7 +49,7 @@ if (! $tabs) {
 }
 
 $active_tab = isset($tabs['drive2']) ? 'drive2' : array_key_first($tabs);
-$more_label = __('Все отзывы', 'ksenonspb');
+$more_label = $more_labels[$active_tab] ?? ($more_labels['drive2'] ?? __('Все отзывы', 'ksenonspb'));
 $more_url   = $source_urls[$active_tab] ?? ($source_urls['yandex'] ?? '');
 $more_link  = array(
 	'url'    => $more_url,
@@ -63,7 +64,9 @@ $title_html = function_exists('ksenon_title_accent_html')
 	class="reviews"
 	data-reviews
 	data-url-yandex="<?php echo esc_url($source_urls['yandex']); ?>"
-	data-url-drive2="<?php echo esc_url($source_urls['drive2']); ?>">
+	data-url-drive2="<?php echo esc_url($source_urls['drive2']); ?>"
+	data-label-yandex="<?php echo esc_attr($more_labels['yandex']); ?>"
+	data-label-drive2="<?php echo esc_attr($more_labels['drive2']); ?>">
 	<div class="reviews__container container">
 		<div class="section-head section-head--row reviews__head">
 			<h2 class="section-head__title title-md reviews__title">

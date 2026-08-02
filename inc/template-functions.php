@@ -443,8 +443,23 @@ if (! function_exists('ksenon_get_reviews_source_urls')) {
 		$drive2 = trim((string) ksenon_get_option('reviews_url_drive2', ''));
 
 		return array(
-			'yandex' => $yandex ?: 'https://yandex.ru/maps/user/kezdbvu6mzrqd3kzyurb1n08rc',
+			'yandex' => $yandex ?: 'https://yandex.ru/maps/org/kb_avto/1013657042/reviews/',
 			'drive2' => $drive2 ?: 'https://www.drive2.ru/o/kbauto/reviews',
+		);
+	}
+}
+
+if (! function_exists('ksenon_get_reviews_more_labels')) {
+	/**
+	 * “All reviews” button labels by source tab.
+	 *
+	 * @return array{yandex: string, drive2: string}
+	 */
+	function ksenon_get_reviews_more_labels()
+	{
+		return array(
+			'drive2' => __('Все отзывы Drive2', 'ksenonspb'),
+			'yandex' => __('Все отзывы Яндекс', 'ksenonspb'),
 		);
 	}
 }

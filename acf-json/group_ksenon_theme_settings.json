@@ -489,7 +489,7 @@
             "label": "Ссылка «Все отзывы» — Яндекс",
             "name": "reviews_url_yandex",
             "type": "url",
-            "default_value": "https://yandex.ru/maps/user/kezdbvu6mzrqd3kzyurb1n08rc"
+            "default_value": "https://yandex.ru/maps/org/kb_avto/1013657042/reviews/"
         },
         {
             "key": "field_ksenon_ts_reviews_url_drive2",
@@ -497,6 +497,24 @@
             "name": "reviews_url_drive2",
             "type": "url",
             "default_value": "https://www.drive2.ru/o/kbauto/reviews"
+        },
+        {
+            "key": "field_ksenon_ts_reviews_yandex_rating",
+            "label": "Рейтинг Яндекс Карт",
+            "name": "reviews_yandex_rating",
+            "type": "text",
+            "instructions": "Показывается в тексте кнопки на вкладке «Яндекс», например: 4,9",
+            "default_value": "4,9"
+        },
+        {
+            "key": "field_ksenon_ts_reviews_yandex_count",
+            "label": "Число оценок Яндекс Карт",
+            "name": "reviews_yandex_count",
+            "type": "number",
+            "instructions": "Показывается в тексте кнопки на вкладке «Яндекс», например: 202",
+            "default_value": 202,
+            "min": 1,
+            "step": 1
         },
         {
             "key": "field_ksenon_ts_404_accordion",
@@ -535,5 +553,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1753118500
+    "modified": 1785660900
 }
