@@ -2050,13 +2050,13 @@ if (! function_exists('ksenon_render_home_arrow')) {
 
 if (! function_exists('ksenon_should_show_sticky_cta')) {
 	/**
-	 * Sticky CTA on long conversion pages (service, pricing) — mobile only via CSS.
+	 * Sticky CTA on conversion pages (service, work, brand, pricing) — mobile only via CSS.
 	 *
 	 * @return bool
 	 */
 	function ksenon_should_show_sticky_cta()
 	{
-		if (is_singular('service')) {
+		if (is_singular(array('service', 'portfolio', 'brand'))) {
 			return true;
 		}
 

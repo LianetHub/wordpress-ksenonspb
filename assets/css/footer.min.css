@@ -234,15 +234,14 @@
 }
 .footer__nav-title {
   color: #fff;
-  font-weight: 500;
-  line-height: 1.2;
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
   letter-spacing: -0.03em;
-  font-size: 0.875rem;
+  font-size: var(--fs-footer-title);
 }
 @media (min-width: 991.98px) {
   .footer__nav-title {
     letter-spacing: -0.03em;
-    font-size: clamp(14px, 0.1851851852vw + 13.3333333333px, 16px);
   }
 }
 .footer__menu {
@@ -257,16 +256,15 @@
 }
 .footer__menu-link {
   color: #c2c2c2;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
-  font-size: 0.875rem;
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: -0.028em;
+  font-size: var(--fs-footer-link);
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 @media (min-width: 991.98px) {
   .footer__menu-link {
-    letter-spacing: -0.03em;
-    font-size: clamp(14px, 0.1851851852vw + 13.3333333333px, 16px);
+    letter-spacing: -0.032em;
   }
 }
 @media (any-hover: hover) {
@@ -389,16 +387,15 @@
 }
 .footer__copy, .footer__requisites, .footer__domain, .footer__legal {
   color: #afafaf;
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.03em;
-  font-size: 0.75rem;
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: -0.0276923077em;
+  font-size: var(--fs-footer-legal);
 }
 @media (min-width: 991.98px) {
   .footer__copy, .footer__requisites, .footer__domain, .footer__legal {
-    letter-spacing: -0.03em;
+    letter-spacing: -0.0369230769em;
     white-space: nowrap;
-    font-size: clamp(12px, 0.3703703704vw + 10.6666666667px, 16px);
   }
 }
 .footer__legal {

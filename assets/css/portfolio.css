@@ -836,16 +836,15 @@
   background: #f7f7f7;
   color: #000000;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: normal;
+  font-size: var(--fs-tab);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
   white-space: nowrap;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 @media (min-width: 767.98px) {
   .cpt-archive__tab {
     padding: 0.75rem 1.125rem;
-    font-size: 0.875rem;
   }
 }
 @media (min-width: 991.98px) {
@@ -974,7 +973,6 @@
 @media (max-width: 991.98px) {
   .cpt-archive--portfolio .cpt-archive__tab {
     padding: 0.75rem 1.25rem;
-    font-size: 0.6875rem;
   }
 }
 @media (max-width: 991.98px) {
@@ -1031,9 +1029,9 @@
   background: #f7f7f7;
   color: #000000;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.625rem;
-  font-weight: 500;
-  line-height: normal;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-heading);
   white-space: nowrap;
   transition: background-color 0.2s ease;
 }
@@ -1052,7 +1050,6 @@
     min-width: 1.75rem;
     height: 1.75rem;
     padding: 0.25rem 0.3125rem;
-    font-size: 0.5625rem;
   }
   .cpt-pagination__page--dots {
     min-width: 1.25rem;

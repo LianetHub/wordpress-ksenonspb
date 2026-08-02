@@ -173,22 +173,19 @@
 	}
 
 	&__card-text {
-		font-size: rem(12);
-		line-height: 1.25;
+		font-size: var(--fs-body);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 		color: $color-text-muted;
-
-		@media (min-width: $md3) {
-			font-size: rem(16);
-		}
 
 		.why-us__card--accent & {
 			flex: 1 1 rem(167);
-			font-size: rem(9);
+			font-size: var(--fs-small);
 			color: $color-white;
 
 			@media (min-width: $md3) {
 				flex: 0 1 rem(291);
-				font-size: rem(16);
+				font-size: var(--fs-body);
 			}
 		}
 	}

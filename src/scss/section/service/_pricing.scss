@@ -99,16 +99,16 @@
 		border-radius: rem(40);
 		background: $color-white;
 		font-family: $font-family;
-		font-weight: 500;
-		font-size: rem(12);
-		line-height: normal;
+		font-weight: var(--fw-medium);
+		font-size: var(--fs-btn);
+		line-height: var(--lh-heading);
 		color: $color-accent;
 		letter-spacing: -0.01em;
 		white-space: nowrap;
 
 		@media (min-width: $md3) {
 			padding: rem(15) rem(20);
-			font-size: rem(16);
+			font-size: var(--fs-body);
 		}
 	}
 
@@ -128,8 +128,8 @@
 		border-radius: rem(40);
 		background: $color-white;
 		font-family: $font-family;
-		font-size: rem(12);
-		font-weight: 500;
+		font-size: var(--fs-btn);
+		font-weight: var(--fw-medium);
 		color: $color-black;
 		text-align: center;
 		white-space: nowrap;
@@ -137,7 +137,7 @@
 		@media (min-width: $md3) {
 			min-width: rem(99);
 			padding: rem(15) rem(20);
-			font-size: rem(16);
+			font-size: var(--fs-body);
 		}
 	}
 

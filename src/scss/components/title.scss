@@ -4,51 +4,61 @@
 
 .title {
 	font-family: $font-inter;
-	font-weight: 500;
-	line-height: 1.2;
+	font-weight: var(--fw-semibold);
+	line-height: var(--lh-heading);
 	color: $color-primary;
 }
 
 .title-lg {
-	font-weight: 500;
-	@include adaptive-font(36, 48);
+	font-weight: var(--fw-semibold);
+	font-size: var(--fs-h1);
+	line-height: var(--lh-heading);
 }
 
 .title-md {
-	font-weight: 500;
-	@include adaptive-font(24, 48);
+	font-weight: var(--fw-semibold);
+	font-size: 28px;
+	line-height: var(--lh-heading);
 
+	@media (min-width: $md4) {
+		font-size: 36px;
+	}
 }
 
 .title-md-xl {
-	font-weight: 500;
-	@include adaptive-font(28, 48);
+	font-weight: var(--fw-semibold);
+	font-size: 28px;
+	line-height: var(--lh-heading);
 
+	@media (min-width: $md4) {
+		font-size: 36px;
+	}
 }
 
 .title-sm {
-	font-weight: 500;
-
-	@include adaptive-font(18, 24);
+	font-weight: var(--fw-semibold);
+	font-size: var(--fs-h2);
+	line-height: var(--lh-heading);
 }
 
 .title-md-sm {
-	font-weight: 500;
-	@include adaptive-font(20, 24);
+	font-weight: var(--fw-semibold);
+	font-size: var(--fs-card-title);
+	line-height: var(--lh-heading);
 }
 
 .title-popup {
-	font-weight: 500;
-	@include adaptive-font(24, 32);
-
+	font-weight: var(--fw-semibold);
+	font-size: var(--fs-h2);
+	line-height: var(--lh-heading);
 }
 
 // Плотный трекинг на десктопе (panels)
 .title-md--panels {
-	letter-spacing: em(-0.26, 48);
+	letter-spacing: em(-0.26, 36);
 
 	@media (max-width: $md5) {
-		letter-spacing: em(-0.96, 24);
+		letter-spacing: em(-0.96, 28);
 	}
 }
 

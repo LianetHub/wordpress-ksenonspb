@@ -1,0 +1,46 @@
+@use "variables" as *;
+
+// Unified type scale — desktop defaults, mobile overrides at $md4 (~768px)
+:root {
+	--fs-h1: 44px;
+	--fs-h2: 24px;
+	--fs-card-title: 20px;
+	--fs-tab: 18px;
+	--fs-body: 16px;
+	--fs-hero-text: 18px;
+	--fs-btn: 15px;
+	--fs-menu: 15px;
+	--fs-work: 16px;
+	--fs-price: 16px;
+	--fs-counter: 36px;
+	--fs-counter-label: 15px;
+	--fs-notice: 14px;
+	--fs-faq: 16px;
+	--fs-contact: 18px;
+	--fs-footer-title: 16px;
+	--fs-footer-link: 15px;
+	--fs-footer-legal: 13px;
+	--fs-small: 13px;
+	--fw-regular: 400;
+	--fw-medium: 500;
+	--fw-semibold: 600;
+	--lh-heading: 1.2;
+	--lh-body: 1.5;
+	--color-accent: #{$color-accent};
+	--color-accent-hover: #{$color-accent-hover};
+
+	@media (max-width: $md4) {
+		--fs-h1: 32px;
+		--fs-h2: 20px;
+		--fs-card-title: 18px;
+		--fs-tab: 14px;
+		--fs-body: 15px;
+		--fs-hero-text: 16px;
+		--fs-work: 15px;
+		--fs-counter: 30px;
+		--fs-counter-label: 13px;
+		--fs-faq: 14px;
+		--fs-contact: 16px;
+		--fs-footer-title: 14px;
+	}
+}

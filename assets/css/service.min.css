@@ -804,9 +804,9 @@
   border-radius: 2.5rem;
   background: #ffffff;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  line-height: normal;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-btn);
+  line-height: var(--lh-heading);
   color: #fd8011;
   letter-spacing: -0.01em;
   white-space: nowrap;
@@ -814,7 +814,7 @@
 @media (min-width: 991.98px) {
   .service-pricing__section-title {
     padding: 0.9375rem 1.25rem;
-    font-size: 1rem;
+    font-size: var(--fs-body);
   }
 }
 .service-pricing__section-note {
@@ -832,8 +832,8 @@
   border-radius: 2.5rem;
   background: #ffffff;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-medium);
   color: #000000;
   text-align: center;
   white-space: nowrap;
@@ -842,7 +842,7 @@
   .service-pricing__col-label {
     min-width: 6.1875rem;
     padding: 0.9375rem 1.25rem;
-    font-size: 1rem;
+    font-size: var(--fs-body);
   }
 }
 .service-pricing__th--warranty .service-pricing__col-label {

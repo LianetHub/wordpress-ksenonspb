@@ -21,14 +21,10 @@
 
 	&__title {
 		font-family: $font-family;
-		font-size: rem(28);
-		font-weight: 500;
-		line-height: normal;
+		font-size: var(--fs-h1);
+		font-weight: var(--fw-semibold);
+		line-height: var(--lh-heading);
 		color: $color-black;
-
-		@media (min-width: $md3) {
-			font-size: rem(48);
-		}
 	}
 
 	&__notice {
@@ -41,15 +37,13 @@
 		background: $color-surface;
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 400;
-		line-height: 1.35;
+		font-size: var(--fs-notice);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 
 		@media (min-width: $md3) {
 			gap: rem(13);
 			padding: rem(12) rem(20);
-			font-size: rem(12);
-			line-height: normal;
 		}
 	}
 
@@ -98,9 +92,9 @@
 		background: $color-white;
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(12);
-		font-weight: 500;
-		line-height: normal;
+		font-size: var(--fs-tab);
+		font-weight: var(--fw-medium);
+		line-height: var(--lh-heading);
 		cursor: pointer;
 		transition:
 			background-color 0.2s ease,
@@ -110,7 +104,6 @@
 			min-height: rem(50);
 			padding: rem(15) rem(20);
 			border-radius: rem(40);
-			font-size: rem(20);
 		}
 
 		&._active {
@@ -152,21 +145,20 @@
 		align-items: center;
 		justify-content: center;
 		min-width: rem(56);
-		padding: rem(5) rem(7);
+		padding: rem(8) rem(12);
 		border-radius: rem(13);
 		background: $color-white;
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 500;
-		line-height: normal;
+		font-size: var(--fs-btn);
+		font-weight: var(--fw-medium);
+		line-height: var(--lh-heading);
 		white-space: nowrap;
 
 		@media (min-width: $md3) {
 			min-width: rem(127);
 			padding: rem(15) rem(20);
 			border-radius: rem(40);
-			font-size: rem(16);
 		}
 
 		&--work {
@@ -213,14 +205,13 @@
 		border-bottom: 1px solid rgba($color-black, 0.12);
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 400;
-		line-height: normal;
+		font-size: var(--fs-work);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 
 		@media (min-width: $md3) {
 			gap: rem(24);
 			padding-bottom: rem(18);
-			font-size: rem(15);
 		}
 
 		&:last-child {
@@ -340,26 +331,25 @@
 
 	&__card-title {
 		font-family: $font-family;
-		font-size: rem(13);
-		font-weight: 500;
-		line-height: normal;
+		font-size: var(--fs-card-title);
+		font-weight: var(--fw-semibold);
+		line-height: var(--lh-heading);
 		color: $color-black;
 
 		@media (min-width: $md3) {
-			font-size: rem(36);
+			font-size: 36px;
 		}
 	}
 
 	&__card-text {
 		color: $color-text-secondary;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 400;
-		line-height: 1.35;
+		font-size: var(--fs-notice);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 
 		@media (min-width: $md3) {
-			font-size: rem(15);
-			line-height: normal;
+			font-size: var(--fs-body);
 		}
 	}
 }
@@ -435,14 +425,9 @@
 	&__lead {
 		color: $color-text-secondary;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 400;
-		line-height: 1.35;
-
-		@media (min-width: $md3) {
-			font-size: rem(15);
-			line-height: normal;
-		}
+		font-size: var(--fs-body);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 	}
 
 	&__rows {
@@ -470,13 +455,12 @@
 		border-bottom: 1px dashed rgba($color-black, 0.18);
 		color: $color-text-secondary;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 400;
-		line-height: normal;
+		font-size: var(--fs-body);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 
 		@media (min-width: $md3) {
 			padding: rem(10) 0;
-			font-size: rem(16);
 		}
 
 		&:last-child {
@@ -511,9 +495,9 @@
 		background: $color-surface;
 		color: $color-black;
 		font-family: $font-family;
-		font-size: rem(10);
-		font-weight: 500;
-		line-height: normal;
+		font-size: var(--fs-btn);
+		font-weight: var(--fw-medium);
+		line-height: var(--lh-heading);
 		cursor: pointer;
 		transition:
 			background-color 0.2s ease,
@@ -522,7 +506,7 @@
 		@media (min-width: $md3) {
 			padding: rem(15) rem(40);
 			border-radius: rem(40);
-			font-size: rem(16);
+			font-size: var(--fs-body);
 		}
 
 		&._active {

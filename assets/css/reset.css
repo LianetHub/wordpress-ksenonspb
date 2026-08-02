@@ -1,3 +1,48 @@
+:root {
+  --fs-h1: 44px;
+  --fs-h2: 24px;
+  --fs-card-title: 20px;
+  --fs-tab: 18px;
+  --fs-body: 16px;
+  --fs-hero-text: 18px;
+  --fs-btn: 15px;
+  --fs-menu: 15px;
+  --fs-work: 16px;
+  --fs-price: 16px;
+  --fs-counter: 36px;
+  --fs-counter-label: 15px;
+  --fs-notice: 14px;
+  --fs-faq: 16px;
+  --fs-contact: 18px;
+  --fs-footer-title: 16px;
+  --fs-footer-link: 15px;
+  --fs-footer-legal: 13px;
+  --fs-small: 13px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --lh-heading: 1.2;
+  --lh-body: 1.5;
+  --color-accent: #fd8011;
+  --color-accent-hover: #e8720f;
+}
+@media (max-width: 767.98px) {
+  :root {
+    --fs-h1: 32px;
+    --fs-h2: 20px;
+    --fs-card-title: 18px;
+    --fs-tab: 14px;
+    --fs-body: 15px;
+    --fs-hero-text: 16px;
+    --fs-work: 15px;
+    --fs-counter: 30px;
+    --fs-counter-label: 13px;
+    --fs-faq: 14px;
+    --fs-contact: 16px;
+    --fs-footer-title: 14px;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +52,7 @@
 *,
 ::before,
 ::after {
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -64,18 +110,15 @@ address {
 }
 
 a {
-  background: transparent;
+  background-color: transparent;
   text-decoration: none;
   outline: none;
   border: none;
   color: inherit;
 }
-
-a:focus,
-a:active {
+a:focus, a:active {
   outline: none;
 }
-
 a {
   -webkit-tap-highlight-color: transparent;
 }
@@ -104,26 +147,6 @@ textarea {
   font-size: inherit;
 }
 
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  opacity: 1;
-}
-
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-  opacity: 1;
-}
-
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-  opacity: 1;
-}
-
-input::-ms-input-placeholder,
-textarea::-ms-input-placeholder {
-  opacity: 1;
-}
-
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
@@ -135,8 +158,8 @@ input::-ms-clear {
 
 button,
 [role=button] {
-  background: inherit;
   cursor: pointer;
+  background-color: inherit;
   font-size: inherit;
   -webkit-tap-highlight-color: transparent;
   color: inherit;
@@ -190,15 +213,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
-  /* Firefox */
+  -moz-appearance: textfield; /* Firefox */
 }
 
 [type=search] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-
 [type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
