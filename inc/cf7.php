@@ -32,7 +32,7 @@ function ksenon_cf7_set_render_context($source = '', $args = array())
  */
 function ksenon_cf7_replace_submit_label($content, $label)
 {
-	$label = trim((string) $label);
+	$label = trim((string) $label);	
 
 	if ('' === $label) {
 		return $content;
@@ -318,6 +318,37 @@ add_filter(
 );
 
 /**
+ * Имя необязательно: text* → text при разборе тегов CF7.
+ *
+ * @param array $tag Разобранный тег формы.
+ */
+add_filter(
+	'wpcf7_form_tag',
+	static function ($tag) {
+		if (! is_array($tag) || ($tag['name'] ?? '') !== 'your-name') {
+			return $tag;
+		}
+
+		if (isset($tag['type']) && 'text*' === $tag['type']) {
+			$tag['type'] = 'text';
+		}
+
+		if (! empty($tag['options']) && is_array($tag['options'])) {
+			$tag['options'] = array_values(
+				array_filter(
+					$tag['options'],
+					static function ($option) {
+						return 'required' !== $option;
+					}
+				)
+			);
+		}
+
+		return $tag;
+	}
+);
+
+/**
  * Нормализует телефон до цифр (RU: 7/8 + 10 цифр).
  */
 function ksenon_cf7_normalize_phone_digits($value)
@@ -340,6 +371,39 @@ function ksenon_cf7_is_valid_ru_phone($value)
 
 	return in_array($digits[0], array('7', '8'), true);
 }
+
+/**
+ * Серверная валидация имени (без цифр; поле необязательное).
+ *
+ * @param WPCF7_Validation $result Результат валидации.
+ * @param WPCF7_FormTag    $tag    Тег поля.
+ */
+function ksenon_cf7_validate_name($result, $tag)
+{
+	if ('your-name' !== $tag->name) {
+		return $result;
+	}
+
+	$value = isset($_POST[ $tag->name ]) ? wp_unslash($_POST[ $tag->name ]) : '';
+	$value = is_array($value) ? implode('', $value) : (string) $value;
+	$value = trim($value);
+
+	if ('' === $value) {
+		return $result;
+	}
+
+	if (preg_match('/\d/u', $value)) {
+		$result->invalidate(
+			$tag,
+			__('Имя не должно содержать цифры', 'ksenonspb')
+		);
+	}
+
+	return $result;
+}
+
+add_filter('wpcf7_validate_text', 'ksenon_cf7_validate_name', 20, 2);
+add_filter('wpcf7_validate_text*', 'ksenon_cf7_validate_name', 20, 2);
 
 /**
  * Серверная валидация телефона (полный RU-номер).
@@ -484,7 +548,7 @@ add_filter(
 			return $html ? esc_html($formatted) : $formatted;
 		}
 
-		if (in_array($field, array('your-message', 'your-car'), true)) {
+		if (in_array($field, array('your-name', 'your-message', 'your-car'), true)) {
 			$value = ksenon_cf7_field_value($submitted);
 
 			if ('' === $value) {

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initPortfolioBrandSearch();
 	initPricingPage();
 	initPhoneMask();
+	initNameFields();
 	initCf7();
 	initFormUpload();
 	initPortfolioCardImages();
@@ -934,80 +935,150 @@ function initHomeSwipers() {
 	}
 }
 
+function initNameFields() {
+	const nameInputs = document.querySelectorAll('input[name="your-name"]');
+
+	if (!nameInputs.length) return;
+
+	const stripDigits = (value) => String(value || "").replace(/\d/g, "");
+
+	nameInputs.forEach((input) => {
+		input.removeAttribute("required");
+		input.removeAttribute("aria-required");
+		input.classList.remove("wpcf7-validates-as-required");
+
+		input.addEventListener("input", () => {
+			const cleaned = stripDigits(input.value);
+			if (cleaned !== input.value) {
+				const pos = input.selectionStart;
+				input.value = cleaned;
+				if (typeof pos === "number") {
+					const nextPos = Math.max(0, pos - 1);
+					input.setSelectionRange(nextPos, nextPos);
+				}
+			}
+		});
+
+		input.addEventListener("paste", (event) => {
+			event.preventDefault();
+			const pasted = event.clipboardData?.getData("text") || "";
+			const cleaned = stripDigits(pasted);
+			const start = input.selectionStart ?? input.value.length;
+			const end = input.selectionEnd ?? input.value.length;
+			const next = stripDigits(
+				input.value.slice(0, start) + cleaned + input.value.slice(end),
+			);
+			input.value = next;
+			const caret = start + cleaned.length;
+			input.setSelectionRange(caret, caret);
+			input.dispatchEvent(new Event("input", { bubbles: true }));
+		});
+	});
+}
+
 function initPhoneMask() {
 	const phoneInputs = document.querySelectorAll('input[type="tel"]');
 
 	if (!phoneInputs.length) return;
 
-	const getInputNumbersValue = (input) => input.value.replace(/\D/g, "");
+	const getDigits = (value) => String(value || "").replace(/\D/g, "");
+
+	const normalizeRuDigits = (digits) => {
+		let d = getDigits(digits);
+		if (!d) return "";
+
+		if (d[0] === "8") {
+			d = "7" + d.slice(1);
+		} else if (d[0] === "9") {
+			d = "7" + d;
+		} else if (d[0] !== "7") {
+			d = "7" + d;
+		}
+
+		return d.slice(0, 11);
+	};
+
+	const formatRuPhone = (digits) => {
+		const d = normalizeRuDigits(digits);
+		if (!d) return "";
+
+		let formatted = "+7";
+
+		if (d.length > 1) {
+			formatted += " (" + d.slice(1, Math.min(4, d.length));
+		}
+		if (d.length >= 5) {
+			formatted += ") " + d.slice(4, Math.min(7, d.length));
+		}
+		if (d.length >= 8) {
+			formatted += "-" + d.slice(7, Math.min(9, d.length));
+		}
+		if (d.length >= 10) {
+			formatted += "-" + d.slice(9, 11);
+		}
+
+		return formatted;
+	};
 
 	const onPhoneInput = (e) => {
 		const input = e.target;
-		let inputNumbersValue = getInputNumbersValue(input);
-		const selectionStart = input.selectionStart;
-		let formattedInputValue = "";
+		const digits = getDigits(input.value);
 
-		if (!inputNumbersValue) {
+		if (!digits) {
 			input.value = "";
 			return;
 		}
 
-		if (input.value.length !== selectionStart) {
-			if (e.data && /\D/.test(e.data)) {
-				input.value = inputNumbersValue;
-			}
-			return;
+		input.value = formatRuPhone(digits);
+	};
+
+	const onPhoneFocus = (e) => {
+		const input = e.target;
+		if (!getDigits(input.value)) {
+			input.value = "+7 ";
 		}
+	};
 
-		if (["7", "8", "9"].includes(inputNumbersValue[0])) {
-			if (inputNumbersValue[0] === "9") {
-				inputNumbersValue = "7" + inputNumbersValue;
-			}
-
-			const firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
-			formattedInputValue = firstSymbols + " ";
-
-			if (inputNumbersValue.length > 1) {
-				formattedInputValue += "(" + inputNumbersValue.substring(1, 4);
-			}
-			if (inputNumbersValue.length >= 5) {
-				formattedInputValue += ") " + inputNumbersValue.substring(4, 7);
-			}
-			if (inputNumbersValue.length >= 8) {
-				formattedInputValue += "-" + inputNumbersValue.substring(7, 9);
-			}
-			if (inputNumbersValue.length >= 10) {
-				formattedInputValue += "-" + inputNumbersValue.substring(9, 11);
-			}
-		} else {
-			formattedInputValue = "+" + inputNumbersValue.substring(0, 16);
+	const onPhoneBlur = (e) => {
+		const input = e.target;
+		const digits = getDigits(input.value);
+		if (!digits || digits === "7") {
+			input.value = "";
 		}
-
-		input.value = formattedInputValue;
 	};
 
 	const onPhoneKeyDown = (e) => {
-		const inputValue = e.target.value.replace(/\D/g, "");
+		const input = e.target;
+		const digits = getDigits(input.value);
 
-		if (e.key === "Backspace" && inputValue.length === 1) {
-			e.target.value = "";
+		if (e.key === "Backspace" && digits.length <= 1) {
+			e.preventDefault();
+			input.value = "";
 		}
 	};
 
 	const onPhonePaste = (e) => {
+		e.preventDefault();
 		const input = e.target;
-		const inputNumbersValue = getInputNumbersValue(input);
-		const pastedText = e.clipboardData?.getData("text");
-
-		if (pastedText && /\D/.test(pastedText)) {
-			input.value = inputNumbersValue;
-		}
+		const pasted = e.clipboardData?.getData("text") || "";
+		input.value = formatRuPhone(pasted);
+		input.dispatchEvent(new Event("input", { bubbles: true }));
 	};
 
 	phoneInputs.forEach((input) => {
+		input.setAttribute("inputmode", "tel");
+		input.setAttribute("autocomplete", "tel");
+		input.setAttribute("maxlength", "18");
+
+		input.addEventListener("focus", onPhoneFocus);
+		input.addEventListener("blur", onPhoneBlur);
 		input.addEventListener("keydown", onPhoneKeyDown);
 		input.addEventListener("input", onPhoneInput);
 		input.addEventListener("paste", onPhonePaste);
+
+		if (getDigits(input.value)) {
+			input.value = formatRuPhone(input.value);
+		}
 	});
 }
 

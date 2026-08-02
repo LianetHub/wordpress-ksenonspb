@@ -12,7 +12,6 @@ $installment_title   = ksenon_get_option('popup_installment_title') ?: __('Оф�
 $installment_lead    = ksenon_get_option('popup_installment_lead');
 $certificate_title   = ksenon_get_option('popup_certificate_title') ?: __('Оформить сертификат', 'ksenonspb');
 $certificate_lead    = ksenon_get_option('popup_certificate_lead');
-$phones              = ksenon_get_phones();
 
 ?>
 
@@ -32,26 +31,17 @@ $phones              = ksenon_get_phones();
 		</div>
 	</div>
 
-	<!-- Связаться с нами (мессенджеры) -->
-	<div id="popup-consultation" class="popup-modal popup-modal--consult popup-modal--messengers">
+	<!-- Связаться с нами -->
+	<div id="popup-consultation" class="popup-modal popup-modal--consult">
 		<div class="popup-modal__inner">
 			<header class="popup-modal__header">
 				<h2 class="popup-modal__title title title-popup"><?php esc_html_e('Свяжитесь с нами', 'ksenonspb'); ?></h2>
-				<p class="popup-modal__lead"><?php esc_html_e('Напишите в мессенджер — ответим за 15 минут в рабочее время', 'ksenonspb'); ?></p>
+				<p class="popup-modal__lead"><?php esc_html_e('Оставьте контакты — перезвоним и ответим на вопросы', 'ksenonspb'); ?></p>
 			</header>
 			<div class="popup-modal__content">
-				<?php ksenon_render_messenger_links('popup-modal__messengers messenger-links', true); ?>
-
-				<?php if ($phones) : ?>
-					<div class="popup-modal__phones">
-						<p class="popup-modal__phones-label"><?php esc_html_e('Или позвоните', 'ksenonspb'); ?></p>
-						<?php foreach ($phones as $phone) : ?>
-							<a class="popup-modal__phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($phone)); ?>">
-								<?php echo esc_html($phone); ?>
-							</a>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
+				<div class="popup-modal__form" data-submit-label="<?php echo esc_attr__('Отправить заявку', 'ksenonspb'); ?>">
+					<?php ksenon_cf7_form('cf7_installment', __('Заявка (попап)', 'ksenonspb'), '', __('Отправить заявку', 'ksenonspb')); ?>
+				</div>
 			</div>
 		</div>
 	</div>

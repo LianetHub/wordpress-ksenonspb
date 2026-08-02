@@ -3,15 +3,15 @@
 <div class="form__card">
   <div class="form__row">
     <div class="form__field">
-      [text* your-name class:form-field placeholder "Ваше имя"]
+      [text your-name class:form-field placeholder "Ваше имя"]
     </div>
     <div class="form__field">
-      [tel* your-phone class:form-field placeholder "+7(___)___-__-__"]
+      [tel* your-phone class:form-field placeholder "+7 (___) ___-__-__"]
     </div>
   </div>
 
   <div class="form__field">
-      [text your-car class:form-field placeholder "Марка и модель авто (чтобы точнее оценить)"]
+      [text your-car class:form-field placeholder "Марка и модель авто"]
   </div>
 
   <div class="form__field">
