@@ -69,6 +69,9 @@ $cookies_policy_url = ksenon_get_cookies_policy_url();
 					<?php foreach ($phones as $phone) : ?>
 						<a class="footer__contact footer__contact--phone" href="tel:+<?php echo esc_attr(ksenon_phone_clean($phone)); ?>"><?php echo esc_html($phone); ?></a>
 					<?php endforeach; ?>
+					<?php if ($email) : ?>
+						<a class="footer__contact footer__contact--email" href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
+					<?php endif; ?>
 				</div>
 
 				<div class="footer__socials-wrap footer__socials-wrap--desktop">

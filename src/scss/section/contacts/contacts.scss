@@ -159,8 +159,23 @@
 		}
 	}
 
-	&__map {
+	&__map-wrap {
 		margin-top: 1.75rem;
+		display: flex;
+		flex-direction: column;
+		gap: rem(14);
+
+		@media (min-width: $md5) {
+			margin-top: 3.25rem;
+			gap: rem(16);
+		}
+
+		@media (min-width: $md3) {
+			margin-top: 2.75rem;
+		}
+	}
+
+	&__map {
 		border-radius: 1.5rem;
 		overflow: hidden;
 		height: 18.125rem;
@@ -183,12 +198,89 @@
 
 		@media (min-width: $md5) {
 			height: 24.375rem;
-			margin-top: 3.25rem;
 		}
 
 		@media (min-width: $md3) {
 			height: 40.5rem;
-			margin-top: 2.75rem;
+		}
+	}
+
+	&__map-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: rem(10);
+	}
+
+	&__map-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: rem(44);
+		padding: 0 rem(18);
+		border-radius: rem(100);
+		background: $color-accent;
+		color: $color-white;
+		font-weight: 500;
+		font-size: rem(14);
+		line-height: 1.3;
+		transition: background-color 0.2s ease, color 0.2s ease;
+
+		&--secondary {
+			background: transparent;
+			color: $color-text;
+			box-shadow: inset 0 0 0 1.5px rgba($color-text, 0.2);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: $color-accent-hover;
+				color: $color-white;
+			}
+
+			&--secondary:hover {
+				background: rgba($color-accent, 0.08);
+				color: $color-accent;
+				box-shadow: inset 0 0 0 1.5px $color-accent;
+			}
+		}
+	}
+}
+
+.contacts-map__caption {
+	padding: rem(4) rem(10);
+	border-radius: rem(8);
+	background: $color-white;
+	box-shadow: 0 rem(4) rem(14) rgba($color-black, 0.12);
+	color: $color-black;
+	font-weight: 600;
+	font-size: rem(13);
+	line-height: 1.2;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.contacts-map-balloon {
+	&__address {
+		margin: 0 0 rem(10);
+		color: $color-text;
+		font-size: rem(13);
+		line-height: 1.4;
+	}
+
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		gap: rem(6);
+	}
+
+	&__link {
+		color: $color-accent;
+		font-weight: 500;
+		font-size: rem(13);
+		line-height: 1.3;
+
+		&--secondary {
+			color: $color-text;
 		}
 	}
 }

@@ -1495,6 +1495,13 @@ function initYandexMap() {
 		};
 	};
 
+	const escapeHtml = (value) =>
+		String(value || "")
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;");
+
 	const init = () => {
 		const rawCoords = mapContainer.dataset.coords;
 		const coords = rawCoords
@@ -1508,6 +1515,11 @@ function initYandexMap() {
 		const zoom = parseInt(mapContainer.dataset.zoom, 10) || 16;
 		const iconPath = mapContainer.dataset.icon;
 		const iconParams = getIconParams();
+		const title = (mapContainer.dataset.title || "КБ авто").trim() || "КБ авто";
+		const address = (mapContainer.dataset.address || "").trim();
+		const [lat, lon] = coords;
+		const routeUrl = `https://yandex.ru/maps/?rtext=~${lat},${lon}&rtt=auto`;
+		const taxiUrl = `https://taxi.yandex.ru/?gto=${lon},${lat}`;
 
 		const map = new ymaps.Map("map", {
 			center: coords,
@@ -1517,18 +1529,50 @@ function initYandexMap() {
 
 		map.behaviors.disable("scrollZoom");
 
-		const placemarkOptions = {};
+		const balloonBody = [
+			address
+				? `<p class="contacts-map-balloon__address">${escapeHtml(address).replace(/\n/g, "<br>")}</p>`
+				: "",
+			`<div class="contacts-map-balloon__actions">
+				<a class="contacts-map-balloon__link" href="${routeUrl}" target="_blank" rel="noopener noreferrer">Как добраться</a>
+				<a class="contacts-map-balloon__link contacts-map-balloon__link--secondary" href="${taxiUrl}" target="_blank" rel="noopener noreferrer">Доехать на такси</a>
+			</div>`,
+		].join("");
+
+		const placemarkProperties = {
+			hintContent: title,
+			balloonContentHeader: escapeHtml(title),
+			balloonContentBody: balloonBody,
+			iconContent: title,
+		};
+
+		const placemarkOptions = {
+			hideIconOnBalloonOpen: false,
+		};
 
 		if (iconPath) {
+			const captionLayout = ymaps.templateLayoutFactory.createClass(
+				'<div class="contacts-map__caption">$[properties.iconContent]</div>',
+			);
+
 			Object.assign(placemarkOptions, {
-				iconLayout: "default#image",
+				iconLayout: "default#imageWithContent",
 				iconImageHref: iconPath,
 				iconImageSize: iconParams.size,
 				iconImageOffset: iconParams.offset,
+				iconContentOffset: [iconParams.size[0] + 4, Math.round(iconParams.size[1] / 2) - 12],
+				iconContentLayout: captionLayout,
+			});
+		} else {
+			Object.assign(placemarkOptions, {
+				preset: "islands#orangeDotIconWithCaption",
+				iconCaption: title,
 			});
 		}
 
-		map.geoObjects.add(new ymaps.Placemark(coords, {}, placemarkOptions));
+		const placemark = new ymaps.Placemark(coords, placemarkProperties, placemarkOptions);
+		map.geoObjects.add(placemark);
+		placemark.balloon.open();
 	};
 
 	const loadScript = () => {

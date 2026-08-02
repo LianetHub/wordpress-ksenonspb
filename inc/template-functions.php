@@ -2068,9 +2068,9 @@ if (! function_exists('ksenon_get_cta_bottom_popup_target')) {
 	function ksenon_get_cta_bottom_popup_target($action)
 	{
 		$targets = array(
-			'popup_order'         => '#popup-consultation',
-			'popup_consultation'  => '#popup-consultation',
-			'anchor_contacts'     => '#contacts',
+			'popup_order'        => '#popup-order',
+			'popup_consultation' => '#popup-consultation',
+			'anchor_contacts'    => '#contacts',
 		);
 
 		return $targets[$action] ?? '';

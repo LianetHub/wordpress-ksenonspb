@@ -4,6 +4,7 @@
 Вкладка «Письмо»:
 1. Включить «Использовать HTML-формат»
 2. Вставить тело ниже (без этой инструкции)
+3. В поле «Файловые вложения» указать: [your-photo]
 
 ------------------------------------------------------------
 
@@ -83,6 +84,15 @@
                   </td>
                   <td style="padding:14px 18px;border-top:1px solid #efefef;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#261c13;vertical-align:top;">
                     [your-message]
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:14px 18px;background-color:#f7f7f7;border-top:1px solid #efefef;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.4;color:#6f6f6f;width:38%;vertical-align:top;">
+                    Фото
+                  </td>
+                  <td style="padding:14px 18px;border-top:1px solid #efefef;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#6f6f6f;vertical-align:top;">
+                    Если клиент прикрепил файлы — они будут во вложениях письма
                   </td>
                 </tr>
 

@@ -49,7 +49,12 @@ while (have_posts()) :
 						<?php foreach ($feature_rows as $feature) : ?>
 							<li class="brand-features__card">
 								<?php if (! empty($feature['feature_title'])) : ?>
-									<h3 class="brand-features__card-title"><?php echo esc_html((string) $feature['feature_title']); ?></h3>
+									<h3 class="brand-features__card-title">
+										<span class="brand-features__card-icon" aria-hidden="true">
+											<?php ksenon_icon('icon-check-circle', 24, 24, 'brand-features__card-icon-svg'); ?>
+										</span>
+										<span class="brand-features__card-title-text"><?php echo esc_html((string) $feature['feature_title']); ?></span>
+									</h3>
 								<?php endif; ?>
 								<?php if (! empty($feature['feature_text'])) : ?>
 									<p class="brand-features__card-text"><?php echo esc_html((string) $feature['feature_text']); ?></p>

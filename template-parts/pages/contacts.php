@@ -28,9 +28,23 @@ $map_icon   = ksenon_acf_image_url(
 	'full',
 	ksenon_assets_uri('img/placemark.svg')
 );
+$map_label  = (string) ksenon_get_option('footer_brand_title', __('КБ авто', 'ksenonspb'));
+if ('' === trim($map_label)) {
+	$map_label = __('КБ авто', 'ksenonspb');
+}
 
 if ($map_zoom < 1) {
 	$map_zoom = 16;
+}
+
+$map_route_url = '';
+$map_taxi_url  = '';
+$coords_parts  = array_map('trim', explode(',', $map_coords));
+if (count($coords_parts) >= 2 && is_numeric($coords_parts[0]) && is_numeric($coords_parts[1])) {
+	$lat = $coords_parts[0];
+	$lon = $coords_parts[1];
+	$map_route_url = 'https://yandex.ru/maps/?rtext=~' . rawurlencode($lat . ',' . $lon) . '&rtt=auto';
+	$map_taxi_url  = 'https://taxi.yandex.ru/?gto=' . rawurlencode($lon . ',' . $lat);
 }
 
 $site_name = get_bloginfo('name');
@@ -97,15 +111,42 @@ $logo_url  = ksenon_acf_image_url(ksenon_get_logo('dark'), 'full');
 		</ul>
 
 		<?php if ($map_coords) : ?>
-			<div
-				class="contacts__map"
-				id="map"
-				data-coords="<?php echo esc_attr($map_coords); ?>"
-				data-zoom="<?php echo esc_attr((string) $map_zoom); ?>"
-				data-icon="<?php echo esc_url($map_icon); ?>"
-				<?php echo $map_api ? ' data-apikey="' . esc_attr($map_api) . '"' : ''; ?>
-				role="region"
-				aria-label="<?php esc_attr_e('Карта проезда', 'ksenonspb'); ?>"></div>
+			<div class="contacts__map-wrap">
+				<div
+					class="contacts__map"
+					id="map"
+					data-coords="<?php echo esc_attr($map_coords); ?>"
+					data-zoom="<?php echo esc_attr((string) $map_zoom); ?>"
+					data-icon="<?php echo esc_url($map_icon); ?>"
+					data-title="<?php echo esc_attr($map_label); ?>"
+					data-address="<?php echo esc_attr($address); ?>"
+					<?php echo $map_api ? ' data-apikey="' . esc_attr($map_api) . '"' : ''; ?>
+					role="region"
+					aria-label="<?php esc_attr_e('Карта проезда', 'ksenonspb'); ?>"></div>
+
+				<?php if ($map_route_url || $map_taxi_url) : ?>
+					<div class="contacts__map-actions">
+						<?php if ($map_route_url) : ?>
+							<a
+								class="contacts__map-link"
+								href="<?php echo esc_url($map_route_url); ?>"
+								target="_blank"
+								rel="noopener noreferrer">
+								<?php esc_html_e('Как добраться', 'ksenonspb'); ?>
+							</a>
+						<?php endif; ?>
+						<?php if ($map_taxi_url) : ?>
+							<a
+								class="contacts__map-link contacts__map-link--secondary"
+								href="<?php echo esc_url($map_taxi_url); ?>"
+								target="_blank"
+								rel="noopener noreferrer">
+								<?php esc_html_e('Доехать на такси', 'ksenonspb'); ?>
+							</a>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 	</div>
 </section>
@@ -115,6 +156,8 @@ get_template_part(
 	'template-parts/blocks/cta-bottom',
 	null,
 	array(
-		'title' => __('Опишите проблему — оценим быстро и по делу', 'ksenonspb'),
+		'title'                => __('Опишите проблему — оценим быстро и по делу', 'ksenonspb'),
+		'btn_primary_action'   => 'popup_order',
+		'btn_secondary_action' => 'popup_consultation',
 	)
 );
