@@ -746,7 +746,8 @@ $cf7-error-border: #ff0000;
 
 			&__text,
 			.wpcf7-list-item-label:not(:empty) {
-				font-size: var(--fs-small);
+				font-size: var(--fs-faq);
+				font-weight: var(--fw-regular);
 			}
 		}
 	}
@@ -910,7 +911,8 @@ $cf7-error-border: #ff0000;
 
 			&__text,
 			.wpcf7-list-item-label:not(:empty) {
-				font-size: var(--fs-small);
+				font-size: var(--fs-faq);
+				font-weight: var(--fw-regular);
 			}
 		}
 	}

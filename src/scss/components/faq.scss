@@ -78,7 +78,7 @@ $faq-accordion-duration: 0.45s;
 	&__intro {
 		margin: 0;
 		max-width: rem(428);
-		font-size: rem(12);
+		font-size: rem(14);
 		font-weight: 400;
 		line-height: normal;
 		color: $color-text-body;
@@ -123,14 +123,18 @@ $faq-accordion-duration: 0.45s;
 		font-size: rem(14);
 		font-weight: 400;
 		line-height: 1.32;
+
+		@media (min-width: $md3) {
+			font-size: rem(16);
+		}
 	}
 
 	&__help-text {
 		max-width: rem(253);
 		color: $color-text-body;
-		font-size: rem(12);
-		font-weight: 400;
-		line-height: 1.32;
+		font-size: var(--fs-notice);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 	}
 
 	&__messengers {
@@ -166,14 +170,13 @@ $faq-accordion-duration: 0.45s;
 			padding: rem(12) rem(18);
 			border-radius: rem(40);
 			color: $color-white;
-			font-size: rem(12);
-			font-weight: 500;
-			line-height: normal;
+			font-size: var(--fs-body);
+			font-weight: var(--fw-medium);
+			line-height: var(--lh-heading);
 
 			@media (min-width: $md3) {
 				min-height: rem(50);
 				padding: rem(15) rem(35);
-				font-size: rem(16);
 			}
 
 			@media (any-hover: hover) {
@@ -293,7 +296,7 @@ $faq-accordion-duration: 0.45s;
 			flex: 1 1 auto;
 			max-width: none;
 			color: $color-black;
-			font-size: rem(14);
+			font-size: rem(18);
 			font-style: normal;
 			font-weight: 500;
 			line-height: normal;
@@ -351,9 +354,9 @@ $faq-accordion-duration: 0.45s;
 		&__answer {
 			padding: rem(10) rem(25) rem(25);
 			color: $color-text-body;
-			font-size: rem(12);
-			font-weight: 400;
-			line-height: normal;
+			font-size: var(--fs-body);
+			font-weight: var(--fw-regular);
+			line-height: var(--lh-body);
 			max-width: none;
 			opacity: 0;
 			transform: translateY(rem(-6));
@@ -363,7 +366,6 @@ $faq-accordion-duration: 0.45s;
 
 			@media (min-width: $md3) {
 				padding: rem(10) rem(40) rem(40);
-				font-size: rem(16);
 			}
 
 			&:empty {
@@ -403,12 +405,12 @@ $faq-accordion-duration: 0.45s;
 					padding: rem(10) rem(20);
 					border-radius: rem(40);
 					background: $color-surface;
-					font-size: rem(12);
-					line-height: normal;
+					font-size: var(--fs-faq);
+					font-weight: var(--fw-regular);
+					line-height: var(--lh-body);
 
 					@media (min-width: $md3) {
 						padding: rem(15) rem(20);
-						font-size: rem(16);
 					}
 				}
 
@@ -420,7 +422,7 @@ $faq-accordion-duration: 0.45s;
 					flex-shrink: 0;
 					color: $color-brand;
 					white-space: nowrap;
-					font-size: rem(10);
+					font-size: var(--fs-small);
 
 					@media (min-width: $md3) {
 						font-size: inherit;

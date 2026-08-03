@@ -266,9 +266,9 @@
   flex-shrink: 0;
   margin: 0;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  line-height: normal;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-tab);
+  line-height: var(--lh-heading);
   text-align: center;
   text-transform: uppercase;
 }
@@ -508,15 +508,14 @@
 }
 .portfolio-card__quote {
   margin: 0 0 0.6875rem;
-  font-size: 0.75rem;
-  line-height: normal;
+  font-size: var(--fs-work);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
   color: #6f6f6f;
 }
 @media (min-width: 991.98px) {
   .portfolio-card__quote {
     margin: 0 0 1.25rem;
-    font-size: 0.9375rem;
-    line-height: 1.3;
   }
 }
 .portfolio-card__footer {

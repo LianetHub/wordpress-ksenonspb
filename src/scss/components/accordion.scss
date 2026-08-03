@@ -77,10 +77,11 @@ $accordion-duration: 0.5s;
 		font-style: italic;
 		line-height: var(--lh-heading);
 		letter-spacing: -0.02em;
-		font-size: var(--fs-faq);
+		font-size: rem(18);
 
 		@media (min-width: $md3) {
 			max-width: rem(554);
+			font-size: var(--fs-faq);
 		}
 	}
 

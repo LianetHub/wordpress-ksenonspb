@@ -60,11 +60,12 @@
   font-style: italic;
   line-height: var(--lh-heading);
   letter-spacing: -0.02em;
-  font-size: var(--fs-faq);
+  font-size: 1.125rem;
 }
 @media (min-width: 991.98px) {
   .accordion__question {
     max-width: 34.625rem;
+    font-size: var(--fs-faq);
   }
 }
 .accordion__chevron {

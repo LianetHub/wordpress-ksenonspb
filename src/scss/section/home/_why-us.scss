@@ -142,32 +142,21 @@
 
 	&__card-title {
 		font-family: $font-family;
-		font-weight: 500;
-		font-size: rem(15);
-		line-height: 1.2;
+		font-weight: var(--fw-semibold);
+		font-size: 16px;
+		line-height: var(--lh-heading);
 		color: $color-black;
 
 		@media (min-width: $md3) {
 			font-size: rem(30);
 		}
 
-		.why-us__card--2 &,
-		.why-us__card--3 & {
-			font-size: rem(14);
-
-			@media (min-width: $md3) {
-				font-size: rem(30);
-			}
-		}
-
 		.why-us__card--accent & {
 			flex: 0 1 rem(128);
-			font-size: rem(14);
 			color: $color-white;
 
 			@media (min-width: $md3) {
 				flex: 0 1 rem(307);
-				font-size: rem(30);
 			}
 		}
 	}
@@ -180,12 +169,10 @@
 
 		.why-us__card--accent & {
 			flex: 1 1 rem(167);
-			font-size: var(--fs-small);
 			color: $color-white;
 
 			@media (min-width: $md3) {
 				flex: 0 1 rem(291);
-				font-size: var(--fs-body);
 			}
 		}
 	}

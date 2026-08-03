@@ -77,9 +77,9 @@
 
 	&__excerpt {
 		font-family: $font-family;
-		font-size: rem(12);
-		font-weight: 500;
-		line-height: normal;
+		font-size: var(--fs-body);
+		font-weight: var(--fw-regular);
+		line-height: var(--lh-body);
 		color: $color-black;
 
 		@media (min-width: $md3) {

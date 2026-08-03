@@ -6,7 +6,7 @@
 	padding: rem(24) 0 rem(48);
 
 	@media (min-width: $md3) {
-		padding: 0 0 rem(72);
+		padding: 0 0 rem(72);  
 	}
 
 	&__panel {
@@ -577,8 +577,12 @@
 	}
 
 	&--services &__grid {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 		gap: rem(8);
+
+		@media (min-width: 450px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
 		@media (min-width: $md4) {
 			gap: rem(20);
@@ -720,7 +724,7 @@
 		background: $color-white;
 
 		@media (max-width: $md4) {
-			gap: rem(4);
+			gap: rem(8);
 			padding: rem(6) rem(6);
 			margin: 0 -1.5rem;
 		}
@@ -733,7 +737,7 @@
 		min-width: 0;
 
 		@media (max-width: $md4) {
-			gap: rem(3);
+			gap: rem(8);
 		}
 	}
 
@@ -741,9 +745,10 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		min-width: rem(34);
-		height: rem(35);
-		padding: rem(11) rem(15);
+		min-width: rem(40);
+		min-height: rem(40);
+		height: rem(40);
+		padding: rem(8) rem(12);
 		border-radius: rem(30);
 		background: $color-surface;
 		color: $color-black;
@@ -753,6 +758,7 @@
 		line-height: var(--lh-heading);
 		white-space: nowrap;
 		transition: background-color 0.2s ease;
+		box-sizing: border-box;
 
 		&._active {
 			background: #fdad65;
@@ -761,19 +767,20 @@
 		}
 
 		&--dots {
-			min-width: rem(34);
-			padding: rem(11) rem(13);
+			min-width: rem(40);
+			padding: rem(8) rem(10);
 			pointer-events: none;
 		}
 
 		@media (max-width: $md4) {
-			min-width: rem(28);
-			height: rem(28);
-			padding: rem(4) rem(5);
+			min-width: 44px;
+			min-height: 44px;
+			height: 44px;
+			padding: rem(6) rem(8);
 
 			&--dots {
-				min-width: rem(20);
-				padding: rem(4) rem(2);
+				min-width: 44px;
+				padding: rem(6) rem(4);
 			}
 		}
 
@@ -789,12 +796,15 @@
 		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
-		width: rem(34);
-		height: rem(35);
+		width: rem(40);
+		height: rem(40);
+		min-width: rem(40);
+		min-height: rem(40);
 		border-radius: 50%;
 		background: $color-surface;
 		color: $color-black;
 		transition: background-color 0.2s ease;
+		box-sizing: border-box;
 
 		&--disabled {
 			opacity: 0.4;
@@ -802,8 +812,10 @@
 		}
 
 		@media (max-width: $md4) {
-			width: rem(28);
-			height: rem(28);
+			width: 44px;
+			height: 44px;
+			min-width: 44px;
+			min-height: 44px;
 		}
 
 		@media (any-hover: hover) {
