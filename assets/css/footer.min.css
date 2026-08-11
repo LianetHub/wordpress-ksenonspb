@@ -193,6 +193,18 @@
   height: 1.5rem;
   border-radius: 0.375rem;
 }
+.footer__socials-link--max svg {
+  width: 1.8125rem;
+  height: 1.8125rem;
+  border-radius: 50%;
+}
+.footer__socials-link--rutube img, .footer__socials-link--drive2 img {
+  display: block;
+  width: 1.8125rem;
+  height: 1.8125rem;
+  border-radius: 0.5625rem;
+  object-fit: cover;
+}
 @media (any-hover: hover) {
   .footer__socials-link:hover {
     opacity: 0.85;

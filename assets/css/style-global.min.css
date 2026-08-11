@@ -109,25 +109,25 @@ body {
   background: #ffffff;
 }
 .main:not(.main--home) {
-  padding-top: calc(2.875rem + 3.75rem + 1.5rem);
+  padding-top: calc(2rem + 7.5rem + 1.5rem);
 }
 @media (min-width: 991.98px) {
   .main:not(.main--home) {
-    padding-top: calc(2.875rem + 4.9375rem + 1.5rem);
+    padding-top: calc(2.875rem + 10rem + 1.5rem);
   }
 }
 
 .admin-bar .main:not(.main--home) {
-  padding-top: calc(2.875rem + 3.75rem + 1.5rem + 46px);
+  padding-top: calc(2rem + 7.5rem + 1.5rem + 46px);
 }
 @media screen and (min-width: 783px) {
   .admin-bar .main:not(.main--home) {
-    padding-top: calc(2.875rem + 3.75rem + 1.5rem + 32px);
+    padding-top: calc(2rem + 7.5rem + 1.5rem + 32px);
   }
 }
 @media (min-width: 991.98px) {
   .admin-bar .main:not(.main--home) {
-    padding-top: calc(2.875rem + 4.9375rem + 1.5rem + 32px);
+    padding-top: calc(2.875rem + 10rem + 1.5rem + 32px);
   }
 }
 
@@ -179,16 +179,16 @@ body {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;

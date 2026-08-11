@@ -1268,7 +1268,7 @@
 }
 .hero__wrapper {
   max-width: 86.25rem;
-  padding: 7rem 0.5rem 0rem;
+  padding: 10.5rem 0.5rem 0rem;
   background: #f7f7f7;
   overflow: hidden;
   border-radius: 1.25rem;
@@ -1277,12 +1277,12 @@
   .hero__wrapper {
     border-radius: 2.5rem;
     margin: 0 -2rem;
-    padding: 7.25rem 1.875rem 3.125rem;
+    padding: 13.75rem 1.875rem 3.125rem;
   }
 }
 @media (min-width: 1199.98px) {
   .hero__wrapper {
-    padding: 7.25rem 1.875rem 7.25rem;
+    padding: 13.75rem 1.875rem 7.25rem;
   }
 }
 @media (min-width: 1399.98px) {

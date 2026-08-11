@@ -34,20 +34,30 @@ $has_menu = has_nav_menu('primary');
 
 	<div class="header-drawer__panel" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e('Мобильное меню', 'ksenonspb'); ?>">
 		<div class="header-drawer__top">
-			<?php if ($logo) : ?>
-				<a href="<?php echo esc_url(home_url('/')); ?>" class="header-drawer__logo">
-					<?php
-					echo ksenon_acf_image(
-						$logo,
-						'full',
-						array(
-							'width'  => '50',
-							'height' => '51',
-						)
-					);
-					?>
-				</a>
-			<?php endif; ?>
+			<div class="header-drawer__head">
+				<?php if ($logo) : ?>
+					<a href="<?php echo esc_url(home_url('/')); ?>" class="header-drawer__logo">
+						<?php
+						echo ksenon_acf_image(
+							$logo,
+							'full',
+							array(
+								'width'  => '60',
+								'height' => '61',
+							)
+						);
+						?>
+					</a>
+				<?php endif; ?>
+
+				<button
+					class="header-drawer__close"
+					type="button"
+					aria-label="<?php esc_attr_e('Закрыть меню', 'ksenonspb'); ?>">
+					<span></span>
+					<span></span>
+				</button>
+			</div>
 
 			<?php
 			if ($has_menu) {
@@ -70,16 +80,7 @@ $has_menu = has_nav_menu('primary');
 			<?php if ($address || $email || $phones) : ?>
 				<div class="header-drawer__contacts">
 					<?php if ($address) : ?>
-						<?php
-						$address_lines = array_values(
-							array_filter(
-								array_map('trim', preg_split('/\r\n|\r|\n/', $address) ?: array()),
-								static function ($line) {
-									return '' !== $line;
-								}
-							)
-						);
-						?>
+						<?php $address_lines = ksenon_get_address_lines($address); ?>
 						<div class="header-drawer__contact">
 							<span class="header-drawer__contact-icon" aria-hidden="true">
 								<svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -30,6 +30,7 @@ function initBurger() {
 	const drawer = document.querySelector(".header-drawer");
 	const toggle = document.querySelector(".header__toggle");
 	const backdrop = document.querySelector(".header-drawer__backdrop");
+	const closeBtn = document.querySelector(".header-drawer__close");
 
 	if (!drawer || !toggle) return;
 
@@ -50,6 +51,7 @@ function initBurger() {
 	});
 
 	backdrop?.addEventListener("click", () => setMenuOpen(false));
+	closeBtn?.addEventListener("click", () => setMenuOpen(false));
 
 	drawer
 		.querySelectorAll(

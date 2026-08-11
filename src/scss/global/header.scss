@@ -9,16 +9,25 @@
 	z-index: 50;
 	width: 100%;
 	pointer-events: none;
-	transition: padding-top 0.3s ease;
+	transition: padding-top 0.35s ease;
 	padding: rem(32) 0 0;
 
-	@media (min-width:$md3) {
+	@media (min-width: $md3) {
 		padding: rem(46) 0 0;
-
 	}
 
 	&.is-scrolled {
 		padding-top: rem(8);
+	}
+
+	// One max-width: shrinks with the viewport (no stepped container sizes).
+	&__container.container,
+	&__container.container.container--medium {
+		width: min(100% - #{rem(24)}, #{rem(1300)});
+		max-width: rem(1300);
+		margin-inline: auto;
+		padding-inline: 0;
+		box-sizing: border-box;
 	}
 }
 
@@ -28,33 +37,236 @@ html.with-fancybox body.hide-scrollbar .header {
 }
 
 .header {
-	&__bar {
+	&__panel {
 		pointer-events: auto;
+		display: flex;
+		flex-direction: column;
+		gap: rem(8);
+		padding: rem(10) rem(16) rem(10);
+		border-radius: rem(28);
+		background: $color-white;
+		color: $color-black;
+		overflow: visible;
+		transition: box-shadow 0.3s ease, gap 0.35s ease, padding 0.35s ease, border-radius 0.35s ease;
+
+		.header.is-scrolled & {
+			row-gap: 0;
+			padding-top: rem(6);
+			padding-bottom: rem(6);
+			box-shadow: 0 rem(4) rem(16) rgba($color-black, 0.08);
+		}
+
+		@media (max-width: $md3) {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			grid-template-areas:
+				"top toggle"
+				"bar bar";
+			align-items: center;
+			column-gap: rem(12);
+			row-gap: rem(8);
+
+			.header.is-scrolled & {
+				grid-template-areas: "bar toggle";
+				row-gap: 0;
+			}
+		}
+
+		@media (min-width: $md3) {
+			margin: 0 1rem;
+			gap: rem(10);
+			padding: rem(12) rem(24) rem(12);
+			border-radius: rem(36);
+
+			.header.is-scrolled & {
+				gap: 0;
+				padding-top: rem(8);
+				padding-bottom: rem(8);
+				border-radius: rem(62);
+			}
+		}
+	}
+
+	&__top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(12);
+		min-width: 0;
+		max-height: rem(96);
+		padding-bottom: rem(8);
+		border-bottom: 1px solid rgba($color-black, 0.08);
+		opacity: 1;
+		overflow: hidden;
+		transform: translateY(0);
+		transition:
+			max-height 0.35s ease,
+			opacity 0.28s ease,
+			padding 0.35s ease,
+			border-color 0.28s ease,
+			transform 0.35s ease;
+
+		@media (max-width: $md3) {
+			grid-area: top;
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+
+		@media (min-width: $md3) {
+			gap: rem(20);
+			max-height: rem(88);
+			padding-bottom: rem(10);
+		}
+
+		.header.is-scrolled & {
+			max-height: 0;
+			opacity: 0;
+			padding-bottom: 0;
+			border-bottom-color: transparent;
+			transform: translateY(rem(-6));
+			pointer-events: none;
+
+			@media (max-width: $md3) {
+				display: none;
+			}
+		}
+	}
+
+	&__address {
+		display: none;
+		flex-direction: column;
+		gap: rem(2);
+		min-width: 0;
+		flex: 1 1 auto;
+		font-family: $font-inter;
+		font-size: rem(14);
+		font-weight: 400;
+		line-height: 1.3;
+		color: rgba($color-black, 0.75);
+
+		@media (min-width: $md3) {
+			display: flex;
+			font-size: rem(15);
+		}
+	}
+
+	&__address-line {
+		display: block;
+	}
+
+	&__phones {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: rem(2);
+		flex-shrink: 0;
+		min-width: 0;
+
+		@media (min-width: $md3) {
+			align-items: flex-end;
+			margin-left: auto;
+		}
+	}
+
+	&__phone {
+		font-family: $font-family;
+		font-size: rem(15);
+		font-weight: var(--fw-medium);
+		line-height: 1.2;
+		color: $color-black;
+		white-space: nowrap;
+		transition: opacity 0.2s ease;
+
+		@media (min-width: $md3) {
+			font-size: rem(16);
+		}
+
+		&--secondary {
+			font-size: rem(13);
+			font-weight: 400;
+			color: rgba($color-black, 0.7);
+
+			@media (min-width: $md3) {
+				font-size: rem(14);
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+	}
+
+	&__socials {
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+		gap: rem(8);
+	}
+
+	&__socials-item {
+		flex-shrink: 0;
+
+		@media (max-width: $md4) {
+			&:not(:has(.header__socials-link--telegram)):not(:has(.header__socials-link--whatsapp)) {
+				display: none;
+			}
+		}
+	}
+
+	&__socials-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(28);
+		height: rem(28);
+		overflow: hidden;
+		border-radius: rem(8);
+		transition: opacity 0.2s ease;
+
+		@media (min-width: $md3) {
+			width: rem(29);
+			height: rem(29);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.85;
+			}
+		}
+	}
+
+	&__socials-icon {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__bar {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: rem(16);
-		min-height: rem(60);
-		padding: rem(4) rem(20);
-		border-radius: rem(62);
-		background: $color-white;
-		color: $color-black;
+		min-height: rem(56);
 		overflow: visible;
-		transition: box-shadow 0.3s ease;
+		transition: min-height 0.35s ease;
 
+		@media (max-width: $md3) {
+			grid-area: bar;
+		}
+
+		@media (min-width: $md3) {
+			min-height: rem(76);
+		}
 
 		.header.is-scrolled & {
-			box-shadow: 0 rem(4) rem(16) rgba($color-black, 0.08);
-		}
+			min-height: rem(48);
 
-		@media (min-width:$md1) {
-			margin: 0;
-		}
-
-		@media (min-width:$md3) {
-			margin: 0 1rem;
-			min-height: rem(79);
-			padding: rem(14) rem(30);
+			@media (min-width: $md3) {
+				min-height: rem(56);
+			}
 		}
 	}
 
@@ -65,9 +277,22 @@ html.with-fancybox body.hide-scrollbar .header {
 
 	&__logo-img {
 		display: block;
-		width: rem(50);
+		width: rem(60);
 		height: auto;
 		object-fit: contain;
+		transition: width 0.35s ease;
+
+		@media (min-width: $md3) {
+			width: rem(80);
+		}
+
+		.header.is-scrolled & {
+			width: rem(44);
+
+			@media (min-width: $md3) {
+				width: rem(50);
+			}
+		}
 	}
 
 	&__nav {
@@ -252,6 +477,13 @@ html.with-fancybox body.hide-scrollbar .header {
 		cursor: pointer;
 		position: relative;
 		z-index: 71;
+		flex-shrink: 0;
+
+		@media (max-width: $md3) {
+			grid-area: toggle;
+			justify-self: end;
+			align-self: center;
+		}
 
 		@media (min-width: $md3) {
 			display: none;
@@ -262,8 +494,14 @@ html.with-fancybox body.hide-scrollbar .header {
 
 .header-drawer {
 	position: fixed;
-	inset: 0;
-	z-index: 60;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	height: 100dvh;
 	pointer-events: none;
 	visibility: hidden;
 	transition: visibility 0s linear 0.35s;
@@ -284,7 +522,12 @@ html.with-fancybox body.hide-scrollbar .header {
 
 	&__backdrop {
 		position: absolute;
-		inset: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 		border: 0;
 		background: rgba(0, 0, 0, 0.3);
 		opacity: 0;
@@ -296,17 +539,18 @@ html.with-fancybox body.hide-scrollbar .header {
 		position: absolute;
 		top: 0;
 		right: 0;
+		bottom: 0;
 		display: flex;
 		flex-direction: column;
-		width: min(100%, rem(215));
+		width: min(100%, rem(280));
 		height: 100%;
-		max-height: 100dvh;
+		max-height: none;
 		overflow-x: hidden;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
 		overscroll-behavior: contain;
 		background: #fff;
-		border-radius: rem(20) 0 rem(20) rem(20);
+		border-radius: 0;
 		transform: translateX(100%);
 		transition: transform 0.35s ease;
 	}
@@ -320,6 +564,44 @@ html.with-fancybox body.hide-scrollbar .header {
 		background: #fff;
 	}
 
+	&__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(12);
+	}
+
+	&__close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: rem(24);
+		height: rem(24);
+		border: 0;
+		background: transparent;
+		color: #313542;
+		cursor: pointer;
+		position: relative;
+
+		span {
+			position: absolute;
+			display: block;
+			width: rem(18);
+			height: rem(1.5);
+			border-radius: rem(2);
+			background: currentColor;
+
+			&:first-child {
+				transform: rotate(45deg);
+			}
+
+			&:last-child {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+
 	&__logo {
 		display: inline-flex;
 		align-items: center;
@@ -330,7 +612,7 @@ html.with-fancybox body.hide-scrollbar .header {
 
 		img {
 			display: block;
-			width: rem(50);
+			width: rem(60);
 			height: auto;
 		}
 	}
@@ -574,10 +856,12 @@ html.with-fancybox body.hide-scrollbar .header {
 
 .admin-bar .header-drawer {
 	top: 46px;
+	height: calc(100% - 46px);
 	height: calc(100dvh - 46px);
 
 	@media screen and (min-width: 783px) {
 		top: 32px;
+		height: calc(100% - 32px);
 		height: calc(100dvh - 32px);
 	}
 }

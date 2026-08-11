@@ -15,7 +15,7 @@
 
 	&__wrapper {
 		max-width: rem(1380);
-		padding: rem(112) rem(8) rem(0);
+		padding: rem(168) rem(8) rem(0);
 		background: $color-surface;
 		overflow: hidden;
 		border-radius: rem(20);
@@ -23,11 +23,11 @@
 		@media (min-width: $md3) {
 			border-radius: rem(40);
 			margin: 0 -2rem;
-			padding: rem(116) rem(30) rem(50);
+			padding: rem(220) rem(30) rem(50);
 		}
 
 		@media (min-width: $md2) {
-			padding: rem(116) rem(30) rem(116);
+			padding: rem(220) rem(30) rem(116);
 		}
 
 		@media (min-width:$md1) {

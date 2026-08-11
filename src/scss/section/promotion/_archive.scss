@@ -33,21 +33,21 @@
 }
 
 .main--promotions {
-	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)});
+	padding-top: calc(#{rem(32)} + #{rem(120)} + #{rem(8)});
 
 	@media (min-width: $md3) {
-		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)});
+		padding-top: calc(#{rem(46)} + #{rem(160)} + #{rem(24)});
 	}
 }
 
 .admin-bar .main--promotions {
-	padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 46px);
+	padding-top: calc(#{rem(32)} + #{rem(120)} + #{rem(8)} + 46px);
 
 	@media screen and (min-width: 783px) {
-		padding-top: calc(#{rem(46)} + #{rem(60)} + #{rem(8)} + 32px);
+		padding-top: calc(#{rem(32)} + #{rem(120)} + #{rem(8)} + 32px);
 	}
 
 	@media (min-width: $md3) {
-		padding-top: calc(#{rem(46)} + #{rem(79)} + #{rem(24)} + 32px);
+		padding-top: calc(#{rem(46)} + #{rem(160)} + #{rem(24)} + 32px);
 	}
 }

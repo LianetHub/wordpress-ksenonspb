@@ -72,8 +72,8 @@
             "label": "Адрес",
             "name": "address",
             "type": "textarea",
-            "rows": 2,
-            "default_value": "ул. Шателена, 9, Санкт-Петербург"
+            "rows": 3,
+            "default_value": "Санкт-Петербург\nул. Шателена, дом 9\nКБ авто паркинг 2 этаж"
         },
         {
             "key": "field_ksenon_ts_hours",
@@ -250,6 +250,20 @@
             "label": "YouTube",
             "name": "social_youtube",
             "type": "url"
+        },
+        {
+            "key": "field_ksenon_ts_social_rutube",
+            "label": "Rutube",
+            "name": "social_rutube",
+            "type": "url",
+            "default_value": "https://rutube.ru/channel/24425429/"
+        },
+        {
+            "key": "field_ksenon_ts_social_drive2",
+            "label": "Drive2",
+            "name": "social_drive2",
+            "type": "url",
+            "default_value": "https://www.drive2.ru/o/kbauto/"
         },
         {
             "key": "field_ksenon_ts_social_max",

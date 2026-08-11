@@ -206,6 +206,21 @@
 			border-radius: rem(6);
 		}
 
+		&--max svg {
+			width: rem(29);
+			height: rem(29);
+			border-radius: 50%;
+		}
+
+		&--rutube img,
+		&--drive2 img {
+			display: block;
+			width: rem(29);
+			height: rem(29);
+			border-radius: rem(9);
+			object-fit: cover;
+		}
+
 		@media (any-hover: hover) {
 			&:hover {
 				opacity: 0.85;

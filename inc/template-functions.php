@@ -1622,21 +1622,122 @@ if (! function_exists('ksenon_get_footer_domain')) {
 	}
 }
 
-if (! function_exists('ksenon_get_social_links')) {
-	function ksenon_get_social_links()
+if (! function_exists('ksenon_get_social_networks')) {
+	/**
+	 * Supported social networks: slug => ACF option field name.
+	 *
+	 * @return array<string, string>
+	 */
+	function ksenon_get_social_networks()
 	{
-		$networks = array(
+		return array(
 			'telegram' => 'social_telegram',
 			'whatsapp' => 'social_whatsapp',
 			'vk'       => 'social_vk',
 			'youtube'  => 'social_youtube',
+			'rutube'   => 'social_rutube',
+			'drive2'   => 'social_drive2',
 			'max'      => 'social_max',
 		);
+	}
+}
 
-		$links = array();
+if (! function_exists('ksenon_get_social_field_defaults')) {
+	/**
+	 * Default URLs for social option fields.
+	 *
+	 * @return array<string, string>
+	 */
+	function ksenon_get_social_field_defaults()
+	{
+		return array(
+			'social_rutube' => 'https://rutube.ru/channel/24425429/',
+			'social_drive2' => 'https://www.drive2.ru/o/kbauto/',
+		);
+	}
+}
+
+if (! function_exists('ksenon_get_social_icon_map')) {
+	/**
+	 * SVG sprite ids and sizes for social networks.
+	 *
+	 * @return array<string, array{0: string, 1: int, 2: int}>
+	 */
+	function ksenon_get_social_icon_map()
+	{
+		return array(
+			'telegram' => array('icon-social-telegram', 29, 29),
+			'whatsapp' => array('icon-social-whatsapp', 29, 29),
+			'vk'       => array('icon-vk', 29, 29),
+			'youtube'  => array('icon-youtube', 34, 24),
+			'max'      => array('icon-max', 29, 29),
+		);
+	}
+}
+
+if (! function_exists('ksenon_get_social_image_map')) {
+	/**
+	 * Raster/SVG file icons for social networks (not in sprite).
+	 *
+	 * @return array<string, array{0: string, 1: int, 2: int}>
+	 */
+	function ksenon_get_social_image_map()
+	{
+		return array(
+			'rutube' => array('img/rutube-logo.svg', 25, 25),
+			'drive2' => array('img/drive-2-logo.png', 29, 29),
+		);
+	}
+}
+
+if (! function_exists('ksenon_render_social_icon')) {
+	/**
+	 * Render a social network icon (sprite or image file).
+	 *
+	 * @param string $network Network slug.
+	 * @param string $class   CSS class for the icon element.
+	 * @return bool Whether an icon was rendered.
+	 */
+	function ksenon_render_social_icon($network, $class = '')
+	{
+		$network = sanitize_key((string) $network);
+		$images  = ksenon_get_social_image_map();
+
+		if (isset($images[$network])) {
+			list($path, $width, $height) = $images[$network];
+			printf(
+				'<img class="%1$s" src="%2$s" alt="" width="%3$d" height="%4$d" loading="lazy" decoding="async" />',
+				esc_attr($class),
+				esc_url(ksenon_assets_uri($path)),
+				(int) $width,
+				(int) $height
+			);
+			return true;
+		}
+
+		$icons = ksenon_get_social_icon_map();
+		if (empty($icons[$network])) {
+			return false;
+		}
+
+		list($icon_id, $icon_w, $icon_h) = $icons[$network];
+		ksenon_icon($icon_id, $icon_w, $icon_h, $class);
+
+		return true;
+	}
+}
+
+if (! function_exists('ksenon_get_social_links')) {
+	function ksenon_get_social_links()
+	{
+		$networks = ksenon_get_social_networks();
+		$defaults = ksenon_get_social_field_defaults();
+		$allowed  = array_keys($networks);
+		$links    = array();
 
 		foreach ($networks as $network => $field) {
-			$url = trim((string) ksenon_get_option($field, ''));
+			$default = $defaults[$field] ?? '';
+			$url     = trim((string) ksenon_get_option($field, $default));
 			if ($url) {
 				$links[] = array(
 					'network' => $network,
@@ -1665,7 +1766,7 @@ if (! function_exists('ksenon_get_social_links')) {
 			}
 
 			$network = isset($row['network']) ? sanitize_key($row['network']) : '';
-			if (! in_array($network, array('telegram', 'whatsapp', 'vk', 'youtube', 'max'), true)) {
+			if (! in_array($network, $allowed, true)) {
 				continue;
 			}
 
@@ -1687,10 +1788,41 @@ if (! function_exists('ksenon_get_footer_social_label')) {
 			'whatsapp' => 'WhatsApp',
 			'vk'       => 'VK',
 			'youtube'  => 'YouTube',
+			'rutube'   => 'Rutube',
+			'drive2'   => 'Drive2',
 			'max'      => 'MAX',
 		);
 
 		return $labels[$network] ?? $network;
+	}
+}
+
+if (! function_exists('ksenon_get_address_lines')) {
+	/**
+	 * Split address option into non-empty lines.
+	 *
+	 * @param string|null $address Raw address text. Null reads from options.
+	 * @return array<int, string>
+	 */
+	function ksenon_get_address_lines($address = null)
+	{
+		if (null === $address) {
+			$address = (string) ksenon_get_option('address');
+		}
+
+		$address = (string) $address;
+		if ('' === $address) {
+			return array();
+		}
+
+		return array_values(
+			array_filter(
+				array_map('trim', preg_split('/\r\n|\r|\n/', $address) ?: array()),
+				static function ($line) {
+					return '' !== $line;
+				}
+			)
+		);
 	}
 }
 
@@ -1701,22 +1833,15 @@ if (! function_exists('ksenon_render_footer_socials')) {
 		if (! $links) {
 			return;
 		}
-
-		$icons = array(
-			'telegram' => array('icon-social-telegram', 29, 29),
-			'whatsapp' => array('icon-social-whatsapp', 29, 29),
-			'vk'       => array('icon-vk', 29, 29),
-			'youtube'  => array('icon-youtube', 34, 24),
-			'max'      => array('icon-max', 29, 29),
-		);
 	?>
 		<ul class="footer__socials">
 			<?php foreach ($links as $link) : ?>
 				<?php
-				if (empty($icons[$link['network']])) {
+				$images  = ksenon_get_social_image_map();
+				$sprites = ksenon_get_social_icon_map();
+				if (empty($images[$link['network']]) && empty($sprites[$link['network']])) {
 					continue;
 				}
-				list($icon_id, $icon_w, $icon_h) = $icons[$link['network']];
 				?>
 				<li class="footer__socials-item">
 					<a
@@ -1725,7 +1850,46 @@ if (! function_exists('ksenon_render_footer_socials')) {
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="<?php echo esc_attr(ksenon_get_footer_social_label($link['network'])); ?>">
-						<?php ksenon_icon($icon_id, $icon_w, $icon_h, 'footer__socials-icon'); ?>
+						<?php ksenon_render_social_icon($link['network'], 'footer__socials-icon'); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php
+	}
+}
+
+if (! function_exists('ksenon_render_header_social_icons')) {
+	/**
+	 * Icon-only social links for the header utility row.
+	 *
+	 * @param string $class List class name.
+	 */
+	function ksenon_render_header_social_icons($class = 'header__socials')
+	{
+		$links = ksenon_get_social_links();
+		if (! $links) {
+			return;
+		}
+
+		$images  = ksenon_get_social_image_map();
+		$sprites = ksenon_get_social_icon_map();
+	?>
+		<ul class="<?php echo esc_attr($class); ?>">
+			<?php foreach ($links as $link) : ?>
+				<?php
+				if (empty($images[$link['network']]) && empty($sprites[$link['network']])) {
+					continue;
+				}
+				?>
+				<li class="header__socials-item">
+					<a
+						class="header__socials-link header__socials-link--<?php echo esc_attr($link['network']); ?>"
+						href="<?php echo esc_url($link['url']); ?>"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="<?php echo esc_attr(ksenon_get_footer_social_label($link['network'])); ?>">
+						<?php ksenon_render_social_icon($link['network'], 'header__socials-icon'); ?>
 					</a>
 				</li>
 			<?php endforeach; ?>
