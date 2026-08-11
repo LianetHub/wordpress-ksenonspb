@@ -142,8 +142,15 @@
     <path d="M61 45.5L35 60.5V30.5L61 45.5Z" fill="#fff" />
   </symbol>
   <symbol id="icon-max" viewBox="0 0 29 29" fill="none">
-    <circle cx="14.5" cy="14.5" r="14.5" fill="#7B5CF6" />
-    <path d="M9 19V10h2.4l2.6 4.5L16.6 10H19v9h-2.1v-5.2L14.2 19h-1.4l-2.7-5.2V19H9Z" fill="#fff" />
+    <defs>
+      <linearGradient id="icon-max-grad" x1="3.4" y1="22" x2="29" y2="14.5" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#44CCFF"/>
+        <stop offset="0.66" stop-color="#5533EE"/>
+        <stop offset="1" stop-color="#9933DD"/>
+      </linearGradient>
+    </defs>
+    <rect width="29" height="29" rx="7.25" fill="url(#icon-max-grad)"/>
+    <path fill="#fff" fill-rule="evenodd" d="M14.74 25.47c-2.18 0-3.19-.32-4.94-1.59-1.11 1.43-4.63 2.55-4.78.64 0-1.43-.32-2.65-.68-3.97-.43-1.63-.91-3.45-.91-6.08 0-6.28 5.15-11.01 11.26-11.01 6.11 0 10.9 4.96 10.9 11.07.02 6.01-4.83 10.91-10.85 10.94Zm.09-16.58c-2.97-.15-5.29 1.91-5.8 5.13-.42 2.67.33 5.93.97 6.1.31.07 1.08-.55 1.56-1.03a5.5 5.5 0 0 0 2.69.96c3.08.15 5.71-2.2 5.92-5.28.12-3.08-2.25-5.7-5.34-5.88Z" clip-rule="evenodd"/>
   </symbol>
   <symbol id="icon-rutube" viewBox="0 0 25 25" fill="none">
     <g clip-path="url(#clip_icon_rutube)">

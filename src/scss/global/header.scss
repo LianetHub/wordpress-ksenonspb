@@ -171,7 +171,7 @@ html.with-fancybox body.hide-scrollbar .header {
 	&__phone {
 		font-family: $font-family;
 		font-size: rem(15);
-		font-weight: var(--fw-medium);
+		font-weight: var(--fw-semibold);
 		line-height: 1.2;
 		color: $color-black;
 		white-space: nowrap;
@@ -179,16 +179,6 @@ html.with-fancybox body.hide-scrollbar .header {
 
 		@media (min-width: $md3) {
 			font-size: rem(16);
-		}
-
-		&--secondary {
-			font-size: rem(13);
-			font-weight: 400;
-			color: rgba($color-black, 0.7);
-
-			@media (min-width: $md3) {
-				font-size: rem(14);
-			}
 		}
 
 		@media (any-hover: hover) {

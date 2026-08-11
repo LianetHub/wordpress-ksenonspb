@@ -51,7 +51,7 @@ $phones  = ksenon_get_phones();
 						class="header__cta"
 						type="button"
 						data-fancybox
-						data-src="#popup-consultation"><?php esc_html_e('Связаться с нами', 'ksenonspb'); ?></button>
+						data-src="#popup-order"><?php esc_html_e('Оценить ремонт', 'ksenonspb'); ?></button>
 				</div>
 			</div>
 

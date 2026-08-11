@@ -155,7 +155,7 @@ html.with-fancybox body.hide-scrollbar .header {
 .header__phone {
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 0.9375rem;
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semibold);
   line-height: 1.2;
   color: #000000;
   white-space: nowrap;
@@ -164,16 +164,6 @@ html.with-fancybox body.hide-scrollbar .header {
 @media (min-width: 991.98px) {
   .header__phone {
     font-size: 1rem;
-  }
-}
-.header__phone--secondary {
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.7);
-}
-@media (min-width: 991.98px) {
-  .header__phone--secondary {
-    font-size: 0.875rem;
   }
 }
 @media (any-hover: hover) {

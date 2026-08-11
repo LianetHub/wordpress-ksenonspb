@@ -206,12 +206,7 @@
 			border-radius: rem(6);
 		}
 
-		&--max svg {
-			width: rem(29);
-			height: rem(29);
-			border-radius: 50%;
-		}
-
+		&--max img,
 		&--rutube img,
 		&--drive2 img {
 			display: block;

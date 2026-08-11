@@ -1670,7 +1670,6 @@ if (! function_exists('ksenon_get_social_icon_map')) {
 			'whatsapp' => array('icon-social-whatsapp', 29, 29),
 			'vk'       => array('icon-vk', 29, 29),
 			'youtube'  => array('icon-youtube', 34, 24),
-			'max'      => array('icon-max', 29, 29),
 		);
 	}
 }
@@ -1686,6 +1685,7 @@ if (! function_exists('ksenon_get_social_image_map')) {
 		return array(
 			'rutube' => array('img/rutube-logo.svg', 25, 25),
 			'drive2' => array('img/drive-2-logo.png', 29, 29),
+			'max'    => array('img/max-logo.svg', 29, 29),
 		);
 	}
 }

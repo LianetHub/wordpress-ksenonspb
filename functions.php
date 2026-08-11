@@ -26,4 +26,5 @@ require_once $ksenon_inc . 'cleanup.php';
 require_once $ksenon_inc . 'enqueue.php';
 require_once $ksenon_inc . 'acf.php';
 require_once $ksenon_inc . 'cpt.php';
+require_once $ksenon_inc . 'redirects.php';
 require_once $ksenon_inc . 'cf7.php';

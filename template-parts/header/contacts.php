@@ -39,9 +39,9 @@ if (! $address_lines && ! $phones && ! $has_socials) {
 
 	<?php if ($phones) : ?>
 		<div class="header__phones">
-			<?php foreach ($phones as $index => $phone) : ?>
+			<?php foreach ($phones as $phone) : ?>
 				<a
-					class="header__phone<?php echo $index > 0 ? ' header__phone--secondary' : ''; ?>"
+					class="header__phone"
 					href="tel:+<?php echo esc_attr(ksenon_phone_clean($phone)); ?>"><?php echo esc_html($phone); ?></a>
 			<?php endforeach; ?>
 		</div>
