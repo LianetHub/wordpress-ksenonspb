@@ -217,6 +217,10 @@
 }
 .pricing-page__work-name {
   display: inline;
+  color: inherit;
+}
+.pricing-page__work-name[href]:hover, .pricing-page__work-name[href]:focus-visible {
+  text-decoration: underline;
 }
 .pricing-page__work-note {
   display: inline;

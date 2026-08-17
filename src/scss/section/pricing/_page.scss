@@ -227,6 +227,12 @@
 
 	&__work-name {
 		display: inline;
+		color: inherit;
+
+		&[href]:hover,
+		&[href]:focus-visible {
+			text-decoration: underline;
+		}
 	}
 
 	&__work-note {

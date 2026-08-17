@@ -173,6 +173,76 @@
             "default_value": "Частые вопросы о ценах"
         },
         {
+            "key": "field_ksenon_pricing_table_extra_rows",
+            "label": "Дополнительные строки таблицы",
+            "name": "table_extra_rows",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "instructions": "Строки без отдельной услуги: например бесплатная диагностика. Попадают в выбранную вкладку.",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_pricing_table_extra_rows_tab",
+                    "label": "Вкладка",
+                    "name": "tab",
+                    "type": "select",
+                    "choices": {
+                        "remont": "Ремонт",
+                        "tyuning": "Тюнинг",
+                        "complex": "Другие работы"
+                    },
+                    "default_value": "remont",
+                    "return_format": "value",
+                    "parent_repeater": "field_ksenon_pricing_table_extra_rows"
+                },
+                {
+                    "key": "field_ksenon_pricing_table_extra_rows_title",
+                    "label": "Название",
+                    "name": "title",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_table_extra_rows"
+                },
+                {
+                    "key": "field_ksenon_pricing_table_extra_rows_note",
+                    "label": "Примечание",
+                    "name": "note",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_table_extra_rows"
+                },
+                {
+                    "key": "field_ksenon_pricing_table_extra_rows_price",
+                    "label": "Цена",
+                    "name": "price",
+                    "type": "number",
+                    "min": 0,
+                    "step": 1,
+                    "parent_repeater": "field_ksenon_pricing_table_extra_rows"
+                },
+                {
+                    "key": "field_ksenon_pricing_table_extra_rows_duration",
+                    "label": "Срок",
+                    "name": "duration",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_pricing_table_extra_rows"
+                },
+                {
+                    "key": "field_ksenon_pricing_table_extra_rows_display",
+                    "label": "Показ цены",
+                    "name": "price_display",
+                    "type": "select",
+                    "choices": {
+                        "from": "от N ₽",
+                        "exact": "N ₽",
+                        "free": "Бесплатно",
+                        "request": "по запросу"
+                    },
+                    "default_value": "from",
+                    "return_format": "value",
+                    "parent_repeater": "field_ksenon_pricing_table_extra_rows"
+                }
+            ]
+        },
+        {
             "key": "field_ksenon_pricing_faq",
             "label": "FAQ — вопросы",
             "name": "faq",
@@ -212,5 +282,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1754074800
+    "modified": 1786968000
 }

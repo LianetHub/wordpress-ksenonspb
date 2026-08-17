@@ -661,6 +661,122 @@ if (! function_exists('ksenon_query_services')) {
 	}
 }
 
+if (! function_exists('ksenon_normalize_price_display')) {
+	/**
+	 * @param mixed $value ACF price_display.
+	 * @return string from|exact|free|request
+	 */
+	function ksenon_normalize_price_display($value)
+	{
+		$mode = is_string($value) ? $value : '';
+
+		return in_array($mode, array('from', 'exact', 'free', 'request'), true) ? $mode : 'from';
+	}
+}
+
+if (! function_exists('ksenon_get_pricing_rows_for_service')) {
+	/**
+	 * Pricing table rows for a service post (ACF only).
+	 *
+	 * @param int $service_id Service post ID.
+	 * @return array<int, array{title: string, note: string, price: mixed, price_mode: string, duration: string}>
+	 */
+	function ksenon_get_pricing_rows_for_service($service_id)
+	{
+		$service_id = (int) $service_id;
+		$title      = $service_id ? get_the_title($service_id) : '';
+		$url        = $service_id ? (string) get_permalink($service_id) : '';
+		$variants   = ksenon_get_post_field('pricing_table_rows', $service_id);
+		$rows       = array();
+
+		if (is_array($variants)) {
+			foreach ($variants as $variant) {
+				if (! is_array($variant)) {
+					continue;
+				}
+
+				$note = trim((string) ($variant['note'] ?? ''));
+				$duration = trim((string) ($variant['duration'] ?? ''));
+				$price = $variant['price'] ?? '';
+				$has_price = is_numeric($price) || '' !== trim((string) $price);
+				if ('' === $note && '' === $duration && ! $has_price) {
+					continue;
+				}
+
+				$rows[] = array(
+					'title'      => $title,
+					'url'        => $url,
+					'note'       => $note,
+					'price'      => $price,
+					'price_mode' => ksenon_normalize_price_display($variant['price_display'] ?? 'from'),
+					'duration'   => $duration,
+				);
+			}
+		}
+
+		if ($rows) {
+			return $rows;
+		}
+
+		return array(
+			array(
+				'title'      => $title,
+				'url'        => $url,
+				'note'       => (string) ksenon_get_post_field('price_note', $service_id),
+				'price'      => ksenon_get_post_field('price_from', $service_id),
+				'price_mode' => ksenon_normalize_price_display(ksenon_get_post_field('price_display', $service_id)),
+				'duration'   => (string) ksenon_get_post_field('duration', $service_id),
+			),
+		);
+	}
+}
+
+if (! function_exists('ksenon_get_pricing_extra_rows')) {
+	/**
+	 * Extra pricing rows from the pricing page ACF (no service post).
+	 *
+	 * @param int    $page_id Page ID.
+	 * @param string $tab_key remont|tyuning|complex
+	 * @return array<int, array{title: string, note: string, price: mixed, price_mode: string, duration: string}>
+	 */
+	function ksenon_get_pricing_extra_rows($page_id, $tab_key)
+	{
+		$page_id = (int) $page_id;
+		$tab_key = (string) $tab_key;
+		$raw     = $page_id ? ksenon_get_post_field('table_extra_rows', $page_id) : array();
+		$rows    = array();
+
+		if (! is_array($raw)) {
+			return $rows;
+		}
+
+		foreach ($raw as $item) {
+			if (! is_array($item)) {
+				continue;
+			}
+
+			if ((string) ($item['tab'] ?? '') !== $tab_key) {
+				continue;
+			}
+
+			$title = trim((string) ($item['title'] ?? ''));
+			if ('' === $title) {
+				continue;
+			}
+
+			$rows[] = array(
+				'title'      => $title,
+				'note'       => trim((string) ($item['note'] ?? '')),
+				'price'      => $item['price'] ?? 0,
+				'price_mode' => ksenon_normalize_price_display($item['price_display'] ?? 'from'),
+				'duration'   => trim((string) ($item['duration'] ?? '')),
+			);
+		}
+
+		return $rows;
+	}
+}
+
 if (! function_exists('ksenon_query_portfolio')) {
 	function ksenon_query_portfolio($args = array())
 	{

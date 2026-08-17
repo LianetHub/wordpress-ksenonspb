@@ -180,13 +180,24 @@ if (! function_exists('ksenon_format_price_from')) {
 
 if (! function_exists('ksenon_format_price_table')) {
 	/**
-	 * Price cell for the pricing page table: "от N ₽" or "Бесплатно".
+	 * Price cell for the pricing page table.
 	 *
-	 * @param mixed $value ACF price_from.
+	 * @param mixed  $value ACF price_from or curated amount.
+	 * @param string $mode  from|exact|free|request
 	 * @return string
 	 */
-	function ksenon_format_price_table($value)
+	function ksenon_format_price_table($value, $mode = 'from')
 	{
+		$mode = is_string($mode) && '' !== $mode ? $mode : 'from';
+
+		if ('request' === $mode) {
+			return esc_html__('по запросу', 'ksenonspb');
+		}
+
+		if ('free' === $mode) {
+			return esc_html__('Бесплатно', 'ksenonspb');
+		}
+
 		if (is_numeric($value)) {
 			$amount = (int) $value;
 		} else {
@@ -201,14 +212,61 @@ if (! function_exists('ksenon_format_price_table')) {
 			return esc_html__('Бесплатно', 'ksenonspb');
 		}
 
-		$nbsp = "\xc2\xa0";
+		$nbsp         = "\xc2\xa0";
+		$amount_label = number_format($amount, 0, '', $nbsp);
+
+		if ('exact' === $mode) {
+			return esc_html($amount_label . $nbsp . '₽');
+		}
 
 		return esc_html(
 			sprintf(
 				/* translators: %s: formatted amount */
 				__('от %s ₽', 'ksenonspb'),
-				number_format($amount, 0, '', $nbsp)
+				$amount_label
 			)
 		);
+	}
+}
+
+if (! function_exists('ksenon_nbsp_measure')) {
+	/**
+	 * Keep number + unit together: "1 шт.", "2 шт.", "1 фара", "1-3 ч".
+	 *
+	 * @param string $text Raw title, note or duration.
+	 * @return string
+	 */
+	function ksenon_nbsp_measure($text)
+	{
+		$text = (string) $text;
+		if ('' === $text) {
+			return $text;
+		}
+
+		$nbsp     = "\xc2\xa0";
+		$replaced = preg_replace(
+			'/(\d+(?:[.,]\d+)?(?:\s*[-–—]\s*\d+(?:[.,]\d+)?)?)\s+(?=шт\.?|фар[аыеу]|ч\b|час|мин|дн|дня|дней|день)/iu',
+			'$1' . $nbsp,
+			$text
+		);
+
+		return is_string($replaced) ? $replaced : $text;
+	}
+}
+
+if (! function_exists('ksenon_format_pricing_duration')) {
+	/**
+	 * Duration cell: drop extra "от" (price already has it) and glue measures.
+	 *
+	 * @param mixed $duration ACF duration.
+	 * @return string
+	 */
+	function ksenon_format_pricing_duration($duration)
+	{
+		$duration = trim((string) $duration);
+		$duration = preg_replace('/^\+\s*от\s+/u', '+ ', $duration);
+		$duration = preg_replace('/^от\s+/u', '', is_string($duration) ? $duration : '');
+
+		return ksenon_nbsp_measure(is_string($duration) ? $duration : '');
 	}
 }

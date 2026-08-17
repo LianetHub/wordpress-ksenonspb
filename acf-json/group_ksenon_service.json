@@ -36,6 +36,70 @@
             "instructions": "Серая приписка в скобках после названия на странице цен."
         },
         {
+            "key": "field_ksenon_service_price_display",
+            "label": "Как показать цену в таблице",
+            "name": "price_display",
+            "type": "select",
+            "choices": {
+                "from": "от N ₽",
+                "exact": "N ₽ (без «от»)",
+                "free": "Бесплатно",
+                "request": "по запросу"
+            },
+            "default_value": "from",
+            "return_format": "value",
+            "allow_null": 0
+        },
+        {
+            "key": "field_ksenon_service_pricing_table_rows",
+            "label": "Варианты в таблице цен",
+            "name": "pricing_table_rows",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить вариант",
+            "instructions": "Если заполнено — на странице цен услуга разбивается на несколько строк. Поле «Цена от» на карточке не меняется.",
+            "sub_fields": [
+                {
+                    "key": "field_ksenon_service_pricing_table_rows_note",
+                    "label": "Примечание",
+                    "name": "note",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_pricing_table_rows"
+                },
+                {
+                    "key": "field_ksenon_service_pricing_table_rows_price",
+                    "label": "Цена",
+                    "name": "price",
+                    "type": "number",
+                    "min": 0,
+                    "step": 1,
+                    "parent_repeater": "field_ksenon_service_pricing_table_rows"
+                },
+                {
+                    "key": "field_ksenon_service_pricing_table_rows_duration",
+                    "label": "Срок",
+                    "name": "duration",
+                    "type": "text",
+                    "parent_repeater": "field_ksenon_service_pricing_table_rows"
+                },
+                {
+                    "key": "field_ksenon_service_pricing_table_rows_display",
+                    "label": "Показ цены",
+                    "name": "price_display",
+                    "type": "select",
+                    "choices": {
+                        "from": "от N ₽",
+                        "exact": "N ₽",
+                        "free": "Бесплатно",
+                        "request": "по запросу"
+                    },
+                    "default_value": "from",
+                    "return_format": "value",
+                    "parent_repeater": "field_ksenon_service_pricing_table_rows"
+                }
+            ]
+        },
+        {
             "key": "field_ksenon_service_card_excerpt",
             "label": "Описание на карточке",
             "name": "card_excerpt",
@@ -224,6 +288,18 @@
                     "parent_repeater": "field_ksenon_service_faq"
                 },
                 {
+                    "key": "field_ksenon_service_faq_show_prices",
+                    "label": "Строки цен",
+                    "name": "show_prices",
+                    "type": "true_false",
+                    "instructions": "Включите, если в ответ нужно добавить цены.",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Вкл",
+                    "ui_off_text": "Выкл",
+                    "parent_repeater": "field_ksenon_service_faq"
+                },
+                {
                     "key": "field_ksenon_service_faq_prices",
                     "label": "Строки цен",
                     "name": "prices",
@@ -231,6 +307,15 @@
                     "layout": "table",
                     "button_label": "Добавить строку",
                     "instructions": "Опционально. Например: Простая полировка — от 5 400 ₽.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_ksenon_service_faq_show_prices",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "parent_repeater": "field_ksenon_service_faq",
                     "sub_fields": [
                         {
@@ -256,6 +341,15 @@
                     "type": "textarea",
                     "rows": 2,
                     "instructions": "Только если заполнены строки цен.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_ksenon_service_faq_show_prices",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "parent_repeater": "field_ksenon_service_faq"
                 },
                 {
@@ -288,5 +382,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784635200
+    "modified": 1786968500
 }

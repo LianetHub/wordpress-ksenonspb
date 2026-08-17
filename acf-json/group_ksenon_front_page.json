@@ -362,6 +362,18 @@
                                     "parent_repeater": "field_ksenon_faq_items"
                                 },
                                 {
+                                    "key": "field_ksenon_faq_show_prices",
+                                    "label": "Строки цен",
+                                    "name": "show_prices",
+                                    "type": "true_false",
+                                    "instructions": "Включите, если в ответ нужно добавить цены.",
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "ui_on_text": "Вкл",
+                                    "ui_off_text": "Выкл",
+                                    "parent_repeater": "field_ksenon_faq_items"
+                                },
+                                {
                                     "key": "field_ksenon_faq_prices",
                                     "label": "Строки цен",
                                     "name": "prices",
@@ -369,6 +381,15 @@
                                     "layout": "table",
                                     "button_label": "Добавить строку",
                                     "instructions": "Опционально. Для «Сколько стоит ремонт фары?»: Простая полировка — от 5 400 ₽; Замена линз на Bi-LED — от 25 000 ₽; Ремонт сложной электроники — от 15 000 ₽.",
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_ksenon_faq_show_prices",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "parent_repeater": "field_ksenon_faq_items",
                                     "sub_fields": [
                                         {
@@ -394,6 +415,15 @@
                                     "type": "textarea",
                                     "rows": 2,
                                     "instructions": "Только если заполнены строки цен. Пример: «Точную смету присылаем после осмотра или по фото в форме заявки.»",
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_ksenon_faq_show_prices",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "parent_repeater": "field_ksenon_faq_items"
                                 },
                                 {
@@ -498,5 +528,5 @@
     "position": "normal",
     "style": "default",
     "active": true,
-    "modified": 1784563200
+    "modified": 1786968500
 }

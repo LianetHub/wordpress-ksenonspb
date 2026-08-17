@@ -43,7 +43,7 @@ $pricing_tabs = array(
 	),
 	array(
 		'key'   => 'complex',
-		'label' => __('Сложные работы', 'ksenonspb'),
+		'label' => __('Другие работы', 'ksenonspb'),
 		'tax'   => array(
 			'taxonomy'         => 'service_category',
 			'field'            => 'term_id',
@@ -54,7 +54,8 @@ $pricing_tabs = array(
 	),
 );
 
-$tab_panels = array();
+$pricing_page_id = get_the_ID();
+$tab_panels      = array();
 foreach ($pricing_tabs as $tab) {
 	$query = ksenon_query_services(
 		array(
@@ -68,15 +69,20 @@ foreach ($pricing_tabs as $tab) {
 	if ($query instanceof WP_Query) {
 		while ($query->have_posts()) {
 			$query->the_post();
-			$service_id = get_the_ID();
-			$rows[]     = array(
-				'title'    => get_the_title(),
-				'note'     => (string) ksenon_get_post_field('price_note', $service_id),
-				'price'    => ksenon_get_post_field('price_from', $service_id),
-				'duration' => (string) ksenon_get_post_field('duration', $service_id),
-			);
+			$service_rows = function_exists('ksenon_get_pricing_rows_for_service')
+				? ksenon_get_pricing_rows_for_service((int) get_the_ID())
+				: array();
+			foreach ($service_rows as $service_row) {
+				$rows[] = $service_row;
+			}
 		}
 		wp_reset_postdata();
+	}
+
+	if (function_exists('ksenon_get_pricing_extra_rows')) {
+		foreach (ksenon_get_pricing_extra_rows((int) $pricing_page_id, (string) $tab['key']) as $extra_row) {
+			$rows[] = $extra_row;
+		}
 	}
 
 	$tab_panels[] = array(
@@ -99,7 +105,6 @@ $why_cards = array_values(
 );
 
 $installment_title = (string) (ksenon_get_post_field('installment_title') ?: '');
-// CMS typo on money page: «Расрочка» → «Рассрочка».
 if ('Расрочка' === $installment_title) {
 	$installment_title = __('Рассрочка', 'ksenonspb');
 }
@@ -182,8 +187,7 @@ $nbsp  = "\xc2\xa0";
 						role="tab"
 						aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
 						aria-controls="<?php echo esc_attr($panel_id); ?>"
-						data-pricing-tab="<?php echo esc_attr($tab_key); ?>"
-					>
+						data-pricing-tab="<?php echo esc_attr($tab_key); ?>">
 						<?php echo esc_html((string) $panel['label']); ?>
 					</button>
 				<?php endforeach; ?>
@@ -210,21 +214,28 @@ $nbsp  = "\xc2\xa0";
 					role="tabpanel"
 					aria-labelledby="<?php echo esc_attr($tab_id); ?>"
 					data-pricing-panel="<?php echo esc_attr($tab_key); ?>"
-					<?php echo $is_active ? '' : ' hidden'; ?>
-				>
+					<?php echo $is_active ? '' : ' hidden'; ?>>
 					<?php if ($panel['rows']) : ?>
 						<ul class="pricing-page__list">
 							<?php foreach ($panel['rows'] as $row) : ?>
 								<li class="pricing-page__row">
 									<div class="pricing-page__work">
-										<span class="pricing-page__work-name"><?php echo esc_html($row['title']); ?></span>
+										<?php
+										$work_name = ksenon_nbsp_measure((string) $row['title']);
+										$work_url  = isset($row['url']) ? (string) $row['url'] : '';
+										if ($work_url) :
+											?>
+											<a class="pricing-page__work-name" href="<?php echo esc_url($work_url); ?>"><?php echo esc_html($work_name); ?></a>
+										<?php else : ?>
+											<span class="pricing-page__work-name"><?php echo esc_html($work_name); ?></span>
+										<?php endif; ?>
 										<?php if ($row['note']) : ?>
-											<span class="pricing-page__work-note"><?php echo esc_html('(' . $row['note'] . ')'); ?></span>
+											<span class="pricing-page__work-note"><?php echo esc_html('(' . ksenon_nbsp_measure((string) $row['note']) . ')'); ?></span>
 										<?php endif; ?>
 									</div>
 									<div class="pricing-page__meta">
-										<span class="pricing-page__price"><?php echo esc_html(ksenon_format_price_table($row['price'])); ?></span>
-										<span class="pricing-page__duration"><?php echo esc_html($row['duration']); ?></span>
+										<span class="pricing-page__price"><?php echo esc_html(ksenon_format_price_table($row['price'], $row['price_mode'] ?? 'from')); ?></span>
+										<span class="pricing-page__duration"><?php echo esc_html(ksenon_format_pricing_duration($row['duration'] ?? '')); ?></span>
 									</div>
 								</li>
 							<?php endforeach; ?>
@@ -258,7 +269,7 @@ $nbsp  = "\xc2\xa0";
 	</section>
 <?php endif; ?>
 
-<?php if ($installment_title || $gift_title) : ?>
+<!-- <?php if ($installment_title || $gift_title) : ?>
 	<section class="pricing-extra">
 		<div class="pricing-extra__container container">
 			<div class="pricing-extra__inner">
@@ -286,8 +297,7 @@ $nbsp  = "\xc2\xa0";
 							type="button"
 							class="btn btn--primary btn--large pricing-extra__btn"
 							data-fancybox
-							data-src="#popup-installment"
-						>
+							data-src="#popup-installment">
 							<span class="btn__text"><?php echo esc_html($installment_btn); ?></span>
 						</button>
 					</div>
@@ -314,8 +324,7 @@ $nbsp  = "\xc2\xa0";
 											type="button"
 											class="pricing-extra__amount<?php echo $is_default ? ' _active' : ''; ?>"
 											data-gift-amount="<?php echo esc_attr((string) $amount); ?>"
-											aria-pressed="<?php echo $is_default ? 'true' : 'false'; ?>"
-										>
+											aria-pressed="<?php echo $is_default ? 'true' : 'false'; ?>">
 											<?php echo esc_html($amount_label); ?>
 										</button>
 									<?php endforeach; ?>
@@ -324,8 +333,7 @@ $nbsp  = "\xc2\xa0";
 											type="button"
 											class="pricing-extra__amount pricing-extra__amount--custom"
 											data-gift-amount="custom"
-											aria-pressed="false"
-										>
+											aria-pressed="false">
 											<?php echo esc_html($gift_custom_label); ?>
 										</button>
 									<?php endif; ?>
@@ -337,8 +345,7 @@ $nbsp  = "\xc2\xa0";
 							class="btn btn--white btn--large pricing-extra__btn"
 							data-fancybox
 							data-src="#popup-certificate"
-							data-gift-open
-						>
+							data-gift-open>
 							<span class="btn__text"><?php echo esc_html($gift_btn); ?></span>
 						</button>
 					</div>
@@ -346,7 +353,7 @@ $nbsp  = "\xc2\xa0";
 			</div>
 		</div>
 	</section>
-<?php endif; ?>
+<?php endif; ?> -->
 
 <?php get_template_part('template-parts/blocks/cta-form', null, array('variant' => 'free_inspection')); ?>
 
