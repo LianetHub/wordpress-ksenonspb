@@ -126,3 +126,38 @@ function ksenon_preload_fonts()
 		);
 	}
 }
+
+add_action(
+	'login_enqueue_scripts',
+	function () {
+		$logo_url = content_url('/uploads/2026/06/logo.webp');
+
+		printf(
+			'<style>
+				.login h1 a {
+					background-image: url(%1$s) !important;
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 200px;
+					height: 200px;
+				}
+			</style>',
+			esc_url($logo_url)
+		);
+	}
+);
+
+add_filter(
+	'login_headerurl',
+	function () {
+		return home_url('/');
+	}
+);
+
+add_filter(
+	'login_headertext',
+	function () {
+		return get_bloginfo('name');
+	}
+);
