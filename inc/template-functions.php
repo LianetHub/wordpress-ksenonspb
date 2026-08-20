@@ -1749,11 +1749,11 @@ if (! function_exists('ksenon_get_social_networks')) {
 		return array(
 			'telegram' => 'social_telegram',
 			'whatsapp' => 'social_whatsapp',
+			'max'      => 'social_max',
 			'vk'       => 'social_vk',
 			'youtube'  => 'social_youtube',
 			'rutube'   => 'social_rutube',
 			'drive2'   => 'social_drive2',
-			'max'      => 'social_max',
 		);
 	}
 }

@@ -70,6 +70,11 @@ html.with-fancybox body.hide-scrollbar .header {
 				grid-template-areas: "bar toggle";
 				row-gap: 0;
 			}
+
+			@media (max-width: 369.98px) {
+				column-gap: rem(8);
+				padding-inline: rem(12);
+			}
 		}
 
 		@media (min-width: $md3) {
@@ -110,6 +115,10 @@ html.with-fancybox body.hide-scrollbar .header {
 			grid-area: top;
 			padding-bottom: 0;
 			border-bottom: 0;
+		}
+
+		@media (max-width: 369.98px) {
+			gap: rem(8);
 		}
 
 		@media (min-width: $md3) {
@@ -181,6 +190,10 @@ html.with-fancybox body.hide-scrollbar .header {
 			font-size: rem(16);
 		}
 
+		@media (max-width: 369.98px) {
+			font-size: rem(13);
+		}
+
 		@media (any-hover: hover) {
 			&:hover {
 				opacity: 0.7;
@@ -193,13 +206,20 @@ html.with-fancybox body.hide-scrollbar .header {
 		align-items: center;
 		flex-shrink: 0;
 		gap: rem(8);
+
+		@media (max-width: 369.98px) {
+			gap: rem(5);
+		}
 	}
 
 	&__socials-item {
 		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		@media (max-width: $md4) {
-			&:not(:has(.header__socials-link--telegram)):not(:has(.header__socials-link--whatsapp)) {
+			&:not(:has(.header__socials-link--telegram)):not(:has(.header__socials-link--whatsapp)):not(:has(.header__socials-link--max)) {
 				display: none;
 			}
 		}
@@ -218,6 +238,12 @@ html.with-fancybox body.hide-scrollbar .header {
 		@media (min-width: $md3) {
 			width: rem(29);
 			height: rem(29);
+		}
+
+		@media (max-width: 369.98px) {
+			width: rem(24);
+			height: rem(24);
+			border-radius: rem(6);
 		}
 
 		@media (any-hover: hover) {
