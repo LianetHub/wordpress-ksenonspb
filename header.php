@@ -34,3 +34,4 @@ $main_class = ksenon_get_main_class();
 	<div class="wrapper">
 		<?php get_template_part( 'template-parts/header/content' ); ?>
 		<main class="main<?php echo $main_class ? ' ' . esc_attr( $main_class ) : ''; ?>">
+			<?php get_template_part( 'template-parts/breadcrumbs' ); ?>

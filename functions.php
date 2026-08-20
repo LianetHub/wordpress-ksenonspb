@@ -6,7 +6,7 @@
  * @package ksenonspb
  */
 
-define('KSENON_VERSION', '2.0.12');
+define('KSENON_VERSION', '2.0.13');
 define('KSENON_DIR', get_template_directory());
 define('KSENON_URI', get_template_directory_uri());
 define('KSENON_ASSETS_URI', KSENON_URI . '/assets');
@@ -26,5 +26,7 @@ require_once $ksenon_inc . 'cleanup.php';
 require_once $ksenon_inc . 'enqueue.php';
 require_once $ksenon_inc . 'acf.php';
 require_once $ksenon_inc . 'cpt.php';
+require_once $ksenon_inc . 'yoast-breadcrumbs.php';
 require_once $ksenon_inc . 'redirects.php';
 require_once $ksenon_inc . 'cf7.php';
+

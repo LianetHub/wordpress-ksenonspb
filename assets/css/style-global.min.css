@@ -179,16 +179,16 @@ body {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2 supports variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff2") format("woff2-variations"), url("../fonts/Inter-VariableFont_opsz,wght.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Montserrat-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -4096,6 +4096,57 @@ body {
     transform: none;
   }
 }
+.breadcrumbs {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem 0 1rem;
+}
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #6f6f6f;
+}
+.breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.5rem;
+}
+.breadcrumbs__item:not(:last-child) {
+  flex-shrink: 0;
+}
+.breadcrumbs__item:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 0.4375rem;
+  height: 0.6875rem;
+  flex-shrink: 0;
+  background-color: currentColor;
+  opacity: 0.55;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 11' fill='none'%3E%3Cpath d='M0.714233 10.4121C0.550903 10.558 0.285763 10.558 0.122433 10.4121C-0.0408373 10.2662 -0.0408373 10.0296 0.122433 9.88374L5.29919 5.26069L0.122433 0.636661C-0.0405173 0.490831 -0.0405173 0.255131 0.122433 0.109331C0.285763 -0.0365689 0.550903 -0.0365689 0.714233 0.109331L6.12537 4.94233C6.14874 4.95607 6.17121 4.97279 6.19177 4.99116C6.27313 5.06406 6.31385 5.15941 6.31384 5.25483V5.26655C6.31371 5.3619 6.27316 5.45741 6.19177 5.53022C6.17114 5.54865 6.14882 5.56528 6.12537 5.57905L0.714233 10.4121Z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 11' fill='none'%3E%3Cpath d='M0.714233 10.4121C0.550903 10.558 0.285763 10.558 0.122433 10.4121C-0.0408373 10.2662 -0.0408373 10.0296 0.122433 9.88374L5.29919 5.26069L0.122433 0.636661C-0.0405173 0.490831 -0.0405173 0.255131 0.122433 0.109331C0.285763 -0.0365689 0.550903 -0.0365689 0.714233 0.109331L6.12537 4.94233C6.14874 4.95607 6.17121 4.97279 6.19177 4.99116C6.27313 5.06406 6.31385 5.15941 6.31384 5.25483V5.26655C6.31371 5.3619 6.27316 5.45741 6.19177 5.53022C6.17114 5.54865 6.14882 5.56528 6.12537 5.57905L0.714233 10.4121Z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.breadcrumbs__link {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+@media (any-hover: hover) {
+  .breadcrumbs__link:hover {
+    color: #fd8011;
+  }
+}
+.breadcrumbs__current {
+  overflow: hidden;
+  color: #fd8011;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
 .home-arrow {
   display: inline-flex;
   align-items: center;
